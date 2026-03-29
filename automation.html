@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automation &amp; Workflows — Coremagna</title>
+<meta name="description" content="Business automation for US and European SMBs. CRM, email sequences, lead collection — all on autopilot. Save 15+ hours per week.">
+<meta property="og:title" content="Automation &amp; Workflows — Coremagna">
+<meta property="og:description" content="Business automation for US and European SMBs. CRM, email, lead collection — all on autopilot.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://coremagna.com/automation">
+<meta property="og:image" content="https://coremagna.com/og-image.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060a0e;--surface:#0d1317;--surface2:#111920;
+  --accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);--accent-glow:rgba(0,212,170,0.18);
+  --text:#F0F4F3;--muted:rgba(240,244,243,0.55);
+  --border:rgba(0,212,170,0.14);--border2:rgba(255,255,255,0.07);
+  --ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:24px;--space-xl:48px;--space-2xl:80px;--space-3xl:120px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.035}
+
+.container{max-width:1240px;margin:0 auto;padding:0 var(--space-xl)}
+.section-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;border-radius:6px;transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+.btn-primary:hover{background:#00f0c4;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,212,170,0.35)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;border:1px solid var(--border2);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;border-radius:6px;transition:border-color 0.25s var(--ease),color 0.25s var(--ease),background 0.25s var(--ease),transform 0.25s var(--ease)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.btn-ghost:active{transform:scale(0.97)}
+
+/* Nav */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 var(--space-xl);height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
+.nav-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
+.nav-logo span.accent{color:var(--accent)}
+.nav-logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.nav-links{display:flex;gap:var(--space-xl);align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-dropdown{position:relative}
+.nav-dropdown>a{display:flex;align-items:center;gap:4px}
+.nav-dropdown>a::after{content:'';display:block;width:10px;height:6px;background:currentColor;clip-path:polygon(0 0,100% 0,50% 100%);opacity:0.5;transition:opacity 0.2s var(--ease)}
+.nav-dropdown:hover>a::after{opacity:1}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-8px);background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:8px;min-width:200px;opacity:0;pointer-events:none;transition:opacity 0.2s var(--ease),transform 0.2s var(--ease)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--muted);transition:background 0.15s var(--ease),color 0.15s var(--ease)}
+.nav-dropdown-menu a:hover{background:var(--surface2);color:var(--text)}
+.nav-dropdown-menu a span.dd-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+.mobile-nav.visible{opacity:1;pointer-events:all}
+.mobile-nav ul{display:flex;flex-direction:column;gap:var(--space-lg);text-align:center}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
+.mobile-nav a:hover{color:var(--accent)}
+.mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:var(--space-md)}
+.pre-entrance{opacity:0;transform:translateY(-10px)}
+#mainNav.entered{opacity:1;transform:translateY(0);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease),background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+
+/* Hero */
+#hero{min-height:88vh;padding:var(--space-3xl) 0 var(--space-2xl);display:flex;align-items:center;position:relative;overflow:hidden;
+  background-image:radial-gradient(ellipse at 10% 50%, rgba(0,212,170,0.07) 0%, transparent 55%),radial-gradient(ellipse at 90% 25%, rgba(0,180,150,0.04) 0%, transparent 50%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3xl);align-items:center}
+.hero-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:var(--space-lg)}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-h1{font-size:clamp(36px,4.2vw,64px);font-weight:800;color:var(--text);line-height:1.0;letter-spacing:-0.04em;margin-bottom:var(--space-lg)}
+.gradient-text{background:linear-gradient(90deg,#F0F4F3 0%,#00D4AA 45%,#F0F4F3 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 3s linear infinite}
+@keyframes gradientShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.hero-sub{font-size:17px;color:var(--muted);line-height:1.72;font-weight:300;max-width:480px;margin-bottom:var(--space-2xl)}
+.hero-actions{display:flex;gap:var(--space-md);flex-wrap:wrap}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:var(--space-lg)}
+
+/* Workflow diagram */
+.workflow-diagram{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:var(--space-xl);box-shadow:0 2px 4px rgba(0,212,170,0.04),0 8px 24px rgba(0,212,170,0.08),0 32px 64px rgba(0,0,0,0.4);animation:floatY 4s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.flow-row{display:flex;align-items:center;gap:0;margin-bottom:var(--space-lg)}
+.flow-row:last-child{margin-bottom:0}
+.flow-node{flex:1;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;text-align:center;position:relative;
+  transition:border-color 0.3s var(--ease)}
+.flow-node.active{border-color:var(--accent);box-shadow:0 0 0 4px rgba(0,212,170,0.08)}
+.flow-node-label{font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px}
+.flow-node-sub{font-size:10px;color:var(--muted)}
+.flow-node-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin:0 auto 8px;animation:pulseDot 2s ease-in-out infinite}
+.flow-node:nth-child(1) .flow-node-dot{animation-delay:0s}
+.flow-node:nth-child(3) .flow-node-dot{animation-delay:0.5s}
+.flow-node:nth-child(5) .flow-node-dot{animation-delay:1s}
+.flow-node:nth-child(7) .flow-node-dot{animation-delay:1.5s}
+@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.6}}
+.flow-arrow{width:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.flow-arrow-line{width:100%;height:2px;background:var(--border2);position:relative}
+.flow-arrow-beam{position:absolute;left:-100%;top:0;width:100%;height:100%;background:linear-gradient(to right,transparent,var(--accent),transparent);animation:arrowFlow 1.8s linear infinite}
+.flow-node:nth-child(2) + .flow-arrow .flow-arrow-beam{animation-delay:0.3s}
+.flow-node:nth-child(4) + .flow-arrow .flow-arrow-beam{animation-delay:0.6s}
+@keyframes arrowFlow{0%{left:-100%}100%{left:100%}}
+.flow-arrow-head{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid var(--accent);flex-shrink:0;opacity:0.7}
+.flow-row-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-sm);margin-top:var(--space-md)}
+.flow-mini-node{background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:10px 12px}
+.flow-mini-label{font-size:11px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;color:var(--muted)}
+.flow-mini-val{font-size:11px;color:var(--accent);margin-top:2px}
+.flow-header{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,244,243,0.3);margin-bottom:var(--space-md)}
+.flow-trigger{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,170,0.06);border:1px dashed var(--border);border-radius:6px;padding:6px 12px;font-size:11px;color:var(--muted);margin-bottom:var(--space-md)}
+.trigger-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.2s ease-in-out infinite}
+
+/* What we automate */
+#automate{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 60%,#060a0e 100%)}
+.automate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);margin-top:var(--space-2xl)}
+.spotlight-card{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:var(--space-xl);position:relative;overflow:hidden;cursor:default;
+  transition:border-color 0.35s var(--ease),transform 0.35s var(--ease),box-shadow 0.35s var(--ease)}
+.spotlight-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 2px 4px rgba(0,212,170,0.04),0 8px 24px rgba(0,212,170,0.08),0 32px 48px rgba(0,212,170,0.06)}
+.spotlight-card::before{content:'';position:absolute;inset:0;background:radial-gradient(200px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(0,212,170,0.07),transparent 70%);opacity:0;transition:opacity 0.4s var(--ease);pointer-events:none;z-index:0}
+.spotlight-card:hover::before{opacity:1}
+.spotlight-card>*{position:relative;z-index:1}
+.auto-icon{width:40px;height:40px;border-radius:9px;background:var(--accent-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-md)}
+.auto-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.auto-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
+.auto-body{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* Integrations */
+#integrations{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
+  background-image:radial-gradient(ellipse at 50% 50%, rgba(0,212,170,0.03) 0%, transparent 60%)}
+#integrations h2{font-size:clamp(26px,2.8vw,42px);font-weight:800;margin-top:var(--space-sm);margin-bottom:var(--space-2xl)}
+.integrations-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-md)}
+.integration-item{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:var(--space-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;min-height:88px;
+  transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.integration-item:hover{border-color:var(--border);transform:translateY(-2px)}
+.integration-icon{width:32px;height:32px;border-radius:6px;background:var(--surface2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px}
+.integration-name{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--muted)}
+
+/* Process */
+#process{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
+  background-image:radial-gradient(ellipse at 80% 50%, rgba(0,212,170,0.04) 0%, transparent 55%)}
+#process h2{font-size:clamp(28px,3vw,44px);font-weight:800;margin-bottom:var(--space-2xl)}
+.process-list{display:flex;flex-direction:column;gap:0;position:relative;max-width:700px}
+.process-item{display:grid;grid-template-columns:80px 1fr;gap:var(--space-xl);padding:var(--space-xl) 0;position:relative}
+.process-item:not(:last-child)::after{content:'';position:absolute;left:39px;top:80px;bottom:0;width:2px;background:var(--border2)}
+.beam-segment{position:absolute;left:39px;top:80px;bottom:0;width:2px;overflow:hidden;pointer-events:none}
+.beam-light{position:absolute;left:0;top:-40px;width:2px;height:40px;background:linear-gradient(to bottom,transparent,var(--accent),transparent);animation:beamFlow 2s linear infinite}
+@keyframes beamFlow{0%{top:-40px}100%{top:100%}}
+.process-num{width:64px;height:64px;border-radius:50%;background:var(--surface);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--accent);flex-shrink:0;box-shadow:0 0 0 8px rgba(0,212,170,0.06),0 0 24px rgba(0,212,170,0.1)}
+.process-content{padding-top:16px}
+.process-content h3{font-size:20px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
+.process-content p{font-size:14px;color:var(--muted);line-height:1.7;max-width:480px}
+
+/* Results */
+#results{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
+.result-card{background:var(--surface);border:1px solid var(--border2);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 1.1fr;box-shadow:0 2px 4px rgba(0,212,170,0.03),0 8px 32px rgba(0,212,170,0.06),0 32px 64px rgba(0,0,0,0.3)}
+.result-img{position:relative;min-height:400px}
+.result-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.65)}
+.result-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent,rgba(6,10,14,0.6))}
+.result-badge{position:absolute;top:var(--space-xl);left:var(--space-xl);background:var(--accent-dim);border:1px solid var(--border);border-radius:5px;padding:4px 12px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700;font-family:'Cabinet Grotesk',sans-serif}
+.result-body{padding:var(--space-2xl)}
+.result-body h3{font-size:clamp(22px,2.5vw,34px);font-weight:800;color:var(--text);margin-top:var(--space-md);margin-bottom:var(--space-md)}
+.result-problem{font-size:14px;color:var(--muted);margin-bottom:var(--space-2xl);line-height:1.7;padding-left:var(--space-md);border-left:2px solid var(--border)}
+.result-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);margin-bottom:var(--space-xl)}
+.result-metric-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(22px,2.5vw,36px);font-weight:800;color:var(--accent);letter-spacing:-0.04em;line-height:1}
+.result-metric-lbl{font-size:12px;color:var(--muted);margin-top:4px}
+.result-solution{font-size:12px;color:rgba(0,212,170,0.65);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px}
+.result-solution::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+/* FAQ */
+#faq{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);background-image:radial-gradient(ellipse at 20% 80%, rgba(0,212,170,0.04) 0%, transparent 55%)}
+#faq h2{font-size:clamp(28px,3vw,44px);font-weight:800;margin-bottom:var(--space-2xl)}
+.faq-list{max-width:760px}
+.faq-item{border-bottom:1px solid var(--border2)}
+.faq-trigger{width:100%;text-align:left;padding:var(--space-lg) 0;display:flex;justify-content:space-between;align-items:center;gap:var(--space-lg);font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.01em;transition:color 0.25s var(--ease)}
+.faq-trigger:hover{color:var(--accent)}
+.faq-trigger[aria-expanded="true"]{color:var(--accent)}
+.faq-icon{width:20px;height:20px;flex-shrink:0;color:var(--muted);transition:transform 0.3s var(--ease),color 0.3s var(--ease)}
+.faq-trigger[aria-expanded="true"] .faq-icon{transform:rotate(45deg);color:var(--accent)}
+.faq-panel{overflow:hidden;max-height:0}
+.faq-panel-inner{padding:0 0 var(--space-lg) 0;font-size:14px;color:var(--muted);line-height:1.8}
+
+/* CTA */
+#cta{padding:var(--space-3xl) 0 calc(var(--space-3xl) + 20px);text-align:center;position:relative;overflow:hidden;background-image:radial-gradient(ellipse at 50% 100%, rgba(0,212,170,0.07) 0%, transparent 60%)}
+#cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,212,170,0.12) 0%,transparent 65%);pointer-events:none}
+#cta h2{font-size:clamp(28px,4vw,52px);font-weight:800;color:var(--text);max-width:640px;margin:0 auto var(--space-md);line-height:1.08}
+#cta p{font-size:16px;color:var(--muted);max-width:460px;margin:0 auto var(--space-xl);line-height:1.7}
+#cta .btn-primary{padding:16px 40px;font-size:15px;box-shadow:0 0 0 1px rgba(0,212,170,0.3),0 8px 32px rgba(0,212,170,0.2)}
+
+/* Footer */
+footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--border2)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--space-2xl)}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:var(--space-md)}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--muted);max-width:220px;line-height:1.65}
+.footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,244,243,0.35);margin-bottom:var(--space-lg)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--space-sm)}
+.footer-col a{font-size:13px;color:var(--muted);transition:color 0.2s var(--ease)}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:var(--space-md);margin-top:var(--space-lg)}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--muted)}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
+
+@media(max-width:1024px){
+  .container,.nav-inner{padding:0 var(--space-lg)}
+  .hero-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .workflow-diagram{max-width:520px;margin:0 auto}
+  .automate-grid{grid-template-columns:repeat(2,1fr)}
+  .integrations-grid{grid-template-columns:repeat(4,1fr)}
+  .result-card{grid-template-columns:1fr}
+  .result-img{min-height:280px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .automate-grid{grid-template-columns:1fr}
+  .integrations-grid{grid-template-columns:repeat(3,1fr)}
+  .result-metrics{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
+  .hero-h1{font-size:clamp(30px,9vw,46px)}
+  .process-item{grid-template-columns:60px 1fr;gap:var(--space-md)}
+  .flow-row{gap:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
+  .reveal{opacity:1;transform:none}
+  .gradient-text{animation:none}
+  .workflow-diagram{animation:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav" class="pre-entrance" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Coremagna home">
+      Core<span class="accent">magna</span><span class="nav-logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-dropdown">
+        <a href="index.html#services">Services</a>
+        <div class="nav-dropdown-menu">
+          <a href="web-design.html"><span class="dd-dot"></span>Web Design</a>
+          <a href="rag-chatbot.html"><span class="dd-dot"></span>RAG Chatbot</a>
+          <a href="automation.html"><span class="dd-dot"></span>Automation</a>
+        </div>
+      </li>
+      <li><a href="index.html#how-it-works">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#how-it-works">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-left reveal">
+        <div class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          Automation &amp; Workflows
+        </div>
+        <div class="hero-eyebrow"><span class="hero-dot"></span>Service III of III</div>
+        <h1 class="hero-h1">Stop doing manually<br>what machines<br><span class="gradient-text">can do.</span></h1>
+        <p class="hero-sub">We map your repetitive processes and automate them — lead collection, follow-ups, reporting, CRM updates. You focus on growth, not admin.</p>
+        <div class="hero-actions">
+          <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic-btn">Book a Free Call →</a>
+          <a href="#automate" class="btn-ghost">See What We Automate ↓</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="workflow-diagram">
+          <div class="flow-header">Live Workflow — Berlin Marketing Agency</div>
+          <div class="flow-trigger"><span class="trigger-dot"></span>Trigger: New lead from website form</div>
+          <div class="flow-row">
+            <div class="flow-node active">
+              <div class="flow-node-dot"></div>
+              <div class="flow-node-label">New Lead</div>
+              <div class="flow-node-sub">Form submitted</div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow-line"><div class="flow-arrow-beam"></div></div><div class="flow-arrow-head"></div></div>
+            <div class="flow-node active">
+              <div class="flow-node-dot"></div>
+              <div class="flow-node-label">CRM Entry</div>
+              <div class="flow-node-sub">HubSpot contact</div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow-line"><div class="flow-arrow-beam"></div></div><div class="flow-arrow-head"></div></div>
+            <div class="flow-node active">
+              <div class="flow-node-dot"></div>
+              <div class="flow-node-label">Email Sent</div>
+              <div class="flow-node-sub">Within 30 seconds</div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow-line"><div class="flow-arrow-beam"></div></div><div class="flow-arrow-head"></div></div>
+            <div class="flow-node active">
+              <div class="flow-node-dot"></div>
+              <div class="flow-node-label">Meeting Booked</div>
+              <div class="flow-node-sub">Auto-scheduled</div>
+            </div>
+          </div>
+          <div class="flow-row-2">
+            <div class="flow-mini-node">
+              <div class="flow-mini-label">Before automation</div>
+              <div class="flow-mini-val">4–8 hour response time</div>
+            </div>
+            <div class="flow-mini-node">
+              <div class="flow-mini-label">After automation</div>
+              <div class="flow-mini-val">30 second response time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE AUTOMATE -->
+<section id="automate">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">What We Automate</span>
+      <h2 style="font-size:clamp(28px,3.2vw,46px);margin-top:8px;max-width:560px">Six automations that pay for themselves in the first month.</h2>
+    </div>
+    <div class="automate-grid">
+
+      <div class="spotlight-card reveal">
+        <div class="auto-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="auto-title">Lead Collection</div>
+        <div class="auto-body">Capture leads from any source — website, social, ads, events — and push them directly into your CRM with full context. Zero manual data entry.</div>
+      </div>
+
+      <div class="spotlight-card reveal">
+        <div class="auto-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="auto-title">Email Sequences</div>
+        <div class="auto-body">Personalized follow-up emails sent at exactly the right time based on lead behavior. First response in 30 seconds. Follow-ups every 2–3 days. Fully automated.</div>
+      </div>
+
+      <div class="spotlight-card reveal">
+        <div class="auto-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="auto-title">Meeting Booking</div>
+        <div class="auto-body">Prospects pick a time directly from your calendar link sent automatically after qualification. No back-and-forth. No scheduling overhead. Meetings appear instantly.</div>
+      </div>
+
+      <div class="spotlight-card reveal">
+        <div class="auto-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="auto-title">CRM Updates</div>
+        <div class="auto-body">Contact records updated automatically after every email opened, link clicked, or meeting attended. Your pipeline stays accurate without your team lifting a finger.</div>
+      </div>
+
+      <div class="spotlight-card reveal">
+        <div class="auto-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <div class="auto-title">Reporting</div>
+        <div class="auto-body">Weekly performance reports — leads generated, emails opened, meetings booked, revenue attributed — delivered to your inbox every Monday morning. No manual pull required.</div>
+      </div>
+
+      <div class="spotlight-card reveal">
+        <div class="auto-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <div class="auto-title">Internal Alerts</div>
+        <div class="auto-body">Get notified instantly via Slack, email, or SMS when a hot lead submits a form, a deal changes stage, or a client hasn't been contacted in 7+ days. Nothing slips through.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section id="integrations">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">Integrations</span>
+      <h2>Works with your existing tools</h2>
+      <p style="font-size:15px;color:var(--muted);max-width:480px;margin-top:var(--space-sm)">No need to switch platforms. We build automations on top of what you already use.</p>
+    </div>
+    <div class="integrations-grid" style="margin-top:var(--space-2xl)">
+      <div class="integration-item reveal">
+        <div class="integration-icon">📧</div>
+        <div class="integration-name">Gmail</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">📨</div>
+        <div class="integration-name">Outlook</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">🔶</div>
+        <div class="integration-name">HubSpot</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">🔵</div>
+        <div class="integration-name">Pipedrive</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">💬</div>
+        <div class="integration-name">Slack</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">⬜</div>
+        <div class="integration-name">Notion</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">📊</div>
+        <div class="integration-name">Google Sheets</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">📅</div>
+        <div class="integration-name">Calendly</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">💚</div>
+        <div class="integration-name">WhatsApp</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">⚡</div>
+        <div class="integration-name">Zapier</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">🔧</div>
+        <div class="integration-name">Make</div>
+      </div>
+      <div class="integration-item reveal">
+        <div class="integration-icon">🗄️</div>
+        <div class="integration-name">Airtable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">The Process</span>
+      <h2>Live automations in 3–5 days</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-item reveal">
+        <div>
+          <div class="process-num">01</div>
+          <div class="beam-segment"><div class="beam-light"></div></div>
+        </div>
+        <div class="process-content">
+          <h3>Process Audit</h3>
+          <p>We map your current workflows step by step and identify every task that's manual, repetitive, or time-consuming. Most businesses find 5–10 hours of automation potential in the first session.</p>
+        </div>
+      </div>
+      <div class="process-item reveal">
+        <div>
+          <div class="process-num">02</div>
+          <div class="beam-segment"><div class="beam-light"></div></div>
+        </div>
+        <div class="process-content">
+          <h3>Build</h3>
+          <p>We build each automation using your existing tools — no new software required. Every workflow is built to be readable, maintainable, and documented so your team understands exactly what runs.</p>
+        </div>
+      </div>
+      <div class="process-item reveal">
+        <div>
+          <div class="process-num">03</div>
+          <div class="beam-segment"><div class="beam-light"></div></div>
+        </div>
+        <div class="process-content">
+          <h3>Test &amp; Launch</h3>
+          <p>We test every scenario, edge case, and failure mode before going live. You review the final workflow and approve it. We launch with you watching — no surprises.</p>
+        </div>
+      </div>
+      <div class="process-item reveal">
+        <div><div class="process-num">04</div></div>
+        <div class="process-content">
+          <h3>Monitor</h3>
+          <p>We monitor all automations proactively. If something breaks, we fix it — typically within 24 hours. Monthly retainer includes ongoing changes, new automations, and performance reviews.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:var(--space-2xl)">
+      <span class="section-eyebrow">Results</span>
+      <h2 style="font-size:clamp(28px,3vw,44px);margin-top:8px">What automation does to your agency's margins</h2>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-img">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Berlin Marketing Agency office" loading="lazy">
+        <span class="result-badge">Services</span>
+      </div>
+      <div class="result-body">
+        <span class="section-eyebrow">Case Study</span>
+        <h3>Berlin Marketing Agency</h3>
+        <p class="result-problem">Problem: Leads going cold due to slow follow-up. Sales team spending 15 hours per week on manual CRM updates and email follow-ups. Revenue slipping through the cracks.</p>
+        <div class="result-metrics">
+          <div>
+            <div class="result-metric-num">3×</div>
+            <div class="result-metric-lbl">Faster lead response</div>
+          </div>
+          <div>
+            <div class="result-metric-num ticker-num" data-target="15" data-suffix="hrs">15hrs</div>
+            <div class="result-metric-lbl">Saved per week</div>
+          </div>
+          <div>
+            <div class="result-metric-num">€2,400</div>
+            <div class="result-metric-lbl">Monthly savings</div>
+          </div>
+        </div>
+        <div class="result-solution">Automation &amp; CRM Workflows</div>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic-btn" style="margin-top:var(--space-xl)">Get the same results →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2 class="reveal">Questions about automation</h2>
+    <dl class="faq-list">
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-1">
+          Do I need to change my existing tools?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-1" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">No. We build automations on top of the tools you already use — Gmail, HubSpot, Pipedrive, Slack, Google Sheets, and more. If your current stack works for your team, we'll keep it and automate around it.</div></dd>
+      </div>
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-2">
+          What happens if a workflow breaks?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-2" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">We monitor all automations proactively with error alerts. In most cases, we catch and fix issues before you even notice them. If something does break, we fix it within 24 hours — usually within a few hours. All this is included in the monthly retainer.</div></dd>
+      </div>
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-3">
+          How long does the setup take?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-3" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">Simple automations (lead to CRM, email follow-up): 3–5 days. Complex multi-step workflows (full sales pipeline, reporting dashboards, multi-channel sequences): 1–2 weeks. We give you an exact timeline after the process audit.</div></dd>
+      </div>
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-4">
+          Do I need technical knowledge to manage the automations?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-4" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">No coding required. We handle all technical setup. You describe the process in plain language ("when someone fills the contact form, add them to HubSpot and send a welcome email") and we build it. After launch, we walk you through a visual dashboard so you can monitor everything yourself.</div></dd>
+      </div>
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-5">
+          Can I request changes or new automations later?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-5" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">Yes. Monthly retainer clients get unlimited change requests and can add new automations anytime. As your business grows, your workflows grow with it. We also proactively suggest new automation opportunities based on what we observe in your data.</div></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2 class="reveal">Every hour you spend<br>on manual tasks is money lost.</h2>
+    <p class="reveal">Book a free 30-minute process audit. We'll map your current workflows and show you exactly what can be automated — with a realistic estimate of time and money saved.</p>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary reveal magnetic-btn">Book a Free Call →</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">We build the digital infrastructure your business deserves.</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="web-design.html">Web Design</a></li>
+          <li><a href="rag-chatbot.html">RAG Chatbot</a></li>
+          <li><a href="automation.html">Automation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#case-studies">Work</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
+          <li><a href="mailto:hello@coremagna.com">hello@coremagna.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Coremagna. All rights reserved.</p>
+      <p>Web Design · AI Chatbots · Automation</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const nav=document.getElementById('mainNav');
+  const hamburger=document.getElementById('hamburger');
+  const mobileNav=document.getElementById('mobileNav');
+  let menuOpen=false;
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+  hamburger.addEventListener('click',()=>{
+    menuOpen=!menuOpen;hamburger.classList.toggle('open',menuOpen);hamburger.setAttribute('aria-expanded',menuOpen);
+    mobileNav.setAttribute('aria-hidden',!menuOpen);mobileNav.classList.toggle('visible',menuOpen);document.body.style.overflow=menuOpen?'hidden':'';
+  });
+  mobileNav.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{menuOpen=false;hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileNav.setAttribute('aria-hidden','true');mobileNav.classList.remove('visible');document.body.style.overflow='';});});
+})();
+
+(function(){
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('section').forEach(sec=>{sec.querySelectorAll('.reveal').forEach((el,i)=>{if(!el.style.transitionDelay) el.style.transitionDelay=(i*0.08)+'s';});});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+})();
+
+(function(){
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const trigger=item.querySelector('.faq-trigger');
+    const panel=item.querySelector('.faq-panel');
+    if(!trigger||!panel) return;
+    trigger.addEventListener('click',()=>{
+      const isOpen=trigger.getAttribute('aria-expanded')==='true';
+      document.querySelectorAll('.faq-trigger[aria-expanded="true"]').forEach(t=>{
+        if(t!==trigger){t.setAttribute('aria-expanded','false');const p=t.closest('.faq-item').querySelector('.faq-panel');if(p){p.style.transition='max-height 0.35s cubic-bezier(0.4,0,0.2,1)';p.style.maxHeight='0px';p.setAttribute('aria-hidden','true');}}
+      });
+      if(isOpen){panel.style.transition='max-height 0.35s cubic-bezier(0.4,0,0.2,1)';panel.style.maxHeight='0px';trigger.setAttribute('aria-expanded','false');panel.setAttribute('aria-hidden','true');}
+      else{const inner=panel.querySelector('.faq-panel-inner');panel.style.transition='none';panel.style.maxHeight='none';panel.style.visibility='hidden';const h=inner.getBoundingClientRect().height+16;panel.style.maxHeight='0px';panel.style.visibility='';panel.getBoundingClientRect();panel.style.transition='max-height 0.42s cubic-bezier(0.4,0,0.2,1)';panel.style.maxHeight=h+'px';trigger.setAttribute('aria-expanded','true');panel.setAttribute('aria-hidden','false');}
+    });
+  });
+})();
+
+(function(){
+  const nav=document.getElementById('mainNav');
+  setTimeout(()=>{nav.classList.remove('pre-entrance');nav.classList.add('entered');},0);
+})();
+
+(function(){
+  function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+  const tickers=document.querySelectorAll('.ticker-num');
+  if(!tickers.length) return;
+  const obs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(!entry.isIntersecting) return;const el=entry.target;const target=parseFloat(el.dataset.target)||0;const prefix=el.dataset.prefix||'';const suffix=el.dataset.suffix||'';const duration=2000;let start=null;function step(ts){if(!start) start=ts;const elapsed=ts-start;const progress=Math.min(elapsed/duration,1);const eased=easeOutCubic(progress);const current=Math.round(eased*target);el.textContent=prefix+current+suffix;if(progress<1) requestAnimationFrame(step);}requestAnimationFrame(step);obs.unobserve(el);});},{threshold:0.5});
+  tickers.forEach(el=>obs.observe(el));
+})();
+
+(function(){
+  document.querySelectorAll('.spotlight-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{const rect=card.getBoundingClientRect();card.style.setProperty('--mouse-x',((e.clientX-rect.left)/rect.width)*100+'%');card.style.setProperty('--mouse-y',((e.clientY-rect.top)/rect.height)*100+'%');});
+  });
+})();
+
+(function(){
+  document.querySelectorAll('.magnetic-btn').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{const rect=btn.getBoundingClientRect();const cx=rect.left+rect.width/2;const cy=rect.top+rect.height/2;const dx=e.clientX-cx;const dy=e.clientY-cy;const dist=Math.sqrt(dx*dx+dy*dy);if(dist<100){const force=(1-dist/100);btn.style.transform=`translate(${Math.max(-8,Math.min(8,dx*force*0.4))}px,${Math.max(-8,Math.min(8,dy*force*0.4))}px)`;}});
+    btn.addEventListener('mouseleave',()=>{btn.style.transform='translate(0,0)';});
+  });
+})();
+</script>
+</body>
+</html>

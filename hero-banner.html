@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coremagna — Hero Banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #060a0e; }
+
+  .hero-wrap {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: #060a0e;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .slide.active { opacity: 1; }
+
+  .slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55);
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  }
+  .overlay2 {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%);
+  }
+
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 48px;
+    z-index: 10;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: #00D4AA; }
+
+  .slide-counter {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+
+  .content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 48px;
+    z-index: 10;
+  }
+
+  .left-content { max-width: 54%; }
+
+  .service-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .service-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00D4AA;
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .service-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    transition: opacity 0.3s;
+  }
+
+  .service-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.58);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 460px;
+    transition: opacity 0.3s;
+  }
+
+  .right-timeline { text-align: right; }
+
+  .timeline-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .timeline-item {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    transition: color 0.4s;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+  }
+  .timeline-item.tl-active { color: #fff; }
+  .timeline-item.tl-inactive { color: rgba(255,255,255,0.25); }
+  .timeline-item:hover { color: rgba(255,255,255,0.7); }
+
+  .progress-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    background: #00D4AA;
+    z-index: 20;
+  }
+
+  .nav-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 20;
+  }
+  .nav-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  .nav-dot.active {
+    background: #00D4AA;
+    transform: scale(1.5);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 15;
+    opacity: 0;
+    animation: fadeHint 4s ease-in-out 1.5s forwards;
+  }
+  @keyframes fadeHint {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .scroll-hint-icon {
+    width: 24px;
+    height: 36px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+  }
+  .scroll-hint-dot {
+    width: 3px;
+    height: 7px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 2px;
+    animation: scrollDot 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollDot {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(10px); opacity: 0; }
+  }
+  .scroll-hint-text {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero-wrap" id="heroWrap">
+
+  <!-- SLIDE 1 — Web Design -->
+  <div class="slide active" id="s0">
+    <video autoplay muted loop playsinline src="video1.mp4"></video>
+    <div class="overlay"></div>
+    <div class="overlay2"></div>
+  </div>
+
+  <!-- SLIDE 2 — RAG Chatbot -->
+  <div class="slide" id="s1">
+    <video muted loop playsinline src="video2.mp4"></video>
+    <div class="overlay"></div>
+    <div class="overlay2"></div>
+  </div>
+
+  <!-- SLIDE 3 — Automation -->
+  <div class="slide" id="s2">
+    <video muted loop playsinline src="video3.mp4"></video>
+    <div class="overlay"></div>
+    <div class="overlay2"></div>
+  </div>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="logo">Core<span>magna</span></div>
+    <span class="slide-counter" id="slideCounter">01 / 03</span>
+  </div>
+
+  <!-- BOTTOM CONTENT -->
+  <div class="content">
+    <div class="left-content">
+      <div class="service-tag">
+        <span class="service-dot"></span>
+        <span id="tagText">Service I</span>
+      </div>
+      <div class="service-title" id="titleText">Web Design &<br>Development</div>
+      <div class="service-desc" id="descText">Modern, fast websites built to convert. From zero to live in 3 days — no technical knowledge needed. Your competitors already have one. Time to outrank them.</div>
+    </div>
+
+    <div class="right-timeline">
+      <div class="timeline-label">Our Services</div>
+      <div class="timeline-item tl-active"   id="tl0" onclick="goTo(0)">Web Design</div>
+      <div class="timeline-item tl-inactive" id="tl1" onclick="goTo(1)">AI Chatbot</div>
+      <div class="timeline-item tl-inactive" id="tl2" onclick="goTo(2)">Automation</div>
+    </div>
+  </div>
+
+  <!-- SCROLL HINT -->
+  <div class="scroll-hint">
+    <div class="scroll-hint-icon"><div class="scroll-hint-dot"></div></div>
+    <span class="scroll-hint-text">Scroll</span>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- NAV DOTS -->
+  <div class="nav-dots">
+    <div class="nav-dot active" id="d0" onclick="goTo(0)"></div>
+    <div class="nav-dot" id="d1" onclick="goTo(1)"></div>
+    <div class="nav-dot" id="d2" onclick="goTo(2)"></div>
+  </div>
+
+</div>
+
+<script>
+const slides = [
+  {
+    tag: 'Service I',
+    title: 'Web Design &<br>Development',
+    desc: 'Modern, fast websites built to convert. From zero to live in 3 days — no technical knowledge needed. Your competitors already have one. Time to outrank them.',
+    counter: '01 / 03',
+    video: 'video1.mp4'
+  },
+  {
+    tag: 'Service II',
+    title: 'RAG Chatbot &<br>AI Integration',
+    desc: 'An AI that knows your business inside out. Trained on your documents and data — answers customer questions, qualifies leads, and books meetings. 24/7, in any language.',
+    counter: '02 / 03',
+    video: 'video2.mp4'
+  },
+  {
+    tag: 'Service III',
+    title: 'Automation &<br>Workflows',
+    desc: 'Eliminate repetitive tasks and manual processes. Lead collection, email campaigns, CRM updates, reporting — all running automatically while you focus on growth.',
+    counter: '03 / 03',
+    video: 'video3.mp4'
+  }
+];
+
+let cur = 0;
+let autoTimer = null;
+let progTimer = null;
+let progStart = null;
+let wheelLocked = false;
+const DURATION = 5000;
+
+function goTo(n) {
+  clearInterval(autoTimer);
+  cancelAnimationFrame(progTimer);
+
+  document.getElementById('s' + cur).classList.remove('active');
+  const oldVideo = document.querySelector('#s' + cur + ' video');
+  if (oldVideo) oldVideo.pause();
+
+  document.getElementById('tl' + cur).className = 'timeline-item tl-inactive';
+  document.getElementById('d' + cur).className = 'nav-dot';
+
+  const titleEl = document.getElementById('titleText');
+  const descEl  = document.getElementById('descText');
+  titleEl.style.opacity = '0';
+  descEl.style.opacity  = '0';
+
+  cur = ((n % 3) + 3) % 3;
+
+  setTimeout(() => {
+    const s = slides[cur];
+    document.getElementById('tagText').textContent = s.tag;
+    titleEl.innerHTML  = s.title;
+    descEl.textContent = s.desc;
+    document.getElementById('slideCounter').textContent = s.counter;
+    titleEl.style.opacity = '1';
+    descEl.style.opacity  = '1';
+  }, 250);
+
+  document.getElementById('s' + cur).classList.add('active');
+  const newVideo = document.querySelector('#s' + cur + ' video');
+  if (newVideo) { newVideo.currentTime = 0; newVideo.play(); }
+
+  document.getElementById('tl' + cur).className = 'timeline-item tl-active';
+  document.getElementById('d' + cur).className  = 'nav-dot active';
+
+  startProgress();
+  autoTimer = setInterval(() => goTo(cur + 1), DURATION);
+}
+
+function startProgress() {
+  const bar = document.getElementById('progressBar');
+  bar.style.width = '0%';
+  progStart = performance.now();
+  function step(ts) {
+    const pct = Math.min((ts - progStart) / DURATION * 100, 100);
+    bar.style.width = pct + '%';
+    if (pct < 100) progTimer = requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const wrap = document.getElementById('heroWrap');
+
+wrap.addEventListener('wheel', function(e) {
+  e.preventDefault();
+  if (wheelLocked) return;
+  wheelLocked = true;
+  goTo(e.deltaY > 0 ? cur + 1 : cur - 1);
+  setTimeout(() => { wheelLocked = false; }, 900);
+}, { passive: false });
+
+wrap.addEventListener('mouseenter', () => {
+  clearInterval(autoTimer);
+  cancelAnimationFrame(progTimer);
+});
+wrap.addEventListener('mouseleave', () => {
+  startProgress();
+  autoTimer = setInterval(() => goTo(cur + 1), DURATION);
+});
+
+let touchStartY = 0;
+wrap.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+wrap.addEventListener('touchend', e => {
+  const diff = touchStartY - e.changedTouches[0].clientY;
+  if (Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
+}, { passive: true });
+
+goTo(0);
+</script>
+</body>
+</html>

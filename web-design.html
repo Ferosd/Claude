@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Design &amp; Development — Coremagna</title>
+<meta name="description" content="Professional web design and development for US and European businesses. Live in 3 days. Mobile-first, SEO-optimized, conversion-focused.">
+<meta property="og:title" content="Web Design &amp; Development — Coremagna">
+<meta property="og:description" content="Professional web design and development for US and European businesses. Live in 3 days.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://coremagna.com/web-design">
+<meta property="og:image" content="https://coremagna.com/og-image.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+<style>
+/* ── 1. Custom Properties ── */
+:root {
+  --bg:         #060a0e;
+  --surface:    #0d1317;
+  --surface2:   #111920;
+  --accent:     #00D4AA;
+  --accent-dim: rgba(0,212,170,0.12);
+  --accent-glow:rgba(0,212,170,0.18);
+  --text:       #F0F4F3;
+  --muted:      rgba(240,244,243,0.55);
+  --border:     rgba(0,212,170,0.14);
+  --border2:    rgba(255,255,255,0.07);
+  --ease:       cubic-bezier(0.4,0,0.2,1);
+  --spring:     cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   48px;
+  --space-2xl:  80px;
+  --space-3xl:  120px;
+}
+
+/* ── 2. Reset ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+
+/* ── 3. Noise Texture ── */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:0.035}
+
+/* ── 4. Utilities ── */
+.container{max-width:1240px;margin:0 auto;padding:0 var(--space-xl)}
+.section-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;border-radius:6px;position:relative;overflow:hidden;
+  transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+.btn-primary:hover{background:#00f0c4;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,212,170,0.35)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;border:1px solid var(--border2);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;border-radius:6px;
+  transition:border-color 0.25s var(--ease),color 0.25s var(--ease),background 0.25s var(--ease),transform 0.25s var(--ease)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.btn-ghost:active{transform:scale(0.97)}
+.btn-ghost:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ── 5. Navigation ── */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 var(--space-xl);height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
+.nav-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
+.nav-logo span.accent{color:var(--accent)}
+.nav-logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.nav-links{display:flex;gap:var(--space-xl);align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.02em;
+  transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+/* Services dropdown */
+.nav-dropdown{position:relative}
+.nav-dropdown > a{display:flex;align-items:center;gap:4px}
+.nav-dropdown > a::after{content:'';display:block;width:10px;height:6px;background:currentColor;clip-path:polygon(0 0,100% 0,50% 100%);opacity:0.5;transition:opacity 0.2s var(--ease)}
+.nav-dropdown:hover > a::after{opacity:1}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:8px;min-width:200px;
+  opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-8px);
+  transition:opacity 0.2s var(--ease),transform 0.2s var(--ease)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--muted);
+  transition:background 0.15s var(--ease),color 0.15s var(--ease)}
+.nav-dropdown-menu a:hover{background:var(--surface2);color:var(--text)}
+.nav-dropdown-menu a span.dd-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;
+  transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+.mobile-nav.visible{opacity:1;pointer-events:all}
+.mobile-nav ul{display:flex;flex-direction:column;gap:var(--space-lg);text-align:center}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;
+  transition:color 0.2s var(--ease)}
+.mobile-nav a:hover{color:var(--accent)}
+.mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:var(--space-md)}
+.pre-entrance{opacity:0;transform:translateY(-10px)}
+#mainNav.entered{opacity:1;transform:translateY(0);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease),background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+
+/* ── 6. Hero ── */
+#hero{min-height:88vh;padding:var(--space-3xl) 0 var(--space-2xl);display:flex;align-items:center;position:relative;overflow:hidden;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(0,212,170,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(0,180,150,0.04) 0%, transparent 50%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3xl);align-items:center}
+.hero-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:var(--space-lg)}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-h1{font-size:clamp(38px,4.5vw,68px);font-weight:800;color:var(--text);line-height:1.0;letter-spacing:-0.04em;margin-bottom:var(--space-lg)}
+/* gradient text effect */
+.gradient-text{background:linear-gradient(90deg,#F0F4F3 0%,#00D4AA 45%,#F0F4F3 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 3s linear infinite}
+@keyframes gradientShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.hero-sub{font-size:17px;color:var(--muted);line-height:1.72;font-weight:300;max-width:480px;margin-bottom:var(--space-2xl)}
+.hero-actions{display:flex;gap:var(--space-md);flex-wrap:wrap}
+
+/* browser mockup */
+.browser-mockup{background:var(--surface);border:1px solid var(--border2);border-radius:12px;overflow:hidden;box-shadow:0 2px 4px rgba(0,212,170,0.04),0 8px 24px rgba(0,212,170,0.08),0 32px 64px rgba(0,0,0,0.4);animation:floatY 4s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.browser-bar{background:var(--surface2);padding:12px 16px;display:flex;align-items:center;gap:var(--space-md);border-bottom:1px solid var(--border2)}
+.browser-dots{display:flex;gap:6px}
+.browser-dots span{width:10px;height:10px;border-radius:50%}
+.browser-dots span:nth-child(1){background:#ff5f57}
+.browser-dots span:nth-child(2){background:#febc2e}
+.browser-dots span:nth-child(3){background:#28c840}
+.browser-url{flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:4px;padding:4px 10px;font-size:11px;color:var(--muted);font-family:'DM Sans',sans-serif}
+.browser-body{padding:16px;display:flex;flex-direction:column;gap:10px}
+.mock-nav-bar{height:32px;background:var(--surface2);border-radius:6px;display:flex;align-items:center;padding:0 12px;gap:8px}
+.mock-nav-logo{width:80px;height:8px;background:var(--accent);border-radius:4px;opacity:0.7}
+.mock-nav-links{display:flex;gap:6px;margin-left:auto}
+.mock-nav-links span{width:32px;height:6px;background:var(--border2);border-radius:3px}
+.mock-nav-btn{width:56px;height:20px;background:var(--accent);border-radius:4px;opacity:0.5}
+.mock-hero-block{height:80px;background:linear-gradient(135deg,var(--surface2) 0%,rgba(0,212,170,0.05) 100%);border-radius:8px;border:1px solid var(--border2);display:flex;align-items:center;padding:0 16px;gap:12px}
+.mock-hero-text{flex:1}
+.mock-hero-h{width:70%;height:10px;background:var(--text);border-radius:4px;opacity:0.5;margin-bottom:6px}
+.mock-hero-sub{width:55%;height:7px;background:var(--muted);border-radius:3px;opacity:0.3}
+.mock-hero-cta{width:52px;height:26px;background:var(--accent);border-radius:5px;opacity:0.7}
+.mock-cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mock-card-block{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:10px;animation:mockPulse 2.4s ease-in-out infinite}
+.mock-card-block:nth-child(2){animation-delay:0.4s}
+.mock-card-block:nth-child(3){animation-delay:0.8s}
+@keyframes mockPulse{0%,100%{border-color:var(--border2)}50%{border-color:rgba(0,212,170,0.3)}}
+.mock-card-icon{width:20px;height:20px;background:var(--accent-dim);border-radius:4px;border:1px solid var(--border);margin-bottom:6px}
+.mock-card-h{width:80%;height:6px;background:var(--muted);border-radius:3px;opacity:0.4;margin-bottom:4px}
+.mock-card-t{width:60%;height:5px;background:var(--muted);border-radius:3px;opacity:0.2}
+.mock-metrics{display:flex;gap:8px}
+.mock-metric-block{flex:1;background:var(--surface2);border-radius:5px;padding:8px;border:1px solid var(--border2)}
+.mock-metric-num{font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:800;color:var(--accent);line-height:1}
+.mock-metric-lbl{font-size:8px;color:var(--muted);opacity:0.5;margin-top:2px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:var(--space-lg)}
+
+/* ── 7. Why It Matters ── */
+#why{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);margin-top:var(--space-2xl)}
+/* spotlight card base */
+.spotlight-card{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:var(--space-xl);position:relative;overflow:hidden;cursor:default;
+  transition:border-color 0.35s var(--ease),transform 0.35s var(--ease),box-shadow 0.35s var(--ease)}
+.spotlight-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 2px 4px rgba(0,212,170,0.04),0 8px 24px rgba(0,212,170,0.08),0 32px 48px rgba(0,212,170,0.06)}
+.spotlight-card::before{content:'';position:absolute;inset:0;background:radial-gradient(200px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(0,212,170,0.07),transparent 70%);opacity:0;
+  transition:opacity 0.4s var(--ease);pointer-events:none;z-index:0}
+.spotlight-card:hover::before{opacity:1}
+.spotlight-card > *{position:relative;z-index:1}
+.why-stat{font-family:'Cabinet Grotesk',sans-serif;font-size:52px;font-weight:800;color:var(--accent);letter-spacing:-0.04em;line-height:1;margin-bottom:var(--space-md)}
+.why-card-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
+.why-card-body{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* ── 8. What's Included ── */
+#included{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
+  background-image:radial-gradient(ellipse at 20% 50%, rgba(0,212,170,0.04) 0%, transparent 55%)}
+.included-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3xl);align-items:center}
+.included-left h2{font-size:clamp(28px,3.2vw,48px);font-weight:800;color:var(--text);margin-top:var(--space-sm);margin-bottom:var(--space-lg)}
+.included-left p{font-size:15px;color:var(--muted);line-height:1.8;max-width:400px}
+.checklist{display:flex;flex-direction:column;gap:14px}
+.check-item{display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--text);font-weight:400}
+.check-icon{width:22px;height:22px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.check-icon svg{width:11px;height:11px;stroke:var(--accent);stroke-width:2.5;fill:none}
+
+/* ── 9. Process ── */
+#process{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
+  background-image:radial-gradient(ellipse at 80% 50%, rgba(0,212,170,0.04) 0%, transparent 55%)}
+#process h2{font-size:clamp(28px,3vw,44px);font-weight:800;margin-bottom:var(--space-2xl)}
+.process-list{display:flex;flex-direction:column;gap:0;position:relative;max-width:700px}
+.process-item{display:grid;grid-template-columns:80px 1fr;gap:var(--space-xl);padding:var(--space-xl) 0;position:relative}
+.process-item:not(:last-child)::after{content:'';position:absolute;left:39px;top:80px;bottom:0;width:2px;background:var(--border2)}
+/* animated beam segment */
+.beam-segment{position:absolute;left:39px;top:80px;bottom:0;width:2px;overflow:hidden;pointer-events:none}
+.beam-light{position:absolute;left:0;top:-40px;width:2px;height:40px;background:linear-gradient(to bottom,transparent,var(--accent),transparent);animation:beamFlow 2s linear infinite}
+.beam-segment:nth-child(odd) .beam-light{animation-delay:0.5s}
+@keyframes beamFlow{0%{top:-40px}100%{top:100%}}
+.process-num{width:64px;height:64px;border-radius:50%;background:var(--surface);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;
+  font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--accent);flex-shrink:0;
+  box-shadow:0 0 0 8px rgba(0,212,170,0.06),0 0 24px rgba(0,212,170,0.1)}
+.process-content{padding-top:16px}
+.process-content h3{font-size:20px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
+.process-content p{font-size:14px;color:var(--muted);line-height:1.7;max-width:480px}
+
+/* ── 10. Results ── */
+#results{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
+.result-card{background:var(--surface);border:1px solid var(--border2);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 1.1fr;
+  box-shadow:0 2px 4px rgba(0,212,170,0.03),0 8px 32px rgba(0,212,170,0.06),0 32px 64px rgba(0,0,0,0.3)}
+.result-img{position:relative;min-height:400px}
+.result-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.65)}
+.result-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent,rgba(6,10,14,0.6))}
+.result-badge{position:absolute;top:var(--space-xl);left:var(--space-xl);background:var(--accent-dim);border:1px solid var(--border);border-radius:5px;padding:4px 12px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700;font-family:'Cabinet Grotesk',sans-serif}
+.result-body{padding:var(--space-2xl)}
+.result-body h3{font-size:clamp(22px,2.5vw,34px);font-weight:800;color:var(--text);margin-top:var(--space-md);margin-bottom:var(--space-md)}
+.result-problem{font-size:14px;color:var(--muted);margin-bottom:var(--space-2xl);line-height:1.7;padding-left:var(--space-md);border-left:2px solid var(--border)}
+.result-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);margin-bottom:var(--space-xl)}
+.result-metric-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(24px,2.5vw,38px);font-weight:800;color:var(--accent);letter-spacing:-0.04em;line-height:1}
+.result-metric-lbl{font-size:12px;color:var(--muted);margin-top:4px}
+.result-solution{font-size:12px;color:rgba(0,212,170,0.65);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px}
+.result-solution::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+/* ── 11. FAQ ── */
+#faq{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
+  background-image:radial-gradient(ellipse at 80% 80%, rgba(0,212,170,0.04) 0%, transparent 55%)}
+#faq h2{font-size:clamp(28px,3vw,44px);font-weight:800;margin-bottom:var(--space-2xl)}
+.faq-list{max-width:760px}
+.faq-item{border-bottom:1px solid var(--border2)}
+.faq-trigger{width:100%;text-align:left;padding:var(--space-lg) 0;display:flex;justify-content:space-between;align-items:center;gap:var(--space-lg);
+  font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.01em;
+  transition:color 0.25s var(--ease)}
+.faq-trigger:hover{color:var(--accent)}
+.faq-trigger[aria-expanded="true"]{color:var(--accent)}
+.faq-icon{width:20px;height:20px;flex-shrink:0;color:var(--muted);
+  transition:transform 0.3s var(--ease),color 0.3s var(--ease)}
+.faq-trigger[aria-expanded="true"] .faq-icon{transform:rotate(45deg);color:var(--accent)}
+.faq-panel{overflow:hidden;max-height:0}
+.faq-panel-inner{padding:0 0 var(--space-lg) 0;font-size:14px;color:var(--muted);line-height:1.8}
+
+/* ── 12. CTA ── */
+#cta{padding:var(--space-3xl) 0 calc(var(--space-3xl) + 20px);text-align:center;position:relative;overflow:hidden;
+  background-image:radial-gradient(ellipse at 50% 100%, rgba(0,212,170,0.07) 0%, transparent 60%)}
+#cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(0,212,170,0.12) 0%,transparent 65%);pointer-events:none}
+#cta h2{font-size:clamp(30px,4vw,54px);font-weight:800;color:var(--text);max-width:640px;margin:0 auto var(--space-md);line-height:1.08}
+#cta p{font-size:16px;color:var(--muted);max-width:460px;margin:0 auto var(--space-xl);line-height:1.7}
+#cta .btn-primary{padding:16px 40px;font-size:15px;box-shadow:0 0 0 1px rgba(0,212,170,0.3),0 8px 32px rgba(0,212,170,0.2)}
+
+/* ── 13. Footer ── */
+footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--border2)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--space-2xl)}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:var(--space-md)}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--muted);max-width:220px;line-height:1.65}
+.footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,244,243,0.35);margin-bottom:var(--space-lg)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--space-sm)}
+.footer-col a{font-size:13px;color:var(--muted);transition:color 0.2s var(--ease)}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:var(--space-md);margin-top:var(--space-lg)}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;
+  transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--muted)}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
+
+/* ── 14. Media Queries ── */
+@media(max-width:1024px){
+  .container,.nav-inner{padding:0 var(--space-lg)}
+  .hero-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .browser-mockup{max-width:480px;margin:0 auto}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .included-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .result-card{grid-template-columns:1fr}
+  .result-img{min-height:280px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .why-grid{grid-template-columns:1fr}
+  .result-metrics{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
+  .hero-h1{font-size:clamp(32px,9vw,48px)}
+  .hero-sub{font-size:15px}
+  .process-item{grid-template-columns:60px 1fr;gap:var(--space-md)}
+}
+
+/* ── 15. Reduced Motion ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
+  .reveal{opacity:1;transform:none}
+  .gradient-text{animation:none}
+  .browser-mockup{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="mainNav" class="pre-entrance" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Coremagna home">
+      Core<span class="accent">magna</span><span class="nav-logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-dropdown">
+        <a href="index.html#services">Services</a>
+        <div class="nav-dropdown-menu">
+          <a href="web-design.html"><span class="dd-dot"></span>Web Design</a>
+          <a href="rag-chatbot.html"><span class="dd-dot"></span>RAG Chatbot</a>
+          <a href="automation.html"><span class="dd-dot"></span>Automation</a>
+        </div>
+      </li>
+      <li><a href="index.html#how-it-works">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#how-it-works">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- ── 01 HERO ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-left reveal">
+        <div class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Web Design &amp; Development
+        </div>
+        <div class="hero-eyebrow"><span class="hero-dot"></span>Service I of III</div>
+        <h1 class="hero-h1">Your website,<br><span class="gradient-text">live in 3 days.</span></h1>
+        <p class="hero-sub">We build fast, conversion-focused websites for businesses ready to grow. No templates. No guesswork. Just results.</p>
+        <div class="hero-actions">
+          <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic-btn">Book a Free Call →</a>
+          <a href="#why" class="btn-ghost">See Why It Matters ↓</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="browser-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">coremagna.com — yoursite.com</div>
+          </div>
+          <div class="browser-body">
+            <div class="mock-nav-bar">
+              <div class="mock-nav-logo"></div>
+              <div class="mock-nav-links"><span></span><span></span><span></span></div>
+              <div class="mock-nav-btn"></div>
+            </div>
+            <div class="mock-hero-block">
+              <div class="mock-hero-text">
+                <div class="mock-hero-h"></div>
+                <div class="mock-hero-sub"></div>
+              </div>
+              <div class="mock-hero-cta"></div>
+            </div>
+            <div class="mock-cards-row">
+              <div class="mock-card-block"><div class="mock-card-icon"></div><div class="mock-card-h"></div><div class="mock-card-t"></div></div>
+              <div class="mock-card-block"><div class="mock-card-icon"></div><div class="mock-card-h"></div><div class="mock-card-t"></div></div>
+              <div class="mock-card-block"><div class="mock-card-icon"></div><div class="mock-card-h"></div><div class="mock-card-t"></div></div>
+            </div>
+            <div class="mock-metrics">
+              <div class="mock-metric-block"><div class="mock-metric-num">+340%</div><div class="mock-metric-lbl">Reservations</div></div>
+              <div class="mock-metric-block"><div class="mock-metric-num">3 days</div><div class="mock-metric-lbl">To launch</div></div>
+              <div class="mock-metric-block"><div class="mock-metric-num">100%</div><div class="mock-metric-lbl">Mobile score</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 02 WHY IT MATTERS ── -->
+<section id="why">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">Why It Matters</span>
+      <h2 style="font-size:clamp(28px,3.2vw,46px);margin-top:8px;max-width:500px">Your website is costing you money right now.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="spotlight-card reveal">
+        <div class="why-stat">47%</div>
+        <div class="why-card-title">You're Losing Leads</div>
+        <div class="why-card-body">47% of users judge a business's credibility by its website design. A slow, outdated, or confusing site sends potential clients to your competitors — every single day.</div>
+      </div>
+      <div class="spotlight-card reveal">
+        <div class="why-stat">7%</div>
+        <div class="why-card-title">Speed = Revenue</div>
+        <div class="why-card-body">A single second of page load delay causes a 7% drop in conversions. We build sites that load in under 2 seconds — because every millisecond is money in your business.</div>
+      </div>
+      <div class="spotlight-card reveal">
+        <div class="why-stat">60%</div>
+        <div class="why-card-title">Mobile Is Everything</div>
+        <div class="why-card-body">60% of all web traffic is mobile. If your site isn't mobile-first, you're already losing the majority of your potential customers before they read a single word.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 03 WHAT'S INCLUDED ── -->
+<section id="included">
+  <div class="container">
+    <div class="included-grid">
+      <div class="included-left reveal">
+        <span class="section-eyebrow">What's Included</span>
+        <h2>Everything you need.<br>Nothing you don't.</h2>
+        <p>Every project is scoped to your business goals. You get a complete, production-ready website — not a template with your logo slapped on it. We handle the technical side completely so you can focus on running your business.</p>
+      </div>
+      <div class="checklist reveal">
+        <div class="check-item">
+          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>
+          <span>Custom design — no templates, ever</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>
+          <span>Mobile-first &amp; fully responsive</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>
+          <span>SEO optimized from day one</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>
+          <span>CMS integration — edit content yourself</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>
+          <span>Contact forms &amp; booking integration</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>
+          <span>Google Analytics setup &amp; configuration</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>
+          <span>30-day post-launch support included</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>
+          <span>Delivered in 3–7 business days</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 THE PROCESS ── -->
+<section id="process">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">The Process</span>
+      <h2>From first call to live website in 4 steps</h2>
+    </div>
+    <div class="process-list">
+
+      <div class="process-item reveal">
+        <div>
+          <div class="process-num">01</div>
+          <div class="beam-segment"><div class="beam-light"></div></div>
+        </div>
+        <div class="process-content">
+          <h3>Discovery Call — 30 min</h3>
+          <p>We learn your business, goals, target audience, and competitors. You tell us what success looks like. This shapes every design decision we make.</p>
+        </div>
+      </div>
+
+      <div class="process-item reveal">
+        <div>
+          <div class="process-num">02</div>
+          <div class="beam-segment"><div class="beam-light"></div></div>
+        </div>
+        <div class="process-content">
+          <h3>Design Proposal</h3>
+          <p>Wireframes and mockups delivered within 24 hours of our call. You review, give feedback, and approve. Unlimited revisions at this stage — we don't move forward until you're happy.</p>
+        </div>
+      </div>
+
+      <div class="process-item reveal">
+        <div>
+          <div class="process-num">03</div>
+          <div class="beam-segment"><div class="beam-light"></div></div>
+        </div>
+        <div class="process-content">
+          <h3>Build &amp; Test</h3>
+          <p>Full development, cross-browser testing, mobile optimization, and speed optimization. We test every page on every device before we show you anything.</p>
+        </div>
+      </div>
+
+      <div class="process-item reveal">
+        <div><div class="process-num">04</div></div>
+        <div class="process-content">
+          <h3>Launch &amp; Handover</h3>
+          <p>We deploy your site, configure your domain, set up analytics, and walk you through the CMS. You leave knowing exactly how to run your own website.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── 05 RESULTS ── -->
+<section id="results">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:var(--space-2xl)">
+      <span class="section-eyebrow">Results</span>
+      <h2 style="font-size:clamp(28px,3vw,44px);margin-top:8px">What happens when the site actually works</h2>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-img">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="München Restaurant Group — interior shot" loading="lazy">
+        <span class="result-badge">F&amp;B</span>
+      </div>
+      <div class="result-body">
+        <span class="section-eyebrow">Case Study</span>
+        <h3>München Restaurant Group</h3>
+        <p class="result-problem">Problem: Zero online presence. Reservations handled by phone only. Competing restaurants had websites and were capturing 100% of digital traffic in the area.</p>
+        <div class="result-metrics">
+          <div>
+            <div class="result-metric-num ticker-num" data-target="340" data-prefix="+" data-suffix="%">+340%</div>
+            <div class="result-metric-lbl">Reservations in 60 days</div>
+          </div>
+          <div>
+            <div class="result-metric-num">3 days</div>
+            <div class="result-metric-lbl">From brief to live</div>
+          </div>
+          <div>
+            <div class="result-metric-num ticker-num" data-target="100" data-suffix="%">100%</div>
+            <div class="result-metric-lbl">Google Mobile score</div>
+          </div>
+        </div>
+        <div class="result-solution">Web Design + AI Chatbot</div>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic-btn" style="margin-top:var(--space-xl)">Get the same results →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 06 FAQ ── -->
+<section id="faq">
+  <div class="container">
+    <h2 class="reveal">Questions about web design</h2>
+    <dl class="faq-list">
+
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-1">
+          Do you work with my existing brand identity?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-1" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">Yes. If you have an existing brand — logo, colors, fonts — we design within it and elevate it. If you're starting from scratch, we build the brand identity as part of the project at no extra cost.</div></dd>
+      </div>
+
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-2">
+          Can I edit the website myself after launch?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-2" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">Absolutely. We include a CMS (content management system) so you can update text, images, prices, and blog posts yourself without touching a line of code. We walk you through everything at handover.</div></dd>
+      </div>
+
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-3">
+          What if I don't like the design?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-3" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">Unlimited revisions during the design phase. We don't start development until you've approved the mockups. In practice, most clients approve the first or second version — because we spend the discovery call understanding exactly what you want.</div></dd>
+      </div>
+
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-4">
+          Do you handle hosting and domain setup?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-4" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">Yes. We recommend and configure your hosting — typically €10–20/month on your own account (you own it, not us). We handle all technical setup: domain connection, SSL, DNS, and CDN configuration.</div></dd>
+      </div>
+
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-5">
+          What do you need from me to get started?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-5" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">A 30-minute call, your logo if you have one, and a rough idea of what pages you need. We provide a structured content template so you know exactly what to write. We handle the rest — design, code, copy structure, launch.</div></dd>
+      </div>
+
+    </dl>
+  </div>
+</section>
+
+<!-- ── 07 CTA ── -->
+<section id="cta">
+  <div class="container">
+    <h2 class="reveal">Your competitors have a website.<br>Make yours better.</h2>
+    <p class="reveal">Book a free 30-minute strategy call. We'll audit your current digital presence and show you exactly what a modern website would do for your business.</p>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary reveal magnetic-btn">Book a Free Call →</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">We build the digital infrastructure your business deserves.</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="web-design.html">Web Design</a></li>
+          <li><a href="rag-chatbot.html">RAG Chatbot</a></li>
+          <li><a href="automation.html">Automation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#case-studies">Work</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
+          <li><a href="mailto:hello@coremagna.com">hello@coremagna.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Coremagna. All rights reserved.</p>
+      <p>Web Design · AI Chatbots · Automation</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Nav scroll + hamburger ── */
+(function(){
+  const nav = document.getElementById('mainNav');
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  let menuOpen = false;
+  window.addEventListener('scroll',()=>{ nav.classList.toggle('scrolled',window.scrollY>40); },{passive:true});
+  hamburger.addEventListener('click',()=>{
+    menuOpen = !menuOpen;
+    hamburger.classList.toggle('open',menuOpen);
+    hamburger.setAttribute('aria-expanded',menuOpen);
+    mobileNav.setAttribute('aria-hidden',!menuOpen);
+    mobileNav.classList.toggle('visible',menuOpen);
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      menuOpen=false;hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');mobileNav.classList.remove('visible');document.body.style.overflow='';
+    });
+  });
+})();
+
+/* ── Scroll Reveal ── */
+(function(){
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('section').forEach(sec=>{
+    sec.querySelectorAll('.reveal').forEach((el,i)=>{ if(!el.style.transitionDelay) el.style.transitionDelay=(i*0.08)+'s'; });
+  });
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+})();
+
+/* ── FAQ Accordion ── */
+(function(){
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const trigger = item.querySelector('.faq-trigger');
+    const panel   = item.querySelector('.faq-panel');
+    if(!trigger||!panel) return;
+    trigger.addEventListener('click',()=>{
+      const isOpen = trigger.getAttribute('aria-expanded')==='true';
+      document.querySelectorAll('.faq-trigger[aria-expanded="true"]').forEach(t=>{
+        if(t!==trigger){
+          t.setAttribute('aria-expanded','false');
+          const p=t.closest('.faq-item').querySelector('.faq-panel');
+          if(p){p.style.transition='max-height 0.35s cubic-bezier(0.4,0,0.2,1)';p.style.maxHeight='0px';p.setAttribute('aria-hidden','true');}
+        }
+      });
+      if(isOpen){
+        panel.style.transition='max-height 0.35s cubic-bezier(0.4,0,0.2,1)';
+        panel.style.maxHeight='0px';
+        trigger.setAttribute('aria-expanded','false');
+        panel.setAttribute('aria-hidden','true');
+      } else {
+        const inner=panel.querySelector('.faq-panel-inner');
+        panel.style.transition='none';panel.style.maxHeight='none';panel.style.visibility='hidden';
+        const h=inner.getBoundingClientRect().height+16;
+        panel.style.maxHeight='0px';panel.style.visibility='';
+        panel.getBoundingClientRect();
+        panel.style.transition='max-height 0.42s cubic-bezier(0.4,0,0.2,1)';
+        panel.style.maxHeight=h+'px';
+        trigger.setAttribute('aria-expanded','true');
+        panel.setAttribute('aria-hidden','false');
+      }
+    });
+  });
+})();
+
+/* ── Page Entrance ── */
+(function(){
+  const nav = document.getElementById('mainNav');
+  setTimeout(()=>{ nav.classList.remove('pre-entrance'); nav.classList.add('entered'); },0);
+})();
+
+/* ── 21st.dev: Number Ticker ── */
+(function(){
+  function easeOutCubic(t){ return 1-Math.pow(1-t,3); }
+  const tickers = document.querySelectorAll('.ticker-num');
+  if(!tickers.length) return;
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target)||0;
+      const prefix = el.dataset.prefix||'';
+      const suffix = el.dataset.suffix||'';
+      const duration = 2000;
+      let start = null;
+      function step(ts){
+        if(!start) start=ts;
+        const elapsed=ts-start;
+        const progress=Math.min(elapsed/duration,1);
+        const eased=easeOutCubic(progress);
+        const current=Math.round(eased*target);
+        el.textContent=prefix+current+suffix;
+        if(progress<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      obs.unobserve(el);
+    });
+  },{threshold:0.5});
+  tickers.forEach(el=>obs.observe(el));
+})();
+
+/* ── 21st.dev: Spotlight Card ── */
+(function(){
+  document.querySelectorAll('.spotlight-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const rect=card.getBoundingClientRect();
+      const x=((e.clientX-rect.left)/rect.width)*100;
+      const y=((e.clientY-rect.top)/rect.height)*100;
+      card.style.setProperty('--mouse-x',x+'%');
+      card.style.setProperty('--mouse-y',y+'%');
+    });
+  });
+})();
+
+/* ── 21st.dev: Magnetic Button ── */
+(function(){
+  document.querySelectorAll('.magnetic-btn').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const rect=btn.getBoundingClientRect();
+      const cx=rect.left+rect.width/2;
+      const cy=rect.top+rect.height/2;
+      const dx=e.clientX-cx;
+      const dy=e.clientY-cy;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      const maxDist=100;
+      if(dist<maxDist){
+        const force=(1-dist/maxDist);
+        const mx=dx*force*0.4;
+        const my=dy*force*0.4;
+        const clamped_x=Math.max(-8,Math.min(8,mx));
+        const clamped_y=Math.max(-8,Math.min(8,my));
+        btn.style.transform=`translate(${clamped_x}px,${clamped_y}px)`;
+      }
+    });
+    btn.addEventListener('mouseleave',()=>{
+      btn.style.transform='translate(0,0)';
+    });
+  });
+})();
+</script>
+</body>
+</html>
