@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://coremagna.com/sitemap.xml

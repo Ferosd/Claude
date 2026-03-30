@@ -10,6 +10,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://coremagna.com">
 <meta property="og:image" content="https://coremagna.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coremagna — Web Design, AI &amp; Automation">
+<meta name="twitter:description" content="Web design, RAG chatbots, and automation that drives real business results.">
+<link rel="canonical" href="https://coremagna.com/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -326,6 +330,9 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .reveal{opacity:1;transform:none}
 }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Coremagna","url":"https://coremagna.com","email":"ferit@coremagna.com","description":"Web design, AI chatbots and automation agency for SMBs","areaServed":["US","DE","AT","CH","GB"]}
+</script>
 </head>
 <body>
 
@@ -346,6 +353,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       </li>
       <li><a href="#how-it-works">Work</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
@@ -361,6 +369,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <li><a href="#services">Services</a></li>
     <li><a href="#how-it-works">Work</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="blog/index.html">Blog</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li>
   </ul>
@@ -783,6 +792,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#case-studies">Work</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
@@ -790,7 +800,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <h4>Contact</h4>
         <ul>
           <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
-          <li><a href="mailto:hello@coremagna.com">hello@coremagna.com</a></li>
+          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
         </ul>
       </div>
     </div>
@@ -803,41 +813,48 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
 <script>
 /* ═══════════════════════════════════════════════
-   MODULE 1 — Hero Slider
-   Two-layer cross-fade: opacity + scale + blur
+   MODULE 1 — Hero Slider (Scroll-Locked)
+   Scroll wheel advances scenes; 3rd→exit unlocks page
 ═══════════════════════════════════════════════ */
 (function heroSlider() {
 
+  /* ── video sources: local dev vs Cloudinary ── */
+  const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   const SLIDES = [
-    { tag:'Service I',   title:'Web Design &amp;<br>Development',     desc:'Modern, fast websites built to convert. From zero to live in 3 days — no technical knowledge needed. Your competitors already have one. Time to outrank them.',         counter:'01 / 03', src:'video%20(1).mp4' },
-    { tag:'Service II',  title:'RAG Chatbot &amp;<br>AI Integration',  desc:'An AI that knows your business inside out. Trained on your documents and data — answers customer questions, qualifies leads, and books meetings. 24/7, in any language.', counter:'02 / 03', src:'video%20(2).mp4' },
-    { tag:'Service III', title:'Automation &amp;<br>Workflows',        desc:'Eliminate repetitive tasks and manual processes. Lead collection, email campaigns, CRM updates, reporting — all running automatically while you focus on growth.',       counter:'03 / 03', src:'video%20(3).mp4' }
+    { tag:'Service I',   title:'Web Design &amp;<br>Development',
+      desc:'Modern, fast websites built to convert. From zero to live in 3 days — no technical knowledge needed. Your competitors already have one. Time to outrank them.',
+      counter:'01 / 03', src: isLocal ? 'video%20(1).mp4' : 'VIDEO1_CLOUDINARY_URL' },
+    { tag:'Service II',  title:'RAG Chatbot &amp;<br>AI Integration',
+      desc:'An AI that knows your business inside out. Trained on your documents and data — answers customer questions, qualifies leads, and books meetings. 24/7, in any language.',
+      counter:'02 / 03', src: isLocal ? 'video%20(2).mp4' : 'VIDEO2_CLOUDINARY_URL' },
+    { tag:'Service III', title:'Automation &amp;<br>Workflows',
+      desc:'Eliminate repetitive tasks and manual processes. Lead collection, email campaigns, CRM updates, reporting — all running automatically while you focus on growth.',
+      counter:'03 / 03', src: isLocal ? 'video%20(3).mp4' : 'VIDEO3_CLOUDINARY_URL' }
   ];
 
-  const KB = ['kb-a','kb-b','kb-c'];
+  const KB        = ['kb-a','kb-b','kb-c'];
   const TRANS_MS  = 900;
   const DEBOUNCE  = 1100;
-  const SLIDE_MS  = 6000;
   const TEXT_OUT  = 300;
   const TEXT_IN   = 400;
   const TEXT_DELAY= 220;
   const EASE      = 'cubic-bezier(0.4,0,0.2,1)';
   const SPRING    = 'cubic-bezier(0.34,1.56,0.64,1)';
 
-  const layers = [
-    document.getElementById('heroLayerA'),
-    document.getElementById('heroLayerB')
-  ];
+  const layers   = [document.getElementById('heroLayerA'), document.getElementById('heroLayerB')];
+  const heroWrap = document.getElementById('hero');
 
-  let cur = 0;
-  let activeLyr = 0; // index into layers[] for currently visible slide
+  let cur           = 0;
+  let activeLyr     = 0;
   let transitioning = false;
-  let wheelLocked   = false;
-  let autoTimer     = null;
-  let rafId         = null;
-  let progStart     = null;
+  let debouncing    = false;
+  let heroExited    = false;
 
-  /* ── init first slide ── */
+  /* ── lock page scroll while hero is active ── */
+  document.body.style.overflow = 'hidden';
+  window._heroLocked = true;
+
+  /* ── init video layer ── */
   function initLayer(lyrIdx, slideIdx) {
     const layer = layers[lyrIdx];
     layer.innerHTML = '';
@@ -854,21 +871,40 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   }
 
   function setLayerState(layer, opacity, scale, blur, withTransition) {
-    if (withTransition) {
-      layer.style.transition =
-        `opacity ${TRANS_MS}ms ${EASE},transform ${TRANS_MS}ms ${EASE},filter ${TRANS_MS}ms ${EASE}`;
-    } else {
-      layer.style.transition = 'none';
-    }
+    layer.style.transition = withTransition
+      ? `opacity ${TRANS_MS}ms ${EASE},transform ${TRANS_MS}ms ${EASE},filter ${TRANS_MS}ms ${EASE}`
+      : 'none';
     layer.style.opacity   = opacity;
     layer.style.transform = `scale(${scale})`;
     layer.style.filter    = `blur(${blur}px)`;
   }
 
-  function goTo(n) {
-    if (transitioning) return;
-    const next = ((n % 3) + 3) % 3;
-    if (next === cur) return;
+  /* ── progress bar — decorative, scene-based ── */
+  function updateProgress() {
+    const bar = document.getElementById('progressBar');
+    bar.style.transition = `width 0.7s ${EASE}`;
+    bar.style.width = ((cur + 1) / 3 * 100) + '%';
+  }
+
+  /* ── hero exit: slide up then unlock page scroll ── */
+  function exitHero() {
+    if (heroExited) return;
+    heroExited = true;
+    const heroH = heroWrap.offsetHeight;
+    heroWrap.style.transition = `transform 0.6s ${EASE}`;
+    heroWrap.style.transform  = `translateY(-${heroH}px)`;
+    setTimeout(() => {
+      heroWrap.style.transition = 'none';
+      heroWrap.style.transform  = '';
+      window.scrollTo(0, heroH);
+      document.body.style.overflow = '';
+      window._heroLocked = false;
+    }, 620);
+  }
+
+  /* ── scene cross-fade ── */
+  function goToScene(next) {
+    if (transitioning || next === cur) return;
     transitioning = true;
 
     const outLyrIdx = activeLyr;
@@ -876,44 +912,77 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     const outLayer  = layers[outLyrIdx];
     const inLayer   = layers[inLyrIdx];
 
-    /* prepare incoming layer off-screen */
     initLayer(inLyrIdx, next);
     inLayer.style.zIndex = '1';
     setLayerState(inLayer, 0, 1.04, 6, false);
-
-    /* force reflow so browser registers start state before transition */
     inLayer.getBoundingClientRect();
 
-    /* lift both to same z-level for cross-fade */
     outLayer.style.zIndex = '2';
     inLayer.style.zIndex  = '2';
-
-    /* fire transitions simultaneously */
     setLayerState(outLayer, 0, 1.04, 6, true);
     setLayerState(inLayer,  1, 1.0,  0, true);
 
-    /* text swap */
     transitionText(next);
-
-    /* UI chrome */
     updateChrome(cur, next);
     cur = next;
+    updateProgress();
 
-    /* cleanup after transition */
     setTimeout(() => {
       const outVid = outLayer.querySelector('video');
       if (outVid) { outVid.pause(); outVid.src = ''; }
       setLayerState(outLayer, 0, 1.0, 0, false);
       outLayer.style.zIndex = '1';
-      activeLyr = inLyrIdx;
+      activeLyr     = inLyrIdx;
       transitioning = false;
     }, TRANS_MS + 60);
-
-    resetProgress();
-    restartAuto();
   }
 
-  /* ── text transition ── */
+  /* ── scroll handlers ── */
+  function handleDown() {
+    if (debouncing) return;
+    debouncing = true;
+    setTimeout(() => { debouncing = false; }, DEBOUNCE);
+    if (cur < 2) {
+      goToScene(cur + 1);
+    } else {
+      exitHero();
+    }
+  }
+
+  function handleUp() {
+    if (debouncing) return;
+    if (cur > 0) {
+      debouncing = true;
+      setTimeout(() => { debouncing = false; }, DEBOUNCE);
+      goToScene(cur - 1);
+    }
+    /* cur===0: body is overflow:hidden, nothing to scroll anyway */
+  }
+
+  /* ── capture wheel on document while hero is locked ── */
+  document.addEventListener('wheel', function(e) {
+    if (heroExited) return;
+    e.preventDefault();
+    if (e.deltaY > 0) handleDown();
+    else if (e.deltaY < 0) handleUp();
+  }, { passive: false });
+
+  /* ── touch swipe ── */
+  let touchStartY = 0;
+  document.addEventListener('touchstart', e => {
+    if (heroExited) return;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (heroExited) return;
+    const diff = touchStartY - e.changedTouches[0].clientY;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handleDown();
+      else handleUp();
+    }
+  }, { passive: true });
+
+  /* ── text cross-fade ── */
   function transitionText(nextIdx) {
     const titleEl = document.getElementById('heroTitle');
     const descEl  = document.getElementById('heroDesc');
@@ -921,16 +990,14 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
     titleEl.style.transition = `opacity ${TEXT_OUT}ms ${EASE},transform ${TEXT_OUT}ms ${EASE}`;
     descEl.style.transition  = `opacity ${TEXT_OUT}ms ${EASE},transform ${TEXT_OUT}ms ${EASE}`;
-    titleEl.style.opacity = '0';
-    titleEl.style.transform = 'translateY(-8px)';
-    descEl.style.opacity  = '0';
-    descEl.style.transform = 'translateY(-8px)';
+    titleEl.style.opacity = '0'; titleEl.style.transform = 'translateY(-8px)';
+    descEl.style.opacity  = '0'; descEl.style.transform  = 'translateY(-8px)';
 
     setTimeout(() => {
       const s = SLIDES[nextIdx];
-      tagEl.textContent    = s.tag;
-      titleEl.innerHTML    = s.title;
-      descEl.textContent   = s.desc;
+      tagEl.textContent   = s.tag;
+      titleEl.innerHTML   = s.title;
+      descEl.textContent  = s.desc;
       document.getElementById('heroCounter').textContent = s.counter;
 
       titleEl.style.transition = 'none';
@@ -941,10 +1008,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
       titleEl.style.transition = `opacity ${TEXT_IN}ms ${SPRING},transform ${TEXT_IN}ms ${SPRING}`;
       descEl.style.transition  = `opacity ${TEXT_IN}ms ${SPRING},transform ${TEXT_IN}ms ${SPRING}`;
-      titleEl.style.opacity = '1';
-      titleEl.style.transform = 'translateY(0)';
-      descEl.style.opacity  = '1';
-      descEl.style.transform = 'translateY(0)';
+      titleEl.style.opacity = '1'; titleEl.style.transform = 'translateY(0)';
+      descEl.style.opacity  = '1'; descEl.style.transform  = 'translateY(0)';
     }, TEXT_OUT + TEXT_DELAY);
   }
 
@@ -958,62 +1023,25 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     document.getElementById('d'+newIdx).setAttribute('aria-selected','true');
   }
 
-  /* ── progress bar ── */
-  function resetProgress() {
-    cancelAnimationFrame(rafId);
-    const bar = document.getElementById('progressBar');
-    bar.style.transition = 'none';
-    bar.style.width = '0%';
-    progStart = performance.now();
-    function step(ts) {
-      const pct = Math.min((ts - progStart) / SLIDE_MS * 100, 100);
-      bar.style.width = pct + '%';
-      if (pct < 100) rafId = requestAnimationFrame(step);
-    }
-    rafId = requestAnimationFrame(step);
-  }
-
-  /* ── auto advance ── */
-  function startAuto() {
-    autoTimer = setInterval(() => goTo(cur + 1), SLIDE_MS);
-  }
-  function stopAuto() {
-    clearInterval(autoTimer);
-  }
-  function restartAuto() {
-    stopAuto();
-    startAuto();
-  }
-
-  /* ── timeline buttons ── */
+  /* ── timeline + dot buttons ── */
   for (let i = 0; i < 3; i++) {
     (function(idx){
-      document.getElementById('tl'+idx).addEventListener('click', () => goTo(idx));
-      document.getElementById('d'+idx).addEventListener('click',  () => goTo(idx));
+      document.getElementById('tl'+idx).addEventListener('click', () => {
+        if (!debouncing && !transitioning && !heroExited) {
+          debouncing = true;
+          goToScene(idx);
+          setTimeout(() => { debouncing = false; }, DEBOUNCE);
+        }
+      });
+      document.getElementById('d'+idx).addEventListener('click', () => {
+        if (!debouncing && !transitioning && !heroExited) {
+          debouncing = true;
+          goToScene(idx);
+          setTimeout(() => { debouncing = false; }, DEBOUNCE);
+        }
+      });
     })(i);
   }
-
-  /* ── wheel ── */
-  const wrap = document.getElementById('hero');
-  wrap.addEventListener('wheel', function(e) {
-    e.preventDefault();
-    if (wheelLocked) return;
-    wheelLocked = true;
-    goTo(e.deltaY > 0 ? cur + 1 : cur - 1);
-    setTimeout(() => { wheelLocked = false; }, DEBOUNCE);
-  }, { passive: false });
-
-  /* ── hover pause/resume ── */
-  wrap.addEventListener('mouseenter', () => { stopAuto(); cancelAnimationFrame(rafId); });
-  wrap.addEventListener('mouseleave', () => { resetProgress(); startAuto(); });
-
-  /* ── touch ── */
-  let touchStartY = 0;
-  wrap.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive:true });
-  wrap.addEventListener('touchend', e => {
-    const diff = touchStartY - e.changedTouches[0].clientY;
-    if (Math.abs(diff) > 50) goTo(diff > 0 ? cur + 1 : cur - 1);
-  }, { passive:true });
 
   /* ── kick off ── */
   initLayer(activeLyr, 0);
@@ -1021,8 +1049,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   layers[activeLyr].style.zIndex  = '2';
   layers[1 - activeLyr].style.opacity = '0';
   layers[1 - activeLyr].style.zIndex  = '1';
-  resetProgress();
-  startAuto();
+  updateProgress();
 
 })();
 
@@ -1046,7 +1073,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     hamburger.setAttribute('aria-expanded', menuOpen);
     mobileNav.setAttribute('aria-hidden', !menuOpen);
     mobileNav.classList.toggle('visible', menuOpen);
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    document.body.style.overflow = menuOpen ? 'hidden' : (window._heroLocked ? 'hidden' : '');
   });
 
   mobileNav.querySelectorAll('a').forEach(a => {
@@ -1056,7 +1083,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       hamburger.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
       mobileNav.classList.remove('visible');
-      document.body.style.overflow = '';
+      document.body.style.overflow = window._heroLocked ? 'hidden' : '';
     });
   });
 })();

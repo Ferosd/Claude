@@ -1,0 +1,8 @@
+# Videos — too large for GitHub/Vercel, host externally
+*.mp4
+video1.mp4
+video2.mp4
+video3.mp4
+
+# Dependencies
+node_modules/
