@@ -74,9 +74,17 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 #mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
 #mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .nav-inner{max-width:1240px;margin:0 auto;padding:0 var(--space-xl);height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
-.nav-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
-.nav-logo span.accent{color:var(--accent)}
-.nav-logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
+.logo-core{transition:letter-spacing 0.3s var(--ease)}
+.logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
+.logo:hover .logo-core{letter-spacing:0.05em}
+.logo:hover .logo-magna{color:#fff}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s var(--ease)}
+.logo:hover .logo-dot{transform:scale(2.5);opacity:0}
+@keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+
+
+
 .nav-links{display:flex;gap:var(--space-xl)}
 .nav-links a{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.02em;
   transition:color 0.2s var(--ease)}
@@ -339,8 +347,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 <!-- ── NAVIGATION ── -->
 <nav id="mainNav" class="pre-entrance" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo" aria-label="Coremagna home">
-      Core<span class="accent">magna</span><span class="nav-logo-dot" aria-hidden="true"></span>
+    <a href="#hero" class="logo" aria-label="Coremagna home">
+      <span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
     </a>
     <ul class="nav-links" role="list">
       <li class="nav-dropdown">
@@ -818,20 +826,18 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 ═══════════════════════════════════════════════ */
 (function heroSlider() {
 
-  /* ── video sources: local dev vs Cloudinary ── */
-  const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   const SLIDES = [
     { tag:'Service I',   title:'Web Design &amp;<br>Development',
-  desc:'Modern, fast websites built to convert. From zero to live in 3 days — no technical knowledge needed. Your competitors already have one. Time to outrank them.',
-  counter:'01 / 03', src: 'video (1).mp4' },
-{ tag:'Service II',  title:'RAG Chatbot &amp;<br>AI Integration',
-  desc:'An AI that knows your business inside out. Trained on your documents and data — answers customer questions, qualifies leads, and books meetings. 24/7, in any language.',
-  counter:'02 / 03', src: 'video (2).mp4' },
-   { tag:'Service III', title:'Automation &amp;<br>Workflows',
-  desc:'Eliminate repetitive tasks and manual processes. Lead collection, email campaigns, CRM updates, reporting — all running automatically while you focus on growth.',
-  counter:'03 / 03', src: 'video (3).mp4' 
-   }
-    
+      desc:'Modern, fast websites built to convert. From zero to live in 3 days — no technical knowledge needed. Your competitors already have one. Time to outrank them.',
+      counter:'01 / 03', src: 'video1.mp4' },
+    { tag:'Service II',  title:'RAG Chatbot &amp;<br>AI Integration',
+      desc:'An AI that knows your business inside out. Trained on your documents and data — answers customer questions, qualifies leads, and books meetings. 24/7, in any language.',
+      counter:'02 / 03', src: 'video2.mp4' },
+    { tag:'Service III', title:'Automation &amp;<br>Workflows',
+      desc:'Eliminate repetitive tasks and manual processes. Lead collection, email campaigns, CRM updates, reporting — all running automatically while you focus on growth.',
+      counter:'03 / 03', src: 'video3.mp4' }
+  ];
+
   const KB        = ['kb-a','kb-b','kb-c'];
   const TRANS_MS  = 900;
   const DEBOUNCE  = 1100;
