@@ -100,14 +100,16 @@
     .blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding-bottom:120px}
     .blog-card{background:var(--surface);border:1px solid var(--border2);border-radius:14px;overflow:hidden;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease),box-shadow 0.3s var(--ease)}
     .blog-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,212,170,0.08)}
-    .blog-card-body{padding:28px}
+    .blog-card-image{width:100%;height:200px;object-fit:cover;border-radius:12px 12px 0 0;display:block;transition:transform 0.4s cubic-bezier(0.4,0,0.2,1)}
+    .blog-card:hover .blog-card-image{transform:scale(1.03)}
+    .blog-card-content{padding:1.25rem}
     .blog-cat{display:inline-block;padding:3px 10px;border-radius:4px;background:var(--accent-dim);border:1px solid var(--border);font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
     .blog-card h2{font-size:20px;font-weight:800;color:var(--text);margin-bottom:10px;line-height:1.25}
     .blog-card-excerpt{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .blog-card-meta{display:flex;align-items:center;gap:16px;font-size:12px;color:rgba(240,244,243,0.35);border-top:1px solid var(--border2);padding-top:16px}
     .blog-card-meta .read-time{color:var(--accent);font-weight:500}
 
-    @media(max-width:768px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.blog-grid{grid-template-columns:1fr}.container{padding:0 24px}.nav-inner{padding:0 24px}}
+    @media(max-width:768px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.blog-grid{grid-template-columns:1fr}.container{padding:0 20px}.nav-inner{padding:0 20px}.blog-card-image{height:180px}.footer-col a{display:flex;align-items:center;min-height:44px}}
     @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
@@ -170,97 +172,121 @@
       <div class="blog-grid">
 
         <article class="blog-card reveal" data-category="ai-chatbot">
-          <a href="what-is-rag-chatbot.html" class="blog-card-body" style="display:block">
-            <span class="blog-cat">AI Chatbot</span>
-            <h2>What is a RAG Chatbot? Why Your Business Needs One in 2025</h2>
-            <p class="blog-card-excerpt">RAG chatbots don't just answer questions — they're trained on your business data. Here's why that changes everything for customer support.</p>
-            <div class="blog-card-meta">
-              <span class="read-time">7 min read</span>
-              <span>Jan 15, 2025</span>
+          <a href="what-is-rag-chatbot.html" style="display:block">
+            <img src="images/blog-img-1.jpg" alt="RAG chatbot AI neural network visualization" class="blog-card-image" loading="lazy">
+            <div class="blog-card-content">
+              <span class="blog-cat">AI Chatbot</span>
+              <h2>What is a RAG Chatbot? Why Your Business Needs One in 2025</h2>
+              <p class="blog-card-excerpt">RAG chatbots don't just answer questions — they're trained on your business data. Here's why that changes everything for customer support.</p>
+              <div class="blog-card-meta">
+                <span class="read-time">7 min read</span>
+                <span>Jan 15, 2025</span>
+              </div>
             </div>
           </a>
         </article>
 
         <article class="blog-card reveal" data-category="automation">
-          <a href="crm-automation-guide.html" class="blog-card-body" style="display:block">
-            <span class="blog-cat">Automation</span>
-            <h2>How to Automate Your CRM in 2025 (No Developer Needed)</h2>
-            <p class="blog-card-excerpt">Manual CRM updates kill sales momentum. Here's how to automate HubSpot, Pipedrive and more — step by step.</p>
-            <div class="blog-card-meta">
-              <span class="read-time">8 min read</span>
-              <span>Jan 22, 2025</span>
+          <a href="crm-automation-guide.html" style="display:block">
+            <img src="images/blog-img-2.jpg" alt="CRM automation dashboard and workflow" class="blog-card-image" loading="lazy">
+            <div class="blog-card-content">
+              <span class="blog-cat">Automation</span>
+              <h2>How to Automate Your CRM in 2025 (No Developer Needed)</h2>
+              <p class="blog-card-excerpt">Manual CRM updates kill sales momentum. Here's how to automate HubSpot, Pipedrive and more — step by step.</p>
+              <div class="blog-card-meta">
+                <span class="read-time">8 min read</span>
+                <span>Jan 22, 2025</span>
+              </div>
             </div>
           </a>
         </article>
 
         <article class="blog-card reveal" data-category="web-design">
-          <a href="website-losing-clients.html" class="blog-card-body" style="display:block">
-            <span class="blog-cat">Web Design</span>
-            <h2>Why Your Website is Losing You Clients (And How to Fix It)</h2>
-            <p class="blog-card-excerpt">7 design and UX mistakes that silently drive away potential customers — with a fix for each one.</p>
-            <div class="blog-card-meta">
-              <span class="read-time">6 min read</span>
-              <span>Feb 3, 2025</span>
+          <a href="website-losing-clients.html" style="display:block">
+            <img src="images/blog-img-3.jpg" alt="Modern website design on laptop screen" class="blog-card-image" loading="lazy">
+            <div class="blog-card-content">
+              <span class="blog-cat">Web Design</span>
+              <h2>Why Your Website is Losing You Clients (And How to Fix It)</h2>
+              <p class="blog-card-excerpt">7 design and UX mistakes that silently drive away potential customers — with a fix for each one.</p>
+              <div class="blog-card-meta">
+                <span class="read-time">6 min read</span>
+                <span>Feb 3, 2025</span>
+              </div>
             </div>
           </a>
         </article>
 
         <article class="blog-card reveal" data-category="ai-chatbot">
-          <a href="ai-chatbot-vs-chatgpt.html" class="blog-card-body" style="display:block">
-            <span class="blog-cat">AI Chatbot</span>
-            <h2>AI Chatbot vs ChatGPT: Which is Better for Your Business?</h2>
-            <p class="blog-card-excerpt">A side-by-side breakdown of generic AI tools versus custom-trained chatbots. Real numbers, real ROI.</p>
-            <div class="blog-card-meta">
-              <span class="read-time">6 min read</span>
-              <span>Feb 10, 2025</span>
+          <a href="ai-chatbot-vs-chatgpt.html" style="display:block">
+            <img src="images/blog-img-4.jpg" alt="AI chatbot comparison interface on dark screen" class="blog-card-image" loading="lazy">
+            <div class="blog-card-content">
+              <span class="blog-cat">AI Chatbot</span>
+              <h2>AI Chatbot vs ChatGPT: Which is Better for Your Business?</h2>
+              <p class="blog-card-excerpt">A side-by-side breakdown of generic AI tools versus custom-trained chatbots. Real numbers, real ROI.</p>
+              <div class="blog-card-meta">
+                <span class="read-time">6 min read</span>
+                <span>Feb 10, 2025</span>
+              </div>
             </div>
           </a>
         </article>
 
         <article class="blog-card reveal" data-category="automation">
-          <a href="ad-automation-2025.html" class="blog-card-body" style="display:block">
-            <span class="blog-cat">Automation</span>
-            <h2>How to Automate Your Ad Reporting in 2025 (Save 10 Hours/Week)</h2>
-            <p class="blog-card-excerpt">Stop building reports manually. Set up automated Google Ads and Facebook reporting that runs itself.</p>
-            <div class="blog-card-meta">
-              <span class="read-time">7 min read</span>
-              <span>Feb 18, 2025</span>
+          <a href="ad-automation-2025.html" style="display:block">
+            <img src="images/blog-img-5.jpg" alt="Ad analytics dashboard with performance charts" class="blog-card-image" loading="lazy">
+            <div class="blog-card-content">
+              <span class="blog-cat">Automation</span>
+              <h2>How to Automate Your Ad Reporting in 2025 (Save 10 Hours/Week)</h2>
+              <p class="blog-card-excerpt">Stop building reports manually. Set up automated Google Ads and Facebook reporting that runs itself.</p>
+              <div class="blog-card-meta">
+                <span class="read-time">7 min read</span>
+                <span>Feb 18, 2025</span>
+              </div>
             </div>
           </a>
         </article>
 
         <article class="blog-card reveal" data-category="web-design">
-          <a href="web-design-mistakes-2025.html" class="blog-card-body" style="display:block">
-            <span class="blog-cat">Web Design</span>
-            <h2>5 Web Design Mistakes Killing Your Conversions in 2025</h2>
-            <p class="blog-card-excerpt">From unclear hero messages to missing social proof — these five mistakes cost businesses thousands in lost revenue.</p>
-            <div class="blog-card-meta">
-              <span class="read-time">5 min read</span>
-              <span>Mar 1, 2025</span>
+          <a href="web-design-mistakes-2025.html" style="display:block">
+            <img src="images/blog-img-6.jpg" alt="Web design mockup showing conversion optimization" class="blog-card-image" loading="lazy">
+            <div class="blog-card-content">
+              <span class="blog-cat">Web Design</span>
+              <h2>5 Web Design Mistakes Killing Your Conversions in 2025</h2>
+              <p class="blog-card-excerpt">From unclear hero messages to missing social proof — these five mistakes cost businesses thousands in lost revenue.</p>
+              <div class="blog-card-meta">
+                <span class="read-time">5 min read</span>
+                <span>Mar 1, 2025</span>
+              </div>
             </div>
           </a>
         </article>
 
         <article class="blog-card reveal" data-category="automation">
-          <a href="email-followup-automation.html" class="blog-card-body" style="display:block">
-            <span class="blog-cat">Automation</span>
-            <h2>How to Automate Email Follow-Ups and Never Lose a Lead</h2>
-            <p class="blog-card-excerpt">80% of sales need 5+ follow-ups, but 44% of salespeople give up after one. Here's how to automate the rest.</p>
-            <div class="blog-card-meta">
-              <span class="read-time">7 min read</span>
-              <span>Mar 12, 2025</span>
+          <a href="email-followup-automation.html" style="display:block">
+            <img src="images/blog-img-7.jpg" alt="Email automation workflow on dark background" class="blog-card-image" loading="lazy">
+            <div class="blog-card-content">
+              <span class="blog-cat">Automation</span>
+              <h2>How to Automate Email Follow-Ups and Never Lose a Lead</h2>
+              <p class="blog-card-excerpt">80% of sales need 5+ follow-ups, but 44% of salespeople give up after one. Here's how to automate the rest.</p>
+              <div class="blog-card-meta">
+                <span class="read-time">7 min read</span>
+                <span>Mar 12, 2025</span>
+              </div>
             </div>
           </a>
         </article>
 
         <article class="blog-card reveal" data-category="automation">
-          <a href="community-forum-automation.html" class="blog-card-body" style="display:block">
-            <span class="blog-cat">Automation</span>
-            <h2>AI-Powered Community Management: Automate Your Forum in 2025</h2>
-            <p class="blog-card-excerpt">How to use AI to automate member onboarding, moderation, and FAQ responses at scale.</p>
-            <div class="blog-card-meta">
-              <span class="read-time">8 min read</span>
-              <span>Mar 20, 2025</span>
+          <a href="community-forum-automation.html" style="display:block">
+            <img src="images/blog-img-8.jpg" alt="Community forum AI moderation interface" class="blog-card-image" loading="lazy">
+            <div class="blog-card-content">
+              <span class="blog-cat">Automation</span>
+              <h2>AI-Powered Community Management: Automate Your Forum in 2025</h2>
+              <p class="blog-card-excerpt">How to use AI to automate member onboarding, moderation, and FAQ responses at scale.</p>
+              <div class="blog-card-meta">
+                <span class="read-time">8 min read</span>
+                <span>Mar 20, 2025</span>
+              </div>
             </div>
           </a>
         </article>

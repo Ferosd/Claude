@@ -319,17 +319,23 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
-  .hero-content{padding:var(--space-xl)}
-  .hero-top-bar{padding:var(--space-xl)}
+  .hero-content{padding:24px}
+  .hero-top-bar{padding:20px 24px}
   .hero-left{max-width:100%}
   .hero-right{display:none}
-  .hero-title{font-size:clamp(26px,8vw,40px)}
+  .hero-title{font-size:clamp(28px,7vw,42px)}
   .stats-row{grid-template-columns:1fr;gap:var(--space-xl);text-align:left}
   .services-grid,.case-grid,.testimonials-grid{grid-template-columns:1fr}
+  .service-card{padding:1.5rem 1.25rem}
   .steps-list{grid-template-columns:1fr}
   .values-row{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
+  .footer-col a{display:flex;align-items:center;min-height:44px}
+  .footer-logo{text-align:center}
+  .footer-tagline{text-align:center;max-width:100%}
+  .footer-social{justify-content:center}
+  .container,.nav-inner{padding:0 20px}
 }
 
 /* ── 17. Reduced Motion ── */
@@ -1188,5 +1194,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   });
 })();
 </script>
+<script src="widget.js" defer></script>
 </body>
 </html>
