@@ -183,19 +183,17 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 #services{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 60%,#060a0e 100%)}
 .section-header{margin-bottom:var(--space-2xl)}
 .section-header h2{font-size:clamp(32px,3.5vw,52px);font-weight:800;color:var(--text);margin-top:var(--space-sm)}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
-.service-card{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:var(--space-2xl) var(--space-xl) var(--space-xl);display:flex;flex-direction:column;gap:var(--space-md);
-  transition:border-color 0.35s var(--ease),box-shadow 0.35s var(--ease),transform 0.35s var(--ease);cursor:default;
+.services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-md)}
+.service-card{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:var(--space-xl) var(--space-lg);display:flex;flex-direction:column;gap:var(--space-sm);
+  transition:border-color 0.35s var(--ease),box-shadow 0.35s var(--ease),transform 0.35s var(--ease);
   box-shadow:0 1px 2px rgba(0,212,170,0.03),0 4px 8px rgba(0,212,170,0.04)}
 .service-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 1px 2px rgba(0,212,170,0.06),0 4px 12px rgba(0,212,170,0.1),0 24px 48px rgba(0,212,170,0.1)}
-.service-icon{width:40px;height:40px;border-radius:8px;background:var(--accent-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
-.service-icon svg{width:20px;height:20px;stroke:var(--accent)}
-.service-card h3{font-size:21px;font-weight:800;color:var(--text)}
-.service-subtitle{font-size:14px;color:var(--accent);font-weight:500;margin-top:-8px}
-.service-features{display:flex;flex-direction:column;gap:6px;margin-top:var(--space-sm)}
-.service-feature{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
-.service-feature::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0}
-.service-card .btn-ghost{margin-top:auto;padding-top:var(--space-lg);width:100%;justify-content:center;font-size:12px;border-top:1px solid var(--border2)}
+.service-num{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.14em;color:rgba(0,212,170,0.5);text-transform:uppercase;margin-bottom:var(--space-sm)}
+.service-card h3{font-size:17px;font-weight:800;color:var(--text);line-height:1.2}
+.service-desc{font-size:13px;color:var(--muted);line-height:1.6;flex:1}
+.service-link{font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:0.04em;margin-top:var(--space-md);display:inline-flex;align-items:center;gap:4px;
+  transition:color 0.2s var(--ease),gap 0.2s var(--ease)}
+.service-link:hover{color:#00f0c4;gap:8px}
 
 /* ── 9. How It Works ── */
 #how-it-works{padding:var(--space-3xl) 0;
@@ -231,23 +229,23 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .case-metric-label{font-size:12px;color:var(--muted);margin-top:4px}
 .case-solution{font-size:12px;color:rgba(0,212,170,0.6);margin-top:var(--space-md);font-weight:500;letter-spacing:0.04em;text-transform:uppercase;font-family:'Cabinet Grotesk',sans-serif}
 
-/* ── 11. Testimonials ── */
-#testimonials{padding:var(--space-3xl) 0;
-  background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
-  background-image:radial-gradient(ellipse at 50% 50%, rgba(0,212,170,0.03) 0%, transparent 70%),
-    radial-gradient(ellipse at 20% 50%, rgba(0,212,170,0.04) 0%, transparent 55%)}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
-.testimonial-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:var(--space-xl);position:relative;
-  transition:border-color 0.3s var(--ease)}
-.testimonial-card:hover{border-color:var(--border)}
-.quote-mark{font-family:'Cabinet Grotesk',sans-serif;font-size:64px;font-weight:800;color:var(--accent);line-height:0.8;display:block;margin-bottom:var(--space-lg);opacity:0.6}
-.testimonial-card p{font-size:14px;color:rgba(240,244,243,0.8);line-height:1.75;margin-bottom:var(--space-xl)}
-.testimonial-author{display:flex;align-items:center;gap:var(--space-md)}
-.author-avatar{width:38px;height:38px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
-  font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:800;color:var(--accent);flex-shrink:0}
-.author-name{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
-.author-title{font-size:12px;color:var(--muted);margin-top:2px}
-.stars{color:var(--accent);font-size:12px;margin-top:3px;letter-spacing:2px}
+/* ── 11. How We Work ── */
+#how-we-work{padding:var(--space-3xl) 0;
+  background:var(--surface);
+  background-image:
+    radial-gradient(ellipse at 50% 50%, rgba(0,212,170,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse at 20% 50%, rgba(0,212,170,0.03) 0%, transparent 55%)}
+#how-we-work .section-header{margin-bottom:var(--space-2xl)}
+.hww-sub{font-size:15px;color:var(--muted);margin-top:var(--space-sm);line-height:1.6}
+.hww-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;padding-top:var(--space-lg)}
+.hww-grid::before{content:'';position:absolute;top:calc(var(--space-lg) + 28px);left:calc(100% / 6 + 28px);right:calc(100% / 6 + 28px);height:1px;background:rgba(0,212,170,0.2);z-index:0}
+.hww-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 var(--space-lg);position:relative;z-index:1}
+.hww-circle{width:56px;height:56px;border-radius:50%;background:var(--surface2);border:1px solid rgba(0,212,170,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--accent);
+  margin-bottom:var(--space-xl);
+  box-shadow:0 0 0 8px rgba(0,212,170,0.05),0 0 24px rgba(0,212,170,0.08)}
+.hww-step h3{font-size:19px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
+.hww-step p{font-size:13px;color:var(--muted);line-height:1.7}
 
 /* ── 12. About ── */
 #about{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
@@ -334,9 +332,15 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── 16. Media Queries ── */
+@media(max-width:1240px){
+  .services-grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:1024px){
   .container,.nav-inner{padding:0 var(--space-lg)}
-  .services-grid,.case-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid{grid-template-columns:repeat(3,1fr)}
+  .case-grid{grid-template-columns:repeat(2,1fr)}
+  .hww-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .hww-grid::before{display:none}
   .steps-list{grid-template-columns:repeat(2,1fr);gap:var(--space-2xl)}
   .steps-list::before{display:none}
   .about-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
@@ -351,8 +355,10 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .hero-right{display:none}
   .hero-title{font-size:clamp(28px,7vw,42px)}
   .stats-row{grid-template-columns:1fr;gap:var(--space-xl);text-align:left}
-  .services-grid,.case-grid,.testimonials-grid{grid-template-columns:1fr}
-  .service-card{padding:1.5rem 1.25rem}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .case-grid{grid-template-columns:1fr}
+  .hww-step{padding:0}
+  .service-card{padding:1.25rem 1rem}
   .steps-list{grid-template-columns:1fr}
   .values-row{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr}
@@ -364,6 +370,9 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .container,.nav-inner{padding:0 20px}
   .contact-form-wrap{padding:24px 20px}
   .contact-grid-2{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .services-grid{grid-template-columns:1fr}
 }
 
 /* ── 17. Reduced Motion ── */
@@ -391,6 +400,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
           <a href="web-design.html"><span class="dd-dot"></span>Web Design</a>
           <a href="rag-chatbot.html"><span class="dd-dot"></span>RAG Chatbot</a>
           <a href="automation.html"><span class="dd-dot"></span>Automation</a>
+          <a href="ai-voice-agent.html"><span class="dd-dot"></span>AI Voice Agent</a>
+          <a href="ad-automation.html"><span class="dd-dot"></span>Ad Automation</a>
         </div>
       </li>
       <li><a href="#how-it-works">Work</a></li>
@@ -470,16 +481,16 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   <div class="container">
     <div class="stats-row">
       <div class="stat reveal">
-        <span class="stat-num">50+</span>
-        <span class="stat-label">Projects Delivered</span>
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Automations Live</span>
       </div>
       <div class="stat reveal">
-        <span class="stat-num">3</span>
-        <span class="stat-label">Continents Served</span>
+        <span class="stat-num">48h</span>
+        <span class="stat-label">Average Delivery</span>
       </div>
       <div class="stat reveal">
         <span class="stat-num">100%</span>
-        <span class="stat-label">Client Retention</span>
+        <span class="stat-label">Founder Access</span>
       </div>
     </div>
     <div class="logo-strip">
@@ -497,53 +508,43 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow">What We Build</span>
-      <h2>Three services.<br>Zero guesswork.</h2>
+      <h2>Five services.<br>Zero guesswork.</h2>
     </div>
     <div class="services-grid">
 
       <article class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
+        <div class="service-num">01</div>
         <h3>Web Design &amp; Development</h3>
-        <p class="service-subtitle">Your website, live in 3 days.</p>
-        <div class="service-features">
-          <span class="service-feature">Mobile-first &amp; fully responsive</span>
-          <span class="service-feature">SEO optimized from day one</span>
-          <span class="service-feature">Conversion-focused layouts</span>
-          <span class="service-feature">CMS included</span>
-        </div>
-        <a href="web-design.html" class="btn-ghost">Learn More →</a>
+        <p class="service-desc">Modern, fast websites built to convert. From zero to live in 3 days.</p>
+        <a href="web-design.html" class="service-link">Learn More →</a>
       </article>
 
       <article class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
-        </div>
+        <div class="service-num">02</div>
         <h3>RAG Chatbot &amp; AI Integration</h3>
-        <p class="service-subtitle">An AI that knows your business inside out.</p>
-        <div class="service-features">
-          <span class="service-feature">Trained on your own data</span>
-          <span class="service-feature">24/7 availability, any language</span>
-          <span class="service-feature">Lead qualification built-in</span>
-          <span class="service-feature">Integrates with your existing tools</span>
-        </div>
-        <a href="rag-chatbot.html" class="btn-ghost">Learn More →</a>
+        <p class="service-desc">An AI trained on your data — answers questions, qualifies leads, 24/7.</p>
+        <a href="rag-chatbot.html" class="service-link">Learn More →</a>
       </article>
 
       <article class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-        </div>
+        <div class="service-num">03</div>
         <h3>Automation &amp; Workflows</h3>
-        <p class="service-subtitle">Stop doing manually what machines can do.</p>
-        <div class="service-features">
-          <span class="service-feature">CRM &amp; pipeline integration</span>
-          <span class="service-feature">Email &amp; follow-up automation</span>
-          <span class="service-feature">Lead collection &amp; routing</span>
-          <span class="service-feature">Custom workflow design</span>
-        </div>
-        <a href="automation.html" class="btn-ghost">Learn More →</a>
+        <p class="service-desc">Eliminate manual work. Lead collection, emails, CRM — all automated.</p>
+        <a href="automation.html" class="service-link">Learn More →</a>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-num">04</div>
+        <h3>AI Voice Agent</h3>
+        <p class="service-desc">Your business answers calls 24/7 — automatically.</p>
+        <a href="ai-voice-agent.html" class="service-link">Learn More →</a>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-num">05</div>
+        <h3>Ad Automation</h3>
+        <p class="service-desc">Run smarter ads without touching them daily.</p>
+        <a href="ad-automation.html" class="service-link">Learn More →</a>
       </article>
 
     </div>
@@ -593,26 +594,26 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
       <article class="case-card reveal">
         <div class="case-img">
-          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restaurant interior" loading="lazy">
-          <span class="case-badge">F&amp;B</span>
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Real estate property" loading="lazy">
+          <span class="case-badge">Real Estate</span>
         </div>
         <div class="case-body">
-          <h3>München Restaurant Group</h3>
-          <p class="case-problem">Problem: No online presence, losing reservations to competitors.</p>
-          <div class="case-metric">+340%</div>
-          <div class="case-metric-label">reservations in 60 days</div>
-          <div class="case-solution">Web Design + AI Chatbot</div>
+          <h3>UK-based Real Estate Agency</h3>
+          <p class="case-problem">Problem: Manual lead follow-up causing slow response times and lost deals.</p>
+          <div class="case-metric">3×</div>
+          <div class="case-metric-label">faster lead response</div>
+          <div class="case-solution">Automation &amp; CRM Workflows</div>
         </div>
       </article>
 
       <article class="case-card reveal">
         <div class="case-img">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="E-commerce" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Online retail" loading="lazy">
           <span class="case-badge">Retail</span>
         </div>
         <div class="case-body">
-          <h3>Austin-based E-commerce</h3>
-          <p class="case-problem">Problem: Manual customer support consuming 40hrs/week.</p>
+          <h3>Sydney-based Online Retailer</h3>
+          <p class="case-problem">Problem: Manual customer support consuming 35 hours per week.</p>
           <div class="case-metric">80%</div>
           <div class="case-metric-label">support tickets automated</div>
           <div class="case-solution">RAG Chatbot Integration</div>
@@ -621,15 +622,15 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
       <article class="case-card reveal">
         <div class="case-img">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Agency office" loading="lazy">
-          <span class="case-badge">Services</span>
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="Finance and mortgage" loading="lazy">
+          <span class="case-badge">Finance</span>
         </div>
         <div class="case-body">
-          <h3>Berlin Marketing Agency</h3>
-          <p class="case-problem">Problem: Leads going cold due to slow follow-up.</p>
-          <div class="case-metric">3×</div>
-          <div class="case-metric-label">faster lead response time</div>
-          <div class="case-solution">Automation &amp; CRM Workflows</div>
+          <h3>UK Mortgage Brokerage</h3>
+          <p class="case-problem">Problem: No digital presence, losing leads to competitors daily.</p>
+          <div class="case-metric">+220%</div>
+          <div class="case-metric-label">qualified leads in 90 days</div>
+          <div class="case-solution">Web Design + AI Chatbot</div>
         </div>
       </article>
 
@@ -637,53 +638,33 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
-<!-- ── 06 TESTIMONIALS ── -->
-<section id="testimonials">
+<!-- ── 06 HOW WE WORK ── -->
+<section id="how-we-work">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-eyebrow">Testimonials</span>
-      <h2>What our clients say</h2>
+      <span class="section-eyebrow">How We Work</span>
+      <h2>Simple process. Real results.</h2>
+      <p class="hww-sub">From first call to live system in days — not months.</p>
     </div>
-    <div class="testimonials-grid">
+    <div class="hww-grid">
 
-      <article class="testimonial-card reveal">
-        <span class="quote-mark" aria-hidden="true">"</span>
-        <p>"Coremagna delivered our website in 4 days. The chatbot alone paid for itself in the first month — it answers 80% of reservation questions without anyone touching a keyboard."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" aria-hidden="true">MB</div>
-          <div>
-            <div class="author-name">Marco Berger</div>
-            <div class="author-title">CEO, Berger Consulting — Germany</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          </div>
-        </div>
-      </article>
+      <div class="hww-step reveal">
+        <div class="hww-circle">01</div>
+        <h3>Free Audit</h3>
+        <p>We map your current bottlenecks and identify the highest-ROI opportunities. No pitch — just diagnosis.</p>
+      </div>
 
-      <article class="testimonial-card reveal">
-        <span class="quote-mark" aria-hidden="true">"</span>
-        <p>"Finally an agency that speaks business, not tech jargon. They shipped in a week and the results were immediate. Our conversion rate went from 1.8% to 4.2% in 30 days."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" aria-hidden="true">SM</div>
-          <div>
-            <div class="author-name">Sarah Mitchell</div>
-            <div class="author-title">Founder, Mitchell Retail Co. — USA</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          </div>
-        </div>
-      </article>
+      <div class="hww-step reveal">
+        <div class="hww-circle">02</div>
+        <h3>We Build</h3>
+        <p>Fixed price. You see progress daily. Most projects go live within 48 hours.</p>
+      </div>
 
-      <article class="testimonial-card reveal">
-        <span class="quote-mark" aria-hidden="true">"</span>
-        <p>"The automation workflows they built save us 15 hours every single week. Best investment we've made this year — ROI was clear within the first month."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" aria-hidden="true">LH</div>
-          <div>
-            <div class="author-name">Lukas Hoffmann</div>
-            <div class="author-title">Managing Director, Hoffmann GmbH — Austria</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          </div>
-        </div>
-      </article>
+      <div class="hww-step reveal">
+        <div class="hww-circle">03</div>
+        <h3>You Grow</h3>
+        <p>We measure ROI, not hours billed. First clients get direct founder access throughout.</p>
+      </div>
 
     </div>
   </div>
@@ -697,28 +678,31 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <h2 class="reveal">Built to deliver,<br>not to impress.</h2>
     </div>
     <div class="about-right">
-      <p class="reveal">Coremagna is a remote-first digital agency helping small and medium businesses in the US and Europe compete with enterprise-level digital infrastructure. We move fast, communicate clearly, and deliver results — not excuses.</p>
+      <p class="reveal">I didn't come from a tech background or a prestigious university. I started working after high school — retail, sales, anything that kept me moving. But from day one, I had one goal: build something of my own. Not a job. Not a career. A business I actually controlled.</p>
+      <p class="reveal">Between 2020 and 2025, I ran Amazon and Etsy stores. At my peak, they were working. Then platform fees changed, algorithms shifted, and I realised something uncomfortable: I was building on someone else's land. I needed something more durable — a business that couldn't be wiped out by a policy update at 2am.</p>
+      <p class="reveal">So I started studying where the world was actually heading. That's when I found automation and AI. I didn't just read about it — I rebuilt my own operations with it first. Inventory management, customer follow-ups, order processing. When I saw what it could do to a small operation, I knew other businesses needed this too. Most of them just didn't know it existed yet.</p>
+      <p class="reveal">I cold-called local companies. I walked into offices uninvited. I sat across from people who had never heard the word 'automation' and showed them what their business could look like in 48 hours. I got rejected more times than I can count — and I kept going anyway. Coremagna is what that stubbornness built: a lean, founder-run agency with no account managers, no bloated teams, and no tolerance for work that doesn't move the needle. You talk to me. I build it. That's the whole model.</p>
       <div class="values-row">
         <div class="value reveal">
           <div class="value-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <h4>Speed</h4>
-          <p>3-day website launch. 1-day chatbot setup. No delays, no excuses.</p>
+          <h4>Outpace your competitors</h4>
+          <p>While others are still doing it manually, your systems run 24/7.</p>
         </div>
         <div class="value reveal">
           <div class="value-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v3l2 2"/></svg>
           </div>
-          <h4>Transparency</h4>
-          <p>Fixed pricing, clear timelines. You know exactly what you're paying for.</p>
+          <h4>Save 20+ hours per week</h4>
+          <p>Automate the repetitive work. Your team focuses on what actually grows revenue.</p>
         </div>
         <div class="value reveal">
           <div class="value-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
           </div>
-          <h4>ROI Focus</h4>
-          <p>Every decision is measured against your business outcomes. Not aesthetics.</p>
+          <h4>More revenue, same team</h4>
+          <p>Better follow-up, faster response, zero leads falling through the cracks.</p>
         </div>
       </div>
     </div>
@@ -916,6 +900,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
           <li><a href="web-design.html">Web Design</a></li>
           <li><a href="rag-chatbot.html">RAG Chatbot</a></li>
           <li><a href="automation.html">Automation</a></li>
+          <li><a href="ai-voice-agent.html">AI Voice Agent</a></li>
+          <li><a href="ad-automation.html">Ad Automation</a></li>
         </ul>
       </div>
       <div class="footer-col">
