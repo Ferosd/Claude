@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(node -e ' *)",
-      "Bash('.nav-dropdown > a')"
+      "Bash('.nav-dropdown > a')",
+      "Bash(node -e \"require\\('puppeteer'\\)\")",
+      "Bash(node screenshot.js)",
+      "Bash(node take_screenshots.js)",
+      "Bash(node take_screenshots2.js)"
     ]
   }
 }

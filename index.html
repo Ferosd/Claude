@@ -14,6 +14,14 @@
 <meta name="twitter:title" content="Coremagna — Web Design, AI &amp; Automation">
 <meta name="twitter:description" content="Web design, RAG chatbots, and automation that drives real business results.">
 <link rel="canonical" href="https://coremagna.com/">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +36,7 @@
   --accent-dim: rgba(0,212,170,0.12);
   --accent-glow:rgba(0,212,170,0.18);
   --text:       #F0F4F3;
-  --muted:      rgba(240,244,243,0.55);
+  --muted:      #9AB0B0;
   --border:     rgba(0,212,170,0.14);
   --border2:    rgba(255,255,255,0.07);
   --ease:       cubic-bezier(0.4,0,0.2,1);
@@ -145,7 +153,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .service-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 .hero-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(30px,4.2vw,56px);font-weight:800;color:#fff;line-height:1.02;letter-spacing:-0.03em;margin-bottom:18px}
-.hero-desc{font-size:15px;color:rgba(255,255,255,0.56);line-height:1.72;font-weight:300;max-width:460px}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,0.56);line-height:1.72;font-weight:400;max-width:460px}
 .hero-right{text-align:right}
 .hero-right.pre-entrance{opacity:0;transform:translateY(12px)}
 .hero-right.entered{opacity:1;transform:translateY(0);transition:opacity 0.55s var(--ease) 0.1s,transform 0.55s var(--ease) 0.1s}
@@ -190,7 +198,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .service-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 1px 2px rgba(0,212,170,0.06),0 4px 12px rgba(0,212,170,0.1),0 24px 48px rgba(0,212,170,0.1)}
 .service-num{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.14em;color:rgba(0,212,170,0.5);text-transform:uppercase;margin-bottom:var(--space-sm)}
 .service-card h3{font-size:17px;font-weight:800;color:var(--text);line-height:1.2}
-.service-desc{font-size:13px;color:var(--muted);line-height:1.6;flex:1}
+.service-desc{font-size:1rem;color:var(--muted);line-height:1.6;flex:1}
 .service-link{font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:0.04em;margin-top:var(--space-md);display:inline-flex;align-items:center;gap:4px;
   transition:color 0.2s var(--ease),gap 0.2s var(--ease)}
 .service-link:hover{color:#00f0c4;gap:8px}
@@ -209,7 +217,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--accent);margin-bottom:var(--space-xl);flex-shrink:0;
   box-shadow:0 0 0 8px rgba(0,212,170,0.06),0 0 24px rgba(0,212,170,0.1)}
 .step h3{font-size:17px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
-.step p{font-size:13px;color:var(--muted);line-height:1.65}
+.step p{font-size:1rem;color:var(--muted);line-height:1.65}
 
 /* ── 10. Case Studies ── */
 #case-studies{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
@@ -224,7 +232,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   padding:3px 10px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:700;font-family:'Cabinet Grotesk',sans-serif;z-index:1}
 .case-body{padding:var(--space-xl)}
 .case-body h3{font-size:18px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
-.case-problem{font-size:13px;color:var(--muted);margin-bottom:var(--space-lg)}
+.case-problem{font-size:1rem;color:var(--muted);margin-bottom:var(--space-lg)}
 .case-metric{font-family:'Cabinet Grotesk',sans-serif;font-size:32px;font-weight:800;color:var(--accent);letter-spacing:-0.04em;line-height:1}
 .case-metric-label{font-size:12px;color:var(--muted);margin-top:4px}
 .case-solution{font-size:12px;color:rgba(0,212,170,0.6);margin-top:var(--space-md);font-weight:500;letter-spacing:0.04em;text-transform:uppercase;font-family:'Cabinet Grotesk',sans-serif}
@@ -245,19 +253,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   margin-bottom:var(--space-xl);
   box-shadow:0 0 0 8px rgba(0,212,170,0.05),0 0 24px rgba(0,212,170,0.08)}
 .hww-step h3{font-size:19px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
-.hww-step p{font-size:13px;color:var(--muted);line-height:1.7}
+.hww-step p{font-size:1rem;color:var(--muted);line-height:1.7}
 
 /* ── 12. About ── */
 #about{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
-.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--space-3xl);align-items:start}
-.about-left h2{font-size:clamp(30px,3.5vw,50px);font-weight:800;color:var(--text)}
-.about-right p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:var(--space-2xl)}
-.values-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
-.value{display:flex;flex-direction:column;gap:var(--space-sm)}
-.value-icon{width:36px;height:36px;border-radius:8px;background:var(--accent-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
-.value-icon svg{width:18px;height:18px;stroke:var(--accent)}
-.value h4{font-size:14px;font-weight:800;color:var(--text)}
-.value p{font-size:13px;color:var(--muted);line-height:1.6}
+.about-2col{display:grid;grid-template-columns:auto 1fr;gap:var(--space-3xl);align-items:start}
+.about-photo-wrap{display:flex;justify-content:center;padding-top:48px}
+.about-photo{width:280px;height:280px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,212,170,0.3);box-shadow:0 0 40px rgba(0,212,170,0.12);flex-shrink:0}
+.about-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:filter 0.6s cubic-bezier(0.4,0,0.2,1)}
+.about-photo:hover img{filter:grayscale(0%)}
+.about-text p{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:var(--space-lg)}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border:1px solid rgba(0,212,170,0.4);color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;margin-bottom:var(--space-2xl);
+  transition:border-color 0.25s cubic-bezier(0.4,0,0.2,1),color 0.25s cubic-bezier(0.4,0,0.2,1),background 0.25s cubic-bezier(0.4,0,0.2,1)}
+.btn-outline:hover{border-color:var(--accent);background:var(--accent-dim);color:#00f0c4}
+.btn-outline:active{transform:scale(0.97)}
+.benefit-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
+.benefit-card{background:#0d1317;border-left:2px solid #00D4AA;padding:20px;border-radius:0 8px 8px 0}
+.benefit-card h4{font-size:14px;font-weight:800;color:var(--text);margin-bottom:var(--space-sm)}
+.benefit-card p{font-size:1rem;color:var(--muted);line-height:1.6}
 
 /* ── 13. FAQ ── */
 #faq{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
@@ -274,7 +287,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   transition:transform 0.3s var(--ease),color 0.3s var(--ease)}
 .faq-trigger[aria-expanded="true"] .faq-icon{transform:rotate(45deg);color:var(--accent)}
 .faq-panel{overflow:hidden;max-height:0}
-.faq-panel-inner{padding:0 0 var(--space-lg) 0;font-size:14px;color:var(--muted);line-height:1.8}
+.faq-panel-inner{padding:0 0 var(--space-lg) 0;font-size:1rem;color:var(--muted);line-height:1.8}
 
 /* ── 14. CTA ── */
 #cta{padding:var(--space-3xl) 0 calc(var(--space-3xl) + 20px);text-align:center;position:relative;overflow:hidden;
@@ -343,7 +356,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .hww-grid::before{display:none}
   .steps-list{grid-template-columns:repeat(2,1fr);gap:var(--space-2xl)}
   .steps-list::before{display:none}
-  .about-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .about-2col{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .about-photo-wrap{padding-top:0}
   .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
@@ -360,7 +374,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .hww-step{padding:0}
   .service-card{padding:1.25rem 1rem}
   .steps-list{grid-template-columns:1fr}
-  .values-row{grid-template-columns:1fr}
+  .benefit-cards{grid-template-columns:1fr}
+  .about-photo{width:200px;height:200px}
   .footer-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
   .footer-col a{display:flex;align-items:center;min-height:44px}
@@ -375,7 +390,119 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .services-grid{grid-template-columns:1fr}
 }
 
-/* ── 17. Reduced Motion ── */
+/* ── 17. Tools Section ── */
+#tools{
+  padding:100px 0;
+  background:var(--surface);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 70% 50%, rgba(0,212,170,0.04) 0%, transparent 60%)
+}
+.tools-inner{max-width:1240px;margin:0 auto;padding:0 var(--space-xl);display:grid;grid-template-columns:40% 60%;gap:var(--space-2xl);align-items:center}
+.tools-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
+.tools-heading{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.05}
+.tools-accent-line{width:48px;height:2px;background:#00D4AA;margin-top:16px;margin-bottom:var(--space-lg)}
+.tools-body{font-size:1.1rem;color:var(--muted);max-width:42ch;line-height:1.8}
+.tools-right{overflow:hidden;display:flex;flex-direction:column;gap:var(--space-md)}
+.tools-track{display:flex;align-items:center;white-space:nowrap}
+.tools-track-1{animation:scrollLeft 35s linear infinite}
+.tools-track-2{animation:scrollRight 32s linear infinite}
+.tools-right.paused .tools-track-1,
+.tools-right.paused .tools-track-2{animation-play-state:paused}
+.tool-logo{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  margin:0 16px;
+  flex-shrink:0;
+  cursor:default
+}
+.tool-logo-circle{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:#0d1317;
+  border:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  color:#00D4AA;
+  transition:border-color 0.25s cubic-bezier(0.4,0,0.2,1),box-shadow 0.25s cubic-bezier(0.4,0,0.2,1)
+}
+.tool-logo:hover .tool-logo-circle{
+  border-color:rgba(0,212,170,0.4);
+  box-shadow:0 0 16px rgba(0,212,170,0.12)
+}
+.tool-logo-name{
+  font-size:11px;
+  color:#9AB0B0;
+  text-align:center;
+  white-space:nowrap
+}
+@keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scrollRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(max-width:768px){
+  .tools-inner{grid-template-columns:1fr;gap:var(--space-2xl)}
+}
+
+/* ── 18. Workflow Section ── */
+#rolling-circle{
+  padding:120px 0;
+  background:var(--bg);
+  background-image:radial-gradient(ellipse at 50% 0%, rgba(0,212,170,0.06) 0%, transparent 60%)
+}
+.wf-container{max-width:1240px;margin:0 auto;padding:0 var(--space-xl)}
+.wf-header{text-align:center;margin-bottom:64px}
+.wf-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
+.wf-heading{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.1}
+.wf-steps{display:flex;align-items:center;gap:0}
+.wf-step{flex:1;min-width:0}
+.wf-card{
+  background:#0d1317;
+  border:1px solid rgba(0,212,170,0.12);
+  border-radius:16px;
+  padding:24px 20px;
+  text-align:center;
+  transition:border-color 0.4s cubic-bezier(0.4,0,0.2,1),box-shadow 0.4s cubic-bezier(0.4,0,0.2,1)
+}
+.wf-step.active .wf-card{
+  border-color:rgba(0,212,170,0.6);
+  box-shadow:0 0 24px rgba(0,212,170,0.15)
+}
+.wf-step-num{
+  width:40px;height:40px;border-radius:50%;
+  background:#00D4AA;color:#060a0e;
+  font-family:'Cabinet Grotesk',sans-serif;font-size:1rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+  transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)
+}
+.wf-step.active .wf-step-num{transform:scale(1.1)}
+.wf-icon{margin-bottom:14px;display:flex;justify-content:center}
+.wf-icon svg{width:24px;height:24px;stroke:#00D4AA;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.wf-card h3{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-0.01em}
+.wf-card p{font-size:0.875rem;color:#9AB0B0;line-height:1.65}
+.wf-connector{
+  width:44px;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding-bottom:24px
+}
+.wf-connector-line{width:100%;height:2px;background:rgba(0,212,170,0.2)}
+.wf-connector-chevron{margin-top:-1px}
+.wf-connector-chevron svg{width:12px;height:12px;stroke:rgba(0,212,170,0.35);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:900px){
+  .wf-steps{flex-direction:column;align-items:stretch;gap:0}
+  .wf-connector{width:auto;flex-direction:row;padding-bottom:0;padding-right:20px;height:40px}
+  .wf-connector-line{width:2px;height:100%;background:rgba(0,212,170,0.2)}
+  .wf-connector-chevron{margin-top:0;margin-left:-1px}
+  .wf-connector-chevron svg{transform:rotate(90deg)}
+}
+
+/* ── 19. Reduced Motion ── */
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
   .reveal{opacity:1;transform:none}
@@ -499,6 +626,150 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <div class="client-logo reveal">Mitchell Co.</div>
       <div class="client-logo reveal">Nardal Tech</div>
       <div class="client-logo reveal">Solven Media</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TOOLS SECTION ── -->
+<section id="tools" aria-label="Our tool stack">
+  <div class="tools-inner">
+    <div class="tools-left reveal">
+      <span class="tools-eyebrow">OUR STACK</span>
+      <h2 class="tools-heading">We're obsessed with results, not tools.</h2>
+      <div class="tools-accent-line"></div>
+      <p class="tools-body">Most agencies sell you a stack. We diagnose your bottlenecks, build what actually fixes them, and measure everything against your revenue — not our billable hours.</p>
+    </div>
+    <div class="tools-right reveal" id="toolsRight">
+      <div class="tools-track tools-track-1" id="toolsTrack1">
+        <div class="tool-logo"><div class="tool-logo-circle">n8n</div><span class="tool-logo-name">n8n</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">MK</div><span class="tool-logo-name">Make</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">ZP</div><span class="tool-logo-name">Zapier</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AT</div><span class="tool-logo-name">Airtable</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">HS</div><span class="tool-logo-name">HubSpot</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">SF</div><span class="tool-logo-name">Salesforce</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">PD</div><span class="tool-logo-name">Pipedrive</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">IN</div><span class="tool-logo-name">Instantly</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AP</div><span class="tool-logo-name">Apollo</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AI</div><span class="tool-logo-name">OpenAI</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AN</div><span class="tool-logo-name">Anthropic</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">GM</div><span class="tool-logo-name">Gemini</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">n8n</div><span class="tool-logo-name">n8n</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">MK</div><span class="tool-logo-name">Make</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">ZP</div><span class="tool-logo-name">Zapier</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AT</div><span class="tool-logo-name">Airtable</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">HS</div><span class="tool-logo-name">HubSpot</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">SF</div><span class="tool-logo-name">Salesforce</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">PD</div><span class="tool-logo-name">Pipedrive</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">IN</div><span class="tool-logo-name">Instantly</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AP</div><span class="tool-logo-name">Apollo</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AI</div><span class="tool-logo-name">OpenAI</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AN</div><span class="tool-logo-name">Anthropic</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">GM</div><span class="tool-logo-name">Gemini</span></div>
+      </div>
+      <div class="tools-track tools-track-2" id="toolsTrack2">
+        <div class="tool-logo"><div class="tool-logo-circle">SL</div><span class="tool-logo-name">Slack</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">GL</div><span class="tool-logo-name">Gmail</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">GC</div><span class="tool-logo-name">Google Cal</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">NT</div><span class="tool-logo-name">Notion</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">TF</div><span class="tool-logo-name">Typeform</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">WF</div><span class="tool-logo-name">Webflow</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">ST</div><span class="tool-logo-name">Stripe</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">GS</div><span class="tool-logo-name">Google Sheets</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">APF</div><span class="tool-logo-name">Apify</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">PP</div><span class="tool-logo-name">Perplexity</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AC</div><span class="tool-logo-name">Activepieces</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">WH</div><span class="tool-logo-name">Webhooks</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">SL</div><span class="tool-logo-name">Slack</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">GL</div><span class="tool-logo-name">Gmail</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">GC</div><span class="tool-logo-name">Google Cal</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">NT</div><span class="tool-logo-name">Notion</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">TF</div><span class="tool-logo-name">Typeform</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">WF</div><span class="tool-logo-name">Webflow</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">ST</div><span class="tool-logo-name">Stripe</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">GS</div><span class="tool-logo-name">Google Sheets</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">APF</div><span class="tool-logo-name">Apify</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">PP</div><span class="tool-logo-name">Perplexity</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">AC</div><span class="tool-logo-name">Activepieces</span></div>
+        <div class="tool-logo"><div class="tool-logo-circle">WH</div><span class="tool-logo-name">Webhooks</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORKFLOW SECTION ── -->
+<section id="rolling-circle" aria-label="How automation works">
+  <div class="wf-container">
+    <div class="wf-header reveal">
+      <span class="wf-eyebrow">HOW IT WORKS</span>
+      <h2 class="wf-heading">From first contact to closed deal —<br>automatically.</h2>
+    </div>
+    <div class="wf-steps">
+
+      <div class="wf-step" data-step="0">
+        <div class="wf-card">
+          <div class="wf-step-num">01</div>
+          <div class="wf-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0 1 13 0"/></svg>
+          </div>
+          <h3>Lead Arrives</h3>
+          <p>A potential client fills out your contact form or calls your number.</p>
+        </div>
+      </div>
+
+      <div class="wf-connector" aria-hidden="true">
+        <div class="wf-connector-line"></div>
+        <div class="wf-connector-chevron">
+          <svg viewBox="0 0 12 12"><polyline points="4,2 8,6 4,10"/></svg>
+        </div>
+      </div>
+
+      <div class="wf-step" data-step="1">
+        <div class="wf-card">
+          <div class="wf-step-num">02</div>
+          <div class="wf-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v4c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 9v4c0 1.66 4.03 3 9 3s9-1.34 9-3V9"/><path d="M3 13v4c0 1.66 4.03 3 9 3s9-1.34 9-3v-4"/></svg>
+          </div>
+          <h3>Auto CRM Entry</h3>
+          <p>Contact details are instantly saved to your CRM. Zero manual entry.</p>
+        </div>
+      </div>
+
+      <div class="wf-connector" aria-hidden="true">
+        <div class="wf-connector-line"></div>
+        <div class="wf-connector-chevron">
+          <svg viewBox="0 0 12 12"><polyline points="4,2 8,6 4,10"/></svg>
+        </div>
+      </div>
+
+      <div class="wf-step" data-step="2">
+        <div class="wf-card">
+          <div class="wf-step-num">03</div>
+          <div class="wf-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3>Client Notified</h3>
+          <p>An automated welcome email or SMS reaches the lead within 60 seconds.</p>
+        </div>
+      </div>
+
+      <div class="wf-connector" aria-hidden="true">
+        <div class="wf-connector-line"></div>
+        <div class="wf-connector-chevron">
+          <svg viewBox="0 0 12 12"><polyline points="4,2 8,6 4,10"/></svg>
+        </div>
+      </div>
+
+      <div class="wf-step" data-step="3">
+        <div class="wf-card">
+          <div class="wf-step-num">04</div>
+          <div class="wf-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>AI Lead Score</h3>
+          <p>Your team receives a BANT-scored summary from AI. Hot leads first.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -672,37 +943,31 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
 <!-- ── 07 ABOUT ── -->
 <section id="about">
-  <div class="container about-grid">
-    <div class="about-left">
-      <span class="section-eyebrow reveal">Who We Are</span>
-      <h2 class="reveal">Built to deliver,<br>not to impress.</h2>
-    </div>
-    <div class="about-right">
-      <p class="reveal">I didn't come from a tech background or a prestigious university. I started working after high school — retail, sales, anything that kept me moving. But from day one, I had one goal: build something of my own. Not a job. Not a career. A business I actually controlled.</p>
-      <p class="reveal">Between 2020 and 2025, I ran Amazon and Etsy stores. At my peak, they were working. Then platform fees changed, algorithms shifted, and I realised something uncomfortable: I was building on someone else's land. I needed something more durable — a business that couldn't be wiped out by a policy update at 2am.</p>
-      <p class="reveal">So I started studying where the world was actually heading. That's when I found automation and AI. I didn't just read about it — I rebuilt my own operations with it first. Inventory management, customer follow-ups, order processing. When I saw what it could do to a small operation, I knew other businesses needed this too. Most of them just didn't know it existed yet.</p>
-      <p class="reveal">I cold-called local companies. I walked into offices uninvited. I sat across from people who had never heard the word 'automation' and showed them what their business could look like in 48 hours. I got rejected more times than I can count — and I kept going anyway. Coremagna is what that stubbornness built: a lean, founder-run agency with no account managers, no bloated teams, and no tolerance for work that doesn't move the needle. You talk to me. I build it. That's the whole model.</p>
-      <div class="values-row">
-        <div class="value reveal">
-          <div class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <h4>Outpace your competitors</h4>
-          <p>While others are still doing it manually, your systems run 24/7.</p>
+  <div class="container">
+    <div class="about-2col">
+      <div class="about-photo-wrap reveal">
+        <div class="about-photo">
+          <img src="Ferit profil.png" alt="Ferit, founder of Coremagna" loading="lazy">
         </div>
-        <div class="value reveal">
-          <div class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v3l2 2"/></svg>
+      </div>
+      <div class="about-text">
+        <span class="section-eyebrow reveal">Who We Are</span>
+        <p class="reveal">I didn't come from a tech background or a prestigious university. I started working after high school — retail, sales, anything that kept me moving. But from day one, I had one goal: build something of my own. Not a job. Not a career. A business I actually controlled.</p>
+        <p class="reveal">Between 2020 and 2025, I ran Amazon and Etsy stores. At my peak, they were working. Then platform fees changed, algorithms shifted, and I realised something uncomfortable: I was building on someone else's land.</p>
+        <a href="/about.html" class="btn-outline reveal">Read My Full Story →</a>
+        <div class="benefit-cards">
+          <div class="benefit-card reveal">
+            <h4>Outpace your competitors</h4>
+            <p>While others are still doing it manually, your systems run 24/7.</p>
           </div>
-          <h4>Save 20+ hours per week</h4>
-          <p>Automate the repetitive work. Your team focuses on what actually grows revenue.</p>
-        </div>
-        <div class="value reveal">
-          <div class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          <div class="benefit-card reveal">
+            <h4>Save 20+ hours per week</h4>
+            <p>Automate the repetitive work. Your team focuses on what grows revenue.</p>
           </div>
-          <h4>More revenue, same team</h4>
-          <p>Better follow-up, faster response, zero leads falling through the cracks.</p>
+          <div class="benefit-card reveal">
+            <h4>More revenue, same team</h4>
+            <p>Better follow-up, faster response, zero leads falling through the cracks.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1343,6 +1608,35 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       btn.textContent = 'Send Message →';
     }
   });
+})();
+
+/* ═══════════════════════════════════════════════
+   MODULE 7 — Tools Scroll Pause on Hover
+═══════════════════════════════════════════════ */
+(function() {
+  const toolsRight = document.getElementById('toolsRight');
+  if (!toolsRight) return;
+  toolsRight.addEventListener('mouseenter', function() {
+    toolsRight.classList.add('paused');
+  });
+  toolsRight.addEventListener('mouseleave', function() {
+    toolsRight.classList.remove('paused');
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   MODULE 8 — Workflow Step Highlight
+═══════════════════════════════════════════════ */
+(function() {
+  const steps = document.querySelectorAll('.wf-step');
+  if (!steps.length) return;
+  let active = 0;
+  steps[active].classList.add('active');
+  setInterval(function() {
+    steps[active].classList.remove('active');
+    active = (active + 1) % steps.length;
+    steps[active].classList.add('active');
+  }, 2000);
 })();
 </script>
 <script src="widget.js" defer></script>
