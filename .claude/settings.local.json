@@ -6,7 +6,9 @@
       "Bash(node -e \"require\\('puppeteer'\\)\")",
       "Bash(node screenshot.js)",
       "Bash(node take_screenshots.js)",
-      "Bash(node take_screenshots2.js)"
+      "Bash(node take_screenshots2.js)",
+      "Bash(grep -E \"\\\\.html$\")",
+      "Bash(start *)"
     ]
   }
 }

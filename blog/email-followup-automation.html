@@ -1,131 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Automate Email Follow-Ups and Never Lose a Lead — Coremagna</title>
-<meta name="description" content="Set up automated email sequences that follow up with leads automatically. Step-by-step guide for SMBs.">
-<link rel="canonical" href="https://coremagna.com/blog/email-followup-automation">
-<meta property="og:title" content="How to Automate Email Follow-Ups and Never Lose a Lead">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://coremagna.com/blog/email-followup-automation">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-7MDPMWZ158');
-</script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"How to Automate Email Follow-Ups and Never Lose a Lead","author":{"@type":"Organization","name":"Coremagna"},"publisher":{"@type":"Organization","name":"Coremagna","url":"https://coremagna.com"},"datePublished":"2025-03-12","description":"Set up automated email sequences that follow up with leads automatically. Step-by-step guide for SMBs."}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"Coremagna","url":"https://coremagna.com","email":"ferit@coremagna.com","description":"Web design, AI chatbots and automation agency for SMBs","areaServed":["US","DE","AT","CH","GB"]}
-</script>
-<style>
-:root{--bg:#060a0e;--surface:#0d1317;--surface2:#111920;--accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);--text:#F0F4F3;--muted:rgba(240,244,243,0.55);--border:rgba(0,212,170,0.14);--border2:rgba(255,255,255,0.07);--ease:cubic-bezier(0.4,0,0.2,1)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-ul,ol{list-style:none}
-h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
-button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.035}
-.container{max-width:1240px;margin:0 auto;padding:0 48px}
-.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
-.btn-primary:hover{background:#00f0c4;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,212,170,0.3)}
-#mainNav{position:sticky;top:0;z-index:1000;background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.nav-inner{max-width:1240px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
-.logo-core{transition:letter-spacing 0.3s var(--ease)}
-.logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
-.logo:hover .logo-core{letter-spacing:0.05em}
-.logo:hover .logo-magna{color:#fff}
-.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s var(--ease)}
-.logo:hover .logo-dot{transform:scale(2.5);opacity:0}
-@keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
-
-.nav-logo .accent{color:var(--accent)}
-
-.nav-links{display:flex;gap:48px;align-items:center}
-.nav-links a{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
-.nav-links a:hover{color:var(--text)}
-.nav-dropdown{position:relative}
-.nav-dropdown>a{display:flex;align-items:center;gap:4px}
-.nav-dropdown>a::after{content:'';display:block;width:10px;height:6px;background:currentColor;clip-path:polygon(0 0,100% 0,50% 100%);opacity:0.5;transition:opacity 0.2s var(--ease)}
-.nav-dropdown:hover>a::after{opacity:1}
-.nav-dropdown-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-8px);background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:8px;min-width:200px;opacity:0;pointer-events:none;transition:opacity 0.2s var(--ease),transform 0.2s var(--ease)}
-.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
-.nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--muted);transition:background 0.15s var(--ease),color 0.15s var(--ease)}
-.nav-dropdown-menu a:hover{background:var(--surface2);color:var(--text)}
-.nav-dropdown-menu a span.dd-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
-.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
-.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
-.mobile-nav.visible{opacity:1;pointer-events:all}
-.mobile-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
-.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
-.mobile-nav a:hover{color:var(--accent)}
-.mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:16px}
-footer{padding:80px 0 48px;border-top:1px solid var(--border2)}
-.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:80px}
-.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
-.footer-logo span{color:var(--accent)}
-.footer-tagline{font-size:13px;color:var(--muted);max-width:220px;line-height:1.65}
-.footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,244,243,0.35);margin-bottom:24px}
-.footer-col ul{display:flex;flex-direction:column;gap:8px}
-.footer-col a{font-size:13px;color:var(--muted);transition:color 0.2s var(--ease)}
-.footer-col a:hover{color:var(--text)}
-.footer-social{display:flex;gap:16px;margin-top:24px}
-.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
-.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
-.social-icon svg{width:16px;height:16px;fill:var(--muted)}
-.social-icon:hover svg{fill:var(--accent)}
-.footer-bottom{margin-top:80px;padding-top:24px;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
-.footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
-.post-hero{padding:120px 0 64px;background:linear-gradient(180deg,#060a0e 0%,#0a1012 100%);background-image:radial-gradient(ellipse at 50% 0%,rgba(0,212,170,0.06) 0%,transparent 60%)}
-.post-hero-inner{max-width:760px;margin:0 auto;text-align:center}
-.post-cat{display:inline-block;padding:3px 12px;border-radius:4px;background:var(--accent-dim);border:1px solid var(--border);font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
-.post-hero h1{font-size:clamp(28px,4vw,52px);color:var(--text);margin-bottom:20px}
-.post-meta{display:flex;align-items:center;gap:20px;justify-content:center;font-size:13px;color:var(--muted)}
-.post-meta .read-time{color:var(--accent);font-weight:500}
-.post-body{max-width:760px;margin:0 auto;padding:64px 0 80px}
-.post-body h2{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text);margin:48px 0 16px}
-.post-body h3{font-size:20px;font-weight:800;color:var(--text);margin:32px 0 12px}
-.post-body p{font-size:15px;color:rgba(240,244,243,0.8);line-height:1.8;margin-bottom:20px}
-.post-body ul,.post-body ol{margin:0 0 20px 0}
-.post-body li{font-size:15px;color:rgba(240,244,243,0.8);line-height:1.75;margin-bottom:8px;padding-left:24px;position:relative}
-.post-body li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:700}
-.post-body strong{color:var(--text);font-weight:600}
-.inline-cta{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.inline-cta p{font-size:15px;color:var(--text);font-weight:500;margin:0}
-.inline-cta a{flex-shrink:0}
-.post-table{width:100%;border-collapse:collapse;margin:24px 0}
-.post-table th{text-align:left;padding:12px 16px;background:var(--surface2);font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2)}
-.post-table td{padding:12px 16px;font-size:14px;color:rgba(240,244,243,0.8);border-bottom:1px solid var(--border2)}
-.post-table tr:hover td{background:var(--surface)}
-.post-cta{background:linear-gradient(180deg,#0a1012 0%,#060a0e 100%);background-image:radial-gradient(ellipse at 50% 100%,rgba(0,212,170,0.07) 0%,transparent 60%);padding:80px 0;text-align:center}
-.post-cta h2{font-size:clamp(28px,3.5vw,44px);color:var(--text);margin-bottom:16px;max-width:560px;margin-left:auto;margin-right:auto}
-.post-cta p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 32px}
-@media(max-width:768px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.post-body{padding:40px 24px 64px}.inline-cta{flex-direction:column;text-align:center}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.footer-col a{display:flex;align-items:center;min-height:44px}.footer-logo{text-align:center}.footer-tagline{text-align:center;max-width:100%}.footer-social{justify-content:center}.container{padding:0 20px}.nav-inner{padding:0 20px}}
-@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Automate Email Follow-Ups and Never Lose a Lead — Coremagna</title>
+  <meta name="description" content="80% of sales need 5+ follow-ups, but most businesses give up after one. Here's how to automate your follow-up sequences so no lead goes cold.">
+  <link rel="canonical" href="https://coremagna.com/blog/email-followup-automation.html">
+  <meta property="og:title" content="How to Automate Email Follow-Ups and Never Lose a Lead">
+  <meta property="og:description" content="80% of sales need 5+ follow-ups, but most businesses give up after one. Here's how to automate your follow-up sequences so no lead goes cold.">
+  <meta property="og:type" content="article">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7MDPMWZ158');</script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Automate Email Follow-Ups and Never Lose a Lead","author":{"@type":"Organization","name":"Coremagna"},"publisher":{"@type":"Organization","name":"Coremagna","url":"https://coremagna.com"},"datePublished":"2026-03-12","description":"80% of sales need 5+ follow-ups, but 44% of salespeople give up after one. Here's how to automate the rest."}</script>
+  <style>
+    :root{--bg:#060a0e;--surface:#0d1317;--surface2:#111920;--accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);--accent-glow:rgba(0,212,170,0.18);--text:#F0F4F3;--muted:rgba(240,244,243,0.55);--border:rgba(0,212,170,0.14);--border2:rgba(255,255,255,0.07);--ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.34,1.56,0.64,1)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    ul,ol{list-style:none}
+    h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+    button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.035}
+    .container{max-width:1240px;margin:0 auto;padding:0 48px}
+    .btn-primary{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;background:var(--accent);color:#060a0e;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+    .btn-primary:hover{background:#00f0c4;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,212,170,0.3)}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    #mainNav{position:sticky;top:0;z-index:1000;background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    .nav-inner{max-width:1240px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
+    .logo-core{transition:letter-spacing 0.3s var(--ease)}
+    .logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
+    .logo:hover .logo-core{letter-spacing:0.05em}
+    .logo:hover .logo-magna{color:#fff}
+    .logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s var(--ease)}
+    .logo:hover .logo-dot{transform:scale(2.5);opacity:0}
+    @keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+    .nav-links{display:flex;gap:48px;align-items:center}
+    .nav-links a{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+    .nav-links a:hover{color:var(--text)}
+    .nav-dropdown{position:relative}
+    .nav-dropdown>a{display:flex;align-items:center;gap:4px}
+    .nav-dropdown>a::after{content:'';display:block;width:10px;height:6px;background:currentColor;clip-path:polygon(0 0,100% 0,50% 100%);opacity:0.5;transition:opacity 0.2s var(--ease)}
+    .nav-dropdown:hover>a::after{opacity:1}
+    .nav-dropdown-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-8px);background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:8px;min-width:200px;opacity:0;pointer-events:none;transition:opacity 0.2s var(--ease),transform 0.2s var(--ease)}
+    .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+    .nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--muted);transition:background 0.15s var(--ease),color 0.15s var(--ease)}
+    .nav-dropdown-menu a:hover{background:var(--surface2);color:var(--text)}
+    .nav-dropdown-menu a span.dd-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+    .hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    .mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+    .mobile-nav.visible{opacity:1;pointer-events:all}
+    .mobile-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
+    .mobile-nav a{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
+    .mobile-nav a:hover{color:var(--accent)}
+    .mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:16px}
+    footer{padding:80px 0 48px;border-top:1px solid var(--border2)}
+    .footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:80px}
+    .footer-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
+    .footer-logo span{color:var(--accent)}
+    .footer-tagline{font-size:13px;color:var(--muted);max-width:220px;line-height:1.65}
+    .footer-col h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,244,243,0.35);margin-bottom:24px}
+    .footer-col ul{display:flex;flex-direction:column;gap:8px}
+    .footer-col a{font-size:13px;color:var(--muted);transition:color 0.2s var(--ease)}
+    .footer-col a:hover{color:var(--text)}
+    .footer-social{display:flex;gap:16px;margin-top:24px}
+    .social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
+    .social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+    .social-icon svg{width:16px;height:16px;fill:var(--muted)}
+    .social-icon:hover svg{fill:var(--accent)}
+    .footer-bottom{margin-top:80px;padding-top:24px;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+    .footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
+    .post-hero{padding:120px 0 64px;background:linear-gradient(180deg,#060a0e 0%,#0a1012 100%);background-image:radial-gradient(ellipse at 50% 0%,rgba(0,212,170,0.06) 0%,transparent 60%)}
+    .post-hero-inner{max-width:760px;margin:0 auto;text-align:center}
+    .post-cat{display:inline-block;padding:3px 12px;border-radius:4px;background:var(--accent-dim);border:1px solid var(--border);font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+    .post-hero h1{font-size:clamp(28px,4vw,52px);color:var(--text);margin-bottom:20px}
+    .post-meta{display:flex;align-items:center;gap:20px;justify-content:center;font-size:13px;color:var(--muted)}
+    .post-meta .read-time{color:var(--accent);font-weight:500}
+    .post-body{max-width:760px;margin:0 auto;padding:64px 0 80px}
+    .post-body h2{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text);margin:48px 0 16px}
+    .post-body h3{font-size:20px;font-weight:800;color:var(--text);margin:32px 0 12px}
+    .post-body p{font-size:15px;color:rgba(240,244,243,0.8);line-height:1.8;margin-bottom:20px}
+    .post-body ul,.post-body ol{margin:0 0 20px 0}
+    .post-body li{font-size:15px;color:rgba(240,244,243,0.8);line-height:1.75;margin-bottom:8px;padding-left:24px;position:relative}
+    .post-body ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:700}
+    .post-body ol{counter-reset:ol-counter}
+    .post-body ol li{counter-increment:ol-counter}
+    .post-body ol li::before{content:counter(ol-counter)'.';position:absolute;left:0;color:var(--accent);font-weight:700;font-family:'Plus Jakarta Sans',sans-serif}
+    .post-body strong{color:var(--text);font-weight:600}
+    .inline-cta{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .inline-cta p{font-size:15px;color:var(--text);font-weight:500;margin:0}
+    .inline-cta a{flex-shrink:0}
+    .post-table{width:100%;border-collapse:collapse;margin:24px 0}
+    .post-table th{text-align:left;padding:12px 16px;background:var(--surface2);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2)}
+    .post-table td{padding:12px 16px;font-size:14px;color:rgba(240,244,243,0.8);border-bottom:1px solid var(--border2)}
+    .post-table tr:hover td{background:var(--surface)}
+    .post-cta{background:linear-gradient(180deg,#0a1012 0%,#060a0e 100%);background-image:radial-gradient(ellipse at 50% 100%,rgba(0,212,170,0.07) 0%,transparent 60%);padding:80px 0;text-align:center}
+    .post-cta h2{font-size:clamp(28px,3.5vw,44px);color:var(--text);margin-bottom:16px;max-width:560px;margin-left:auto;margin-right:auto}
+    .post-cta p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 32px}
+    @media(max-width:768px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.post-body{padding:40px 24px 64px}.inline-cta{flex-direction:column;text-align:center}.container{padding:0 20px}.nav-inner{padding:0 20px}.footer-col a{display:flex;align-items:center;min-height:44px}.footer-logo{text-align:center}.footer-tagline{text-align:center;max-width:100%}.footer-social{justify-content:center}}
+    @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}.reveal{opacity:1;transform:none}}
+  </style>
 </head>
 <body>
+
 <nav id="mainNav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="../index.html" class="logo" aria-label="Coremagna home"><span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span></a>
+    <a href="../index.html" class="logo" aria-label="Coremagna home">
+      <span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
     <ul class="nav-links" role="list">
-      <li class="nav-dropdown"><a href="../index.html#services">Services</a><div class="nav-dropdown-menu"><a href="../web-design.html"><span class="dd-dot"></span>Web Design</a><a href="../rag-chatbot.html"><span class="dd-dot"></span>RAG Chatbot</a><a href="../automation.html"><span class="dd-dot"></span>Automation</a></div></li>
+      <li class="nav-dropdown">
+        <a href="../index.html#services">Services</a>
+        <div class="nav-dropdown-menu">
+          <a href="../web-design.html"><span class="dd-dot"></span>Web Design</a>
+          <a href="../rag-chatbot.html"><span class="dd-dot"></span>RAG Chatbot</a>
+          <a href="../automation.html"><span class="dd-dot"></span>Automation</a>
+        </div>
+      </li>
       <li><a href="../index.html#how-it-works">Work</a></li>
       <li><a href="../index.html#about">About</a></li>
       <li><a href="index.html">Blog</a></li>
@@ -136,111 +136,134 @@ footer{padding:80px 0 48px;border-top:1px solid var(--border2)}
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <ul role="list"><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#how-it-works">Work</a></li><li><a href="../index.html#about">About</a></li><li><a href="index.html">Blog</a></li><li><a href="../index.html#faq">FAQ</a></li><li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li></ul>
+  <ul role="list">
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#how-it-works">Work</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="index.html">Blog</a></li>
+    <li><a href="../index.html#faq">FAQ</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li>
+  </ul>
 </div>
 
 <main>
-<section class="post-hero">
+  <section class="post-hero">
+    <div class="container">
+      <div class="post-hero-inner">
+        <span class="post-cat reveal">Automation</span>
+        <h1 class="reveal">How to Automate Email Follow-Ups and Never Lose a Lead</h1>
+        <img src="https://source.unsplash.com/1200x630/?email,automation,marketing,workflow" alt="Email marketing automation workflow diagram on computer screen" loading="lazy" style="width:100%;height:420px;object-fit:cover;border-radius:12px;margin-bottom:2.5rem">
+        <div class="post-meta reveal">
+          <span class="read-time">7 min read</span>
+          <span>Mar 12, 2026</span>
+          <span>Coremagna</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="container">
-    <div class="post-hero-inner">
-      <span class="post-cat">Automation</span>
-      <h1>How to Automate Email Follow-Ups and Never Lose a Lead</h1>
-<img src="images/blog-img-7.jpg" alt="Email automation workflow sequence" loading="lazy" style="width:100%;height:420px;object-fit:cover;border-radius:12px;margin-bottom:2.5rem">
-      <div class="post-meta"><span class="read-time">7 min read</span><span>Mar 12, 2025</span><span>Coremagna</span></div>
+    <div class="post-body">
+
+      <p class="reveal">80% of sales require at least 5 follow-up contacts after the initial meeting (Salesforce, 2024). Yet 44% of salespeople give up after the first follow-up. The gap between those two numbers is where most of your revenue is disappearing — not to competitors, just to silence.</p>
+
+      <h2 class="reveal">Why Manual Follow-Up Fails</h2>
+      <p class="reveal">The problem isn't a lack of intention. Sales teams know they should follow up more. The problem is capacity. When you have 40 leads in various stages of a conversation, remembering who needs what message, on what day, in what tone is not something a human can do reliably at scale. Leads fall through the cracks not because nobody cared — but because there was no system to catch them.</p>
+      <p class="reveal">An automated email sequence solves this entirely. Every lead gets the same high-quality, perfectly timed follow-up — whether you have 5 leads or 500, whether it's Thursday afternoon or Sunday night.</p>
+
+      <div class="inline-cta reveal">
+        <p>We build email sequences for you. Book a free call.</p>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Call →</a>
+      </div>
+
+      <h2 class="reveal">5 Sequences Every Business Needs</h2>
+
+      <h3 class="reveal">1. New Lead Sequence (5 emails over 10 days)</h3>
+      <p class="reveal">Triggered when someone fills out your contact form. Email 1 fires within minutes: confirmation of receipt and what to expect. Email 2 on day 2 shares your most relevant case study. Email 3 on day 4 addresses the most common objection in your industry. Email 4 on day 7 leads with a testimonial. Email 5 on day 10 makes a direct ask for a call. The sequence stops the moment they book.</p>
+
+      <h3 class="reveal">2. Post-Call Sequence (3 emails over 5 days)</h3>
+      <p class="reveal">Triggered after a discovery call. Email 1 goes out the same day: a summary of what was discussed and the agreed next steps. Email 2 on day 3 delivers the proposal or a relevant resource. Email 3 on day 5 follows up gently and offers a lower-commitment alternative if they're not ready to proceed.</p>
+
+      <h3 class="reveal">3. No-Show Sequence (2 emails over 3 days)</h3>
+      <p class="reveal">Triggered when someone misses a booked call. Email 1 fires one hour later: a brief message acknowledging you missed each other, with a one-click reschedule link. Email 2 on day 3 is a final attempt with a lower-friction option — a 10-minute call instead of a full 30.</p>
+
+      <figure class="blog-figure">
+        <img src="https://source.unsplash.com/800x450/?email,marketing,automation,workflow,crm" alt="Email automation workflow showing follow-up sequence steps" loading="lazy" style="width:100%;border-radius:8px;margin:2rem 0 0.5rem">
+        <figcaption style="font-size:12px;color:rgba(240,244,248,0.4);text-align:center">Automated sequences deliver the right message at the right time — without anyone having to remember</figcaption>
+      </figure>
+
+      <h3 class="reveal">4. Win-Back Sequence (3 emails over 30 days)</h3>
+      <p class="reveal">Triggered when a lead goes cold — no activity for 14+ days. The goal is a single response, not a sale. Lead with new value: a relevant case study they haven't seen, an industry insight, or a direct question that invites a reply without pressure.</p>
+
+      <h3 class="reveal">5. Onboarding Sequence (5 emails over 14 days)</h3>
+      <p class="reveal">Triggered when a new client signs. Introduce the team, set clear expectations, share relevant resources, and check in at day 7. Clients who feel informed and supported in the first two weeks churn at a significantly lower rate than those left to figure things out alone.</p>
+
+      <h2 class="reveal">Building Your First Sequence: Step by Step</h2>
+      <ol class="reveal">
+        <li>Choose your tool: HubSpot, ActiveCampaign, Mailchimp, or Klaviyo</li>
+        <li>Define the trigger: form submission, deal stage change, or tag added in CRM</li>
+        <li>Write emails 1–5 with one clear goal per email (inform, address objection, ask, etc.)</li>
+        <li>Set delays between emails: 1 day, 2 days, 3 days, and so on</li>
+        <li>Add an exit condition: stop the sequence the moment the lead books a call or replies</li>
+        <li>A/B test subject lines after 50 sends — small changes can move open rates by 10–15%</li>
+      </ol>
+
+      <h2 class="reveal">Tools for Email Automation</h2>
+      <div class="reveal">
+        <table class="post-table">
+          <thead>
+            <tr><th>Tool</th><th>Best For</th><th>Starting Price</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HubSpot</td><td>Full CRM + email automation</td><td>Free tier available</td></tr>
+            <tr><td>ActiveCampaign</td><td>Advanced automation logic</td><td>From $15/month</td></tr>
+            <tr><td>Mailchimp</td><td>Simple sequences + ecommerce</td><td>Free tier available</td></tr>
+            <tr><td>Klaviyo</td><td>Ecommerce email</td><td>From $20/month</td></tr>
+            <tr><td>Make + Gmail</td><td>Custom lightweight sequences</td><td>From $9/month</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="reveal">See how we build complete automation systems: <a href="../automation.html" style="color:var(--accent)">Automation &amp; Workflows →</a></p>
+
     </div>
   </div>
-</section>
 
-<div class="container">
-  <div class="post-body">
-    <h2>Why Manual Follow-Up Fails (The Stats)</h2>
-    <p>80% of sales require at least 5 follow-up contacts after the initial meeting. Yet 44% of salespeople give up after the first follow-up. The gap between those two numbers is where most of your revenue is disappearing.</p>
-    <p>The problem isn't lack of intent — it's capacity. Following up with every lead, at the right time, with the right message, is impossible to do manually at scale.</p>
-
-    <h2>What is an Automated Email Sequence?</h2>
-    <p>An automated email sequence (also called a drip campaign or nurture sequence) is a series of pre-written emails that are sent automatically based on a trigger — like a form submission, a demo request, or a period of inactivity.</p>
-    <p>The key difference from manual follow-up: it runs while you sleep. Every lead gets the same high-quality, perfectly timed follow-up — whether you have 5 leads or 500.</p>
-
-    <div class="inline-cta">
-      <p>We build email sequences for you. Book a free call.</p>
-      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Call →</a>
+  <section class="post-cta">
+    <div class="container">
+      <h2 class="reveal">Ready to fix this for your business?</h2>
+      <p class="reveal">Book a free 30-minute call. We'll look at your current setup and tell you exactly what to automate — no pitch, no obligation.</p>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary reveal">Book a Free Call →</a>
     </div>
-
-    <h2>5 Follow-Up Sequences Every Business Should Have</h2>
-
-    <h3>1. New Lead Sequence (5 emails over 10 days)</h3>
-    <p>Triggered when someone fills out your contact form. Email 1: instant confirmation + what to expect. Email 2 (day 2): your most relevant case study. Email 3 (day 4): address the #1 objection in your industry. Email 4 (day 7): social proof + testimonial. Email 5 (day 10): direct ask for a call.</p>
-
-    <h3>2. Post-Call Sequence (3 emails over 5 days)</h3>
-    <p>Triggered after a discovery call. Email 1: same-day summary + next steps. Email 2 (day 3): proposal or relevant resource. Email 3 (day 5): gentle follow-up + alternative offer if they're not ready.</p>
-
-    <h3>3. No-Show Sequence (2 emails over 3 days)</h3>
-    <p>Triggered when someone misses a booked call. Email 1 (1 hour later): missed you — here's a reschedule link. Email 2 (day 3): one last chance with a low-commitment alternative (e.g., a quick 10-min call instead).</p>
-
-    <h3>4. Win-Back Sequence (3 emails over 30 days)</h3>
-    <p>Triggered when a lead goes cold (no activity for 14+ days). Focus on new value: updated case study, relevant industry news, or a special offer. Goal: one response.</p>
-
-    <h3>5. Onboarding Sequence (5 emails over 14 days)</h3>
-    <p>Triggered when a new client signs. Introduce the team, set expectations, share resources, and check in at day 7. Reduces churn and builds early loyalty.</p>
-
-    <h2>Step-by-Step: Build Your First Sequence</h2>
-    <ol>
-      <li>Choose your tool (HubSpot, Mailchimp, ActiveCampaign, or Klaviyo)</li>
-      <li>Define the trigger (form submission, deal stage change, tag added)</li>
-      <li>Write emails 1–5 with a clear goal per email</li>
-      <li>Set delays between emails (1 day, 2 days, 3 days, etc.)</li>
-      <li>Add exit condition: stop sending if the lead books a call or replies</li>
-      <li>A/B test subject lines after 50 sends</li>
-    </ol>
-
-    <h2>Best Tools for Email Automation in 2025</h2>
-    <table class="post-table">
-      <thead><tr><th>Tool</th><th>Best For</th><th>Starting Price</th></tr></thead>
-      <tbody>
-        <tr><td>HubSpot</td><td>Full CRM + email automation</td><td>Free tier available</td></tr>
-        <tr><td>ActiveCampaign</td><td>Advanced automation logic</td><td>From $15/month</td></tr>
-        <tr><td>Mailchimp</td><td>Simple sequences + ecommerce</td><td>Free tier available</td></tr>
-        <tr><td>Klaviyo</td><td>Ecommerce-focused email</td><td>From $20/month</td></tr>
-        <tr><td>Make + Gmail</td><td>Custom lightweight sequences</td><td>From $9/month</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Avoiding the Spam Folder</h2>
-    <ul>
-      <li>Warm up new sending domains before high-volume sequences</li>
-      <li>Keep plain-text versions of every email</li>
-      <li>Personalise subject lines (use first name, company name)</li>
-      <li>Don't send more than 1 email per day in a sequence</li>
-      <li>Include an easy unsubscribe link in every email</li>
-      <li>Monitor open rates — below 20% means deliverability issues</li>
-    </ul>
-
-    <p>See how we handle full automation: <a href="../automation.html" style="color:var(--accent)">Automation &amp; Workflows →</a></p>
-  </div>
-</div>
-
-<section class="post-cta">
-  <div class="container">
-    <h2>Every unread email is a lost opportunity.</h2>
-    <p>Book a free call. We'll build and set up your first automated follow-up sequence.</p>
-    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Call →</a>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div><div class="footer-logo">Core<span>magna</span></div><p class="footer-tagline">We build the digital infrastructure your business deserves.</p><div class="footer-social"><a href="#" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div>
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">We build the digital infrastructure your business deserves.</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="../web-design.html">Web Design</a></li><li><a href="../rag-chatbot.html">RAG Chatbot</a></li><li><a href="../automation.html">Automation</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a href="../index.html#about">About</a></li><li><a href="../index.html#case-studies">Work</a></li><li><a href="index.html">Blog</a></li><li><a href="../index.html#faq">FAQ</a></li></ul></div>
       <div class="footer-col"><h4>Contact</h4><ul><li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">Book a Call</a></li><li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li></ul></div>
     </div>
-    <div class="footer-bottom"><p>© 2025 Coremagna. All rights reserved.</p><p>Web Design · AI Chatbots · Automation</p></div>
+    <div class="footer-bottom">
+      <p>© 2026 Coremagna. All rights reserved.</p>
+      <p>Web Design · AI Chatbots · Automation</p>
+    </div>
   </div>
 </footer>
+
 <script defer>
 (function(){const h=document.getElementById('hamburger'),m=document.getElementById('mobileNav');let open=false;h.addEventListener('click',()=>{open=!open;h.classList.toggle('open',open);h.setAttribute('aria-expanded',open);m.setAttribute('aria-hidden',!open);m.classList.toggle('visible',open);document.body.style.overflow=open?'hidden':'';});m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{open=false;h.classList.remove('open');h.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true');m.classList.remove('visible');document.body.style.overflow='';}));})();
+(function(){const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i*0.07)+'s';obs.observe(el);});})();
 </script>
 </body>
 </html>

@@ -3,58 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What is a RAG Chatbot? Why Your Business Needs One in 2025 — Coremagna</title>
-  <meta name="description" content="Learn what RAG chatbots are, how they differ from ChatGPT, and why SMBs are using them to automate customer support and sales.">
-  <link rel="canonical" href="https://coremagna.com/blog/what-is-rag-chatbot">
-  <meta property="og:title" content="What is a RAG Chatbot? Why Your Business Needs One in 2025">
-  <meta property="og:description" content="Learn what RAG chatbots are, how they differ from ChatGPT, and why SMBs are using them to automate customer support and sales.">
+  <title>What is a RAG Chatbot? Why Your Business Needs One — Coremagna</title>
+  <meta name="description" content="RAG chatbots answer from your own data — pricing, FAQs, policies — not guesses. Here's what they are, how they work, and whether your business needs one.">
+  <link rel="canonical" href="https://coremagna.com/blog/what-is-rag-chatbot.html">
+  <meta property="og:title" content="What is a RAG Chatbot? Why Your Business Needs One">
+  <meta property="og:description" content="RAG chatbots answer from your own data — pricing, FAQs, policies — not guesses. Here's what they are, how they work, and whether your business needs one.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://coremagna.com/blog/what-is-rag-chatbot">
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7MDPMWZ158');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7MDPMWZ158');</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Coremagna","url":"https://coremagna.com","email":"ferit@coremagna.com"}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What is a RAG Chatbot? Why Your Business Needs One in 2025","author":{"@type":"Organization","name":"Coremagna"},"publisher":{"@type":"Organization","name":"Coremagna","url":"https://coremagna.com"},"datePublished":"2025-01-15","description":"Learn what RAG chatbots are, how they differ from ChatGPT, and why SMBs are using them to automate customer support and sales."}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What is a RAG Chatbot? Why Your Business Needs One","author":{"@type":"Organization","name":"Coremagna"},"publisher":{"@type":"Organization","name":"Coremagna","url":"https://coremagna.com"},"datePublished":"2026-01-15","description":"RAG chatbots answer from your own data — pricing, FAQs, policies — not guesses."}</script>
   <style>
     :root{--bg:#060a0e;--surface:#0d1317;--surface2:#111920;--accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);--accent-glow:rgba(0,212,170,0.18);--text:#F0F4F3;--muted:rgba(240,244,243,0.55);--border:rgba(0,212,170,0.14);--border2:rgba(255,255,255,0.07);--ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.34,1.56,0.64,1)}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
     img{display:block;max-width:100%}
     a{text-decoration:none;color:inherit}
     ul,ol{list-style:none}
-    h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+    h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
     button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.035}
     .container{max-width:1240px;margin:0 auto;padding:0 48px}
-    .btn-primary{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+    .btn-primary{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;background:var(--accent);color:#060a0e;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
     .btn-primary:hover{background:#00f0c4;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,212,170,0.3)}
-    .btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border:1px solid var(--border2);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;transition:border-color 0.25s var(--ease),color 0.25s var(--ease),background 0.25s var(--ease)}
-    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
     .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
     .reveal.visible{opacity:1;transform:translateY(0)}
-    .section-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:16px}
     #mainNav{position:sticky;top:0;z-index:1000;background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
     .nav-inner{max-width:1240px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
-.logo-core{transition:letter-spacing 0.3s var(--ease)}
-.logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
-.logo:hover .logo-core{letter-spacing:0.05em}
-.logo:hover .logo-magna{color:#fff}
-.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s var(--ease)}
-.logo:hover .logo-dot{transform:scale(2.5);opacity:0}
-@keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
-    
-    .nav-logo .accent{color:var(--accent)}
-    
-    .nav-links{display:flex;gap:48px}
+    .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
+    .logo-core{transition:letter-spacing 0.3s var(--ease)}
+    .logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
+    .logo:hover .logo-core{letter-spacing:0.05em}
+    .logo:hover .logo-magna{color:#fff}
+    .logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s var(--ease)}
+    .logo:hover .logo-dot{transform:scale(2.5);opacity:0}
+    @keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+    .nav-links{display:flex;gap:48px;align-items:center}
     .nav-links a{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
     .nav-links a:hover{color:var(--text)}
     .nav-dropdown{position:relative}
@@ -74,15 +60,15 @@
     .mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
     .mobile-nav.visible{opacity:1;pointer-events:all}
     .mobile-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
-    .mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
+    .mobile-nav a{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
     .mobile-nav a:hover{color:var(--accent)}
     .mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:16px}
     footer{padding:80px 0 48px;border-top:1px solid var(--border2)}
     .footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:80px}
-    .footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
+    .footer-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
     .footer-logo span{color:var(--accent)}
     .footer-tagline{font-size:13px;color:var(--muted);max-width:220px;line-height:1.65}
-    .footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,244,243,0.35);margin-bottom:24px}
+    .footer-col h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,244,243,0.35);margin-bottom:24px}
     .footer-col ul{display:flex;flex-direction:column;gap:8px}
     .footer-col a{font-size:13px;color:var(--muted);transition:color 0.2s var(--ease)}
     .footer-col a:hover{color:var(--text)}
@@ -93,10 +79,9 @@
     .social-icon:hover svg{fill:var(--accent)}
     .footer-bottom{margin-top:80px;padding-top:24px;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
     .footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
-    /* Post styles */
     .post-hero{padding:120px 0 64px;background:linear-gradient(180deg,#060a0e 0%,#0a1012 100%);background-image:radial-gradient(ellipse at 50% 0%,rgba(0,212,170,0.06) 0%,transparent 60%)}
     .post-hero-inner{max-width:760px;margin:0 auto;text-align:center}
-    .post-cat{display:inline-block;padding:3px 12px;border-radius:4px;background:var(--accent-dim);border:1px solid var(--border);font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+    .post-cat{display:inline-block;padding:3px 12px;border-radius:4px;background:var(--accent-dim);border:1px solid var(--border);font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
     .post-hero h1{font-size:clamp(28px,4vw,52px);color:var(--text);margin-bottom:20px}
     .post-meta{display:flex;align-items:center;gap:20px;justify-content:center;font-size:13px;color:var(--muted)}
     .post-meta .read-time{color:var(--accent);font-weight:500}
@@ -104,14 +89,18 @@
     .post-body h2{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text);margin:48px 0 16px}
     .post-body h3{font-size:20px;font-weight:800;color:var(--text);margin:32px 0 12px}
     .post-body p{font-size:15px;color:rgba(240,244,243,0.8);line-height:1.8;margin-bottom:20px}
-    .post-body ul,.post-body ol{margin:0 0 20px 24px}
-    .post-body li{font-size:15px;color:rgba(240,244,243,0.8);line-height:1.75;margin-bottom:8px}
+    .post-body ul,.post-body ol{margin:0 0 20px 0}
+    .post-body li{font-size:15px;color:rgba(240,244,243,0.8);line-height:1.75;margin-bottom:8px;padding-left:24px;position:relative}
+    .post-body ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:700}
+    .post-body ol{counter-reset:ol-counter}
+    .post-body ol li{counter-increment:ol-counter}
+    .post-body ol li::before{content:counter(ol-counter)'.';position:absolute;left:0;color:var(--accent);font-weight:700;font-family:'Plus Jakarta Sans',sans-serif}
     .post-body strong{color:var(--text);font-weight:600}
     .inline-cta{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .inline-cta p{font-size:15px;color:var(--text);font-weight:500;margin:0}
     .inline-cta a{flex-shrink:0}
     .post-table{width:100%;border-collapse:collapse;margin:24px 0}
-    .post-table th{text-align:left;padding:12px 16px;background:var(--surface2);font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2)}
+    .post-table th{text-align:left;padding:12px 16px;background:var(--surface2);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2)}
     .post-table td{padding:12px 16px;font-size:14px;color:rgba(240,244,243,0.8);border-bottom:1px solid var(--border2)}
     .post-table tr:hover td{background:var(--surface)}
     .post-cta{background:linear-gradient(180deg,#0a1012 0%,#060a0e 100%);background-image:radial-gradient(ellipse at 50% 100%,rgba(0,212,170,0.07) 0%,transparent 60%);padding:80px 0;text-align:center}
@@ -120,7 +109,7 @@
     .checklist{list-style:none;margin-left:0}
     .checklist li{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;font-size:15px;color:rgba(240,244,243,0.8)}
     .checklist li::before{content:'';display:block;width:20px;height:20px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent);flex-shrink:0;margin-top:2px;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 13l4 4L19 7' stroke='%2300D4AA' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:14px}
-    @media(max-width:768px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.post-body{padding:40px 24px 64px}.inline-cta{flex-direction:column;text-align:center}.container{padding:0 24px}.nav-inner{padding:0 24px}.footer-col a{display:flex;align-items:center;min-height:44px}.footer-logo{text-align:center}.footer-tagline{text-align:center;max-width:100%}.footer-social{justify-content:center}.container{padding:0 20px}.nav-inner{padding:0 20px}}
+    @media(max-width:768px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.post-body{padding:40px 24px 64px}.inline-cta{flex-direction:column;text-align:center}.container{padding:0 20px}.nav-inner{padding:0 20px}.footer-col a{display:flex;align-items:center;min-height:44px}.footer-logo{text-align:center}.footer-tagline{text-align:center;max-width:100%}.footer-social{justify-content:center}}
     @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
@@ -146,9 +135,7 @@
       <li><a href="../index.html#faq">FAQ</a></li>
     </ul>
     <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
@@ -167,11 +154,11 @@
     <div class="container">
       <div class="post-hero-inner">
         <span class="post-cat reveal">AI Chatbot</span>
-        <h1 class="reveal">What is a RAG Chatbot? Why Your Business Needs One in 2025</h1>
-<img src="images/blog-img-1.jpg" alt="AI RAG chatbot neural network visualization" loading="lazy" style="width:100%;height:420px;object-fit:cover;border-radius:12px;margin-bottom:2.5rem">
+        <h1 class="reveal">What is a RAG Chatbot? Why Your Business Needs One</h1>
+        <img src="https://source.unsplash.com/1200x630/?ai,chatbot,technology" alt="AI chatbot interface displaying business data on a screen" loading="lazy" style="width:100%;height:420px;object-fit:cover;border-radius:12px;margin-bottom:2.5rem">
         <div class="post-meta reveal">
           <span class="read-time">7 min read</span>
-          <span>Jan 15, 2025</span>
+          <span>Jan 15, 2026</span>
           <span>Coremagna</span>
         </div>
       </div>
@@ -181,13 +168,13 @@
   <div class="container">
     <div class="post-body">
 
-      <h2 class="reveal">What Does RAG Stand For?</h2>
-      <p class="reveal">RAG stands for Retrieval-Augmented Generation. It's a technique that combines a language model (like GPT-4) with a retrieval system that searches your own documents, website, or database before generating a response.</p>
-      <p class="reveal">In plain terms: instead of answering from general training data, a RAG chatbot looks up your specific information first — your product catalog, FAQ, policies, pricing — and then answers.</p>
-      <p class="reveal">The result is an AI that knows your business inside out, not just the internet.</p>
+      <p class="reveal">Picture a business owner who answers the same three questions forty times a day. "What are your hours?" "Do you offer X?" "How much does it cost?" Each one takes two minutes. That's nearly an hour and a half every single day — not spent on work that matters, just answering questions that haven't changed since last month. A RAG chatbot eliminates every one of those calls.</p>
 
-      <h2 class="reveal">RAG vs Standard ChatGPT: Key Differences</h2>
-      <p class="reveal">Here's the core problem with using ChatGPT directly for business:</p>
+      <h2 class="reveal">What RAG Actually Means</h2>
+      <p class="reveal">RAG stands for Retrieval-Augmented Generation. It's a technique that combines a language model (like GPT-4) with a retrieval system that searches your own documents, website, or database before generating a response. In plain terms: instead of answering from general training data, a RAG chatbot looks up your specific information first — then answers. It reads your service pricing, your FAQ, your booking policies — and answers customers from that data, not from guesses.</p>
+      <p class="reveal">This is the critical difference between a generic chatbot and one that's actually useful. Generic AI doesn't know what you charge for a consultation or whether you're open on Saturdays. A RAG chatbot does.</p>
+
+      <h2 class="reveal">RAG vs Standard ChatGPT: The Numbers</h2>
       <div class="reveal">
         <table class="post-table">
           <thead>
@@ -195,11 +182,12 @@
           </thead>
           <tbody>
             <tr><td>Data source</td><td>General internet</td><td>Your documents &amp; data</td></tr>
-            <tr><td>Accuracy</td><td>Can hallucinate</td><td>Grounded in your content</td></tr>
-            <tr><td>Customization</td><td>None</td><td>Fully custom</td></tr>
-            <tr><td>Languages</td><td>Good</td><td>Any language, with your content</td></tr>
-            <tr><td>Tone</td><td>Generic</td><td>Matches your brand</td></tr>
-            <tr><td>Integration</td><td>Manual</td><td>CRM, calendar, website</td></tr>
+            <tr><td>Accuracy on your business</td><td>Guesses or declines</td><td>Grounded in your content</td></tr>
+            <tr><td>Customization</td><td>None</td><td>Fully custom to your brand</td></tr>
+            <tr><td>Lead capture</td><td>No</td><td>Yes, collects name + email</td></tr>
+            <tr><td>Appointment booking</td><td>No</td><td>Yes, integrates with calendar</td></tr>
+            <tr><td>Response time</td><td>Requires user to open app</td><td>Instant, embedded on your site</td></tr>
+            <tr><td>Available 24/7</td><td>Only if user has login</td><td>Always on, no login needed</td></tr>
           </tbody>
         </table>
       </div>
@@ -212,38 +200,42 @@
       <h2 class="reveal">5 Business Problems RAG Chatbots Solve</h2>
 
       <h3 class="reveal">1. Customer Support Overload</h3>
-      <p class="reveal">Most businesses answer the same 20 questions 80% of the time. A RAG chatbot handles all of them instantly, 24/7 — in any language — without a support ticket ever reaching a human.</p>
+      <p class="reveal">Most businesses answer the same 20 questions 80% of the time. A RAG chatbot handles all of them instantly, 24/7 — in any language — without a support ticket ever reaching a human. Your team stops being a switchboard and starts doing actual work.</p>
 
       <h3 class="reveal">2. Lead Qualification</h3>
-      <p class="reveal">Your chatbot can ask qualifying questions, score leads, and only escalate high-value prospects to your team. No more wasting sales calls on tire-kickers.</p>
+      <p class="reveal">Your chatbot can ask qualifying questions, score leads, and only escalate high-value prospects to your team. No more wasting sales calls on enquiries that were never going to convert.</p>
 
       <h3 class="reveal">3. Internal Knowledge Base</h3>
-      <p class="reveal">Employees spend 20% of their workday searching for information. A RAG chatbot connected to your internal docs gives instant answers — no more digging through Notion or emailing HR.</p>
+      <p class="reveal">Employees spend an estimated 20% of their workday searching for information. A RAG chatbot connected to your internal docs gives instant answers — no more digging through Notion or emailing the same colleague for the third time.</p>
 
       <h3 class="reveal">4. Appointment Booking</h3>
-      <p class="reveal">Integrated with Google Calendar or Calendly, a RAG chatbot can check availability and book meetings without human intervention.</p>
+      <p class="reveal">Integrated with Google Calendar or Calendly, a RAG chatbot checks availability and books meetings without any human involvement. A visitor asks "can I book a call?" and it's done within 60 seconds.</p>
 
       <h3 class="reveal">5. Multilingual Support</h3>
-      <p class="reveal">Serve customers in German, Spanish, French, or any other language — using your exact content, just translated on the fly.</p>
+      <p class="reveal">Serve customers in German, Spanish, French, or any other language — using your exact content, just answered in their language. No translation agency required.</p>
 
-      <h2 class="reveal">Real Example: How a Restaurant Automated 80% of Inquiries</h2>
-      <p class="reveal">A restaurant client in München was spending 3 hours per day answering the same questions: opening hours, menu options, reservation availability, and dietary requirements.</p>
-      <p class="reveal">We built a RAG chatbot trained on their menu, FAQ, and reservation system. Within 30 days: 80% of customer inquiries were handled automatically. The team now only answers complex or special requests.</p>
+      <h2 class="reveal">Real Example: How a Property Management Firm Automated 73% of Tenant Enquiries</h2>
+      <p class="reveal">A property management company in Bristol was fielding the same tenant questions constantly: maintenance request status, lease renewal terms, parking rules, payment schedules. The office team spent three hours a day on calls and emails that required no specialist knowledge — just access to the information.</p>
+      <p class="reveal">We built a RAG chatbot trained on their tenancy agreements, maintenance procedures, FAQ, and policy documents. Within 30 days, 73% of tenant enquiries were handled automatically. The team now focuses on what actually requires human judgement — chasing contractors, resolving disputes, managing renewals.</p>
+
+      <figure class="blog-figure">
+        <img src="https://source.unsplash.com/800x450/?property,management,office" alt="Property management office showing automated workflow on screen" loading="lazy" style="width:100%;border-radius:8px;margin:2rem 0 0.5rem">
+        <figcaption style="font-size:12px;color:rgba(240,244,248,0.4);text-align:center">Automating repetitive tenant enquiries frees property teams for higher-value work</figcaption>
+      </figure>
 
       <h2 class="reveal">How Much Does a RAG Chatbot Cost?</h2>
-      <p class="reveal">Costs vary significantly depending on the size of your data, the level of integration required, and ongoing usage. We don't publish fixed prices because every business is different — but we offer a free discovery call where we'll give you a precise estimate.</p>
-      <p class="reveal">What we can say: the ROI typically covers the investment within 60–90 days when you factor in saved support hours and increased lead conversion.</p>
+      <p class="reveal">Costs vary depending on the size of your data, the level of integration required, and ongoing usage. We don't publish fixed prices because every business is different — but we offer a free discovery call where we'll give you a precise estimate. What we can say: the ROI typically covers the investment within 60–90 days when you factor in saved support hours and increased lead conversion.</p>
 
       <h2 class="reveal">Is a RAG Chatbot Right for Your Business?</h2>
       <p class="reveal">Answer these five questions:</p>
       <ul class="checklist reveal">
         <li>Do you answer the same customer questions repeatedly?</li>
-        <li>Do you receive inquiries outside business hours?</li>
+        <li>Do you receive enquiries outside business hours?</li>
         <li>Do you want to capture more leads from your website?</li>
         <li>Do you serve customers in more than one language?</li>
         <li>Do you want your team to focus on high-value work instead of repetitive tasks?</li>
       </ul>
-      <p class="reveal">If you answered yes to 3 or more, a RAG chatbot will pay for itself quickly.</p>
+      <p class="reveal">If you answered yes to three or more, a RAG chatbot will pay for itself quickly.</p>
 
       <div class="inline-cta reveal">
         <p>Ready to see what a chatbot can do for your business?</p>
@@ -255,8 +247,8 @@
 
   <section class="post-cta">
     <div class="container">
-      <h2 class="reveal">Stop answering the same questions manually.</h2>
-      <p class="reveal">Book a free 30-minute call. We'll show you exactly what's possible for your business — no commitment.</p>
+      <h2 class="reveal">Ready to fix this for your business?</h2>
+      <p class="reveal">Book a free 30-minute call. We'll look at your current setup and tell you exactly what to automate — no pitch, no obligation.</p>
       <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary reveal">Book a Free Call →</a>
     </div>
   </section>
@@ -274,33 +266,12 @@
           </a>
         </div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="../web-design.html">Web Design</a></li>
-          <li><a href="../rag-chatbot.html">RAG Chatbot</a></li>
-          <li><a href="../automation.html">Automation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#case-studies">Work</a></li>
-          <li><a href="index.html">Blog</a></li>
-          <li><a href="../index.html#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">Book a Call</a></li>
-          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="../web-design.html">Web Design</a></li><li><a href="../rag-chatbot.html">RAG Chatbot</a></li><li><a href="../automation.html">Automation</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="../index.html#about">About</a></li><li><a href="../index.html#case-studies">Work</a></li><li><a href="index.html">Blog</a></li><li><a href="../index.html#faq">FAQ</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">Book a Call</a></li><li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Coremagna. All rights reserved.</p>
+      <p>© 2026 Coremagna. All rights reserved.</p>
       <p>Web Design · AI Chatbots · Automation</p>
     </div>
   </div>
