@@ -132,14 +132,14 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .hero-vignette{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at 50% 50%,transparent 38%,rgba(6,10,14,0.78) 100%);pointer-events:none}
 .hero-fade-bottom{position:absolute;bottom:0;left:0;right:0;height:200px;z-index:1;background:linear-gradient(to top,#060a0e,transparent);pointer-events:none}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 var(--space-xl);max-width:780px}
-.hero-content::before{content:'';position:absolute;inset:-80px -100px;background:radial-gradient(ellipse at center,rgba(6,10,14,0.82) 0%,rgba(6,10,14,0.45) 50%,transparent 75%);z-index:-1;pointer-events:none;border-radius:50%}
+.hero-content::before{content:'';position:absolute;inset:-120px -140px;background:radial-gradient(ellipse at center,rgba(6,10,14,0.92) 0%,rgba(6,10,14,0.75) 35%,rgba(6,10,14,0.30) 65%,transparent 80%);z-index:-1;pointer-events:none;border-radius:50%}
 .hero-content h1{text-shadow:0 2px 40px rgba(6,10,14,0.9),0 0 80px rgba(6,10,14,0.6)}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,212,170,0.3);background:rgba(0,212,170,0.05);color:#00D4AA;font-size:13px;font-weight:500;letter-spacing:0.02em;padding:6px 16px;border-radius:100px;margin-bottom:var(--space-xl)}
 .badge-dot{width:7px;height:7px;border-radius:50%;background:#00D4AA;flex-shrink:0;animation:badgePulse 2s ease-in-out infinite}
 @keyframes badgePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.35;transform:scale(1.45)}}
 .hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;color:#f0f4f8;line-height:0.95;letter-spacing:-0.03em;margin-bottom:var(--space-xl)}
 .hero-title .accent{color:#00D4AA}
-.hero-sub{font-size:1.05rem;color:rgba(240,244,248,0.55);max-width:580px;margin:0 auto var(--space-xl);line-height:1.7}
+.hero-sub{font-size:1.05rem;color:rgba(240,244,248,0.85);max-width:580px;margin:0 auto var(--space-xl);line-height:1.7}
 .hero-ctas{display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap}
 .btn-hero-primary{background:#00D4AA;color:#060a0e;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;border-radius:8px;padding:13px 28px;transition:background 0.25s cubic-bezier(0.4,0,0.2,1),transform 0.25s cubic-bezier(0.4,0,0.2,1),box-shadow 0.25s cubic-bezier(0.4,0,0.2,1)}
 .btn-hero-primary:hover{background:#00bfa0;transform:translateY(-2px);box-shadow:0 1px 2px rgba(0,212,170,0.06),0 8px 20px rgba(0,212,170,0.28),0 24px 48px rgba(0,212,170,0.12)}
