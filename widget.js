@@ -9,7 +9,6 @@
   let visitorName = '';
   let visitorEmail = '';
   let chatStarted = false;
-  const sessionId = Math.random().toString(36).slice(2) + Date.now().toString(36);
 
   const css = `
     .cm-btn {
@@ -404,7 +403,8 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: text,
-          sessionId: sessionId
+          visitor_name: visitorName,
+          visitor_email: visitorEmail
         }),
         signal: controller.signal
       });
@@ -417,7 +417,7 @@
 
       try {
         const data = JSON.parse(raw);
-        reply = data.output ?? data.message ?? (Array.isArray(data) && data[0]?.output) ?? data.reply ?? data.text ?? raw;
+        reply = data.reply || data.message || data.text || data.output || raw;
       } catch {
         reply = raw;
       }
