@@ -1,0 +1,2613 @@
+[
+  {
+    "name": "Law Firm \u2014 Document Automation v1",
+    "nodes": [
+      {
+        "id": "08154874-1145-4ae8-a2e4-58bb6d150dc6",
+        "name": "Note Stage 1",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          80,
+          0
+        ],
+        "parameters": {
+          "width": 380,
+          "height": 200,
+          "content": "## Stage 1 \u2014 Client Intake\nWebhook receives POST from intake form. Expected payload includes firstName, lastName, email, phone, caseType, incidentDate, incidentLocation, injuryDetails, insurance fields.",
+          "color": 5
+        }
+      },
+      {
+        "id": "afdc0e03-3c8b-4cc2-ae62-137083ef7bce",
+        "name": "Intake Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          240,
+          320
+        ],
+        "webhookId": "law-firm-intake-5e246133",
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "law-firm-intake",
+          "responseMode": "lastNode",
+          "options": {
+            "responseHeaders": {
+              "entries": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/json"
+                }
+              ]
+            }
+          }
+        },
+        "notes": "Public endpoint that receives the firm's intake form submission."
+      },
+      {
+        "id": "6f528b1d-826f-41a2-b8b5-bd8018be5eef",
+        "name": "Note Stage 2",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          480,
+          0
+        ],
+        "parameters": {
+          "width": 540,
+          "height": 200,
+          "content": "## Stage 2 \u2014 Normalize & Build Placeholders\nTrim, lowercase email, format phone, generate caseId, build placeholder map for document generation.",
+          "color": 5
+        }
+      },
+      {
+        "id": "0b1c3a3c-6e7b-41c9-bd7e-c13cc952a374",
+        "name": "Normalize Intake Fields",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          500,
+          320
+        ],
+        "parameters": {
+          "options": {},
+          "assignments": {
+            "assignments": [
+              {
+                "id": "74797a8c-b077-49d7-948a-224239a278d1",
+                "name": "firstName",
+                "type": "string",
+                "value": "={{ $json.body.firstName.trim() }}"
+              },
+              {
+                "id": "b4b5da12-a368-4b16-aa3d-4b362e86819c",
+                "name": "lastName",
+                "type": "string",
+                "value": "={{ $json.body.lastName.trim() }}"
+              },
+              {
+                "id": "7f7c9e85-4d50-4d97-b587-3536701e4ad2",
+                "name": "fullName",
+                "type": "string",
+                "value": "={{ $json.body.firstName.trim() + ' ' + $json.body.lastName.trim() }}"
+              },
+              {
+                "id": "6db0780e-5548-43a5-acdb-6c7a92949100",
+                "name": "email",
+                "type": "string",
+                "value": "={{ $json.body.email.toLowerCase().trim() }}"
+              },
+              {
+                "id": "fc2052ba-cfb4-4bd8-8dba-71e39bbf4dd9",
+                "name": "phone",
+                "type": "string",
+                "value": "={{ $json.body.phone.replace(/\\s+/g, '') }}"
+              },
+              {
+                "id": "5288b185-cad9-40d0-a63e-cd44fdef0d62",
+                "name": "caseType",
+                "type": "string",
+                "value": "={{ $json.body.caseType }}"
+              },
+              {
+                "id": "81a92036-054b-4ec9-a326-ebedd9eed4e0",
+                "name": "incidentDate",
+                "type": "string",
+                "value": "={{ $json.body.incidentDate }}"
+              },
+              {
+                "id": "25282301-042c-4e9f-b578-4ea812ab095e",
+                "name": "incidentLocation",
+                "type": "string",
+                "value": "={{ $json.body.incidentLocation }}"
+              },
+              {
+                "id": "5e7e41e3-1a1a-4f25-8aa5-7ebe7d38e24e",
+                "name": "injuryDetails",
+                "type": "string",
+                "value": "={{ $json.body.injuryDetails }}"
+              },
+              {
+                "id": "a7509e8b-8b9f-4e6f-9fb4-bb862974529e",
+                "name": "insuranceProvider",
+                "type": "string",
+                "value": "={{ $json.body.insuranceProvider }}"
+              },
+              {
+                "id": "4d2224d5-60ad-4f68-91f9-eb616a89c715",
+                "name": "insurancePolicyNumber",
+                "type": "string",
+                "value": "={{ $json.body.insurancePolicyNumber }}"
+              },
+              {
+                "id": "3a0174c4-d731-4fb9-9e37-710de03a1a64",
+                "name": "preferredContactMethod",
+                "type": "string",
+                "value": "={{ $json.body.preferredContactMethod }}"
+              },
+              {
+                "id": "36e02f07-bd94-4c7a-83de-69aff6f2d130",
+                "name": "submittedAt",
+                "type": "string",
+                "value": "={{ $json.body.submittedAt }}"
+              },
+              {
+                "id": "e09eb99a-d0d7-462e-b267-ec08f52d586b",
+                "name": "caseId",
+                "type": "string",
+                "value": "={{ ($json.body.caseType.includes('Personal Injury') ? 'PI' : $json.body.caseType.includes('Immigration') ? 'IM' : $json.body.caseType.includes('Family') ? 'FM' : $json.body.caseType.includes('Real Estate') ? 'RE' : $json.body.caseType.includes('Estate') ? 'EP' : 'GN') + '-' + $now.format('yyyyMMdd') + '-' + $json.body.firstName.charAt(0).toUpperCase() + $json.body.lastName.charAt(0).toUpperCase() }}"
+              },
+              {
+                "id": "b54e9617-014c-47ba-81c2-268b2480ad17",
+                "name": "submissionTimestamp",
+                "type": "string",
+                "value": "={{ $now.toISO() }}"
+              }
+            ]
+          }
+        },
+        "notes": "Cleans intake data and assigns a case ID like PI-20260507-MW."
+      },
+      {
+        "id": "49d9b574-cc83-41e0-a397-f3a7e2ec9743",
+        "name": "Build Placeholder Map",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          740,
+          320
+        ],
+        "parameters": {
+          "language": "javaScript",
+          "jsCode": "// Build the placeholder dictionary used by Google Docs replaceAllText\nconst lead = $input.item.json;\n\nreturn [{\n  json: {\n    ...lead,\n    placeholders: {\n      CLIENT_NAME: lead.fullName,\n      CLIENT_EMAIL: lead.email,\n      CLIENT_PHONE: lead.phone,\n      CASE_TYPE: lead.caseType,\n      INCIDENT_DATE: lead.incidentDate,\n      INCIDENT_LOCATION: lead.incidentLocation,\n      INJURY_DETAILS: lead.injuryDetails,\n      INSURANCE_PROVIDER: lead.insuranceProvider,\n      INSURANCE_POLICY: lead.insurancePolicyNumber,\n      DATE_TODAY: new Date().toISOString().split('T')[0],\n      FIRM_NAME: $env.FIRM_NAME || 'Your Firm LLP',\n      FIRM_ADDRESS: $env.FIRM_ADDRESS || '',\n      ATTORNEY_NAME: $env.ATTORNEY_NAME || 'Senior Partner',\n      CASE_ID: lead.caseId,\n    }\n  }\n}];\n"
+        },
+        "notes": "Constructs the placeholder map \u2014 keys must match Google Doc template tokens."
+      },
+      {
+        "id": "806a687e-b432-4b71-b41e-5bcac15e06c3",
+        "name": "Note Stage 3",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          980,
+          0
+        ],
+        "parameters": {
+          "width": 480,
+          "height": 200,
+          "content": "## Stage 3 \u2014 AI Case Classification\nGPT-4o-mini classifies into PERSONAL_INJURY / IMMIGRATION / FAMILY_LAW / REAL_ESTATE / ESTATE_PLANNING / OTHER and lists required documents. Forced JSON response.",
+          "color": 5
+        }
+      },
+      {
+        "id": "19138919-22dd-421f-b986-c05c2bb53056",
+        "name": "Classify Case Type",
+        "type": "n8n-nodes-base.openAi",
+        "typeVersion": 1.6,
+        "position": [
+          1000,
+          320
+        ],
+        "parameters": {
+          "resource": "text",
+          "operation": "message",
+          "modelId": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4o-mini"
+          },
+          "messages": {
+            "values": [
+              {
+                "role": "system",
+                "content": "You are a legal intake classifier for a law firm. Given a client intake submission, classify the case into one of: PERSONAL_INJURY, IMMIGRATION, FAMILY_LAW, REAL_ESTATE, ESTATE_PLANNING, OTHER. Then list the required documents for that case type.\n\nReturn ONLY valid JSON matching this schema (no markdown, no commentary):\n{\n  \"category\": \"PERSONAL_INJURY|IMMIGRATION|FAMILY_LAW|REAL_ESTATE|ESTATE_PLANNING|OTHER\",\n  \"subType\": \"short description\",\n  \"requiredDocuments\": [\"doc_key_1\", \"doc_key_2\"],\n  \"priority\": \"HIGH|MEDIUM|LOW\"\n}\n\nDocument keys must use snake_case identifiers like engagement_letter, hipaa_authorization, medical_records_release, conflict_check, fee_agreement, retainer_agreement, immigration_questionnaire, g28_authorization, financial_disclosure, parenting_plan, custody_agreement, deed_transfer, title_search, will_template, trust_template, power_of_attorney."
+              },
+              {
+                "role": "user",
+                "content": "=Case type: {{ $json.caseType }}\nIncident date: {{ $json.incidentDate }}\nIncident location: {{ $json.incidentLocation }}\nDetails: {{ $json.injuryDetails }}\nClient: {{ $json.fullName }}"
+              }
+            ]
+          },
+          "jsonOutput": true,
+          "options": {
+            "temperature": 0.2
+          }
+        },
+        "credentials": {
+          "openAiApi": {
+            "id": "REPLACE_OPENAI_CRED_ID",
+            "name": "OpenAI account"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true,
+        "maxTries": 2,
+        "notes": "Returns JSON with category, subType, requiredDocuments[], priority."
+      },
+      {
+        "id": "b5722a5a-84fa-49c5-86b9-5a7c0df121b6",
+        "name": "Merge Classification",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1240,
+          320
+        ],
+        "parameters": {
+          "options": {},
+          "includeOtherFields": true,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "a4a5efa5-6409-4aba-b279-88265ef3fee1",
+                "name": "category",
+                "type": "string",
+                "value": "={{ $json.message.content ? JSON.parse($json.message.content).category : $json.category }}"
+              },
+              {
+                "id": "6f5124cc-113b-445c-a978-c4bda72b1cf1",
+                "name": "subType",
+                "type": "string",
+                "value": "={{ $json.message.content ? JSON.parse($json.message.content).subType : $json.subType }}"
+              },
+              {
+                "id": "7fa1b144-680a-4c11-bac3-fc8a1ce416c4",
+                "name": "requiredDocuments",
+                "type": "array",
+                "value": "={{ $json.message.content ? JSON.parse($json.message.content).requiredDocuments : $json.requiredDocuments }}"
+              },
+              {
+                "id": "f81ee7d3-59a5-41f8-b13f-bb7f898704ce",
+                "name": "priority",
+                "type": "string",
+                "value": "={{ $json.message.content ? JSON.parse($json.message.content).priority : 'MEDIUM' }}"
+              },
+              {
+                "id": "6b040368-b0c3-4f03-a85b-08b26e5ccaf6",
+                "name": "placeholders",
+                "type": "object",
+                "value": "={{ $('Build Placeholder Map').item.json.placeholders }}"
+              },
+              {
+                "id": "3252e3c5-54b2-4dc1-838c-c1e7a726f521",
+                "name": "fullName",
+                "type": "string",
+                "value": "={{ $('Build Placeholder Map').item.json.fullName }}"
+              },
+              {
+                "id": "69bff49b-20b2-4afe-a303-8e17811ab8ab",
+                "name": "email",
+                "type": "string",
+                "value": "={{ $('Build Placeholder Map').item.json.email }}"
+              },
+              {
+                "id": "0847d41f-04f5-429e-945d-e52d9ce9b952",
+                "name": "caseId",
+                "type": "string",
+                "value": "={{ $('Build Placeholder Map').item.json.caseId }}"
+              },
+              {
+                "id": "c94be39f-db62-499f-b8b2-a5de0e91f38b",
+                "name": "caseType",
+                "type": "string",
+                "value": "={{ $('Build Placeholder Map').item.json.caseType }}"
+              },
+              {
+                "id": "33ecd647-651d-4ecf-ba92-f0811bcee82c",
+                "name": "lastName",
+                "type": "string",
+                "value": "={{ $('Build Placeholder Map').item.json.lastName }}"
+              }
+            ]
+          }
+        },
+        "notes": "Combines AI classification with original normalized fields."
+      },
+      {
+        "id": "8a0c771f-1436-43ca-ab88-f159af3f2834",
+        "name": "Note Stage 4",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          1480,
+          0
+        ],
+        "parameters": {
+          "width": 480,
+          "height": 200,
+          "content": "## Stage 4 \u2014 Route by Case Type\nSwitch node sends each category to its own template-folder branch. Fallback handles OTHER.",
+          "color": 5
+        }
+      },
+      {
+        "id": "b8bf9d32-08f4-46ff-80d1-554d1db4efcf",
+        "name": "Route by Case Type",
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2,
+        "position": [
+          1500,
+          320
+        ],
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict"
+                  },
+                  "conditions": [
+                    {
+                      "id": "fd14ecc0-3aa5-4e3f-bca7-fea326d59d3c",
+                      "leftValue": "={{ $json.category }}",
+                      "rightValue": "PERSONAL_INJURY",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "PERSONAL_INJURY"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict"
+                  },
+                  "conditions": [
+                    {
+                      "id": "c94df0d4-6abf-493d-b2fe-30fe0ee33f77",
+                      "leftValue": "={{ $json.category }}",
+                      "rightValue": "IMMIGRATION",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "IMMIGRATION"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict"
+                  },
+                  "conditions": [
+                    {
+                      "id": "309143b8-8f14-41a5-9187-8ada9e58db49",
+                      "leftValue": "={{ $json.category }}",
+                      "rightValue": "FAMILY_LAW",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "FAMILY_LAW"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict"
+                  },
+                  "conditions": [
+                    {
+                      "id": "afc693c4-743c-4da7-9e9d-a9efceccb3e7",
+                      "leftValue": "={{ $json.category }}",
+                      "rightValue": "REAL_ESTATE",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "REAL_ESTATE"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict"
+                  },
+                  "conditions": [
+                    {
+                      "id": "ec7b9618-3eee-4017-b340-5156c522771f",
+                      "leftValue": "={{ $json.category }}",
+                      "rightValue": "ESTATE_PLANNING",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "ESTATE_PLANNING"
+              }
+            ]
+          },
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "OTHER"
+          }
+        },
+        "notes": "Routes to one of 6 outputs based on AI category. Fallback = OTHER."
+      },
+      {
+        "id": "8ecaaf87-5881-4fb9-b60c-821fa3cf8caa",
+        "name": "Set Folder PI",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1740,
+          280
+        ],
+        "parameters": {
+          "options": {},
+          "includeOtherFields": true,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "c58e992e-2142-4925-9414-21ac933312de",
+                "name": "templateFolderId",
+                "type": "string",
+                "value": "={{ $env.GDRIVE_TEMPLATES_PI }}"
+              },
+              {
+                "id": "5fd1c42f-e7b7-4bbe-a6cc-5f70bed76778",
+                "name": "templateFolderEnv",
+                "type": "string",
+                "value": "GDRIVE_TEMPLATES_PI"
+              }
+            ]
+          }
+        },
+        "notes": "Sets the Google Drive template folder for PERSONAL_INJURY cases."
+      },
+      {
+        "id": "54dbde5f-75d1-42e0-ab66-bae697a173bd",
+        "name": "Set Folder IMM",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1740,
+          440
+        ],
+        "parameters": {
+          "options": {},
+          "includeOtherFields": true,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "2872a195-59a2-46a5-b780-b0025942a194",
+                "name": "templateFolderId",
+                "type": "string",
+                "value": "={{ $env.GDRIVE_TEMPLATES_IMMIGRATION }}"
+              },
+              {
+                "id": "1ea595aa-8070-4265-8e66-b25595ededd5",
+                "name": "templateFolderEnv",
+                "type": "string",
+                "value": "GDRIVE_TEMPLATES_IMMIGRATION"
+              }
+            ]
+          }
+        },
+        "notes": "Sets the Google Drive template folder for IMMIGRATION cases."
+      },
+      {
+        "id": "9f913d36-d178-4f60-814a-f67a35ce766e",
+        "name": "Set Folder FAM",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1740,
+          600
+        ],
+        "parameters": {
+          "options": {},
+          "includeOtherFields": true,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "23b227d2-1479-4129-aa65-53c56841c8a0",
+                "name": "templateFolderId",
+                "type": "string",
+                "value": "={{ $env.GDRIVE_TEMPLATES_FAMILY }}"
+              },
+              {
+                "id": "8fbfb3e7-cacf-4756-97c2-cf1ce7da170c",
+                "name": "templateFolderEnv",
+                "type": "string",
+                "value": "GDRIVE_TEMPLATES_FAMILY"
+              }
+            ]
+          }
+        },
+        "notes": "Sets the Google Drive template folder for FAMILY_LAW cases."
+      },
+      {
+        "id": "ece1d3c0-eedf-4cbd-8cc4-4f900a0a2546",
+        "name": "Set Folder RE",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1740,
+          760
+        ],
+        "parameters": {
+          "options": {},
+          "includeOtherFields": true,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "cda38c88-3481-40f8-9a1d-9ec0b254d97c",
+                "name": "templateFolderId",
+                "type": "string",
+                "value": "={{ $env.GDRIVE_TEMPLATES_RE }}"
+              },
+              {
+                "id": "3cce36a8-91e7-402c-b959-c81eeaf57234",
+                "name": "templateFolderEnv",
+                "type": "string",
+                "value": "GDRIVE_TEMPLATES_RE"
+              }
+            ]
+          }
+        },
+        "notes": "Sets the Google Drive template folder for REAL_ESTATE cases."
+      },
+      {
+        "id": "3835c6d6-11e6-453b-9ba0-cf7368beaaed",
+        "name": "Set Folder ESTATE",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1740,
+          920
+        ],
+        "parameters": {
+          "options": {},
+          "includeOtherFields": true,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "a52a8d83-47ea-4672-b00e-270f282a837e",
+                "name": "templateFolderId",
+                "type": "string",
+                "value": "={{ $env.GDRIVE_TEMPLATES_ESTATE }}"
+              },
+              {
+                "id": "46156d19-be26-4a77-ab08-2fc8c072dddf",
+                "name": "templateFolderEnv",
+                "type": "string",
+                "value": "GDRIVE_TEMPLATES_ESTATE"
+              }
+            ]
+          }
+        },
+        "notes": "Sets the Google Drive template folder for ESTATE_PLANNING cases."
+      },
+      {
+        "id": "89d5fb37-8037-4ace-9ee6-bbe27f639291",
+        "name": "Set Folder DEFAULT",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1740,
+          1080
+        ],
+        "parameters": {
+          "options": {},
+          "includeOtherFields": true,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5884d9e9-3115-48f2-b6d7-e907bfe0b5da",
+                "name": "templateFolderId",
+                "type": "string",
+                "value": "={{ $env.GDRIVE_TEMPLATES_DEFAULT }}"
+              },
+              {
+                "id": "ef7246fd-8153-47fa-9905-353f7a2cef6c",
+                "name": "templateFolderEnv",
+                "type": "string",
+                "value": "GDRIVE_TEMPLATES_DEFAULT"
+              }
+            ]
+          }
+        },
+        "notes": "Sets the Google Drive template folder for OTHER cases."
+      },
+      {
+        "id": "603d9ffd-a094-4bfc-a893-b2b9a7bc3ad7",
+        "name": "Note Stage 5",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          1980,
+          0
+        ],
+        "parameters": {
+          "width": 1200,
+          "height": 200,
+          "content": "## Stage 5 \u2014 Document Generation Loop\nCreate per-client case folder, then iterate over requiredDocuments. For each: list matching template, copy into client folder, run Google Docs batchUpdate replaceAllText with the placeholder map. Aggregate all generated document IDs at the end.",
+          "color": 5
+        }
+      },
+      {
+        "id": "66a020a7-0aee-4591-9bc5-dc9e287d50ee",
+        "name": "Create Client Case Folder",
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          2000,
+          320
+        ],
+        "parameters": {
+          "resource": "folder",
+          "operation": "create",
+          "name": "={{ $json.caseId }} - {{ $json.fullName }}",
+          "driveId": {
+            "__rl": true,
+            "mode": "list",
+            "value": "My Drive"
+          },
+          "folderId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $env.GDRIVE_CLIENT_CASES_FOLDER }}"
+          },
+          "options": {}
+        },
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "REPLACE_GDRIVE_CRED_ID",
+            "name": "Google Drive account"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true,
+        "notes": "Creates a per-client folder under the parent cases folder."
+      },
+      {
+        "id": "c76e2303-c118-4564-b7f9-0efffa24df52",
+        "name": "Expand Required Documents",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          2240,
+          320
+        ],
+        "parameters": {
+          "language": "javaScript",
+          "jsCode": "// Convert requiredDocuments array into one item per document so SplitInBatches can iterate\nconst upstream = $('Merge Classification').first().json;\nconst folderInfo = $('Create Client Case Folder').first().json;\nconst branchData = $input.first().json;\n\nconst docs = (upstream.requiredDocuments || []).map((docKey) => ({\n  documentKey: docKey,\n  documentName: docKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),\n  caseId: upstream.caseId,\n  fullName: upstream.fullName,\n  lastName: upstream.lastName,\n  email: upstream.email,\n  category: upstream.category,\n  caseType: upstream.caseType,\n  placeholders: upstream.placeholders,\n  templateFolderId: branchData.templateFolderId,\n  caseFolderId: folderInfo.id,\n}));\n\nreturn docs.map(d => ({ json: d }));\n"
+        },
+        "notes": "Splits the requiredDocuments array into one n8n item per document."
+      },
+      {
+        "id": "596b364a-cd7e-4bb1-a792-164412d5cb5d",
+        "name": "Loop Over Documents",
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          2480,
+          320
+        ],
+        "parameters": {
+          "batchSize": 1,
+          "options": {}
+        },
+        "notes": "Iterates one document at a time. Output 0 = loop body, output 1 = done."
+      },
+      {
+        "id": "7a8f4f32-7e55-4902-85fb-bc50fae2d32a",
+        "name": "Find Template File",
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          2720,
+          320
+        ],
+        "parameters": {
+          "resource": "fileFolder",
+          "queryString": "={{ $json.documentKey }}",
+          "filter": {
+            "folderId": {
+              "__rl": true,
+              "mode": "id",
+              "value": "={{ $json.templateFolderId }}"
+            },
+            "whatToSearch": "files",
+            "fileTypes": [
+              "application/vnd.google-apps.document"
+            ]
+          },
+          "limit": 1,
+          "returnAll": false
+        },
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "REPLACE_GDRIVE_CRED_ID",
+            "name": "Google Drive account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Searches the case-type template folder for a Google Doc whose name matches the document key."
+      },
+      {
+        "id": "9adb74b6-cc12-4af5-a570-4ec3915cdc89",
+        "name": "Copy Template to Case Folder",
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          2960,
+          320
+        ],
+        "parameters": {
+          "resource": "file",
+          "operation": "copy",
+          "fileId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $json.id }}"
+          },
+          "name": "={{ $('Loop Over Documents').item.json.caseId }}_{{ $('Loop Over Documents').item.json.documentKey }}_{{ $('Loop Over Documents').item.json.lastName }}",
+          "options": {
+            "parents": [
+              "={{ $('Loop Over Documents').item.json.caseFolderId }}"
+            ]
+          }
+        },
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "REPLACE_GDRIVE_CRED_ID",
+            "name": "Google Drive account"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true,
+        "notes": "Copies the template into the client's case folder with a structured name."
+      },
+      {
+        "id": "9902b40a-eeed-44dc-b5a4-4e1c0ac91d7d",
+        "name": "Replace Placeholders (Google Docs API)",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          3200,
+          320
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "=https://docs.googleapis.com/v1/documents/{{ $json.id }}:batchUpdate",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleDocsOAuth2Api",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({\n  requests: Object.entries($('Loop Over Documents').item.json.placeholders).map(([key, value]) => ({\n    replaceAllText: {\n      containsText: { text: '{{' + key + '}}', matchCase: true },\n      replaceText: String(value || '')\n    }\n  }))\n}) }}",
+          "options": {}
+        },
+        "credentials": {
+          "googleDocsOAuth2Api": {
+            "id": "REPLACE_GDOCS_CRED_ID",
+            "name": "Google Docs account"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "notes": "Calls Google Docs batchUpdate with one replaceAllText request per placeholder."
+      },
+      {
+        "id": "adc6b50c-8123-4d15-81a6-2cc3ff2d74c5",
+        "name": "Record Document Info",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          3440,
+          320
+        ],
+        "parameters": {
+          "options": {},
+          "assignments": {
+            "assignments": [
+              {
+                "id": "1adef634-f503-4d38-a90d-b070453f010d",
+                "name": "documentId",
+                "type": "string",
+                "value": "={{ $('Copy Template to Case Folder').item.json.id }}"
+              },
+              {
+                "id": "b5d40947-1b9f-4ab2-81eb-2c78eca6fdaf",
+                "name": "documentName",
+                "type": "string",
+                "value": "={{ $('Copy Template to Case Folder').item.json.name }}"
+              },
+              {
+                "id": "b7218bc6-35af-4383-a661-67588795e174",
+                "name": "documentKey",
+                "type": "string",
+                "value": "={{ $('Loop Over Documents').item.json.documentKey }}"
+              },
+              {
+                "id": "f39ceab9-4be8-4074-be5e-745c9384af9a",
+                "name": "documentUrl",
+                "type": "string",
+                "value": "=https://docs.google.com/document/d/{{ $('Copy Template to Case Folder').item.json.id }}/edit"
+              }
+            ]
+          }
+        },
+        "notes": "Captures id+url for each generated document so the loop can aggregate them."
+      },
+      {
+        "id": "9881f03b-087f-42df-adf4-274ff58f16c7",
+        "name": "Aggregate Documents",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          2720,
+          540
+        ],
+        "parameters": {
+          "language": "javaScript",
+          "jsCode": "// Runs after the SplitInBatches done branch fires; collect all generated document records\nconst all = $('Record Document Info').all();\nconst upstream = $('Merge Classification').first().json;\nconst caseFolder = $('Create Client Case Folder').first().json;\n\nconst documents = all.map(item => item.json);\n\nreturn [{\n  json: {\n    ...upstream,\n    caseFolderId: caseFolder.id,\n    caseFolderUrl: caseFolder.webViewLink || `https://drive.google.com/drive/folders/${caseFolder.id}`,\n    documents,\n    documentCount: documents.length,\n    documentList: documents.map(d => `\u2022 ${d.documentName}`).join('\\n'),\n  }\n}];\n"
+        },
+        "notes": "Pulls every Record Document Info item into a single aggregated payload."
+      },
+      {
+        "id": "b6b11dcb-9c42-4bef-b39a-ca4889d74ebe",
+        "name": "Note Stage 6",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          2980,
+          480
+        ],
+        "parameters": {
+          "width": 1000,
+          "height": 280,
+          "content": "## Stage 6 \u2014 Lawyer Approval\nSlack message with action buttons to #case-intake-approvals. Wait node pauses execution for up to 24h until a Slack action posts to the resume webhook. IF node routes approve/reject.",
+          "color": 5
+        }
+      },
+      {
+        "id": "e32e3a63-5f44-43a8-abf1-dc58d8471dcb",
+        "name": "Send Slack Approval Request",
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.2,
+        "position": [
+          3000,
+          540
+        ],
+        "parameters": {
+          "resource": "message",
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.SLACK_APPROVAL_CHANNEL }}"
+          },
+          "messageType": "block",
+          "blocksUi": "={{ JSON.stringify({ blocks: [\n  { type: 'header', text: { type: 'plain_text', text: '\ud83d\udd14 New case ready for review' } },\n  { type: 'section', text: { type: 'mrkdwn', text: '*Case ID:* ' + $json.caseId + '\\n*Client:* ' + $json.fullName + ' (' + $json.email + ')\\n*Case Type:* ' + $json.caseType + '\\n*Priority:* ' + $json.priority + '\\n*Documents prepared:* ' + $json.documentCount + '\\n' + $json.documentList } },\n  { type: 'section', text: { type: 'mrkdwn', text: '<' + $json.caseFolderUrl + '|\ud83d\udcc1 Open case folder>' } },\n  { type: 'actions', elements: [\n    { type: 'button', style: 'primary', text: { type: 'plain_text', text: 'Approve & Send' }, value: 'approve', url: $execution.resumeUrl + '?status=approved' },\n    { type: 'button', text: { type: 'plain_text', text: 'Review First' }, value: 'review', url: $json.caseFolderUrl },\n    { type: 'button', style: 'danger', text: { type: 'plain_text', text: 'Reject' }, value: 'reject', url: $execution.resumeUrl + '?status=rejected' }\n  ] }\n] }) }}",
+          "otherOptions": {}
+        },
+        "credentials": {
+          "slackOAuth2Api": {
+            "id": "REPLACE_SLACK_CRED_ID",
+            "name": "Slack account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Posts an approval card with three action buttons that hit the Wait node's resume URL."
+      },
+      {
+        "id": "e3bd0508-4815-4a42-9ac3-38ff90e1d320",
+        "name": "Wait For Lawyer Approval",
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          3240,
+          540
+        ],
+        "webhookId": "law-firm-approval-fe4cf6e4",
+        "parameters": {
+          "resume": "webhook",
+          "options": {
+            "webhookSuffix": "approval"
+          },
+          "limitWaitTime": true,
+          "limitType": "afterTimeInterval",
+          "resumeAmount": 24,
+          "resumeUnit": "hours"
+        },
+        "notes": "Pauses until Slack action button is clicked. Times out after 24h \u2192 escalation branch."
+      },
+      {
+        "id": "d0b27e1d-0654-4fc5-aa53-65c83f157ae0",
+        "name": "Approval Decision",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          3480,
+          540
+        ],
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict"
+            },
+            "conditions": [
+              {
+                "id": "9647bec2-dd13-4589-a52c-b17a59afacd8",
+                "leftValue": "={{ $json.query?.status || $json.body?.status || 'approved' }}",
+                "rightValue": "approved",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "notes": "Reads ?status=approved|rejected from the resume URL or body."
+      },
+      {
+        "id": "423dbd11-286e-4342-ba9e-f7fd22017188",
+        "name": "Notify Rejection \u2014 Slack",
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.2,
+        "position": [
+          3720,
+          740
+        ],
+        "parameters": {
+          "resource": "message",
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.SLACK_PIPELINE_CHANNEL }}"
+          },
+          "text": "=\u26a0\ufe0f Case {{ $('Aggregate Documents').item.json.caseId }} REJECTED by reviewer. Client {{ $('Aggregate Documents').item.json.fullName }} will be notified of delay.",
+          "otherOptions": {}
+        },
+        "credentials": {
+          "slackOAuth2Api": {
+            "id": "REPLACE_SLACK_CRED_ID",
+            "name": "Slack account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "daf05aea-f683-41d5-8ec3-21133f043c96",
+        "name": "Log Rejection \u2014 Airtable",
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          3960,
+          740
+        ],
+        "parameters": {
+          "operation": "create",
+          "base": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $env.AIRTABLE_BASE_ID }}"
+          },
+          "table": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.AIRTABLE_CASES_TABLE }}"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Case ID": "={{ $('Aggregate Documents').item.json.caseId }}",
+              "Client Name": "={{ $('Aggregate Documents').item.json.fullName }}",
+              "Email": "={{ $('Aggregate Documents').item.json.email }}",
+              "Case Type": "={{ $('Aggregate Documents').item.json.caseType }}",
+              "Status": "Rejected at Review",
+              "Priority": "={{ $('Aggregate Documents').item.json.priority }}",
+              "Created At": "={{ $now.toISO() }}"
+            }
+          }
+        },
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "REPLACE_AIRTABLE_CRED_ID",
+            "name": "Airtable account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "fbb80c05-f80b-402f-a986-3555e711ffa1",
+        "name": "Note Stage 7",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          3700,
+          100
+        ],
+        "parameters": {
+          "width": 1700,
+          "height": 360,
+          "content": "## Stage 7 \u2014 DocuSign Envelope Creation\nLoop over each generated document. Download as PDF from Google Drive, create a DocuSign envelope (one per document), capture envelope IDs. Uses HTTP Header Auth with bearer token for DocuSign.\n\nRetry-on-fail handles transient envelope errors with exponential backoff (n8n native retry).",
+          "color": 5
+        }
+      },
+      {
+        "id": "d62cc6e1-2a9b-4152-937d-f6ac8e04cc74",
+        "name": "Loop Documents \u2192 DocuSign",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          3720,
+          320
+        ],
+        "parameters": {
+          "language": "javaScript",
+          "jsCode": "// Expand documents array back into items for the DocuSign loop\nconst data = $('Aggregate Documents').first().json;\nreturn data.documents.map(d => ({\n  json: {\n    ...d,\n    caseId: data.caseId,\n    fullName: data.fullName,\n    email: data.email,\n    caseType: data.caseType,\n    priority: data.priority,\n    placeholders: data.placeholders,\n    caseFolderId: data.caseFolderId,\n    caseFolderUrl: data.caseFolderUrl,\n    documentCount: data.documentCount,\n  }\n}));\n"
+        },
+        "notes": "Re-expands aggregated documents for the per-envelope loop."
+      },
+      {
+        "id": "a477ed34-2ce0-46ec-822d-e02ce7b8f7b7",
+        "name": "Loop For DocuSign",
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          3960,
+          320
+        ],
+        "parameters": {
+          "batchSize": 1,
+          "options": {}
+        }
+      },
+      {
+        "id": "11d2b695-a9c5-4311-b035-3a3c5b44229a",
+        "name": "Export Doc as PDF",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          4200,
+          320
+        ],
+        "parameters": {
+          "method": "GET",
+          "url": "=https://www.googleapis.com/drive/v3/files/{{ $json.documentId }}/export?mimeType=application/pdf",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleDriveOAuth2Api",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "REPLACE_GDRIVE_CRED_ID",
+            "name": "Google Drive account"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "notes": "Downloads the generated Google Doc as a PDF binary."
+      },
+      {
+        "id": "f4d1e9f6-7b5f-4441-a8ec-784eaa0c8d80",
+        "name": "Encode PDF Base64",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          4440,
+          320
+        ],
+        "parameters": {
+          "language": "javaScript",
+          "jsCode": "const item = $input.item;\nconst binary = item.binary?.data;\nif (!binary) {\n  throw new Error('No PDF binary in input');\n}\nreturn [{\n  json: {\n    ...item.json,\n    documentBase64: binary.data,  // already base64-encoded by n8n\n  }\n}];\n"
+        },
+        "notes": "Pulls the base64 string out of n8n's binary buffer for DocuSign."
+      },
+      {
+        "id": "385e400e-ad74-492c-a681-01349a42f58d",
+        "name": "Create DocuSign Envelope",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          4680,
+          320
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "={{ $env.DOCUSIGN_BASE_URL }}/restapi/v2.1/accounts/{{ $env.DOCUSIGN_ACCOUNT_ID }}/envelopes",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({\n  emailSubject: 'Please sign: ' + $json.documentName,\n  emailBlurb: 'Hello ' + $('Loop Documents \u2192 DocuSign').item.json.fullName + ', please review and sign the attached document from ' + ($env.FIRM_NAME || 'our firm') + '.',\n  documents: [{\n    documentBase64: $json.documentBase64,\n    name: $json.documentName,\n    fileExtension: 'pdf',\n    documentId: '1'\n  }],\n  recipients: {\n    signers: [{\n      email: $('Loop Documents \u2192 DocuSign').item.json.email,\n      name: $('Loop Documents \u2192 DocuSign').item.json.fullName,\n      recipientId: '1',\n      routingOrder: '1',\n      tabs: {\n        signHereTabs: [{\n          anchorString: '/sn1/',\n          anchorYOffset: '10',\n          anchorUnits: 'pixels'\n        }]\n      }\n    }]\n  },\n  status: 'sent',\n  customFields: {\n    textCustomFields: [{\n      name: 'caseId',\n      value: $('Loop Documents \u2192 DocuSign').item.json.caseId,\n      required: 'false',\n      show: 'false'\n    }, {\n      name: 'documentKey',\n      value: $json.documentKey,\n      required: 'false',\n      show: 'false'\n    }]\n  }\n}) }}",
+          "options": {}
+        },
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "REPLACE_DOCUSIGN_CRED_ID",
+            "name": "DocuSign Bearer Token"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 4000,
+        "notes": "Creates one DocuSign envelope per document. customFields carry caseId/documentKey for the signed-handler workflow."
+      },
+      {
+        "id": "7df2645a-85f3-45bd-ba63-99f9917e2e35",
+        "name": "Capture Envelope ID",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          4920,
+          320
+        ],
+        "parameters": {
+          "options": {},
+          "assignments": {
+            "assignments": [
+              {
+                "id": "f30fb568-4f7e-49e9-9430-3ab251dd6a8e",
+                "name": "envelopeId",
+                "type": "string",
+                "value": "={{ $json.envelopeId }}"
+              },
+              {
+                "id": "9679c64b-445f-4f98-bde6-dff83e8c45c3",
+                "name": "documentId",
+                "type": "string",
+                "value": "={{ $('Loop For DocuSign').item.json.documentId }}"
+              },
+              {
+                "id": "cea5a67f-2f9a-4f4a-b65a-311c116279f0",
+                "name": "documentKey",
+                "type": "string",
+                "value": "={{ $('Loop For DocuSign').item.json.documentKey }}"
+              },
+              {
+                "id": "ac89c9b7-aaeb-48c0-bbcc-43ad4bb155fa",
+                "name": "documentName",
+                "type": "string",
+                "value": "={{ $('Loop For DocuSign').item.json.documentName }}"
+              },
+              {
+                "id": "d96b9bb8-57fb-4533-89de-1a450179a72a",
+                "name": "envelopeStatus",
+                "type": "string",
+                "value": "={{ $json.status }}"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "195db866-abe5-4a3f-a94e-640a72c66dfa",
+        "name": "Aggregate Envelopes",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          4200,
+          540
+        ],
+        "parameters": {
+          "language": "javaScript",
+          "jsCode": "const envelopes = $('Capture Envelope ID').all().map(i => i.json);\nconst upstream = $('Aggregate Documents').first().json;\nreturn [{\n  json: {\n    ...upstream,\n    envelopes,\n    envelopeIds: envelopes.map(e => e.envelopeId).filter(Boolean).join(', '),\n    envelopeCount: envelopes.length,\n  }\n}];\n"
+        },
+        "notes": "Collects all envelope IDs into a single record after the DocuSign loop completes."
+      },
+      {
+        "id": "7442c148-323c-4248-8f7e-f6ad9d23692c",
+        "name": "Note Stage 8",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          4420,
+          480
+        ],
+        "parameters": {
+          "width": 480,
+          "height": 240,
+          "content": "## Stage 8 \u2014 Airtable Case Record\nCreates the canonical case record with envelope IDs, status, attorney assignment.",
+          "color": 5
+        }
+      },
+      {
+        "id": "36a094b7-fd43-4699-ba00-d70ad222bdf6",
+        "name": "Create Airtable Case",
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          4440,
+          540
+        ],
+        "parameters": {
+          "operation": "create",
+          "base": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $env.AIRTABLE_BASE_ID }}"
+          },
+          "table": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.AIRTABLE_CASES_TABLE }}"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Case ID": "={{ $json.caseId }}",
+              "Client Name": "={{ $json.fullName }}",
+              "Email": "={{ $json.email }}",
+              "Phone": "={{ $('Build Placeholder Map').item.json.phone }}",
+              "Case Type": "={{ $json.caseType }}",
+              "Sub Type": "={{ $json.subType }}",
+              "Status": "Awaiting Signature",
+              "Documents Sent": "={{ $json.envelopeCount }}",
+              "Documents Signed": 0,
+              "DocuSign Envelope IDs": "={{ $json.envelopes.map(e => e.envelopeId + ' (' + e.documentKey + ')').join('\\n') }}",
+              "Case Folder URL": "={{ $json.caseFolderUrl }}",
+              "Created At": "={{ $now.toISO() }}",
+              "Attorney Assigned": "={{ $env.ATTORNEY_NAME }}",
+              "Priority": "={{ $json.priority }}"
+            }
+          },
+          "options": {}
+        },
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "REPLACE_AIRTABLE_CRED_ID",
+            "name": "Airtable account"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true
+      },
+      {
+        "id": "3dcfdf66-d0b2-45e8-9fe6-2ec91310568e",
+        "name": "Note Stage 9",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          4680,
+          480
+        ],
+        "parameters": {
+          "width": 740,
+          "height": 280,
+          "content": "## Stage 9 \u2014 Initial Notifications\nGmail welcome email to client, Slack pipeline notification with envelope IDs.\n\nTier flexibility: this stage runs for all tiers.",
+          "color": 5
+        }
+      },
+      {
+        "id": "e15a1dc7-dfd2-4734-ba3a-66dde2352e5e",
+        "name": "Welcome Email \u2014 Initial",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "position": [
+          4700,
+          540
+        ],
+        "parameters": {
+          "resource": "message",
+          "operation": "send",
+          "sendTo": "={{ $('Aggregate Envelopes').item.json.email }}",
+          "subject": "=Welcome to {{ $env.FIRM_NAME }} \u2014 documents on the way",
+          "emailType": "html",
+          "message": "=<p>Hi {{ $('Aggregate Envelopes').item.json.fullName }},</p>\n<p>Thanks for reaching out to <strong>{{ $env.FIRM_NAME }}</strong>. We've received your intake for <em>{{ $('Aggregate Envelopes').item.json.caseType }}</em> and started preparing your documents.</p>\n<p>You'll receive {{ $('Aggregate Envelopes').item.json.envelopeCount }} document(s) for e-signature from DocuSign in the next few minutes. Please complete them at your earliest convenience so we can begin work on your matter.</p>\n<p>If you have questions, reply to this email or call {{ $env.FIRM_PHONE || 'our office' }}.</p>\n<p>\u2014 {{ $env.ATTORNEY_NAME }}<br>{{ $env.FIRM_NAME }}<br>{{ $env.FIRM_ADDRESS }}</p>",
+          "options": {
+            "appendAttribution": false
+          }
+        },
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "REPLACE_GMAIL_CRED_ID",
+            "name": "Gmail account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "1e51a264-f47b-412d-af07-fad019498cf5",
+        "name": "Notify Pipeline \u2014 Slack",
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.2,
+        "position": [
+          4940,
+          540
+        ],
+        "parameters": {
+          "resource": "message",
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.SLACK_PIPELINE_CHANNEL }}"
+          },
+          "text": "=\u2705 Documents sent to {{ $('Aggregate Envelopes').item.json.fullName }} ({{ $('Aggregate Envelopes').item.json.caseType }})\nCase: *{{ $('Aggregate Envelopes').item.json.caseId }}*\nEnvelopes ({{ $('Aggregate Envelopes').item.json.envelopeCount }}): {{ $('Aggregate Envelopes').item.json.envelopeIds }}\nStatus: Awaiting signature.",
+          "otherOptions": {}
+        },
+        "credentials": {
+          "slackOAuth2Api": {
+            "id": "REPLACE_SLACK_CRED_ID",
+            "name": "Slack account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "334d58d7-e6a6-4e0c-9fa0-cb222d3eb93b",
+        "name": "Webhook Response",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          5180,
+          540
+        ],
+        "parameters": {
+          "options": {},
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b97202c2-05ab-48b5-88b7-fc3d23c91973",
+                "name": "ok",
+                "type": "boolean",
+                "value": "={{ true }}"
+              },
+              {
+                "id": "6cdaf6d8-8bca-41e6-8b6e-0e679a86d50c",
+                "name": "caseId",
+                "type": "string",
+                "value": "={{ $('Aggregate Envelopes').item.json.caseId }}"
+              },
+              {
+                "id": "8fe80d3f-7c53-473b-844e-1a7508bec8e6",
+                "name": "envelopesSent",
+                "type": "number",
+                "value": "={{ $('Aggregate Envelopes').item.json.envelopeCount }}"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "25fcaea3-fc9e-426b-9ce1-458df37484ff",
+        "name": "Note Tier Flexibility",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          4420,
+          800
+        ],
+        "parameters": {
+          "width": 980,
+          "height": 220,
+          "content": "## Tier Flexibility\nThe `Approval Decision` rejection branch and the `Multi-Attorney` IF nodes are no-ops by default. Set env vars to enable: `MULTI_ATTORNEY_ENABLED`, `STRIPE_ENABLED`, `CLIO_ENABLED`. The Scale tier features are wrapped in IF nodes so the same JSON serves all three tiers.",
+          "color": 6
+        }
+      }
+    ],
+    "connections": {
+      "Intake Webhook": {
+        "main": [
+          [
+            {
+              "node": "Normalize Intake Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize Intake Fields": {
+        "main": [
+          [
+            {
+              "node": "Build Placeholder Map",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Build Placeholder Map": {
+        "main": [
+          [
+            {
+              "node": "Classify Case Type",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Classify Case Type": {
+        "main": [
+          [
+            {
+              "node": "Merge Classification",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge Classification": {
+        "main": [
+          [
+            {
+              "node": "Route by Case Type",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Route by Case Type": {
+        "main": [
+          [
+            {
+              "node": "Set Folder PI",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set Folder IMM",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set Folder FAM",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set Folder RE",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set Folder ESTATE",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set Folder DEFAULT",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Folder PI": {
+        "main": [
+          [
+            {
+              "node": "Create Client Case Folder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Folder IMM": {
+        "main": [
+          [
+            {
+              "node": "Create Client Case Folder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Folder FAM": {
+        "main": [
+          [
+            {
+              "node": "Create Client Case Folder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Folder RE": {
+        "main": [
+          [
+            {
+              "node": "Create Client Case Folder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Folder ESTATE": {
+        "main": [
+          [
+            {
+              "node": "Create Client Case Folder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Folder DEFAULT": {
+        "main": [
+          [
+            {
+              "node": "Create Client Case Folder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create Client Case Folder": {
+        "main": [
+          [
+            {
+              "node": "Expand Required Documents",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Expand Required Documents": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Documents",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Documents": {
+        "main": [
+          [
+            {
+              "node": "Find Template File",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Aggregate Documents",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Find Template File": {
+        "main": [
+          [
+            {
+              "node": "Copy Template to Case Folder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Copy Template to Case Folder": {
+        "main": [
+          [
+            {
+              "node": "Replace Placeholders (Google Docs API)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Replace Placeholders (Google Docs API)": {
+        "main": [
+          [
+            {
+              "node": "Record Document Info",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Record Document Info": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Documents",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate Documents": {
+        "main": [
+          [
+            {
+              "node": "Send Slack Approval Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send Slack Approval Request": {
+        "main": [
+          [
+            {
+              "node": "Wait For Lawyer Approval",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait For Lawyer Approval": {
+        "main": [
+          [
+            {
+              "node": "Approval Decision",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Approval Decision": {
+        "main": [
+          [
+            {
+              "node": "Loop Documents \u2192 DocuSign",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Notify Rejection \u2014 Slack",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Notify Rejection \u2014 Slack": {
+        "main": [
+          [
+            {
+              "node": "Log Rejection \u2014 Airtable",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Documents \u2192 DocuSign": {
+        "main": [
+          [
+            {
+              "node": "Loop For DocuSign",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop For DocuSign": {
+        "main": [
+          [
+            {
+              "node": "Export Doc as PDF",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Aggregate Envelopes",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Export Doc as PDF": {
+        "main": [
+          [
+            {
+              "node": "Encode PDF Base64",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Encode PDF Base64": {
+        "main": [
+          [
+            {
+              "node": "Create DocuSign Envelope",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create DocuSign Envelope": {
+        "main": [
+          [
+            {
+              "node": "Capture Envelope ID",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Capture Envelope ID": {
+        "main": [
+          [
+            {
+              "node": "Loop For DocuSign",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate Envelopes": {
+        "main": [
+          [
+            {
+              "node": "Create Airtable Case",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create Airtable Case": {
+        "main": [
+          [
+            {
+              "node": "Welcome Email \u2014 Initial",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Welcome Email \u2014 Initial": {
+        "main": [
+          [
+            {
+              "node": "Notify Pipeline \u2014 Slack",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Notify Pipeline \u2014 Slack": {
+        "main": [
+          [
+            {
+              "node": "Webhook Response",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true,
+      "timezone": "Europe/London",
+      "errorWorkflow": ""
+    },
+    "staticData": null,
+    "tags": [
+      {
+        "name": "law-firm"
+      },
+      {
+        "name": "document-automation"
+      },
+      {
+        "name": "production"
+      }
+    ],
+    "pinData": {},
+    "versionId": "66f38c0f-a2d3-4372-9188-8d2f64483ffb",
+    "meta": {
+      "instanceId": "law-firm-automation"
+    },
+    "id": "law-firm-doc-automation-v1"
+  },
+  {
+    "name": "Law Firm \u2014 DocuSign Signed Handler v1",
+    "nodes": [
+      {
+        "id": "1b8ebdd0-67a6-4789-aa03-f98d4f8ed0e4",
+        "name": "H Note 1",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          80,
+          0
+        ],
+        "parameters": {
+          "width": 480,
+          "height": 200,
+          "content": "## DocuSign Connect Webhook\nFires when an envelope status changes to `completed`. Configure DocuSign Connect to POST to this webhook URL.",
+          "color": 5
+        }
+      },
+      {
+        "id": "98021005-9a7c-44da-9394-cc2f022e8794",
+        "name": "DocuSign Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          240,
+          320
+        ],
+        "webhookId": "law-firm-docusign-8ff0d088",
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "docusign-signed",
+          "responseMode": "lastNode",
+          "options": {}
+        },
+        "notes": "Receives DocuSign Connect notifications."
+      },
+      {
+        "id": "16546084-4cd4-413d-acc6-9609f390f63f",
+        "name": "Extract Envelope Data",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          480,
+          320
+        ],
+        "parameters": {
+          "options": {},
+          "assignments": {
+            "assignments": [
+              {
+                "id": "e0b9cb70-4060-4c03-806d-2ee376bc3a3c",
+                "name": "envelopeId",
+                "type": "string",
+                "value": "={{ $json.body.data?.envelopeId || $json.body.envelopeId || $json.body.envelopeStatus?.envelopeId }}"
+              },
+              {
+                "id": "09a40afd-e6c0-4a7a-b130-00bf6ca2f606",
+                "name": "envelopeStatus",
+                "type": "string",
+                "value": "={{ $json.body.data?.envelopeSummary?.status || $json.body.status || $json.body.event }}"
+              },
+              {
+                "id": "113d6eda-c820-49ca-b55f-599c12e9e54e",
+                "name": "completedAt",
+                "type": "string",
+                "value": "={{ $json.body.data?.envelopeSummary?.completedDateTime || $now.toISO() }}"
+              },
+              {
+                "id": "cb4397b9-279c-4b92-9125-784d9a85a952",
+                "name": "signerEmail",
+                "type": "string",
+                "value": "={{ $json.body.data?.envelopeSummary?.recipients?.signers?.[0]?.email || '' }}"
+              },
+              {
+                "id": "6a9daec0-4547-490f-9f41-8abdbb6b537a",
+                "name": "caseId",
+                "type": "string",
+                "value": "={{ ($json.body.data?.envelopeSummary?.customFields?.textCustomFields || []).find(f => f.name === 'caseId')?.value || '' }}"
+              },
+              {
+                "id": "e4036b4c-6985-405d-9479-d40a1d78e645",
+                "name": "documentKey",
+                "type": "string",
+                "value": "={{ ($json.body.data?.envelopeSummary?.customFields?.textCustomFields || []).find(f => f.name === 'documentKey')?.value || '' }}"
+              }
+            ]
+          }
+        },
+        "notes": "Pulls envelope ID, status, signer, and our custom case/document keys from the DocuSign payload."
+      },
+      {
+        "id": "ef0aaaf3-b584-4a4c-b07b-34dc6cf3450f",
+        "name": "Is Envelope Completed?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          720,
+          320
+        ],
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": false,
+              "leftValue": "",
+              "typeValidation": "loose"
+            },
+            "conditions": [
+              {
+                "id": "5a09fbf8-ca1b-4b0e-834a-ac8a7e5b66cc",
+                "leftValue": "={{ $json.envelopeStatus }}",
+                "rightValue": "completed",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "notes": "Ignore non-completed events."
+      },
+      {
+        "id": "efd4a579-84af-4408-b7a1-14a1c6a2537a",
+        "name": "Lookup Case in Airtable",
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          960,
+          220
+        ],
+        "parameters": {
+          "operation": "search",
+          "base": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $env.AIRTABLE_BASE_ID }}"
+          },
+          "table": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.AIRTABLE_CASES_TABLE }}"
+          },
+          "filterByFormula": "=FIND('{{ $json.envelopeId }}', {DocuSign Envelope IDs})",
+          "options": {}
+        },
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "REPLACE_AIRTABLE_CRED_ID",
+            "name": "Airtable account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "c60d57d4-e5ab-4c64-aae0-25a7545e96e6",
+        "name": "Download Signed PDF",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1200,
+          220
+        ],
+        "parameters": {
+          "method": "GET",
+          "url": "={{ $env.DOCUSIGN_BASE_URL }}/restapi/v2.1/accounts/{{ $env.DOCUSIGN_ACCOUNT_ID }}/envelopes/{{ $('Extract Envelope Data').item.json.envelopeId }}/documents/combined",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "REPLACE_DOCUSIGN_CRED_ID",
+            "name": "DocuSign Bearer Token"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000
+      },
+      {
+        "id": "f5ee090f-e7bd-4ccf-b289-ee3d55aab687",
+        "name": "Upload Signed PDF to Drive",
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          1440,
+          220
+        ],
+        "parameters": {
+          "operation": "upload",
+          "name": "={{ $('Extract Envelope Data').item.json.caseId }}_{{ $('Extract Envelope Data').item.json.documentKey }}_SIGNED.pdf",
+          "driveId": {
+            "__rl": true,
+            "mode": "list",
+            "value": "My Drive"
+          },
+          "folderId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $('Lookup Case in Airtable').item.json['Case Folder ID'] || $env.GDRIVE_CLIENT_CASES_FOLDER }}"
+          },
+          "options": {}
+        },
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "REPLACE_GDRIVE_CRED_ID",
+            "name": "Google Drive account"
+          }
+        },
+        "continueOnFail": true,
+        "retryOnFail": true
+      },
+      {
+        "id": "41b2fb5b-3441-4cd2-965f-84906f0e705d",
+        "name": "Update Case \u2014 Increment Signed",
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          1680,
+          220
+        ],
+        "parameters": {
+          "operation": "update",
+          "base": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $env.AIRTABLE_BASE_ID }}"
+          },
+          "table": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.AIRTABLE_CASES_TABLE }}"
+          },
+          "id": "={{ $('Lookup Case in Airtable').item.json.id }}",
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Documents Signed": "={{ ($('Lookup Case in Airtable').item.json['Documents Signed'] || 0) + 1 }}",
+              "Last Signed At": "={{ $('Extract Envelope Data').item.json.completedAt }}",
+              "Status": "={{ ($('Lookup Case in Airtable').item.json['Documents Signed'] || 0) + 1 >= ($('Lookup Case in Airtable').item.json['Documents Sent'] || 0) ? 'Active Case' : 'Partial Signed' }}"
+            }
+          },
+          "options": {}
+        },
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "REPLACE_AIRTABLE_CRED_ID",
+            "name": "Airtable account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "15d81c98-5cdf-44c6-b494-52fc4de8243d",
+        "name": "All Documents Signed?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1920,
+          220
+        ],
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose"
+            },
+            "conditions": [
+              {
+                "id": "92e450f4-dabe-42dc-a002-2bcb4d46b8bd",
+                "leftValue": "={{ ($('Lookup Case in Airtable').item.json['Documents Signed'] || 0) + 1 }}",
+                "rightValue": "={{ $('Lookup Case in Airtable').item.json['Documents Sent'] || 0 }}",
+                "operator": {
+                  "type": "number",
+                  "operation": "gte"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "79b49a57-a0e7-4cf1-9221-1b6b52e3bb59",
+        "name": "Welcome Email \u2014 Case Active",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "position": [
+          2160,
+          100
+        ],
+        "parameters": {
+          "resource": "message",
+          "operation": "send",
+          "sendTo": "={{ $('Lookup Case in Airtable').item.json['Email'] }}",
+          "subject": "=Welcome aboard, {{ $('Lookup Case in Airtable').item.json['Client Name']?.split(' ')?.[0] }}! Your case is now active.",
+          "emailType": "html",
+          "message": "=<h2>Your case is officially open</h2>\n<p>All documents have been signed and your case <strong>{{ $('Lookup Case in Airtable').item.json['Case ID'] }}</strong> ({{ $('Lookup Case in Airtable').item.json['Case Type'] }}) is now active with {{ $env.FIRM_NAME }}.</p>\n<p><strong>Your attorney:</strong> {{ $('Lookup Case in Airtable').item.json['Attorney Assigned'] }}</p>\n<p><strong>Next steps:</strong></p>\n<ul>\n<li>You'll receive a kickoff call within 2 business days</li>\n<li>All signed copies are stored securely in your case folder</li>\n<li>Reply to this email anytime with questions</li>\n</ul>\n<p>\u2014 {{ $env.FIRM_NAME }}</p>",
+          "options": {
+            "appendAttribution": false
+          }
+        },
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "REPLACE_GMAIL_CRED_ID",
+            "name": "Gmail account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "2471a13c-ab36-422b-92e8-764fcbbe2fd1",
+        "name": "Notify Attorney \u2014 Case Open",
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.2,
+        "position": [
+          2400,
+          100
+        ],
+        "parameters": {
+          "resource": "message",
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.SLACK_PIPELINE_CHANNEL }}"
+          },
+          "text": "=\ud83c\udf89 *Case OPENED:* {{ $('Lookup Case in Airtable').item.json['Case ID'] }} \u2014 {{ $('Lookup Case in Airtable').item.json['Client Name'] }} \u2014 {{ $('Lookup Case in Airtable').item.json['Case Type'] }}. All documents signed.",
+          "otherOptions": {}
+        },
+        "credentials": {
+          "slackOAuth2Api": {
+            "id": "REPLACE_SLACK_CRED_ID",
+            "name": "Slack account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "06c41dd4-50e8-4d70-afc5-f8a47769b330",
+        "name": "Clio Sync Enabled?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          2640,
+          100
+        ],
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": false,
+              "leftValue": "",
+              "typeValidation": "loose"
+            },
+            "conditions": [
+              {
+                "id": "86b969b3-9db7-4f72-8dae-0364d7173cc4",
+                "leftValue": "={{ $env.CLIO_ENABLED }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "notes": "Tier flexibility: only the Scale tier hits Clio."
+      },
+      {
+        "id": "ca3052b0-2d15-4b50-b1fc-afca54f0e340",
+        "name": "Create Clio Contact",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2880,
+          60
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://app.clio.com/api/v4/contacts.json",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({\n  data: {\n    type: 'Person',\n    first_name: ($('Lookup Case in Airtable').item.json['Client Name'] || '').split(' ')[0],\n    last_name: ($('Lookup Case in Airtable').item.json['Client Name'] || '').split(' ').slice(1).join(' '),\n    email_addresses: [{ name: 'Work', address: $('Lookup Case in Airtable').item.json['Email'], primary: true }]\n  }\n}) }}",
+          "options": {}
+        },
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "REPLACE_CLIO_CRED_ID",
+            "name": "Clio Bearer Token"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "1f588986-6d6c-4039-b6da-c986a3115943",
+        "name": "Create Clio Matter",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          3120,
+          60
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://app.clio.com/api/v4/matters.json",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({\n  data: {\n    description: $('Lookup Case in Airtable').item.json['Case ID'] + ' \u2014 ' + $('Lookup Case in Airtable').item.json['Case Type'],\n    client: { id: $json.data?.id },\n    status: 'Open'\n  }\n}) }}",
+          "options": {}
+        },
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "REPLACE_CLIO_CRED_ID",
+            "name": "Clio Bearer Token"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "8d69cba3-fb18-4eff-bb61-1793403ba68b",
+        "name": "Log Progress \u2014 Slack",
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.2,
+        "position": [
+          2160,
+          340
+        ],
+        "parameters": {
+          "resource": "message",
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $env.SLACK_PIPELINE_CHANNEL }}"
+          },
+          "text": "=\ud83d\udce5 Document signed: {{ $('Extract Envelope Data').item.json.documentKey }} for case {{ $('Extract Envelope Data').item.json.caseId }}. Awaiting remaining documents.",
+          "otherOptions": {}
+        },
+        "credentials": {
+          "slackOAuth2Api": {
+            "id": "REPLACE_SLACK_CRED_ID",
+            "name": "Slack account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "id": "fd8d5a06-c876-4a54-8cc0-111d508888c2",
+        "name": "Ack Webhook",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          3360,
+          220
+        ],
+        "parameters": {
+          "options": {},
+          "assignments": {
+            "assignments": [
+              {
+                "id": "fe6df552-6287-4390-8af6-e04b2cb398d0",
+                "name": "ok",
+                "type": "boolean",
+                "value": "={{ true }}"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "connections": {
+      "DocuSign Webhook": {
+        "main": [
+          [
+            {
+              "node": "Extract Envelope Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract Envelope Data": {
+        "main": [
+          [
+            {
+              "node": "Is Envelope Completed?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Is Envelope Completed?": {
+        "main": [
+          [
+            {
+              "node": "Lookup Case in Airtable",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Ack Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Lookup Case in Airtable": {
+        "main": [
+          [
+            {
+              "node": "Download Signed PDF",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Download Signed PDF": {
+        "main": [
+          [
+            {
+              "node": "Upload Signed PDF to Drive",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Upload Signed PDF to Drive": {
+        "main": [
+          [
+            {
+              "node": "Update Case \u2014 Increment Signed",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update Case \u2014 Increment Signed": {
+        "main": [
+          [
+            {
+              "node": "All Documents Signed?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "All Documents Signed?": {
+        "main": [
+          [
+            {
+              "node": "Welcome Email \u2014 Case Active",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Log Progress \u2014 Slack",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Welcome Email \u2014 Case Active": {
+        "main": [
+          [
+            {
+              "node": "Notify Attorney \u2014 Case Open",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Notify Attorney \u2014 Case Open": {
+        "main": [
+          [
+            {
+              "node": "Clio Sync Enabled?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Clio Sync Enabled?": {
+        "main": [
+          [
+            {
+              "node": "Create Clio Contact",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Ack Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create Clio Contact": {
+        "main": [
+          [
+            {
+              "node": "Create Clio Matter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create Clio Matter": {
+        "main": [
+          [
+            {
+              "node": "Ack Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Log Progress \u2014 Slack": {
+        "main": [
+          [
+            {
+              "node": "Ack Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true,
+      "timezone": "Europe/London"
+    },
+    "staticData": null,
+    "tags": [
+      {
+        "name": "law-firm"
+      },
+      {
+        "name": "docusign-handler"
+      }
+    ],
+    "pinData": {},
+    "versionId": "cc022702-542b-4fdb-b008-7339f7524a3a",
+    "meta": {
+      "instanceId": "law-firm-automation"
+    },
+    "id": "law-firm-docusign-handler-v1"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "firstName": "Priya",
+  "lastName": "Shah",
+  "email": "priya.shah@example.com",
+  "phone": "+14155550123",
+  "caseType": "Immigration - H1B Transfer",
+  "incidentDate": "2026-05-01",
+  "incidentLocation": "San Francisco, CA",
+  "injuryDetails": "Current H1B with Acme Corp expires 2026-09-30. New employer (Globex) wants to file transfer petition. Spouse (H4) and one child included in dependents.",
+  "insuranceProvider": "N/A",
+  "insurancePolicyNumber": "N/A",
+  "preferredContactMethod": "email",
+  "submittedAt": "2026-05-07T16:42:00Z"
+}

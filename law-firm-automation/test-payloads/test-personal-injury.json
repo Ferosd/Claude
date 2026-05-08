@@ -1,0 +1,14 @@
+{
+  "firstName": "Marcus",
+  "lastName": "Williams",
+  "email": "marcus.w@email.com",
+  "phone": "+447911555000",
+  "caseType": "Personal Injury - Slip & Fall",
+  "incidentDate": "2026-04-15",
+  "incidentLocation": "Tesco, Oxford Street, London",
+  "injuryDetails": "Slipped on wet floor near produce section, broken right wrist requiring surgery, two days hospitalised at UCLH",
+  "insuranceProvider": "Aviva",
+  "insurancePolicyNumber": "AV-1234567",
+  "preferredContactMethod": "email",
+  "submittedAt": "2026-05-07T14:23:00Z"
+}

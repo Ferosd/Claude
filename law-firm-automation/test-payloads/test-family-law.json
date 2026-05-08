@@ -1,0 +1,14 @@
+{
+  "firstName": "Elena",
+  "lastName": "Rodriguez",
+  "email": "elena.r@example.com",
+  "phone": "+447700900123",
+  "caseType": "Family Law - Divorce with Children",
+  "incidentDate": "2026-03-20",
+  "incidentLocation": "Manchester, UK",
+  "injuryDetails": "Married 11 years, two children aged 8 and 5, separated since March. Seeking 50/50 custody, division of jointly-owned property in M14, no contested assets beyond family home.",
+  "insuranceProvider": "N/A",
+  "insurancePolicyNumber": "N/A",
+  "preferredContactMethod": "phone",
+  "submittedAt": "2026-05-07T09:15:00Z"
+}
