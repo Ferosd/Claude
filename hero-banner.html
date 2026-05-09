@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coremagna — Hero Banner</title>
+<title>Coremagna | Hero Banner</title>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
 <script>
@@ -13,7 +13,7 @@
   gtag('config', 'G-7MDPMWZ158');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #060a0e; }
@@ -64,7 +64,7 @@
   }
 
   .logo {
-    font-family: 'Syne', sans-serif;
+    font-family:'Cabinet Grotesk', sans-serif;
     font-size: 18px;
     font-weight: 800;
     color: #fff;
@@ -73,7 +73,7 @@
   .logo span { color: #00D4AA; }
 
   .slide-counter {
-    font-family: 'Syne', sans-serif;
+    font-family:'Cabinet Grotesk', sans-serif;
     font-size: 10px;
     letter-spacing: 0.18em;
     color: rgba(255,255,255,0.4);
@@ -93,7 +93,7 @@
   .left-content { max-width: 54%; }
 
   .service-tag {
-    font-family: 'Syne', sans-serif;
+    font-family:'Cabinet Grotesk', sans-serif;
     font-size: 10px;
     letter-spacing: 0.18em;
     color: rgba(255,255,255,0.5);
@@ -117,7 +117,7 @@
   }
 
   .service-title {
-    font-family: 'Syne', sans-serif;
+    font-family:'Cabinet Grotesk', sans-serif;
     font-size: clamp(28px, 4vw, 48px);
     font-weight: 800;
     color: #fff;
@@ -139,7 +139,7 @@
   .right-timeline { text-align: right; }
 
   .timeline-label {
-    font-family: 'Syne', sans-serif;
+    font-family:'Cabinet Grotesk', sans-serif;
     font-size: 10px;
     letter-spacing: 0.18em;
     color: rgba(255,255,255,0.35);
@@ -148,7 +148,7 @@
   }
 
   .timeline-item {
-    font-family: 'Syne', sans-serif;
+    font-family:'Cabinet Grotesk', sans-serif;
     font-size: 17px;
     font-weight: 700;
     margin-bottom: 8px;
@@ -235,7 +235,12 @@
     color: rgba(255,255,255,0.35);
     text-transform: uppercase;
   }
-</style>
+
+    .theme-toggle{width:38px;height:38px;background:transparent;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:border-color 0.3s cubic-bezier(0.16,1,0.3,1),color 0.3s cubic-bezier(0.16,1,0.3,1);}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+    [data-theme="light"] .sun-icon{display:none;}
+    [data-theme="light"] .moon-icon{display:block!important;}
+  </style>
 </head>
 <body>
 
@@ -415,6 +420,9 @@ wrap.addEventListener('touchend', e => {
 }, { passive: true });
 
 goTo(0);
+</script>
+<script>
+(function(){const toggle=document.getElementById('themeToggle');const stored=localStorage.getItem('theme');const prefersLight=window.matchMedia('(prefers-color-scheme: light)').matches;if(stored==='light'||(!stored&&prefersLight)){document.documentElement.setAttribute('data-theme','light');}toggle?.addEventListener('click',()=>{const current=document.documentElement.getAttribute('data-theme');if(current==='light'){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});})();
 </script>
 </body>
 </html>

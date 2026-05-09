@@ -349,7 +349,9 @@
     row.className = 'cm-bot-row';
     const bubble = document.createElement('div');
     bubble.className = 'cm-bot-bubble';
-    bubble.textContent = text;
+    const withLinks = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    const stripped = withLinks.replace(/<(?!\/?a\b)[^>]+>/gi, '');
+    bubble.innerHTML = stripped;
     row.appendChild(bubble);
     messages.appendChild(row);
     messages.scrollTop = messages.scrollHeight;
