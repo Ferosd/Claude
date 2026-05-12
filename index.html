@@ -36,9 +36,11 @@
   --accent-dim: rgba(0,212,170,0.12);
   --accent-glow:rgba(0,212,170,0.18);
   --text:       #F0F4F3;
+  --text-muted: #9AB0B0;
   --muted:      #9AB0B0;
   --border:     rgba(0,212,170,0.14);
   --border2:    rgba(255,255,255,0.07);
+  --border-hover: rgba(0,212,170,0.4);
   --ease:       cubic-bezier(0.4,0,0.2,1);
   --spring:     cubic-bezier(0.34,1.56,0.64,1);
   --space-xs:   4px;
@@ -50,6 +52,21 @@
   --space-3xl:  120px;
 }
 
+[data-theme="light"] {
+  --bg:         #fafbfc;
+  --surface:    #ffffff;
+  --surface2:   #f4f6f8;
+  --accent:     #00B894;
+  --accent-dim: rgba(0,184,148,0.10);
+  --accent-glow:rgba(0,184,148,0.12);
+  --text:       #0a1014;
+  --text-muted: #5a6b78;
+  --muted:      #5a6b78;
+  --border:     rgba(0,184,148,0.18);
+  --border2:    rgba(0,0,0,0.08);
+  --border-hover: rgba(0,184,148,0.5);
+}
+
 /* ── 2. Reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -58,7 +75,7 @@ img,video{display:block;max-width:100%}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 a{text-decoration:none;color:inherit}
 ul,ol{list-style:none}
-h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.02;letter-spacing:-0.02em;font-weight:800}
 
 /* ── 3. Noise Texture ── */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
@@ -66,22 +83,22 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   opacity:0.035}
 
 /* ── 4. Utilities ── */
-.container{max-width:1240px;margin:0 auto;padding:0 var(--space-xl)}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
 .section-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:14px 22px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;
   transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
 .btn-primary:hover{background:#00f0c4;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,212,170,0.3)}
 .btn-primary:active{transform:translateY(0)}
-.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border:1px solid var(--border2);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:14px 22px;border:1px solid var(--border2);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;
   transition:border-color 0.25s var(--ease),color 0.25s var(--ease),background 0.25s var(--ease)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
 
 /* ── 5. Navigation ── */
 #mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
 #mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.nav-inner{max-width:1240px;margin:0 auto;padding:0 var(--space-xl);height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
 .logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
 .logo-core{transition:letter-spacing 0.3s var(--ease)}
 .logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
@@ -272,7 +289,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .about-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:filter 0.6s cubic-bezier(0.4,0,0.2,1)}
 .about-photo:hover img{filter:grayscale(0%)}
 .about-text p{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:var(--space-lg)}
-.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border:1px solid rgba(0,212,170,0.4);color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;margin-bottom:var(--space-2xl);
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:14px 22px;border:1px solid rgba(0,212,170,0.4);color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;margin-bottom:var(--space-2xl);
   transition:border-color 0.25s cubic-bezier(0.4,0,0.2,1),color 0.25s cubic-bezier(0.4,0,0.2,1),background 0.25s cubic-bezier(0.4,0,0.2,1)}
 .btn-outline:hover{border-color:var(--accent);background:var(--accent-dim);color:#00f0c4}
 .btn-outline:active{transform:scale(0.97)}
@@ -375,7 +392,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .services-grid{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:1024px){
-  .container,.nav-inner{padding:0 var(--space-lg)}
+  .container,.nav-inner{padding:0 24px}
   .services-grid{grid-template-columns:repeat(3,1fr)}
   .case-grid{grid-template-columns:repeat(2,1fr)}
   .case-card,.case-card:nth-child(4),.case-card:nth-child(5){grid-column:span 1}
@@ -390,11 +407,16 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
-  .hero-content{padding:24px}
+  .hero-content{padding:20px}
+  .hero-ctas{flex-direction:column;width:100%}
+  .hero-ctas .btn-hero-primary,.hero-ctas .btn-hero-secondary{width:100%;justify-content:center}
   .hero-top-bar{padding:20px 24px}
   .hero-left{max-width:100%}
   .hero-right{display:none}
   .hero-title{font-size:clamp(28px,7vw,42px)}
+  #hero{height:auto;min-height:100svh}
+  section,#tools,#rolling-circle{padding-top:64px;padding-bottom:64px}
+  #stats-bar{padding-top:64px;padding-bottom:64px}
   .stats-row{grid-template-columns:1fr;gap:var(--space-xl);text-align:left}
   .services-grid{grid-template-columns:repeat(2,1fr)}
   .case-grid{grid-template-columns:1fr}
@@ -410,10 +432,9 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .footer-logo{text-align:center}
   .footer-tagline{text-align:center;max-width:100%}
   .footer-social{justify-content:center}
-  .container,.nav-inner{padding:0 20px}
+  .container,.nav-inner,.tools-inner,.wf-container{padding:0 20px}
   .contact-form-wrap{padding:24px 20px}
   .contact-grid-2{grid-template-columns:1fr}
-  #hero{height:auto;min-height:100svh}
 }
 @media(max-width:480px){
   .services-grid{grid-template-columns:1fr}
@@ -427,7 +448,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
     radial-gradient(ellipse at 70% 50%, rgba(0,212,170,0.04) 0%, transparent 60%)
 }
-.tools-inner{max-width:1240px;margin:0 auto;padding:0 var(--space-xl);display:grid;grid-template-columns:40% 60%;gap:var(--space-2xl);align-items:center}
+.tools-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:40% 60%;gap:var(--space-2xl);align-items:center}
 .tools-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
 .tools-heading{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.05}
 .tools-accent-line{width:48px;height:2px;background:#00D4AA;margin-top:16px;margin-bottom:var(--space-lg)}
@@ -487,7 +508,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   background:var(--bg);
   background-image:radial-gradient(ellipse at 50% 0%, rgba(0,212,170,0.06) 0%, transparent 60%)
 }
-.wf-container{max-width:1240px;margin:0 auto;padding:0 var(--space-xl)}
+.wf-container{max-width:1280px;margin:0 auto;padding:0 32px}
 .wf-header{text-align:center;margin-bottom:64px}
 .wf-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
 .wf-heading{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.1}
@@ -540,7 +561,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .reveal{opacity:1;transform:none}
 }
 
-    .theme-toggle{width:38px;height:38px;background:transparent;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:border-color 0.3s cubic-bezier(0.16,1,0.3,1),color 0.3s cubic-bezier(0.16,1,0.3,1);}
+    .theme-toggle{width:44px;height:44px;background:transparent;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:border-color 0.3s cubic-bezier(0.16,1,0.3,1),color 0.3s cubic-bezier(0.16,1,0.3,1);}
     .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
     [data-theme="light"] .sun-icon{display:none;}
     [data-theme="light"] .moon-icon{display:block!important;}
@@ -604,8 +625,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       AI Automation for Growing Businesses
     </div>
     <h1 class="hero-title reveal-hero">
-      Stop Losing Leads.<br>
-      Start Growing <span class="accent">Automatically.</span>
+      Stop Losing Leads<br>
+      Start Growing <span class="accent">Automatically</span>
     </h1>
     <p class="hero-sub reveal-hero">
       AI chatbots, CRM automation, and voice agents —<br>

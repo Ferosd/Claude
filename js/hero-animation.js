@@ -2,11 +2,21 @@
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
 
-  if (window.innerWidth < 768) {
-    const fb = document.createElement('div');
-    fb.className = 'hero-canvas-fallback';
-    canvas.parentNode.insertBefore(fb, canvas);
-    return;
+  function revealHeroContent() {
+    const delays = [0.2, 0.4, 0.7, 0.9];
+    document.querySelectorAll('.reveal-hero').forEach((el, i) => {
+      const d = delays[i] !== undefined ? delays[i] : 0.9 + i * 0.1;
+      el.style.transform  = `translateY(${16 + i * 4}px)`;
+      el.style.transition = `opacity .7s cubic-bezier(.4,0,.2,1) ${d}s,transform .7s cubic-bezier(.4,0,.2,1) ${d}s`;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        el.style.opacity   = '1';
+        el.style.transform = 'translateY(0)';
+      }));
+    });
+    const hint = document.getElementById('heroScrollHint');
+    if (hint) window.addEventListener('scroll', () => {
+      hint.style.opacity = window.scrollY > 100 ? '0' : '1';
+    }, { passive: true });
   }
 
   function waitForThree(fn) {
@@ -19,8 +29,16 @@
     if (canvas.parentNode) canvas.parentNode.insertBefore(fb, canvas);
   }
 
+  function getSceneConfig() {
+    const w = window.innerWidth;
+    if (w < 380)  return { COLS: 8, ROWS: 6, SPACING: 1.0, cubeSize: 0.38, camY: 12, camZ: 16 };
+    if (w < 768)  return { COLS: 10, ROWS: 8, SPACING: 1.1, cubeSize: 0.42, camY: 15, camZ: 20 };
+    return         { COLS: 20, ROWS: 16, SPACING: 1.5, cubeSize: 0.6,  camY: 20, camZ: 28 };
+  }
+
   function setupScene() {
-    const COLS = 20, ROWS = 16, SPACING = 1.5;
+    const cfg = getSceneConfig();
+    const { COLS, ROWS, SPACING, cubeSize, camY, camZ } = cfg;
     const halfW = (COLS - 1) * SPACING / 2;
     const halfH = (ROWS - 1) * SPACING / 2;
     const COUNT = COLS * ROWS;
@@ -29,14 +47,14 @@
     const W      = canvas.clientWidth  || window.innerWidth;
     const H      = canvas.clientHeight || window.innerHeight;
     const camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 100);
-    camera.position.set(0, 20, 28);
+    camera.position.set(0, camY, camZ);
     camera.lookAt(0, -2, 0);
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setSize(W, H);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const geo  = new THREE.BoxGeometry(0.6, 0.6, 0.6);
+    const geo  = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
     const mat  = new THREE.MeshLambertMaterial({ color: 0xffffff });
     const mesh = new THREE.InstancedMesh(geo, mat, COUNT);
     mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
@@ -62,8 +80,9 @@
       requestAnimationFrame(tick);
       t += 0.016;
 
-      camera.position.x = Math.sin(t * 0.15) * 28;
-      camera.position.z = Math.cos(t * 0.15) * 28;
+      const orbitRadius = camZ;
+      camera.position.x = Math.sin(t * 0.15) * orbitRadius;
+      camera.position.z = Math.cos(t * 0.15) * orbitRadius;
       camera.lookAt(0, -2, 0);
 
       for (let r = 0; r < ROWS; r++) {
@@ -98,6 +117,7 @@
 
     window.addEventListener('resize', () => {
       const nw = canvas.clientWidth, nh = canvas.clientHeight;
+      if (!nw || !nh) return;
       camera.aspect = nw / nh;
       camera.updateProjectionMatrix();
       renderer.setSize(nw, nh);
@@ -106,20 +126,5 @@
 
   waitForThree(() => { try { setupScene(); } catch(e) { applyFallback(); } });
 
-  // Staggered entrance for hero content
-  const delays = [0.2, 0.4, 0.7, 0.9];
-  document.querySelectorAll('.reveal-hero').forEach((el, i) => {
-    const d = delays[i] !== undefined ? delays[i] : 0.9 + i * 0.1;
-    el.style.transform  = `translateY(${16 + i * 4}px)`;
-    el.style.transition = `opacity .7s cubic-bezier(.4,0,.2,1) ${d}s,transform .7s cubic-bezier(.4,0,.2,1) ${d}s`;
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      el.style.opacity   = '1';
-      el.style.transform = 'translateY(0)';
-    }));
-  });
-
-  const hint = document.getElementById('heroScrollHint');
-  if (hint) window.addEventListener('scroll', () => {
-    hint.style.opacity = window.scrollY > 100 ? '0' : '1';
-  }, { passive: true });
+  revealHeroContent();
 })();
