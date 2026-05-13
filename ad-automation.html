@@ -259,10 +259,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .gradient-text{animation:none}
 }
 
-    .theme-toggle{width:38px;height:38px;background:transparent;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:border-color 0.3s cubic-bezier(0.16,1,0.3,1),color 0.3s cubic-bezier(0.16,1,0.3,1);}
-    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
-    [data-theme="light"] .sun-icon{display:none;}
-    [data-theme="light"] .moon-icon{display:block!important;}
   </style>
 </head>
 <body>
@@ -274,14 +270,12 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     </a>
     <ul class="nav-links" role="list">
           <li><a href="/industries.html">Industries</a></li>
+          <li><a href="/demo.html">Demo</a></li>
+          <li><a href="/services.html">Services</a></li>
           <li><a href="/about.html">About</a></li>
           <li><a href="/blog/index.html">Blog</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
-    <button class="theme-toggle" aria-label="Toggle light or dark theme" id="themeToggle">
-          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
         <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -292,6 +286,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
   <ul role="list">
     <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/services.html">Services</a></li>
     <li><a href="/about.html">About</a></li>
     <li><a href="/blog/index.html">Blog</a></li>
     <li><a href="/#contact">Contact</a></li>
@@ -686,9 +682,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     card.addEventListener('mousemove',e=>{const rect=card.getBoundingClientRect();card.style.setProperty('--mouse-x',((e.clientX-rect.left)/rect.width)*100+'%');card.style.setProperty('--mouse-y',((e.clientY-rect.top)/rect.height)*100+'%');});
   });
 })();
-</script>
-<script>
-(function(){const toggle=document.getElementById('themeToggle');const stored=localStorage.getItem('theme');const prefersLight=window.matchMedia('(prefers-color-scheme: light)').matches;if(stored==='light'||(!stored&&prefersLight)){document.documentElement.setAttribute('data-theme','light');}toggle?.addEventListener('click',()=>{const current=document.documentElement.getAttribute('data-theme');if(current==='light'){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});})();
 </script>
 </body>
 </html>

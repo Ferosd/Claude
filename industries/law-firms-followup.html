@@ -48,24 +48,6 @@
   --spring:        cubic-bezier(0.34,1.56,0.64,1);
   --space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:24px;--space-xl:48px;--space-2xl:80px;--space-3xl:120px;
 }
-[data-theme="light"] {
-  --bg:            #fafbfc;
-  --surface:       #ffffff;
-  --surface-2:     #f4f6f8;
-  --text:          #0a1014;
-  --text-secondary:#2a3340;
-  --text-muted:    #5a6b78;
-  --text-fine:     #8a9ba8;
-  --border:        #e1e5ea;
-  --border-hover:  rgba(0,184,148,0.5);
-  --accent:        #00B894;
-  --accent-dim:    rgba(0,184,148,0.10);
-  --red:           #d14a37;
-  --yellow:        #d49a2a;
-  --surface2:      #f4f6f8;
-  --muted:         #5a6b78;
-  --border2:       rgba(0,0,0,0.08);
-}
 
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -113,12 +95,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
 .mobile-nav a:hover{color:var(--accent)}
 .mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:16px}
-
-/* ── THEME TOGGLE ── */
-.theme-toggle{width:38px;height:38px;background:transparent;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:border-color 0.3s cubic-bezier(0.16,1,0.3,1),color 0.3s cubic-bezier(0.16,1,0.3,1)}
-.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
-[data-theme="light"] .sun-icon{display:none}
-[data-theme="light"] .moon-icon{display:block!important}
 
 /* ── HERO ── */
 .hero{padding:140px 0 100px;position:relative;overflow:hidden}
@@ -266,7 +242,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .calc-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  .nav-links,.nav-cta,.theme-toggle{display:none}
+  .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
   .hero{padding:100px 0 64px}
   .hero-grid{grid-template-columns:1fr;gap:48px}
@@ -315,7 +291,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 .mockups-section{padding:100px 0}
 .mockups-split{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start;margin-top:48px}
 .doc-preview-card{background:#ffffff;border:1px solid #e1e5ea;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.12)}
-[data-theme="light"] .doc-preview-card{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
 .doc-preview-header{background:#f4f6f8;padding:16px 24px;border-bottom:1px solid #e1e5ea}
 .doc-preview-firm{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5a6b78}
 .doc-preview-title{font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:800;color:#0a1014;margin-top:2px}
@@ -441,25 +416,6 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
 .pricing-feature svg{flex-shrink:0;margin-top:1px;color:var(--accent)}
 .pricing-note{font-size:12px;color:var(--text-fine);text-align:center;margin-top:28px;line-height:1.7}
 
-/* ── S13 — FINAL CTA ── */
-.final-cta-section{padding:100px 0 140px;border-top:1px solid var(--border-hover);position:relative;overflow:hidden}
-.final-cta-section::before{content:'';position:absolute;top:-120px;right:-120px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,var(--accent-dim) 0%,transparent 70%);pointer-events:none;z-index:0}
-.final-cta-inner{position:relative;z-index:1}
-.cta-back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-fine);margin-bottom:48px;transition:color 0.2s var(--ease)}
-.cta-back-link:hover{color:var(--accent)}
-.cta-divider{width:200px;height:2px;background:var(--accent);margin:24px 0}
-.cta-sub{font-size:18px;color:var(--text-muted);max-width:560px;line-height:1.75;font-weight:300;margin-bottom:36px}
-.cta-magnetic-btn{display:inline-flex;align-items:center;gap:8px;padding:18px 36px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:600;font-size:18px;border-radius:999px;border:none;cursor:pointer;text-decoration:none;transition:background 0.25s var(--ease),box-shadow 0.25s var(--ease);margin-bottom:48px}
-.cta-magnetic-btn:hover{background:#00f0c4;box-shadow:0 12px 40px rgba(0,212,170,0.35)}
-.cta-contact-card{background:var(--surface);border:1px solid var(--border-hover);border-radius:16px;padding:32px;max-width:480px}
-.cta-contact-row{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--border)}
-.cta-contact-row:last-child{border-bottom:none}
-.cta-contact-icon{width:36px;height:36px;border-radius:8px;background:var(--accent-dim);border:1px solid var(--border-hover);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cta-contact-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-fine);display:block}
-.cta-contact-val{font-size:14px;color:var(--text-secondary);display:block;margin-top:2px}
-.cta-contact-val a{color:var(--text-secondary);transition:color 0.2s var(--ease)}
-.cta-contact-val a:hover{color:var(--accent)}
-.cta-closing{margin-top:32px;font-size:16px;font-style:italic;color:var(--text-secondary);max-width:480px}
 
 /* ── RESPONSIVE ADDITIONS ── */
 @media(max-width:1024px){
@@ -471,7 +427,6 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
   .steps-flow{grid-template-columns:1fr;gap:24px}
   .steps-flow::before{display:none}
   .hiw-section,.mockups-section,.competitive-section,.guarantee-section,.table-section,.roi-sum-section,.pricing-section{padding:64px 0}
-  .final-cta-section{padding:64px 0 80px}
   .mock-sub1{grid-template-columns:1fr}
   .comp-4stats{grid-template-columns:1fr 1fr}
   .comparison-strip{grid-template-columns:1fr}
@@ -480,7 +435,6 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
   .roi-sum-grid{grid-template-columns:1fr}
   .pricing-grid{grid-template-columns:1fr}
   .pricing-card.featured{transform:none}
-  .cta-contact-card{max-width:100%}
   .roi-banner{padding:32px 24px}
 }
 </style>
@@ -495,18 +449,12 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
     </a>
     <ul class="nav-links" role="list">
           <li><a href="/industries.html">Industries</a></li>
+          <li><a href="/demo.html">Demo</a></li>
+          <li><a href="/services.html">Services</a></li>
           <li><a href="/about.html">About</a></li>
           <li><a href="/blog/index.html">Blog</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
-    <button class="theme-toggle" aria-label="Toggle light or dark theme" id="themeToggle">
-      <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-        <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-      </svg>
-      <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-      </svg>
-    </button>
     <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -515,6 +463,8 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
   <ul role="list">
     <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/services.html">Services</a></li>
     <li><a href="/about.html">About</a></li>
     <li><a href="/blog/index.html">Blog</a></li>
     <li><a href="/#contact">Contact</a></li>
@@ -1251,8 +1201,8 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
       <div class="pricing-card">
         <span class="pricing-tier-label">Starter</span>
         <div class="pricing-title">Solo Practitioner</div>
-        <span class="pricing-setup">$797</span>
-        <span class="pricing-monthly">one-time setup · then $147/month</span>
+        <span class="pricing-setup">$697</span>
+        <span class="pricing-monthly">one-time setup · then $197/month</span>
         <div class="pricing-divider"></div>
         <ul class="pricing-features" role="list">
           <li class="pricing-feature">
@@ -1276,7 +1226,7 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
             Email support
           </li>
         </ul>
-        <a href="https://buy.stripe.com/6oU9AT5x78GP4Aeci11RC06" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
       </div>
       <!-- GROWTH (featured) -->
       <div class="pricing-card featured">
@@ -1286,8 +1236,8 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
         </div>
         <span class="pricing-tier-label">Growth</span>
         <div class="pricing-title">Small to Mid-Size Firm</div>
-        <span class="pricing-setup">$1,197</span>
-        <span class="pricing-monthly">one-time setup · then $247/month</span>
+        <span class="pricing-setup">$997</span>
+        <span class="pricing-monthly">one-time setup · then $297/month</span>
         <div class="pricing-divider"></div>
         <ul class="pricing-features" role="list">
           <li class="pricing-feature">
@@ -1315,14 +1265,14 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
             Same-day template edits
           </li>
         </ul>
-        <a href="https://buy.stripe.com/14A00j9NnbT1aYCbdX1RC05" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
       </div>
       <!-- SCALE -->
       <div class="pricing-card">
         <span class="pricing-tier-label">Scale</span>
         <div class="pricing-title">Large or Multi-Office Firm</div>
-        <span class="pricing-setup">$1,697</span>
-        <span class="pricing-monthly">one-time setup · then $347/month</span>
+        <span class="pricing-setup">$1,497</span>
+        <span class="pricing-monthly">one-time setup · then $497/month</span>
         <div class="pricing-divider"></div>
         <ul class="pricing-features" role="list">
           <li class="pricing-feature">
@@ -1350,59 +1300,10 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
             Priority phone support
           </li>
         </ul>
-        <a href="https://buy.stripe.com/4gMdR96Bbe195EibdX1RC04" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
       </div>
     </div>
     <p class="pricing-note reveal">API costs billed at cost — no markup. One captured case pays for 12 months of the system.</p>
-  </div>
-</section>
-
-<!-- ── S13 FINAL CTA ── -->
-<section class="final-cta-section" aria-labelledby="cta-h2">
-  <div class="container">
-    <div class="final-cta-inner">
-      <a href="/industries.html" class="cta-back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to Industries
-      </a>
-      <h2 id="cta-h2">Your Documents Should Write Themselves</h2>
-      <div class="cta-divider"></div>
-      <p class="cta-sub">Book a free 30-minute call. We will show you exactly how the system works with your current templates and CRM — no pitch deck, just a live walkthrough.</p>
-      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" class="cta-magnetic-btn" target="_blank" rel="noopener noreferrer">
-        Book a Free Call
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <div class="cta-contact-card">
-        <div class="cta-contact-row">
-          <div class="cta-contact-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <span class="cta-contact-label">Email</span>
-            <span class="cta-contact-val"><a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a></span>
-          </div>
-        </div>
-        <div class="cta-contact-row">
-          <div class="cta-contact-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.47a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.91.31 1.85.54 2.81.66a2 2 0 0 1 1.72 2.02z"/></svg>
-          </div>
-          <div>
-            <span class="cta-contact-label">Phone</span>
-            <span class="cta-contact-val"><a href="tel:+447700900147">+44 7700 900147</a></span>
-          </div>
-        </div>
-        <div class="cta-contact-row">
-          <div class="cta-contact-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </div>
-          <div>
-            <span class="cta-contact-label">Book a Call</span>
-            <span class="cta-contact-val"><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">calendar.app.google/coremagna</a></span>
-          </div>
-        </div>
-      </div>
-      <p class="cta-closing">"Most firms spend more on coffee than it costs to automate their entire document workflow. The question is not whether you can afford it — it is how many hours you can afford to keep wasting."</p>
-    </div>
   </div>
 </section>
 
@@ -1452,28 +1353,6 @@ table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
 </footer>
 
 <script>
-/* ── THEME TOGGLE ── */
-(function(){
-  var toggle=document.getElementById('themeToggle');
-  var stored=localStorage.getItem('theme');
-  var prefersLight=window.matchMedia('(prefers-color-scheme: light)').matches;
-  if(stored==='light'||(!stored&&prefersLight)){
-    document.documentElement.setAttribute('data-theme','light');
-  }
-  if(toggle){
-    toggle.addEventListener('click',function(){
-      var c=document.documentElement.getAttribute('data-theme');
-      if(c==='light'){
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme','dark');
-      } else {
-        document.documentElement.setAttribute('data-theme','light');
-        localStorage.setItem('theme','light');
-      }
-    });
-  }
-})();
-
 /* ── NAV SCROLL + HAMBURGER ── */
 (function(){
   var nav=document.getElementById('mainNav');

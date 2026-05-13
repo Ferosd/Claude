@@ -109,10 +109,6 @@
     @media(max-width:768px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.post-body{padding:40px 24px 64px}.inline-cta{flex-direction:column;text-align:center}.container{padding:0 20px}.nav-inner{padding:0 20px}.footer-col a{display:flex;align-items:center;min-height:44px}.footer-logo{text-align:center}.footer-tagline{text-align:center;max-width:100%}.footer-social{justify-content:center}}
     @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}.reveal{opacity:1;transform:none}}
   
-    .theme-toggle{width:38px;height:38px;background:transparent;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:border-color 0.3s cubic-bezier(0.16,1,0.3,1),color 0.3s cubic-bezier(0.16,1,0.3,1);}
-    .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
-    [data-theme="light"] .sun-icon{display:none;}
-    [data-theme="light"] .moon-icon{display:block!important;}
   </style>
 </head>
 <body>
@@ -124,14 +120,12 @@
     </a>
     <ul class="nav-links" role="list">
           <li><a href="/industries.html">Industries</a></li>
+          <li><a href="/demo.html">Demo</a></li>
+          <li><a href="/services.html">Services</a></li>
           <li><a href="/about.html">About</a></li>
           <li><a href="/blog/index.html">Blog</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
-    <button class="theme-toggle" aria-label="Toggle light or dark theme" id="themeToggle">
-          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
         <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -139,6 +133,8 @@
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
   <ul role="list">
     <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/services.html">Services</a></li>
     <li><a href="/about.html">About</a></li>
     <li><a href="/blog/index.html">Blog</a></li>
     <li><a href="/#contact">Contact</a></li>
@@ -283,9 +279,6 @@
 <script defer>
 (function(){const h=document.getElementById('hamburger'),m=document.getElementById('mobileNav');let open=false;h.addEventListener('click',()=>{open=!open;h.classList.toggle('open',open);h.setAttribute('aria-expanded',open);m.setAttribute('aria-hidden',!open);m.classList.toggle('visible',open);document.body.style.overflow=open?'hidden':'';});m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{open=false;h.classList.remove('open');h.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true');m.classList.remove('visible');document.body.style.overflow='';}));})();
 (function(){const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i*0.07)+'s';obs.observe(el);});})();
-</script>
-<script>
-(function(){const toggle=document.getElementById('themeToggle');const stored=localStorage.getItem('theme');const prefersLight=window.matchMedia('(prefers-color-scheme: light)').matches;if(stored==='light'||(!stored&&prefersLight)){document.documentElement.setAttribute('data-theme','light');}toggle?.addEventListener('click',()=>{const current=document.documentElement.getAttribute('data-theme');if(current==='light'){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});})();
 </script>
 </body>
 </html>
