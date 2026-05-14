@@ -1,0 +1,517 @@
+{
+  "name": "Coremagna Chatbot v2 (RAG)",
+  "nodes": [
+    {
+      "id": "ff89d14a-1608-4d61-a652-95e9e20cb065",
+      "name": "Note: Intake",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -200
+      ],
+      "parameters": {
+        "width": 440,
+        "height": 160,
+        "content": "## Stage 1 \u2014 Webhook Intake\nReceives POST from chat widget: `message`, `session_id`, `visitor_name`, `visitor_email`, `page_url`.\nPath: `/webhook/chatbot` (unchanged).",
+        "color": 5
+      }
+    },
+    {
+      "id": "f712cf64-c624-42f1-88ae-8ccba1cbfbb2",
+      "name": "Note: RAG",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        920,
+        -200
+      ],
+      "parameters": {
+        "width": 480,
+        "height": 160,
+        "content": "## Stage 2 \u2014 RAG Layer (NEW)\nDownloads `coremagna-knowledge-base.txt` from Google Drive, splits by `---`, keyword-scores chunks against user message, injects top 3 into AI prompt.",
+        "color": 5
+      }
+    },
+    {
+      "id": "493680a9-3711-4d87-8fa8-38bd0bd5df6b",
+      "name": "Note: AI",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        -200
+      ],
+      "parameters": {
+        "width": 420,
+        "height": 160,
+        "content": "## Stage 3 \u2014 AI Agent\nGPT-4o-mini with RAG context injected into system prompt. Forces JSON response with `message` + `lead_data`.",
+        "color": 5
+      }
+    },
+    {
+      "id": "1b08a699-7114-42dc-a1fa-5aff521064eb",
+      "name": "Note: Output",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        -200
+      ],
+      "parameters": {
+        "width": 480,
+        "height": 160,
+        "content": "## Stage 4 \u2014 Parse & Branch\nExtracts reply text. If lead is complete (has name+email+interest), logs to Google Sheets and sends Gmail notification.",
+        "color": 5
+      }
+    },
+    {
+      "id": "ab551951-3b8a-4378-bc6f-ba7474e069ac",
+      "name": "Chatbot Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        200,
+        100
+      ],
+      "webhookId": "chatbot",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbot",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "notes": "Public webhook \u2014 receives all chat + voice messages from the widget."
+    },
+    {
+      "id": "2c99e00f-798d-4ad9-a496-bf37c9cbbbee",
+      "name": "Set Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        440,
+        100
+      ],
+      "parameters": {
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "80f8a558-ef44-4aac-8113-d7f9760cab2a",
+              "name": "user_message",
+              "type": "string",
+              "value": "={{ $json.body.message || '' }}"
+            },
+            {
+              "id": "d885a2fd-8449-4bc3-b5f2-0158b86e41fb",
+              "name": "session_id",
+              "type": "string",
+              "value": "={{ $json.body.session_id || $json.body.visitorId || $now.toISO() }}"
+            },
+            {
+              "id": "9ed7ef23-e3bd-43eb-a714-f115abfa0494",
+              "name": "visitor_name",
+              "type": "string",
+              "value": "={{ $json.body.visitor_name || '' }}"
+            },
+            {
+              "id": "6f0bf1f1-0cfa-4eb2-bb9d-a98bf83c3351",
+              "name": "visitor_email",
+              "type": "string",
+              "value": "={{ ($json.body.visitor_email || '').toLowerCase().trim() }}"
+            },
+            {
+              "id": "9b05746d-585f-42b2-9b71-09b05d7b119a",
+              "name": "page_url",
+              "type": "string",
+              "value": "={{ $json.body.page_url || '' }}"
+            },
+            {
+              "id": "ba5d6a63-8814-4819-ac46-955c0c629ade",
+              "name": "mode",
+              "type": "string",
+              "value": "={{ $json.body.mode || 'chat' }}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f1916eb5-3b7f-470b-a48f-88dd3d8ae7ff",
+      "name": "Google Drive \u2014 Download KB",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        680,
+        100
+      ],
+      "continueOnFail": true,
+      "parameters": {
+        "resource": "file",
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $env.KNOWLEDGE_BASE_FILE_ID }}"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "REPLACE_GDRIVE_CRED_ID",
+          "name": "Google Drive account"
+        }
+      },
+      "notes": "Downloads coremagna-knowledge-base.txt from Google Drive on every request. Set KNOWLEDGE_BASE_FILE_ID env var."
+    },
+    {
+      "id": "0bd26a42-a511-459f-ba4f-3825dc8ae032",
+      "name": "RAG Search",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        100
+      ],
+      "parameters": {
+        "language": "javaScript",
+        "jsCode": "// Keyword-based RAG: score chunks by overlap with user message\nconst setFields = $('Set Fields').first().json;\nconst message = setFields.user_message.toLowerCase();\n\n// Knowledge base may arrive as binary data or text depending on n8n version\nlet kbText = '';\nconst driveItem = $('Google Drive \u2014 Download KB').first();\nif (driveItem.binary && driveItem.binary.data) {\n  // Convert binary buffer to text\n  kbText = Buffer.from(driveItem.binary.data.data, 'base64').toString('utf8');\n} else if (driveItem.json && driveItem.json.data) {\n  kbText = driveItem.json.data;\n} else {\n  kbText = '';\n}\n\nlet rag_context = 'No specific context found. Answer based on general Coremagna knowledge.';\n\nif (kbText.length > 20) {\n  const chunks = kbText.split('---').map(c => c.trim()).filter(c => c.length > 20);\n  const words = message.split(/\\s+/).filter(w => w.length > 2);\n\n  const scored = chunks.map(chunk => {\n    const lower = chunk.toLowerCase();\n    let score = 0;\n    words.forEach(w => { if (lower.includes(w)) score++; });\n    return { chunk, score };\n  });\n\n  scored.sort((a, b) => b.score - a.score);\n  const topChunks = scored.slice(0, 3).filter(s => s.score > 0);\n  if (topChunks.length > 0) {\n    rag_context = topChunks.map(s => s.chunk).join('\\n\\n');\n  }\n}\n\nreturn [{\n  json: {\n    rag_context,\n    user_message: setFields.user_message,\n    session_id: setFields.session_id,\n    visitor_name: setFields.visitor_name,\n    visitor_email: setFields.visitor_email,\n    page_url: setFields.page_url,\n    mode: setFields.mode,\n  }\n}];\n"
+      },
+      "notes": "Splits knowledge base into chunks, scores by keyword overlap, returns top 3."
+    },
+    {
+      "id": "93a90c31-30e4-49a5-8279-689e979b53ab",
+      "name": "AI Agent",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.6,
+      "position": [
+        1160,
+        100
+      ],
+      "continueOnFail": true,
+      "retryOnFail": true,
+      "maxTries": 2,
+      "parameters": {
+        "resource": "text",
+        "operation": "message",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are Magna, Coremagna's AI assistant on coremagna.com.\n\nROLE: Help visitors understand Coremagna's AI automation services. Answer questions, explain services, provide pricing, and guide them to book a call.\n\nKNOWLEDGE BASE CONTEXT (use this to answer):\n{{ $json.rag_context }}\n\nRULES:\n- Be concise: 2-4 sentences max unless asked for detail\n- Be warm and professional\n- Always suggest booking a free call for detailed discussions: https://calendar.app.google/XDGM8XJ9zEdqugKr9\n- If you don't know something, say \"I'd recommend booking a call with Ferit to discuss that in detail\"\n- Collect lead info naturally: name, email, business type, what they need help with\n- When you have name + email + interest, set is_complete to true in your JSON response\n- Never invent features or prices not in the knowledge base\n\nRESPONSE FORMAT (strict JSON):\n{\n  \"message\": \"your response text here\",\n  \"lead_data\": {\n    \"name\": \"collected name or empty string\",\n    \"phone\": \"collected phone or empty string\",\n    \"email\": \"collected email or empty string\",\n    \"interest\": \"what they're interested in or empty string\",\n    \"viewing_date\": \"preferred call time or empty string\",\n    \"lead_score\": 0-10,\n    \"is_complete\": false\n  }\n}"
+            },
+            {
+              "role": "user",
+              "content": "={{ $json.user_message }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 600
+        }
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "REPLACE_OPENAI_CRED_ID",
+          "name": "OpenAI account"
+        }
+      },
+      "notes": "Updated: system prompt now includes RAG context injected before each request."
+    },
+    {
+      "id": "1bddb6fa-5fe0-4aa9-871b-ee2ed599f578",
+      "name": "Parse AI Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        100
+      ],
+      "parameters": {
+        "language": "javaScript",
+        "jsCode": "// Extract message + lead_data from AI JSON response\nconst aiItem = $input.item;\nconst ragData = $('RAG Search').first().json;\n\nlet parsed = {};\ntry {\n  const raw = aiItem.json?.message?.content || aiItem.json?.content || '{}';\n  if (typeof raw === 'object') {\n    parsed = raw;\n  } else {\n    parsed = JSON.parse(raw);\n  }\n} catch (e) {\n  // Fallback: treat entire content as reply text\n  const fallback = aiItem.json?.message?.content || '';\n  parsed = { message: fallback, lead_data: {} };\n}\n\nconst reply = parsed.message || 'I\\'m here to help! What would you like to know?';\nconst lead = parsed.lead_data || {};\n\nreturn [{\n  json: {\n    reply,\n    lead_data: lead,\n    is_complete: Boolean(lead.is_complete),\n    session_id: ragData.session_id,\n    visitor_name: ragData.visitor_name,\n    visitor_email: ragData.visitor_email,\n    user_message: ragData.user_message,\n    page_url: ragData.page_url,\n  }\n}];\n"
+      }
+    },
+    {
+      "id": "9bf2c643-206e-47cc-a24f-401fe4e7e311",
+      "name": "Is Lead Complete?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1640,
+        100
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "c5b693ec-6faa-4c06-881c-2ecd647d3b02",
+              "leftValue": "={{ $json.is_complete }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "046fafdc-0451-4f97-badc-9d2ca620b10b",
+      "name": "Save Lead \u2014 Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1880,
+        0
+      ],
+      "continueOnFail": true,
+      "parameters": {
+        "resource": "spreadsheet",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $env.LEADS_SHEET_ID }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{ $now.toISO() }}",
+            "Session ID": "={{ $json.session_id }}",
+            "Name": "={{ $json.lead_data.name || $json.visitor_name }}",
+            "Email": "={{ $json.lead_data.email || $json.visitor_email }}",
+            "Phone": "={{ $json.lead_data.phone }}",
+            "Interest": "={{ $json.lead_data.interest }}",
+            "Lead Score": "={{ $json.lead_data.lead_score || 0 }}",
+            "Last Message": "={{ $json.user_message }}",
+            "Page URL": "={{ $json.page_url }}"
+          }
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_GSHEETS_CRED_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "id": "f040babb-afe9-4c2c-a5fb-62782047ba4a",
+      "name": "Gmail \u2014 Lead Notification",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2120,
+        0
+      ],
+      "continueOnFail": true,
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "={{ $env.NOTIFICATION_EMAIL || 'ferit1@coremagna.com' }}",
+        "subject": "=\ud83d\udd25 New lead captured: {{ $json.lead_data.name || $json.visitor_name }}",
+        "emailType": "html",
+        "message": "=<h2>New lead captured via chat</h2>\n<table>\n<tr><td><strong>Name:</strong></td><td>{{ $json.lead_data.name || $json.visitor_name }}</td></tr>\n<tr><td><strong>Email:</strong></td><td>{{ $json.lead_data.email || $json.visitor_email }}</td></tr>\n<tr><td><strong>Phone:</strong></td><td>{{ $json.lead_data.phone || 'N/A' }}</td></tr>\n<tr><td><strong>Interest:</strong></td><td>{{ $json.lead_data.interest }}</td></tr>\n<tr><td><strong>Score:</strong></td><td>{{ $json.lead_data.lead_score }}/10</td></tr>\n<tr><td><strong>Page:</strong></td><td>{{ $json.page_url }}</td></tr>\n</table>\n<p><a href='https://calendar.app.google/XDGM8XJ9zEdqugKr9'>Book a call with them \u2192</a></p>",
+        "options": {}
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_GMAIL_CRED_ID",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "id": "d35c7be3-b954-4340-80ce-eb5e23ebf4a6",
+      "name": "Respond \u2014 Lead Complete",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2360,
+        0
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ reply: $('Parse AI Response').item.json.reply }) }}",
+        "options": {
+          "responseCode": 200
+        }
+      }
+    },
+    {
+      "id": "8658a65c-55d7-479f-b4b8-0e052bec172f",
+      "name": "Respond \u2014 Normal Chat",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1880,
+        220
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ reply: $json.reply }) }}",
+        "options": {
+          "responseCode": 200
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Chatbot Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Fields": {
+      "main": [
+        [
+          {
+            "node": "Google Drive \u2014 Download KB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive \u2014 Download KB": {
+      "main": [
+        [
+          {
+            "node": "RAG Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RAG Search": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Parse AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Response": {
+      "main": [
+        [
+          {
+            "node": "Is Lead Complete?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Lead Complete?": {
+      "main": [
+        [
+          {
+            "node": "Save Lead \u2014 Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond \u2014 Normal Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Lead \u2014 Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Gmail \u2014 Lead Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail \u2014 Lead Notification": {
+      "main": [
+        [
+          {
+            "node": "Respond \u2014 Lead Complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "timezone": "Europe/London",
+    "errorWorkflow": ""
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "name": "chatbot"
+    },
+    {
+      "name": "rag"
+    },
+    {
+      "name": "coremagna"
+    }
+  ],
+  "pinData": {},
+  "versionId": "8b6a8c92-738e-4f84-9aca-521f40cd3014",
+  "meta": {
+    "instanceId": "coremagna-chatbot-v2"
+  },
+  "id": "coremagna-chatbot-v2"
+}

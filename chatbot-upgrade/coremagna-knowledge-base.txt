@@ -1,0 +1,78 @@
+COMPANY OVERVIEW
+Coremagna is an AI automation agency founded by Ferit Patefe. Based in Antalya, Turkey, serving UK and international businesses remotely. We build AI chatbots, voice agents, CRM automations, and workflow systems using n8n, Airtable, and WhatsApp Business API.
+Contact: ferit1@coremagna.com
+Book a call: https://calendar.app.google/XDGM8XJ9zEdqugKr9
+LinkedIn: linkedin.com/in/ferit-patefe
+Website: coremagna.com
+---
+SERVICE 1: AI CHATBOT / RAG
+Website chatbot that answers from your business database 24/7. Greets visitors instantly, answers questions about your services, captures lead information (name, email, phone, interest), and books appointments. Works on website and WhatsApp. Trained on your specific business data using RAG (Retrieval Augmented Generation). Visitors never know it's AI.
+---
+SERVICE 2: LEAD & CRM AUTOMATION
+All lead sources unified in one CRM. Leads from website, social media, phone, email, WhatsApp — all captured in Airtable automatically. AI scores leads as hot, warm, or cold. Hot leads forwarded to you instantly via WhatsApp notification. Automated follow-up sequences on Day 1, 3, 7, 14, 30. Built with n8n + Airtable.
+---
+SERVICE 3: AI VOICE AGENT
+Answers phone calls 24/7 with natural human-like conversation. Books appointments, provides business information, handles emergencies, routes urgent calls. All call summaries logged to CRM automatically. Patients/clients never wait on hold. Works after hours, weekends, and holidays.
+---
+SERVICE 4: WHATSAPP BUSINESS AUTOMATION
+Auto-greeting when someone messages your WhatsApp Business. Appointment reminders (48h, 24h, 2h before). Lead capture through WhatsApp conversation. Follow-up sequences. Vendor/client update notifications. All via WhatsApp Business API — fully automated.
+---
+SERVICE 5: EMAIL & WORKFLOW AUTOMATION
+Automated email sequences for lead nurture, appointment reminders, follow-ups, and internal workflows. Welcome emails, review requests, recall reminders — all triggered automatically based on events. Built with n8n. No manual work needed.
+---
+SERVICE 6: WEB DESIGN / REDESIGN
+Conversion-focused websites built with AI chatbot integration. Clear CTAs, instant chatbot engagement, lead capture forms, property/service search optimization. Dark modern design. Mobile responsive. SEO optimized.
+---
+PRICING: STARTER PLAN
+$697 one-time setup + $197/month. Includes: AI chatbot on website, greets visitors 24/7, collects name/email/phone/interest, visitor confirmation email, Google Sheets lead log, email support. Best for: solo practitioners, small businesses with 1-5 staff.
+---
+PRICING: GROWTH PLAN (MOST POPULAR)
+$997 one-time setup + $297/month. Includes: Everything in Starter + RAG chatbot (answers from your business database), WhatsApp notifications, Airtable CRM integration, 3-day automated follow-up sequence, priority support. Best for: growing businesses with 5-20 staff.
+---
+PRICING: SCALE PLAN
+$1,497 one-time setup + $497/month. Includes: Everything in Growth + AI Voice Agent (answers phone calls 24/7), SMS follow-up, custom qualification flows, multilingual support, weekly performance report, dedicated account manager. Best for: established businesses with 20+ staff or multiple locations.
+---
+PRICING NOTES
+API costs billed at cost — no markup. Typical API cost: $20-50/month depending on usage. 14-day money-back guarantee — no questions asked. 30-day support included with every plan. 7 business days from payment to live system. One captured lead typically pays for months of the system.
+---
+INDUSTRY: LAW FIRMS
+We help UK law firms automate client intake, after-hours enquiry response, document automation, and follow-up. Pain points: 79% of clients hire the first firm that responds, most firms take 6+ hours. 26% of enquiries arrive after hours and are never followed up. Our chatbot responds in under 60 seconds, 24/7.
+---
+INDUSTRY: REAL ESTATE
+We help UK estate agencies automate lead response, viewing booking, vendor updates, and lead nurture. Pain points: average response time is 917 minutes (15+ hours), 78% of buyers work with the first agent who responds, 62% of enquiries arrive after hours, 20% viewing no-show rate.
+---
+INDUSTRY: DENTAL & MEDICAL CLINICS
+We help clinics automate missed call handling, appointment reminders, patient recall, and online reputation. Pain points: 35% of calls go unanswered, 23% no-show rate ($105K+/year lost), 50% skip recall appointments, 77% of patients choose clinic by online reviews.
+---
+INDUSTRY: BEAUTY SALONS
+We help salons automate booking, no-show reduction, client retention, and social media presence. Pain points: 30%+ no-show rate, booking chaos from manual scheduling, 60%+ of first-time clients never rebook, low online visibility.
+---
+INDUSTRY: RESTAURANTS
+We help restaurants automate reservation management, phone handling, customer retention, and review generation. Pain points: 15-20% reservation no-show rate, overwhelming phone volume during peak hours, one-time diners never return, poor online reviews despite good food.
+---
+FAQ: SETUP TIME
+Setup takes 7 business days from payment to live system. We handle everything — you don't need technical knowledge.
+---
+FAQ: GUARANTEE
+14-day money-back guarantee, no questions asked. Full refund if not satisfied within the first two weeks.
+---
+FAQ: TECHNICAL KNOWLEDGE
+No technical knowledge needed. We build, configure, test, and maintain everything. You just review and approve.
+---
+FAQ: API COSTS
+API costs are billed at cost with no markup. Typically $20-50/month depending on usage volume. This covers AI model calls, SMS sending, WhatsApp API, etc.
+---
+FAQ: DATA SAFETY
+Your data stays yours, always. We use Airtable and Google Sheets — you own the accounts. Nothing shared with third parties. You can export everything at any time.
+---
+FAQ: DEMO
+Yes! Book a free 30-minute call and we'll show you exactly how the system works for your specific business. No pitch, no obligation. Link: https://calendar.app.google/XDGM8XJ9zEdqugKr9
+---
+FAQ: OUTSIDE UK
+We primarily serve UK businesses but can work with any English-speaking business worldwide.
+---
+FAQ: CRM
+We use Airtable as the default CRM — powerful, flexible, and included in Growth and Scale plans. Google Sheets included in Starter plan for basic lead logging.
+---
+BOOKING A CALL
+To book a free 30-minute consultation, visit: https://calendar.app.google/XDGM8XJ9zEdqugKr9 — We'll map your current process and show you exactly what automation would look like for your business. No pitch, no obligation.
