@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Try Before You Buy — Live AI Demos | Coremagna</title>
-<meta name="description" content="Experience our AI systems live. See a real AI chatbot handle enquiries, talk to our AI voice agent, and watch CRM automation process a lead in 7 seconds. No signup required.">
+<meta name="description" content="Experience our AI systems live. See a real AI chatbot handle enquiries and watch CRM automation process a lead in 7 seconds. No signup required.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Coremagna">
 <link rel="canonical" href="https://coremagna.com/demo.html">
@@ -143,13 +143,14 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 
 /* ── Demo Selector ── */
 #demo-selector{padding:var(--space-2xl) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.selector-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-md)}
+.selector-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-md)}
 .selector-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:var(--space-lg) var(--space-md);cursor:pointer;position:relative;overflow:hidden;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease),box-shadow 0.3s var(--ease);text-align:left}
 .selector-card:not(.disabled):hover{border-color:var(--border-hover);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,212,170,0.1)}
 .selector-card:not(.disabled):active{transform:scale(0.98)}
 .selector-card::before{content:'';position:absolute;inset:0;background:radial-gradient(160px circle at var(--mx,50%) var(--my,50%),rgba(0,212,170,0.06),transparent 70%);opacity:0;pointer-events:none;transition:opacity 0.4s var(--ease)}
 .selector-card:not(.disabled):hover::before{opacity:1}
 .selector-card.active-card{border-color:rgba(0,212,170,0.25)}
+.selector-card.disabled{opacity:0.4;pointer-events:none;cursor:default}
 .selector-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-dim);border:1px solid rgba(0,212,170,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0}
 .selector-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .selector-title{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px}
@@ -170,8 +171,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .example-btns{display:flex;flex-direction:column;gap:var(--space-sm);margin-bottom:var(--space-xl)}
 .example-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text-secondary);font-family:'DM Sans',sans-serif;cursor:pointer;transition:border-color 0.25s var(--ease),background 0.25s var(--ease),color 0.25s var(--ease);text-align:left}
 .example-btn:hover{border-color:var(--border-hover);background:var(--accent-dim);color:var(--text)}
-.example-btn svg{width:14px;height:14px;flex-shrink:0;stroke:var(--text-fine);fill:none;stroke-width:1.8;stroke-linecap:round;transition:stroke 0.2s var(--ease)}
-.example-btn:hover svg{stroke:var(--accent)}
+.example-btn .copy-icon{width:14px;height:14px;flex-shrink:0;stroke:var(--text-fine);fill:none;stroke-width:1.8;stroke-linecap:round;transition:stroke 0.2s var(--ease)}
+.example-btn:hover .copy-icon{stroke:var(--accent)}
+.example-btn.copied{border-color:rgba(0,212,170,0.4);background:var(--accent-dim);color:var(--accent)}
 
 /* ── Metric Chips ── */
 .metric-chips{display:flex;flex-wrap:wrap;gap:var(--space-sm)}
@@ -179,93 +181,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .metric-chip svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;flex-shrink:0}
 .metric-chip strong{color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500}
 
-/* ── Chatbot UI ── */
+/* ── Chatbot placeholder ── */
 .chatbot-wrapper{position:relative}
 .chatbot-live-dot{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:12px}
 .chatbot-live-dot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);display:block;animation:blink 1.5s ease-in-out infinite}
 .chatbot-note{margin-top:12px;font-size:12px;color:var(--text-fine);font-style:italic}
-.chat-window{background:var(--surface);border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column;height:500px;overflow:hidden}
-.chat-messages{flex:1;overflow-y:auto;padding:var(--space-lg);display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
-.chat-messages::-webkit-scrollbar{width:4px}
-.chat-messages::-webkit-scrollbar-track{background:transparent}
-.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.chat-msg{max-width:82%;display:flex;flex-direction:column;gap:4px}
-.chat-msg.ai{align-self:flex-start}
-.chat-msg.user{align-self:flex-end}
-.chat-msg-label{font-size:10px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-fine)}
-.chat-msg.user .chat-msg-label{text-align:right}
-.chat-bubble{padding:10px 14px;border-radius:10px;font-size:14px;line-height:1.6}
-.chat-msg.ai .chat-bubble{background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:10px 10px 10px 2px}
-.chat-msg.user .chat-bubble{background:var(--accent);color:#060a0e;font-weight:500;border-radius:10px 10px 2px 10px}
-.typing-dots{display:flex;gap:4px;align-items:center;padding:10px 14px}
-.typing-dot{width:7px;height:7px;border-radius:50%;background:var(--text-muted);animation:typingBounce 1.2s ease-in-out infinite}
-.typing-dot:nth-child(2){animation-delay:0.2s}
-.typing-dot:nth-child(3){animation-delay:0.4s}
-@keyframes typingBounce{0%,80%,100%{transform:scale(0.7);opacity:0.4}40%{transform:scale(1);opacity:1}}
-.chat-error{padding:8px 14px;background:rgba(232,93,74,0.1);border:1px solid rgba(232,93,74,0.25);border-radius:8px;font-size:12px;color:var(--red);margin:0 var(--space-lg) var(--space-sm);display:none}
-.chat-error a{color:var(--accent);text-decoration:underline}
-.chat-input-area{padding:12px var(--space-lg);border-top:1px solid var(--border);display:flex;gap:10px;align-items:flex-end}
-.chat-input{flex:1;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;resize:none;outline:none;transition:border-color 0.25s var(--ease);line-height:1.5;max-height:100px;overflow-y:auto}
-.chat-input:focus{border-color:var(--border-hover)}
-.chat-input::placeholder{color:var(--text-fine)}
-.chat-send{width:40px;height:40px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:none;cursor:pointer;transition:background 0.2s var(--ease),transform 0.2s var(--ease)}
-.chat-send:hover{background:#00f0c4;transform:translateY(-1px)}
-.chat-send:active{transform:scale(0.95)}
-.chat-send svg{width:16px;height:16px;stroke:#060a0e;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.chat-send:disabled{opacity:0.5;pointer-events:none}
-
-/* ── Voice Agent ── */
-#voice-demo{padding:var(--space-3xl) 0;background-image:radial-gradient(ellipse at 50% 0%, rgba(0,212,170,0.07) 0%, transparent 60%)}
-.voice-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.voice-stage{display:flex;flex-direction:column;align-items:center;gap:var(--space-xl)}
-.mic-ring-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:220px;height:220px}
-.mic-ring{position:absolute;border-radius:50%;border:1px solid rgba(0,212,170,0.15);pointer-events:none}
-.mic-ring:nth-child(1){width:140px;height:140px;animation:ringExpand 2.5s ease-in-out infinite 0s}
-.mic-ring:nth-child(2){width:180px;height:180px;animation:ringExpand 2.5s ease-in-out infinite 0.5s}
-.mic-ring:nth-child(3){width:220px;height:220px;animation:ringExpand 2.5s ease-in-out infinite 1s}
-@keyframes ringExpand{0%,100%{opacity:0.4;transform:scale(0.95)}50%{opacity:1;transform:scale(1)}}
-.mic-button{position:relative;z-index:1;width:120px;height:120px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.3s var(--ease),transform 0.2s var(--ease),box-shadow 0.3s var(--ease)}
-.mic-button::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:transparent;border:2px solid rgba(0,212,170,0.3);animation:micPulseIdle 2s ease-in-out infinite;pointer-events:none}
-@keyframes micPulseIdle{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.12);opacity:0}}
-.mic-button:hover{transform:scale(1.05);box-shadow:0 0 0 12px rgba(0,212,170,0.1)}
-.mic-button:active{transform:scale(0.97)}
-.mic-button.listening{background:#00e070}
-.mic-button.listening::before{animation:micListenPulse 0.8s ease-in-out infinite alternate}
-@keyframes micListenPulse{from{box-shadow:0 0 0 0 rgba(0,224,112,0.4)}to{box-shadow:0 0 0 20px rgba(0,224,112,0)}}
-.mic-button.processing{background:#2a3a44;cursor:wait}
-.mic-button.processing::before{animation:none;opacity:0}
-.mic-button.speaking{background:var(--accent)}
-.mic-button.speaking::before{animation:speakPulse 0.6s ease-in-out infinite alternate}
-@keyframes speakPulse{from{box-shadow:0 0 0 0 rgba(0,212,170,0.4)}to{box-shadow:0 0 0 20px rgba(0,212,170,0)}}
-.mic-button svg{width:40px;height:40px;stroke:#060a0e;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mic-button:disabled{opacity:0.4;cursor:not-allowed;transform:none}
-.voice-visualizer{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;min-height:40px}
-.voice-bar{width:4px;border-radius:2px;background:var(--accent);opacity:0;transition:opacity 0.3s var(--ease)}
-.voice-visualizer.active .voice-bar{opacity:1;animation:voiceWave 1.2s ease-in-out infinite}
-.voice-bar:nth-child(1){height:8px;animation-delay:0s}
-.voice-bar:nth-child(2){height:14px;animation-delay:0.1s}
-.voice-bar:nth-child(3){height:20px;animation-delay:0.2s}
-.voice-bar:nth-child(4){height:28px;animation-delay:0.3s}
-.voice-bar:nth-child(5){height:32px;animation-delay:0.4s}
-.voice-bar:nth-child(6){height:28px;animation-delay:0.5s}
-.voice-bar:nth-child(7){height:20px;animation-delay:0.6s}
-.voice-bar:nth-child(8){height:14px;animation-delay:0.7s}
-.voice-bar:nth-child(9){height:8px;animation-delay:0.8s}
-@keyframes voiceWave{0%,100%{transform:scaleY(0.3);opacity:0.4}50%{transform:scaleY(1);opacity:1}}
-.mic-status{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.3s var(--ease)}
-.mic-status.listening{color:var(--accent)}
-.mic-status.speaking{color:var(--accent)}
-.voice-interim{min-height:24px;font-size:13px;color:var(--text-muted);font-style:italic;text-align:center;max-width:260px;line-height:1.5}
-.voice-transcript{width:100%;max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-top:var(--space-sm)}
-.voice-transcript::-webkit-scrollbar{width:4px}
-.voice-transcript::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.voice-turn{display:flex;flex-direction:column;gap:3px}
-.voice-turn-label{font-size:10px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-fine)}
-.voice-turn-text{font-size:13px;color:var(--text-secondary);line-height:1.6}
-.voice-compat-notice{padding:16px 20px;background:rgba(245,193,74,0.08);border:1px solid rgba(245,193,74,0.25);border-radius:10px;font-size:13px;color:var(--yellow);display:none;margin-top:var(--space-lg)}
-.voice-features{display:flex;flex-direction:column;gap:var(--space-sm);margin-top:var(--space-xl)}
-.voice-feature{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
-.voice-feature svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
 /* ── CRM Form ── */
 .crm-form{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-xl)}
@@ -329,25 +249,17 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 .footer-bottom p{font-size:12px;color:var(--text-fine)}
 
 /* ── Responsive ── */
-@media(max-width:1200px){
-  .selector-grid{grid-template-columns:repeat(3,1fr)}
-}
 @media(max-width:1024px){
   .container,.nav-inner{padding:0 24px}
-  .selector-grid{grid-template-columns:repeat(3,1fr)}
+  .selector-grid{grid-template-columns:repeat(2,1fr)}
   .demo-grid,.demo-grid.flip{grid-template-columns:1fr;gap:48px}
-  .voice-inner{grid-template-columns:1fr;gap:var(--space-xl)}
-  .voice-stage{order:-1}
   .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   .container,.nav-inner{padding:0 20px}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
-  .selector-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--space-md);padding-bottom:var(--space-sm);-webkit-overflow-scrolling:touch}
-  .selector-grid::-webkit-scrollbar{height:3px}
-  .selector-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-  .selector-card{flex:0 0 200px;scroll-snap-align:start}
+  .selector-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
@@ -358,11 +270,9 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .footer-tagline{max-width:100%}
   .footer-social{justify-content:center}
   .demo-section{padding:var(--space-xl) 0}
-  #voice-demo{padding:var(--space-xl) 0}
-  .mic-button{width:100px;height:100px}
-  .mic-button svg{width:32px;height:32px}
 }
 @media(max-width:480px){
+  .selector-grid{grid-template-columns:1fr}
   .metric-chips{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){
@@ -425,7 +335,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <a href="#chatbot-demo" class="btn-primary magnetic-btn">Try AI Chatbot
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </a>
-      <a href="#voice-demo" class="btn-ghost magnetic-btn">Try Voice Agent
+      <a href="#crm-demo" class="btn-ghost">Try Lead Automation
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </a>
     </div>
@@ -437,7 +347,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   <div class="container">
     <div class="selector-grid">
 
-      <!-- Card 1: AI Chatbot -->
+      <!-- Card 1: AI Chatbot (active) -->
       <div class="selector-card active-card reveal" role="button" tabindex="0" aria-label="Try AI Chatbot demo" data-target="#chatbot-demo">
         <div class="selector-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -447,17 +357,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <span class="selector-badge live">Live Demo</span>
       </div>
 
-      <!-- Card 2: AI Voice Agent -->
-      <div class="selector-card active-card reveal" role="button" tabindex="0" aria-label="Try AI Voice Agent demo" data-target="#voice-demo">
-        <div class="selector-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-        </div>
-        <div class="selector-title">AI Voice Agent</div>
-        <div class="selector-sub">Speak to AI — out loud</div>
-        <span class="selector-badge live">Live Demo</span>
-      </div>
-
-      <!-- Card 3: CRM Lead Automation -->
+      <!-- Card 2: CRM Lead Automation (active) -->
       <div class="selector-card active-card reveal" role="button" tabindex="0" aria-label="Try CRM Lead Automation demo" data-target="#crm-demo">
         <div class="selector-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -467,6 +367,16 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <span class="selector-badge live">Live Demo</span>
       </div>
 
+      <!-- Card 3: AI Voice Agent -->
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="selector-card active-card reveal" aria-label="Book an AI Voice Agent demo">
+        <div class="selector-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+        </div>
+        <div class="selector-title">AI Voice Agent</div>
+        <div class="selector-sub">Handles inbound calls automatically</div>
+        <span class="selector-badge live">Book a Demo</span>
+      </a>
+
       <!-- Card 4: WhatsApp AI -->
       <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="selector-card active-card reveal" aria-label="Book a WhatsApp AI demo">
         <div class="selector-icon" aria-hidden="true">
@@ -474,17 +384,17 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         </div>
         <div class="selector-title">WhatsApp AI</div>
         <div class="selector-sub">Automates WhatsApp conversations</div>
-        <span class="selector-badge">Book a Demo</span>
+        <span class="selector-badge live">Book a Demo</span>
       </a>
 
       <!-- Card 5: Social Media & Reviews -->
-      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="selector-card active-card reveal" aria-label="Book a Social Media and Reviews demo">
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="selector-card active-card reveal" aria-label="Book a Social Media & Reviews Automation demo">
         <div class="selector-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><path d="M12 18h.01M8 6h8M8 10h8M8 14h5"/></svg>
         </div>
         <div class="selector-title">Social Media & Reviews</div>
-        <div class="selector-sub">Automates reviews and posting</div>
-        <span class="selector-badge">Book a Demo</span>
+        <div class="selector-sub">Automates review requests and social posting</div>
+        <span class="selector-badge live">Book a Demo</span>
       </a>
 
     </div>
@@ -503,21 +413,21 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
           AI Chatbot Demo
         </span>
         <h2 class="demo-h2 reveal">Talk to an AI Receptionist — Right Now</h2>
-        <p class="demo-desc reveal">This is a real AI chatbot. It responds in under 2 seconds, identifies your industry, and shows you exactly what automation could do for your business.</p>
+        <p class="demo-desc reveal">This is a real AI chatbot built for a law firm. It responds in under 2 seconds, captures leads automatically, and works 24/7. Go ahead — ask it anything.</p>
 
         <p class="reveal" style="font-size:12px;color:var(--text-muted);margin-bottom:12px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Try these questions</p>
         <div class="example-btns reveal">
-          <button class="example-btn" data-text="I run a law firm and lose leads after hours">
-            <span>I run a law firm and lose leads after hours</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <button class="example-btn" data-text="I need help with a divorce case" aria-label="Copy question to clipboard">
+            <span>I need help with a divorce case</span>
+            <svg class="copy-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
-          <button class="example-btn" data-text="My salon has a 30% no-show rate">
-            <span>My salon has a 30% no-show rate</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <button class="example-btn" data-text="What are your fees for immigration?" aria-label="Copy question to clipboard">
+            <span>What are your fees for immigration?</span>
+            <svg class="copy-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
-          <button class="example-btn" data-text="I need help automating my clinic's bookings">
-            <span>I need help automating my clinic's bookings</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <button class="example-btn" data-text="Can I book a consultation?" aria-label="Copy question to clipboard">
+            <span>Can I book a consultation?</span>
+            <svg class="copy-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
 
@@ -537,98 +447,15 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         </div>
       </div>
 
-      <!-- Right: Live Chat Window -->
+      <!-- Right -->
       <div class="reveal">
         <div class="chatbot-wrapper">
           <div class="chatbot-live-dot">Live AI — real responses</div>
-          <div class="chat-window">
-            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-label="Chat conversation">
-              <div class="chat-msg ai">
-                <span class="chat-msg-label">AI Receptionist · Maya</span>
-                <div class="chat-bubble">Welcome to Coremagna's live demo! I'm Maya, our AI automation consultant. Which industry are you in? I work with law firms, real estate, clinics, beauty salons, and restaurants — or tell me about your business and I'll show you what we can automate.</div>
-              </div>
-            </div>
-            <div class="chat-error" id="chat-error">Connection issue — please try again or <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">book a call directly</a>.</div>
-            <div class="chat-input-area">
-              <textarea class="chat-input" id="chat-input" placeholder="Type a message..." rows="1" aria-label="Chat message"></textarea>
-              <button class="chat-send" id="chat-send" aria-label="Send message">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              </button>
-            </div>
+          <div id="chatbot-container" style="width:100%;height:500px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;border:1px solid var(--border)">
+            <p style="color:var(--text-muted);font-size:13px">Chatbot widget loading...</p>
           </div>
           <p class="chatbot-note">Live demo — real AI, real responses, real lead capture.</p>
         </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- VOICE AGENT DEMO -->
-<section id="voice-demo" class="demo-section">
-  <div class="container">
-    <div class="voice-inner">
-
-      <!-- Left: Description -->
-      <div>
-        <span class="demo-label reveal">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
-          AI Voice Agent Demo
-        </span>
-        <h2 class="demo-h2 reveal">Talk to AI — Out Loud</h2>
-        <p class="demo-desc reveal">Press the microphone, ask a question, and hear the AI respond in real time. This is exactly what your callers would experience.</p>
-
-        <div class="voice-features reveal">
-          <div class="voice-feature">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
-            Speech recognition
-          </div>
-          <div class="voice-feature">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-            Natural voice response
-          </div>
-          <div class="voice-feature">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            Under 3 seconds
-          </div>
-        </div>
-
-        <div class="voice-compat-notice" id="voice-compat" role="alert">
-          Voice demo requires Chrome or Edge. Please try the text chatbot above.
-        </div>
-      </div>
-
-      <!-- Right: Mic + Visualizer + Transcript -->
-      <div class="voice-stage reveal">
-        <div class="mic-ring-wrap">
-          <div class="mic-ring" aria-hidden="true"></div>
-          <div class="mic-ring" aria-hidden="true"></div>
-          <div class="mic-ring" aria-hidden="true"></div>
-          <button class="mic-button" id="mic-button" aria-label="Start voice interaction" aria-pressed="false">
-            <svg viewBox="0 0 24 24" aria-hidden="true" id="mic-icon">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-              <line x1="12" y1="19" x2="12" y2="23"/>
-              <line x1="8" y1="23" x2="16" y2="23"/>
-            </svg>
-          </button>
-        </div>
-
-        <div class="voice-visualizer" id="voice-viz" aria-hidden="true">
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-        </div>
-
-        <div class="mic-status" id="mic-status" aria-live="polite">Tap to speak</div>
-        <div class="voice-interim" id="voice-interim" aria-live="polite"></div>
-        <div class="voice-transcript" id="voice-transcript" role="log" aria-label="Voice conversation transcript"></div>
       </div>
 
     </div>
@@ -800,7 +627,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
           <li><a href="/industries.html#clinics">Clinics</a></li>
           <li><a href="/industries.html#beauty">Beauty Salons</a></li>
           <li><a href="/industries.html#restaurants">Restaurants</a></li>
-        </ul>
+          </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -809,7 +636,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
           <li><a href="/demo.html">Demo</a></li>
           <li><a href="/blog/index.html">Blog</a></li>
           <li><a href="/#contact">Contact</a></li>
-        </ul>
+          </ul>
       </div>
       <div class="footer-col">
         <h4>Connect</h4>
@@ -865,191 +692,25 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
 /* Spotlight effect on selector cards */
 (function(){
-  document.querySelectorAll('.selector-card:not([href])').forEach(card=>{
+  document.querySelectorAll('.selector-card:not(.disabled)').forEach(card=>{
     card.addEventListener('mousemove',e=>{const rect=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-rect.left)/rect.width)*100+'%');card.style.setProperty('--my',((e.clientY-rect.top)/rect.height)*100+'%');});
   });
 })();
 
-/* AI Chatbot */
+/* Example buttons: copy to clipboard */
 (function(){
-  const sessionId=(typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():('s-'+Date.now().toString(36));
-  const messagesEl=document.getElementById('chat-messages');
-  const inputEl=document.getElementById('chat-input');
-  const sendBtn=document.getElementById('chat-send');
-  const errorEl=document.getElementById('chat-error');
-  const WEBHOOK='https://juliaz.app.n8n.cloud/webhook/coremagna-demo';
-  let busy=false;
-
-  function appendMsg(role,text){
-    const wrap=document.createElement('div');
-    wrap.className='chat-msg '+role;
-    const label=document.createElement('span');
-    label.className='chat-msg-label';
-    label.textContent=role==='ai'?'AI Receptionist · Maya':'You';
-    const bubble=document.createElement('div');
-    bubble.className='chat-bubble';
-    bubble.textContent=text;
-    wrap.append(label,bubble);
-    messagesEl.append(wrap);
-    messagesEl.scrollTop=messagesEl.scrollHeight;
-  }
-
-  function showTyping(){
-    const wrap=document.createElement('div');
-    wrap.className='chat-msg ai';
-    wrap.id='typing-indicator';
-    const dots=document.createElement('div');
-    dots.className='typing-dots';
-    dots.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-    wrap.append(dots);
-    messagesEl.append(wrap);
-    messagesEl.scrollTop=messagesEl.scrollHeight;
-  }
-
-  function removeTyping(){
-    const t=document.getElementById('typing-indicator');
-    if(t) t.remove();
-  }
-
-  async function send(text){
-    if(busy||!text.trim()) return;
-    busy=true;
-    sendBtn.disabled=true;
-    errorEl.style.display='none';
-    appendMsg('user',text);
-    inputEl.value='';
-    inputEl.style.height='';
-    showTyping();
-    try{
-      const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,session_id:sessionId,visitor_name:'Demo Visitor',visitor_email:'demo@coremagna.com'})});
-      const data=await res.json();
-      removeTyping();
-      appendMsg('ai',data.reply||'Sorry, something went wrong. Please try again.');
-    }catch(err){
-      removeTyping();
-      errorEl.style.display='block';
-    }
-    busy=false;
-    sendBtn.disabled=false;
-    inputEl.focus();
-  }
-
-  sendBtn.addEventListener('click',()=>send(inputEl.value));
-  inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send(inputEl.value);}});
-  inputEl.addEventListener('input',()=>{inputEl.style.height='';inputEl.style.height=Math.min(inputEl.scrollHeight,100)+'px';});
-
-  /* Example buttons send text to chat */
   document.querySelectorAll('.example-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>send(btn.dataset.text));
+    btn.addEventListener('click',()=>{
+      const text=btn.dataset.text;
+      if(!navigator.clipboard) return;
+      navigator.clipboard.writeText(text).then(()=>{
+        btn.classList.add('copied');
+        const svg=btn.querySelector('svg');
+        if(svg) svg.innerHTML='<polyline points="20 6 9 17 4 12" stroke-width="2.5"/>';
+        setTimeout(()=>{btn.classList.remove('copied');if(svg) svg.innerHTML='<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';},2000);
+      });
+    });
   });
-})();
-
-/* AI Voice Agent */
-(function(){
-  const micBtn=document.getElementById('mic-button');
-  const statusEl=document.getElementById('mic-status');
-  const vizEl=document.getElementById('voice-viz');
-  const interimEl=document.getElementById('voice-interim');
-  const transcriptEl=document.getElementById('voice-transcript');
-  const compatEl=document.getElementById('voice-compat');
-  const WEBHOOK='https://juliaz.app.n8n.cloud/webhook/aivoiceagent';
-  const sessionId=(typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():('v-'+Date.now().toString(36));
-
-  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SpeechRecognition){
-    compatEl.style.display='block';
-    micBtn.disabled=true;
-    return;
-  }
-
-  let recognition=null,state='idle',currentLang='en-GB';
-
-  function setState(s){
-    state=s;
-    micBtn.className='mic-button'+(s!=='idle'?' '+s:'');
-    micBtn.setAttribute('aria-pressed',s==='listening'?'true':'false');
-    const labels={idle:'Tap to speak',listening:'Listening...',processing:'Thinking...',speaking:'Speaking...'};
-    statusEl.textContent=labels[s]||'Tap to speak';
-    statusEl.className='mic-status'+(s==='listening'||s==='speaking'?' '+s:'');
-    if(s==='listening'||s==='speaking') vizEl.classList.add('active');
-    else vizEl.classList.remove('active');
-  }
-
-  function addTurn(who,text){
-    const turn=document.createElement('div');
-    turn.className='voice-turn';
-    const label=document.createElement('span');
-    label.className='voice-turn-label';
-    label.textContent=who;
-    const body=document.createElement('div');
-    body.className='voice-turn-text';
-    body.textContent=text;
-    turn.append(label,body);
-    transcriptEl.append(turn);
-    transcriptEl.scrollTop=transcriptEl.scrollHeight;
-  }
-
-  function detectTurkish(text){
-    return /[çğışöüÇĞİŞÖÜ]/.test(text)||/\b(merhaba|evet|hayır|tamam|nasıl|ne|bir|bu|ben|biz|için|var|yok)\b/i.test(text);
-  }
-
-  async function processTranscript(text){
-    if(!text.trim()){setState('idle');return;}
-    if(detectTurkish(text)) currentLang='tr-TR';
-    setState('processing');
-    addTurn('You',text);
-    try{
-      const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,session_id:sessionId,visitor_name:'Voice Demo Visitor',visitor_email:'voicedemo@coremagna.com',mode:'voice'})});
-      const data=await res.json();
-      const reply=data.reply||'Sorry, something went wrong. Please try again.';
-      addTurn('Maya',reply);
-      setState('speaking');
-      const utterance=new SpeechSynthesisUtterance(reply);
-      utterance.lang=currentLang;
-      utterance.rate=1.0;
-      utterance.pitch=1.0;
-      const voices=speechSynthesis.getVoices();
-      if(currentLang==='en-GB'){
-        const pref=voices.find(v=>v.name.includes('Google UK English Female'))||voices.find(v=>v.lang==='en-GB'&&v.name.toLowerCase().includes('female'))||voices.find(v=>v.lang==='en-GB');
-        if(pref) utterance.voice=pref;
-      }else if(currentLang==='tr-TR'){
-        const pref=voices.find(v=>v.lang==='tr-TR');
-        if(pref) utterance.voice=pref;
-      }
-      utterance.onend=()=>setState('idle');
-      utterance.onerror=()=>setState('idle');
-      speechSynthesis.speak(utterance);
-    }catch(err){
-      setState('idle');
-      addTurn('System','Connection issue — please try again or book a call directly.');
-    }
-  }
-
-  micBtn.addEventListener('click',()=>{
-    if(state==='listening'){recognition.stop();return;}
-    if(state!=='idle') return;
-    recognition=new SpeechRecognition();
-    recognition.lang=currentLang;
-    recognition.interimResults=true;
-    recognition.continuous=false;
-    let finalTranscript='';
-    recognition.onstart=()=>setState('listening');
-    recognition.onresult=e=>{
-      let interim='';
-      finalTranscript='';
-      for(let i=0;i<e.results.length;i++){
-        if(e.results[i].isFinal) finalTranscript+=e.results[i][0].transcript;
-        else interim+=e.results[i][0].transcript;
-      }
-      interimEl.textContent=interim;
-    };
-    recognition.onend=()=>{interimEl.textContent='';processTranscript(finalTranscript);};
-    recognition.onerror=e=>{console.warn('Voice recognition error:',e.error);interimEl.textContent='';setState('idle');};
-    recognition.start();
-  });
-
-  /* Load voices on first interaction (browser async) */
-  speechSynthesis.onvoiceschanged=()=>{};
 })();
 
 /* CRM form + pipeline animation */
@@ -1061,7 +722,7 @@ document.getElementById('demo-form').addEventListener('submit',async function(e)
   const data=Object.fromEntries(fd);
   try{await fetch('https://juliaz.app.n8n.cloud/webhook/contact-form1',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})}catch(err){}
   const steps=document.querySelectorAll('.pipeline-step');
-  steps.forEach((s,i)=>{setTimeout(()=>{s.classList.add('completed');},(i+1)*1000);});
+  steps.forEach((s,i)=>{setTimeout(()=>{s.classList.add('completed');},(i+1)*1000)});
   setTimeout(()=>{document.getElementById('pipeline-result').style.display='block';},7000);
   btn.textContent='Submitted ✓';
 });
