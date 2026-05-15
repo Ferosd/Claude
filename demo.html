@@ -267,6 +267,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .voice-feature{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
 .voice-feature svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
+.voice-reset-btn{background:none;border:none;color:var(--text-fine);font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:4px 0;transition:color 0.2s var(--ease)}.voice-reset-btn:hover{color:var(--text-muted)}
+
 /* ── CRM Form ── */
 .crm-form{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-xl)}
 .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:var(--space-md)}
@@ -591,6 +593,10 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             Under 3 seconds
           </div>
+          <div class="voice-feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Multi-language
+          </div>
         </div>
 
         <div class="voice-compat-notice" id="voice-compat" role="alert">
@@ -629,6 +635,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <div class="mic-status" id="mic-status" aria-live="polite">Tap to speak</div>
         <div class="voice-interim" id="voice-interim" aria-live="polite"></div>
         <div class="voice-transcript" id="voice-transcript" role="log" aria-label="Voice conversation transcript"></div>
+        <button id="voice-reset" class="voice-reset-btn" aria-label="Reset conversation">Reset conversation</button>
       </div>
 
     </div>
@@ -944,25 +951,62 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   });
 })();
 
-/* AI Voice Agent */
+/* AI Voice Agent — Gemini API (client-side) */
 (function(){
+  const GEMINI_API_KEY='PASTE_YOUR_GEMINI_API_KEY_HERE';
+  const GEMINI_MODEL='gemini-2.0-flash';
+  const GEMINI_URL=`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+
+  const VOICE_SYSTEM_PROMPT=`You are Maya, a senior automation consultant at Coremagna, an AI automation agency. You're being used as a live voice demo on the Coremagna website. Visitors speak to you through their microphone and hear your response read aloud.
+
+CRITICAL RULES FOR VOICE:
+- Keep responses to 1-2 sentences MAX — you're being read aloud, long answers are painful to listen to
+- Be conversational and warm — like a real phone call
+- No bullet points, no lists, no markdown — pure spoken language
+- No emojis, no special characters — just plain text
+- Use natural speech patterns: "So...", "That's a great question...", "Here's the thing..."
+
+YOUR FIRST RESPONSE (when user says anything for the first time):
+"Hi there! I'm Maya from Coremagna. I help businesses automate things like lead capture, appointment reminders, and client follow-up. What kind of business do you run?"
+
+WHAT YOU KNOW:
+- AI Chatbots for websites (24/7 lead capture)
+- CRM automation (instant lead scoring and follow-up)
+- AI Voice Agents like this one (answer calls, book appointments)
+- Appointment reminders (reduce no-shows by 70%)
+- Social media automation
+
+PRICING: "Our packages start from 697 dollars for setup. But the exact price depends on what you need — I'd suggest booking a quick call with Ferit, our founder, to map it out."
+
+BOOKING: When they show interest, say: "Would you like me to set up a quick call with Ferit? He can walk you through exactly what would work for your business."
+
+LANGUAGE: If the user speaks Turkish, switch to Turkish entirely. Otherwise use British English.
+
+Remember: SHORT responses. You're being spoken aloud. Every extra sentence is 3-4 seconds of waiting.`;
+
   const micBtn=document.getElementById('mic-button');
   const statusEl=document.getElementById('mic-status');
   const vizEl=document.getElementById('voice-viz');
   const interimEl=document.getElementById('voice-interim');
   const transcriptEl=document.getElementById('voice-transcript');
   const compatEl=document.getElementById('voice-compat');
-  const WEBHOOK='https://juliaz.app.n8n.cloud/webhook/aivoiceagent';
-  const sessionId=(typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():('v-'+Date.now().toString(36));
+  const resetBtn=document.getElementById('voice-reset');
 
   const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!SpeechRecognition){
     compatEl.style.display='block';
     micBtn.disabled=true;
+    if(resetBtn) resetBtn.style.display='none';
     return;
   }
 
   let recognition=null,state='idle',currentLang='en-GB';
+  const conversationHistory=[];
+  let cachedVoices=[];
+
+  function loadVoices(){cachedVoices=speechSynthesis.getVoices();}
+  loadVoices();
+  speechSynthesis.onvoiceschanged=loadVoices;
 
   function setState(s){
     state=s;
@@ -990,43 +1034,59 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   }
 
   function detectTurkish(text){
-    return /[çğışöüÇĞİŞÖÜ]/.test(text)||/\b(merhaba|evet|hayır|tamam|nasıl|ne|bir|bu|ben|biz|için|var|yok)\b/i.test(text);
+    return /[çğışöüÇĞİŞÖÜ]/.test(text)||/\b(merhaba|evet|hayır|tamam|nasıl|ne|bir|bu|ben|biz|için|var|yok|randevu|işletme|teşekkür)\b/i.test(text);
   }
 
-  async function processTranscript(text){
-    if(!text.trim()){setState('idle');return;}
-    if(detectTurkish(text)) currentLang='tr-TR';
+  function speakResponse(text,lang){
+    setState('speaking');
+    const utterance=new SpeechSynthesisUtterance(text);
+    utterance.lang=lang;
+    utterance.rate=1.0;
+    utterance.pitch=1.0;
+    const voices=cachedVoices.length?cachedVoices:speechSynthesis.getVoices();
+    if(lang==='en-GB'){
+      const pref=voices.find(v=>v.name.includes('Google UK English Female'))||voices.find(v=>v.lang==='en-GB'&&v.name.toLowerCase().includes('female'))||voices.find(v=>v.lang==='en-GB');
+      if(pref) utterance.voice=pref;
+    }else if(lang==='tr-TR'){
+      const pref=voices.find(v=>v.lang==='tr-TR');
+      if(pref) utterance.voice=pref;
+    }
+    utterance.onend=()=>setState('idle');
+    utterance.onerror=()=>setState('idle');
+    speechSynthesis.speak(utterance);
+  }
+
+  async function sendToGemini(userText){
+    if(!userText.trim()){setState('idle');return;}
+    if(detectTurkish(userText)) currentLang='tr-TR';
     setState('processing');
-    addTurn('You',text);
+    addTurn('You',userText);
+    conversationHistory.push({role:'user',parts:[{text:userText}]});
+    if(conversationHistory.length>20) conversationHistory.splice(0,2);
     try{
-      const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,session_id:sessionId,visitor_name:'Voice Demo Visitor',visitor_email:'voicedemo@coremagna.com',mode:'voice'})});
+      const res=await fetch(GEMINI_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          system_instruction:{parts:[{text:VOICE_SYSTEM_PROMPT}]},
+          contents:conversationHistory
+        })
+      });
       const data=await res.json();
-      const reply=data.reply||'Sorry, something went wrong. Please try again.';
+      const reply=data.candidates?.[0]?.content?.parts?.[0]?.text||"Sorry, I didn't catch that. Could you try again?";
+      conversationHistory.push({role:'model',parts:[{text:reply}]});
+      if(conversationHistory.length>20) conversationHistory.splice(0,2);
       addTurn('Maya',reply);
-      setState('speaking');
-      const utterance=new SpeechSynthesisUtterance(reply);
-      utterance.lang=currentLang;
-      utterance.rate=1.0;
-      utterance.pitch=1.0;
-      const voices=speechSynthesis.getVoices();
-      if(currentLang==='en-GB'){
-        const pref=voices.find(v=>v.name.includes('Google UK English Female'))||voices.find(v=>v.lang==='en-GB'&&v.name.toLowerCase().includes('female'))||voices.find(v=>v.lang==='en-GB');
-        if(pref) utterance.voice=pref;
-      }else if(currentLang==='tr-TR'){
-        const pref=voices.find(v=>v.lang==='tr-TR');
-        if(pref) utterance.voice=pref;
-      }
-      utterance.onend=()=>setState('idle');
-      utterance.onerror=()=>setState('idle');
-      speechSynthesis.speak(utterance);
+      speakResponse(reply,currentLang);
     }catch(err){
+      addTurn('Maya',"I'm having a connection issue. Please try again.");
       setState('idle');
-      addTurn('System','Connection issue — please try again or book a call directly.');
     }
   }
 
   micBtn.addEventListener('click',()=>{
     if(state==='listening'){recognition.stop();return;}
+    if(state==='speaking'){speechSynthesis.cancel();setState('idle');return;}
     if(state!=='idle') return;
     recognition=new SpeechRecognition();
     recognition.lang=currentLang;
@@ -1043,13 +1103,20 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       }
       interimEl.textContent=interim;
     };
-    recognition.onend=()=>{interimEl.textContent='';processTranscript(finalTranscript);};
+    recognition.onend=()=>{interimEl.textContent='';sendToGemini(finalTranscript);};
     recognition.onerror=e=>{console.warn('Voice recognition error:',e.error);interimEl.textContent='';setState('idle');};
     recognition.start();
   });
 
-  /* Load voices on first interaction (browser async) */
-  speechSynthesis.onvoiceschanged=()=>{};
+  if(resetBtn){
+    resetBtn.addEventListener('click',()=>{
+      conversationHistory.length=0;
+      transcriptEl.innerHTML='';
+      currentLang='en-GB';
+      speechSynthesis.cancel();
+      setState('idle');
+    });
+  }
 })();
 
 /* CRM form + pipeline animation */
