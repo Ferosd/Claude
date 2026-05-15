@@ -953,9 +953,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
 /* AI Voice Agent — Gemini API (client-side) */
 (function(){
-  const GEMINI_API_KEY='AIzaSyCnA6BdYLUVyfwvPjTM7p9T3A4eDhm-tqk';
-  const GEMINI_MODEL='gemini-2.0-flash';
-  const GEMINI_URL=`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+  const GEMINI_PROXY='https://juliaz.app.n8n.cloud/webhook/gemini-proxy';
 
   const VOICE_SYSTEM_PROMPT=`You are Maya, a senior automation consultant at Coremagna, an AI automation agency. You're being used as a live voice demo on the Coremagna website. Visitors speak to you through their microphone and hear your response read aloud.
 
@@ -1064,11 +1062,11 @@ Remember: SHORT responses. You're being spoken aloud. Every extra sentence is 3-
     conversationHistory.push({role:'user',parts:[{text:userText}]});
     if(conversationHistory.length>20) conversationHistory.splice(0,2);
     try{
-      const res=await fetch(GEMINI_URL,{
+      const res=await fetch(GEMINI_PROXY,{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
-          system_instruction:{parts:[{text:VOICE_SYSTEM_PROMPT}]},
+          system_prompt:VOICE_SYSTEM_PROMPT,
           contents:conversationHistory
         })
       });
