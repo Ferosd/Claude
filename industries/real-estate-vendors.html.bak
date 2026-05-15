@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor Communication &amp; Updates | Coremagna</title>
+<meta name="description" content="53% of sellers say poor communication is their #1 complaint. Agents spend 55% of their day chasing updates. Automate vendor reporting and sales progression.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<style>
+:root{
+  --bg:#060a0e;--surface:#0d1117;--surface2:#111920;
+  --accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);
+  --text:#F0F4F3;--secondary:#8a9ba8;--muted:#5a6b78;
+  --card:#0d1117;--cb:#1a2530;
+  --red:#e85d4a;--yellow:#f5c14a;
+  --border2:rgba(255,255,255,0.07);
+  --ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.05;letter-spacing:-0.02em;font-weight:800;overflow-wrap:break-word;max-width:100%;hyphens:none}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
+.logo-magna{color:var(--accent)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:ldp 2s ease-in-out infinite}
+@keyframes ldp{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:48px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--secondary);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.btn-nav{display:inline-flex;align-items:center;padding:10px 20px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;border-radius:6px;transition:background 0.25s,transform 0.25s}
+.btn-nav:hover{background:#00f0c4;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s,opacity 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mob-nav.visible{opacity:1;pointer-events:all}
+.mob-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
+.mob-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);transition:color 0.2s}
+.mob-nav a:hover{color:var(--accent)}
+.section{padding:100px 0}
+.reveal{opacity:0;transform:translateY(24px)}
+.sec-label{display:block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.sec-h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:16px}
+.sec-sub{font-size:17px;color:var(--secondary);line-height:1.65;max-width:680px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;border-radius:999px;border:none;cursor:pointer;transition:background 0.25s,box-shadow 0.25s}
+.btn-p:hover{background:#00f0c4;box-shadow:0 12px 32px rgba(0,212,170,0.35)}
+.btn-p:active{transform:scale(0.97)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:600;font-size:15px;border-radius:999px;border:1px solid var(--cb);cursor:pointer;background:transparent;transition:border-color 0.3s,color 0.3s}
+.btn-g:hover{border-color:rgba(0,212,170,0.4);color:var(--accent)}
+.btn-p:focus-visible,.btn-g:focus-visible,.btn-nav:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.hero{padding:140px 32px 100px;max-width:1280px;margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:55fr 45fr;gap:64px;align-items:center}
+.hero-badge{display:inline-flex;padding:6px 14px;border-radius:999px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.hero-h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;margin-bottom:24px}
+.hero-sub{font-size:18px;color:var(--secondary);max-width:540px;line-height:1.6}
+.hero-author{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:20px 0 40px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.chat-box{background:var(--card);border:1px solid var(--cb);border-radius:24px;overflow:hidden;max-width:420px;box-shadow:0 30px 80px -20px rgba(0,212,170,0.2)}
+.chat-box-lg{background:var(--card);border:1px solid var(--cb);border-radius:24px;overflow:hidden;max-width:480px}
+.chat-hdr{background:var(--bg);padding:16px 20px;border-bottom:1px solid var(--cb);display:flex;align-items:center;justify-content:space-between}
+.chat-firm{font-family:'Cabinet Grotesk',sans-serif;font-weight:600;font-size:14px;color:var(--text);display:block}
+.chat-status{font-size:11px;color:var(--secondary)}
+.chat-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:cpulse 2s ease-in-out infinite alternate;flex-shrink:0}
+@keyframes cpulse{0%{opacity:.5;transform:scale(1)}100%{opacity:1;transform:scale(1.15)}}
+.chat-body{background:var(--bg);padding:24px;min-height:380px;display:flex;flex-direction:column;gap:12px}
+.chat-body.sm{min-height:auto}
+.chat-msg{max-width:80%;padding:12px 16px;font-size:14px;line-height:1.5}
+.chat-msg.bot{background:#1a2530;color:var(--text);border-radius:16px 16px 16px 4px;align-self:flex-start;opacity:0;transform:translateY(8px)}
+.chat-msg.user{background:var(--accent);color:#060a0e;border-radius:16px 16px 4px 16px;align-self:flex-end;opacity:0;transform:translateY(8px)}
+.chat-msg.st{opacity:1;transform:none}
+.chat-typing{display:flex;gap:5px;padding:12px 16px;background:#1a2530;border-radius:16px 16px 16px 4px;align-self:flex-start;width:56px}
+.chat-typing span{width:6px;height:6px;border-radius:50%;background:var(--secondary);animation:tdot 1.2s ease-in-out infinite}
+.chat-typing span:nth-child(2){animation-delay:.2s}
+.chat-typing span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-5px);opacity:1}}
+.chat-ftr{background:var(--card);padding:12px 20px;border-top:1px solid var(--cb);display:flex;align-items:center;justify-content:space-between}
+.chat-ftr-hint{font-size:14px;color:var(--muted)}
+.chat-caption{font-size:12px;color:var(--secondary);text-align:center;margin-top:12px}
+.stat-banner{border-top:1px solid var(--cb);border-bottom:1px solid var(--cb);background:linear-gradient(to bottom,transparent,rgba(0,212,170,0.02),transparent);padding:60px 0}
+.stat-inner{display:grid;grid-template-columns:1fr 1fr 1fr;max-width:1280px;margin:0 auto;padding:0 32px}
+.stat-item{text-align:center;padding:0 40px;position:relative}
+.stat-item+.stat-item::before{content:'';position:absolute;left:0;top:10%;height:80%;width:1px;background:var(--cb)}
+.stat-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(3rem,6vw,4.5rem);font-weight:800;line-height:1;display:block}
+.stat-line{width:40px;height:2px;background:var(--accent);margin:12px auto}
+.stat-lbl{font-size:14px;color:var(--secondary);margin-top:8px}
+.stat-src{font-size:11px;color:var(--muted);margin-top:6px}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.prob-card{background:var(--card);border:1px solid var(--cb);border-radius:20px;padding:36px;transition:transform .3s var(--spring),border-color .3s}
+.prob-card:hover{border-color:rgba(0,212,170,.3);transform:translateY(-3px)}
+.prob-bar{height:3px;width:60px;border-radius:2px;margin-bottom:24px}
+.prob-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1;margin-bottom:12px}
+.prob-div{height:1px;width:30px;margin-bottom:16px}
+.prob-desc{font-size:14px;color:#c0ccd8;line-height:1.6}
+.prob-src{font-size:11px;color:var(--muted);margin-top:16px}
+.prob-quote{background:var(--bg);border:1px solid var(--cb);border-radius:12px;padding:24px 32px;margin-top:32px;text-align:center}
+.prob-quote p{font-family:'Cabinet Grotesk',sans-serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:500;line-height:1.4}
+.cost-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.cost-box{background:var(--card);border:1px solid var(--cb);border-radius:16px;padding:28px 32px}
+.cost-step{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.cost-eq{font-size:15px;color:var(--secondary);line-height:1.55}
+.cost-result{font-family:'Cabinet Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text);margin-top:8px}
+.cost-total{grid-column:1/-1;background:linear-gradient(135deg,rgba(0,212,170,.1),rgba(0,212,170,.02));border:1px solid rgba(0,212,170,.4);border-radius:16px;padding:36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cost-total-lbl{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.cost-total-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1;color:var(--accent)}
+.cost-total-sub{font-size:14px;color:var(--secondary);margin-top:6px}
+.cost-total-note{font-family:'Cabinet Grotesk',sans-serif;font-size:16px;color:var(--secondary);font-weight:500;max-width:360px;line-height:1.5}
+.roi-callout{background:linear-gradient(135deg,rgba(0,212,170,.1),rgba(0,212,170,.02));border:1px solid rgba(0,212,170,.3);border-radius:20px;padding:28px 36px;margin-top:48px}
+.roi-clbl{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.roi-cbody{font-size:16px;color:#c0ccd8;line-height:1.6}
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.cmp-card{background:var(--card);border:1px solid var(--cb);border-radius:20px;padding:40px}
+.cmp-bar{height:3px;width:60px;border-radius:2px;margin-bottom:20px}
+.cmp-title{font-family:'Cabinet Grotesk',sans-serif;font-size:22px;font-weight:600;margin-bottom:28px}
+.cmp-list{display:flex;flex-direction:column;gap:18px}
+.cmp-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#c0ccd8;line-height:1.5}
+.cmp-icon{flex-shrink:0;margin-top:1px}
+.cmp-eq{background:linear-gradient(135deg,rgba(0,212,170,.08),transparent);border:1px solid rgba(0,212,170,.2);border-radius:20px;padding:32px;margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cmp-eq-l{font-size:18px;color:#c0ccd8}
+.cmp-eq-r{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--accent)}
+.cmp-eq-s{font-size:14px;color:var(--secondary);margin-top:6px}
+.hiw-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:48px;position:relative}
+.hiw-conn{position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(to right,var(--accent),rgba(0,212,170,.1));z-index:0}
+.hiw-step{position:relative;z-index:1;text-align:center}
+.hiw-num{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.hiw-icon{margin:0 auto 16px;width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.hiw-icon svg{width:40px;height:40px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.hiw-title{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:600;margin-bottom:8px}
+.hiw-desc{font-size:13px;color:var(--secondary);line-height:1.55}
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-top:48px}
+.brand-feats{display:flex;flex-direction:column;gap:24px}
+.brand-feat-h{font-family:'Cabinet Grotesk',sans-serif;font-size:22px;font-weight:600;margin-bottom:16px}
+.brand-feat{display:flex;gap:16px;align-items:flex-start}
+.bfi{flex-shrink:0;margin-top:2px}
+.bfi svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.bfn{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:600;margin-bottom:2px}
+.bfd{font-size:13px;color:var(--secondary)}
+.bento-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.bento-card{background:var(--card);border:1px solid var(--cb);border-radius:20px;padding:32px;transition:transform .3s var(--spring),border-color .3s}
+.bento-card:hover{border-color:rgba(0,212,170,.4);transform:translateY(-2px)}
+.bento-big{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.8rem,3vw,2.25rem);font-weight:800;line-height:1;color:var(--accent);margin-bottom:4px}
+.bento-big.n{color:var(--text)}
+.bento-sub{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--accent);margin-bottom:12px}
+.bento-sub.n{color:var(--secondary)}
+.bento-div{height:1px;background:var(--cb);margin:12px 0}
+.bento-body{font-size:14px;color:var(--secondary);line-height:1.55}
+.bento-banner{background:var(--card);border:1px solid var(--cb);border-radius:12px;padding:28px;text-align:center;margin-top:48px}
+.bento-banner p{font-family:'Cabinet Grotesk',sans-serif;font-style:italic;font-size:clamp(1rem,1.8vw,1.4rem);font-weight:500;line-height:1.4}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:48px}
+.comp-card{background:var(--card);border:1px solid var(--cb);border-radius:20px;padding:36px}
+.comp-card.feat{background:linear-gradient(180deg,#0a1f1a,#0d1117);border-color:var(--accent);box-shadow:0 30px 80px -20px rgba(0,212,170,.15)}
+.comp-lbl{display:block;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c0ccd8;margin-bottom:24px}
+.comp-big{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;line-height:1.2;margin-bottom:24px}
+.comp-src{font-size:12px;color:var(--secondary)}
+.comp-attr{background:rgba(245,193,74,.05);border-left:3px solid var(--yellow);padding:20px 28px;border-radius:0 12px 12px 0;margin-top:32px}
+.comp-attr p{font-style:italic;font-size:16px;color:#c0ccd8;line-height:1.55}
+.comp-attr cite{font-size:12px;color:var(--muted);font-style:normal;margin-top:8px;display:block}
+.ba-wrap{margin-top:48px;border-radius:20px;overflow:hidden;border:1px solid var(--cb)}
+.ba-table{width:100%;border-collapse:collapse}
+.ba-table th{padding:16px 24px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.ba-table th:first-child{width:28%;text-align:left;color:var(--secondary);background:var(--bg)}
+.ba-table th.wo{background:rgba(232,93,74,.1);color:var(--red);text-align:center}
+.ba-table th.wi{background:rgba(0,212,170,.1);color:var(--accent);text-align:center}
+.ba-table td{padding:16px 24px;font-size:14px;border-top:1px solid var(--cb);transition:background .2s}
+.ba-table tr td:first-child{color:var(--secondary);font-weight:500}
+.ba-table td.wov{color:var(--red);text-align:center;font-weight:500}
+.ba-table td.wiv{color:var(--accent);text-align:center;font-weight:500}
+.ba-table tr:nth-child(odd) td{background:var(--card)}
+.ba-table tr:nth-child(even) td{background:var(--bg)}
+.ba-table tr:hover td{background:#101820}
+.chart-grid{display:grid;grid-template-columns:65fr 35fr;gap:32px;align-items:start;margin-top:48px}
+.chart-card{background:var(--card);border:1px solid var(--cb);border-radius:24px;padding:40px}
+.chart-title{font-size:13px;color:var(--secondary);margin-bottom:32px;font-weight:500}
+.chart-wrap{position:relative;padding-left:48px}
+.chart-yax{position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.chart-area{display:flex;align-items:flex-end;height:280px;position:relative;border-bottom:1px solid rgba(255,255,255,.06);border-left:1px solid rgba(255,255,255,.06)}
+.chart-gl{position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,.04)}
+.chart-bars{display:flex;align-items:flex-end;justify-content:space-around;width:100%;height:100%;padding:0 8px;gap:8px}
+.bar-wrap{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;flex:1;height:100%;position:relative}
+.bar{width:100%;max-width:56px;border-radius:6px 6px 0 0;transform-origin:bottom;will-change:transform}
+.bar-val{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;position:absolute;top:-22px;left:50%;transform:translateX(-50%);white-space:nowrap}
+.chart-xax{display:flex;justify-content:space-around;margin-top:10px;padding:0 8px}
+.chart-xl{font-size:11px;color:var(--muted);text-align:center;flex:1;line-height:1.3}
+.chart-insights{display:flex;flex-direction:column;gap:16px}
+.ci{background:var(--card);border:1px solid var(--cb);border-radius:20px;padding:32px}
+.ci.dark{background:#0d1417}
+.ci-lbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-bottom:12px}
+.ci-lbl.m{color:#c0ccd8}
+.ci-num{display:block;font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(3rem,5vw,5rem);font-weight:800;line-height:1}
+.ci-sub{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:600;color:var(--text);margin:8px 0}
+.ci-body{font-size:14px;color:var(--secondary);line-height:1.55}
+.ci-src{display:block;font-size:11px;color:var(--muted);margin-top:10px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;align-items:start}
+.pc{background:var(--card);border:1px solid var(--cb);border-radius:24px;padding:36px 32px;position:relative;transition:border-color .3s,transform .3s var(--spring)}
+.pc:hover{border-color:rgba(0,212,170,.3)}
+.pc.feat{background:linear-gradient(180deg,#0a1f1a,#0d1117);border-color:var(--accent);box-shadow:0 30px 80px -20px rgba(0,212,170,.15);transform:translateY(-12px)}
+.pc.feat:hover{transform:translateY(-14px)}
+.pp-pill{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#060a0e;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.p-tier{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:26px;font-weight:600;margin-bottom:20px}
+.p-slbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.p-price{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3vw,3rem);font-weight:800;line-height:1}
+.p-sub{font-size:14px;color:var(--secondary);margin-top:6px;margin-bottom:20px}
+.p-div{height:1px;background:var(--cb);margin:20px 0}
+.p-wlbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.p-items{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.p-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#c0ccd8;line-height:1.45}
+.p-item svg{flex-shrink:0;margin-top:2px;stroke:var(--accent);fill:none;stroke-width:2;width:14px;height:14px;stroke-linecap:round;stroke-linejoin:round}
+.btn-pg{display:block;width:100%;padding:14px;text-align:center;border:1px solid var(--cb);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);transition:border-color .3s,color .3s}
+.btn-pg:hover{border-color:rgba(0,212,170,.4);color:var(--accent)}
+.btn-pf{display:block;width:100%;padding:14px;text-align:center;background:var(--accent);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:700;color:#060a0e;transition:background .25s,transform .25s}
+.btn-pf:hover{background:#00f0c4;transform:translateY(-1px)}
+.btn-pg:focus-visible,.btn-pf:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.p-banner{background:var(--card);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:20px 28px;margin-top:48px}
+.p-banner p{font-size:15px;font-weight:500;color:#c0ccd8}
+.p-banner strong{font-family:'Cabinet Grotesk',sans-serif;font-size:19px;color:var(--text);display:block;margin-top:6px}
+footer{padding:80px 0 48px;border-top:1px solid var(--border2)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:80px}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--secondary);max-width:220px;line-height:1.65}
+.footer-col h4{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,244,243,.35);margin-bottom:24px}
+.footer-col ul{display:flex;flex-direction:column;gap:8px}
+.footer-col a{font-size:13px;color:var(--secondary);transition:color .2s}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:16px;margin-top:24px}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:border-color .25s,background .25s}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--secondary)}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:80px;padding-top:24px;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(240,244,243,.25)}
+@media(max-width:1023px){
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .chart-grid{grid-template-columns:1fr}
+}
+@media(max-width:767px){
+  .nav-links,.nav-cta{display:none}.hamburger{display:flex}
+  .hero{padding:100px 20px 64px}.hero-grid{grid-template-columns:1fr;gap:48px}.hero-h1{font-size:2.5rem}
+  .container{padding:0 20px}
+  .stat-inner{grid-template-columns:1fr;gap:40px;padding:0 20px}.stat-item+.stat-item::before{display:none}
+  .prob-grid,.cmp-grid,.bento-grid,.comp-grid,.chart-grid,.brand-grid{grid-template-columns:1fr}
+  .cost-breakdown{grid-template-columns:1fr}.cost-total{flex-direction:column;gap:16px}
+  .hiw-steps{grid-template-columns:1fr;gap:32px}.hiw-conn{display:none}
+  .ba-table th:first-child,.ba-table td:first-child{display:none}
+  .chart-area{height:200px}
+  .pricing-grid{grid-template-columns:1fr;gap:24px}.pc.feat{transform:none}
+  .footer-inner{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}
+  .nav-inner{padding:0 20px}
+  .cmp-eq{flex-direction:column;gap:8px}
+  .section{padding:64px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .reveal{opacity:1 !important;transform:none !important}
+}
+</style>
+</head>
+<body>
+<nav id="mainNav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo" aria-label="Coremagna home">
+      <span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/demo.html">Demo</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav">Book a Call</a></li>
+  </ul>
+</div>
+<main>
+
+<!-- S1 HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="hero-badge">Workflow Automation</span>
+      <h1 class="hero-h1 reveal">Your vendors shouldn&#8217;t have to<br>chase you for updates</h1>
+      <p class="hero-sub reveal">Poor communication is the #1 reason sellers switch agents. Your team spends 4&#8211;5 hours a day chasing updates instead of closing deals. Automate it &#8212; every vendor informed, every milestone tracked.</p>
+      <p class="hero-author reveal">By Ferit Patefe &#8212; Founder of Coremagna</p>
+      <div class="hero-ctas reveal">
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-p" data-magnetic>
+          Book a free call
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn-g">See how it works &#8595;</a>
+      </div>
+    </div>
+    <div>
+      <div class="chat-box">
+        <div class="chat-hdr">
+          <div><span class="chat-firm">Sterling &amp; Co Properties</span><span class="chat-status">Vendor portal &#183; Automated updates</span></div>
+          <div class="chat-dot" aria-hidden="true"></div>
+        </div>
+        <div class="chat-body" id="heroChatBody"></div>
+        <div class="chat-ftr">
+          <span class="chat-ftr-hint">Type a message...</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </div>
+      </div>
+      <p class="chat-caption">Weekly vendor update &#8212; sent automatically every Monday</p>
+    </div>
+  </div>
+</section>
+
+<!-- S2 STAT BANNER -->
+<div class="stat-banner">
+  <div class="stat-inner">
+    <div class="stat-item reveal"><span class="stat-num" id="s1" style="color:#e85d4a">0%</span><div class="stat-line"></div><p class="stat-lbl">of sellers say poor communication is their #1 complaint</p><p class="stat-src">Aviva/Norwich Union Survey</p></div>
+    <div class="stat-item reveal"><span class="stat-num" id="s2" style="color:#f5c14a">0%</span><div class="stat-line"></div><p class="stat-lbl">of an agent&#8217;s working day spent chasing updates</p><p class="stat-src">Landmark Information Group, 2024</p></div>
+    <div class="stat-item reveal"><span class="stat-num" id="s3" style="color:#00D4AA">0%</span><div class="stat-line"></div><p class="stat-lbl">of agreed sales fall through before completion</p><p class="stat-src">Estate Agent Today, 2025</p></div>
+  </div>
+</div>
+
+<!-- S3 THE PROBLEM -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">The Problem</span>
+    <h2 class="sec-h2 reveal">Your agents spend more time updating vendors<br><span style="color:var(--secondary)">than selling properties</span></h2>
+    <p class="sec-sub reveal">Three statistics that explain why communication failures cost agencies more than any other issue.</p>
+    <div class="prob-grid">
+      <div class="prob-card reveal">
+        <div class="prob-bar" style="background:#e85d4a"></div>
+        <div class="prob-num" style="color:#e85d4a">4&#8211;5 hrs</div>
+        <div class="prob-div" style="background:#e85d4a"></div>
+        <p class="prob-desc">per day spent by agents chasing or being chased for updates</p>
+        <p class="prob-src">Landmark Information Group, 2024</p>
+      </div>
+      <div class="prob-card reveal">
+        <div class="prob-bar" style="background:#f5c14a"></div>
+        <div class="prob-num" style="color:#f5c14a">21%</div>
+        <div class="prob-div" style="background:#f5c14a"></div>
+        <p class="prob-desc">of sellers say their agent failed to call them back</p>
+        <p class="prob-src">NAEA Survey</p>
+      </div>
+      <div class="prob-card reveal">
+        <div class="prob-bar" style="background:#00D4AA"></div>
+        <div class="prob-num" style="color:#00D4AA">19 wks</div>
+        <div class="prob-div" style="background:#00D4AA"></div>
+        <p class="prob-desc">average time from instruction to completion &#8212; 77% longer than in 2007</p>
+        <p class="prob-src">Landmark Information Group, 2024</p>
+      </div>
+    </div>
+    <div class="prob-quote reveal"><p>&#8220;You&#8217;re not losing vendors to better agents. You&#8217;re losing them to agents who pick up the phone.&#8221;</p></div>
+  </div>
+</section>
+
+<!-- S4 THE REAL COST -->
+<section class="section" style="background:linear-gradient(180deg,rgba(0,212,170,.02),transparent)">
+  <div class="container">
+    <span class="sec-label reveal">Question 01 &#8212; Will It Make Money?</span>
+    <h2 class="sec-h2 reveal">What vendor chasing actually costs your agency</h2>
+    <p class="sec-sub reveal">The maths behind manual communication per week:</p>
+    <div class="cost-breakdown">
+      <div class="cost-box reveal">
+        <span class="cost-step">Step 1</span>
+        <p class="cost-eq">30 active properties &#215; 1 weekly vendor call</p>
+        <p class="cost-result">= 30 calls per week</p>
+      </div>
+      <div class="cost-box reveal">
+        <span class="cost-step">Step 2</span>
+        <p class="cost-eq">Average call: 12 min + 5 min CRM logging</p>
+        <p class="cost-result">= 17 min per vendor</p>
+      </div>
+      <div class="cost-box reveal">
+        <span class="cost-step">Step 3</span>
+        <p class="cost-eq">30 vendors &#215; 17 min each</p>
+        <p class="cost-result">= 8.5 hours/week on updates alone</p>
+      </div>
+      <div class="cost-box reveal">
+        <span class="cost-step">Step 4</span>
+        <p class="cost-eq">+ Chasing solicitors, surveyors, mortgage brokers</p>
+        <p class="cost-result">= 4&#8211;5 extra hours per day</p>
+      </div>
+      <div class="cost-total reveal">
+        <div>
+          <span class="cost-total-lbl">Total per week</span>
+          <p class="cost-total-num">20+ hours</p>
+          <p class="cost-total-sub">spent on updates and chasing</p>
+        </div>
+        <p class="cost-total-note">That&#8217;s half your working week spent on communication that could be automated.</p>
+      </div>
+    </div>
+    <div class="roi-callout reveal">
+      <span class="roi-clbl">Industry Research &#8212; Alto Software / Rello, 2025&#8211;2026</span>
+      <p class="roi-cbody">Agencies using automated vendor updates and sales progression workflows save 40+ hours per month and complete sales over a month faster.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S5 TIME = EFFICIENCY -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">Time = Efficiency</span>
+    <h2 class="sec-h2 reveal">How much does keeping vendors informed<br><span style="color:var(--secondary)">manually actually cost?</span></h2>
+    <div class="cmp-grid">
+      <div class="cmp-card reveal">
+        <div class="cmp-bar" style="background:#e85d4a"></div>
+        <h3 class="cmp-title" style="color:#e85d4a">Without Coremagna</h3>
+        <ul class="cmp-list">
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e85d4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>Weekly vendor calls done manually &#8212; often forgotten or delayed</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e85d4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>Agents chase solicitors by phone and email daily</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e85d4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>No visibility on where each sale stands</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e85d4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>Vendors call the office asking for updates &#8212; staff interrupted</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e85d4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>Fall-throughs discovered too late to save</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e85d4a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>20+ hours/week lost to update chasing</li>
+        </ul>
+      </div>
+      <div class="cmp-card reveal">
+        <div class="cmp-bar" style="background:#00D4AA"></div>
+        <h3 class="cmp-title" style="color:#00D4AA">With Coremagna Vendor Automation</h3>
+        <ul class="cmp-list">
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Weekly vendor reports sent automatically via WhatsApp/email</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Sales progression milestones tracked and chased automatically</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Dashboard shows every sale&#8217;s status at a glance</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Vendors receive updates before they need to ask</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Delays flagged early &#8212; automatic chasing keeps things moving</li>
+          <li class="cmp-item"><svg class="cmp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>20+ hours/week returned to revenue-generating work</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cmp-eq reveal">
+      <div><p class="cmp-eq-l">20 hours saved &#215; &#163;50/hr agent time =</p><p class="cmp-eq-s">in recovered capacity per week</p></div>
+      <div class="cmp-eq-r">&#163;1,000/week</div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 HOW IT WORKS -->
+<section class="section" id="how-it-works" style="background:linear-gradient(180deg,rgba(0,212,170,.015),transparent)">
+  <div class="container">
+    <span class="sec-label reveal">How It Works</span>
+    <h2 class="sec-h2 reveal">From instruction to completion<br><span style="color:var(--secondary)">every vendor informed automatically</span></h2>
+    <p class="sec-sub reveal">No more forgotten calls. No more angry vendors. Every update sent on time, every time.</p>
+    <div class="hiw-steps">
+      <div class="hiw-conn" aria-hidden="true"></div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" aria-hidden="true">1</div>
+        <div class="hiw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 class="hiw-title">Property listed</h3>
+        <p class="hiw-desc">Sale enters the system. Vendor communication sequence begins automatically.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" aria-hidden="true">2</div>
+        <div class="hiw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3 class="hiw-title">Weekly reports sent</h3>
+        <p class="hiw-desc">Every Monday: viewing count, online views, offers, market comparison &#8212; via WhatsApp or email.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" aria-hidden="true">3</div>
+        <div class="hiw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3 class="hiw-title">Milestone tracking</h3>
+        <p class="hiw-desc">Offer accepted &#8594; solicitor instructed &#8594; survey booked &#8594; mortgage approved &#8594; exchange &#8594; completion.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" aria-hidden="true">4</div>
+        <div class="hiw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <h3 class="hiw-title">Delays flagged</h3>
+        <p class="hiw-desc">If a solicitor hasn&#8217;t responded in 3 days, system sends automatic chase. Agent notified if needed.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" aria-hidden="true">5</div>
+        <div class="hiw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.47 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.91 6.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3 class="hiw-title">Vendor always informed</h3>
+        <p class="hiw-desc">Real-time updates on any change. Vendor never needs to call asking what&#8217;s happening.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 YOUR BRAND, YOUR TONE -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">Your Brand, Your Tone</span>
+    <h2 class="sec-h2 reveal">Every update sounds like your best<br><span style="color:var(--secondary)">negotiator wrote it</span></h2>
+    <p class="sec-sub reveal">Vendors receive professional, branded updates automatically &#8212; they&#8217;ll think your team wrote every one.</p>
+    <div class="brand-grid">
+      <div>
+        <div class="chat-box-lg">
+          <div class="chat-hdr">
+            <div><span class="chat-firm">Sterling &amp; Co Properties</span><span class="chat-status">Vendor Update &#183; SW18</span></div>
+            <div class="chat-dot" aria-hidden="true"></div>
+          </div>
+          <div class="chat-body sm" id="brandChatBody"></div>
+          <div class="chat-ftr">
+            <span class="chat-ftr-hint">Automated via Coremagna</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="brand-feats">
+        <h3 class="brand-feat-h">What&#8217;s automated for you</h3>
+        <div class="brand-feat reveal">
+          <div class="bfi"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div><p class="bfn">Automated weekly vendor reports</p><p class="bfd">Viewing count, online activity, offers, market data</p></div>
+        </div>
+        <div class="brand-feat reveal">
+          <div class="bfi"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div><p class="bfn">Sales progression tracking</p><p class="bfd">Every milestone from offer to completion</p></div>
+        </div>
+        <div class="brand-feat reveal">
+          <div class="bfi"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div><p class="bfn">Delay detection</p><p class="bfd">Automatic chasing when solicitors or surveyors are late</p></div>
+        </div>
+        <div class="brand-feat reveal">
+          <div class="bfi"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div><p class="bfn">WhatsApp + email delivery</p><p class="bfd">Vendors choose their preferred channel</p></div>
+        </div>
+        <div class="brand-feat reveal">
+          <div class="bfi"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div><p class="bfn">Branded communication</p><p class="bfd">Every message in your agency&#8217;s voice and style</p></div>
+        </div>
+        <div class="brand-feat reveal">
+          <div class="bfi"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div><p class="bfn">Full audit trail</p><p class="bfd">Every update logged, nothing lost or forgotten</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S8 DOES IT REDUCE RISK? -->
+<section class="section" style="background:linear-gradient(180deg,rgba(0,212,170,.015),transparent)">
+  <div class="container">
+    <span class="sec-label reveal">Does It Reduce Risk?</span>
+    <h2 class="sec-h2 reveal">Built-in guarantees on every plan</h2>
+    <div class="bento-grid">
+      <div class="bento-card reveal">
+        <p class="bento-big">14</p>
+        <p class="bento-sub">Day money-back guarantee</p>
+        <div class="bento-div"></div>
+        <p class="bento-body">If the system doesn&#8217;t perform as promised, full refund. No questions asked.</p>
+      </div>
+      <div class="bento-card reveal">
+        <p class="bento-big">30</p>
+        <p class="bento-sub">Days support included</p>
+        <div class="bento-div"></div>
+        <p class="bento-body">Every plan includes a full month of hands-on support after launch.</p>
+      </div>
+      <div class="bento-card reveal">
+        <p class="bento-big">7</p>
+        <p class="bento-sub">Days live from payment</p>
+        <div class="bento-div"></div>
+        <p class="bento-body">We build fast. Your system is live and sending vendor updates within one week.</p>
+      </div>
+      <div class="bento-card reveal">
+        <p class="bento-big n">Yours.</p>
+        <p class="bento-sub n">Your data stays yours, always</p>
+        <div class="bento-div"></div>
+        <p class="bento-body">No vendor lock-in. Your contacts, workflows and data are exportable at any time.</p>
+      </div>
+      <div class="bento-card reveal">
+        <p class="bento-big n">Zero.</p>
+        <p class="bento-sub n">Nothing built without approval</p>
+        <div class="bento-div"></div>
+        <p class="bento-body">Nothing is deployed until you&#8217;ve seen, tested, and signed off on every workflow.</p>
+      </div>
+      <div class="bento-card reveal">
+        <p class="bento-big n">Same</p>
+        <p class="bento-sub n">Day account manager response</p>
+        <div class="bento-div"></div>
+        <p class="bento-body">Email or WhatsApp your account manager and get a response the same business day.</p>
+      </div>
+    </div>
+    <div class="bento-banner reveal"><p>&#8220;You&#8217;re not buying a tool. You&#8217;re getting a team that stays until it works.&#8221;</p></div>
+  </div>
+</section>
+
+<!-- S9 WILL IT BEAT COMPETITORS? -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">Will It Beat Competitors?</span>
+    <h2 class="sec-h2 reveal">The #1 reason vendors leave their agent<br><span style="color:var(--secondary)">is poor communication</span></h2>
+    <div class="comp-grid">
+      <div class="comp-card reveal">
+        <span class="comp-lbl">Your Competitors</span>
+        <p class="comp-big">Manual weekly calls</p>
+        <p class="comp-src">Often forgotten, inconsistent, no data included &#8212; vendors feel ignored</p>
+      </div>
+      <div class="comp-card feat reveal">
+        <span class="comp-lbl">Your Agency</span>
+        <p class="comp-big">Automated weekly reports</p>
+        <p class="comp-src">Every Monday, detailed update with viewings, portal stats and market data</p>
+      </div>
+      <div class="comp-card reveal">
+        <span class="comp-lbl">The Result</span>
+        <p class="comp-big">Vendor retention + faster sales</p>
+        <p class="comp-src">Informed vendors make faster decisions, fewer fall-throughs &#8212; Landmark/Rello, 2024&#8211;2025</p>
+      </div>
+    </div>
+    <div class="comp-attr reveal">
+      <p>&#8220;Agents spending 55% of their day chasing updates reported that automation freed 4&#8211;5 hours daily for revenue-generating work.&#8221;</p>
+      <cite>&#8212; Landmark Information Group, 2024</cite>
+    </div>
+  </div>
+</section>
+
+<!-- S10 BEFORE & AFTER -->
+<section class="section" style="background:linear-gradient(180deg,rgba(0,212,170,.02),transparent)">
+  <div class="container">
+    <span class="sec-label reveal">Before &amp; After</span>
+    <h2 class="sec-h2 reveal">The numbers before and after automation</h2>
+    <div class="ba-wrap reveal">
+      <table class="ba-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="wo">Without Automation</th>
+            <th class="wi">With Coremagna</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Vendor updates</td><td class="wov">Manual calls &#8212; often late or forgotten</td><td class="wiv">Automated weekly WhatsApp/email reports</td></tr>
+          <tr><td>Sales progression</td><td class="wov">Tracked in agent&#8217;s head or spreadsheet</td><td class="wiv">Milestone tracking with automatic alerts</td></tr>
+          <tr><td>Solicitor chasing</td><td class="wov">Phone calls and emails daily</td><td class="wiv">Automatic chase after 3-day delay</td></tr>
+          <tr><td>Vendor complaints</td><td class="wov">&#8220;Nobody told me what&#8217;s happening&#8221;</td><td class="wiv">Vendor informed before they need to ask</td></tr>
+          <tr><td>Fall-through risk</td><td class="wov">Discovered too late</td><td class="wiv">Early warning flags save at-risk sales</td></tr>
+          <tr><td>Agent time on updates</td><td class="wov">20+ hours/week</td><td class="wiv">Under 3 hours/week</td></tr>
+          <tr><td>Vendor retention</td><td class="wov">Vendors switch agents mid-sale</td><td class="wiv">Vendors stay &#8212; informed and valued</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- S11 COMMUNICATION EFFICIENCY BENCHMARK -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">Communication Efficiency Benchmark</span>
+    <h2 class="sec-h2 reveal">Why automated vendor communication wins</h2>
+    <div class="chart-grid" id="chartArea">
+      <div class="chart-card reveal">
+        <p class="chart-title">Communication method vs weekly agent hours spent</p>
+        <div class="chart-wrap">
+          <div class="chart-yax" aria-hidden="true">
+            <span>20</span>
+            <span>15</span>
+            <span>10</span>
+            <span>5</span>
+            <span>0</span>
+          </div>
+          <div class="chart-area">
+            <div class="chart-gl" style="bottom:25%"></div>
+            <div class="chart-gl" style="bottom:50%"></div>
+            <div class="chart-gl" style="bottom:75%"></div>
+            <div class="chart-gl" style="bottom:100%"></div>
+            <div class="chart-bars">
+              <div class="bar-wrap">
+                <span class="bar-val" style="color:#e85d4a">20+ hrs</span>
+                <div class="bar" id="b1" style="height:100%;background:#e85d4a"></div>
+              </div>
+              <div class="bar-wrap">
+                <span class="bar-val" style="color:#f5c14a">14 hrs</span>
+                <div class="bar" id="b2" style="height:70%;background:#f5c14a"></div>
+              </div>
+              <div class="bar-wrap">
+                <span class="bar-val" style="color:#8ab4a0">8 hrs</span>
+                <div class="bar" id="b3" style="height:40%;background:#8ab4a0"></div>
+              </div>
+              <div class="bar-wrap">
+                <span class="bar-val" style="color:#00c49a">4 hrs</span>
+                <div class="bar" id="b4" style="height:20%;background:#00c49a"></div>
+              </div>
+              <div class="bar-wrap">
+                <span class="bar-val" style="color:#00D4AA">2.5 hrs</span>
+                <div class="bar" id="b5" style="height:12.5%;background:#00D4AA"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-xax">
+            <span class="chart-xl">Manual calls only</span>
+            <span class="chart-xl">Email updates (manual)</span>
+            <span class="chart-xl">CRM with templates</span>
+            <span class="chart-xl">Automated reports + progression</span>
+            <span class="chart-xl">Full Coremagna system</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart-insights">
+        <div class="ci reveal">
+          <span class="ci-lbl">The Communication Crisis</span>
+          <span class="ci-num" style="color:var(--accent)" id="ci1">0%</span>
+          <p class="ci-sub">of working day spent chasing</p>
+          <p class="ci-body">Estate agents now spend 55% of their working day chasing or being chased &#8212; up from 44% in 2023.</p>
+          <span class="ci-src">Landmark Information Group, 2024</span>
+        </div>
+        <div class="ci dark reveal">
+          <span class="ci-lbl m">The Vendor Verdict</span>
+          <span class="ci-num" style="color:#e85d4a" id="ci2">0%</span>
+          <p class="ci-sub">of sellers cite poor communication</p>
+          <p class="ci-body">Over half of sellers say poor communication is their biggest frustration. It&#8217;s the #1 reason vendors switch agents.</p>
+          <span class="ci-src">Aviva Survey</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S12 PRICING -->
+<section class="section" style="background:linear-gradient(180deg,rgba(0,212,170,.02),transparent)">
+  <div class="container">
+    <span class="sec-label reveal">Pricing</span>
+    <h2 class="sec-h2 reveal">Choose the plan that fits<br><span style="color:var(--secondary)">your agency&#8217;s needs</span></h2>
+    <div class="pricing-grid">
+      <div class="pc reveal">
+        <span class="p-tier">Starter</span>
+        <p class="p-title">Starter</p>
+        <span class="p-slbl">Setup fee</span>
+        <p class="p-price">$697</p>
+        <p class="p-sub">then $197/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automated weekly vendor email reports</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Viewing count + portal stats included</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sales milestone notifications</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Google Sheets progress tracker</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Email support</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pg">Book a free call</a>
+      </div>
+      <div class="pc feat reveal">
+        <div class="pp-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Most Popular
+        </div>
+        <span class="p-tier">Growth</span>
+        <p class="p-title">Growth</p>
+        <span class="p-slbl">Setup fee</span>
+        <p class="p-price">$997</p>
+        <p class="p-sub">then $297/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">Everything in Starter, plus</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp vendor updates (instant + weekly)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sales progression milestone tracking</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Airtable CRM integration</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Delay detection + automatic solicitor chasing</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Priority support</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf">Book a free call</a>
+      </div>
+      <div class="pc reveal">
+        <span class="p-tier">Scale</span>
+        <p class="p-title">Scale</p>
+        <span class="p-slbl">Setup fee</span>
+        <p class="p-price">$1,497</p>
+        <p class="p-sub">then $497/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">Everything in Growth, plus</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Vendor self-service portal</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Chain mapping + risk detection</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Solicitor/surveyor/mortgage broker auto-chase</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Weekly agency performance report</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Dedicated account manager</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pg">Book a free call</a>
+      </div>
+    </div>
+    <div class="p-banner reveal">
+      <p>API costs billed at cost &#8212; no markup.</p>
+      <strong>One saved sale covers a full year of the system.</strong>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for law firms and real estate agencies.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries.html#law-firms">Law Firms</a></li>
+          <li><a href="/industries.html#real-estate">Real Estate</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Coremagna. All rights reserved.</p>
+      <p>AI Automation &#183; CRM Systems &#183; Chatbots</p>
+    </div>
+  </div>
+</footer>
+<script defer>
+(function(){
+'use strict';
+var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var nav=document.getElementById('mainNav');
+var hbg=document.getElementById('hamburger');
+var mob=document.getElementById('mobNav');
+var open=false;
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+hbg.addEventListener('click',function(){open=!open;hbg.classList.toggle('open',open);hbg.setAttribute('aria-expanded',open);mob.setAttribute('aria-hidden',!open);mob.classList.toggle('visible',open);document.body.style.overflow=open?'hidden':'';});
+mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){open=false;hbg.classList.remove('open');hbg.setAttribute('aria-expanded','false');mob.setAttribute('aria-hidden','true');mob.classList.remove('visible');document.body.style.overflow='';});});
+
+// ── Hero chat ──
+var heroMsgs=[
+  {t:'bot',s:'Hi Mrs. Thompson — here’s your weekly property update for 42 Lavender Hill.'},
+  {t:'bot',s:'This week: 6 viewings completed, 2 second viewings booked, 1 offer received at £615,000 (asking: £625,000). Your Rightmove listing had 847 views.'},
+  {t:'user',s:'What about the offer?'},
+  {t:'bot',s:'The offer is £10,000 below asking. Based on current market data, similar properties in SW11 sold for £610–635K this quarter. Would you like to accept, counter-offer, or wait for more viewings?'},
+  {t:'user',s:'Let’s counter at £620,000'},
+  {t:'bot',s:'Noted — I’ll pass your counter-offer to the buyer’s agent and update you within 24 hours. Is there anything else?'}
+];
+var hcb=document.getElementById('heroChatBody');
+function mkT(){var d=document.createElement('div');d.className='chat-typing';d.innerHTML='<span></span><span></span><span></span>';return d;}
+function mkM(t,s){var d=document.createElement('div');d.className='chat-msg '+t;d.textContent=s;return d;}
+function showHero(i){
+  if(i>=heroMsgs.length)return;
+  var m=heroMsgs[i];
+  if(rm){var el=mkM(m.t,m.s);el.classList.add('st');hcb.appendChild(el);hcb.scrollTop=hcb.scrollHeight;showHero(i+1);return;}
+  if(m.t==='bot'){
+    var ty=mkT();hcb.appendChild(ty);hcb.scrollTop=hcb.scrollHeight;ty.style.opacity='1';
+    setTimeout(function(){ty.remove();var el=mkM('bot',m.s);hcb.appendChild(el);hcb.scrollTop=hcb.scrollHeight;requestAnimationFrame(function(){el.style.transition='opacity 0.4s ease,transform 0.4s ease';el.style.opacity='1';el.style.transform='none';setTimeout(function(){showHero(i+1);},900);});},900);
+  } else {
+    var el2=mkM('user',m.s);hcb.appendChild(el2);hcb.scrollTop=hcb.scrollHeight;requestAnimationFrame(function(){el2.style.transition='opacity 0.4s ease,transform 0.4s ease';el2.style.opacity='1';el2.style.transform='none';setTimeout(function(){showHero(i+1);},900);});
+  }
+}
+setTimeout(function(){showHero(0);},800);
+
+// ── Brand demo chat ──
+var brandMsgs=[
+  {t:'bot',s:'Good morning Mr. Davies — your weekly update for 15 Elm Road, Wandsworth:'},
+  {t:'bot',s:'Viewings this week: 4 completed, 2 positive feedback received. Online activity: 623 Rightmove views (up 12% from last week). No new offers yet — next open viewing scheduled for Saturday.'},
+  {t:'user',s:'Should we reduce the price?'},
+  {t:'bot',s:'Based on comparable sales in SW18 this month, your asking price of £550,000 is within range — average sale price is £535–560K. I’d recommend holding for 2 more weeks before considering adjustment. Your agent Sarah will call you Thursday to discuss.'},
+  {t:'user',s:'Ok thanks for the update'},
+  {t:'bot',s:'You’re welcome. Your next automated update arrives Monday. If anything changes before then, you’ll hear from us immediately.'}
+];
+var bcb=document.getElementById('brandChatBody');
+function showBrand(i){
+  if(i>=brandMsgs.length)return;
+  var m=brandMsgs[i];
+  if(rm){var el=mkM(m.t,m.s);el.classList.add('st');bcb.appendChild(el);bcb.scrollTop=bcb.scrollHeight;showBrand(i+1);return;}
+  if(m.t==='bot'){
+    var ty=mkT();bcb.appendChild(ty);bcb.scrollTop=bcb.scrollHeight;ty.style.opacity='1';
+    setTimeout(function(){ty.remove();var el=mkM('bot',m.s);bcb.appendChild(el);bcb.scrollTop=bcb.scrollHeight;requestAnimationFrame(function(){el.style.transition='opacity 0.4s ease,transform 0.4s ease';el.style.opacity='1';el.style.transform='none';setTimeout(function(){showBrand(i+1);},900);});},900);
+  } else {
+    var el2=mkM('user',m.s);bcb.appendChild(el2);bcb.scrollTop=bcb.scrollHeight;requestAnimationFrame(function(){el2.style.transition='opacity 0.4s ease,transform 0.4s ease';el2.style.opacity='1';el2.style.transform='none';setTimeout(function(){showBrand(i+1);},900);});
+  }
+}
+var brandStarted=false;
+if(bcb&&typeof IntersectionObserver!=='undefined'){
+  var brandObs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting&&!brandStarted){brandStarted=true;setTimeout(function(){showBrand(0);},400);brandObs.disconnect();}
+  },{threshold:0.2});
+  brandObs.observe(bcb);
+}
+
+// ── GSAP animations ──
+window.addEventListener('load',function(){
+  if(rm||typeof gsap==='undefined'){
+    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='1';el.style.transform='none';});
+    document.getElementById('s1').textContent='53%';
+    document.getElementById('s2').textContent='55%';
+    document.getElementById('s3').textContent='23.3%';
+    document.getElementById('ci1').textContent='55%';
+    document.getElementById('ci2').textContent='53%';
+    ['b1','b2','b3','b4','b5'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.transform='none';});
+    document.querySelectorAll('.bar-val').forEach(function(el){el.style.opacity='1';});
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('.reveal').forEach(function(el){gsap.fromTo(el,{y:24,opacity:0},{y:0,opacity:1,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%',once:true}});});
+  function cu(id,target,pfx,sfx,isFloat){
+    var el=document.getElementById(id);if(!el)return;
+    var obj={v:0};
+    gsap.to(obj,{v:target,duration:1.5,ease:'power2.out',onUpdate:function(){
+      el.textContent=pfx+(isFloat?(Math.round(obj.v*10)/10):Math.round(obj.v))+sfx;
+    },scrollTrigger:{trigger:el,start:'top 85%',once:true}});
+  }
+  cu('s1',53,'','%',false);
+  cu('s2',55,'','%',false);
+  cu('s3',23.3,'','%',true);
+  cu('ci1',55,'','%',false);
+  cu('ci2',53,'','%',false);
+  var bels=['b1','b2','b3','b4','b5'].map(function(id){return document.getElementById(id);}).filter(Boolean);
+  var bvels=document.querySelectorAll('.bar-val');
+  gsap.set(bels,{scaleY:0,transformOrigin:'bottom'});
+  gsap.set(bvels,{opacity:0});
+  bels.forEach(function(el,i){gsap.to(el,{scaleY:1,duration:0.8,ease:'power2.out',delay:i*0.1,scrollTrigger:{trigger:'#chartArea',start:'top 80%',once:true}});});
+  bvels.forEach(function(el,i){gsap.to(el,{opacity:1,duration:0.4,delay:i*0.1+0.7,scrollTrigger:{trigger:'#chartArea',start:'top 80%',once:true}});});
+  document.querySelectorAll('[data-magnetic]').forEach(function(btn){var raf=null;btn.addEventListener('mousemove',function(e){var r=btn.getBoundingClientRect(),x=Math.max(-8,Math.min(8,(e.clientX-r.left-r.width/2)*0.3)),y=Math.max(-8,Math.min(8,(e.clientY-r.top-r.height/2)*0.3));if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){btn.style.transform='translate('+x+'px,'+y+'px)';});});btn.addEventListener('mouseleave',function(){if(raf)cancelAnimationFrame(raf);btn.style.transform='';});});
+});
+})();
+</script>
+</body>
+</html>

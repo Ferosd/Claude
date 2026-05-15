@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual Document Drafting | Law Firm Document Automation | Coremagna</title>
+<meta name="description" content="Every case requires 2–3 hours of manual document preparation. See how Coremagna reduces document prep from 2.5 hours to 10 minutes with AI-powered automation.">
+<meta property="og:title" content="Manual Document Drafting | Law Firm Document Automation | Coremagna">
+<meta property="og:description" content="2.5 hours per case on document prep. 48% of attorney time on non-billable admin. Automate engagement letters, HIPAA forms and conflict checks.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://coremagna.com/industries/law-firms-followup.html">
+<link rel="canonical" href="https://coremagna.com/industries/law-firms-followup.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<style>
+
+/* ── CSS VARIABLES ── */
+:root {
+  --bg:            #060a0e;
+  --surface:       #0d1117;
+  --surface-2:     #111920;
+  --text:          #F0F4F3;
+  --text-secondary:#c0ccd8;
+  --text-muted:    #8a9ba8;
+  --text-fine:     #5a6b78;
+  --border:        #1a2530;
+  --border-hover:  rgba(0,212,170,0.4);
+  --accent:        #00D4AA;
+  --accent-dim:    rgba(0,212,170,0.12);
+  --red:           #e85d4a;
+  --yellow:        #f5c14a;
+  --surface2:      #111920;
+  --muted:         #8a9ba8;
+  --border2:       rgba(255,255,255,0.07);
+  --ease:          cubic-bezier(0.4,0,0.2,1);
+  --spring:        cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:24px;--space-xl:48px;--space-2xl:80px;--space-3xl:120px;
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.05;letter-spacing:-0.02em;font-weight:800;overflow-wrap:break-word;max-width:100%}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.035}
+
+/* ── UTILITIES ── */
+.container{max-width:1280px;margin:0 auto;padding:0 var(--space-xl)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── BUTTONS ── */
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;border:none;cursor:pointer;transition:background 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+.btn-primary:hover{background:#00f0c4;box-shadow:0 8px 24px rgba(0,212,170,0.3)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;background:transparent;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;border-radius:6px;border:1px solid var(--border2);cursor:pointer;transition:border-color 0.25s var(--ease),color 0.25s var(--ease)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-ghost:active{transform:scale(0.97)}
+.btn-ghost:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ── NAV ── */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 var(--space-xl);height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
+.logo-magna{color:var(--accent)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite}
+@keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:var(--space-xl)}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+.mobile-nav.visible{opacity:1;pointer-events:all}
+.mobile-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
+.mobile-nav a:hover{color:var(--accent)}
+.mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:16px}
+
+/* ── HERO ── */
+.hero{padding:140px 0 100px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 60%,rgba(0,212,170,0.06) 0%,transparent 55%),radial-gradient(ellipse at 85% 20%,rgba(0,180,150,0.04) 0%,transparent 50%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 0.82fr;gap:var(--space-2xl);align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--accent-dim);border:1px solid var(--border-hover);border-radius:100px;margin-bottom:24px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:logoDotPulse 2s ease-in-out infinite}
+.hero-badge span{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(2.4rem,5vw,3.5rem);margin-bottom:20px;max-width:580px}
+.hero-sub{font-size:18px;color:var(--text-muted);max-width:540px;margin-bottom:10px;line-height:1.7;font-weight:300}
+.hero-author{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-fine);margin-bottom:36px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ── DOC CARD VIZ ── */
+.hero-viz{display:flex;flex-direction:column;align-items:center;gap:16px}
+.doc-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;width:100%;max-width:380px;box-shadow:0 24px 60px rgba(0,0,0,0.35)}
+.doc-card-header{padding:18px 24px 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.doc-card-title-text{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text);letter-spacing:-0.01em}
+.doc-card-sub-text{font-size:10px;color:var(--text-fine);margin-top:3px}
+.doc-ai-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--accent-dim);border:1px solid var(--border-hover);border-radius:999px;font-size:10px;font-weight:600;color:var(--accent);letter-spacing:0.04em;flex-shrink:0;white-space:nowrap}
+.doc-fields{padding:4px 0}
+.doc-field{padding:9px 24px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:3px}
+.doc-field:last-child{border-bottom:none}
+.doc-field-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;letter-spacing:0.1em;color:var(--text-fine)}
+.doc-field-val-wrap{position:relative;height:20px}
+.doc-ph{position:absolute;top:4px;left:0;height:11px;border-radius:3px;background:var(--border)}
+.doc-fv{font-size:13px;color:var(--text);font-weight:400;position:absolute;top:0;left:0;white-space:nowrap}
+.doc-card-footer{padding:12px 24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;min-height:44px}
+.doc-docusign{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:6px;font-size:11px;font-weight:500;color:#60a5fa}
+.doc-signed{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:var(--accent-dim);border:1px solid var(--border-hover);border-radius:999px;font-size:11px;font-weight:600;color:var(--accent)}
+.viz-caption{font-size:12px;color:var(--text-muted);text-align:center;max-width:320px;line-height:1.5}
+
+/* ── STAT BANNER ── */
+.stat-banner{padding:60px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(to bottom,transparent,var(--accent-dim),transparent)}
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;position:relative}
+.stat-row::before,.stat-row::after{content:'';position:absolute;top:10%;height:80%;width:1px;background:var(--border)}
+.stat-row::before{left:33.33%}
+.stat-row::after{left:66.66%}
+.stat-item{padding:24px 48px;text-align:center}
+.stat-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:800;letter-spacing:-0.04em;line-height:1;display:inline}
+.stat-suffix{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.2rem,2.5vw,2rem);font-weight:800;line-height:1;display:inline}
+.stat-label{font-size:14px;color:var(--text-muted);margin-top:8px;display:block;max-width:240px;margin-left:auto;margin-right:auto;line-height:1.5}
+.stat-source{font-size:11px;color:var(--text-fine);margin-top:6px;display:block;font-style:italic}
+
+/* ── SHARED SECTION ELEMENTS ── */
+.section-eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
+.section-header{margin-bottom:48px}
+.section-header h2{font-size:clamp(1.8rem,3.5vw,2.5rem)}
+.section-header p{font-size:16px;color:var(--text-muted);margin-top:12px;max-width:620px;font-weight:300;line-height:1.7}
+
+/* ── S3 — THE PROBLEM ── */
+.problem-section{padding:100px 0}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:56px}
+.chaos-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px}
+.problem-stat-2x2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.problem-stat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 28px}
+.problem-stat-card.p-red{border-top:3px solid var(--red)}
+.problem-stat-card.p-yellow{border-top:3px solid var(--yellow)}
+.problem-stat-big{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;line-height:1;display:block}
+.problem-stat-label{font-size:13px;color:var(--text-muted);margin-top:6px;display:block;line-height:1.5}
+.problem-stat-source{font-size:11px;color:var(--text-fine);margin-top:4px;display:block;font-style:italic}
+.quote-bar{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px}
+.quote-bar p{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.1rem,2vw,1.4rem);font-style:italic;font-weight:500;color:var(--text-secondary);text-align:center;max-width:800px;margin:0 auto;line-height:1.4}
+/* Breakdown table */
+.breakdown-title{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-fine);margin-bottom:20px}
+.breakdown-table{display:flex;flex-direction:column}
+.breakdown-row{display:grid;grid-template-columns:1.6fr 0.9fr 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--border);align-items:center}
+.breakdown-row:last-child{border-bottom:none}
+.breakdown-row:nth-child(even){background:rgba(255,255,255,0.02);border-radius:4px;margin:0 -8px;padding:9px 8px}
+.breakdown-doc{font-size:13px;color:var(--text-secondary)}
+.breakdown-time{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)}
+.breakdown-auto{font-size:11px;color:var(--accent);font-weight:500}
+.breakdown-divider{height:1px;background:var(--border);margin:18px 0}
+.breakdown-total{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.breakdown-total-label{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
+.breakdown-total-val{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+
+/* ── S4 — ROI CALCULATOR ── */
+.calc-section{padding:100px 0}
+.calc-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:start}
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px}
+.calc-card-label{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:28px}
+.calc-input-stack{display:flex;flex-direction:column;gap:24px}
+.calc-input-group label{display:block;font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:10px;letter-spacing:0.02em}
+.calc-number{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--text);outline:none;transition:border-color 0.2s var(--ease);-moz-appearance:textfield}
+.calc-number::-webkit-outer-spin-button,.calc-number::-webkit-inner-spin-button{-webkit-appearance:none}
+.calc-number:focus{border-color:var(--accent)}
+.calc-slider-row{display:flex;align-items:center;gap:14px}
+.calc-slider{flex:1;-webkit-appearance:none;appearance:none;height:3px;background:var(--surface-2);border-radius:2px;outline:none;cursor:pointer}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(0,212,170,0.2);cursor:pointer;transition:box-shadow 0.2s var(--ease)}
+.calc-slider::-webkit-slider-thumb:hover{box-shadow:0 0 0 6px rgba(0,212,170,0.2)}
+.calc-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--accent);border:none;cursor:pointer}
+.calc-slider-val{font-family:'Cabinet Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--text);min-width:36px;text-align:right}
+.calc-output{margin-top:28px;padding-top:24px;border-top:1px solid var(--border)}
+.calc-output-row{font-size:13px;color:var(--text-muted);padding:10px 0;font-family:'JetBrains Mono',monospace;border-bottom:1px solid var(--border);line-height:1.5}
+.calc-output-row.main-row{border-bottom:none;padding-top:16px;font-size:14px;color:var(--text);font-weight:500}
+.calc-result-cards{display:flex;flex-direction:column;gap:16px}
+.calc-result-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 28px;text-align:center}
+.calc-result-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-fine);display:block;margin-bottom:8px}
+.calc-result-value{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-0.04em;line-height:1;display:block}
+.calc-result-sub{font-size:12px;color:var(--text-muted);margin-top:6px;display:block}
+.roi-callout{background:linear-gradient(135deg,var(--accent-dim),transparent);border:1px solid var(--border-hover);border-radius:20px;padding:36px 48px;margin-top:48px;text-align:center}
+.roi-callout-label{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px}
+.roi-callout-body{font-size:15px;color:var(--text-muted);line-height:1.6}
+
+/* ── S5 — WITHOUT / WITH ── */
+.efficiency-section{padding:100px 0}
+.efficiency-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;align-items:start}
+.eff-col{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 32px}
+.eff-col.col-without{border-top:3px solid var(--red)}
+.eff-col.col-with{border-top:3px solid var(--accent)}
+.eff-col-head{font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:800;letter-spacing:-0.02em;margin-bottom:24px}
+.eff-col.col-without .eff-col-head{color:var(--red)}
+.eff-col.col-with .eff-col-head{color:var(--accent)}
+.eff-items{display:flex;flex-direction:column;gap:14px}
+.eff-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--text-muted);line-height:1.6}
+.eff-icon{flex-shrink:0;margin-top:3px}
+.eff-col.col-without .eff-icon{color:var(--red)}
+.eff-col.col-with .eff-icon{color:var(--accent)}
+.formula-banner{background:linear-gradient(135deg,var(--accent-dim),transparent);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px;text-align:center;margin-top:48px}
+.formula-banner p{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1rem,1.8vw,1.25rem);font-weight:700;color:var(--text);line-height:1.5}
+.formula-banner p em{color:var(--accent);font-style:normal}
+
+/* ── FOOTER ── */
+footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--border2)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--space-2xl)}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:var(--space-md)}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--muted);max-width:220px;line-height:1.65}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,244,243,0.35);margin-bottom:var(--space-lg)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--space-sm)}
+.footer-col a{font-size:13px;color:var(--muted);transition:color 0.2s var(--ease)}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:var(--space-md);margin-top:var(--space-lg)}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--muted)}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .calc-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero{padding:100px 0 64px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-viz{display:none}
+  .hero h1{font-size:clamp(2rem,7vw,2.8rem)}
+  .hero-sub{font-size:16px}
+  .stat-row{grid-template-columns:1fr}
+  .stat-row::before,.stat-row::after{display:none}
+  .stat-item{padding:24px 20px;border-bottom:1px solid var(--border)}
+  .stat-item:last-child{border-bottom:none}
+  .problem-section,.calc-section,.efficiency-section{padding:64px 0}
+  .problem-grid{grid-template-columns:1fr}
+  .efficiency-grid{grid-template-columns:1fr}
+  .roi-callout{padding:28px 24px}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
+  .footer-logo,.footer-tagline{text-align:center;max-width:100%}
+  .footer-social{justify-content:center}
+  .container,.nav-inner{padding:0 20px}
+}
+@media(max-width:480px){
+  .problem-stat-2x2{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column}
+  .efficiency-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ── S6 — HOW IT WORKS ── */
+.hiw-section{padding:100px 0}
+.steps-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:48px;position:relative}
+.steps-flow::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:1px;background:var(--border);z-index:0}
+.step-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative;z-index:1}
+.step-icon-wrap{width:64px;height:64px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:border-color 0.3s var(--ease)}
+.step-item:hover .step-icon-wrap{border-color:var(--border-hover)}
+.step-icon-wrap svg{color:var(--accent)}
+.step-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-fine);margin-bottom:6px}
+.step-title{font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:800;letter-spacing:-0.01em;color:var(--text);margin-bottom:6px}
+.step-desc{font-size:12px;color:var(--text-muted);line-height:1.55}
+.hiw-info-bar{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px var(--space-xl);margin-top:48px;text-align:center;font-size:13px;color:var(--text-muted);line-height:1.7}
+.hiw-info-bar strong{color:var(--text);font-weight:600}
+
+/* ── S7 — MOCKUPS ── */
+.mockups-section{padding:100px 0}
+.mockups-split{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start;margin-top:48px}
+.doc-preview-card{background:#ffffff;border:1px solid #e1e5ea;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.12)}
+.doc-preview-header{background:#f4f6f8;padding:16px 24px;border-bottom:1px solid #e1e5ea}
+.doc-preview-firm{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5a6b78}
+.doc-preview-title{font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:800;color:#0a1014;margin-top:2px}
+.doc-preview-body{padding:24px;font-size:13px;color:#2a3340;line-height:1.85}
+.doc-preview-body p{margin-bottom:8px}
+.doc-highlight{background:rgba(0,184,148,0.15);color:#00B894;padding:1px 4px;border-radius:3px;font-weight:600}
+.doc-preview-footer{padding:12px 24px;background:#f4f6f8;border-top:1px solid #e1e5ea;font-size:11px;color:#8a9ba8;font-style:italic}
+.mockups-desc{position:sticky;top:88px}
+.mockups-desc-icon{width:52px;height:52px;border-radius:12px;background:var(--accent-dim);border:1px solid var(--border-hover);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.mockups-desc-icon svg{color:var(--accent)}
+.mockups-desc h3{font-family:'Cabinet Grotesk',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:12px}
+.mockups-desc p{font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:20px}
+.mockups-desc-bullets{display:flex;flex-direction:column;gap:10px}
+.mockups-desc-bullet{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-secondary)}
+.mockups-desc-bullet svg{color:var(--accent);flex-shrink:0}
+.mock-sub1{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:40px}
+.mock-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.mock-caption{font-size:12px;color:var(--text-muted);text-align:center;padding:12px 16px;border-top:1px solid var(--border);font-style:italic}
+.slack-header{background:#1a1d21;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.slack-channel{font-size:13px;font-weight:600;color:var(--text)}
+.slack-bot{font-size:10px;color:var(--text-fine);margin-left:auto;letter-spacing:0.04em}
+.slack-body{padding:16px}
+.slack-msg{background:var(--surface-2);border-left:3px solid var(--accent);border-radius:4px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;line-height:1.4}
+.slack-actions{display:flex;gap:6px;flex-wrap:wrap}
+.slack-action-btn{padding:6px 11px;border-radius:6px;font-size:11px;font-weight:500;cursor:default;white-space:nowrap}
+.slack-action-btn.primary{background:var(--accent);color:#060a0e}
+.slack-action-btn.ghost{background:var(--surface-2);border:1px solid var(--border);color:var(--text-secondary)}
+.email-bar{background:var(--accent);height:4px}
+.email-header{padding:16px 20px;border-bottom:1px solid var(--border)}
+.email-from{font-size:12px;color:var(--text-fine);margin-bottom:2px}
+.email-from strong{color:var(--text)}
+.email-to{font-size:11px;color:var(--text-fine);margin-bottom:6px}
+.email-subject{font-size:14px;font-weight:600;color:var(--text)}
+.email-body{padding:16px 20px;font-size:13px;color:var(--text-secondary);line-height:1.7}
+.email-sign-btn{display:inline-block;margin-top:10px;padding:8px 18px;background:var(--accent);color:#060a0e;font-size:12px;font-weight:700;border-radius:6px}
+.drive-header{padding:12px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.drive-header-label{font-size:12px;font-weight:600;color:var(--text-muted);letter-spacing:0.04em}
+.drive-body{padding:16px 20px}
+.drive-path{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-fine);margin-bottom:12px}
+.drive-file{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--text-secondary)}
+.drive-file:last-child{border-bottom:none}
+.drive-file-check{width:16px;height:16px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--border-hover);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.drive-file-check svg{color:var(--accent)}
+
+/* ── S8 — COMPETITIVE ── */
+.competitive-section{padding:100px 0}
+.comp-4stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.comp-stat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center}
+.comp-stat-big{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;line-height:1;display:block}
+.comp-stat-label{font-size:12px;color:var(--text-muted);margin-top:6px;display:block;line-height:1.4}
+.comp-stat-source{font-size:10px;color:var(--text-fine);margin-top:4px;display:block;font-style:italic}
+.comparison-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:48px}
+.comp-col{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center;border-top:3px solid var(--border)}
+.comp-col.c-bad{border-top-color:var(--red)}
+.comp-col.c-feat{border-top-color:var(--accent);transform:translateY(-8px)}
+.comp-col.c-good{border-top-color:var(--yellow)}
+.comp-col-head{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-fine);margin-bottom:12px;display:block}
+.comp-col-main{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1rem,1.8vw,1.3rem);font-weight:800;display:block;margin-bottom:6px;letter-spacing:-0.02em}
+.comp-col-sub{font-size:12px;color:var(--text-muted);display:block}
+.italic-bar{text-align:center;padding:36px 32px;border-top:1px solid var(--border)}
+.italic-bar p{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1rem,1.8vw,1.2rem);font-style:italic;font-weight:500;color:var(--text-secondary)}
+
+/* ── S9 — GUARANTEE CARDS ── */
+.guarantee-section{padding:100px 0}
+.guarantee-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px}
+.guarantee-card{border-radius:16px;padding:28px}
+.guarantee-card.g-teal{background:var(--accent-dim);border:1px solid var(--border-hover);border-left:3px solid var(--accent)}
+.guarantee-card.g-neutral{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--border)}
+.guarantee-big{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.04em;line-height:1;color:var(--accent);display:block;margin-bottom:2px}
+.guarantee-card.g-neutral .guarantee-big{color:var(--text)}
+.guarantee-sub{font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--text);display:block;margin-bottom:8px}
+.guarantee-body{font-size:13px;color:var(--text-muted);line-height:1.6}
+.guarantee-card.g-teal .guarantee-body{color:var(--text-secondary)}
+.guarantee-italic-bar{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px;margin-top:48px}
+.guarantee-italic-bar p{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.1rem,2vw,1.4rem);font-style:italic;font-weight:500;color:var(--text-secondary);text-align:center;max-width:800px;margin:0 auto;line-height:1.4}
+
+/* ── S10 — BEFORE/AFTER TABLE ── */
+.table-section{padding:100px 0}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px;border:1px solid var(--border);margin-top:48px}
+table.ba-table{width:100%;border-collapse:collapse;min-width:600px}
+.ba-table th{padding:14px 20px;font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:none}
+.ba-table th.col-metric{background:var(--surface-2);color:var(--text-muted);text-align:left;width:35%}
+.ba-table th.col-without{background:var(--surface-2);color:var(--red);text-align:left;width:32.5%}
+.ba-table th.col-with{background:var(--accent-dim);color:var(--accent);text-align:left;width:32.5%}
+.ba-table td{padding:16px 20px;font-size:14px;border-top:1px solid var(--border)}
+.ba-table td.col-metric{color:var(--text-secondary);font-weight:500}
+.ba-table td.col-without{color:var(--red)}
+.ba-table td.col-with{color:var(--accent)}
+.ba-table tbody tr:nth-child(even){background:var(--bg)}
+.ba-table tbody tr:nth-child(odd){background:var(--surface)}
+.ba-table tbody tr{transition:background 0.15s var(--ease)}
+.ba-table tbody tr:hover{background:var(--surface-2)}
+
+/* ── S11 — ROI SUMMARY ── */
+.roi-sum-section{padding:100px 0}
+.roi-sum-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:48px}
+.roi-sum-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center}
+.roi-sum-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-fine);display:block;margin-bottom:14px}
+.roi-sum-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;line-height:1;color:var(--accent);display:block}
+.roi-sum-sub{font-size:13px;color:var(--text-muted);margin-top:10px;display:block;line-height:1.5}
+.roi-banner{background:linear-gradient(135deg,var(--accent-dim),transparent);border:1px solid var(--border-hover);border-radius:20px;padding:48px;margin-top:32px;text-align:center}
+.roi-banner-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-fine);display:block;margin-bottom:16px}
+.roi-banner-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.04em;color:var(--accent);display:block;line-height:1}
+.roi-banner-sub{font-size:16px;color:var(--text-secondary);margin-top:14px;display:block}
+
+/* ── S12 — PRICING ── */
+.pricing-section{padding:100px 0}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:56px;align-items:start}
+.pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 32px;position:relative;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.pricing-card::before{content:'';position:absolute;inset:-1px;border-radius:20px;background:radial-gradient(800px circle at var(--mx,50%) var(--my,50%),rgba(0,212,170,0.12),transparent 40%);pointer-events:none;opacity:0;transition:opacity 0.3s var(--ease)}
+.pricing-card:hover::before{opacity:1}
+.pricing-card:hover{border-color:rgba(0,212,170,0.25)}
+.pricing-card.featured{transform:translateY(-12px);border-color:rgba(0,212,170,0.3);box-shadow:0 20px 60px rgba(0,212,170,0.1)}
+.pricing-card.featured::before{opacity:0.5}
+.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 16px;border-radius:100px;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.pricing-tier-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-fine);margin-bottom:8px;display:block}
+.pricing-title{font-family:'Cabinet Grotesk',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.02em;margin-bottom:18px}
+.pricing-setup{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-0.04em;line-height:1;display:block}
+.pricing-monthly{font-size:14px;color:var(--text-muted);margin-top:6px;display:block;margin-bottom:24px}
+.pricing-divider{height:1px;background:var(--border);margin-bottom:22px}
+.pricing-features{display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+.pricing-feature{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text-muted);line-height:1.5}
+.pricing-feature svg{flex-shrink:0;margin-top:1px;color:var(--accent)}
+.pricing-note{font-size:12px;color:var(--text-fine);text-align:center;margin-top:28px;line-height:1.7}
+
+
+/* ── RESPONSIVE ADDITIONS ── */
+@media(max-width:1024px){
+  .mockups-split{grid-template-columns:1fr}
+  .mockups-desc{position:static}
+  .comp-4stats{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .steps-flow{grid-template-columns:1fr;gap:24px}
+  .steps-flow::before{display:none}
+  .hiw-section,.mockups-section,.competitive-section,.guarantee-section,.table-section,.roi-sum-section,.pricing-section{padding:64px 0}
+  .mock-sub1{grid-template-columns:1fr}
+  .comp-4stats{grid-template-columns:1fr 1fr}
+  .comparison-strip{grid-template-columns:1fr}
+  .comp-col.c-feat{transform:none}
+  .guarantee-grid{grid-template-columns:1fr}
+  .roi-sum-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .pricing-card.featured{transform:none}
+  .roi-banner{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo" aria-label="Coremagna home">
+      <span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+          <li><a href="/industries.html">Industries</a></li>
+          <li><a href="/demo.html">Demo</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1 — HERO
+════════════════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- LEFT 55% -->
+      <div class="hero-text">
+        <div class="hero-badge reveal">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          <span>Document Automation</span>
+        </div>
+        <h1 id="hero-h1" class="reveal">Your Best Lawyers Should Not Be Drafting Forms</h1>
+        <p class="hero-sub reveal">Intake form to signed document in under 10 minutes. A look at what manual document preparation is costing your firm.</p>
+        <p class="hero-author reveal">BY FERIT PATEFE — FOUNDER OF COREMAGNA</p>
+        <div class="hero-ctas reveal">
+          <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Book a free call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn-ghost">
+            See how it works
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT 45% — animated document card -->
+      <div class="hero-viz" aria-hidden="true">
+        <div class="doc-card">
+          <div class="doc-card-header">
+            <div>
+              <div class="doc-card-title-text">Engagement Letter — Personal Injury</div>
+              <div class="doc-card-sub-text">Coremagna Legal Automation</div>
+            </div>
+            <div class="doc-ai-badge" id="docAiBadge">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              AI Complete
+            </div>
+          </div>
+          <div class="doc-fields">
+            <div class="doc-field">
+              <div class="doc-field-label">CLIENT_NAME</div>
+              <div class="doc-field-val-wrap">
+                <div class="doc-ph" id="ph-0" style="width:62%"></div>
+                <div class="doc-fv" id="fv-0"></div>
+              </div>
+            </div>
+            <div class="doc-field">
+              <div class="doc-field-label">INCIDENT_DATE</div>
+              <div class="doc-field-val-wrap">
+                <div class="doc-ph" id="ph-1" style="width:52%"></div>
+                <div class="doc-fv" id="fv-1"></div>
+              </div>
+            </div>
+            <div class="doc-field">
+              <div class="doc-field-label">CASE_TYPE</div>
+              <div class="doc-field-val-wrap">
+                <div class="doc-ph" id="ph-2" style="width:84%"></div>
+                <div class="doc-fv" id="fv-2"></div>
+              </div>
+            </div>
+            <div class="doc-field">
+              <div class="doc-field-label">ATTORNEY</div>
+              <div class="doc-field-val-wrap">
+                <div class="doc-ph" id="ph-3" style="width:58%"></div>
+                <div class="doc-fv" id="fv-3"></div>
+              </div>
+            </div>
+            <div class="doc-field">
+              <div class="doc-field-label">FEE</div>
+              <div class="doc-field-val-wrap">
+                <div class="doc-ph" id="ph-4" style="width:46%"></div>
+                <div class="doc-fv" id="fv-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="doc-card-footer">
+            <div class="doc-docusign" id="docDocusign">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Sent for signature ↗
+            </div>
+            <div class="doc-signed" id="docSigned">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Signed ✓
+            </div>
+          </div>
+        </div>
+        <p class="viz-caption">Intake form to signed document — under 10 minutes</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 2 — STAT BANNER
+════════════════════════════════════════════════ -->
+<section class="stat-banner" aria-label="Key statistics">
+  <div class="container">
+    <div class="stat-row">
+      <div class="stat-item">
+        <div>
+          <span class="stat-num" id="stat1" style="color:var(--red)">2.5</span><span class="stat-suffix" style="color:var(--red)"> hrs</span>
+        </div>
+        <span class="stat-label">average time to prepare documents per case manually</span>
+        <span class="stat-source">Thomson Reuters Legal Technology Survey 2025</span>
+      </div>
+      <div class="stat-item">
+        <div>
+          <span class="stat-num" id="stat2" style="color:var(--accent)">10</span><span class="stat-suffix" style="color:var(--accent)"> min</span>
+        </div>
+        <span class="stat-label">with Coremagna document automation</span>
+        <span class="stat-source">Coremagna deployment benchmark</span>
+      </div>
+      <div class="stat-item">
+        <div>
+          <span class="stat-num" id="stat3" style="color:var(--yellow)">92</span><span class="stat-suffix" style="color:var(--yellow)">%</span>
+        </div>
+        <span class="stat-label">reduction in document preparation time</span>
+        <span class="stat-source">RunSensible LegalTech ROI Research 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 3 — THE PROBLEM
+════════════════════════════════════════════════ -->
+<section class="problem-section" aria-labelledby="problem-h2">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">The Problem</span>
+      <h2 id="problem-h2">Attorneys Spend 40 to 60 Percent of Their Day on Paperwork</h2>
+      <p>Every standard document pack means hours of copy-paste. Every case. Every time.</p>
+    </div>
+
+    <div class="problem-grid">
+
+      <!-- LEFT: time breakdown card -->
+      <div class="chaos-card reveal">
+        <div class="breakdown-title">Personal Injury Document Pack — Time Cost</div>
+        <div class="breakdown-table">
+          <div class="breakdown-row">
+            <span class="breakdown-doc">Engagement letter</span>
+            <span class="breakdown-time">30–45 min</span>
+            <span class="breakdown-auto">Auto-generated</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-doc">Conflict check form</span>
+            <span class="breakdown-time">15 min</span>
+            <span class="breakdown-auto">Auto-generated</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-doc">Authorization to release</span>
+            <span class="breakdown-time">20 min</span>
+            <span class="breakdown-auto">Auto-generated</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-doc">HIPAA waiver form</span>
+            <span class="breakdown-time">15 min</span>
+            <span class="breakdown-auto">Auto-generated</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-doc">Fee agreement</span>
+            <span class="breakdown-time">30 min</span>
+            <span class="breakdown-auto">Auto-generated</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-doc">Intake summary memo</span>
+            <span class="breakdown-time">20 min</span>
+            <span class="breakdown-auto">Auto-generated</span>
+          </div>
+        </div>
+        <div class="breakdown-divider"></div>
+        <div class="breakdown-total">
+          <span class="breakdown-total-label">Total Per Case</span>
+          <span class="breakdown-total-val">
+            <span style="color:var(--red)">2–2.5 hours</span>&nbsp;→&nbsp;<span style="color:var(--accent)">5–10 minutes</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- RIGHT: 2×2 stat cards -->
+      <div class="problem-stat-2x2">
+        <div class="problem-stat-card p-red reveal">
+          <span class="problem-stat-big" style="color:var(--red)">2.1 hrs</span>
+          <span class="problem-stat-label">spent daily on document tasks — 26% of the working day</span>
+          <span class="problem-stat-source">Thomson Reuters 2025</span>
+        </div>
+        <div class="problem-stat-card p-yellow reveal">
+          <span class="problem-stat-big" style="color:var(--yellow)">31.5 hrs</span>
+          <span class="problem-stat-label">document busywork per lawyer per month</span>
+          <span class="problem-stat-source">Harvard Law School</span>
+        </div>
+        <div class="problem-stat-card p-red reveal">
+          <span class="problem-stat-big" style="color:var(--red)">48%</span>
+          <span class="problem-stat-label">of attorney time on non-billable admin</span>
+          <span class="problem-stat-source">Filevine Legal Work Experience</span>
+        </div>
+        <div class="problem-stat-card p-red reveal">
+          <span class="problem-stat-big" style="color:var(--red)">$9,071</span>
+          <span class="problem-stat-label">lost per lawyer per year to document inefficiencies</span>
+          <span class="problem-stat-source">IDC Information Worker Survey</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="quote-bar reveal">
+      <p>"Your attorneys did not go to law school to copy names into templates."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 4 — ROI CALCULATOR
+════════════════════════════════════════════════ -->
+<section class="calc-section" aria-labelledby="calc-h2">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Question 01 — Will It Make Money?</span>
+      <h2 id="calc-h2">What is Manual Document Preparation Actually Costing You?</h2>
+    </div>
+    <div class="calc-grid">
+
+      <!-- LEFT: calculator -->
+      <div class="calc-card reveal">
+        <span class="calc-card-label">Calculate Your Document Waste</span>
+        <div class="calc-input-stack">
+          <div class="calc-input-group">
+            <label for="calcCases">Monthly cases</label>
+            <input type="number" id="calcCases" class="calc-number" value="10" min="1" max="500">
+          </div>
+          <div class="calc-input-group">
+            <label for="calcHours" id="calcHoursLabel">Hours per case on documents — currently 2.5 hours per case</label>
+            <div class="calc-slider-row">
+              <input type="range" id="calcHours" class="calc-slider" min="1" max="4" step="0.5" value="2.5">
+              <span class="calc-slider-val" id="calcHoursDisplay">2.5</span>
+            </div>
+          </div>
+          <div class="calc-input-group">
+            <label for="calcRate">Attorney hourly rate (USD)</label>
+            <input type="number" id="calcRate" class="calc-number" value="300" min="1" max="2000">
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="calc-output-row"><span id="co-cases">10</span> × <span id="co-hours">2.5</span> hrs = <span id="co-total-hours">25.0</span> hours/month on documents</div>
+          <div class="calc-output-row main-row">× $<span id="co-rate">300</span>/hr = $<span id="co-monthly-inline">7,500</span> per month in document costs</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: result cards -->
+      <div class="calc-result-cards">
+        <div class="calc-result-card reveal">
+          <span class="calc-result-label">Per Month</span>
+          <span class="calc-result-value" id="monthly-display">$7,500</span>
+          <span class="calc-result-sub">in attorney time on docs</span>
+        </div>
+        <div class="calc-result-card reveal">
+          <span class="calc-result-label">Per Year</span>
+          <span class="calc-result-value" id="annual-display" style="color:var(--red)">$90,000</span>
+          <span class="calc-result-sub">drained in document prep</span>
+        </div>
+        <div class="calc-result-card reveal">
+          <span class="calc-result-label">Hours Saved</span>
+          <span class="calc-result-value" id="hours-display" style="color:var(--accent)">25 hrs</span>
+          <span class="calc-result-sub">returned to billable work monthly</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="roi-callout reveal">
+      <span class="roi-callout-label">One Case Pays for the Entire Year</span>
+      <p class="roi-callout-body">Starter $697 + $197/month = $3,061/year. 10 cases × 2 hours saved × $300/hr = $6,000/month recovered.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 5 — WITHOUT / WITH
+════════════════════════════════════════════════ -->
+<section class="efficiency-section" aria-labelledby="eff-h2">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Time = Efficiency</span>
+      <h2 id="eff-h2">How Much Time Does Manual Drafting Really Steal?</h2>
+    </div>
+
+    <div class="efficiency-grid">
+
+      <!-- WITHOUT -->
+      <div class="eff-col col-without reveal">
+        <div class="eff-col-head">Without Coremagna</div>
+        <div class="eff-items">
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>Lawyer manually drafts every engagement letter from scratch</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>Client data retyped from intake form into each document separately</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>Wrong names wrong dates — human error on every document</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>Document emailed as PDF — client prints signs scans sends back</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>Admin chases client for signature for days</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>2.5 hours per case on paperwork alone</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WITH -->
+      <div class="eff-col col-with reveal">
+        <div class="eff-col-head">With Coremagna</div>
+        <div class="eff-items">
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Client fills intake form once — data extracted automatically</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>AI selects correct template set and fills all placeholders</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Lawyer reviews in under 2 minutes — one click to approve</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>DocuSign link sent to client — signs on phone in 3 taps</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Signed docs filed to Drive Airtable and Clio automatically</span>
+          </div>
+          <div class="eff-item">
+            <svg class="eff-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Case opened before lawyer finishes their morning coffee</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="formula-banner reveal">
+      <p><em>25 hours saved</em> × <em>$300/hr</em> × <em>10 cases</em> = <em>$7,500/month recovered</em></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── S6 HOW IT WORKS ── -->
+<section class="hiw-section" id="how-it-works" aria-labelledby="hiw-h2">
+  <div class="container">
+    <div class="section-label reveal">How It Works</div>
+    <h2 class="reveal" id="hiw-h2">From Case Opened to Documents Signed in Minutes</h2>
+    <div class="steps-flow reveal">
+      <!-- Step 1 -->
+      <div class="step-item">
+        <div class="step-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M5 4h-1a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+        </div>
+        <div class="step-num">Step 01</div>
+        <div class="step-title">Lead Captured</div>
+        <div class="step-desc">New enquiry lands via web form, phone, or intake sheet. Case details sync to your CRM instantly.</div>
+      </div>
+      <!-- Step 2 -->
+      <div class="step-item">
+        <div class="step-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="1" fill="currentColor"/><circle cx="8" cy="14" r="1" fill="currentColor"/><circle cx="16" cy="14" r="1" fill="currentColor"/><line x1="12" y1="9" x2="9" y2="13"/><line x1="12" y1="9" x2="15" y2="13"/></svg>
+        </div>
+        <div class="step-num">Step 02</div>
+        <div class="step-title">AI Drafts Documents</div>
+        <div class="step-desc">The AI reads the case type and pulls the right template. It populates every field — name, matter, dates, terms — from CRM data.</div>
+      </div>
+      <!-- Step 3 -->
+      <div class="step-item">
+        <div class="step-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="step-num">Step 03</div>
+        <div class="step-title">Attorney Reviews</div>
+        <div class="step-desc">A Slack notification pings the responsible attorney. One click opens the draft. Approve or request edits in seconds.</div>
+      </div>
+      <!-- Step 4 -->
+      <div class="step-item">
+        <div class="step-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><polyline points="9 11 12 14 22 4"/></svg>
+        </div>
+        <div class="step-num">Step 04</div>
+        <div class="step-title">Client Signs</div>
+        <div class="step-desc">DocuSign envelope fires automatically. Client signs on mobile or desktop. Status tracked in real time.</div>
+      </div>
+      <!-- Step 5 -->
+      <div class="step-item">
+        <div class="step-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="step-num">Step 05</div>
+        <div class="step-title">Filed and Organised</div>
+        <div class="step-desc">Signed documents route to the correct Google Drive folder. Case file is complete. No manual filing needed.</div>
+      </div>
+    </div>
+    <div class="hiw-info-bar reveal">
+      Supported document types: <strong>Engagement Letters</strong> · <strong>Conflict Checks</strong> · <strong>HIPAA / GDPR Consent Forms</strong> · <strong>Client Retainer Agreements</strong> · <strong>Fee Arrangements</strong> · <strong>NDA Requests</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ── S7 REAL SYSTEM MOCKUPS ── -->
+<section class="mockups-section" aria-labelledby="mockups-h2">
+  <div class="container">
+    <div class="section-label reveal">Real System Mockups</div>
+    <h2 class="reveal" id="mockups-h2">This is What Your Team Will Actually See</h2>
+    <div class="mockups-split reveal">
+      <!-- LEFT: Document preview (always light) -->
+      <div class="doc-preview-card">
+        <div class="doc-preview-header">
+          <div class="doc-preview-firm">Harlow &amp; Partners LLP</div>
+          <div class="doc-preview-title">Engagement Letter — Personal Injury</div>
+        </div>
+        <div class="doc-preview-body">
+          <p>Dear <span class="doc-highlight">Marcus Whitfield</span>,</p>
+          <p>We are pleased to confirm our engagement to represent you in connection with your matter described as <span class="doc-highlight">Slip and Fall — Personal Injury</span>.</p>
+          <p>This letter sets out the terms upon which Harlow &amp; Partners LLP will act on your behalf, effective <span class="doc-highlight">14 March 2026</span>.</p>
+          <p><strong>Scope of Representation</strong></p>
+          <p>We will advise and represent you in all aspects of the above matter, including pre-litigation negotiation, correspondence with third parties, and if necessary, formal proceedings.</p>
+          <p><strong>Fees and Disbursements</strong></p>
+          <p>Our fees are charged on a contingency basis at <span class="doc-highlight">25% of any settlement</span> or award recovered on your behalf. No win, no fee.</p>
+          <p>Please review and sign below to confirm your agreement to these terms.</p>
+          <p>Yours sincerely,<br><strong>James R. Harlow</strong><br>Partner, Harlow &amp; Partners LLP</p>
+        </div>
+        <div class="doc-preview-footer">Auto-drafted by Coremagna AI · Awaiting client signature via DocuSign</div>
+      </div>
+      <!-- RIGHT: Description -->
+      <div class="mockups-desc">
+        <div class="mockups-desc-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg>
+        </div>
+        <h3>Your Document Your Firm Name Your Terms</h3>
+        <p>Every engagement letter, retainer agreement, and consent form is generated from your own templates. The AI reads the case data and fills every field — no copy-pasting, no mail merge, no admin bottleneck.</p>
+        <div class="mockups-desc-bullets">
+          <div class="mockups-desc-bullet">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Drafted in under 90 seconds from case open
+          </div>
+          <div class="mockups-desc-bullet">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Attorney reviews before any document leaves the firm
+          </div>
+          <div class="mockups-desc-bullet">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Signed documents filed automatically — zero manual steps
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 sub-cards row -->
+    <div class="mock-sub1 reveal">
+      <!-- Card 1: Slack -->
+      <div class="mock-card">
+        <div class="slack-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M8 12h8M12 8v8"/></svg>
+          <span class="slack-channel">#case-review</span>
+          <span class="slack-bot">Coremagna Bot</span>
+        </div>
+        <div class="slack-body">
+          <div class="slack-msg">New engagement letter ready for review — Marcus Whitfield · Slip and Fall · Personal Injury</div>
+          <div class="slack-actions">
+            <span class="slack-action-btn primary">Approve &amp; Send</span>
+            <span class="slack-action-btn ghost">Edit Draft</span>
+            <span class="slack-action-btn ghost">View Case</span>
+          </div>
+        </div>
+        <div class="mock-caption">Attorney approval in one click — Slack</div>
+      </div>
+      <!-- Card 2: DocuSign email -->
+      <div class="mock-card">
+        <div class="email-bar"></div>
+        <div class="email-header">
+          <div class="email-from">From: <strong>Harlow &amp; Partners LLP</strong> via DocuSign</div>
+          <div class="email-to">To: marcus.whitfield@gmail.com</div>
+          <div class="email-subject">Please sign: Engagement Letter — Personal Injury</div>
+        </div>
+        <div class="email-body">
+          <p>Hi Marcus,</p>
+          <p>Your engagement letter is ready. Please review and sign at your earliest convenience.</p>
+          <a href="javascript:void(0)" class="email-sign-btn">Review &amp; Sign Document</a>
+        </div>
+        <div class="mock-caption">Client receives DocuSign link instantly</div>
+      </div>
+      <!-- Card 3: Google Drive -->
+      <div class="mock-card">
+        <div class="drive-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <span class="drive-header-label">Client Files / 2026 / Personal Injury</span>
+        </div>
+        <div class="drive-body">
+          <div class="drive-path">Shared Drive › Harlow Partners › 2026 › Whitfield, Marcus</div>
+          <div class="drive-file">
+            <div class="drive-file-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Engagement_Letter_Whitfield_SIGNED.pdf
+          </div>
+          <div class="drive-file">
+            <div class="drive-file-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Conflict_Check_Whitfield_2026.pdf
+          </div>
+          <div class="drive-file">
+            <div class="drive-file-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+            GDPR_Consent_Whitfield_SIGNED.pdf
+          </div>
+        </div>
+        <div class="mock-caption">Signed files auto-filed to Drive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── S8 INDUSTRY PROOF ── -->
+<section class="competitive-section" aria-labelledby="comp-h2">
+  <div class="container">
+    <div class="section-label reveal">Industry Proof</div>
+    <h2 class="reveal" id="comp-h2">The Numbers That Should Concern Your Managing Partner</h2>
+    <div class="comp-4stats reveal">
+      <div class="comp-stat-card">
+        <span class="comp-stat-big" style="color:var(--accent)">50–80%</span>
+        <span class="comp-stat-label">of document errors originate from manual data entry</span>
+        <span class="comp-stat-source">Thomson Reuters Legal Tracker, 2024</span>
+      </div>
+      <div class="comp-stat-card">
+        <span class="comp-stat-big" style="color:var(--accent)">67%</span>
+        <span class="comp-stat-label">of attorneys say document prep is their biggest time drain</span>
+        <span class="comp-stat-source">Clio Legal Trends Report, 2024</span>
+      </div>
+      <div class="comp-stat-card">
+        <span class="comp-stat-big" style="color:var(--yellow)">23%</span>
+        <span class="comp-stat-label">of malpractice claims involve errors in client-facing documents</span>
+        <span class="comp-stat-source">ABA Standing Committee, 2023</span>
+      </div>
+      <div class="comp-stat-card">
+        <span class="comp-stat-big" style="color:var(--yellow)">10–20×</span>
+        <span class="comp-stat-label">faster than manual drafting once a case is opened</span>
+        <span class="comp-stat-source">LegalZoom Automation Study, 2024</span>
+      </div>
+    </div>
+    <div class="comparison-strip reveal">
+      <div class="comp-col c-bad">
+        <span class="comp-col-head">Your competitors</span>
+        <span class="comp-col-main" style="color:var(--red)">2–3 Hours</span>
+        <span class="comp-col-sub">per case on manual document prep</span>
+      </div>
+      <div class="comp-col c-feat">
+        <span class="comp-col-head">Your firm with Coremagna</span>
+        <span class="comp-col-main" style="color:var(--accent)">&lt; 5 Minutes</span>
+        <span class="comp-col-sub">from case open to signed engagement letter</span>
+      </div>
+      <div class="comp-col c-good">
+        <span class="comp-col-head">The result</span>
+        <span class="comp-col-main" style="color:var(--yellow)">25+ hrs/month</span>
+        <span class="comp-col-sub">reclaimed per attorney — billed back to clients</span>
+      </div>
+    </div>
+    <div class="italic-bar reveal">
+      <p>"The firms winning new matters in 2026 are not the ones with the best lawyers — they are the ones whose lawyers spend time on law, not paperwork."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── S9 REDUCE RISK ── -->
+<section class="guarantee-section" aria-labelledby="guar-h2">
+  <div class="container">
+    <div class="section-label reveal">Our Guarantees</div>
+    <h2 class="reveal" id="guar-h2">Six Reasons to Say Yes Without Hesitation</h2>
+    <div class="guarantee-grid reveal">
+      <div class="guarantee-card g-teal">
+        <span class="guarantee-big">14-day</span>
+        <span class="guarantee-sub">Full Refund Guarantee</span>
+        <p class="guarantee-body">If after two weeks of live use you are not satisfied, we return every penny of the setup fee. No questions, no conditions.</p>
+      </div>
+      <div class="guarantee-card g-teal">
+        <span class="guarantee-big">30-day</span>
+        <span class="guarantee-sub">Priority Support Window</span>
+        <p class="guarantee-body">A dedicated account manager handles every edge case, template adjustment, and integration issue for the first 30 days — no support tickets, direct access.</p>
+      </div>
+      <div class="guarantee-card g-neutral">
+        <span class="guarantee-big">7 days</span>
+        <span class="guarantee-sub">To Go Live</span>
+        <p class="guarantee-body">We build, connect, and test the full document automation workflow in under a week. Your team receives a recorded walkthrough before handoff.</p>
+      </div>
+      <div class="guarantee-card g-teal">
+        <span class="guarantee-big">Your data</span>
+        <span class="guarantee-sub">Stays Yours</span>
+        <p class="guarantee-body">All documents, templates, and case data remain in your own Google Drive and CRM. We never store client information on our servers.</p>
+      </div>
+      <div class="guarantee-card g-neutral">
+        <span class="guarantee-big">Nothing</span>
+        <span class="guarantee-sub">Hidden in the Contract</span>
+        <p class="guarantee-body">Month-to-month after the first 3 months. No long-term lock-in. Cancel with 30 days notice at any point. API costs passed through at cost with zero markup.</p>
+      </div>
+      <div class="guarantee-card g-teal">
+        <span class="guarantee-big">Same-day</span>
+        <span class="guarantee-sub">Template Edits</span>
+        <p class="guarantee-body">Need a clause changed or a new document type added? Submit the request and we turn it around the same business day — included in your monthly fee.</p>
+      </div>
+    </div>
+    <div class="guarantee-italic-bar reveal">
+      <p>"We do not ask you to trust us blindly. We earn it in the first 14 days or we do not charge you for them."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── S10 BEFORE / AFTER TABLE ── -->
+<section class="table-section" aria-labelledby="table-h2">
+  <div class="container">
+    <div class="section-label reveal">Before vs After</div>
+    <h2 class="reveal" id="table-h2">What Changes When Documents Draft Themselves</h2>
+    <div class="table-wrap reveal">
+      <table class="ba-table">
+        <thead>
+          <tr>
+            <th class="col-metric">Metric</th>
+            <th class="col-without">Without Coremagna</th>
+            <th class="col-with">With Coremagna</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-metric">Time to draft engagement letter</td>
+            <td class="col-without">45–90 minutes per case</td>
+            <td class="col-with">Under 90 seconds</td>
+          </tr>
+          <tr>
+            <td class="col-metric">Document error rate</td>
+            <td class="col-without">12–18% contain data entry errors</td>
+            <td class="col-with">Under 1% (AI-verified field population)</td>
+          </tr>
+          <tr>
+            <td class="col-metric">Client signature turnaround</td>
+            <td class="col-without">2–5 business days (printed/posted)</td>
+            <td class="col-with">Same day (DocuSign, mobile-friendly)</td>
+          </tr>
+          <tr>
+            <td class="col-metric">Attorney hours on admin per month</td>
+            <td class="col-without">25–40 hours (per attorney)</td>
+            <td class="col-with">Under 3 hours</td>
+          </tr>
+          <tr>
+            <td class="col-metric">Document filing and organisation</td>
+            <td class="col-without">Manual — saved to random folders</td>
+            <td class="col-with">Auto-filed to correct Drive folder, named and tagged</td>
+          </tr>
+          <tr>
+            <td class="col-metric">Conflict check completion</td>
+            <td class="col-without">Done separately, often forgotten</td>
+            <td class="col-with">Auto-generated and filed with engagement letter</td>
+          </tr>
+          <tr>
+            <td class="col-metric">Malpractice risk from doc errors</td>
+            <td class="col-without">High — wrong client data in live documents</td>
+            <td class="col-with">Near zero — data pulled directly from CRM</td>
+          </tr>
+          <tr>
+            <td class="col-metric">Cost of document prep per case</td>
+            <td class="col-without">$450–$900 in attorney / PA time</td>
+            <td class="col-with">Under $12 in API costs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── S11 ROI SUMMARY ── -->
+<section class="roi-sum-section" aria-labelledby="roi-h2">
+  <div class="container">
+    <div class="section-label reveal">ROI Summary</div>
+    <h2 class="reveal" id="roi-h2">What the System Actually Earns You</h2>
+    <div class="roi-sum-grid reveal">
+      <div class="roi-sum-card">
+        <span class="roi-sum-label">Hours Recovered Per Attorney Monthly</span>
+        <span class="roi-sum-num">25 hrs</span>
+        <span class="roi-sum-sub">At $300/hr billable rate — that is $7,500 per attorney returned to billable work each month</span>
+      </div>
+      <div class="roi-sum-card">
+        <span class="roi-sum-label">Reduction in Document Errors</span>
+        <span class="roi-sum-num">92%</span>
+        <span class="roi-sum-sub">AI-populated fields eliminate transcription mistakes — fewer client complaints, lower malpractice exposure</span>
+      </div>
+      <div class="roi-sum-card">
+        <span class="roi-sum-label">Increase in Cases Processed Monthly</span>
+        <span class="roi-sum-num">+23%</span>
+        <span class="roi-sum-sub">When intake documents are ready in minutes, attorneys take on more matters without adding headcount</span>
+      </div>
+    </div>
+    <div class="roi-banner reveal">
+      <span class="roi-banner-label">Total Annual Benefit — 3 Attorney Firm</span>
+      <span class="roi-banner-num">$270,000+</span>
+      <span class="roi-banner-sub">in recovered billable time, reduced errors, and additional matters processed — at a system cost under $4,000/year</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── S12 PRICING ── -->
+<section class="pricing-section" aria-labelledby="pricing-h2">
+  <div class="container">
+    <div class="section-label reveal">Pricing</div>
+    <h2 class="reveal" id="pricing-h2">Simple Pricing for a System That Pays for Itself</h2>
+    <div class="pricing-grid reveal">
+      <!-- STARTER -->
+      <div class="pricing-card">
+        <span class="pricing-tier-label">Starter</span>
+        <div class="pricing-title">Solo Practitioner</div>
+        <span class="pricing-setup">$697</span>
+        <span class="pricing-monthly">one-time setup · then $197/month</span>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features" role="list">
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Up to 3 document templates
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            DocuSign integration
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Google Drive auto-filing
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Slack approval workflow
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Email support
+          </li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
+      </div>
+      <!-- GROWTH (featured) -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Most Popular
+        </div>
+        <span class="pricing-tier-label">Growth</span>
+        <div class="pricing-title">Small to Mid-Size Firm</div>
+        <span class="pricing-setup">$997</span>
+        <span class="pricing-monthly">one-time setup · then $297/month</span>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features" role="list">
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Up to 10 document templates
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Full DocuSign + CRM sync
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Conflict check automation
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Multi-attorney Slack routing
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            30-day dedicated onboarding
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Same-day template edits
+          </li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
+      </div>
+      <!-- SCALE -->
+      <div class="pricing-card">
+        <span class="pricing-tier-label">Scale</span>
+        <div class="pricing-title">Large or Multi-Office Firm</div>
+        <span class="pricing-setup">$1,497</span>
+        <span class="pricing-monthly">one-time setup · then $497/month</span>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features" role="list">
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Unlimited document templates
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Multi-office workflow routing
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Practice management system integration
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Custom AI model fine-tuning
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Dedicated account manager
+          </li>
+          <li class="pricing-feature">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Priority phone support
+          </li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" class="btn-primary" style="width:100%;justify-content:center;text-align:center">Get Started</a>
+      </div>
+    </div>
+    <p class="pricing-note reveal">API costs billed at cost — no markup. One captured case pays for 12 months of the system.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for law firms and real estate agencies.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries.html#law-firms">Law Firms</a></li>
+          <li><a href="/industries.html#real-estate">Real Estate</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Coremagna. All rights reserved.</p>
+      <p>AI Automation · CRM Systems · Chatbots</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── NAV SCROLL + HAMBURGER ── */
+(function(){
+  var nav=document.getElementById('mainNav');
+  var hamburger=document.getElementById('hamburger');
+  var mobileNav=document.getElementById('mobileNav');
+  var menuOpen=false;
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+  hamburger.addEventListener('click',function(){
+    menuOpen=!menuOpen;
+    hamburger.classList.toggle('open',menuOpen);
+    hamburger.setAttribute('aria-expanded',String(menuOpen));
+    mobileNav.setAttribute('aria-hidden',String(!menuOpen));
+    mobileNav.classList.toggle('visible',menuOpen);
+    document.body.style.overflow=menuOpen?'hidden':'';
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      menuOpen=false;
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+      mobileNav.classList.remove('visible');
+      document.body.style.overflow='';
+    });
+  });
+})();
+
+/* ── SCROLL REVEAL ── */
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+})();
+
+/* ── ROI CALCULATOR ── */
+(function(){
+  var casesInput   = document.getElementById('calcCases');
+  var hoursSlider  = document.getElementById('calcHours');
+  var hoursDisplay = document.getElementById('calcHoursDisplay');
+  var hoursLabel   = document.getElementById('calcHoursLabel');
+  var rateInput    = document.getElementById('calcRate');
+  var coCases      = document.getElementById('co-cases');
+  var coHours      = document.getElementById('co-hours');
+  var coTotalHours = document.getElementById('co-total-hours');
+  var coRate       = document.getElementById('co-rate');
+  var coMonthly    = document.getElementById('co-monthly-inline');
+  var monthlyDisp  = document.getElementById('monthly-display');
+  var annualDisp   = document.getElementById('annual-display');
+  var hoursDisp    = document.getElementById('hours-display');
+
+  function calcDocs(){
+    var cases = Math.max(1, parseInt(casesInput.value) || 10);
+    var hours = parseFloat(hoursSlider.value) || 2.5;
+    var rate  = Math.max(1, parseInt(rateInput.value) || 300);
+
+    hoursDisplay.textContent = hours;
+    hoursLabel.textContent   = 'Hours per case on documents — currently ' + hours + ' hours per case';
+
+    var totalHours = cases * hours;
+    var monthly    = totalHours * rate;
+    var annual     = monthly * 12;
+    var hrsStr     = (totalHours % 1 === 0) ? totalHours.toFixed(0) : totalHours.toFixed(1);
+
+    coCases.textContent      = cases;
+    coHours.textContent      = hours;
+    coTotalHours.textContent = hrsStr;
+    coRate.textContent       = Math.round(rate).toLocaleString();
+    coMonthly.textContent    = Math.round(monthly).toLocaleString();
+    monthlyDisp.textContent  = '$' + Math.round(monthly).toLocaleString();
+    annualDisp.textContent   = '$' + Math.round(annual).toLocaleString();
+    hoursDisp.textContent    = hrsStr + ' hrs';
+
+    if(typeof gsap !== 'undefined'){
+      gsap.fromTo(monthlyDisp,{scale:1.06},{scale:1,duration:0.25,ease:'power2.out'});
+    }
+  }
+
+  if(casesInput && hoursSlider && rateInput){
+    casesInput.addEventListener('input', calcDocs);
+    hoursSlider.addEventListener('input', calcDocs);
+    rateInput.addEventListener('input', calcDocs);
+    calcDocs();
+  }
+})();
+
+/* ── GSAP: STAT COUNT-UP + DOC CARD ANIMATION ── */
+window.addEventListener('load', function(){
+  if(typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* Stat count-up */
+  [
+    {id:'stat1', to:2.5, decimals:1},
+    {id:'stat2', to:10,  decimals:0},
+    {id:'stat3', to:92,  decimals:0}
+  ].forEach(function(s){
+    var el = document.getElementById(s.id);
+    if(!el) return;
+    var obj = {v:0};
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 80%',
+      once: true,
+      onEnter: function(){
+        if(reduced){ el.textContent = s.decimals > 0 ? s.to.toFixed(s.decimals) : s.to; return; }
+        gsap.to(obj,{v:s.to, duration:1.5, ease:'power2.out',
+          onUpdate:function(){ el.textContent = s.decimals > 0 ? obj.v.toFixed(s.decimals) : Math.round(obj.v); }
+        });
+      }
+    });
+  });
+
+  /* Doc card animation */
+  if(reduced) return;
+  var docCard = document.querySelector('.doc-card');
+  if(!docCard) return;
+
+  var docFields = [
+    {phId:'ph-0', fvId:'fv-0', text:'Marcus Whitfield'},
+    {phId:'ph-1', fvId:'fv-1', text:'14 March 2026'},
+    {phId:'ph-2', fvId:'fv-2', text:'Slip and Fall — Personal Injury'},
+    {phId:'ph-3', fvId:'fv-3', text:'Sarah Harlow LLB'},
+    {phId:'ph-4', fvId:'fv-4', text:'£2,500 fixed fee'}
+  ];
+
+  var pendingTimers = [];
+
+  function clearTimers(){
+    pendingTimers.forEach(function(id){ clearTimeout(id); });
+    pendingTimers = [];
+  }
+
+  function typeText(el, text, duration){
+    if(!el) return;
+    var chars = text.split('');
+    chars.forEach(function(ch, i){
+      var id = setTimeout(function(){ if(el) el.textContent += ch; },
+        (i / chars.length) * duration * 1000);
+      pendingTimers.push(id);
+    });
+  }
+
+  function startDocAnim(){
+    clearTimers();
+
+    /* Reset all fields */
+    docFields.forEach(function(f){
+      var ph = document.getElementById(f.phId);
+      var fv = document.getElementById(f.fvId);
+      if(ph) gsap.set(ph, {opacity:1});
+      if(fv) fv.textContent = '';
+    });
+    var aiBadge  = document.getElementById('docAiBadge');
+    var docusign = document.getElementById('docDocusign');
+    var signed   = document.getElementById('docSigned');
+    if(aiBadge)  gsap.set(aiBadge,  {opacity:0, scale:0.75});
+    if(docusign) gsap.set(docusign, {opacity:0, y:8});
+    if(signed)   gsap.set(signed,   {opacity:0, scale:0.85});
+
+    var tl = gsap.timeline({onComplete: startDocAnim});
+
+    /* Phase 1: 1s pause — fields show as placeholders */
+    tl.to({}, {duration:1});
+
+    /* Phase 2: type each field with 0.65s stagger */
+    docFields.forEach(function(f, idx){
+      var ph = document.getElementById(f.phId);
+      var fv = document.getElementById(f.fvId);
+      var t  = 1 + idx * 0.65;
+      if(ph) tl.to(ph, {opacity:0, duration:0.15}, t);
+      (function(field, el, startT){
+        tl.call(function(){ typeText(el, field.text, 0.5); }, null, startT + 0.15);
+      })(f, fv, t);
+    });
+
+    /* Phase 3 (4.5s): AI Complete badge */
+    if(aiBadge)  tl.to(aiBadge,  {opacity:1, scale:1, duration:0.35, ease:'back.out(1.7)'}, 4.5);
+
+    /* Phase 4 (5s): DocuSign badge slides in */
+    if(docusign) tl.to(docusign, {opacity:1, y:0,   duration:0.3,  ease:'power2.out'}, 5);
+
+    /* Phase 5 (6s): DocuSign fades → Signed pill */
+    if(docusign) tl.to(docusign, {opacity:0, duration:0.2}, 6);
+    if(signed)   tl.to(signed,   {opacity:1, scale:1, duration:0.3, ease:'back.out(1.5)'}, 6.2);
+
+    /* Phase 6: hold until 9s, then onComplete restarts */
+    tl.to({}, {duration:2}, 7);
+  }
+
+  startDocAnim();
+});
+
+(function(){
+  document.querySelectorAll('.pricing-card').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      card.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+})();
+</script>
+</body>
+</html>
