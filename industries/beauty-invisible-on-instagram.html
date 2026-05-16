@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invisible on Social Media? Your Salon Loses 100K Searches a Month | Coremagna</title>
+<meta name="description" content="80% of clients check your Instagram before booking. 78% read your reviews first. If your feed is quiet and your Google rating is thin, you're invisible — no matter how good you are.">
+<meta property="og:title" content="Invisible on Social Media? Your Salon Loses 100K Searches a Month | Coremagna">
+<meta property="og:description" content="Great work. Nobody sees it. Automated review requests, social posting, and a client CRM that remembers everything — so you show up where clients are looking.">
+<meta property="og:image" content="https://coremagna.com/og-image.jpg">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<style>
+:root{
+  --bg:#060a0e;--surface:#0d1117;--surface-2:#111920;
+  --text:#F0F4F3;--text-secondary:#c0ccd8;--text-muted:#8a9ba8;--text-fine:#5a6b78;
+  --border:#1a2530;--border-hover:rgba(0,212,170,0.4);
+  --accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);
+  --red:#e85d4a;--yellow:#f5c14a;
+  --ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.16,1,0.3,1);
+  --accent-hover:#00f0c4;
+}
+[data-theme="light"]{
+  --bg:#fafbfc;--surface:#ffffff;--surface-2:#f4f6f8;
+  --text:#0a1014;--text-secondary:#2a3340;--text-muted:#5a6b78;--text-fine:#8a9ba8;
+  --border:#e1e5ea;--border-hover:rgba(0,184,148,0.5);
+  --accent:#00B894;--accent-dim:rgba(0,184,148,0.10);
+  --red:#d14a37;--yellow:#d49a2a;
+  --accent-hover:#00d8b0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;min-height:100dvh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.05;letter-spacing:-0.02em;font-weight:800;overflow-wrap:break-word;max-width:100%;hyphens:none}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E")}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* NAV */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+[data-theme="light"] #mainNav.scrolled{background:rgba(250,251,252,0.9)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
+.logo-magna{color:var(--accent)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:ldp 2s ease-in-out infinite}
+@keyframes ldp{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:40px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.25s,background 0.25s;color:var(--text-muted)}
+.theme-toggle:hover{border-color:var(--border-hover);color:var(--text)}
+.theme-toggle svg{width:16px;height:16px;fill:currentColor}
+.icon-moon{display:block}
+.icon-sun{display:none}
+[data-theme="light"] .icon-moon{display:none}
+[data-theme="light"] .icon-sun{display:block}
+.btn-nav{display:inline-flex;align-items:center;padding:10px 20px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;border-radius:6px;transition:background 0.25s,transform 0.25s}
+.btn-nav:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s,opacity 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mob-nav.visible{opacity:1;pointer-events:all}
+.mob-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
+.mob-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);transition:color 0.2s}
+.mob-nav a:hover{color:var(--accent)}
+
+/* GENERAL */
+.section{padding:100px 0}
+.reveal{opacity:0;transform:translateY(24px)}
+.sec-label{display:block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.sec-h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:16px;max-width:680px}
+.sec-sub{font-size:17px;color:var(--text-secondary);line-height:1.65;max-width:640px;margin-bottom:48px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;border-radius:999px;border:none;cursor:pointer;transition:background 0.25s,box-shadow 0.25s}
+.btn-p:hover{background:var(--accent-hover);box-shadow:0 12px 32px rgba(0,212,170,0.35)}
+.btn-p:active{transform:scale(0.97)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:600;font-size:15px;border-radius:999px;border:1px solid var(--border);cursor:pointer;background:transparent;transition:border-color 0.3s,color 0.3s}
+.btn-g:hover{border-color:var(--border-hover);color:var(--accent)}
+.btn-p:focus-visible,.btn-g:focus-visible,.btn-nav:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* HERO */
+.hero{padding:140px 32px 100px;max-width:1280px;margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:55fr 45fr;gap:64px;align-items:center}
+.hero-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;padding:6px 12px;background:var(--accent-dim);border-radius:4px}
+.hero-h1{font-size:clamp(2.4rem,5vw,3.5rem);margin-bottom:24px;max-width:720px}
+.hero-sub{font-size:18px;color:var(--text-secondary);line-height:1.65;max-width:540px;margin-bottom:16px}
+.hero-author{font-size:14px;color:var(--text-muted);margin-bottom:36px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+
+/* GOOGLE MAPS COMPARISON MOCKUP */
+.gmaps-outer{position:relative}
+.gmaps-heading{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--text-fine);margin-bottom:14px;font-weight:500}
+.gmap-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:12px;transition:all 0.3s var(--ease)}
+.gmap-card.winner{border-color:var(--accent);background:rgba(0,212,170,0.06);box-shadow:0 4px 24px rgba(0,212,170,0.1)}
+.gmap-card.loser{opacity:1;filter:saturate(0.35) brightness(0.7)}
+.gmap-name{font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;margin-bottom:6px}
+.gmap-name.winner-name{color:var(--text)}
+.gmap-name.loser-name{color:var(--text-muted)}
+.gmap-stars{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.gmap-star-row{display:flex;gap:2px}
+.gmap-star-row span{font-size:13px}
+.gmap-star-row.hi span{color:var(--accent)}
+.gmap-star-row.lo span{color:var(--text-fine)}
+.gmap-rating{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500}
+.gmap-rating.hi{color:var(--accent)}
+.gmap-rating.lo{color:var(--text-muted)}
+.gmap-reviews{font-size:12px;color:var(--text-muted)}
+.gmap-meta{font-size:12px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+.gmap-meta-item{display:flex;align-items:center;gap:4px}
+.gmap-meta-item svg{width:11px;height:11px;flex-shrink:0}
+.gmap-meta-item.hi svg{stroke:var(--accent)}
+.gmap-quote{font-size:12px;color:var(--text-muted);font-style:italic;margin-bottom:12px;padding-left:8px;border-left:2px solid var(--border)}
+.gmap-quote.hi{border-left-color:var(--accent);color:var(--text-secondary)}
+.gmap-cta{display:inline-block;font-size:12px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;padding:7px 14px;border-radius:6px}
+.gmap-cta.hi{background:var(--accent);color:var(--bg)}
+.gmap-cta.lo{background:var(--surface-2);color:var(--text-muted);border:1px solid var(--border)}
+.gmaps-caption{font-size:13px;color:var(--text-fine);text-align:center;margin-top:4px;font-style:italic;line-height:1.55}
+.gmaps-caption strong{color:var(--text-muted)}
+
+/* STAT BANNER */
+.stat-banner{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 0}
+.stat-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+.stat-inner::before,.stat-inner::after{content:'';position:absolute;top:20%;height:60%;width:1px;background:var(--border)}
+.stat-inner::before{left:33.33%}
+.stat-inner::after{left:66.66%}
+.stat-item{text-align:center;padding:0 16px}
+.stat-num{font-family:'JetBrains Mono',monospace;font-size:clamp(2.5rem,5vw,4rem);font-weight:500;display:block;line-height:1}
+.stat-line{height:2px;width:40px;margin:14px auto;background:var(--accent);border-radius:2px}
+.stat-lbl{font-size:14px;color:var(--text-muted);line-height:1.55;max-width:220px;margin:0 auto}
+.stat-src{font-size:11px;color:var(--text-fine);margin-top:8px}
+
+/* PROBLEM SECTION */
+.prob-grid-vis{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.prob-card-vis{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px}
+
+/* Google card problem */
+.google-snippet{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:4px}
+.gs-biz{font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;color:var(--text-muted);margin-bottom:6px}
+.gs-stars{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.gs-star-row span{font-size:12px;color:var(--text-fine)}
+.gs-rating-line{font-size:12px;color:var(--text-fine)}
+.gs-last-review{font-size:11px;color:var(--text-fine);margin-top:6px;font-style:italic}
+
+/* Instagram card problem */
+.ig-profile{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:4px}
+.ig-handle-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ig-avatar{width:28px;height:28px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);flex-shrink:0}
+.ig-handle{font-size:12px;font-weight:600;color:var(--text-muted);font-family:'Cabinet Grotesk',sans-serif}
+.ig-followers{font-size:11px;color:var(--text-fine)}
+.ig-grid-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.ig-sq{border-radius:3px;aspect-ratio:1;background:var(--surface-2);border:1px solid var(--border)}
+.ig-sq.filled{background:var(--surface-2)}
+.ig-sq.empty{background:transparent;border-style:dashed;opacity:0.4}
+.ig-last-post{font-size:11px;color:var(--text-fine);margin-top:8px;text-align:center}
+
+/* Scattered notes problem */
+.scattered-wrap{position:relative;height:90px;margin-bottom:4px}
+.note-chip{position:absolute;padding:7px 12px;border-radius:8px;font-size:11px;font-weight:500;white-space:nowrap;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.note-chip svg{width:12px;height:12px;flex-shrink:0}
+.chip-wa{background:#1a2a20;border:1px solid #2a4030;color:#5a9a70;top:0;left:0;transform:rotate(-2deg)}
+.chip-nb{background:#1a1a2a;border:1px solid #2a2a44;color:#7a7aaa;top:22px;left:30%;transform:rotate(1.5deg)}
+.chip-mem{background:#2a1a1a;border:1px solid #3a2828;color:#aa7a7a;top:44px;left:10%;transform:rotate(-1deg)}
+
+.prob-body{font-size:14px;color:var(--text-muted);line-height:1.6}
+.prob-stat-strip{margin-top:auto;padding-top:14px;border-top:1px solid var(--border)}
+.prob-stat-txt{font-size:12px;color:var(--text-fine);line-height:1.5}
+.prob-stat-txt strong{color:var(--text-secondary);font-weight:600}
+
+/* BEFORE / AFTER */
+.ba-section{padding:100px 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ba-split{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:16px;overflow:hidden;margin-top:48px;border:1px solid var(--border)}
+.ba-col{padding:36px 32px}
+.ba-col.before{background:rgba(232,93,74,0.05);border-right:1px solid var(--border)}
+.ba-col.after{background:rgba(0,212,170,0.05)}
+.ba-header{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;padding:8px 14px;border-radius:6px;display:inline-block}
+.ba-header.before-hdr{color:var(--red);background:rgba(232,93,74,0.12)}
+.ba-header.after-hdr{color:var(--accent);background:var(--accent-dim)}
+.ba-row{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid var(--border)}
+.ba-row:last-child{border-bottom:none;padding-bottom:0}
+.ba-category{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-fine);font-weight:600;margin-bottom:6px}
+.ba-val{font-size:14px;line-height:1.5;display:flex;align-items:flex-start;gap:8px}
+.ba-val .mark{font-size:16px;flex-shrink:0;margin-top:1px}
+.ba-val .mark.x{color:var(--red)}
+.ba-val .mark.ck{color:var(--accent)}
+.ba-val span{color:var(--text-secondary)}
+.ba-val.dim span{color:var(--text-muted)}
+.ba-val.bright span{color:var(--text)}
+
+/* SOLUTION SECTION */
+.sol-vis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.sol-vis-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:0;overflow:hidden;display:flex;flex-direction:column}
+.sol-vis-card:first-child{border-top:2px solid var(--accent)}
+.sol-vis-top{padding:20px 24px;border-bottom:1px solid var(--border)}
+.sol-vis-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.sol-vis-icon svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sol-vis-title{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;margin-bottom:8px}
+.sol-vis-desc{font-size:14px;color:var(--text-muted);line-height:1.6}
+
+/* Review counter mockup */
+.review-mockup{padding:16px 20px;background:var(--bg);border-bottom:1px solid var(--border)}
+.rm-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.rm-g-icon{width:22px;height:22px;border-radius:4px;background:#1a2030;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#5a8aff}
+.rm-title{font-size:12px;font-weight:600;color:var(--text-muted)}
+.rm-count-row{display:flex;align-items:baseline;gap:6px}
+.rm-count{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:500;color:var(--accent)}
+.rm-label{font-size:12px;color:var(--text-fine)}
+.rm-stars{display:flex;gap:2px;margin-top:4px}
+.rm-stars span{color:var(--accent);font-size:14px}
+
+/* Instagram grid solution */
+.ig-sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.ig-sol-sq{aspect-ratio:1;border-radius:3px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:background 0.3s,border-color 0.3s}
+.ig-sol-sq.lit{background:rgba(0,212,170,0.18);border-color:rgba(0,212,170,0.3)}
+.ig-sol-sq svg{width:14px;height:14px;stroke:var(--text-fine);fill:none;stroke-width:1.5;opacity:0.6}
+.ig-sol-sq.lit svg{stroke:var(--accent);opacity:1}
+
+/* CRM dashboard solution */
+.crm-mockup{padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.crm-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.crm-row:last-child{border-bottom:none;padding-bottom:0}
+.crm-avatar{width:28px;height:28px;border-radius:50%;background:var(--accent-dim);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif}
+.crm-name{font-size:12px;font-weight:600;color:var(--text-secondary);font-family:'Cabinet Grotesk',sans-serif}
+.crm-service{font-size:11px;color:var(--text-fine)}
+.crm-tag{margin-left:auto;font-size:10px;padding:3px 8px;border-radius:4px;font-weight:600;white-space:nowrap;font-family:'Cabinet Grotesk',sans-serif}
+.crm-tag.new{background:rgba(0,212,170,0.15);color:var(--accent)}
+.crm-tag.due{background:rgba(245,193,74,0.15);color:var(--yellow)}
+.crm-tag.win{background:rgba(0,212,170,0.1);color:var(--accent)}
+
+.sol-feats-list{padding:20px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.sol-feat-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-muted);line-height:1.5}
+.sol-feat-item svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2.5;flex-shrink:0;margin-top:3px}
+
+/* INSTAGRAM FEED SECTION */
+.feed-section{padding:100px 0}
+.feed-grid-wrap{margin-top:48px}
+.feed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:680px}
+.feed-tile{aspect-ratio:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px;text-align:center;opacity:0;transform:scale(0.9);transition:opacity 0.4s var(--ease),transform 0.4s var(--spring)}
+.feed-tile.visible{opacity:1;transform:scale(1)}
+.feed-tile svg{width:22px;height:22px;stroke:var(--text-fine);fill:none;stroke-width:1.5;flex-shrink:0}
+.feed-tile-type{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-fine);font-family:'Cabinet Grotesk',sans-serif}
+.feed-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px;max-width:680px}
+.feed-stat{text-align:center}
+.feed-stat-num{font-family:'JetBrains Mono',monospace;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:500;color:var(--accent);display:block}
+.feed-stat-lbl{font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:6px}
+.feed-stat-src{font-size:11px;color:var(--text-fine);margin-top:4px}
+
+/* QUOTE BLOCK */
+.quote-block{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 0}
+.quote-inner{max-width:780px;margin:0 auto;padding:0 32px;text-align:center}
+.quote-mark{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:700;line-height:1.4;color:var(--text);letter-spacing:-0.01em;margin-bottom:20px}
+.quote-mark::before{content:'\201C';color:var(--accent);font-size:1.2em;line-height:0;vertical-align:-0.2em;margin-right:4px}
+.quote-mark::after{content:'\201D';color:var(--accent);font-size:1.2em;line-height:0;vertical-align:-0.2em;margin-left:4px}
+.quote-src{font-size:13px;color:var(--text-fine)}
+
+/* PRICING */
+.pricing-wrap{display:flex;justify-content:center;margin-top:48px}
+.pc-single{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:40px;max-width:520px;width:100%;box-shadow:0 8px 40px rgba(0,212,170,0.12);transform:translateY(-4px)}
+.p-tier{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);padding:5px 12px;border-radius:4px;margin-bottom:20px}
+.p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;margin-bottom:24px}
+.p-price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.p-price{font-family:'JetBrains Mono',monospace;font-size:clamp(2rem,3.5vw,2.5rem);font-weight:500;color:var(--text)}
+.p-price-label{font-size:14px;color:var(--text-muted)}
+.p-monthly{font-size:16px;color:var(--text-secondary);margin-bottom:28px;font-weight:500}
+.p-monthly strong{font-family:'JetBrains Mono',monospace;color:var(--text)}
+.p-div{height:1px;background:var(--border);margin-bottom:24px}
+.p-wlbl{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);display:block;margin-bottom:16px}
+.p-items{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.p-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.5}
+.p-item svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2.5;flex-shrink:0;margin-top:2px}
+.btn-pf{display:block;width:100%;padding:16px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:16px;border-radius:12px;text-align:center;border:none;cursor:pointer;transition:background 0.25s,box-shadow 0.25s,transform 0.2s;margin-bottom:16px}
+.btn-pf:hover{background:var(--accent-hover);box-shadow:0 12px 32px rgba(0,212,170,0.35);transform:translateY(-2px)}
+.p-note{font-size:13px;color:var(--text-fine);text-align:center;line-height:1.6}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:64px 0 32px;margin-top:auto}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.02em;margin-bottom:12px}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:14px;color:var(--text-muted);margin-bottom:20px;line-height:1.6}
+.footer-social{display:flex;gap:10px}
+.social-icon{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:border-color 0.25s,background 0.25s,color 0.25s}
+.social-icon:hover{border-color:var(--border-hover);background:var(--accent-dim);color:var(--accent)}
+.social-icon svg{width:15px;height:15px;fill:currentColor}
+.footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-fine);margin-bottom:16px}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;color:var(--text-muted);transition:color 0.2s}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--text-fine)}
+
+/* RESPONSIVE */
+@media(max-width:1023px){
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px}
+  .sol-vis-grid{grid-template-columns:1fr}
+  .prob-grid-vis{grid-template-columns:1fr}
+  .ba-split{grid-template-columns:1fr;gap:0}
+  .ba-col.before{border-right:none;border-bottom:1px solid var(--border)}
+  .feed-grid{max-width:100%}
+  .feed-stats{max-width:100%}
+}
+@media(max-width:767px){
+  .hamburger{display:flex}
+  .nav-links,.btn-nav.nav-cta{display:none}
+  .hero{padding:80px 20px 64px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-h1{font-size:clamp(2rem,7vw,2.8rem)}
+  .container{padding:0 20px}
+  .section{padding:64px 0}
+  .stat-banner{padding:48px 0}
+  .stat-inner{grid-template-columns:1fr;gap:32px;padding:0 20px}
+  .stat-inner::before,.stat-inner::after{display:none}
+  .stat-item{padding:0;padding-bottom:32px;border-bottom:1px solid var(--border)}
+  .stat-item:last-child{border-bottom:none;padding-bottom:0}
+  .prob-grid-vis{grid-template-columns:1fr}
+  .ba-split{margin-top:32px}
+  .ba-col{padding:24px 20px}
+  .sol-vis-grid{grid-template-columns:1fr}
+  .feed-grid{grid-template-columns:repeat(3,1fr)}
+  .feed-stats{grid-template-columns:1fr;gap:24px}
+  .quote-inner{padding:0 20px}
+  .footer-inner{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .pc-single{padding:28px 20px}
+  .hero-ctas{flex-direction:column;align-items:flex-start}
+  .hero-ctas .btn-p,.hero-ctas .btn-g{width:100%;justify-content:center;min-height:44px}
+}
+@media(max-width:479px){
+  .p-price-row{flex-direction:column;gap:4px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms !important;transition-duration:0.01ms !important}
+  .reveal{opacity:1;transform:none}
+  .feed-tile{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo" aria-label="Coremagna home">
+      <span>Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/demo.html">Work</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- S1 HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="hero-badge">Online Visibility Automation</span>
+      <h1 class="hero-h1 reveal">Great Work<br>Nobody Knows</h1>
+      <p class="hero-sub reveal">80% of clients check your Instagram before booking. 78% read your reviews first. If your feed is quiet and your reviews are thin, you&#8217;re invisible &#8212; no matter how good you are.</p>
+      <p class="hero-author reveal">By Ferit Patefe &#8212; Founder of Coremagna</p>
+      <div class="hero-ctas reveal">
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-p" data-magnetic>
+          Book a free call
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn-g">See how it works &#8595;</a>
+      </div>
+    </div>
+
+    <!-- Google Maps comparison mockup -->
+    <div class="gmaps-outer" aria-label="Google search results comparison — active salon versus quiet salon">
+      <p class="gmaps-heading">Google &#183; &#8220;beauty salon near me&#8221;</p>
+
+      <div class="gmap-card winner" id="gmapWinner">
+        <div class="gmap-name winner-name">Glow &amp; Co. Beauty</div>
+        <div class="gmap-stars">
+          <div class="gmap-star-row hi" aria-label="4.8 stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <span class="gmap-rating hi">4.8</span>
+          <span class="gmap-reviews">(247 reviews)</span>
+        </div>
+        <div class="gmap-meta">
+          <span class="gmap-meta-item hi">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            0.3 miles away
+          </span>
+          <span class="gmap-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Open &#183; Closes 8 PM
+          </span>
+          <span class="gmap-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            12 photos this month
+          </span>
+        </div>
+        <p class="gmap-quote hi">&#8220;Absolutely love this place!&#8221; &#8212; <em>2 days ago</em></p>
+        <span class="gmap-cta hi">Book Now</span>
+      </div>
+
+      <div class="gmap-card loser" id="gmapLoser">
+        <div class="gmap-name loser-name">Your Salon</div>
+        <div class="gmap-stars">
+          <div class="gmap-star-row lo" aria-label="4.1 stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
+          </div>
+          <span class="gmap-rating lo">4.1</span>
+          <span class="gmap-reviews" style="color:var(--text-fine)">(23 reviews)</span>
+        </div>
+        <div class="gmap-meta" style="color:var(--text-fine)">
+          <span class="gmap-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            0.1 miles away
+          </span>
+          <span class="gmap-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Open &#183; Closes 7 PM
+          </span>
+          <span class="gmap-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            Last photo: 4 months ago
+          </span>
+        </div>
+        <p class="gmap-quote">&#8220;Great service&#8221; &#8212; <em>8 months ago</em></p>
+        <span class="gmap-cta lo">Call for Details</span>
+      </div>
+
+      <p class="gmaps-caption"><strong>You&#8217;re 0.1 miles closer.</strong> They have 10&#215; more reviews. Guess who gets the booking.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S2 STATS BAR -->
+<div class="stat-banner">
+  <div class="stat-inner">
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s1" style="color:var(--accent)">0%</span>
+      <div class="stat-line"></div>
+      <p class="stat-lbl">of clients check your Instagram before deciding to book</p>
+      <p class="stat-src">Source: PremPage, 2025</p>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s2" style="color:var(--yellow)">0%</span>
+      <div class="stat-line" style="background:var(--yellow)"></div>
+      <p class="stat-lbl">read reviews before choosing a salon</p>
+      <p class="stat-src">Source: Zenoti Consumer Survey, 2024</p>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s3" style="color:var(--red)">0K</span>
+      <div class="stat-line" style="background:var(--red)"></div>
+      <p class="stat-lbl">monthly UK searches for &#8220;beauty salon near me&#8221;</p>
+      <p class="stat-src">Source: Professional Beauty, 2026</p>
+    </div>
+  </div>
+</div>
+
+<!-- S3 PROBLEM SECTION -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">The Problem</span>
+    <h2 class="sec-h2 reveal">You&#8217;re Not Bad at Your Job<br>You&#8217;re Just Invisible Where It Matters</h2>
+    <p class="sec-sub reveal">Three things are costing you new clients every week &#8212; and none of them are about your skills.</p>
+
+    <div class="prob-grid-vis">
+
+      <!-- Card 1: Thin Reviews -->
+      <div class="prob-card-vis reveal">
+        <div class="google-snippet" role="img" aria-label="Example Google review snapshot showing 4.1 stars and 23 reviews">
+          <div class="gs-biz">Your Salon &#183; Google</div>
+          <div class="gs-stars">
+            <div class="gs-star-row"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span style="color:var(--surface-2)">&#9733;</span></div>
+            <span class="gs-rating-line">4.1 &#183; 23 reviews</span>
+          </div>
+          <div class="gs-last-review">&#128172; Latest: &#8220;Great nails!&#8221; &#8212; 8 months ago</div>
+        </div>
+        <h3 style="font-size:17px;margin-bottom:0">Thin Reviews</h3>
+        <p class="prob-body">Potential clients search for you. They see 23 reviews from 8 months ago. The salon next door has 247. They don&#8217;t even click your profile.</p>
+        <div class="prob-stat-strip">
+          <p class="prob-stat-txt"><strong>1 in 2 clients</strong> only consider salons rated 4.5&#9733; or higher<br><span>Source: Zenoti, 2024</span></p>
+        </div>
+      </div>
+
+      <!-- Card 2: Inconsistent Posting -->
+      <div class="prob-card-vis reveal">
+        <div class="ig-profile" role="img" aria-label="Example Instagram profile grid showing mostly empty posts">
+          <div class="ig-handle-row">
+            <div class="ig-avatar" aria-hidden="true"></div>
+            <div>
+              <div class="ig-handle">@yoursalon</div>
+              <div class="ig-followers">892 followers</div>
+            </div>
+          </div>
+          <div class="ig-grid-mini">
+            <div class="ig-sq filled" aria-hidden="true"></div>
+            <div class="ig-sq filled" aria-hidden="true"></div>
+            <div class="ig-sq empty" aria-hidden="true"></div>
+            <div class="ig-sq empty" aria-hidden="true"></div>
+            <div class="ig-sq empty" aria-hidden="true"></div>
+            <div class="ig-sq empty" aria-hidden="true"></div>
+          </div>
+          <div class="ig-last-post">Last post: 3 weeks ago</div>
+        </div>
+        <h3 style="font-size:17px;margin-bottom:0">Inconsistent Posting</h3>
+        <p class="prob-body">You planned to post 3 times a week. Life happened. Your last Reel was 3 weeks ago. The algorithm buried you. New clients scrolling past don&#8217;t see your work.</p>
+        <div class="prob-stat-strip">
+          <p class="prob-stat-txt"><strong>3&#8211;5 posts per week</strong> is the sweet spot for Instagram growth<br><span>Source: Buffer / Professional Beauty, 2025</span></p>
+        </div>
+      </div>
+
+      <!-- Card 3: Scattered Client Data -->
+      <div class="prob-card-vis reveal">
+        <div class="scattered-wrap" role="img" aria-label="Client notes scattered across WhatsApp, a notebook, and memory">
+          <div class="note-chip chip-wa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            WhatsApp: &#8220;Sarah wants balayage next time&#8221;
+          </div>
+          <div class="note-chip chip-nb">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Notebook: &#8220;Mrs Jones &#8212; allergic to X&#8221;
+          </div>
+          <div class="note-chip chip-mem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
+            Memory: &#8220;That lady who comes Thursdays&#8230;&#8221;
+          </div>
+        </div>
+        <h3 style="font-size:17px;margin-bottom:0">Scattered Client Data</h3>
+        <p class="prob-body">One client&#8217;s notes are in WhatsApp, another&#8217;s in a notebook, another in your head. You can&#8217;t upsell what you can&#8217;t remember. You can&#8217;t personalise what isn&#8217;t recorded.</p>
+        <div class="prob-stat-strip">
+          <p class="prob-stat-txt"><strong>50% of clients</strong> want a personalised experience through rewards and recognition<br><span>Source: Phorest, 2025</span></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- S4 BEFORE / AFTER -->
+<section class="ba-section" id="how-it-works">
+  <div class="container">
+    <span class="sec-label reveal">Before &amp; After</span>
+    <h2 class="sec-h2 reveal">Same Salon. Different Online Presence</h2>
+    <p class="sec-sub reveal">This is what changes when your visibility runs on autopilot.</p>
+
+    <div class="ba-split" role="region" aria-label="Before and after comparison">
+      <div class="ba-col before reveal" id="baLeft">
+        <div class="ba-header before-hdr">&#10005; Before Coremagna</div>
+
+        <div class="ba-row">
+          <div class="ba-category">Google Reviews</div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>4.1&#9733; &#183; 23 reviews</span></div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>Last review: 8 months ago</span></div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>84% of new clients won&#8217;t even click</span></div>
+        </div>
+
+        <div class="ba-row">
+          <div class="ba-category">Instagram</div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>Last post: 3 weeks ago</span></div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>892 followers, declining</span></div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>No booking link in bio</span></div>
+        </div>
+
+        <div class="ba-row">
+          <div class="ba-category">Client Records</div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>3 notebooks + WhatsApp + memory</span></div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>No upsell data</span></div>
+          <div class="ba-val dim"><span class="mark x">&#10005;</span><span>No birthday or re-booking tracking</span></div>
+        </div>
+      </div>
+
+      <div class="ba-col after reveal" id="baRight">
+        <div class="ba-header after-hdr">&#10003; After Coremagna</div>
+
+        <div class="ba-row">
+          <div class="ba-category">Google Reviews</div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>4.9&#9733; &#183; 187 reviews</span></div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>New review every 3 days</span></div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>Negative feedback caught privately first</span></div>
+        </div>
+
+        <div class="ba-row">
+          <div class="ba-category">Instagram</div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>3 posts per week, auto-scheduled</span></div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>2,400 followers, growing 15%/month</span></div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>&#8220;Book Now&#8221; link driving 40+ clicks/week</span></div>
+        </div>
+
+        <div class="ba-row">
+          <div class="ba-category">Client Records</div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>Every client in one CRM dashboard</span></div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>Preferences, history, allergy alerts</span></div>
+          <div class="ba-val bright"><span class="mark ck">&#10003;</span><span>Auto birthday messages sent</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 SOLUTION SECTION -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">The Solution</span>
+    <h2 class="sec-h2 reveal">Be Found. Be Chosen. Be Remembered</h2>
+    <p class="sec-sub reveal">Three automated systems. One dashboard. Set up in 7 days.</p>
+
+    <div class="sol-vis-grid">
+
+      <!-- Card 1: Review Requests -->
+      <div class="sol-vis-card reveal">
+        <div class="review-mockup" role="img" aria-label="Animated Google review counter growing from 23 to 187">
+          <div class="rm-header">
+            <div class="rm-g-icon" aria-hidden="true">G</div>
+            <span class="rm-title">Your Salon &#183; Google Reviews</span>
+          </div>
+          <div class="rm-count-row">
+            <span class="rm-count" id="reviewCount">23</span>
+            <span class="rm-label">reviews and counting</span>
+          </div>
+          <div class="rm-stars" aria-hidden="true">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+        </div>
+        <div class="sol-vis-top">
+          <div class="sol-vis-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3 class="sol-vis-title">Automated Review Requests</h3>
+          <p class="sol-vis-desc">A personalised review request lands in every client&#8217;s phone 24 hours after their visit &#8212; when the glow is still fresh.</p>
+        </div>
+        <ul class="sol-feats-list">
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sent automatically after every visit</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Personalised by name and service</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Timed for peak satisfaction</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Google and Trustpilot supported</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Negative feedback caught privately first</li>
+        </ul>
+      </div>
+
+      <!-- Card 2: Social Auto-Posting -->
+      <div class="sol-vis-card reveal">
+        <div class="ig-sol-grid" role="img" aria-label="Instagram grid filling with scheduled content" id="igSolGrid">
+          <div class="ig-sol-sq" id="igs0"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <div class="ig-sol-sq" id="igs1"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <div class="ig-sol-sq" id="igs2"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="ig-sol-sq" id="igs3"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+          <div class="ig-sol-sq" id="igs4"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+          <div class="ig-sol-sq" id="igs5"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="ig-sol-sq" id="igs6"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <div class="ig-sol-sq" id="igs7"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="ig-sol-sq" id="igs8"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg></div>
+        </div>
+        <div class="sol-vis-top">
+          <div class="sol-vis-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <h3 class="sol-vis-title">Social Media Auto-Posting</h3>
+          <p class="sol-vis-desc">Your feed stays active every week without you touching a phone &#8212; before/afters, promos, client content, all scheduled at peak engagement times.</p>
+        </div>
+        <ul class="sol-feats-list">
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>3&#8211;5 posts per week, auto-scheduled</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Posted to Instagram + Facebook simultaneously</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Timed for 11 AM and 7 PM peak engagement</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Seasonal promotions and service highlights</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Weekly content calendar, hands-free</li>
+        </ul>
+      </div>
+
+      <!-- Card 3: CRM -->
+      <div class="sol-vis-card reveal">
+        <div class="crm-mockup" role="img" aria-label="Client CRM dashboard showing visit history and service tags">
+          <div class="crm-row">
+            <div class="crm-avatar" aria-hidden="true">SL</div>
+            <div>
+              <div class="crm-name">Sarah L.</div>
+              <div class="crm-service">Balayage &#183; Visited 3 days ago</div>
+            </div>
+            <span class="crm-tag new">Review sent</span>
+          </div>
+          <div class="crm-row">
+            <div class="crm-avatar" aria-hidden="true">MJ</div>
+            <div>
+              <div class="crm-name">Mrs Jones</div>
+              <div class="crm-service">Colour &#183; 67 days since visit</div>
+            </div>
+            <span class="crm-tag due">Re-book</span>
+          </div>
+          <div class="crm-row">
+            <div class="crm-avatar" aria-hidden="true">PE</div>
+            <div>
+              <div class="crm-name">Priya E.</div>
+              <div class="crm-service">Lash lift &#183; Birthday in 4 days</div>
+            </div>
+            <span class="crm-tag win">Birthday msg</span>
+          </div>
+        </div>
+        <div class="sol-vis-top">
+          <div class="sol-vis-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="sol-vis-title">Centralised Client CRM</h3>
+          <p class="sol-vis-desc">Every client&#8217;s history, preferences, and notes in one dashboard. Turn scattered knowledge into personalised outreach that brings people back.</p>
+        </div>
+        <ul class="sol-feats-list">
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Visit history, preferences, colour formulas</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Allergy alerts and stylist notes</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Re-engagement alerts for 60+ day gaps</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Automatic birthday messages</li>
+          <li class="sol-feat-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Product recommendations by service history</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- S6 INSTAGRAM FEED MOCKUP -->
+<section class="feed-section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <span class="sec-label reveal">Content Strategy</span>
+    <h2 class="sec-h2 reveal">What 3 Posts a Week Looks Like</h2>
+    <p class="sec-sub reveal">A varied, consistent feed that attracts new clients and keeps your existing ones engaged.</p>
+
+    <div class="feed-grid-wrap">
+      <div class="feed-grid" id="feedGrid" role="img" aria-label="Example 3 by 3 Instagram feed showing different content types">
+        <div class="feed-tile" data-delay="0">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span class="feed-tile-type">Before / After</span>
+        </div>
+        <div class="feed-tile" data-delay="1">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          <span class="feed-tile-type">Service Highlight</span>
+        </div>
+        <div class="feed-tile" data-delay="2">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="feed-tile-type">Client Testimonial</span>
+        </div>
+        <div class="feed-tile" data-delay="3">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="feed-tile-type">Product Tip</span>
+        </div>
+        <div class="feed-tile" data-delay="4">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <span class="feed-tile-type">Behind the Scenes</span>
+        </div>
+        <div class="feed-tile" data-delay="5">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="feed-tile-type">Seasonal Promo</span>
+        </div>
+        <div class="feed-tile" data-delay="6">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+          <span class="feed-tile-type">Transformation</span>
+        </div>
+        <div class="feed-tile" data-delay="7">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="feed-tile-type">Team Spotlight</span>
+        </div>
+        <div class="feed-tile" data-delay="8">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
+          <span class="feed-tile-type">Booking CTA</span>
+        </div>
+      </div>
+
+      <div class="feed-stats reveal">
+        <div class="feed-stat">
+          <span class="feed-stat-num" id="fs1">0%</span>
+          <p class="feed-stat-lbl">higher engagement with a consistent content mix</p>
+          <p class="feed-stat-src">Source: GoodCall, 2026</p>
+        </div>
+        <div class="feed-stat">
+          <span class="feed-stat-num" id="fs2">0&#215;</span>
+          <p class="feed-stat-lbl">more discovery through video Reels</p>
+          <p class="feed-stat-src">Source: SocialMon, 2026</p>
+        </div>
+        <div class="feed-stat">
+          <span class="feed-stat-num" id="fs3">0%</span>
+          <p class="feed-stat-lbl">more brand interest from Instagram Stories</p>
+          <p class="feed-stat-src">Source: Instagram / PremPage, 2025</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 QUOTE BLOCK -->
+<section class="quote-block">
+  <div class="container">
+    <div class="quote-inner">
+      <blockquote class="quote-mark reveal">
+        100,000 people search &#8216;beauty salon near me&#8217; every month in the UK. When they find you, what do they see? A handful of old reviews and a quiet Instagram &#8212; or a thriving, active salon they can&#8217;t wait to visit?
+      </blockquote>
+      <p class="quote-src reveal">Source: Professional Beauty, 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- S8 PRICING -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">Pricing</span>
+    <h2 class="sec-h2 reveal">The Growth Plan</h2>
+    <p class="sec-sub reveal">For salons ready to be found, chosen, and remembered online. Ready in 7 days.</p>
+    <div class="pricing-wrap">
+      <div class="pc-single reveal">
+        <span class="p-tier">Growth Plan &#8212; Most Popular</span>
+        <h3 class="p-title">Growth</h3>
+        <div class="p-price-row">
+          <span class="p-price">$997</span>
+          <span class="p-price-label">one-time setup</span>
+        </div>
+        <p class="p-monthly">+ <strong>$297</strong>/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automated Google &amp; Trustpilot review requests</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Social media auto-posting &#8212; Instagram + Facebook</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Content calendar + scheduling (3&#8211;5 posts/week)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Centralised client CRM</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Visit history &amp; preference tracking</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Client segmentation &amp; re-engagement alerts</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automatic birthday message campaigns</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Monthly performance report (reviews, followers, engagement)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>7-day live setup</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>30-day support included</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf" data-magnetic>Get Started with Growth &#8594;</a>
+        <p class="p-note">14-day money-back guarantee.<br>Your first 5-star review covers the first month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for service businesses.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries.html#law-firms">Law Firms</a></li>
+          <li><a href="/industries.html#real-estate">Real Estate</a></li>
+          <li><a href="/industries.html#clinics">Clinics</a></li>
+          <li><a href="/industries.html#beauty">Beauty Salons</a></li>
+          <li><a href="/industries.html#restaurants">Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/demo.html">Work</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Coremagna. All rights reserved.</p>
+      <p>AI Automation &#183; CRM Systems &#183; Social Media</p>
+    </div>
+  </div>
+</footer>
+
+<script defer>
+(function(){
+'use strict';
+var rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* --- NAV --- */
+var nav = document.getElementById('mainNav');
+var hbg = document.getElementById('hamburger');
+var mob = document.getElementById('mobNav');
+var open = false;
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+hbg.addEventListener('click', function(){
+  open = !open;
+  hbg.classList.toggle('open', open);
+  hbg.setAttribute('aria-expanded', open);
+  mob.setAttribute('aria-hidden', !open);
+  mob.classList.toggle('visible', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mob.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    open = false; hbg.classList.remove('open');
+    hbg.setAttribute('aria-expanded','false');
+    mob.setAttribute('aria-hidden','true');
+    mob.classList.remove('visible');
+    document.body.style.overflow = '';
+  });
+});
+
+/* --- THEME TOGGLE --- */
+var tt = document.getElementById('themeToggle');
+var savedTheme = localStorage.getItem('theme');
+if(savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+tt.addEventListener('click', function(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  var next = cur === 'light' ? 'dark' : 'light';
+  if(next === 'dark') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+/* --- GSAP ANIMATIONS --- */
+window.addEventListener('load', function(){
+
+  /* Reduced motion: show everything immediately */
+  if(rm){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+    document.querySelectorAll('.feed-tile').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+    document.getElementById('s1').textContent = '80%';
+    document.getElementById('s2').textContent = '78%';
+    document.getElementById('s3').textContent = '100K';
+    document.getElementById('reviewCount').textContent = '187';
+    document.getElementById('fs1').textContent = '30%';
+    document.getElementById('fs2').textContent = '3×';
+    document.getElementById('fs3').textContent = '62%';
+    document.querySelectorAll('.ig-sol-sq').forEach(function(sq){ sq.classList.add('lit'); });
+    return;
+  }
+
+  if(typeof gsap === 'undefined'){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+    document.querySelectorAll('.feed-tile').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Hero: winner card slides in, loser fades in dim */
+  var winner = document.getElementById('gmapWinner');
+  var loser = document.getElementById('gmapLoser');
+  if(winner){
+    gsap.set(winner, {x: 30, opacity: 0});
+    gsap.to(winner, {x: 0, opacity: 1, duration: 0.75, ease: 'power3.out', delay: 0.4});
+  }
+  if(loser){
+    gsap.set(loser, {opacity: 0});
+    gsap.to(loser, {opacity: 1, duration: 0.7, ease: 'power2.out', delay: 0.9});
+  }
+
+  /* Reveal .reveal elements */
+  document.querySelectorAll('.reveal').forEach(function(el){
+    gsap.fromTo(el,
+      {y: 24, opacity: 0},
+      {y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+       scrollTrigger: {trigger: el, start: 'top 88%', once: true}}
+    );
+  });
+
+  /* Stats count-up */
+  function cu(id, target, sfx){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var obj = {v: 0};
+    gsap.to(obj, {v: target, duration: 1.5, ease: 'power2.out',
+      onUpdate: function(){ el.textContent = Math.round(obj.v) + sfx; },
+      scrollTrigger: {trigger: el, start: 'top 85%', once: true}
+    });
+  }
+  cu('s1', 80, '%');
+  cu('s2', 78, '%');
+
+  /* 100K custom */
+  var s3el = document.getElementById('s3');
+  if(s3el){
+    var obj3 = {v: 0};
+    gsap.to(obj3, {v: 100, duration: 1.5, ease: 'power2.out',
+      onUpdate: function(){ s3el.textContent = Math.round(obj3.v) + 'K'; },
+      scrollTrigger: {trigger: s3el, start: 'top 85%', once: true}
+    });
+  }
+
+  /* Review counter: 23 → 187 */
+  var rc = document.getElementById('reviewCount');
+  if(rc){
+    var rcObj = {v: 23};
+    gsap.to(rcObj, {v: 187, duration: 2, ease: 'power2.out',
+      onUpdate: function(){ rc.textContent = Math.round(rcObj.v); },
+      scrollTrigger: {trigger: rc, start: 'top 80%', once: true}
+    });
+  }
+
+  /* Instagram solution grid: squares light up one by one */
+  for(var i = 0; i < 9; i++){
+    (function(idx){
+      var sq = document.getElementById('igs' + idx);
+      if(!sq) return;
+      gsap.to(sq, {
+        duration: 0.4, ease: 'power2.out',
+        scrollTrigger: {
+          trigger: document.getElementById('igSolGrid'),
+          start: 'top 80%',
+          once: true,
+          onEnter: (function(index){ return function(){
+            setTimeout(function(){
+              document.getElementById('igs' + index).classList.add('lit');
+            }, index * 120);
+          }; })(idx)
+        }
+      });
+    })(i);
+  }
+
+  /* Feed grid: tiles fill in one by one */
+  var feedTiles = document.querySelectorAll('.feed-tile');
+  if(feedTiles.length){
+    ScrollTrigger.create({
+      trigger: '#feedGrid',
+      start: 'top 80%',
+      once: true,
+      onEnter: function(){
+        feedTiles.forEach(function(tile, i){
+          setTimeout(function(){
+            tile.classList.add('visible');
+          }, i * 80);
+        });
+      }
+    });
+  }
+
+  /* Before/After: left slides from left, right from right */
+  var baLeft = document.getElementById('baLeft');
+  var baRight = document.getElementById('baRight');
+  if(baLeft && baRight){
+    gsap.fromTo(baLeft,
+      {x: -24, opacity: 0},
+      {x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+       scrollTrigger: {trigger: baLeft, start: 'top 82%', once: true}}
+    );
+    gsap.fromTo(baRight,
+      {x: 24, opacity: 0},
+      {x: 0, opacity: 1, duration: 0.9, ease: 'power3.out', delay: 0.15,
+       scrollTrigger: {trigger: baRight, start: 'top 82%', once: true}}
+    );
+  }
+
+  /* Feed stats count-up */
+  cu('fs1', 30, '%');
+  cu('fs3', 62, '%');
+
+  var fs2el = document.getElementById('fs2');
+  if(fs2el){
+    var fs2obj = {v: 0};
+    gsap.to(fs2obj, {v: 3, duration: 1.2, ease: 'power2.out',
+      onUpdate: function(){ fs2el.textContent = Math.round(fs2obj.v) + '×'; },
+      scrollTrigger: {trigger: fs2el, start: 'top 85%', once: true}
+    });
+  }
+
+  /* Magnetic buttons */
+  document.querySelectorAll('[data-magnetic]').forEach(function(btn){
+    var raf = null;
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var x = Math.max(-8, Math.min(8, (e.clientX - r.left - r.width/2) * 0.3));
+      var y = Math.max(-8, Math.min(8, (e.clientY - r.top - r.height/2) * 0.3));
+      if(raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function(){ btn.style.transform = 'translate('+x+'px,'+y+'px)'; });
+    });
+    btn.addEventListener('mouseleave', function(){
+      if(raf) cancelAnimationFrame(raf);
+      btn.style.transform = '';
+    });
+  });
+
+});
+})();
+</script>
+</body>
+</html>

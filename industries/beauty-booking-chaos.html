@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop Losing Bookings After Hours | Coremagna</title>
+<meta name="description" content="71% of salon clients give up booking because they can't reach someone. AI answers every call, DM, and website visit 24/7 — so you never miss a booking again.">
+<meta property="og:title" content="Stop Losing Bookings After Hours | Coremagna">
+<meta property="og:description" content="Missed calls, unread DMs, and dead-end websites are costing UK salons thousands a month. One AI system. Three channels. Always on.">
+<meta property="og:image" content="https://coremagna.com/og-image.jpg">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<style>
+:root{
+  --bg:#060a0e;--surface:#0d1117;--surface-2:#111920;
+  --text:#F0F4F3;--text-secondary:#c0ccd8;--text-muted:#8a9ba8;--text-fine:#5a6b78;
+  --border:#1a2530;--border-hover:rgba(0,212,170,0.4);
+  --accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);
+  --red:#e85d4a;--yellow:#f5c14a;
+  --ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.16,1,0.3,1);
+  --accent-hover:#00f0c4;--stat-banner-bg:#070d16;
+}
+[data-theme="light"]{
+  --bg:#fafbfc;--surface:#ffffff;--surface-2:#f4f6f8;
+  --text:#0a1014;--text-secondary:#2a3340;--text-muted:#5a6b78;--text-fine:#8a9ba8;
+  --border:#e1e5ea;--border-hover:rgba(0,184,148,0.5);
+  --accent:#00B894;--accent-dim:rgba(0,184,148,0.10);
+  --red:#d14a37;--yellow:#d49a2a;
+  --accent-hover:#00d8b0;--stat-banner-bg:#f0f3f5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;min-height:100dvh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.05;letter-spacing:-0.02em;font-weight:800;overflow-wrap:break-word;max-width:100%;hyphens:none}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E")}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* NAV */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+[data-theme="light"] #mainNav.scrolled{background:rgba(250,251,252,0.9)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
+.logo-magna{color:var(--accent)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:ldp 2s ease-in-out infinite}
+@keyframes ldp{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:40px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.25s,background 0.25s;color:var(--text-muted)}
+.theme-toggle:hover{border-color:var(--border-hover);color:var(--text)}
+.theme-toggle svg{width:16px;height:16px;fill:currentColor}
+.icon-moon{display:block}
+.icon-sun{display:none}
+[data-theme="light"] .icon-moon{display:none}
+[data-theme="light"] .icon-sun{display:block}
+.btn-nav{display:inline-flex;align-items:center;padding:10px 20px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;border-radius:6px;transition:background 0.25s,transform 0.25s}
+.btn-nav:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s,opacity 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mob-nav.visible{opacity:1;pointer-events:all}
+.mob-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
+.mob-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);transition:color 0.2s}
+.mob-nav a:hover{color:var(--accent)}
+
+/* GENERAL */
+.section{padding:100px 0}
+.reveal{opacity:0;transform:translateY(24px)}
+.sec-label{display:block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.sec-h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:16px;max-width:680px}
+.sec-sub{font-size:17px;color:var(--text-secondary);line-height:1.65;max-width:640px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;border-radius:999px;border:none;cursor:pointer;transition:background 0.25s,box-shadow 0.25s}
+.btn-p:hover{background:var(--accent-hover);box-shadow:0 12px 32px rgba(0,212,170,0.35)}
+.btn-p:active{transform:scale(0.97)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:600;font-size:15px;border-radius:999px;border:1px solid var(--border);cursor:pointer;background:transparent;transition:border-color 0.3s,color 0.3s}
+.btn-g:hover{border-color:var(--border-hover);color:var(--accent)}
+.btn-p:focus-visible,.btn-g:focus-visible,.btn-nav:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* HERO */
+.hero{padding:140px 32px 100px;max-width:1280px;margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:55fr 45fr;gap:64px;align-items:center}
+.hero-badge{display:inline-flex;padding:6px 14px;border-radius:999px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.hero-h1{font-size:clamp(2.4rem,5vw,3.5rem);line-height:1.05;margin-bottom:24px;max-width:720px}
+.hero-sub{font-size:18px;color:var(--text-secondary);max-width:540px;line-height:1.6}
+.hero-author{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin:20px 0 40px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+
+/* INBOX MOCKUP */
+.inbox-wrap{display:flex;flex-direction:column;gap:10px;max-width:420px}
+.inbox-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--border);border-radius:16px;padding:18px 20px;position:relative;transition:border-color 0.3s}
+.inbox-card.failed{border-left-color:rgba(232,93,74,0.5)}
+.inbox-card.success{border-left-color:var(--accent);border-color:rgba(0,212,170,0.25);background:rgba(0,212,170,0.04);box-shadow:0 0 24px rgba(0,212,170,0.10)}
+.inbox-card-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.inbox-ch-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.inbox-ch-icon.phone{background:rgba(232,93,74,0.12)}
+.inbox-ch-icon.dm{background:rgba(232,93,74,0.12)}
+.inbox-ch-icon.web{background:rgba(232,93,74,0.12)}
+.inbox-ch-icon.ai{background:var(--accent-dim)}
+.inbox-ch-icon svg{width:16px;height:16px;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.inbox-ch-icon.phone svg,.inbox-ch-icon.dm svg,.inbox-ch-icon.web svg{stroke:var(--red)}
+.inbox-ch-icon.ai svg{stroke:var(--accent)}
+.inbox-meta{flex:1;min-width:0}
+.inbox-channel{font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--text);display:block}
+.inbox-time{font-size:11px;color:var(--text-fine);display:block;margin-top:1px}
+.inbox-status{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:0.5px;white-space:nowrap;flex-shrink:0}
+.inbox-status.bad{background:rgba(232,93,74,0.1);color:var(--red)}
+.inbox-status.good{background:var(--accent-dim);color:var(--accent)}
+.inbox-body{font-size:13px;color:var(--text-secondary);line-height:1.5;padding-left:42px}
+.inbox-success-rows{display:flex;flex-direction:column;gap:6px;padding-left:42px}
+.inbox-success-row{font-size:13px;color:var(--text-secondary);display:flex;align-items:center;gap:8px}
+.inbox-success-row span{color:var(--accent);font-weight:700;flex-shrink:0}
+.inbox-caption{font-size:12px;color:var(--text-secondary);text-align:center;margin-top:6px;padding:0 4px}
+
+/* STATS BAR */
+.stat-banner{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--stat-banner-bg);padding:64px 0}
+.stat-inner{display:grid;grid-template-columns:1fr 1fr 1fr;max-width:1280px;margin:0 auto;padding:0 32px}
+.stat-item{text-align:center;padding:0 40px;position:relative}
+.stat-item+.stat-item::before{content:'';position:absolute;left:0;top:10%;height:80%;width:1px;background:var(--border)}
+.stat-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(3rem,6vw,4.5rem);font-weight:800;line-height:1;display:block;color:var(--accent)}
+.stat-line{width:40px;height:2px;background:var(--accent);margin:12px auto;opacity:0.5}
+.stat-lbl{font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.4}
+.stat-src{font-size:11px;color:var(--text-fine);margin-top:6px}
+
+/* PROBLEM CARDS */
+.prob-grid-chaos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.prob-card-chaos{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;position:relative;transition:transform 0.3s var(--spring),border-color 0.3s;overflow:hidden}
+.prob-card-chaos:hover{transform:translateY(-3px);border-color:var(--border-hover)}
+.prob-status-dot{position:absolute;top:20px;right:20px;width:10px;height:10px;border-radius:50%;background:var(--red);animation:pulsedot 1.5s ease-in-out infinite}
+@keyframes pulsedot{0%,100%{transform:scale(1);opacity:0.8}50%{transform:scale(1.35);opacity:1}}
+.prob-ch-icon{width:48px;height:48px;border-radius:14px;background:rgba(232,93,74,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.prob-ch-icon svg{width:22px;height:22px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.prob-ch-title{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.prob-ch-body{font-size:14px;color:var(--text-secondary);line-height:1.65}
+.prob-stat-pill{margin-top:20px;display:inline-flex;align-items:center;gap:6px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:8px 12px}
+.prob-stat-num{font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--red)}
+.prob-stat-label{font-size:12px;color:var(--text-muted);line-height:1.3}
+
+/* REVENUE CALCULATOR */
+.calc-wrap{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px;margin-top:48px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.calc-sliders{display:flex;flex-direction:column;gap:32px}
+.slider-group{display:flex;flex-direction:column;gap:12px}
+.slider-header{display:flex;justify-content:space-between;align-items:baseline}
+.slider-label{font-size:14px;font-weight:500;color:var(--text-secondary)}
+.slider-val{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:500;color:var(--text)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--bg);box-shadow:0 2px 8px rgba(0,212,170,0.4);transition:transform 0.2s var(--ease)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--bg);box-shadow:0 2px 8px rgba(0,212,170,0.4)}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+input[type=range]:focus{outline:none}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px rgba(0,212,170,0.3)}
+.calc-results{display:flex;flex-direction:column;gap:0}
+.calc-result-lbl{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:20px}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-secondary)}
+.calc-row:last-of-type{border-bottom:none}
+.calc-row.recovery{border-top:2px solid var(--border);padding-top:20px;margin-top:8px;border-bottom:none}
+.calc-val{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:500;color:var(--red)}
+.calc-val.big{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;color:var(--accent)}
+.calc-note{font-size:13px;color:var(--text-fine);margin-top:16px;line-height:1.5}
+
+/* SOLUTION CARDS */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.sol-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform 0.3s var(--spring),border-color 0.3s}
+.sol-card:hover{transform:translateY(-3px);border-color:var(--border-hover)}
+.sol-ch-header{padding:24px 24px 0;display:flex;align-items:center;gap:12px}
+.sol-ch-icon{width:44px;height:44px;border-radius:12px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sol-ch-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sol-ch-name{font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.sol-states{margin:20px 0 0}
+.sol-before{background:rgba(232,93,74,0.05);border-top:1px solid rgba(232,93,74,0.12);border-bottom:1px solid var(--border);padding:16px 24px}
+.sol-state-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block}
+.sol-state-tag.before{color:var(--red)}
+.sol-state-tag.after{color:var(--accent)}
+.sol-state-text{font-size:13px;color:var(--text-secondary);line-height:1.55}
+.sol-arrow-wrap{display:flex;justify-content:center;align-items:center;padding:10px 0;background:var(--surface-2)}
+.sol-arrow-wrap svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sol-after{background:rgba(0,212,170,0.04);border-top:1px solid rgba(0,212,170,0.15);padding:16px 24px}
+.sol-feats{padding:20px 24px 24px;display:flex;flex-direction:column;gap:8px}
+.sol-feat{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-secondary);line-height:1.4}
+.sol-feat svg{flex-shrink:0;margin-top:1px;stroke:var(--accent);fill:none;stroke-width:2;width:14px;height:14px;stroke-linecap:round;stroke-linejoin:round}
+
+/* HOW IT WORKS — HORIZONTAL */
+.hiw-chaos{position:relative;margin-top:56px}
+.hiw-chaos-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative;z-index:1}
+.hiw-conn{position:absolute;top:28px;left:calc(16.66% + 8px);right:calc(16.66% + 8px);height:2px;background:linear-gradient(to right,var(--accent),rgba(0,212,170,0.2));transform-origin:left center;z-index:0}
+.hiw-step{text-align:center;padding:0 16px}
+.hiw-num{width:56px;height:56px;border-radius:50%;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative;z-index:2}
+.hiw-step-icon{width:44px;height:44px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.hiw-step-icon svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.hiw-step-title{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.hiw-step-desc{font-size:14px;color:var(--text-secondary);line-height:1.6;max-width:260px;margin:0 auto}
+
+/* QUOTE BLOCK */
+.quote-block{padding:80px 0;text-align:center}
+.quote-inner{max-width:760px;margin:0 auto}
+.quote-mark{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:500;color:var(--text-secondary);line-height:1.6;font-style:italic;border-left:3px solid var(--accent);padding-left:28px;text-align:left}
+.quote-src{font-size:12px;color:var(--text-fine);margin-top:16px;letter-spacing:1px;text-align:left;padding-left:31px}
+
+/* PRICING */
+.pricing-wrap{display:flex;justify-content:center;margin-top:48px}
+.pc-single{background:var(--surface);border:1px solid rgba(0,212,170,0.35);border-radius:24px;padding:40px 36px;width:100%;max-width:520px;transition:border-color 0.3s,transform 0.3s var(--spring);box-shadow:0 0 40px rgba(0,212,170,0.07)}
+.pc-single:hover{transform:translateY(-4px);box-shadow:0 30px 80px -20px rgba(0,212,170,0.2)}
+.p-tier{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-fine);margin-bottom:12px}
+.p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:26px;font-weight:800;margin-bottom:20px}
+.p-slbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:6px}
+.p-price{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3vw,3rem);font-weight:800;line-height:1}
+.p-sub{font-size:15px;color:var(--text-secondary);margin-top:8px;margin-bottom:24px}
+.p-div{height:1px;background:var(--border);margin:24px 0}
+.p-wlbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:16px}
+.p-items{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.p-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.45}
+.p-item svg{flex-shrink:0;margin-top:2px;stroke:var(--accent);fill:none;stroke-width:2;width:15px;height:15px;stroke-linecap:round;stroke-linejoin:round}
+.btn-pf{display:block;width:100%;padding:16px;text-align:center;background:var(--accent);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--bg);transition:background 0.25s,transform 0.25s;border:none;cursor:pointer}
+.btn-pf:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-pf:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.p-note{font-size:12px;color:var(--text-fine);text-align:center;margin-top:16px;line-height:1.5}
+
+/* FOOTER */
+footer{padding:80px 0 48px;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:80px}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--text-secondary);max-width:220px;line-height:1.65}
+.footer-col h4{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,244,243,.35);margin-bottom:24px}
+[data-theme="light"] .footer-col h4{color:rgba(10,16,20,0.4)}
+.footer-col ul{display:flex;flex-direction:column;gap:8px}
+.footer-col a{font-size:13px;color:var(--text-secondary);transition:color 0.2s}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:16px;margin-top:24px}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s,background 0.25s}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--text-secondary);transition:fill 0.25s}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
+[data-theme="light"] .footer-bottom p{color:rgba(10,16,20,0.3)}
+
+/* RESPONSIVE */
+@media(max-width:1023px){
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .sol-grid{grid-template-columns:1fr}
+  .hiw-chaos-steps{grid-template-columns:1fr;gap:40px}
+  .hiw-conn{display:none}
+  .prob-grid-chaos{grid-template-columns:1fr 1fr}
+}
+@media(max-width:767px){
+  .nav-links,.nav-cta,.theme-toggle{display:none}
+  .hamburger{display:flex}
+  .hero{padding:100px 20px 64px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-h1{font-size:clamp(2rem,8vw,2.8rem)}
+  .container{padding:0 20px}
+  .stat-inner{grid-template-columns:1fr;gap:40px;padding:0 20px}
+  .stat-item+.stat-item::before{display:none}
+  .prob-grid-chaos{grid-template-columns:1fr}
+  .calc-wrap{padding:28px 24px}
+  .sol-grid{grid-template-columns:1fr}
+  .hiw-chaos-steps{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+  .nav-inner{padding:0 20px}
+  .section{padding:64px 0}
+  .inbox-wrap{max-width:100%}
+}
+@media(max-width:479px){
+  .hero-ctas{flex-direction:column}
+  .btn-p,.btn-g{justify-content:center;width:100%}
+  .hiw-step{padding:0 8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .reveal{opacity:1 !important;transform:none !important}
+  .inbox-card{opacity:1 !important;transform:none !important}
+  .hiw-conn{transform:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo" aria-label="Coremagna home">
+      <span>Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/demo.html">Demo</a></li>
+      <li><a href="/index.html#services">Services</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/index.html#services">Services</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- S1 HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="hero-badge">Booking Automation</span>
+      <h1 class="hero-h1 reveal">Stop Losing Bookings After Hours</h1>
+      <p class="hero-sub reveal">71% of salon clients have given up on booking because they couldn&#8217;t reach someone. Half of all booking demand arrives when you&#8217;re closed. Every unanswered call, unread DM, and dead-end website visit is revenue walking out the door.</p>
+      <p class="hero-author reveal">By Ferit Patefe &#8212; Founder of Coremagna</p>
+      <div class="hero-ctas reveal">
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-p" data-magnetic>
+          Book a free call
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn-g">See how it works &#8595;</a>
+      </div>
+    </div>
+
+    <!-- Multi-channel inbox mockup -->
+    <div>
+      <div class="inbox-wrap" aria-label="Example booking enquiries going unanswered, then captured by AI">
+
+        <div class="inbox-card failed" id="ic1">
+          <div class="inbox-card-header">
+            <div class="inbox-ch-icon phone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10a16 16 0 0 0 6 6l.77-.77a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+            </div>
+            <div class="inbox-meta">
+              <span class="inbox-channel">Missed Call</span>
+              <span class="inbox-time">Today, 8:47 PM</span>
+            </div>
+            <span class="inbox-status bad" aria-label="Status: No response">&#10005; No response</span>
+          </div>
+          <p class="inbox-body">+44 7700 900123 &#8212; &#8220;Wanted to book a lash lift for Saturday&#8221;</p>
+        </div>
+
+        <div class="inbox-card failed" id="ic2">
+          <div class="inbox-card-header">
+            <div class="inbox-ch-icon dm" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="inbox-meta">
+              <span class="inbox-channel">Instagram DM</span>
+              <span class="inbox-time">Sent 3 hours ago</span>
+            </div>
+            <span class="inbox-status bad" aria-label="Status: Unread">&#10005; Unread</span>
+          </div>
+          <p class="inbox-body">@sarah&#95;x &#8212; &#8220;Hi! Do you have availability this Friday for balayage?&#8221;</p>
+        </div>
+
+        <div class="inbox-card failed" id="ic3">
+          <div class="inbox-card-header">
+            <div class="inbox-ch-icon web" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="inbox-meta">
+              <span class="inbox-channel">Website Visitor</span>
+              <span class="inbox-time">45 seconds on site &#8212; left</span>
+            </div>
+            <span class="inbox-status bad" aria-label="Status: No booking">&#10005; No booking</span>
+          </div>
+          <p class="inbox-body">Viewed pricing &#8594; services &#8594; left with no chat, no enquiry</p>
+        </div>
+
+        <div class="inbox-card success" id="ic4">
+          <div class="inbox-card-header">
+            <div class="inbox-ch-icon ai" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <div class="inbox-meta">
+              <span class="inbox-channel" style="color:var(--accent)">Coremagna AI &#8212; All Channels</span>
+              <span class="inbox-time">Responded in under 10 seconds</span>
+            </div>
+            <span class="inbox-status good">&#10003; Handled</span>
+          </div>
+          <div class="inbox-success-rows">
+            <div class="inbox-success-row"><span>&#10003;</span> All 3 enquiries answered instantly</div>
+            <div class="inbox-success-row"><span>&#10003;</span> 2 bookings confirmed in calendar</div>
+            <div class="inbox-success-row"><span>&#10003;</span> 1 callback scheduled for 9 AM</div>
+          </div>
+        </div>
+
+      </div>
+      <p class="inbox-caption">Three channels. One AI system. Every enquiry captured.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S2 STATS BAR -->
+<div class="stat-banner">
+  <div class="stat-inner">
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s1" style="color:var(--accent)">0%</span>
+      <div class="stat-line"></div>
+      <p class="stat-lbl">of clients have given up on booking because they couldn&#8217;t reach someone</p>
+      <p class="stat-src">Source: Zenoti Consumer Survey, 2025</p>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s2" style="color:var(--yellow)">0%</span>
+      <div class="stat-line" style="background:var(--yellow)"></div>
+      <p class="stat-lbl">of all booking demand arrives when you&#8217;re closed</p>
+      <p class="stat-src">Source: Phorest / Boulevard, 2025</p>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s3" style="color:var(--red)">0%</span>
+      <div class="stat-line" style="background:var(--red)"></div>
+      <p class="stat-lbl">of callers who hit voicemail hang up without leaving a message</p>
+      <p class="stat-src">Source: Ambs Call Center, 2025</p>
+    </div>
+  </div>
+</div>
+
+<!-- S3 PROBLEM SECTION -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">The Problem</span>
+    <h2 class="sec-h2 reveal">Your Clients Are Trying to Reach You</h2>
+    <p class="sec-sub reveal">Three channels. All broken. Every missed message is a booking that goes to the salon down the road.</p>
+    <div class="prob-grid-chaos">
+
+      <div class="prob-card-chaos reveal">
+        <div class="prob-status-dot" aria-hidden="true"></div>
+        <div class="prob-ch-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10a16 16 0 0 0 6 6l.77-.77a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        </div>
+        <h3 class="prob-ch-title">The Phone That Never Stops</h3>
+        <p class="prob-ch-body">You&#8217;re mid-treatment. The phone rings. You can&#8217;t answer. They call your competitor. 80% of callers who hit voicemail won&#8217;t leave a message &#8212; they&#8217;ll find someone who picks up.</p>
+        <div class="prob-stat-pill">
+          <span class="prob-stat-num">15+</span>
+          <span class="prob-stat-label">hours per week<br>spent on phone admin<br><span style="font-size:10px;color:var(--text-fine)">Source: Industry Surveys</span></span>
+        </div>
+      </div>
+
+      <div class="prob-card-chaos reveal">
+        <div class="prob-status-dot" aria-hidden="true"></div>
+        <div class="prob-ch-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><line x1="2" y1="20" x2="22" y2="4"/></svg>
+        </div>
+        <h3 class="prob-ch-title">The Website That Doesn&#8217;t Convert</h3>
+        <p class="prob-ch-body">Visitors land on your site. They see your work, check your prices &#8212; and leave. No chat. No booking widget. No way to capture their interest at the moment it peaks.</p>
+        <div class="prob-stat-pill">
+          <span class="prob-stat-num">58%</span>
+          <span class="prob-stat-label">more new clients<br>with online booking<br><span style="font-size:10px;color:var(--text-fine)">Source: SchedulingKit, 2026</span></span>
+        </div>
+      </div>
+
+      <div class="prob-card-chaos reveal">
+        <div class="prob-status-dot" aria-hidden="true"></div>
+        <div class="prob-ch-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3 class="prob-ch-title">The Instagram DM Graveyard</h3>
+        <p class="prob-ch-body">A potential client sends a DM at 9 PM. You see it at 7 AM. By then, they&#8217;ve already booked with the salon that replied in 30 seconds.</p>
+        <div class="prob-stat-pill">
+          <span class="prob-stat-num">3hr</span>
+          <span class="prob-stat-label">average DM<br>response time<br><span style="font-size:10px;color:var(--text-fine)">Source: Industry benchmark</span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- S4 REVENUE CALCULATOR -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <span class="sec-label reveal">Revenue Calculator</span>
+    <h2 class="sec-h2 reveal">What Missed Bookings Actually Cost You</h2>
+    <p class="sec-sub reveal">Move the sliders to match your salon. The numbers update in real time.</p>
+    <div class="calc-wrap reveal">
+      <div class="calc-grid">
+        <div class="calc-sliders">
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="callsSlider">Missed calls per week</label>
+              <span class="slider-val" id="callsDisplay">10</span>
+            </div>
+            <input type="range" id="callsSlider" min="5" max="30" value="10" step="1" aria-label="Missed calls per week">
+          </div>
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="valueSlider">Average booking value</label>
+              <span class="slider-val" id="valueDisplay">&#163;60</span>
+            </div>
+            <input type="range" id="valueSlider" min="30" max="150" value="60" step="5" aria-label="Average booking value in pounds">
+          </div>
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="dmsSlider">DMs left unanswered per week</label>
+              <span class="slider-val" id="dmsDisplay">5</span>
+            </div>
+            <input type="range" id="dmsSlider" min="2" max="15" value="5" step="1" aria-label="DMs left unanswered per week">
+          </div>
+          <p style="font-size:13px;color:var(--text-fine);line-height:1.55;margin-top:8px">With AI responding to every channel 24/7, salons recover 70&#8211;90% of these lost bookings.</p>
+        </div>
+        <div class="calc-results">
+          <span class="calc-result-lbl">Your lost revenue</span>
+          <div class="calc-row">
+            <span>Weekly loss</span>
+            <span class="calc-val" id="calcWeekly">&#163;900</span>
+          </div>
+          <div class="calc-row">
+            <span>Monthly loss</span>
+            <span class="calc-val" id="calcMonthly">&#163;3,870</span>
+          </div>
+          <div class="calc-row">
+            <span>Yearly loss</span>
+            <span class="calc-val" id="calcYearly">&#163;46,800</span>
+          </div>
+          <div class="calc-row recovery">
+            <div>
+              <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--text)">Your potential monthly recovery</div>
+              <div style="font-size:12px;color:var(--text-fine);margin-top:3px">With AI handling every channel 24/7 (80% recovery estimate)</div>
+            </div>
+            <span class="calc-val big" id="calcRecovery">&#163;3,096</span>
+          </div>
+          <p class="calc-note">&#8220;One extra booking per day covers the entire system. Most salons see far more than that.&#8221;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 SOLUTION SECTION -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <span class="sec-label reveal">The Solution</span>
+    <h2 class="sec-h2 reveal">Every Call Answered. Every DM Replied. Every Visitor Converted</h2>
+    <p class="sec-sub reveal">Three channels, one AI system. Set up in 7 days. Runs automatically after that.</p>
+    <div class="sol-grid">
+
+      <div class="sol-card reveal">
+        <div class="sol-ch-header">
+          <div class="sol-ch-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <span class="sol-ch-name">AI Chatbot &#8212; Website</span>
+        </div>
+        <div class="sol-states">
+          <div class="sol-before">
+            <span class="sol-state-tag before">Before</span>
+            <p class="sol-state-text">Visitor browses &#8594; leaves &#8594; gone forever. No chat, no capture, no booking.</p>
+          </div>
+          <div class="sol-arrow-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="sol-after">
+            <span class="sol-state-tag after">After</span>
+            <p class="sol-state-text">Visitor browses &#8594; chatbot engages &#8594; booking confirmed in 60 seconds.</p>
+          </div>
+        </div>
+        <ul class="sol-feats">
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Works 24/7 on your website</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Answers service questions and shows availability</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Captures name, email, and phone automatically</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Branded to your salon&#8217;s tone and style</li>
+        </ul>
+      </div>
+
+      <div class="sol-card reveal">
+        <div class="sol-ch-header">
+          <div class="sol-ch-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10a16 16 0 0 0 6 6l.77-.77a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+          </div>
+          <span class="sol-ch-name">AI Voice Agent &#8212; Phone</span>
+        </div>
+        <div class="sol-states">
+          <div class="sol-before">
+            <span class="sol-state-tag before">Before</span>
+            <p class="sol-state-text">Phone rings &#8594; voicemail &#8594; 80% hang up and never call back.</p>
+          </div>
+          <div class="sol-arrow-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="sol-after">
+            <span class="sol-state-tag after">After</span>
+            <p class="sol-state-text">Phone rings &#8594; AI answers &#8594; books appointment or takes message instantly.</p>
+          </div>
+        </div>
+        <ul class="sol-feats">
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Natural voice, trained on your services</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Handles bookings, cancellations, and enquiries</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>You receive a summary of every call</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Works during treatments, after hours, weekends</li>
+        </ul>
+      </div>
+
+      <div class="sol-card reveal">
+        <div class="sol-ch-header">
+          <div class="sol-ch-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <span class="sol-ch-name">DM Automation &#8212; Instagram</span>
+        </div>
+        <div class="sol-states">
+          <div class="sol-before">
+            <span class="sol-state-tag before">Before</span>
+            <p class="sol-state-text">DM sent at 9 PM &#8594; seen at 7 AM &#8594; client already booked elsewhere.</p>
+          </div>
+          <div class="sol-arrow-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="sol-after">
+            <span class="sol-state-tag after">After</span>
+            <p class="sol-state-text">DM sent &#8594; instant personalised reply &#8594; booking link sent in seconds.</p>
+          </div>
+        </div>
+        <ul class="sol-feats">
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Auto-replies to prices, availability, location</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sends booking links directly in chat</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Escalates complex requests with context</li>
+          <li class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Responds in seconds, around the clock</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- S6 HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <span class="sec-label reveal">How It Works</span>
+    <h2 class="sec-h2 reveal">Three Steps to Never Miss a Booking</h2>
+    <p class="sec-sub reveal">Set it up once. The system handles every channel every day. You see the bookings come in.</p>
+
+    <div class="hiw-chaos">
+      <div class="hiw-conn" id="hiwConn" aria-hidden="true"></div>
+      <div class="hiw-chaos-steps">
+
+        <div class="hiw-step reveal">
+          <div class="hiw-num" aria-hidden="true">1</div>
+          <div class="hiw-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10a16 16 0 0 0 6 6l.77-.77a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+          </div>
+          <h3 class="hiw-step-title">Client Reaches Out</h3>
+          <p class="hiw-step-desc">Via phone, Instagram DM, or your website &#8212; any time, any day, any channel.</p>
+        </div>
+
+        <div class="hiw-step reveal">
+          <div class="hiw-num" aria-hidden="true">2</div>
+          <div class="hiw-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3 class="hiw-step-title">AI Responds Instantly</h3>
+          <p class="hiw-step-desc">Under 10 seconds. Personalised to their question. On-brand for your salon.</p>
+        </div>
+
+        <div class="hiw-step reveal">
+          <div class="hiw-num" aria-hidden="true">3</div>
+          <div class="hiw-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
+          </div>
+          <h3 class="hiw-step-title">Booking Confirmed</h3>
+          <p class="hiw-step-desc">Calendar updated. Confirmation sent. You didn&#8217;t lift a finger.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 QUOTE BLOCK -->
+<section class="quote-block" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="quote-inner">
+      <blockquote class="quote-mark reveal">
+        71% of salon clients have given up on booking because it was too hard to reach someone. The salons that win in 2026 aren&#8217;t necessarily better &#8212; they&#8217;re just easier to book.
+      </blockquote>
+      <p class="quote-src reveal">Source: Zenoti Consumer Survey, 2025</p>
+    </div>
+  </div>
+</section>
+
+<!-- S8 PRICING -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">Pricing</span>
+    <h2 class="sec-h2 reveal">The Scale Plan &#8212; Every Channel Covered</h2>
+    <p class="sec-sub reveal">For salons ready to capture every booking across every channel. Ready in 7 days.</p>
+    <div class="pricing-wrap">
+      <div class="pc-single reveal">
+        <span class="p-tier">Scale Plan</span>
+        <h3 class="p-title">Scale</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$1,497 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+ $497/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI Chatbot &#8212; 24/7, branded to your salon</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI Voice Agent &#8212; answers calls during treatments and after hours</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Instagram DM Automation &#8212; instant replies and booking links</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Multi-channel booking dashboard</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Booking confirmation and reminder flows</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Weekly performance report</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>7-day live setup</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>30-day support included</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf" data-magnetic>Get Started with Scale &#8594;</a>
+        <p class="p-note">14-day money-back guarantee.<br>One extra booking per day pays for the entire system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for service businesses.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries.html#law-firms">Law Firms</a></li>
+          <li><a href="/industries.html#real-estate">Real Estate</a></li>
+          <li><a href="/industries.html#clinics">Clinics</a></li>
+          <li><a href="/industries.html#beauty">Beauty Salons</a></li>
+          <li><a href="/industries.html#restaurants">Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/demo.html">Demo</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Coremagna. All rights reserved.</p>
+      <p>AI Automation &#183; CRM Systems &#183; Chatbots</p>
+    </div>
+  </div>
+</footer>
+
+<script defer>
+(function(){
+'use strict';
+var rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* --- NAV --- */
+var nav = document.getElementById('mainNav');
+var hbg = document.getElementById('hamburger');
+var mob = document.getElementById('mobNav');
+var open = false;
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+hbg.addEventListener('click', function(){
+  open = !open;
+  hbg.classList.toggle('open', open);
+  hbg.setAttribute('aria-expanded', open);
+  mob.setAttribute('aria-hidden', !open);
+  mob.classList.toggle('visible', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mob.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    open = false; hbg.classList.remove('open');
+    hbg.setAttribute('aria-expanded','false');
+    mob.setAttribute('aria-hidden','true');
+    mob.classList.remove('visible');
+    document.body.style.overflow = '';
+  });
+});
+
+/* --- THEME TOGGLE --- */
+var tt = document.getElementById('themeToggle');
+var savedTheme = localStorage.getItem('theme');
+if(savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+tt.addEventListener('click', function(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  var next = cur === 'light' ? 'dark' : 'light';
+  if(next === 'dark') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+/* --- REVENUE CALCULATOR --- */
+var callsSlider = document.getElementById('callsSlider');
+var valueSlider = document.getElementById('valueSlider');
+var dmsSlider   = document.getElementById('dmsSlider');
+var callsDisplay = document.getElementById('callsDisplay');
+var valueDisplay = document.getElementById('valueDisplay');
+var dmsDisplay   = document.getElementById('dmsDisplay');
+var calcWeekly   = document.getElementById('calcWeekly');
+var calcMonthly  = document.getElementById('calcMonthly');
+var calcYearly   = document.getElementById('calcYearly');
+var calcRecovery = document.getElementById('calcRecovery');
+
+function fmtGBP(n){ return '£' + n.toLocaleString('en-GB'); }
+
+function updateCalc(){
+  var calls = parseInt(callsSlider.value);
+  var val   = parseInt(valueSlider.value);
+  var dms   = parseInt(dmsSlider.value);
+  callsDisplay.textContent = calls;
+  valueDisplay.textContent = '£' + val;
+  dmsDisplay.textContent   = dms;
+  var weekly   = (calls + dms) * val;
+  var monthly  = Math.round(weekly * 4.3);
+  var yearly   = weekly * 52;
+  var recovery = Math.round(monthly * 0.80);
+  calcWeekly.textContent  = fmtGBP(weekly);
+  calcMonthly.textContent = fmtGBP(monthly);
+  calcYearly.textContent  = fmtGBP(yearly);
+  calcRecovery.textContent = fmtGBP(recovery);
+  [callsSlider, valueSlider, dmsSlider].forEach(function(sl){
+    var min = +sl.min, max = +sl.max, cur = +sl.value;
+    var pct = ((cur - min) / (max - min)) * 100;
+    sl.style.background = 'linear-gradient(to right, var(--accent) ' + pct + '%, var(--border) ' + pct + '%)';
+  });
+}
+callsSlider.addEventListener('input', updateCalc);
+valueSlider.addEventListener('input', updateCalc);
+dmsSlider.addEventListener('input', updateCalc);
+updateCalc();
+
+/* --- GSAP SCROLL ANIMATIONS --- */
+window.addEventListener('load', function(){
+  if(rm){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+    document.querySelectorAll('.inbox-card').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+    document.getElementById('s1').textContent = '71%';
+    document.getElementById('s2').textContent = '46%';
+    document.getElementById('s3').textContent = '80%';
+    return;
+  }
+
+  if(typeof gsap === 'undefined') {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Reveal .reveal elements */
+  document.querySelectorAll('.reveal').forEach(function(el){
+    gsap.fromTo(el,
+      {y: 24, opacity: 0},
+      {y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+       scrollTrigger: {trigger: el, start: 'top 88%', once: true}}
+    );
+  });
+
+  /* Hero inbox cards — stagger slide in from right */
+  var failedCards = document.querySelectorAll('.inbox-card.failed');
+  var successCard = document.getElementById('ic4');
+  gsap.set(failedCards, {x: 40, opacity: 0});
+  gsap.set(successCard, {opacity: 0, y: 10});
+  gsap.to(failedCards, {
+    x: 0, opacity: 1, duration: 0.65, ease: 'power3.out', stagger: 0.15, delay: 0.5
+  });
+  gsap.to(successCard, {
+    opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 1.1
+  });
+
+  /* Stats count-up */
+  function cu(id, target, sfx){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var obj = {v: 0};
+    gsap.to(obj, {v: target, duration: 1.5, ease: 'power2.out',
+      onUpdate: function(){ el.textContent = Math.round(obj.v) + sfx; },
+      scrollTrigger: {trigger: el, start: 'top 85%', once: true}
+    });
+  }
+  cu('s1', 71, '%');
+  cu('s2', 46, '%');
+  cu('s3', 80, '%');
+
+  /* How-it-works connecting line draw */
+  var conn = document.getElementById('hiwConn');
+  if(conn){
+    gsap.fromTo(conn,
+      {scaleX: 0, transformOrigin: 'left center'},
+      {scaleX: 1, duration: 1.2, ease: 'power2.inOut',
+       scrollTrigger: {trigger: '.hiw-chaos', start: 'top 70%', once: true}}
+    );
+  }
+
+  /* Magnetic buttons */
+  document.querySelectorAll('[data-magnetic]').forEach(function(btn){
+    var raf = null;
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var x = Math.max(-8, Math.min(8, (e.clientX - r.left - r.width/2) * 0.3));
+      var y = Math.max(-8, Math.min(8, (e.clientY - r.top - r.height/2) * 0.3));
+      if(raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function(){ btn.style.transform = 'translate('+x+'px,'+y+'px)'; });
+    });
+    btn.addEventListener('mouseleave', function(){
+      if(raf) cancelAnimationFrame(raf);
+      btn.style.transform = '';
+    });
+  });
+});
+})();
+</script>
+</body>
+</html>
