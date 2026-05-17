@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant No-Shows | Automated Reservation Reminders | Coremagna</title>
+<meta name="description" content="UK restaurants lose up to £16 billion a year to no-shows. Automated WhatsApp and SMS reservation reminders cut no-show rates by up to 60% and fill cancelled tables from your waitlist automatically.">
+<meta property="og:title" content="Stop Losing £450 a Night to Empty Tables | Coremagna">
+<meta property="og:description" content="Automated reservation reminders for UK restaurants. Cut no-shows by 60%, fill waitlists automatically, and protect your margins.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<style>
+:root{
+  --bg:#060a0e;--surface:#0d1117;--surface-2:#111920;
+  --text:#F0F4F3;--text-secondary:#c0ccd8;--text-muted:#8a9ba8;--text-fine:#5a6b78;
+  --border:#1a2530;--border-hover:rgba(0,212,170,0.4);
+  --accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);
+  --red:#e85d4a;--yellow:#f5c14a;
+  --ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.16,1,0.3,1);
+  --wa-ai-bg:#1e2a35;--wa-user-bg:rgba(0,212,170,0.18);
+  --stat-banner-bg:#070d16;--board-bg:#080c10;
+  --accent-hover:#00f0c4;
+}
+[data-theme="light"]{
+  --bg:#fafbfc;--surface:#ffffff;--surface-2:#f4f6f8;
+  --text:#0a1014;--text-secondary:#2a3340;--text-muted:#5a6b78;--text-fine:#8a9ba8;
+  --border:#e1e5ea;--border-hover:rgba(0,184,148,0.5);
+  --accent:#00B894;--accent-dim:rgba(0,184,148,0.10);
+  --red:#d14a37;--yellow:#d49a2a;
+  --wa-ai-bg:#e8edf2;--wa-user-bg:rgba(0,184,148,0.18);
+  --stat-banner-bg:#f0f3f5;--board-bg:#f5f7f9;
+  --accent-hover:#00d8b0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;min-height:100dvh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.05;letter-spacing:-0.02em;font-weight:800;overflow-wrap:break-word;max-width:100%;hyphens:none}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E")}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* NAV */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+[data-theme="light"] #mainNav.scrolled{background:rgba(250,251,252,0.9)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
+.logo-magna{color:var(--accent)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:ldp 2s ease-in-out infinite}
+@keyframes ldp{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:40px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.25s,background 0.25s;color:var(--text-muted)}
+.theme-toggle:hover{border-color:var(--border-hover);color:var(--text)}
+.theme-toggle svg{width:16px;height:16px;fill:currentColor}
+.icon-moon{display:block}
+.icon-sun{display:none}
+[data-theme="light"] .icon-moon{display:none}
+[data-theme="light"] .icon-sun{display:block}
+.btn-nav{display:inline-flex;align-items:center;padding:10px 20px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;border-radius:6px;transition:background 0.25s,transform 0.25s}
+.btn-nav:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s,opacity 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mob-nav.visible{opacity:1;pointer-events:all}
+.mob-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
+.mob-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);transition:color 0.2s}
+.mob-nav a:hover{color:var(--accent)}
+
+/* GENERAL */
+.section{padding:100px 0}
+.reveal{opacity:0;transform:translateY(24px)}
+.sec-label{display:block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.sec-h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:16px;max-width:680px}
+.sec-sub{font-size:17px;color:var(--text-secondary);line-height:1.65;max-width:640px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;border-radius:999px;border:none;cursor:pointer;transition:background 0.25s,box-shadow 0.25s}
+.btn-p:hover{background:var(--accent-hover);box-shadow:0 12px 32px rgba(0,212,170,0.3)}
+.btn-p:active{transform:scale(0.97)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:600;font-size:15px;border-radius:999px;border:1px solid var(--border);cursor:pointer;background:transparent;transition:border-color 0.3s,color 0.3s}
+.btn-g:hover{border-color:var(--border-hover);color:var(--accent)}
+.btn-p:focus-visible,.btn-g:focus-visible,.btn-nav:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* HERO */
+.hero{padding:140px 32px 100px;max-width:1280px;margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:55fr 45fr;gap:72px;align-items:center}
+.hero-badge{display:inline-flex;padding:6px 14px;border-radius:999px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.hero-h1{font-size:clamp(2.4rem,5vw,3.5rem);line-height:1.05;margin-bottom:24px;max-width:720px}
+.hero-sub{font-size:18px;color:var(--text-secondary);max-width:540px;line-height:1.6;margin-bottom:0}
+.hero-author{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin:20px 0 40px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+
+/* RESERVATION BOARD */
+.board-wrap{display:flex;flex-direction:column;gap:16px}
+.res-board{background:var(--board-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;font-family:'JetBrains Mono',monospace}
+.res-hdr{background:var(--surface);padding:12px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.res-hdr-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'DM Sans',sans-serif}
+.res-hdr-time{font-size:10px;color:var(--text-fine)}
+.res-row{display:grid;grid-template-columns:58px 40px 58px 1fr auto;gap:8px;padding:10px 20px;border-bottom:1px solid var(--border);align-items:center;opacity:0;animation:resRowIn 0.35s var(--ease) forwards;animation-delay:var(--d,0.1s)}
+.res-row:last-child{border-bottom:none}
+.res-row.noshow{animation:resRowIn 0.35s var(--ease) var(--d,0.1s) forwards,resFlash 0.5s ease-in-out var(--fd,1.4s) 2}
+.res-col{font-size:11px;color:var(--text-muted)}
+.res-name{font-size:12px;color:var(--text);font-weight:500}
+.res-badge{font-size:9px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.5px;white-space:nowrap;font-family:'DM Sans',sans-serif;text-transform:uppercase}
+.res-badge.confirmed{background:rgba(0,212,170,0.12);color:var(--accent)}
+.res-badge.warning{background:rgba(245,193,74,0.12);color:var(--yellow)}
+.res-badge.noshow-b{background:rgba(232,93,74,0.12);color:var(--red)}
+.res-badge.awaiting{background:rgba(90,107,120,0.1);color:var(--text-fine)}
+.res-summary{padding:12px 20px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:4px;background:rgba(232,93,74,0.04)}
+.res-sum-row{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:10px}
+.res-sum-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.res-sum-dot.red{background:var(--red)}
+.res-sum-dot.muted{background:var(--text-fine)}
+.res-sum-text.red{color:var(--red)}
+.res-sum-text.muted{color:var(--text-fine)}
+@keyframes resRowIn{to{opacity:1}}
+@keyframes resFlash{0%,100%{background:transparent}50%{background:rgba(232,93,74,0.07)}}
+
+/* CM CARD */
+.cm-card{background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.2);border-radius:14px;padding:20px 20px 16px;opacity:0;transform:translateY(10px);transition:opacity 0.5s var(--spring),transform 0.5s var(--spring)}
+.cm-card.cm-visible{opacity:1;transform:none}
+.cm-card-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;font-family:'DM Sans',sans-serif;margin-bottom:14px}
+.cm-items{display:flex;flex-direction:column;gap:8px}
+.cm-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text-secondary);line-height:1.45;font-family:'DM Sans',sans-serif}
+.cm-item-icon{flex-shrink:0;width:16px;height:16px;margin-top:1px}
+.cm-item-icon svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.board-caption{font-size:12px;color:var(--text-fine);text-align:center;line-height:1.55;margin-top:4px}
+
+/* STATS BAR */
+.stat-banner{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--stat-banner-bg);padding:64px 0}
+.stat-inner{display:grid;grid-template-columns:1fr 1fr 1fr;max-width:1280px;margin:0 auto;padding:0 32px}
+.stat-item{text-align:center;padding:0 40px;position:relative}
+.stat-item+.stat-item::before{content:'';position:absolute;left:0;top:10%;height:80%;width:1px;background:var(--border)}
+.stat-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(3rem,6vw,4.5rem);font-weight:800;line-height:1;display:block}
+.stat-line{width:40px;height:2px;background:var(--accent);margin:12px auto;opacity:0.5}
+.stat-lbl{font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.4}
+.stat-src{font-size:11px;color:var(--text-fine);margin-top:6px}
+
+/* PROBLEM SECTION — 2+1 asymmetric grid */
+.prob-grid-rest{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.prob-card-rest{background:var(--surface);border:1px solid var(--border);border-left:3px solid rgba(232,93,74,0.25);border-radius:20px;padding:36px;transition:transform 0.3s var(--spring),border-left-color 0.3s;position:relative;overflow:hidden}
+.prob-card-rest:hover{transform:translateY(-3px);border-left-color:var(--red)}
+.prob-card-rest.full{grid-column:1/-1;border-left-color:rgba(245,193,74,0.3)}
+.prob-card-rest.full:hover{border-left-color:var(--yellow)}
+.prob-card-rest.full .prob-body-rest{max-width:600px}
+.prob-icon-rest{width:44px;height:44px;border-radius:12px;background:rgba(232,93,74,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.prob-icon-rest svg{width:22px;height:22px;stroke:var(--red);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.prob-card-rest.full .prob-icon-rest{background:rgba(245,193,74,0.08)}
+.prob-card-rest.full .prob-icon-rest svg{stroke:var(--yellow)}
+.prob-title-rest{font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px;color:var(--text)}
+.prob-body-rest{font-size:14px;color:var(--text-secondary);line-height:1.65}
+.prob-stat-rest{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3vw,2.5rem);font-weight:800;color:var(--red);line-height:1;margin-top:18px}
+.prob-card-rest.full .prob-stat-rest{color:var(--yellow)}
+.prob-src-rest{font-size:11px;color:var(--text-fine);margin-top:8px}
+
+/* CALCULATOR */
+.calc-wrap{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px;margin-top:48px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.calc-sliders{display:flex;flex-direction:column;gap:32px}
+.slider-group{display:flex;flex-direction:column;gap:12px}
+.slider-header{display:flex;justify-content:space-between;align-items:baseline}
+.slider-label{font-size:14px;font-weight:500;color:var(--text-secondary)}
+.slider-val{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:500;color:var(--text)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--bg);box-shadow:0 2px 8px rgba(0,212,170,0.4);transition:transform 0.2s var(--ease)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--bg);box-shadow:0 2px 8px rgba(0,212,170,0.4)}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px rgba(0,212,170,0.3)}
+.calc-results{display:flex;flex-direction:column;gap:0}
+.calc-result-lbl{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:20px}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-secondary)}
+.calc-row:last-of-type{border-bottom:none}
+.calc-row.recovery{border-top:2px solid var(--border);padding-top:20px;margin-top:8px;border-bottom:none}
+.calc-val{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:500;color:var(--text)}
+.calc-val.big{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;color:var(--accent)}
+.calc-note{font-size:13px;color:var(--text-fine);margin-top:16px;line-height:1.5}
+
+/* SOLUTION SECTION — zigzag alternating */
+.sol-section{margin-top:56px;display:flex;flex-direction:column;gap:0}
+.sol-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:56px 0;border-bottom:1px solid var(--border)}
+.sol-row:last-child{border-bottom:none}
+.sol-row.flip .sol-visual{order:-1}
+.sol-num{display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:800;align-items:center;justify-content:center;margin-bottom:20px}
+.sol-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;margin-bottom:12px}
+.sol-desc{font-size:15px;color:var(--text-secondary);line-height:1.65;max-width:420px}
+.sol-feats{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.sol-feat{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-secondary)}
+.sol-feat svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* WA MOCKUP */
+.wa-wrap{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,212,170,0.12)}
+.wa-hdr{background:var(--surface-2);padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.wa-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--border-hover);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wa-avatar svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.wa-info{flex:1;min-width:0}
+.wa-name{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text);display:block;line-height:1.2}
+.wa-status{font-size:10px;color:var(--accent);display:block;margin-top:2px}
+.wa-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:wapulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes wapulse{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
+.wa-body{padding:16px 20px;display:flex;flex-direction:column;gap:10px;background:var(--bg);min-height:240px}
+.wa-msg{max-width:86%;padding:10px 14px;font-size:13px;line-height:1.5;border-radius:4px;position:relative}
+.wa-msg.ai{background:var(--wa-ai-bg);color:var(--text);border-radius:4px 16px 16px 4px;align-self:flex-start;opacity:0;transform:translateY(8px)}
+.wa-msg.user{background:var(--wa-user-bg);color:var(--text);border-radius:16px 4px 4px 16px;align-self:flex-end;opacity:0;transform:translateY(8px)}
+.wa-msg.show{opacity:1;transform:none;transition:opacity 0.4s var(--ease),transform 0.4s var(--ease)}
+.wa-time{font-size:10px;color:var(--text-fine);display:flex;align-items:center;gap:4px;margin-top:4px;justify-content:flex-end}
+.wa-tick{color:var(--accent)}
+.wa-btns{display:flex;flex-direction:column;gap:8px;align-self:flex-start;max-width:86%;opacity:0;transform:translateY(8px)}
+.wa-btns.show{opacity:1;transform:none;transition:opacity 0.4s var(--ease),transform 0.4s var(--ease)}
+.wa-btn{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;font-family:'Cabinet Grotesk',sans-serif;border:1px solid var(--border);background:var(--surface);color:var(--accent);cursor:pointer;text-align:center}
+.wa-btn.primary{background:var(--accent-dim);border-color:var(--border-hover)}
+.wa-ftr{background:var(--surface);padding:10px 20px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.wa-ftr-hint{font-size:11px;color:var(--text-fine)}
+
+/* WAITLIST ANIMATION */
+.wl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.wl-title-bar{background:var(--surface-2);padding:12px 20px;border-bottom:1px solid var(--border);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);font-weight:600;font-family:'DM Sans',sans-serif}
+.wl-body{padding:4px 0}
+.wl-item{display:flex;align-items:flex-start;gap:14px;padding:14px 20px;border-bottom:1px solid var(--border);opacity:0;transform:translateX(-14px);transition:opacity 0.4s var(--ease),transform 0.4s var(--ease)}
+.wl-item:last-child{border-bottom:none}
+.wl-item.wl-visible{opacity:1;transform:none}
+.wl-icon-wrap{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.wl-icon-wrap svg{width:13px;height:13px;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.wl-icon-wrap.red{background:rgba(232,93,74,0.1)}
+.wl-icon-wrap.red svg{stroke:var(--red)}
+.wl-icon-wrap.yellow{background:rgba(245,193,74,0.1)}
+.wl-icon-wrap.yellow svg{stroke:var(--yellow)}
+.wl-icon-wrap.green{background:rgba(0,212,170,0.1)}
+.wl-icon-wrap.green svg{stroke:var(--accent)}
+.wl-label{font-size:13px;color:var(--text);font-weight:500;line-height:1.35}
+.wl-time{font-size:11px;color:var(--text-fine);margin-top:3px;font-family:'JetBrains Mono',monospace}
+.wl-result{margin:0 20px 16px;padding:12px 16px;background:rgba(0,212,170,0.06);border:1px solid rgba(0,212,170,0.15);border-radius:10px;font-size:13px;color:var(--accent);font-weight:600;opacity:0;transform:translateY(6px);transition:opacity 0.4s var(--ease),transform 0.4s var(--ease)}
+.wl-result.wl-visible{opacity:1;transform:none}
+
+/* PROFILE CARD */
+.prof-wrap{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.prof-hdr{background:var(--surface-2);padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.prof-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.prof-avatar svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.prof-hdr-info{flex:1}
+.prof-hdr-name{font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--text);display:block}
+.prof-hdr-sub{font-size:11px;color:var(--text-fine);display:block;margin-top:1px}
+.prof-body{padding:20px}
+.prof-stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+.prof-stat{display:flex;flex-direction:column;gap:2px;opacity:0;transform:translateY(8px);transition:opacity 0.35s var(--ease),transform 0.35s var(--ease)}
+.prof-stat.pv{opacity:1;transform:none}
+.prof-stat-val{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:500;color:var(--text);line-height:1}
+.prof-stat-val.danger{color:var(--red)}
+.prof-stat-lbl{font-size:10px;color:var(--text-fine);letter-spacing:0.5px;text-transform:uppercase;font-weight:600;font-family:'DM Sans',sans-serif}
+.prof-bar-wrap{margin-bottom:16px;opacity:0;transition:opacity 0.4s var(--ease) 0.5s}
+.prof-bar-wrap.pv{opacity:1}
+.prof-bar-lbl{font-size:11px;color:var(--text-fine);margin-bottom:6px;display:flex;justify-content:space-between}
+.prof-bar-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.prof-bar-fill{height:100%;border-radius:3px;background:var(--red);width:0;transition:width 0.8s var(--spring) 0.6s}
+.prof-bar-fill.pv{width:60%}
+.prof-flag{display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(232,93,74,0.06);border:1px solid rgba(232,93,74,0.15);border-radius:10px;font-size:13px;color:var(--red);font-weight:500;opacity:0;transform:translateY(6px);transition:opacity 0.4s var(--ease) 0.9s,transform 0.4s var(--ease) 0.9s}
+.prof-flag.pv{opacity:1;transform:none}
+.prof-flag svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* HOW IT WORKS — 3-step horizontal */
+.hiw-steps{display:grid;grid-template-columns:1fr 1fr 1fr;position:relative;margin-top:56px}
+.hiw-steps::before{content:'';position:absolute;top:23px;left:calc(100%/6);width:calc(100%*2/3);height:1px;background:var(--border);pointer-events:none}
+.hiw-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 32px;position:relative;z-index:1}
+.hiw-step-inner{display:flex;flex-direction:column;align-items:center;padding-top:8px}
+.hiw-num{width:48px;height:48px;border-radius:50%;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;z-index:1}
+.hiw-icon-box{width:52px;height:52px;border-radius:14px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.hiw-icon-box svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.hiw-title{font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px}
+.hiw-desc{font-size:14px;color:var(--text-secondary);line-height:1.6;max-width:280px}
+
+/* QUOTE BLOCK */
+.quote-block{padding:80px 0;text-align:center}
+.quote-inner{max-width:780px;margin:0 auto}
+.quote-mark{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:500;color:var(--text-secondary);line-height:1.6;font-style:italic;border-left:3px solid var(--accent);padding-left:28px;text-align:left}
+.quote-src{font-size:12px;color:var(--text-fine);margin-top:16px;letter-spacing:1px;text-align:left;padding-left:31px}
+
+/* PRICING */
+.pricing-wrap{display:flex;justify-content:center;margin-top:48px}
+.pc-single{background:var(--surface);border:1px solid var(--accent);border-radius:24px;padding:40px 36px;width:100%;max-width:480px;transition:transform 0.3s var(--spring),box-shadow 0.3s}
+.pc-single:hover{transform:translateY(-4px);box-shadow:0 30px 80px -20px rgba(0,212,170,0.2)}
+.p-tier{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-fine);margin-bottom:12px}
+.p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:26px;font-weight:800;margin-bottom:20px}
+.p-slbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:6px}
+.p-price{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3vw,3rem);font-weight:800;line-height:1}
+.p-sub{font-size:15px;color:var(--text-secondary);margin-top:8px;margin-bottom:24px}
+.p-div{height:1px;background:var(--border);margin:24px 0}
+.p-wlbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:16px}
+.p-items{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.p-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.45}
+.p-item svg{flex-shrink:0;margin-top:2px;stroke:var(--accent);fill:none;stroke-width:2;width:15px;height:15px;stroke-linecap:round;stroke-linejoin:round}
+.btn-pf{display:block;width:100%;padding:16px;text-align:center;background:var(--accent);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--bg);transition:background 0.25s,transform 0.25s;border:none;cursor:pointer}
+.btn-pf:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-pf:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.p-note{font-size:12px;color:var(--text-fine);text-align:center;margin-top:16px;line-height:1.55}
+
+/* FOOTER */
+footer{padding:80px 0 48px;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:80px}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--text-secondary);max-width:220px;line-height:1.65}
+.footer-col h4{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,244,243,.35);margin-bottom:24px}
+[data-theme="light"] .footer-col h4{color:rgba(10,16,20,0.4)}
+.footer-col ul{display:flex;flex-direction:column;gap:8px}
+.footer-col a{font-size:13px;color:var(--text-secondary);transition:color 0.2s}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:16px;margin-top:24px}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s,background 0.25s}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--text-secondary);transition:fill 0.25s}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
+[data-theme="light"] .footer-bottom p{color:rgba(10,16,20,0.3)}
+
+/* RESPONSIVE */
+@media(max-width:1023px){
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .hiw-steps{grid-template-columns:1fr;gap:48px}
+  .hiw-steps::before{display:none}
+  .hiw-step{align-items:flex-start;text-align:left;padding:0}
+  .hiw-step-inner{align-items:flex-start}
+}
+@media(max-width:767px){
+  .nav-links,.btn-nav,.theme-toggle{display:none}
+  .hamburger{display:flex}
+  .hero{padding:100px 20px 64px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-h1{font-size:clamp(2rem,8vw,2.8rem)}
+  .container{padding:0 20px}
+  .stat-inner{grid-template-columns:1fr;gap:40px;padding:0 20px}
+  .stat-item+.stat-item::before{display:none}
+  .prob-grid-rest{grid-template-columns:1fr}
+  .prob-card-rest.full{grid-column:auto}
+  .calc-wrap{padding:28px 24px}
+  .sol-section{gap:0}
+  .sol-row{grid-template-columns:1fr;gap:36px;padding:40px 0}
+  .sol-row.flip .sol-visual{order:0}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+  .nav-inner{padding:0 20px}
+  .section{padding:64px 0}
+  .wa-wrap{max-width:100%}
+  .hero-ctas{flex-direction:column}
+  .btn-p,.btn-g{justify-content:center;width:100%}
+  .board-wrap{max-width:100%;overflow-x:auto}
+  .res-board{min-width:380px}
+}
+@media(max-width:479px){
+  .res-board{min-width:340px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .reveal{opacity:1 !important;transform:none !important}
+  .wa-msg,.wa-btns{opacity:1 !important;transform:none !important}
+  .res-row{opacity:1 !important;animation:none !important}
+  .cm-card{opacity:1 !important;transform:none !important}
+  .wl-item{opacity:1 !important;transform:none !important}
+  .wl-result{opacity:1 !important;transform:none !important}
+  .prof-stat,.prof-bar-wrap,.prof-flag{opacity:1 !important;transform:none !important}
+  .prof-bar-fill{width:60% !important;transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo" aria-label="Coremagna home">
+      <span>Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/demo.html">Demo</a></li>
+      <li><a href="/index.html#services">Services</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/index.html#services">Services</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- S1: HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="hero-badge">Reservation Automation</span>
+      <h1 class="hero-h1 reveal">Empty Tables. Full Kitchen. Zero Profit.</h1>
+      <p class="hero-sub reveal">UK restaurants lose up to &#163;16 billion a year to no-shows. Your kitchen preps the food, your team sets the table, your walk-ins get turned away &#8212; and the guest never shows up. On a 3% margin, every empty cover hurts.</p>
+      <p class="hero-author reveal">By Ferit Patefe &#8212; Founder of Coremagna</p>
+      <div class="hero-ctas reveal">
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-p" data-magnetic>
+          Book a free call
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn-g">See how it works &#8595;</a>
+      </div>
+    </div>
+    <div>
+      <div class="board-wrap">
+        <div class="res-board" id="resBoard">
+          <div class="res-hdr">
+            <span class="res-hdr-label">Tonight&#8217;s Reservations</span>
+            <span class="res-hdr-time">Saturday &#183; 8:15 PM</span>
+          </div>
+          <div class="res-row" style="--d:0.15s">
+            <span class="res-col">Table 4</span>
+            <span class="res-col">2 pax</span>
+            <span class="res-col">7:00 PM</span>
+            <span class="res-name">Williams</span>
+            <span class="res-badge confirmed">Confirmed</span>
+          </div>
+          <div class="res-row" style="--d:0.3s">
+            <span class="res-col">Table 7</span>
+            <span class="res-col">4 pax</span>
+            <span class="res-col">7:30 PM</span>
+            <span class="res-name">Chen</span>
+            <span class="res-badge confirmed">Confirmed</span>
+          </div>
+          <div class="res-row" style="--d:0.45s">
+            <span class="res-col">Table 2</span>
+            <span class="res-col">6 pax</span>
+            <span class="res-col">8:00 PM</span>
+            <span class="res-name">Parker</span>
+            <span class="res-badge warning">No response</span>
+          </div>
+          <div class="res-row noshow" style="--d:0.6s;--fd:1.3s">
+            <span class="res-col">Table 9</span>
+            <span class="res-col">2 pax</span>
+            <span class="res-col">8:00 PM</span>
+            <span class="res-name">Morrison</span>
+            <span class="res-badge noshow-b">No-show</span>
+          </div>
+          <div class="res-row noshow" style="--d:0.75s;--fd:1.5s">
+            <span class="res-col">Table 5</span>
+            <span class="res-col">4 pax</span>
+            <span class="res-col">8:30 PM</span>
+            <span class="res-name">Hughes</span>
+            <span class="res-badge noshow-b">No-show</span>
+          </div>
+          <div class="res-row" style="--d:0.9s">
+            <span class="res-col">Table 11</span>
+            <span class="res-col">3 pax</span>
+            <span class="res-col">9:00 PM</span>
+            <span class="res-name">Patel</span>
+            <span class="res-badge awaiting">Awaiting</span>
+          </div>
+          <div class="res-summary">
+            <div class="res-sum-row">
+              <span class="res-sum-dot red" aria-hidden="true"></span>
+              <span class="res-sum-text red">No-shows tonight: 2 tables (6 covers)</span>
+            </div>
+            <div class="res-sum-row">
+              <span class="res-sum-dot red" aria-hidden="true"></span>
+              <span class="res-sum-text red">Lost revenue estimate: &#163;450 &#183; 4 walk-ins turned away</span>
+            </div>
+          </div>
+        </div>
+        <div class="cm-card" id="cmCard">
+          <div class="cm-card-title">With Coremagna &#8212; same night</div>
+          <div class="cm-items">
+            <div class="cm-item">
+              <span class="cm-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              AI sent reminders to all 6 bookings at 24h and 2h
+            </div>
+            <div class="cm-item">
+              <span class="cm-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Morrison confirmed via WhatsApp at 5:30 PM
+            </div>
+            <div class="cm-item">
+              <span class="cm-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Hughes cancelled at 4 PM &#8594; waitlist guest filled the slot in 8 minutes
+            </div>
+            <div class="cm-item">
+              <span class="cm-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <strong>Tonight&#8217;s no-shows: 0</strong>
+            </div>
+          </div>
+        </div>
+        <p class="board-caption">Same restaurant. Same Saturday. The only difference: automated confirmations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S2: STATS BAR -->
+<div class="stat-banner">
+  <div class="stat-inner">
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s1" style="color:var(--red)">&#163;16B</span>
+      <div class="stat-line" style="background:var(--red)"></div>
+      <p class="stat-lbl">lost to no-shows across UK hospitality every year</p>
+      <p class="stat-src">Source: ResDiary, 2025</p>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s2" style="color:var(--yellow)">2&#8211;4</span>
+      <div class="stat-line" style="background:var(--yellow)"></div>
+      <p class="stat-lbl">covers lost per night on average to no-shows</p>
+      <p class="stat-src">Source: Hostie AI, 2025</p>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" id="s3">0%</span>
+      <div class="stat-line"></div>
+      <p class="stat-lbl">reduction in no-shows with WhatsApp reminders</p>
+      <p class="stat-src">Source: SchedulingKit, 2026</p>
+    </div>
+  </div>
+</div>
+
+<!-- S3: PROBLEM SECTION -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">The Problem</span>
+    <h2 class="sec-h2 reveal">It&#8217;s Not Just the Table. It&#8217;s Everything Behind It.</h2>
+    <p class="sec-sub reveal">You&#8217;re running on 3&#8211;5% net margins. Every no-show isn&#8217;t just a missed cover &#8212; it&#8217;s wasted food, idle staff, and a walk-in you turned away for a guest who never walked through the door.</p>
+    <div class="prob-grid-rest">
+      <!-- Card 1 -->
+      <div class="prob-card-rest reveal">
+        <div class="prob-icon-rest">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="prob-title-rest">The Direct Hit: Lost Revenue</h3>
+        <p class="prob-body-rest">A 4-top no-show at &#163;75 per head is &#163;300 gone instantly. That&#8217;s not a rounding error &#8212; it happens 2&#8211;4 times per night in busy restaurants. Over a month, that&#8217;s &#163;18,000&#8211;&#163;36,000 in covers that never materialised.</p>
+        <div class="prob-stat-rest">&#163;300</div>
+        <p class="prob-src-rest">per 4-top no-show at &#163;75/person. Source: Hostie AI, 2025</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="prob-card-rest reveal">
+        <div class="prob-icon-rest">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        </div>
+        <h3 class="prob-title-rest">The Hidden Cost: Wasted Food &amp; Labour</h3>
+        <p class="prob-body-rest">Your kitchen prepped 6 covers that nobody ate. Staff stood around an empty section for two hours. You already lose 6% of total sales to food waste &#8212; no-shows push that figure higher every weekend.</p>
+        <div class="prob-stat-rest">6%</div>
+        <p class="prob-src-rest">of restaurant sales lost through food waste, much from no-shows. Source: Restroworks, 2026</p>
+      </div>
+      <!-- Card 3 — full width -->
+      <div class="prob-card-rest full reveal">
+        <div class="prob-icon-rest">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="prob-title-rest">The Worst Part: Turned-Away Walk-Ins</h3>
+        <p class="prob-body-rest">While those two tables sat empty, four walk-ins were told &#8220;Sorry, we&#8217;re fully booked tonight.&#8221; They went to the restaurant next door. You lost the no-show revenue and the walk-in revenue. Twice the loss from one failure to confirm.</p>
+        <div class="prob-stat-rest">&#215;2 Loss</div>
+        <p class="prob-src-rest">the guest who didn&#8217;t come, plus the guest you turned away. Both gone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4: REVENUE CALCULATOR -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <span class="sec-label reveal">Revenue Calculator</span>
+    <h2 class="sec-h2 reveal">What No-Shows Cost Your Restaurant</h2>
+    <p class="sec-sub reveal">Move the sliders to match your service. Watch the numbers update in real time.</p>
+    <div class="calc-wrap reveal">
+      <div class="calc-grid">
+        <div class="calc-sliders">
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="coversSlider">Covers per evening service</label>
+              <span class="slider-val" id="coversDisplay">60</span>
+            </div>
+            <input type="range" id="coversSlider" min="30" max="120" value="60" step="5" aria-label="Covers per evening service">
+          </div>
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="spendSlider">Average spend per cover</label>
+              <span class="slider-val" id="spendDisplay">&#163;50</span>
+            </div>
+            <input type="range" id="spendSlider" min="25" max="100" value="50" step="5" aria-label="Average spend per cover in pounds">
+          </div>
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="rateSlider">Your no-show rate</label>
+              <span class="slider-val" id="rateDisplay">12%</span>
+            </div>
+            <input type="range" id="rateSlider" min="5" max="25" value="12" step="1" aria-label="No-show rate percentage">
+          </div>
+          <p style="font-size:13px;color:var(--text-fine);line-height:1.55;margin-top:8px">Restaurants using automated reminders reduce no-shows to under 5%. That&#8217;s the recovery estimate below.</p>
+        </div>
+        <div class="calc-results">
+          <span class="calc-result-lbl">Your current losses</span>
+          <div class="calc-row">
+            <span>Lost covers per night</span>
+            <span class="calc-val" id="calcCoversLost">7</span>
+          </div>
+          <div class="calc-row">
+            <span>Lost revenue per night</span>
+            <span class="calc-val" id="calcDailyLoss">&#163;360</span>
+          </div>
+          <div class="calc-row">
+            <span>Monthly loss</span>
+            <span class="calc-val" id="calcMonthlyLoss">&#163;9,360</span>
+          </div>
+          <div class="calc-row">
+            <span>Yearly loss</span>
+            <span class="calc-val" id="calcYearlyLoss">&#163;112,320</span>
+          </div>
+          <div class="calc-row recovery">
+            <div>
+              <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--text)">Monthly recovery estimate</div>
+              <div style="font-size:12px;color:var(--text-fine);margin-top:3px">After automation (5% no-show baseline)</div>
+            </div>
+            <span class="calc-val big" id="calcRecovery">&#163;7,020</span>
+          </div>
+          <p class="calc-note" id="calcNote">That&#8217;s approximately 35 months of system cost recovered in your first month.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: SOLUTION SECTION -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <span class="sec-label reveal">How We Fix It</span>
+    <h2 class="sec-h2 reveal">Your Guests Confirmed. Your Waitlist Active. Your Kitchen Never Wastes a Cover.</h2>
+    <p class="sec-sub reveal">Three systems running silently in the background. Set up once in 7 days. Zero staff involvement after that.</p>
+    <div class="sol-section">
+
+      <!-- Sol 1: WhatsApp Reminders — text left, WA right -->
+      <div class="sol-row reveal">
+        <div class="sol-content">
+          <div class="sol-num" aria-hidden="true">1</div>
+          <h3 class="sol-title">Smart Reservation Reminders</h3>
+          <p class="sol-desc">AI sends a WhatsApp message 24 hours before the booking: &#8220;Can you make it?&#8221; The guest confirms with one tap. No reply? A same-day reminder follows at 2 hours. Still nothing? The table is flagged automatically.</p>
+          <div class="sol-feats">
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              24-hour and 2-hour confirmation sequence
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              WhatsApp (98% open rate) and SMS fallback
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              One-tap confirm or cancel &#8212; no login required
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              No-response flagged automatically for your team
+            </div>
+          </div>
+        </div>
+        <div class="sol-visual">
+          <div class="wa-wrap">
+            <div class="wa-hdr">
+              <div class="wa-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="wa-info">
+                <span class="wa-name">The Olive Tree &#183; AI Reservations</span>
+                <span class="wa-status">24h Reminder &#183; Automated</span>
+              </div>
+              <div class="wa-dot" aria-hidden="true"></div>
+            </div>
+            <div class="wa-body" id="solChat">
+              <!-- Messages injected by JS -->
+            </div>
+            <div class="wa-ftr">
+              <span class="wa-ftr-hint">Sent automatically &#8212; no staff needed</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sol 2: Waitlist Auto-Fill — animation left, text right -->
+      <div class="sol-row flip reveal">
+        <div class="sol-content">
+          <div class="sol-num" aria-hidden="true">2</div>
+          <h3 class="sol-title">Waitlist Auto-Fill</h3>
+          <p class="sol-desc">The moment a guest cancels, your waitlist is notified automatically. First to confirm gets the table. The slot is filled before you notice it was empty &#8212; no phone calls, no manual chasing.</p>
+          <div class="sol-feats">
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Cancellation triggers instant waitlist notification
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              First to confirm secures the slot
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Average fill time: under 10 minutes
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Zero staff involvement required
+            </div>
+          </div>
+        </div>
+        <div class="sol-visual">
+          <div class="wl-wrap" id="wlWrap">
+            <div class="wl-title-bar">Slot Fill &#8212; Live Event Log</div>
+            <div class="wl-body">
+              <div class="wl-item" id="wl1">
+                <div class="wl-icon-wrap red" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </div>
+                <div>
+                  <div class="wl-label">Parker (6 pax) &#8212; Table 2, 8:00 PM cancelled</div>
+                  <div class="wl-time">4:12 PM</div>
+                </div>
+              </div>
+              <div class="wl-item" id="wl2">
+                <div class="wl-icon-wrap yellow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                <div>
+                  <div class="wl-label">Waitlist notified &#8212; 8 guests contacted</div>
+                  <div class="wl-time">4:12 PM</div>
+                </div>
+              </div>
+              <div class="wl-item" id="wl3">
+                <div class="wl-icon-wrap green" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <div class="wl-label">Johnson (4 pax) confirmed via WhatsApp</div>
+                  <div class="wl-time">4:19 PM</div>
+                </div>
+              </div>
+            </div>
+            <div class="wl-result" id="wlResult">Table filled in 7 minutes. Zero staff involvement.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sol 3: No-Show Tracking — text left, profile card right -->
+      <div class="sol-row reveal">
+        <div class="sol-content">
+          <div class="sol-num" aria-hidden="true">3</div>
+          <h3 class="sol-title">No-Show Tracking &amp; Flagging</h3>
+          <p class="sol-desc">Every no-show is logged against the guest&#8217;s profile automatically. Repeat offenders are flagged &#8212; with the option to require a deposit for future bookings. Protect your revenue without penalising your best guests.</p>
+          <div class="sol-feats">
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Every no-show logged per guest, automatically
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Repeat offenders flagged after configurable threshold
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Optional deposit requirement for high-risk guests
+            </div>
+            <div class="sol-feat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Daily summary report with yesterday&#8217;s data
+            </div>
+          </div>
+        </div>
+        <div class="sol-visual">
+          <div class="prof-wrap" id="profWrap">
+            <div class="prof-hdr">
+              <div class="prof-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="prof-hdr-info">
+                <span class="prof-hdr-name">Morrison, D.</span>
+                <span class="prof-hdr-sub">Guest profile &#183; Coremagna CRM</span>
+              </div>
+            </div>
+            <div class="prof-body">
+              <div class="prof-stats-row">
+                <div class="prof-stat" id="ps1">
+                  <span class="prof-stat-val">5</span>
+                  <span class="prof-stat-lbl">Bookings</span>
+                </div>
+                <div class="prof-stat" id="ps2">
+                  <span class="prof-stat-val danger">3</span>
+                  <span class="prof-stat-lbl">No-shows</span>
+                </div>
+                <div class="prof-stat" id="ps3">
+                  <span class="prof-stat-val danger">60%</span>
+                  <span class="prof-stat-lbl">No-show rate</span>
+                </div>
+              </div>
+              <div class="prof-bar-wrap" id="profBar">
+                <div class="prof-bar-lbl">
+                  <span>No-show rate</span>
+                  <span style="color:var(--red)">60%</span>
+                </div>
+                <div class="prof-bar-track">
+                  <div class="prof-bar-fill" id="profBarFill"></div>
+                </div>
+              </div>
+              <div class="prof-flag" id="profFlag">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                High-risk guest &#8212; deposit required for next booking
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- S6: HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <span class="sec-label reveal">How It Works</span>
+    <h2 class="sec-h2 reveal">Three Steps. Zero Staff. Every Night.</h2>
+    <p class="sec-sub reveal">Set up in 7 days. After that, the system runs silently every service. You see the results in your booking summary each morning.</p>
+    <div class="hiw-steps">
+      <div class="hiw-step reveal">
+        <div class="hiw-step-inner">
+          <div class="hiw-num" aria-hidden="true">1</div>
+          <div class="hiw-icon-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="hiw-title">Guest Books</h3>
+          <p class="hiw-desc">Online, by phone, or walk-in. The moment a reservation is created, the confirmation sequence starts automatically.</p>
+        </div>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-step-inner">
+          <div class="hiw-num" aria-hidden="true">2</div>
+          <div class="hiw-icon-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 class="hiw-title">AI Confirms</h3>
+          <p class="hiw-desc">24 hours before: &#8220;Can you make it?&#8221; 2 hours before: &#8220;See you tonight.&#8221; No reply? Waitlist activated. All automatic.</p>
+        </div>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-step-inner">
+          <div class="hiw-num" aria-hidden="true">3</div>
+          <div class="hiw-icon-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="hiw-title">Table Filled</h3>
+          <p class="hiw-desc">Confirmed guest arrives. Cancellations get replaced from the waitlist. Your kitchen preps the right number of covers every night.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: QUOTE BLOCK -->
+<section class="quote-block">
+  <div class="container">
+    <div class="quote-inner">
+      <blockquote class="quote-mark reveal">
+        We had a 15% no-show rate on weekends. Within two months of automated confirmations, it dropped under 5%. That&#8217;s 10 extra covers every Saturday night &#8212; roughly &#163;3,000 a month we were just leaving on the table.
+      </blockquote>
+      <p class="quote-src reveal">Restaurant manager case study &#183; SMSTools, 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- S8: PRICING -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <span class="sec-label reveal">Pricing</span>
+    <h2 class="sec-h2 reveal">One Plan. Designed for Restaurants. Ready in 7 Days</h2>
+    <p class="sec-sub reveal">Everything you need to stop losing revenue to no-shows &#8212; configured and live within a week.</p>
+    <div class="pricing-wrap">
+      <div class="pc-single reveal">
+        <span class="p-tier">Starter Plan</span>
+        <h3 class="p-title">Starter</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$697 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+ $197/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automated reservation reminders (WhatsApp + SMS)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>24-hour and 2-hour confirmation sequence</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>One-tap guest confirmation and cancellation</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Waitlist auto-fill on cancellations</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>No-show tracking per guest profile</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Repeat offender flagging and deposit option</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Daily reservation summary report</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>7-day live setup</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>30-day support included</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf">Get Started with Starter &#8594;</a>
+        <p class="p-note">14-day money-back guarantee.<br>One recovered 4-top per week pays for six months of the system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for service businesses.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries.html#law-firms">Law Firms</a></li>
+          <li><a href="/industries.html#real-estate">Real Estate</a></li>
+          <li><a href="/industries.html#clinics">Clinics</a></li>
+          <li><a href="/industries.html#beauty">Beauty Salons</a></li>
+          <li><a href="/industries.html#restaurants">Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/demo.html">Demo</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Coremagna. All rights reserved.</p>
+      <p>AI Automation &#183; CRM Systems &#183; Chatbots</p>
+    </div>
+  </div>
+</footer>
+
+<script defer>
+(function(){
+'use strict';
+var rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* --- NAV --- */
+var nav = document.getElementById('mainNav');
+var hbg = document.getElementById('hamburger');
+var mob = document.getElementById('mobNav');
+var navOpen = false;
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+hbg.addEventListener('click', function(){
+  navOpen = !navOpen;
+  hbg.classList.toggle('open', navOpen);
+  hbg.setAttribute('aria-expanded', navOpen);
+  mob.setAttribute('aria-hidden', !navOpen);
+  mob.classList.toggle('visible', navOpen);
+  document.body.style.overflow = navOpen ? 'hidden' : '';
+});
+mob.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    navOpen = false;
+    hbg.classList.remove('open');
+    hbg.setAttribute('aria-expanded','false');
+    mob.setAttribute('aria-hidden','true');
+    mob.classList.remove('visible');
+    document.body.style.overflow = '';
+  });
+});
+
+/* --- THEME TOGGLE --- */
+var tt = document.getElementById('themeToggle');
+var savedTheme = localStorage.getItem('theme');
+if(savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+tt.addEventListener('click', function(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  var next = cur === 'light' ? 'dark' : 'light';
+  if(next === 'dark') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+/* --- RESERVATION BOARD CM CARD --- */
+var cmCard = document.getElementById('cmCard');
+if(rm){
+  if(cmCard) cmCard.classList.add('cm-visible');
+} else {
+  setTimeout(function(){ if(cmCard) cmCard.classList.add('cm-visible'); }, 1800);
+}
+
+/* --- CALCULATOR --- */
+var coversSlider = document.getElementById('coversSlider');
+var spendSlider  = document.getElementById('spendSlider');
+var rateSlider   = document.getElementById('rateSlider');
+var coversDisplay = document.getElementById('coversDisplay');
+var spendDisplay  = document.getElementById('spendDisplay');
+var rateDisplay   = document.getElementById('rateDisplay');
+var calcCoversLost = document.getElementById('calcCoversLost');
+var calcDailyLoss  = document.getElementById('calcDailyLoss');
+var calcMonthlyLoss= document.getElementById('calcMonthlyLoss');
+var calcYearlyLoss = document.getElementById('calcYearlyLoss');
+var calcRecovery   = document.getElementById('calcRecovery');
+var calcNote       = document.getElementById('calcNote');
+
+function fmtGBP(n){ return '£' + n.toLocaleString('en-GB'); }
+
+function updateCalc(){
+  var covers = parseInt(coversSlider.value);
+  var spend  = parseInt(spendSlider.value);
+  var rate   = parseInt(rateSlider.value) / 100;
+
+  coversDisplay.textContent = covers;
+  spendDisplay.textContent  = '£' + spend;
+  rateDisplay.textContent   = rateSlider.value + '%';
+
+  var lostCovers = Math.round(covers * rate);
+  var daily      = Math.round(covers * rate * spend);
+  var monthly    = Math.round(daily * 26);
+  var yearly     = Math.round(monthly * 12);
+  var recovRate  = Math.max(0, rate - 0.05);
+  var recovery   = Math.round(covers * recovRate * spend * 26);
+
+  calcCoversLost.textContent  = lostCovers;
+  calcDailyLoss.textContent   = fmtGBP(daily);
+  calcMonthlyLoss.textContent = fmtGBP(monthly);
+  calcYearlyLoss.textContent  = fmtGBP(yearly);
+  calcRecovery.textContent    = fmtGBP(recovery);
+
+  /* system cost roughly $197/month ~ £157 */
+  var sysMonths = recovery > 0 ? Math.round(recovery / 157) : 0;
+  calcNote.textContent = sysMonths > 0
+    ? 'That’s approximately ' + sysMonths + ' months of system cost recovered in your first month.'
+    : 'Reduce your no-show rate to see your recovery estimate.';
+
+  [coversSlider, spendSlider, rateSlider].forEach(function(sl){
+    var min = +sl.min, max = +sl.max, cur = +sl.value;
+    var pct = ((cur - min) / (max - min)) * 100;
+    sl.style.background = 'linear-gradient(to right, var(--accent) ' + pct + '%, var(--border) ' + pct + '%)';
+  });
+}
+coversSlider.addEventListener('input', updateCalc);
+spendSlider.addEventListener('input', updateCalc);
+rateSlider.addEventListener('input', updateCalc);
+updateCalc();
+
+/* --- SOLUTION CARD 1: WHATSAPP CHAT --- */
+var solMsgs = [
+  {t:'ai', s:'Hi Sarah, just confirming your table for 4 at The Olive Tree tomorrow at 7:30 PM. Can you make it?'},
+  {t:'btns', btns:['Yes, we’ll be there ✓','Need to cancel']},
+  {t:'user', s:'Yes, we’ll be there ✓'},
+  {t:'ai', s:'Lovely! We’ll see you tomorrow. If anything changes, just text us and we’ll sort it out.'}
+];
+var scb = document.getElementById('solChat');
+var solAnimated = false;
+
+function mkMsg(type, text){
+  var d = document.createElement('div');
+  d.className = 'wa-msg ' + type;
+  var p = document.createElement('span');
+  p.textContent = text;
+  d.appendChild(p);
+  var t = document.createElement('div');
+  t.className = 'wa-time';
+  t.innerHTML = '10:24' + (type === 'user' ? ' <span class="wa-tick">✓✓</span>' : '');
+  d.appendChild(t);
+  return d;
+}
+function mkBtns(btns){
+  var w = document.createElement('div');
+  w.className = 'wa-btns';
+  btns.forEach(function(b, i){
+    var btn = document.createElement('div');
+    btn.className = 'wa-btn' + (i === 0 ? ' primary' : '');
+    btn.textContent = b;
+    w.appendChild(btn);
+  });
+  return w;
+}
+function showSolMsg(i){
+  if(i >= solMsgs.length) return;
+  var m = solMsgs[i];
+  var el = m.t === 'btns' ? mkBtns(m.btns) : mkMsg(m.t, m.s);
+  if(rm){ el.classList.add('show'); scb.appendChild(el); scb.scrollTop = scb.scrollHeight; showSolMsg(i+1); return; }
+  scb.appendChild(el);
+  scb.scrollTop = scb.scrollHeight;
+  requestAnimationFrame(function(){
+    setTimeout(function(){
+      el.classList.add('show');
+      scb.scrollTop = scb.scrollHeight;
+      setTimeout(function(){ showSolMsg(i+1); }, m.t === 'ai' ? 1100 : 700);
+    }, 50);
+  });
+}
+var solChatEl = document.querySelector('#solChat');
+if(solChatEl){
+  var solIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !solAnimated){
+        solAnimated = true;
+        setTimeout(function(){ showSolMsg(0); }, 500);
+        solIO.unobserve(solChatEl);
+      }
+    });
+  }, {threshold:0.3});
+  solIO.observe(solChatEl);
+}
+
+/* --- SOLUTION CARD 2: WAITLIST ANIMATION --- */
+var wlWrap = document.getElementById('wlWrap');
+var wlAnimated = false;
+if(wlWrap){
+  var wlIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !wlAnimated){
+        wlAnimated = true;
+        var items = [
+          document.getElementById('wl1'),
+          document.getElementById('wl2'),
+          document.getElementById('wl3'),
+          document.getElementById('wlResult')
+        ];
+        items.forEach(function(item, i){
+          if(!item) return;
+          setTimeout(function(){ item.classList.add('wl-visible'); }, i * 650);
+        });
+        wlIO.unobserve(wlWrap);
+      }
+    });
+  }, {threshold:0.3});
+  if(!rm) wlIO.observe(wlWrap);
+  else {
+    ['wl1','wl2','wl3','wlResult'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.add('wl-visible');
+    });
+  }
+}
+
+/* --- SOLUTION CARD 3: PROFILE CARD ANIMATION --- */
+var profWrap = document.getElementById('profWrap');
+var profAnimated = false;
+if(profWrap){
+  var profIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !profAnimated){
+        profAnimated = true;
+        var seqs = [
+          {id:'ps1', delay:100},
+          {id:'ps2', delay:250},
+          {id:'ps3', delay:400},
+          {id:'profBar', delay:550},
+          {id:'profBarFill', delay:650, cls:'pv'},
+          {id:'profFlag', delay:950}
+        ];
+        seqs.forEach(function(s){
+          setTimeout(function(){
+            var el = document.getElementById(s.id);
+            if(el) el.classList.add(s.cls || 'pv');
+          }, s.delay);
+        });
+        profIO.unobserve(profWrap);
+      }
+    });
+  }, {threshold:0.3});
+  if(!rm) profIO.observe(profWrap);
+  else {
+    ['ps1','ps2','ps3','profBar','profBarFill','profFlag'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.add('pv');
+    });
+  }
+}
+
+/* --- GSAP SCROLL ANIMATIONS --- */
+window.addEventListener('load', function(){
+  if(rm || typeof gsap === 'undefined'){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+    var s3 = document.getElementById('s3');
+    if(s3) s3.textContent = '52%';
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('.reveal').forEach(function(el){
+    gsap.fromTo(el,
+      {y:24, opacity:0},
+      {y:0, opacity:1, duration:0.8, ease:'power3.out',
+       scrollTrigger:{trigger:el, start:'top 88%', once:true}}
+    );
+  });
+
+  function cu(id, target, pfx, sfx){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var obj = {v:0};
+    gsap.to(obj, {v:target, duration:1.6, ease:'power2.out',
+      onUpdate:function(){ el.textContent = pfx + Math.round(obj.v) + sfx; },
+      scrollTrigger:{trigger:el, start:'top 85%', once:true}
+    });
+  }
+  cu('s3', 52, '', '%');
+
+  /* HOW IT WORKS horizontal stagger */
+  var hiwSteps = document.querySelectorAll('.hiw-step.reveal');
+  if(hiwSteps.length){
+    hiwSteps.forEach(function(el, i){
+      gsap.fromTo(el,
+        {y:32, opacity:0},
+        {y:0, opacity:1, duration:0.7, ease:'power3.out', delay:i*0.12,
+         scrollTrigger:{trigger:'.hiw-steps', start:'top 85%', once:true}}
+      );
+    });
+  }
+
+  /* Magnetic buttons */
+  document.querySelectorAll('[data-magnetic]').forEach(function(btn){
+    var raf = null;
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var x = Math.max(-8, Math.min(8, (e.clientX - r.left - r.width/2) * 0.3));
+      var y = Math.max(-8, Math.min(8, (e.clientY - r.top - r.height/2) * 0.3));
+      if(raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function(){ btn.style.transform = 'translate('+x+'px,'+y+'px)'; });
+    });
+    btn.addEventListener('mouseleave', function(){
+      if(raf) cancelAnimationFrame(raf);
+      btn.style.transform = '';
+    });
+  });
+});
+})();
+</script>
+</body>
+</html>

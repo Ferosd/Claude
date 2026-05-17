@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bad Reviews, Good Food | Restaurant Reputation Automation | Coremagna</title>
+<meta name="description" content="Your food is great but your Google rating doesn't show it. Automated review requests, AI review responses, and Google listing optimisation that turn happy diners into 5-star reviews.">
+<meta property="og:title" content="Your Food Deserves Better Stars | Coremagna">
+<meta property="og:description" content="94% of diners choose restaurants based on online reviews. Automated reputation management turns great meals into great ratings — and great ratings into more covers.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<style>
+:root{
+  --bg:#060a0e;--surface:#0d1117;--surface-2:#111920;
+  --text:#F0F4F3;--text-secondary:#c0ccd8;--text-muted:#8a9ba8;--text-fine:#5a6b78;
+  --border:#1a2530;--border-hover:rgba(0,212,170,0.4);
+  --accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);
+  --red:#e85d4a;--red-dim:rgba(232,93,74,0.12);--yellow:#f5c14a;
+  --ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.16,1,0.3,1);
+  --accent-hover:#00f0c4;--stat-banner-bg:#070d16;
+}
+[data-theme="light"]{
+  --bg:#fafbfc;--surface:#ffffff;--surface-2:#f4f6f8;
+  --text:#0a1014;--text-secondary:#2a3340;--text-muted:#5a6b78;--text-fine:#8a9ba8;
+  --border:#e1e5ea;--border-hover:rgba(0,184,148,0.5);
+  --accent:#00B894;--accent-dim:rgba(0,184,148,0.10);
+  --red:#d14a37;--red-dim:rgba(209,74,55,0.10);--yellow:#d49a2a;
+  --accent-hover:#00d8b0;--stat-banner-bg:#f0f3f5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;min-height:100dvh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.05;letter-spacing:-0.02em;font-weight:800;overflow-wrap:break-word;max-width:100%;hyphens:none}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E")}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* NAV */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+[data-theme="light"] #mainNav.scrolled{background:rgba(250,251,252,0.9)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px}
+.logo-magna{color:var(--accent)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:ldp 2s ease-in-out infinite}
+@keyframes ldp{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:40px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.25s,background 0.25s;color:var(--text-muted)}
+.theme-toggle:hover{border-color:var(--border-hover);color:var(--text)}
+.theme-toggle svg{width:16px;height:16px;fill:currentColor}
+.icon-moon{display:block}
+.icon-sun{display:none}
+[data-theme="light"] .icon-moon{display:none}
+[data-theme="light"] .icon-sun{display:block}
+.btn-nav{display:inline-flex;align-items:center;padding:10px 20px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;border-radius:6px;transition:background 0.25s,transform 0.25s}
+.btn-nav:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s,opacity 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.mob-nav.visible{opacity:1;pointer-events:all}
+.mob-nav ul{display:flex;flex-direction:column;gap:24px;text-align:center}
+.mob-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);transition:color 0.2s}
+.mob-nav a:hover{color:var(--accent)}
+
+/* GENERAL */
+.section{padding:100px 0}
+.reveal{opacity:0;transform:translateY(24px)}
+.sec-label{display:block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.sec-h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:16px;max-width:680px}
+.sec-sub{font-size:17px;color:var(--text-secondary);line-height:1.65;max-width:640px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;border-radius:999px;border:none;cursor:pointer;transition:background 0.25s,box-shadow 0.25s}
+.btn-p:hover{background:var(--accent-hover);box-shadow:0 12px 32px rgba(0,212,170,0.3)}
+.btn-p:active{transform:scale(0.97)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:600;font-size:15px;border-radius:999px;border:1px solid var(--border);cursor:pointer;background:transparent;transition:border-color 0.3s,color 0.3s}
+.btn-g:hover{border-color:var(--border-hover);color:var(--accent)}
+.btn-p:focus-visible,.btn-g:focus-visible,.btn-nav:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* HERO */
+.hero{padding:140px 32px 100px;max-width:1280px;margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:55fr 45fr;gap:72px;align-items:center}
+.hero-badge{display:inline-flex;padding:6px 14px;border-radius:999px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.hero-h1{font-size:clamp(2.4rem,5vw,3.5rem);line-height:1.05;margin-bottom:24px;max-width:720px}
+.hero-sub{font-size:18px;color:var(--text-secondary);max-width:540px;line-height:1.6;margin-bottom:0}
+.hero-author{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin:20px 0 40px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+
+/* GOOGLE MAPS SEARCH RESULTS MOCKUP */
+.gmr-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,0.4)}
+.gmr-topbar{background:var(--surface-2);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;align-items:center;gap:10px}
+.gmr-dots{display:flex;gap:5px}
+.gmr-dot{width:8px;height:8px;border-radius:50%}
+.gmr-dot.rd{background:#e85d4a}
+.gmr-dot.yl{background:#f5c14a}
+.gmr-dot.gn{background:#00D4AA}
+.gmr-searchbar{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:5px 12px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:6px}
+.gmr-searchbar svg{width:11px;height:11px;flex-shrink:0;opacity:0.5}
+.gmr-heading{padding:10px 14px 6px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine)}
+.gmr-list{display:flex;flex-direction:column}
+.gmr-item{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:4px;opacity:0;transform:translateY(10px);transition:opacity 0.4s var(--ease),transform 0.4s var(--ease)}
+.gmr-item:last-child{border-bottom:none}
+.gmr-item.gmr-visible{opacity:1;transform:none}
+.gmr-item.gmr-yours{opacity:0.72;background:rgba(0,212,170,0.03);border-left:2px solid rgba(0,212,170,0.3)}
+.gmr-item.gmr-yours.gmr-visible{opacity:0.72}
+.gmr-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gmr-rank{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-fine);flex-shrink:0}
+.gmr-name{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text);flex:1}
+.gmr-yours-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(0,212,170,0.25);padding:2px 6px;border-radius:20px;white-space:nowrap}
+.gmr-stars{display:flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:11px}
+.gmr-star-row{display:flex;gap:1px}
+.gmr-star{font-size:11px}
+.gmr-star.filled{color:#f5c14a}
+.gmr-star.empty{color:var(--border)}
+.gmr-rating-num{color:var(--text-secondary)}
+.gmr-count{color:var(--text-fine)}
+.gmr-meta{font-size:11px;color:var(--text-muted)}
+.gmr-last-review{font-size:10px;color:var(--text-fine);font-style:italic}
+.gmr-reserve{display:inline-flex;align-items:center;padding:4px 10px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;margin-top:4px;width:fit-content}
+.gmr-reserve.res{background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.25);color:var(--accent)}
+.gmr-reserve.call{background:var(--surface-2);border:1px solid var(--border);color:var(--text-muted)}
+.gmr-caption{padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--text-fine);text-align:center;line-height:1.5;border-top:1px solid var(--border);background:var(--surface-2)}
+
+/* STATS BAR */
+.stat-banner{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--stat-banner-bg);padding:64px 0}
+.stat-inner{display:grid;grid-template-columns:1fr 1fr 1fr;max-width:1280px;margin:0 auto;padding:0 32px}
+.stat-item{text-align:center;padding:0 40px;position:relative}
+.stat-item+.stat-item::before{content:'';position:absolute;left:0;top:10%;height:80%;width:1px;background:var(--border)}
+.stat-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(3rem,6vw,4.5rem);font-weight:800;line-height:1;display:block;color:var(--accent)}
+.stat-line{width:40px;height:2px;background:var(--accent);margin:12px auto;opacity:0.5}
+.stat-lbl{font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.4}
+.stat-src{font-size:11px;color:var(--text-fine);margin-top:6px}
+
+/* PROBLEM SECTION — review snapshot cards */
+.prob-grid-rev{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px}
+.rev-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform 0.3s var(--spring),box-shadow 0.3s}
+.rev-card:hover{transform:translateY(-3px);box-shadow:0 20px 48px -12px rgba(0,0,0,0.35)}
+.rev-card-hdr{background:var(--surface-2);padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.rev-card-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rev-card-icon.red{background:var(--red-dim)}
+.rev-card-icon.red svg{stroke:var(--red)}
+.rev-card-icon.yellow{background:rgba(245,193,74,0.1)}
+.rev-card-icon.yellow svg{stroke:var(--yellow)}
+.rev-card-icon.muted{background:rgba(90,107,120,0.1)}
+.rev-card-icon.muted svg{stroke:var(--text-muted)}
+.rev-card-icon svg{width:16px;height:16px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rev-card-label{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.rev-card-body{padding:18px}
+.rev-snippet{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+.rev-snip-top{display:flex;align-items:center;justify-content:space-between}
+.rev-snip-stars{display:flex;gap:2px;font-size:13px}
+.rev-snip-age{font-size:10px;color:var(--text-fine);font-family:'JetBrains Mono',monospace}
+.rev-snip-name{font-size:11px;font-weight:600;color:var(--text-secondary)}
+.rev-snip-text{font-size:12px;color:var(--text-muted);line-height:1.5;font-style:italic}
+.rev-card-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px}
+.rev-card-stat{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.6rem,2.5vw,2rem);font-weight:800;line-height:1}
+.rev-card-stat.red{color:var(--red)}
+.rev-card-stat.yellow{color:var(--yellow)}
+.rev-card-stat.muted{color:var(--text-muted)}
+.rev-card-src{font-size:11px;color:var(--text-fine);margin-top:6px}
+
+/* LISTING SNIPPET */
+.listing-snip{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:14px;display:flex;flex-direction:column;gap:5px}
+.listing-snip-name{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.listing-snip-row{font-size:11px;color:var(--text-fine);display:flex;align-items:center;gap:6px}
+.listing-snip-row svg{width:11px;height:11px;flex-shrink:0;stroke:var(--text-fine);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.listing-snip-gap{display:inline-block;background:var(--red-dim);color:var(--red);font-size:10px;font-weight:600;padding:1px 6px;border-radius:4px;margin-left:4px}
+
+/* BEFORE / AFTER */
+.ba-section{padding:100px 0;background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:48px}
+.ba-col{padding:40px 36px;display:flex;flex-direction:column;gap:0}
+.ba-col.before{background:rgba(232,93,74,0.04)}
+.ba-col.after{background:rgba(0,212,170,0.04);border-left:1px solid var(--border)}
+.ba-col-hdr{display:flex;align-items:center;gap:10px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.ba-col-badge{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+.ba-col-badge.before{background:var(--red-dim);color:var(--red)}
+.ba-col-badge.after{background:var(--accent-dim);color:var(--accent)}
+.ba-col-title{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.ba-rows{display:flex;flex-direction:column;gap:0}
+.ba-row{padding:16px 0;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
+.ba-row:last-child{border-bottom:none}
+.ba-row-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-fine)}
+.ba-row-val{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+.ba-row-val.neg{color:var(--red)}
+.ba-row-val.pos{color:var(--accent)}
+.ba-row-sub{font-size:12px;color:var(--text-muted);line-height:1.4}
+.ba-icon{font-size:14px;flex-shrink:0}
+
+/* SOLUTION SECTION */
+.sol-cards-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px}
+.sol-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:20px;transition:transform 0.3s var(--spring),border-color 0.3s,box-shadow 0.3s}
+.sol-card:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:0 24px 56px -12px rgba(0,212,170,0.12)}
+.sol-card-num{width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--bg);font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sol-card-title{font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--text)}
+.sol-card-desc{font-size:14px;color:var(--text-secondary);line-height:1.65}
+.sol-feats{display:flex;flex-direction:column;gap:8px}
+.sol-feat{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-secondary);line-height:1.45}
+.sol-feat svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
+
+/* SMS MOCKUP */
+.sms-wrap{background:#1a1a2e;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;font-family:'DM Sans',sans-serif}
+.sms-topbar{background:#111128;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px}
+.sms-avatar{width:28px;height:28px;border-radius:50%;background:var(--accent-dim);border:1px solid rgba(0,212,170,0.3);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:800;color:var(--accent);flex-shrink:0}
+.sms-contact{flex:1}
+.sms-contact-name{font-size:12px;font-weight:600;color:#fff;display:block;line-height:1.2}
+.sms-contact-num{font-size:10px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace}
+.sms-body{padding:14px;display:flex;flex-direction:column;gap:8px;background:#0e0e20;min-height:120px}
+.sms-bubble{max-width:88%;padding:10px 13px;font-size:12px;line-height:1.5;border-radius:16px 16px 16px 4px;background:#2a2a40;color:rgba(255,255,255,0.9);opacity:0;transform:translateY(8px)}
+.sms-bubble.sms-visible{opacity:1;transform:none;transition:opacity 0.4s var(--ease),transform 0.4s var(--ease)}
+.sms-link{color:var(--accent);font-weight:600;text-decoration:underline;display:block;margin-top:4px;font-size:12px}
+.sms-time{font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px;text-align:right;opacity:0;transition:opacity 0.3s var(--ease) 0.4s}
+.sms-time.sms-visible{opacity:1}
+.sms-footer{padding:8px 14px;background:#111128;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;color:rgba(255,255,255,0.3);text-align:center}
+[data-theme="light"] .sms-wrap{background:#2d2d4e;border-color:rgba(0,0,0,0.1)}
+[data-theme="light"] .sms-topbar,[data-theme="light"] .sms-footer{background:#23233c}
+[data-theme="light"] .sms-body{background:#1a1a30}
+[data-theme="light"] .sms-bubble{background:#33335a;color:rgba(255,255,255,0.9)}
+
+/* REVIEW RESPONSE MOCKUP */
+.rev-resp-wrap{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.rev-resp-hdr{background:var(--surface-2);padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.rev-resp-brand{width:18px;height:18px;border-radius:4px;background:rgba(66,133,244,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#4285f4}
+.rev-resp-hdr-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-fine)}
+.rev-resp-review{padding:14px;border-bottom:1px solid var(--border)}
+.rev-resp-reviewer{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.rev-resp-avatar{width:28px;height:28px;border-radius:50%;background:rgba(66,133,244,0.15);color:#4285f4;font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rev-resp-name{font-size:12px;font-weight:600;color:var(--text)}
+.rev-resp-date{font-size:10px;color:var(--text-fine);font-family:'JetBrains Mono',monospace}
+.rev-resp-stars-row{display:flex;gap:2px;font-size:13px;margin-bottom:6px}
+.rev-resp-text{font-size:12px;color:var(--text-secondary);line-height:1.5;font-style:italic}
+.rev-resp-response{padding:14px;background:rgba(0,212,170,0.04)}
+.rev-resp-owner-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.rev-resp-owner-label::before{content:'';display:inline-block;width:3px;height:12px;background:var(--accent);border-radius:2px}
+.rev-resp-owner-text{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.rev-resp-badge{font-size:10px;color:var(--text-fine);margin-top:8px;font-style:italic}
+.resp-typing{display:flex;gap:3px;align-items:center;padding:4px 0;opacity:0;transition:opacity 0.3s}
+.resp-typing.resp-visible{opacity:1}
+.resp-typing span{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:tbd 1.2s ease-in-out infinite}
+.resp-typing span:nth-child(2){animation-delay:0.2s}
+.resp-typing span:nth-child(3){animation-delay:0.4s}
+@keyframes tbd{0%,80%,100%{transform:scale(0.7);opacity:0.4}40%{transform:scale(1);opacity:1}}
+
+/* GBP MOCKUP */
+.gbp-wrap{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.gbp-hdr{background:var(--surface-2);padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.gbp-brand{width:18px;height:18px;border-radius:4px;background:rgba(52,168,83,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#34a853}
+.gbp-hdr-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-fine)}
+.gbp-body{padding:14px;display:flex;flex-direction:column;gap:8px}
+.gbp-name-row{display:flex;align-items:center;gap:6px}
+.gbp-biz-name{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--text)}
+.gbp-verified{display:flex;align-items:center;justify-content:center;width:16px;height:16px;background:rgba(52,168,83,0.15);border-radius:50%}
+.gbp-verified svg{width:10px;height:10px;stroke:#34a853;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.gbp-rating-row{display:flex;align-items:center;gap:6px;font-size:12px}
+.gbp-stars-row{display:flex;gap:1px;font-size:12px}
+.gbp-rating-num{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;color:var(--text)}
+.gbp-review-count{color:var(--text-muted)}
+.gbp-info-rows{display:flex;flex-direction:column;gap:5px;padding-top:4px;border-top:1px solid var(--border)}
+.gbp-info-row{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--text-secondary)}
+.gbp-info-row svg{width:12px;height:12px;stroke:var(--text-muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.gbp-info-row.open{color:#34a853}
+.gbp-info-row.open svg{stroke:#34a853}
+.gbp-actions{display:flex;gap:6px;margin-top:8px}
+.gbp-action-btn{flex:1;padding:7px 10px;border-radius:6px;font-size:11px;font-weight:600;text-align:center;font-family:'Cabinet Grotesk',sans-serif;cursor:default}
+.gbp-action-btn.primary{background:var(--accent);color:var(--bg)}
+.gbp-action-btn.secondary{background:var(--surface-2);border:1px solid var(--border);color:var(--text-secondary)}
+
+/* REVIEW GROWTH TIMELINE */
+.rgt-section{padding:100px 0}
+.rgt-wrap{margin-top:48px;position:relative}
+.rgt-track{position:relative;display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding-bottom:8px}
+.rgt-track::before{content:'';position:absolute;top:24px;left:24px;right:24px;height:2px;background:var(--border);z-index:0}
+.rgt-track-fill{position:absolute;top:24px;left:24px;height:2px;background:var(--accent);z-index:1;width:0;transition:width 1.2s var(--spring)}
+.rgt-node{flex:1;display:flex;flex-direction:column;align-items:center;gap:12px;position:relative;z-index:2;min-width:0;padding:0 4px}
+.rgt-dot{width:48px;height:48px;border-radius:50%;background:var(--surface);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color 0.4s,background 0.4s;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:var(--text-fine)}
+.rgt-node.rgt-active .rgt-dot{border-color:var(--accent);background:var(--accent-dim);color:var(--accent)}
+.rgt-node.rgt-start .rgt-dot{border-color:var(--red);background:var(--red-dim);color:var(--red)}
+.rgt-node-body{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.rgt-month{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-fine)}
+.rgt-reviews{font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--text);opacity:0;transform:translateY(6px);transition:opacity 0.4s var(--ease),transform 0.4s var(--ease)}
+.rgt-node.rgt-active .rgt-reviews,.rgt-node.rgt-start .rgt-reviews{opacity:1;transform:none}
+.rgt-stars-val{font-size:12px;font-weight:600;font-family:'JetBrains Mono',monospace}
+.rgt-node.rgt-start .rgt-stars-val{color:var(--red)}
+.rgt-node.rgt-active .rgt-stars-val{color:var(--accent)}
+.rgt-badge{font-size:9px;font-weight:700;letter-spacing:0.5px;padding:3px 7px;border-radius:20px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(0,212,170,0.25);white-space:nowrap;max-width:90px;text-align:center;line-height:1.3;opacity:0;transition:opacity 0.4s var(--ease) 0.3s}
+.rgt-node.rgt-active .rgt-badge{opacity:1}
+.rgt-caption{margin-top:28px;font-size:13px;color:var(--text-fine);text-align:center;line-height:1.5}
+
+/* QUOTE BLOCK */
+.quote-block{padding:80px 0;text-align:center}
+.quote-inner{max-width:780px;margin:0 auto}
+.quote-mark{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:500;color:var(--text-secondary);line-height:1.6;font-style:italic;border-left:3px solid var(--accent);padding-left:28px;text-align:left}
+.quote-src{font-size:12px;color:var(--text-fine);margin-top:16px;letter-spacing:1px;text-align:left;padding-left:31px}
+
+/* PRICING */
+.pricing-wrap{display:flex;justify-content:center;margin-top:48px}
+.pc-single{background:var(--surface);border:2px solid var(--accent);border-radius:24px;padding:40px 36px;width:100%;max-width:520px;transition:transform 0.3s var(--spring),box-shadow 0.3s}
+.pc-single:hover{transform:translateY(-4px);box-shadow:0 30px 80px -20px rgba(0,212,170,0.25)}
+.p-tier{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-fine);margin-bottom:12px}
+.p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:26px;font-weight:800;margin-bottom:20px}
+.p-slbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:6px}
+.p-price{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3vw,3rem);font-weight:800;line-height:1}
+.p-sub{font-size:15px;color:var(--text-secondary);margin-top:8px;margin-bottom:24px}
+.p-div{height:1px;background:var(--border);margin:24px 0}
+.p-wlbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:16px}
+.p-items{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.p-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.45}
+.p-item svg{flex-shrink:0;margin-top:2px;stroke:var(--accent);fill:none;stroke-width:2;width:15px;height:15px;stroke-linecap:round;stroke-linejoin:round}
+.btn-pf{display:block;width:100%;padding:16px;text-align:center;background:var(--accent);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--bg);transition:background 0.25s,transform 0.25s;border:none;cursor:pointer}
+.btn-pf:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-pf:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.p-note{font-size:12px;color:var(--text-fine);text-align:center;margin-top:16px;line-height:1.55}
+
+/* FOOTER */
+footer{padding:80px 0 48px;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:80px}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--text-secondary);max-width:220px;line-height:1.65}
+.footer-col h4{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,244,243,.35);margin-bottom:24px}
+[data-theme="light"] .footer-col h4{color:rgba(10,16,20,0.4)}
+.footer-col ul{display:flex;flex-direction:column;gap:8px}
+.footer-col a{font-size:13px;color:var(--text-secondary);transition:color 0.2s}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:16px;margin-top:24px}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s,background 0.25s}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--text-secondary);transition:fill 0.25s}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
+[data-theme="light"] .footer-bottom p{color:rgba(10,16,20,0.3)}
+
+/* RESPONSIVE */
+@media(max-width:1023px){
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .sol-cards-grid{grid-template-columns:1fr}
+  .prob-grid-rev{grid-template-columns:1fr}
+  .rgt-track{gap:0}
+}
+@media(max-width:767px){
+  .nav-links,.btn-nav,.theme-toggle{display:none}
+  .hamburger{display:flex}
+  .hero{padding:100px 20px 64px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-h1{font-size:clamp(2rem,8vw,2.8rem)}
+  .container{padding:0 20px}
+  .stat-inner{grid-template-columns:1fr;gap:40px;padding:0 20px}
+  .stat-item+.stat-item::before{display:none}
+  .prob-grid-rev{grid-template-columns:1fr}
+  .ba-grid{grid-template-columns:1fr}
+  .ba-col.after{border-left:none;border-top:1px solid var(--border)}
+  .sol-cards-grid{grid-template-columns:1fr}
+  .rgt-track{overflow-x:scroll;padding-bottom:16px}
+  .rgt-node{min-width:80px}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+  .nav-inner{padding:0 20px}
+  .section{padding:64px 0}
+  .ba-section{padding:64px 0}
+  .rgt-section{padding:64px 0}
+  .hero-ctas{flex-direction:column}
+  .btn-p,.btn-g{justify-content:center;width:100%}
+  .pc-single{padding:28px 24px}
+}
+@media(max-width:479px){
+  .gmr-wrap{font-size:12px}
+  .rgt-node{min-width:70px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .reveal{opacity:1 !important;transform:none !important}
+  .gmr-item{opacity:1 !important;transform:none !important}
+  .sms-bubble{opacity:1 !important;transform:none !important}
+  .sms-time{opacity:1 !important}
+  .resp-typing span{animation:none}
+  .rgt-reviews{opacity:1 !important;transform:none !important}
+  .rgt-badge{opacity:1 !important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo" aria-label="Coremagna home">
+      <span>Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/demo.html">Demo</a></li>
+      <li><a href="/index.html#services">Services</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/index.html#services">Services</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-nav">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- S1: HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="hero-badge">Reputation Automation</span>
+      <h1 class="hero-h1 reveal">Your Food Deserves Better Stars.</h1>
+      <p class="hero-sub reveal">94% of diners choose restaurants based on online reviews. You serve incredible food &#8212; but your 3.8 stars and 47 reviews are losing you covers every night to the 4.7-star place down the road. The food isn&#8217;t worse. Their review game is.</p>
+      <p class="hero-author reveal">By Ferit Patefe &#8212; Founder of Coremagna</p>
+      <div class="hero-ctas reveal">
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-p">
+          Book a free call
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#solution" class="btn-g">See how it works &#8595;</a>
+      </div>
+    </div>
+    <div>
+      <div class="gmr-wrap" aria-label="Google Maps search results mockup">
+        <div class="gmr-topbar">
+          <div class="gmr-dots" aria-hidden="true">
+            <div class="gmr-dot rd"></div>
+            <div class="gmr-dot yl"></div>
+            <div class="gmr-dot gn"></div>
+          </div>
+          <div class="gmr-searchbar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            restaurants near me
+          </div>
+        </div>
+        <div class="gmr-heading">Top results &#183; London</div>
+        <div class="gmr-list">
+          <!-- Result 1 -->
+          <div class="gmr-item" id="gmr1" aria-label="The Golden Fork restaurant result">
+            <div class="gmr-item-top">
+              <span class="gmr-rank">1.</span>
+              <span class="gmr-name">The Golden Fork</span>
+            </div>
+            <div class="gmr-stars">
+              <div class="gmr-star-row" aria-hidden="true">
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+              </div>
+              <span class="gmr-rating-num">4.7</span>
+              <span class="gmr-count">(382 reviews)</span>
+            </div>
+            <div class="gmr-meta">&#163;&#163;&#163; &middot; Italian &middot; 0.4 mi</div>
+            <div class="gmr-last-review">&#8220;Best pasta in town!&#8221; &#183; 3 days ago</div>
+            <span class="gmr-reserve res">Reserve a Table</span>
+          </div>
+          <!-- Result 2 — YOUR RESTAURANT -->
+          <div class="gmr-item gmr-yours" id="gmr2" aria-label="The Olive Tree — your restaurant result">
+            <div class="gmr-item-top">
+              <span class="gmr-rank">2.</span>
+              <span class="gmr-name">The Olive Tree</span>
+              <span class="gmr-yours-tag">This is you</span>
+            </div>
+            <div class="gmr-stars">
+              <div class="gmr-star-row" aria-hidden="true">
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star empty">&#9733;</span>
+              </div>
+              <span class="gmr-rating-num">3.8</span>
+              <span class="gmr-count">(47 reviews)</span>
+            </div>
+            <div class="gmr-meta">&#163;&#163; &middot; Mediterranean &middot; 0.1 mi</div>
+            <div class="gmr-last-review">&#8220;Good food&#8221; &#183; 8 months ago</div>
+            <span class="gmr-reserve call">Call</span>
+          </div>
+          <!-- Result 3 -->
+          <div class="gmr-item" id="gmr3" aria-label="Burger and Lobster restaurant result">
+            <div class="gmr-item-top">
+              <span class="gmr-rank">3.</span>
+              <span class="gmr-name">Burger &amp; Lobster</span>
+            </div>
+            <div class="gmr-stars">
+              <div class="gmr-star-row" aria-hidden="true">
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+                <span class="gmr-star filled">&#9733;</span>
+              </div>
+              <span class="gmr-rating-num">4.6</span>
+              <span class="gmr-count">(291 reviews)</span>
+            </div>
+            <div class="gmr-meta">&#163;&#163; &middot; American &middot; 0.3 mi</div>
+            <div class="gmr-last-review">&#8220;Amazing experience!&#8221; &#183; 1 week ago</div>
+            <span class="gmr-reserve res">Reserve a Table</span>
+          </div>
+        </div>
+        <div class="gmr-caption">You&#8217;re the closest. You&#8217;re the best value. But you&#8217;re the one they skip.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S2: STATS BAR -->
+<div class="stat-banner" aria-label="Key statistics">
+  <div class="stat-inner">
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="94" data-suffix="%">0%</span>
+      <div class="stat-line" aria-hidden="true"></div>
+      <p class="stat-lbl">of diners choose restaurants based on online reviews</p>
+      <p class="stat-src">Source: Guaranteed Removals, 2025</p>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" style="font-size:clamp(2.2rem,4.5vw,3.5rem)">5&#8211;9%</span>
+      <div class="stat-line" aria-hidden="true"></div>
+      <p class="stat-lbl">revenue increase per one-star improvement on Google</p>
+      <p class="stat-src">Source: Harvard Business School</p>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="31" data-suffix="%">0%</span>
+      <div class="stat-line" aria-hidden="true"></div>
+      <p class="stat-lbl">more spending at businesses with excellent reviews</p>
+      <p class="stat-src">Source: Podium, 2025</p>
+    </div>
+  </div>
+</div>
+
+<!-- S3: PROBLEM SECTION -->
+<section class="section">
+  <div class="container">
+    <span class="sec-label reveal">The Review Paradox</span>
+    <h2 class="sec-h2 reveal">Happy Guests Stay Quiet. Unhappy Guests Write Novels</h2>
+    <p class="sec-sub reveal">Your regulars love you. Your Saturday nights are packed. But online, you look like a 3.8-star gamble &#8212; because the review process is broken by default.</p>
+    <div class="prob-grid-rev">
+
+      <!-- Card 1: Silent Majority -->
+      <div class="rev-card reveal">
+        <div class="rev-card-hdr">
+          <div class="rev-card-icon muted">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="rev-card-label">The Silent Majority</span>
+        </div>
+        <div class="rev-card-body">
+          <div class="rev-snippet" aria-hidden="true">
+            <div class="rev-snip-top">
+              <div class="rev-snip-stars">&#128512;&#128512;&#128512;&#128512;&#128512;</div>
+              <span class="rev-snip-age">Saturday night</span>
+            </div>
+            <span class="rev-snip-name">80 happy guests dined</span>
+            <span class="rev-snip-text">Reviews left: 0</span>
+          </div>
+          <p class="rev-card-desc">Last Saturday, 80 guests dined with you. 72 left happy. How many left a review? Probably zero. Happy diners don&#8217;t think to review &#8212; they just go home. Or they go to a competitor next time, because nobody asked them to come back.</p>
+          <div class="rev-card-stat muted">68%</div>
+          <div class="rev-card-src">of diners form opinions after reading just 1&#8211;6 reviews &#183; Shapo.io, 2026</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Vocal Minority -->
+      <div class="rev-card reveal">
+        <div class="rev-card-hdr">
+          <div class="rev-card-icon red">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <span class="rev-card-label">The Vocal Minority</span>
+        </div>
+        <div class="rev-card-body">
+          <div class="rev-snippet" aria-hidden="true">
+            <div class="rev-snip-top">
+              <div class="rev-snip-stars" style="color:var(--red)">&#9733;&#9734;&#9734;&#9734;&#9734;</div>
+              <span class="rev-snip-age">8 months ago</span>
+            </div>
+            <span class="rev-snip-name">Anonymous</span>
+            <span class="rev-snip-text">&#8220;Cold starter. Waited 40 minutes. Wouldn&#8217;t return.&#8221;</span>
+          </div>
+          <p class="rev-card-desc">One cold starter. One slow service night. One 1-star review sitting at the top of your Google listing for months. Eight great reviews can&#8217;t undo the damage of one bad one &#8212; especially when your total count is 47.</p>
+          <div class="rev-card-stat red">80%</div>
+          <div class="rev-card-src">of consumers avoid businesses rated below 3 stars &#183; SQ Magazine, 2026</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Invisible Listing -->
+      <div class="rev-card reveal">
+        <div class="rev-card-hdr">
+          <div class="rev-card-icon yellow">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <span class="rev-card-label">The Invisible Listing</span>
+        </div>
+        <div class="rev-card-body">
+          <div class="listing-snip" aria-hidden="true">
+            <span class="listing-snip-name">The Olive Tree</span>
+            <div class="listing-snip-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Closed on Mondays<span class="listing-snip-gap">Outdated</span>
+            </div>
+            <div class="listing-snip-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              6 photos (last updated 2023)<span class="listing-snip-gap">Stale</span>
+            </div>
+            <div class="listing-snip-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Menu: blurry PDF scan<span class="listing-snip-gap">Poor</span>
+            </div>
+          </div>
+          <p class="rev-card-desc">Your Google listing says &#8216;Closed&#8217; on Mondays &#8212; but you opened Mondays six months ago. Your last photo is from 2023. Your menu is a blurry scan. Even diners who find you aren&#8217;t convinced to book.</p>
+          <div class="rev-card-stat yellow">70%</div>
+          <div class="rev-card-src">of diners check Google before booking a table &#183; Restaurant Management UK, 2025</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- S4: BEFORE / AFTER -->
+<section class="ba-section">
+  <div class="container">
+    <span class="sec-label reveal">The Transformation</span>
+    <h2 class="sec-h2 reveal">Same Restaurant. Different Online Story</h2>
+    <p class="sec-sub reveal">The food doesn&#8217;t change. The kitchen doesn&#8217;t change. What changes is how the world sees you &#8212; and how many covers you fill because of it.</p>
+    <div class="ba-grid reveal">
+      <!-- BEFORE -->
+      <div class="ba-col before">
+        <div class="ba-col-hdr">
+          <span class="ba-col-badge before">Before Coremagna</span>
+          <span class="ba-col-title">The Olive Tree today</span>
+        </div>
+        <div class="ba-rows">
+          <div class="ba-row">
+            <span class="ba-row-label">Google Rating</span>
+            <div class="ba-row-val neg"><span class="ba-icon" aria-hidden="true">&#10005;</span> 3.8&#9733; (47 reviews)</div>
+            <span class="ba-row-sub">Last review: 8 months ago</span>
+          </div>
+          <div class="ba-row">
+            <span class="ba-row-label">Google Listing Photos</span>
+            <div class="ba-row-val neg"><span class="ba-icon" aria-hidden="true">&#10005;</span> 6 photos (from 2023)</div>
+            <span class="ba-row-sub">Hours outdated, menu a blurry PDF</span>
+          </div>
+          <div class="ba-row">
+            <span class="ba-row-label">Review Responses</span>
+            <div class="ba-row-val neg"><span class="ba-icon" aria-hidden="true">&#10005;</span> 0 out of 47 responded</div>
+            <span class="ba-row-sub">Guests feel ignored</span>
+          </div>
+          <div class="ba-row">
+            <span class="ba-row-label">Social Media</span>
+            <div class="ba-row-val neg"><span class="ba-icon" aria-hidden="true">&#10005;</span> Last post: 5 weeks ago</div>
+            <span class="ba-row-sub">Instagram: 340 followers, stagnant</span>
+          </div>
+          <div class="ba-row">
+            <span class="ba-row-label">Monthly covers from Google</span>
+            <div class="ba-row-val neg"><span class="ba-icon" aria-hidden="true">&#10005;</span> ~12 new covers</div>
+            <span class="ba-row-sub">Invisible to most new diners</span>
+          </div>
+        </div>
+      </div>
+      <!-- AFTER -->
+      <div class="ba-col after">
+        <div class="ba-col-hdr">
+          <span class="ba-col-badge after">After Coremagna</span>
+          <span class="ba-col-title">12 months later</span>
+        </div>
+        <div class="ba-rows">
+          <div class="ba-row">
+            <span class="ba-row-label">Google Rating</span>
+            <div class="ba-row-val pos"><span class="ba-icon" aria-hidden="true">&#10003;</span> 4.7&#9733; (312 reviews)</div>
+            <span class="ba-row-sub">New review every 2&#8211;3 days</span>
+          </div>
+          <div class="ba-row">
+            <span class="ba-row-label">Google Listing Photos</span>
+            <div class="ba-row-val pos"><span class="ba-icon" aria-hidden="true">&#10003;</span> 40+ photos, updated monthly</div>
+            <span class="ba-row-sub">Accurate hours, clean linked menu</span>
+          </div>
+          <div class="ba-row">
+            <span class="ba-row-label">Review Responses</span>
+            <div class="ba-row-val pos"><span class="ba-icon" aria-hidden="true">&#10003;</span> 100% responded within 24 hrs</div>
+            <span class="ba-row-sub">Guests feel valued, return more often</span>
+          </div>
+          <div class="ba-row">
+            <span class="ba-row-label">Social Media</span>
+            <div class="ba-row-val pos"><span class="ba-icon" aria-hidden="true">&#10003;</span> 3 posts/week auto-scheduled</div>
+            <span class="ba-row-sub">Instagram: 1,800 followers, growing</span>
+          </div>
+          <div class="ba-row">
+            <span class="ba-row-label">Monthly covers from Google</span>
+            <div class="ba-row-val pos"><span class="ba-icon" aria-hidden="true">&#10003;</span> ~45 new covers (+275%)</div>
+            <span class="ba-row-sub">Appearing in Google 3-Pack</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: SOLUTION SECTION -->
+<section class="section" id="solution">
+  <div class="container">
+    <span class="sec-label reveal">How It Works</span>
+    <h2 class="sec-h2 reveal">Every Great Meal Should End with a 5-Star Review</h2>
+    <p class="sec-sub reveal">Three automated systems run silently in the background &#8212; collecting reviews, responding to them, and keeping your Google presence sharp. You focus on the food.</p>
+    <div class="sol-cards-grid">
+
+      <!-- Card 1: Review Requests -->
+      <div class="sol-card reveal">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="sol-card-num" aria-hidden="true">1</div>
+          <h3 class="sol-card-title">Automated Review Requests</h3>
+        </div>
+        <div class="sms-wrap" aria-label="SMS review request mockup">
+          <div class="sms-topbar">
+            <div class="sms-avatar" aria-hidden="true">OT</div>
+            <div class="sms-contact">
+              <span class="sms-contact-name">The Olive Tree</span>
+              <span class="sms-contact-num">+44 20 XXXX XXXX</span>
+            </div>
+          </div>
+          <div class="sms-body" id="smsBody">
+            <div class="sms-bubble" id="smsBubble">
+              Hi James! Thanks for dining at The Olive Tree tonight. If you enjoyed it, we&#8217;d really appreciate a quick Google review &#8212; it helps us more than you know!
+              <a class="sms-link" href="#" onclick="return false;" tabindex="-1" aria-hidden="true">Leave a Review &#8594;</a>
+            </div>
+            <div class="sms-time" id="smsTime">Sent 2 hours after your visit &#183; &#10003;&#10003;</div>
+          </div>
+          <div class="sms-footer">Sent automatically &#8212; personalised per guest</div>
+        </div>
+        <div class="sol-card-desc">Timed perfectly &#8212; 2 hours after the visit, when satisfaction peaks. One tap to your Google review page.</div>
+        <div class="sol-feats">
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Personalised with guest name + visit details</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Negative feedback caught privately first</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Below 4 stars &#8594; sent to manager, not Google</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Review volume grows 5&#8211;10&#215; within 3 months</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Review Responses -->
+      <div class="sol-card reveal">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="sol-card-num" aria-hidden="true">2</div>
+          <h3 class="sol-card-title">Automated Review Responses</h3>
+        </div>
+        <div class="rev-resp-wrap" aria-label="Google review response mockup">
+          <div class="rev-resp-hdr">
+            <div class="rev-resp-brand" aria-hidden="true">G</div>
+            <span class="rev-resp-hdr-label">Google Reviews</span>
+          </div>
+          <div class="rev-resp-review">
+            <div class="rev-resp-reviewer">
+              <div class="rev-resp-avatar" aria-hidden="true">S</div>
+              <div>
+                <div class="rev-resp-name">Sarah M.</div>
+                <div class="rev-resp-date">2 days ago</div>
+              </div>
+            </div>
+            <div class="rev-resp-stars-row" aria-label="5 stars">
+              <span style="color:var(--yellow)">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+            <p class="rev-resp-text">&#8220;Incredible lamb shank. Best meal I&#8217;ve had in months. Will absolutely be back.&#8221;</p>
+          </div>
+          <div class="rev-resp-response">
+            <div class="rev-resp-owner-label">Owner Response</div>
+            <div class="resp-typing" id="respTyping" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <p class="rev-resp-owner-text" id="respText" style="display:none">Thank you so much, Sarah! The lamb shank is our chef&#8217;s pride &#8212; so glad you loved it. We hope to welcome you back very soon!</p>
+            <p class="rev-resp-badge" id="respBadge" style="display:none">Responded by Coremagna AI &#183; The Olive Tree team</p>
+          </div>
+        </div>
+        <div class="sol-card-desc">AI drafts personalised responses for every review. Approve with one click, or set to auto-send.</div>
+        <div class="sol-feats">
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 56% of diners prefer businesses that respond</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Negative reviews get thoughtful responses</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 68% more likely to review if owner responds</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 35% higher return rate with active responses</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Google Listing -->
+      <div class="sol-card reveal">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="sol-card-num" aria-hidden="true">3</div>
+          <h3 class="sol-card-title">Listing Optimisation &amp; Social</h3>
+        </div>
+        <div class="gbp-wrap" aria-label="Google Business Profile mockup">
+          <div class="gbp-hdr">
+            <div class="gbp-brand" aria-hidden="true">G</div>
+            <span class="gbp-hdr-label">Google Business Profile</span>
+          </div>
+          <div class="gbp-body">
+            <div class="gbp-name-row">
+              <span class="gbp-biz-name">The Olive Tree</span>
+              <div class="gbp-verified" aria-label="Verified">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="gbp-rating-row">
+              <span class="gbp-rating-num">4.7</span>
+              <div class="gbp-stars-row" aria-label="4.7 stars">
+                <span style="color:var(--yellow)">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              </div>
+              <span class="gbp-review-count">(312 reviews)</span>
+            </div>
+            <div class="gbp-info-rows">
+              <div class="gbp-info-row open">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Open &middot; Closes 10:30 PM
+              </div>
+              <div class="gbp-info-row">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                42 photos &middot; Updated this month
+              </div>
+              <div class="gbp-info-row">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Menu: View full menu &#8594;
+              </div>
+              <div class="gbp-info-row">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                12 High Street, London &middot; 0.1 mi
+              </div>
+            </div>
+            <div class="gbp-actions">
+              <div class="gbp-action-btn primary">Reserve a Table</div>
+              <div class="gbp-action-btn secondary">Call</div>
+              <div class="gbp-action-btn secondary">Website</div>
+            </div>
+          </div>
+        </div>
+        <div class="sol-card-desc">Your listing stays accurate, photo-rich, and optimised. Your best reviews reshared on Instagram and Facebook automatically.</div>
+        <div class="sol-feats">
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Google listing kept current and optimised</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Social auto-posting 3&#215;/week (dishes, specials)</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Reviews account for ~10% of local SEO ranking</div>
+          <div class="sol-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 45% of UK diners discover via social media</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- S6: REVIEW GROWTH TIMELINE -->
+<section class="rgt-section" id="timeline">
+  <div class="container">
+    <span class="sec-label reveal">12 Months of Automated Reviews</span>
+    <h2 class="sec-h2 reveal">From 47 Reviews to 312 &#8212; Automatically</h2>
+    <p class="sec-sub reveal">The trust sweet spot for Google ratings is 4.2&#8211;4.5 stars. Once you&#8217;re there, your listing appears in the Google 3-Pack &#8212; the three results that capture 90% of clicks.</p>
+    <div class="rgt-wrap reveal" id="rgtWrap" aria-label="Review growth timeline">
+      <div class="rgt-track">
+        <div class="rgt-track-fill" id="rgtFill"></div>
+        <!-- Node 0 -->
+        <div class="rgt-node rgt-start" id="rn0">
+          <div class="rgt-dot">M0</div>
+          <div class="rgt-node-body">
+            <span class="rgt-month">Start</span>
+            <span class="rgt-reviews">47 reviews</span>
+            <span class="rgt-stars-val">3.8&#9733;</span>
+            <span class="rgt-badge" style="background:var(--red-dim);color:var(--red);border-color:rgba(232,93,74,0.25)">Starting point</span>
+          </div>
+        </div>
+        <!-- Node 1 -->
+        <div class="rgt-node" id="rn1">
+          <div class="rgt-dot">M1</div>
+          <div class="rgt-node-body">
+            <span class="rgt-month">Month 1</span>
+            <span class="rgt-reviews">62 reviews</span>
+            <span class="rgt-stars-val">3.9&#9733;</span>
+            <span class="rgt-badge" style="opacity:0">&#160;</span>
+          </div>
+        </div>
+        <!-- Node 3 -->
+        <div class="rgt-node" id="rn3">
+          <div class="rgt-dot">M3</div>
+          <div class="rgt-node-body">
+            <span class="rgt-month">Month 3</span>
+            <span class="rgt-reviews">108 reviews</span>
+            <span class="rgt-stars-val">4.2&#9733;</span>
+            <span class="rgt-badge">Trust sweet spot</span>
+          </div>
+        </div>
+        <!-- Node 6 -->
+        <div class="rgt-node" id="rn6">
+          <div class="rgt-dot">M6</div>
+          <div class="rgt-node-body">
+            <span class="rgt-month">Month 6</span>
+            <span class="rgt-reviews">187 reviews</span>
+            <span class="rgt-stars-val">4.5&#9733;</span>
+            <span class="rgt-badge">Google 3-Pack</span>
+          </div>
+        </div>
+        <!-- Node 9 -->
+        <div class="rgt-node" id="rn9">
+          <div class="rgt-dot">M9</div>
+          <div class="rgt-node-body">
+            <span class="rgt-month">Month 9</span>
+            <span class="rgt-reviews">256 reviews</span>
+            <span class="rgt-stars-val">4.6&#9733;</span>
+            <span class="rgt-badge">+18% reservations</span>
+          </div>
+        </div>
+        <!-- Node 12 -->
+        <div class="rgt-node" id="rn12">
+          <div class="rgt-dot">M12</div>
+          <div class="rgt-node-body">
+            <span class="rgt-month">Month 12</span>
+            <span class="rgt-reviews">312 reviews</span>
+            <span class="rgt-stars-val">4.7&#9733;</span>
+            <span class="rgt-badge">5&#8211;9% revenue up</span>
+          </div>
+        </div>
+      </div>
+      <p class="rgt-caption">Trust sweet spot (4.2&#8211;4.5&#9733;) reached by month 3. Google 3-Pack visibility from month 6. Harvard Business School&#8217;s 5&#8211;9% revenue lift by month 12.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S7: QUOTE BLOCK -->
+<section class="quote-block">
+  <div class="container">
+    <div class="quote-inner">
+      <blockquote class="quote-mark reveal">
+        A one-star improvement on Google yields 5&#8211;9% more revenue. That&#8217;s not a marketing claim &#8212; it&#8217;s Harvard Business School research. And the difference between 3.8 and 4.7 isn&#8217;t better food. It&#8217;s consistently asking for reviews.
+      </blockquote>
+      <p class="quote-src reveal">Source: Harvard Business School / Guaranteed Removals, 2025</p>
+    </div>
+  </div>
+</section>
+
+<!-- S8: PRICING -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <span class="sec-label reveal">Pricing</span>
+    <h2 class="sec-h2 reveal">Growth Plan &#8212; Built for Restaurants Ready to Own Their Reputation</h2>
+    <p class="sec-sub reveal">Everything you need to turn great meals into great reviews &#8212; and great reviews into more covers. Live in 7 days.</p>
+    <div class="pricing-wrap">
+      <div class="pc-single reveal">
+        <span class="p-tier">Growth Plan &#8212; Most Popular</span>
+        <h3 class="p-title">Growth</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$997 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+ $297/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automated post-visit review requests (SMS)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI-powered review response drafts (approve or auto-send)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Negative feedback interception (private first, public never)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Google Business Profile optimisation</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Social media auto-posting (Instagram + Facebook, 3&#215;/week)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Best review resharing on social channels</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Monthly reputation report (reviews, rating, ranking)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>7-day live setup</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>30-day support included</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf">Get Started with Growth &#8594;</a>
+        <p class="p-note">14-day money-back guarantee.<br>Your first 5-star review surge pays for itself in extra covers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for service businesses.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries.html#law-firms">Law Firms</a></li>
+          <li><a href="/industries.html#real-estate">Real Estate</a></li>
+          <li><a href="/industries.html#clinics">Clinics</a></li>
+          <li><a href="/industries.html#beauty">Beauty Salons</a></li>
+          <li><a href="/industries.html#restaurants">Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/demo.html">Demo</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2026 Coremagna. All rights reserved.</p>
+      <p>AI Automation &#183; CRM Systems &#183; Chatbots</p>
+    </div>
+  </div>
+</footer>
+
+<script defer>
+(function(){
+'use strict';
+var rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* --- NAV --- */
+var nav = document.getElementById('mainNav');
+var hbg = document.getElementById('hamburger');
+var mob = document.getElementById('mobNav');
+var navOpen = false;
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+hbg.addEventListener('click', function(){
+  navOpen = !navOpen;
+  hbg.classList.toggle('open', navOpen);
+  hbg.setAttribute('aria-expanded', navOpen);
+  mob.setAttribute('aria-hidden', !navOpen);
+  mob.classList.toggle('visible', navOpen);
+  document.body.style.overflow = navOpen ? 'hidden' : '';
+});
+mob.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    navOpen = false;
+    hbg.classList.remove('open');
+    hbg.setAttribute('aria-expanded','false');
+    mob.setAttribute('aria-hidden','true');
+    mob.classList.remove('visible');
+    document.body.style.overflow = '';
+  });
+});
+
+/* --- THEME TOGGLE --- */
+var tt = document.getElementById('themeToggle');
+var savedTheme = localStorage.getItem('theme');
+if(savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+tt.addEventListener('click', function(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  var next = cur === 'light' ? 'dark' : 'light';
+  if(next === 'dark') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+/* --- SCROLL REVEAL --- */
+var reveals = document.querySelectorAll('.reveal');
+var revIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'none';
+      entry.target.style.transition = 'opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1)';
+      revIO.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.12});
+if(rm){
+  reveals.forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+} else {
+  /* stagger siblings */
+  document.querySelectorAll('section, .stat-banner').forEach(function(section){
+    var kids = section.querySelectorAll('.reveal');
+    kids.forEach(function(el, i){ el.style.transitionDelay = (i * 0.08) + 's'; });
+  });
+  reveals.forEach(function(el){ revIO.observe(el); });
+}
+
+/* --- HERO GOOGLE MAPS STAGGER --- */
+var gmrItems = [
+  document.getElementById('gmr1'),
+  document.getElementById('gmr2'),
+  document.getElementById('gmr3')
+];
+if(rm){
+  gmrItems.forEach(function(el){ if(el) el.classList.add('gmr-visible'); });
+} else {
+  gmrItems.forEach(function(el, i){
+    if(el) setTimeout(function(){ el.classList.add('gmr-visible'); }, 400 + i * 260);
+  });
+}
+
+/* --- COUNT-UP STATS --- */
+var statNums = document.querySelectorAll('.stat-num[data-target]');
+function countUp(el){
+  var target = parseInt(el.getAttribute('data-target'));
+  var suffix = el.getAttribute('data-suffix') || '';
+  var duration = rm ? 0 : 1400;
+  var start = performance.now();
+  function step(now){
+    var elapsed = now - start;
+    var progress = Math.min(elapsed / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target) + suffix;
+    if(progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  }
+  if(duration === 0){ el.textContent = target + suffix; return; }
+  requestAnimationFrame(step);
+}
+var statIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      countUp(entry.target);
+      statIO.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.5});
+statNums.forEach(function(el){ statIO.observe(el); });
+
+/* --- SMS MOCKUP ANIMATION --- */
+var smsBubble = document.getElementById('smsBubble');
+var smsTime = document.getElementById('smsTime');
+var smsAnimated = false;
+if(smsBubble){
+  var smsIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !smsAnimated){
+        smsAnimated = true;
+        if(rm){
+          smsBubble.classList.add('sms-visible');
+          smsTime.classList.add('sms-visible');
+        } else {
+          setTimeout(function(){ smsBubble.classList.add('sms-visible'); }, 400);
+          setTimeout(function(){ smsTime.classList.add('sms-visible'); }, 900);
+        }
+        smsIO.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.4});
+  smsIO.observe(smsBubble);
+}
+
+/* --- REVIEW RESPONSE TYPING ANIMATION --- */
+var respTyping = document.getElementById('respTyping');
+var respText = document.getElementById('respText');
+var respBadge = document.getElementById('respBadge');
+var respAnimated = false;
+if(respTyping){
+  var respIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !respAnimated){
+        respAnimated = true;
+        if(rm){
+          respTyping.classList.add('resp-visible');
+          respTyping.style.display = 'none';
+          respText.style.display = 'block';
+          respBadge.style.display = 'block';
+        } else {
+          setTimeout(function(){
+            respTyping.classList.add('resp-visible');
+          }, 500);
+          setTimeout(function(){
+            respTyping.style.display = 'none';
+            respText.style.display = 'block';
+            respBadge.style.display = 'block';
+          }, 2200);
+        }
+        respIO.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.4});
+  respIO.observe(respTyping);
+}
+
+/* --- REVIEW GROWTH TIMELINE --- */
+var rgtWrap = document.getElementById('rgtWrap');
+var rgtFill = document.getElementById('rgtFill');
+var rgtAnimated = false;
+var rgtNodes = [
+  {id:'rn0', delay:0},
+  {id:'rn1', delay:200},
+  {id:'rn3', delay:450},
+  {id:'rn6', delay:700},
+  {id:'rn9', delay:950},
+  {id:'rn12', delay:1200}
+];
+function animateTimeline(){
+  if(rgtAnimated) return;
+  rgtAnimated = true;
+  /* activate start node immediately */
+  var startNode = document.getElementById('rn0');
+  if(startNode) startNode.classList.add('rgt-active');
+  if(rm){
+    rgtNodes.forEach(function(n){
+      var el = document.getElementById(n.id);
+      if(el) el.classList.add('rgt-active');
+    });
+    if(rgtFill) rgtFill.style.width = 'calc(100% - 48px)';
+    return;
+  }
+  /* progressive fill */
+  setTimeout(function(){
+    if(rgtFill) rgtFill.style.width = 'calc(100% - 48px)';
+  }, 200);
+  rgtNodes.slice(1).forEach(function(n){
+    setTimeout(function(){
+      var el = document.getElementById(n.id);
+      if(el) el.classList.add('rgt-active');
+    }, n.delay);
+  });
+}
+if(rgtWrap){
+  var rgtIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ animateTimeline(); rgtIO.unobserve(entry.target); }
+    });
+  }, {threshold:0.25});
+  rgtIO.observe(rgtWrap);
+}
+
+})();
+</script>
+</body>
+</html>
