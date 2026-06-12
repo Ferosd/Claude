@@ -288,26 +288,29 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .quote-source{font-size:12px;color:var(--text-fine);letter-spacing:1px;text-transform:uppercase;font-family:'Cabinet Grotesk',sans-serif;font-weight:600}
 
 /* ── PRICING ── */
-.pricing-section{padding:100px 0;background:var(--bg)}
-.pricing-card{background:var(--surface);border:1px solid rgba(0,212,170,0.4);border-radius:24px;max-width:680px;margin:48px auto 0;padding:48px;position:relative;box-shadow:0 0 0 1px rgba(0,212,170,0.08),0 32px 80px rgba(0,212,170,0.06);transform:translateY(0);transition:transform 0.3s var(--ease),box-shadow 0.3s var(--ease)}
-.pricing-card:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(0,212,170,0.15),0 40px 100px rgba(0,212,170,0.1)}
-.pricing-badge{display:inline-flex;padding:5px 14px;border-radius:999px;background:var(--accent-dim);border:1px solid rgba(0,212,170,0.3);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-family:'Cabinet Grotesk',sans-serif}
-.pricing-plan{font-size:28px;font-weight:800;color:var(--text);font-family:'Cabinet Grotesk',sans-serif;letter-spacing:-0.02em;margin-bottom:4px}
-.pricing-tagline{font-size:16px;color:var(--text-muted);margin-bottom:32px}
-.pricing-price-row{display:flex;align-items:flex-end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
-.pricing-setup{display:flex;flex-direction:column;gap:2px}
-.pricing-setup-amount{font-family:'JetBrains Mono',monospace;font-size:clamp(2rem,3.5vw,2.5rem);font-weight:500;color:var(--text);line-height:1}
-.pricing-setup-label{font-size:12px;color:var(--text-fine);text-transform:uppercase;letter-spacing:1px}
-.pricing-divider{width:1px;height:44px;background:var(--border);align-self:center}
-.pricing-monthly{display:flex;flex-direction:column;gap:2px}
-.pricing-monthly-amount{font-family:'JetBrains Mono',monospace;font-size:clamp(1.6rem,2.8vw,2rem);font-weight:500;color:var(--text);line-height:1}
-.pricing-monthly-label{font-size:12px;color:var(--text-fine);text-transform:uppercase;letter-spacing:1px}
-.pricing-feats{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-bottom:36px}
-.pricing-feat{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.5}
-.pricing-check{flex-shrink:0;width:18px;height:18px;border-radius:50%;background:var(--green-dim);display:flex;align-items:center;justify-content:center;margin-top:1px}
-.pricing-check svg{width:11px;height:11px;color:var(--accent);fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.pricing-cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-.pricing-note{font-size:12px;color:var(--text-fine);margin-top:4px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;align-items:start}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:36px 32px;position:relative;transition:border-color .3s,transform .3s var(--ease)}
+.pc:hover{border-color:rgba(0,212,170,.3)}
+.pc.feat{background:linear-gradient(180deg,#0a1f1a,#0d1117);border-color:var(--accent);box-shadow:0 30px 80px -20px rgba(0,212,170,.15);transform:translateY(-12px)}
+.pc.feat:hover{transform:translateY(-14px)}
+.pp-pill{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#060a0e;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.p-tier{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-fine);margin-bottom:12px}
+.p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:26px;font-weight:800;margin-bottom:20px}
+.p-slbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:6px}
+.p-price{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3vw,3rem);font-weight:800;line-height:1}
+.p-sub{font-size:15px;color:var(--text-secondary);margin-top:8px;margin-bottom:24px}
+.p-div{height:1px;background:var(--border);margin:24px 0}
+.p-wlbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:16px}
+.p-items{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.p-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.45}
+.p-item svg{flex-shrink:0;margin-top:2px;stroke:var(--accent);fill:none;stroke-width:2;width:15px;height:15px;stroke-linecap:round;stroke-linejoin:round}
+.btn-pg{display:block;width:100%;padding:14px;text-align:center;border:1px solid var(--border);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);transition:border-color .3s,color .3s}
+.btn-pg:hover{border-color:rgba(0,212,170,.4);color:var(--accent)}
+.btn-pf{display:block;width:100%;padding:14px;text-align:center;background:var(--accent);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:700;color:#060a0e;transition:background .25s,transform .25s}
+.btn-pf:hover{background:#00f0c4;transform:translateY(-1px)}
+.btn-pf:focus-visible,.btn-pg:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.p-note{font-size:12px;color:var(--text-fine);text-align:center;margin-top:16px;line-height:1.5}
+@media(max-width:767px){.pricing-grid{grid-template-columns:1fr;gap:24px}.pc.feat{transform:none}}
 
 /* ── FOOTER ── */
 footer{padding:80px 0 48px;border-top:1px solid rgba(255,255,255,0.06)}
@@ -954,70 +957,63 @@ footer{padding:80px 0 48px;border-top:1px solid rgba(255,255,255,0.06)}
 </section>
 
 <!-- S9: PRICING -->
-<section class="pricing-section section">
-  <div class="container" style="text-align:center">
+<section class="section">
+  <div class="container">
     <span class="sec-label reveal">Pricing</span>
-    <h2 class="sec-h2 reveal" style="margin:0 auto 12px;text-align:center">One System. Three Channels. Every Call Answered</h2>
-    <p class="sec-sub reveal" style="margin:0 auto 0;text-align:center">The Scale plan is built for restaurants that are done losing bookings to an unanswered phone.</p>
-
-    <div class="pricing-card reveal">
-      <span class="pricing-badge">Most Complete</span>
-      <div class="pricing-plan">Scale Plan</div>
-      <p class="pricing-tagline">For restaurants ready to answer every call, capture every booking, and keep staff on the floor</p>
-
-      <div class="pricing-price-row">
-        <div class="pricing-setup">
-          <span class="pricing-setup-amount">$1,497</span>
-          <span class="pricing-setup-label">One-time setup</span>
-        </div>
-        <div class="pricing-divider" aria-hidden="true"></div>
-        <div class="pricing-monthly">
-          <span class="pricing-monthly-amount">$497<span style="font-size:0.55em;color:var(--text-muted)">/mo</span></span>
-          <span class="pricing-monthly-label">Monthly</span>
-        </div>
+    <h2 class="sec-h2 reveal">Three plans for restaurants. Ready in 7 days</h2>
+    <p class="sec-sub reveal">The right plan for every restaurant that is done losing bookings to an unanswered phone.</p>
+    <div class="pricing-grid">
+      <div class="pc reveal">
+        <span class="p-tier">Starter</span>
+        <h3 class="p-title">Starter Plan</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$597 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$177/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI Chatbot &#8212; website visitor conversion</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Online booking with real-time availability</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp &amp; SMS booking confirmations</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automated reminders (24h + 2h before)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>7-day live setup + 30-day support included</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Email support</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pg">Get Started</a>
       </div>
-
-      <div class="pricing-feats">
-        <div class="pricing-feat">
-          <span class="pricing-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          AI Voice Agent &mdash; answers calls 24/7
-        </div>
-        <div class="pricing-feat">
-          <span class="pricing-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          AI Chatbot &mdash; website visitor conversion
-        </div>
-        <div class="pricing-feat">
-          <span class="pricing-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          Online booking with real-time availability
-        </div>
-        <div class="pricing-feat">
-          <span class="pricing-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          WhatsApp &amp; SMS booking confirmations
-        </div>
-        <div class="pricing-feat">
-          <span class="pricing-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          Multi-channel dashboard (calls, chats, bookings)
-        </div>
-        <div class="pricing-feat">
-          <span class="pricing-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          Call summary reports &amp; analytics
-        </div>
-        <div class="pricing-feat">
-          <span class="pricing-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          Automated reminders (24h + 2h before)
-        </div>
-        <div class="pricing-feat">
-          <span class="pricing-check" aria-hidden="true"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          7-day live setup + 30-day support included
-        </div>
+      <div class="pc feat reveal">
+        <div class="pp-pill" aria-label="Most Popular"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Most Popular</div>
+        <span class="p-tier" style="color:var(--accent)">Growth</span>
+        <h3 class="p-title">Growth Plan</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$897 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$297/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Everything in Starter</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Multi-channel dashboard (calls, chats, bookings)</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Call summary reports &amp; analytics</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Priority support</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf">Get Started</a>
       </div>
-
-      <div class="pricing-cta">
-        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-p">
-          Get Started with Scale
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <p class="pricing-note">14-day money-back guarantee &middot; One recovered Friday night pays for three months of the system &middot; API costs at cost, no markup</p>
+      <div class="pc reveal">
+        <span class="p-tier">Scale</span>
+        <h3 class="p-title">Scale Plan</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$1,397 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$447/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Everything in Growth</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI Voice Agent &#8212; answers calls 24/7</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Multi-location support</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Dedicated account manager</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pg">Get Started</a>
+        <p class="p-note">API costs at cost, no markup.</p>
       </div>
     </div>
   </div>

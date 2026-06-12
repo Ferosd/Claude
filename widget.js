@@ -1,5 +1,5 @@
 (function () {
-  const WEBHOOK = 'https://juliaz.app.n8n.cloud/webhook/chatbot';
+  const WEBHOOK = 'https://ellyz.app.n8n.cloud/webhook/chatbotcore';
   const ACCENT = '#00D4AA';
   const DARK = '#0d1317';
   const SURFACE = '#111920';

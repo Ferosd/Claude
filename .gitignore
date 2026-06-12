@@ -5,3 +5,6 @@ node_modules/
 *.png
 screenshots/
 debug/
+
+# Audit artifacts (FAZ 1-2 raw data)
+.audit/

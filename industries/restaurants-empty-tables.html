@@ -293,9 +293,15 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px rgba(
 .quote-src{font-size:12px;color:var(--text-fine);margin-top:16px;letter-spacing:1px;text-align:left;padding-left:31px}
 
 /* PRICING */
-.pricing-wrap{display:flex;justify-content:center;margin-top:48px}
-.pc-single{background:var(--surface);border:1px solid var(--accent);border-radius:24px;padding:40px 36px;width:100%;max-width:480px;transition:transform 0.3s var(--spring),box-shadow 0.3s}
-.pc-single:hover{transform:translateY(-4px);box-shadow:0 30px 80px -20px rgba(0,212,170,0.2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;align-items:start}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:36px 32px;position:relative;transition:border-color .3s,transform .3s var(--spring)}
+.pc:hover{border-color:rgba(0,212,170,.3)}
+.pc.feat{background:linear-gradient(180deg,#0a1f1a,#0d1117);border-color:var(--accent);box-shadow:0 30px 80px -20px rgba(0,212,170,.15);transform:translateY(-12px)}
+.pc.feat:hover{transform:translateY(-14px)}
+.pp-pill{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#060a0e;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-pg{display:block;width:100%;padding:14px;text-align:center;border:1px solid var(--border);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);transition:border-color .3s,color .3s}
+.btn-pg:hover{border-color:rgba(0,212,170,.4);color:var(--accent)}
+@media(max-width:767px){.pricing-grid{grid-template-columns:1fr;gap:24px}.pc.feat{transform:none}}
 .p-tier{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-fine);margin-bottom:12px}
 .p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:26px;font-weight:800;margin-bottom:20px}
 .p-slbl{display:block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);margin-bottom:6px}
@@ -907,30 +913,60 @@ footer{padding:80px 0 48px;border-top:1px solid rgba(255,255,255,0.06)}
 <section class="section" style="padding-top:0">
   <div class="container">
     <span class="sec-label reveal">Pricing</span>
-    <h2 class="sec-h2 reveal">One Plan. Designed for Restaurants. Ready in 7 Days</h2>
+    <h2 class="sec-h2 reveal">Three plans for restaurants. Ready in 7 days</h2>
     <p class="sec-sub reveal">Everything you need to stop losing revenue to no-shows &#8212; configured and live within a week.</p>
-    <div class="pricing-wrap">
-      <div class="pc-single reveal">
-        <span class="p-tier">Starter Plan</span>
-        <h3 class="p-title">Starter</h3>
+    <div class="pricing-grid">
+      <div class="pc reveal">
+        <span class="p-tier">Starter</span>
+        <h3 class="p-title">Starter Plan</h3>
         <span class="p-slbl">Setup Fee</span>
-        <div class="p-price">$697 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
-        <p class="p-sub">+ $197/month</p>
+        <div class="p-price">$397 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$97/month</p>
         <div class="p-div"></div>
         <span class="p-wlbl">What&#8217;s Included</span>
         <ul class="p-items">
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automated reservation reminders (WhatsApp + SMS)</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>24-hour and 2-hour confirmation sequence</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>One-tap guest confirmation and cancellation</li>
-          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Waitlist auto-fill on cancellations</li>
-          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>No-show tracking per guest profile</li>
-          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Repeat offender flagging and deposit option</li>
-          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Daily reservation summary report</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>7-day live setup</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>30-day support included</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Email support</li>
         </ul>
-        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf">Get Started with Starter &#8594;</a>
-        <p class="p-note">14-day money-back guarantee.<br>One recovered 4-top per week pays for six months of the system.</p>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pg">Get Started</a>
+      </div>
+      <div class="pc feat reveal">
+        <div class="pp-pill" aria-label="Most Popular"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Most Popular</div>
+        <span class="p-tier" style="color:var(--accent)">Growth</span>
+        <h3 class="p-title">Growth Plan</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$597 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$177/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Everything in Starter</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Waitlist auto-fill on cancellations</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>No-show tracking per guest profile</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Daily reservation summary report</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Priority support</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf">Get Started</a>
+      </div>
+      <div class="pc reveal">
+        <span class="p-tier">Scale</span>
+        <h3 class="p-title">Scale Plan</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$897 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$297/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Everything in Growth</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Repeat offender flagging and deposit option</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Multi-location support</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Dedicated account manager</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pg">Get Started</a>
       </div>
     </div>
   </div>
@@ -1073,8 +1109,8 @@ function updateCalc(){
   calcYearlyLoss.textContent  = fmtGBP(yearly);
   calcRecovery.textContent    = fmtGBP(recovery);
 
-  /* system cost roughly $197/month ~ £157 */
-  var sysMonths = recovery > 0 ? Math.round(recovery / 157) : 0;
+  /* system cost roughly $97/month ~ £77 */
+  var sysMonths = recovery > 0 ? Math.round(recovery / 77) : 0;
   calcNote.textContent = sysMonths > 0
     ? 'That’s approximately ' + sysMonths + ' months of system cost recovered in your first month.'
     : 'Reduce your no-show rate to see your recovery estimate.';

@@ -272,15 +272,19 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .quote-src{font-size:13px;color:var(--text-fine)}
 
 /* PRICING */
-.pricing-wrap{display:flex;justify-content:center;margin-top:48px}
-.pc-single{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:40px;max-width:520px;width:100%;box-shadow:0 8px 40px rgba(0,212,170,0.12);transform:translateY(-4px)}
-.p-tier{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);padding:5px 12px;border-radius:4px;margin-bottom:20px}
-.p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;margin-bottom:24px}
-.p-price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
-.p-price{font-family:'JetBrains Mono',monospace;font-size:clamp(2rem,3.5vw,2.5rem);font-weight:500;color:var(--text)}
-.p-price-label{font-size:14px;color:var(--text-muted)}
-.p-monthly{font-size:16px;color:var(--text-secondary);margin-bottom:28px;font-weight:500}
-.p-monthly strong{font-family:'JetBrains Mono',monospace;color:var(--text)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;align-items:start}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:36px 32px;position:relative;transition:border-color .3s,transform .3s var(--spring)}
+.pc:hover{border-color:rgba(0,212,170,.3)}
+.pc.feat{background:linear-gradient(180deg,#0a1f1a,#0d1117);border-color:var(--accent);box-shadow:0 30px 80px -20px rgba(0,212,170,.15);transform:translateY(-12px)}
+.pc.feat:hover{transform:translateY(-14px)}
+.pp-pill{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#060a0e;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-pg{display:block;width:100%;padding:14px;text-align:center;border:1px solid var(--border);border-radius:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);transition:border-color .3s,color .3s}
+.btn-pg:hover{border-color:rgba(0,212,170,.4);color:var(--accent)}
+.p-tier{display:block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-fine);margin-bottom:12px}
+.p-title{font-family:'Cabinet Grotesk',sans-serif;font-size:26px;font-weight:800;margin-bottom:20px}
+.p-price{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3vw,3rem);font-weight:800;line-height:1}
+.p-sub{font-size:15px;color:var(--text-secondary);margin-top:8px;margin-bottom:24px}
+@media(max-width:767px){.pricing-grid{grid-template-columns:1fr;gap:24px}.pc.feat{transform:none}}
 .p-div{height:1px;background:var(--border);margin-bottom:24px}
 .p-wlbl{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-fine);display:block;margin-bottom:16px}
 .p-items{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
@@ -834,33 +838,60 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:64px
 <section class="section">
   <div class="container">
     <span class="sec-label reveal">Pricing</span>
-    <h2 class="sec-h2 reveal">The Growth Plan</h2>
-    <p class="sec-sub reveal">For salons ready to be found, chosen, and remembered online. Ready in 7 days.</p>
-    <div class="pricing-wrap">
-      <div class="pc-single reveal">
-        <span class="p-tier">Growth Plan &#8212; Most Popular</span>
-        <h3 class="p-title">Growth</h3>
-        <div class="p-price-row">
-          <span class="p-price">$997</span>
-          <span class="p-price-label">one-time setup</span>
-        </div>
-        <p class="p-monthly">+ <strong>$297</strong>/month</p>
+    <h2 class="sec-h2 reveal">Three plans for salons. Ready in 7 days</h2>
+    <p class="sec-sub reveal">For salons ready to be found, chosen, and remembered online &#8212; set up and running within a week.</p>
+    <div class="pricing-grid">
+      <div class="pc reveal">
+        <span class="p-tier">Starter</span>
+        <h3 class="p-title">Starter Plan</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$397 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$97/month</p>
         <div class="p-div"></div>
         <span class="p-wlbl">What&#8217;s Included</span>
         <ul class="p-items">
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automated Google &amp; Trustpilot review requests</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Social media auto-posting &#8212; Instagram + Facebook</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>7-day live setup</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>30-day support included</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Email support</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pg">Get Started</a>
+      </div>
+      <div class="pc feat reveal">
+        <div class="pp-pill" aria-label="Most Popular"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Most Popular</div>
+        <span class="p-tier" style="color:var(--accent)">Growth</span>
+        <h3 class="p-title">Growth Plan</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$597 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$177/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Everything in Starter</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Content calendar + scheduling (3&#8211;5 posts/week)</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Centralised client CRM</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Monthly performance report</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Priority support</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf">Get Started</a>
+      </div>
+      <div class="pc reveal">
+        <span class="p-tier">Scale</span>
+        <h3 class="p-title">Scale Plan</h3>
+        <span class="p-slbl">Setup Fee</span>
+        <div class="p-price">$897 <span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/one-time</span></div>
+        <p class="p-sub">+$277/month</p>
+        <div class="p-div"></div>
+        <span class="p-wlbl">What&#8217;s Included</span>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Everything in Growth</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Visit history &amp; preference tracking</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Client segmentation &amp; re-engagement alerts</li>
           <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automatic birthday message campaigns</li>
-          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Monthly performance report (reviews, followers, engagement)</li>
-          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>7-day live setup</li>
-          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>30-day support included</li>
+          <li class="p-item"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Dedicated account manager</li>
         </ul>
-        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pf" data-magnetic>Get Started with Growth &#8594;</a>
-        <p class="p-note">14-day money-back guarantee.<br>Your first 5-star review covers the first month.</p>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-pg">Get Started</a>
       </div>
     </div>
   </div>
