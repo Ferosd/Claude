@@ -1,0 +1,39 @@
+/* Cabinet Grotesk — self-hosted (Fontshare). Google Fonts does not carry this family;
+   the old css2 request silently dropped it and every heading fell back to system sans. */
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/CabinetGrotesk-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/CabinetGrotesk-Medium.woff2') format('woff2');
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/CabinetGrotesk-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/CabinetGrotesk-Extrabold.woff2') format('woff2');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Stat values, prices and metrics render in JetBrains Mono (loaded via Google Fonts).
+   !important is deliberate: this sheet loads before each page's inline <style>. */
+.stat-big, .stat-num, .case-metric, .result-metric-num,
+.call-stat-num, .dash-metric-val, .mock-metric-num,
+.ci-num, .p-price, .cr-num {
+  font-family: 'JetBrains Mono', Consolas, monospace !important;
+  letter-spacing: -0.03em;
+}

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
 <script>
@@ -22,7 +23,8 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 <style>
@@ -43,7 +45,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .btn-ghost:active{transform:scale(0.97)}
 .btn-ghost:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .section-eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
 .reveal.visible{opacity:1;transform:none}
 /* NAV */
 #mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
@@ -994,7 +996,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <div class="footer-col">
         <h4>Connect</h4>
         <ul>
-          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
+          <li><a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a></li>
           <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         </ul>
       </div>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Try Before You Buy — Live AI Demos | Coremagna</title>
 <meta name="description" content="Experience our AI systems live. See a real AI chatbot handle enquiries, talk to our AI voice agent, and watch CRM automation process a lead in 7 seconds. No signup required.">
@@ -24,7 +25,8 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── CSS Variables ── */
 :root {
@@ -83,7 +85,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 /* Utilities */
 .container{max-width:1280px;margin:0 auto;padding:0 32px}
 .section-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* Buttons */
@@ -132,7 +134,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 #mainNav.entered{opacity:1;transform:translateY(0);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease),background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
 
 /* ── Hero ── */
-#hero{min-height:88vh;padding:var(--space-3xl) 0 var(--space-2xl);display:flex;align-items:center;position:relative;overflow:hidden;
+#hero{padding:150px 0 var(--space-xl);display:flex;align-items:center;position:relative;overflow:hidden;
   background-image:radial-gradient(ellipse at 8% 55%, rgba(0,212,170,0.08) 0%, transparent 50%),radial-gradient(ellipse at 90% 20%, rgba(0,180,150,0.04) 0%, transparent 45%)}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(0,212,170,0.2);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:var(--space-lg)}
 .hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite;flex-shrink:0}
@@ -142,7 +144,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .hero-actions{display:flex;gap:var(--space-md);flex-wrap:wrap}
 
 /* ── Demo Selector ── */
-#demo-selector{padding:var(--space-2xl) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+#demo-selector{padding:var(--space-xl) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+#chatbot-demo{padding-top:var(--space-2xl)}
 .selector-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-md)}
 .selector-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:var(--space-lg) var(--space-md);cursor:pointer;position:relative;overflow:hidden;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease),box-shadow 0.3s var(--ease);text-align:left}
 .selector-card:not(.disabled):hover{border-color:var(--border-hover);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,212,170,0.1)}
@@ -214,61 +217,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .chat-send svg{width:16px;height:16px;stroke:#060a0e;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .chat-send:disabled{opacity:0.5;pointer-events:none}
 
-/* ── Voice Agent ── */
-#voice-demo{padding:var(--space-3xl) 0;background-image:radial-gradient(ellipse at 50% 0%, rgba(0,212,170,0.07) 0%, transparent 60%)}
-.voice-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.voice-stage{display:flex;flex-direction:column;align-items:center;gap:var(--space-xl)}
-.mic-ring-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:220px;height:220px}
-.mic-ring{position:absolute;border-radius:50%;border:1px solid rgba(0,212,170,0.15);pointer-events:none}
-.mic-ring:nth-child(1){width:140px;height:140px;animation:ringExpand 2.5s ease-in-out infinite 0s}
-.mic-ring:nth-child(2){width:180px;height:180px;animation:ringExpand 2.5s ease-in-out infinite 0.5s}
-.mic-ring:nth-child(3){width:220px;height:220px;animation:ringExpand 2.5s ease-in-out infinite 1s}
-@keyframes ringExpand{0%,100%{opacity:0.4;transform:scale(0.95)}50%{opacity:1;transform:scale(1)}}
-.mic-button{position:relative;z-index:1;width:120px;height:120px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.3s var(--ease),transform 0.2s var(--ease),box-shadow 0.3s var(--ease)}
-.mic-button::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:transparent;border:2px solid rgba(0,212,170,0.3);animation:micPulseIdle 2s ease-in-out infinite;pointer-events:none}
-@keyframes micPulseIdle{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.12);opacity:0}}
-.mic-button:hover{transform:scale(1.05);box-shadow:0 0 0 12px rgba(0,212,170,0.1)}
-.mic-button:active{transform:scale(0.97)}
-.mic-button.listening{background:#00e070}
-.mic-button.listening::before{animation:micListenPulse 0.8s ease-in-out infinite alternate}
-@keyframes micListenPulse{from{box-shadow:0 0 0 0 rgba(0,224,112,0.4)}to{box-shadow:0 0 0 20px rgba(0,224,112,0)}}
-.mic-button.processing{background:#2a3a44;cursor:wait}
-.mic-button.processing::before{animation:none;opacity:0}
-.mic-button.speaking{background:var(--accent)}
-.mic-button.speaking::before{animation:speakPulse 0.6s ease-in-out infinite alternate}
-@keyframes speakPulse{from{box-shadow:0 0 0 0 rgba(0,212,170,0.4)}to{box-shadow:0 0 0 20px rgba(0,212,170,0)}}
-.mic-button svg{width:40px;height:40px;stroke:#060a0e;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mic-button:disabled{opacity:0.4;cursor:not-allowed;transform:none}
-.voice-visualizer{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;min-height:40px}
-.voice-bar{width:4px;border-radius:2px;background:var(--accent);opacity:0;transition:opacity 0.3s var(--ease)}
-.voice-visualizer.active .voice-bar{opacity:1;animation:voiceWave 1.2s ease-in-out infinite}
-.voice-bar:nth-child(1){height:8px;animation-delay:0s}
-.voice-bar:nth-child(2){height:14px;animation-delay:0.1s}
-.voice-bar:nth-child(3){height:20px;animation-delay:0.2s}
-.voice-bar:nth-child(4){height:28px;animation-delay:0.3s}
-.voice-bar:nth-child(5){height:32px;animation-delay:0.4s}
-.voice-bar:nth-child(6){height:28px;animation-delay:0.5s}
-.voice-bar:nth-child(7){height:20px;animation-delay:0.6s}
-.voice-bar:nth-child(8){height:14px;animation-delay:0.7s}
-.voice-bar:nth-child(9){height:8px;animation-delay:0.8s}
-@keyframes voiceWave{0%,100%{transform:scaleY(0.3);opacity:0.4}50%{transform:scaleY(1);opacity:1}}
-.mic-status{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.3s var(--ease)}
-.mic-status.listening{color:var(--accent)}
-.mic-status.speaking{color:var(--accent)}
-.voice-interim{min-height:24px;font-size:13px;color:var(--text-muted);font-style:italic;text-align:center;max-width:260px;line-height:1.5}
-.voice-transcript{width:100%;max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-top:var(--space-sm)}
-.voice-transcript::-webkit-scrollbar{width:4px}
-.voice-transcript::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.voice-turn{display:flex;flex-direction:column;gap:3px}
-.voice-turn-label{font-size:10px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-fine)}
-.voice-turn-text{font-size:13px;color:var(--text-secondary);line-height:1.6}
-.voice-compat-notice{padding:16px 20px;background:rgba(245,193,74,0.08);border:1px solid rgba(245,193,74,0.25);border-radius:10px;font-size:13px;color:var(--yellow);display:none;margin-top:var(--space-lg)}
-.voice-features{display:flex;flex-direction:column;gap:var(--space-sm);margin-top:var(--space-xl)}
-.voice-feature{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
-.voice-feature svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-
-.voice-reset-btn{background:none;border:none;color:var(--text-fine);font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:4px 0;transition:color 0.2s var(--ease)}.voice-reset-btn:hover{color:var(--text-muted)}
-
 /* ── CRM Form ── */
 .crm-form{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-xl)}
 .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:var(--space-md)}
@@ -338,8 +286,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .container,.nav-inner{padding:0 24px}
   .selector-grid{grid-template-columns:repeat(3,1fr)}
   .demo-grid,.demo-grid.flip{grid-template-columns:1fr;gap:48px}
-  .voice-inner{grid-template-columns:1fr;gap:var(--space-xl)}
-  .voice-stage{order:-1}
   .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
@@ -360,9 +306,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .footer-tagline{max-width:100%}
   .footer-social{justify-content:center}
   .demo-section{padding:var(--space-xl) 0}
-  #voice-demo{padding:var(--space-xl) 0}
-  .mic-button{width:100px;height:100px}
-  .mic-button svg{width:32px;height:32px}
 }
 @media(max-width:480px){
   .metric-chips{flex-direction:column}
@@ -425,9 +368,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <p class="hero-sub reveal">Experience our AI systems live. No signup. No sales call. Just click and see.</p>
     <div class="hero-actions reveal">
       <a href="#chatbot-demo" class="btn-primary magnetic-btn">Try AI Chatbot
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
-      <a href="#voice-demo" class="btn-ghost magnetic-btn">Try Voice Agent
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </a>
     </div>
@@ -566,82 +506,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
-<!-- VOICE DEMO DISABLED
-<section id="voice-demo" class="demo-section">
-  <div class="container">
-    <div class="voice-inner">
 
-      <!-- Left: Description -->
-      <div>
-        <span class="demo-label reveal">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
-          AI Voice Agent Demo
-        </span>
-        <h2 class="demo-h2 reveal">Talk to AI — Out Loud</h2>
-        <p class="demo-desc reveal">Press the microphone, ask a question, and hear the AI respond in real time. This is exactly what your callers would experience.</p>
-
-        <div class="voice-features reveal">
-          <div class="voice-feature">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
-            Speech recognition
-          </div>
-          <div class="voice-feature">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-            Natural voice response
-          </div>
-          <div class="voice-feature">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            Under 3 seconds
-          </div>
-          <div class="voice-feature">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            Multi-language
-          </div>
-        </div>
-
-        <div class="voice-compat-notice" id="voice-compat" role="alert">
-          Voice demo requires Chrome or Edge. Please try the text chatbot above.
-        </div>
-      </div>
-
-      <!-- Right: Mic + Visualizer + Transcript -->
-      <div class="voice-stage reveal">
-        <div class="mic-ring-wrap">
-          <div class="mic-ring" aria-hidden="true"></div>
-          <div class="mic-ring" aria-hidden="true"></div>
-          <div class="mic-ring" aria-hidden="true"></div>
-          <button class="mic-button" id="mic-button" aria-label="Start voice interaction" aria-pressed="false">
-            <svg viewBox="0 0 24 24" aria-hidden="true" id="mic-icon">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-              <line x1="12" y1="19" x2="12" y2="23"/>
-              <line x1="8" y1="23" x2="16" y2="23"/>
-            </svg>
-          </button>
-        </div>
-
-        <div class="voice-visualizer" id="voice-viz" aria-hidden="true">
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-          <div class="voice-bar"></div>
-        </div>
-
-        <div class="mic-status" id="mic-status" aria-live="polite">Tap to speak</div>
-        <div class="voice-interim" id="voice-interim" aria-live="polite"></div>
-        <div class="voice-transcript" id="voice-transcript" role="log" aria-label="Voice conversation transcript"></div>
-        <button id="voice-reset" class="voice-reset-btn" aria-label="Reset conversation">Reset conversation</button>
-      </div>
-
-    </div>
-  </div>
-</section>
-VOICE DEMO DISABLED -->
 
 <!-- CRM DEMO -->
 <section id="crm-demo" class="demo-section">
@@ -822,7 +687,7 @@ VOICE DEMO DISABLED -->
       <div class="footer-col">
         <h4>Connect</h4>
         <ul>
-          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
+          <li><a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a></li>
           <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         </ul>
       </div>
@@ -950,172 +815,6 @@ VOICE DEMO DISABLED -->
   document.querySelectorAll('.example-btn').forEach(btn=>{
     btn.addEventListener('click',()=>send(btn.dataset.text));
   });
-})();
-
-/* AI Voice Agent — Gemini API (client-side) */
-(function(){
-  const GEMINI_PROXY='https://juliaz.app.n8n.cloud/webhook/gemini-proxy';
-
-  const VOICE_SYSTEM_PROMPT=`You are Maya, a senior automation consultant at Coremagna, an AI automation agency. You're being used as a live voice demo on the Coremagna website. Visitors speak to you through their microphone and hear your response read aloud.
-
-CRITICAL RULES FOR VOICE:
-- Keep responses to 1-2 sentences MAX — you're being read aloud, long answers are painful to listen to
-- Be conversational and warm — like a real phone call
-- No bullet points, no lists, no markdown — pure spoken language
-- No emojis, no special characters — just plain text
-- Use natural speech patterns: "So...", "That's a great question...", "Here's the thing..."
-
-YOUR FIRST RESPONSE (when user says anything for the first time):
-"Hi there! I'm Maya from Coremagna. I help businesses automate things like lead capture, appointment reminders, and client follow-up. What kind of business do you run?"
-
-WHAT YOU KNOW:
-- AI Chatbots for websites (24/7 lead capture)
-- CRM automation (instant lead scoring and follow-up)
-- AI Voice Agents like this one (answer calls, book appointments)
-- Appointment reminders (reduce no-shows by 70%)
-- Social media automation
-
-PRICING: "Our packages start from 697 dollars for setup. But the exact price depends on what you need — I'd suggest booking a quick call with Ferit, our founder, to map it out."
-
-BOOKING: When they show interest, say: "Would you like me to set up a quick call with Ferit? He can walk you through exactly what would work for your business."
-
-LANGUAGE: If the user speaks Turkish, switch to Turkish entirely. Otherwise use British English.
-
-Remember: SHORT responses. You're being spoken aloud. Every extra sentence is 3-4 seconds of waiting.`;
-
-  const micBtn=document.getElementById('mic-button');
-  const statusEl=document.getElementById('mic-status');
-  const vizEl=document.getElementById('voice-viz');
-  const interimEl=document.getElementById('voice-interim');
-  const transcriptEl=document.getElementById('voice-transcript');
-  const compatEl=document.getElementById('voice-compat');
-  const resetBtn=document.getElementById('voice-reset');
-
-  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SpeechRecognition){
-    compatEl.style.display='block';
-    micBtn.disabled=true;
-    if(resetBtn) resetBtn.style.display='none';
-    return;
-  }
-
-  let recognition=null,state='idle',currentLang='en-GB';
-  const conversationHistory=[];
-  let cachedVoices=[];
-
-  function loadVoices(){cachedVoices=speechSynthesis.getVoices();}
-  loadVoices();
-  speechSynthesis.onvoiceschanged=loadVoices;
-
-  function setState(s){
-    state=s;
-    micBtn.className='mic-button'+(s!=='idle'?' '+s:'');
-    micBtn.setAttribute('aria-pressed',s==='listening'?'true':'false');
-    const labels={idle:'Tap to speak',listening:'Listening...',processing:'Thinking...',speaking:'Speaking...'};
-    statusEl.textContent=labels[s]||'Tap to speak';
-    statusEl.className='mic-status'+(s==='listening'||s==='speaking'?' '+s:'');
-    if(s==='listening'||s==='speaking') vizEl.classList.add('active');
-    else vizEl.classList.remove('active');
-  }
-
-  function addTurn(who,text){
-    const turn=document.createElement('div');
-    turn.className='voice-turn';
-    const label=document.createElement('span');
-    label.className='voice-turn-label';
-    label.textContent=who;
-    const body=document.createElement('div');
-    body.className='voice-turn-text';
-    body.textContent=text;
-    turn.append(label,body);
-    transcriptEl.append(turn);
-    transcriptEl.scrollTop=transcriptEl.scrollHeight;
-  }
-
-  function detectTurkish(text){
-    return /[çğışöüÇĞİŞÖÜ]/.test(text)||/\b(merhaba|evet|hayır|tamam|nasıl|ne|bir|bu|ben|biz|için|var|yok|randevu|işletme|teşekkür)\b/i.test(text);
-  }
-
-  function speakResponse(text,lang){
-    setState('speaking');
-    const utterance=new SpeechSynthesisUtterance(text);
-    utterance.lang=lang;
-    utterance.rate=1.0;
-    utterance.pitch=1.0;
-    const voices=cachedVoices.length?cachedVoices:speechSynthesis.getVoices();
-    if(lang==='en-GB'){
-      const pref=voices.find(v=>v.name.includes('Google UK English Female'))||voices.find(v=>v.lang==='en-GB'&&v.name.toLowerCase().includes('female'))||voices.find(v=>v.lang==='en-GB');
-      if(pref) utterance.voice=pref;
-    }else if(lang==='tr-TR'){
-      const pref=voices.find(v=>v.lang==='tr-TR');
-      if(pref) utterance.voice=pref;
-    }
-    utterance.onend=()=>setState('idle');
-    utterance.onerror=()=>setState('idle');
-    speechSynthesis.speak(utterance);
-  }
-
-  async function sendToGemini(userText){
-    if(!userText.trim()){setState('idle');return;}
-    if(detectTurkish(userText)) currentLang='tr-TR';
-    setState('processing');
-    addTurn('You',userText);
-    conversationHistory.push({role:'user',parts:[{text:userText}]});
-    if(conversationHistory.length>20) conversationHistory.splice(0,2);
-    try{
-      const res=await fetch(GEMINI_PROXY,{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          system_prompt:VOICE_SYSTEM_PROMPT,
-          contents:conversationHistory
-        })
-      });
-      const data=await res.json();
-      const reply=data.candidates?.[0]?.content?.parts?.[0]?.text||"Sorry, I didn't catch that. Could you try again?";
-      conversationHistory.push({role:'model',parts:[{text:reply}]});
-      if(conversationHistory.length>20) conversationHistory.splice(0,2);
-      addTurn('Maya',reply);
-      speakResponse(reply,currentLang);
-    }catch(err){
-      addTurn('Maya',"I'm having a connection issue. Please try again.");
-      setState('idle');
-    }
-  }
-
-  micBtn.addEventListener('click',()=>{
-    if(state==='listening'){recognition.stop();return;}
-    if(state==='speaking'){speechSynthesis.cancel();setState('idle');return;}
-    if(state!=='idle') return;
-    recognition=new SpeechRecognition();
-    recognition.lang=currentLang;
-    recognition.interimResults=true;
-    recognition.continuous=false;
-    let finalTranscript='';
-    recognition.onstart=()=>setState('listening');
-    recognition.onresult=e=>{
-      let interim='';
-      finalTranscript='';
-      for(let i=0;i<e.results.length;i++){
-        if(e.results[i].isFinal) finalTranscript+=e.results[i][0].transcript;
-        else interim+=e.results[i][0].transcript;
-      }
-      interimEl.textContent=interim;
-    };
-    recognition.onend=()=>{interimEl.textContent='';sendToGemini(finalTranscript);};
-    recognition.onerror=e=>{console.warn('Voice recognition error:',e.error);interimEl.textContent='';setState('idle');};
-    recognition.start();
-  });
-
-  if(resetBtn){
-    resetBtn.addEventListener('click',()=>{
-      conversationHistory.length=0;
-      transcriptEl.innerHTML='';
-      currentLang='en-GB';
-      speechSynthesis.cancel();
-      setState('idle');
-    });
-  }
 })();
 
 /* CRM form + pipeline animation */

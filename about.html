@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Coremagna | AI Automation Agency</title>
 <meta name="description" content="Coremagna is a one-person agency focused on AI chatbots, automation, and web design for small and mid-sized businesses.">
@@ -27,7 +28,8 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23060a0e'/><text x='16' y='23' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='22' fill='%2300D4AA'>C</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── 1. Custom Properties ── */
 :root {
@@ -83,7 +85,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 /* ── 4. Utilities ── */
 .container{max-width:1240px;margin:0 auto;padding:0 var(--space-xl)}
 .section-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .btn-primary{display:inline-flex;align-items:center;gap:6px;padding:14px 32px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.04em;border-radius:6px;
   transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
@@ -276,7 +278,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <div class="hero-about-grid">
       <div class="hero-photo-wrap reveal">
         <div class="hero-photo">
-          <img src="ferit-profil.png" alt="Ferit, founder of Coremagna" loading="eager">
+          <img src="/images/ferit-profil.webp" alt="Ferit, founder of Coremagna" width="560" height="560" loading="eager">
         </div>
       </div>
       <div>
@@ -376,7 +378,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <div class="footer-col">
         <h4>Connect</h4>
         <ul>
-          <li><a href="mailto:ferit@coremagna.com">ferit@coremagna.com</a></li>
+          <li><a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a></li>
           <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         </ul>
       </div>
