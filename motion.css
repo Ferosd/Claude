@@ -1,0 +1,37 @@
+/* Site-wide motion utilities — loaded after fonts.css on every page.
+   Rules here are deliberately generic; page styles may extend them. */
+
+/* Page entry fade (CSS only, no library) */
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+body { animation: pageFadeIn 0.4s ease-out; }
+
+/* Active page indicator in the navbar */
+.nav-links a { position: relative; }
+.nav-links a.active { color: var(--text, #F0F4F3); }
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent, #00D4AA);
+}
+
+/* Reduced motion: kill animations/transitions and force revealed content visible */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js .reveal, .js .reveal-hero {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

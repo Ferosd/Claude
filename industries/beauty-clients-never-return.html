@@ -24,9 +24,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/motion.css">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap.min.js" defer></script>
+<script src="/vendor/ScrollTrigger.min.js" defer></script>
 <style>
 :root{
   --bg:#060a0e;--surface:#0d1117;--surface-2:#111920;
@@ -291,7 +292,7 @@ footer{padding:80px 0 48px;border-top:1px solid rgba(255,255,255,0.06)}
       <span>Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/industries.html" class="active">Industries</a></li>
       <li><a href="/index.html#work">Work</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/blog/index.html">Blog</a></li>
@@ -308,7 +309,7 @@ footer{padding:80px 0 48px;border-top:1px solid rgba(255,255,255,0.06)}
 </nav>
 <div class="mob-nav" id="mobNav" aria-hidden="true">
   <ul role="list">
-    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/industries.html" class="active">Industries</a></li>
     <li><a href="/index.html#work">Work</a></li>
     <li><a href="/about.html">About</a></li>
     <li><a href="/blog/index.html">Blog</a></li>

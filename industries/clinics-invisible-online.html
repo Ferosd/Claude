@@ -18,9 +18,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/motion.css">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap.min.js" defer></script>
+<script src="/vendor/ScrollTrigger.min.js" defer></script>
 <style>
 :root{--bg:#060a0e;--surface:#0d1117;--surface2:#111920;--accent:#00D4AA;--accent-dim:rgba(0,212,170,0.12);--text:#F0F4F3;--secondary:#8a9ba8;--muted:#5a6b78;--card:#0d1117;--cb:#1a2530;--red:#e85d4a;--yellow:#f5c14a;--border2:rgba(255,255,255,0.07);--ease:cubic-bezier(0.4,0,0.2,1);--spring:cubic-bezier(0.16,1,0.3,1);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
@@ -181,7 +182,7 @@ footer{padding:80px 0 48px;border-top:1px solid var(--border2)}.footer-inner{dis
   <div class="nav-inner">
     <a href="/index.html" class="logo" aria-label="Coremagna home"><span>Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span></a>
     <ul class="nav-links" role="list">
-      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/industries.html" class="active">Industries</a></li>
       <li><a href="/demo.html">Demo</a></li>
       <li><a href="/index.html#services">Services</a></li>
       <li><a href="/about.html">About</a></li>
@@ -194,7 +195,7 @@ footer{padding:80px 0 48px;border-top:1px solid var(--border2)}.footer-inner{dis
 </nav>
 <div class="mob-nav" id="mobNav" aria-hidden="true">
   <ul role="list">
-    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/industries.html" class="active">Industries</a></li>
     <li><a href="/demo.html">Demo</a></li>
     <li><a href="/index.html#services">Services</a></li>
     <li><a href="/about.html">About</a></li>
