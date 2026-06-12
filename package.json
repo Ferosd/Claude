@@ -1,0 +1,8 @@
+{
+  "name": "coremagna-site",
+  "private": true,
+  "description": "Coremagna agency site — static HTML/CSS/JS, no build step required to serve",
+  "scripts": {
+    "build-blog": "node scripts/build-blog.js"
+  }
+}

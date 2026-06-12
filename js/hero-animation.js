@@ -19,14 +19,25 @@
     }, { passive: true });
   }
 
-  function waitForThree(fn) {
-    typeof THREE !== 'undefined' ? fn() : setTimeout(() => waitForThree(fn), 50);
-  }
-
   function applyFallback() {
     const fb = document.createElement('div');
     fb.className = 'hero-canvas-fallback';
     if (canvas.parentNode) canvas.parentNode.insertBefore(fb, canvas);
+  }
+
+  // three.js is heavy (~600KB); load it after the page is interactive so it
+  // never competes with LCP. The CSS placeholder gradient covers the gap.
+  function loadThree(fn) {
+    if (typeof THREE !== 'undefined') return fn();
+    function inject() {
+      const tag = document.createElement('script');
+      tag.src = '/vendor/three.min.js';
+      tag.onload = fn;
+      tag.onerror = applyFallback;
+      document.head.appendChild(tag);
+    }
+    if (document.readyState === 'complete') inject();
+    else window.addEventListener('load', inject, { once: true });
   }
 
   function getSceneConfig() {
@@ -124,7 +135,11 @@
     }, { passive: true });
   }
 
-  waitForThree(() => { try { setupScene(); } catch(e) { applyFallback(); } });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    applyFallback();
+  } else {
+    loadThree(() => { try { setupScene(); } catch(e) { applyFallback(); } });
+  }
 
   revealHeroContent();
 })();
