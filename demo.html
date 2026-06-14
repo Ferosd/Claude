@@ -749,7 +749,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   const inputEl=document.getElementById('chat-input');
   const sendBtn=document.getElementById('chat-send');
   const errorEl=document.getElementById('chat-error');
-  const WEBHOOK='https://juliaz.app.n8n.cloud/webhook/coremagna-demo';
+  const WEBHOOK='https://ellyz.app.n8n.cloud/webhook/chatbotcore';
   let busy=false;
 
   function appendMsg(role,text){
@@ -792,15 +792,30 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     inputEl.value='';
     inputEl.style.height='';
     showTyping();
-    try{
-      const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,session_id:sessionId,visitor_name:'Demo Visitor',visitor_email:'demo@coremagna.com'})});
-      const data=await res.json();
-      removeTyping();
-      appendMsg('ai',data.reply||'Sorry, something went wrong. Please try again.');
-    }catch(err){
-      removeTyping();
-      errorEl.style.display='block';
+    const MAX_ATTEMPTS=3; // initial try + 2 retries
+    let lastErr=null;
+    for(let attempt=1;attempt<=MAX_ATTEMPTS;attempt++){
+      try{
+        const controller=new AbortController();
+        const t=setTimeout(()=>controller.abort(),12000);
+        const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,session_id:sessionId,visitor_name:'Demo Visitor',visitor_email:'demo@coremagna.com'}),signal:controller.signal});
+        clearTimeout(t);
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const raw=await res.text();
+        let reply='';
+        try{const data=JSON.parse(raw);reply=data.reply||data.message||data.text||data.output||raw;}catch{reply=raw;}
+        removeTyping();
+        appendMsg('ai',reply||'Got your message!');
+        busy=false;sendBtn.disabled=false;inputEl.focus();
+        return;
+      }catch(err){
+        lastErr=err;
+        console.error('[Coremagna demo chat] attempt '+attempt+'/'+MAX_ATTEMPTS+' failed:',err.name,err.message);
+        if(attempt<MAX_ATTEMPTS) await new Promise(r=>setTimeout(r,2000));
+      }
     }
+    removeTyping();
+    errorEl.style.display='block';
     busy=false;
     sendBtn.disabled=false;
     inputEl.focus();

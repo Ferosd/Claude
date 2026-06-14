@@ -9,6 +9,10 @@
   let visitorName = '';
   let visitorEmail = '';
   let chatStarted = false;
+  // stable per-visitor session so the backend can keep conversation context
+  const sessionId = (typeof crypto !== 'undefined' && crypto.randomUUID)
+    ? crypto.randomUUID()
+    : ('s-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8));
 
   const css = `
     .cm-btn {
@@ -20,6 +24,25 @@
     }
     .cm-btn:hover { transform: scale(1.08); }
     .cm-btn svg { width: 24px; height: 24px; }
+    .cm-tooltip {
+      position: fixed; bottom: 36px; right: 92px;
+      background: ${SURFACE}; color: ${TEXT};
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      padding: 9px 14px; border-radius: 10px;
+      border: 0.5px solid rgba(0,212,170,0.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+      white-space: nowrap; z-index: 99998;
+      opacity: 0; transform: translateX(8px); pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .cm-tooltip::after {
+      content: ''; position: absolute; top: 50%; right: -5px;
+      width: 10px; height: 10px; background: ${SURFACE};
+      border-right: 0.5px solid rgba(0,212,170,0.2);
+      border-top: 0.5px solid rgba(0,212,170,0.2);
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .cm-tooltip.cm-tooltip-show { opacity: 1; transform: translateX(0); }
     .cm-pulse {
       position: fixed; bottom: 24px; right: 24px;
       width: 56px; height: 56px; border-radius: 50%;
@@ -195,6 +218,7 @@
       .cm-btn, .cm-pulse { bottom: 16px; right: 16px; }
       .cm-btn { width: 48px; height: 48px; }
       .cm-pulse { width: 48px; height: 48px; }
+      .cm-tooltip { display: none; }
     }
   `;
 
@@ -208,12 +232,28 @@
   pulse.className = 'cm-pulse';
   document.body.appendChild(pulse);
 
+  // ── TOOLTIP ──
+  const tooltip = document.createElement('div');
+  tooltip.className = 'cm-tooltip';
+  tooltip.textContent = 'Chat with Maya';
+  document.body.appendChild(tooltip);
+
   // ── TRIGGER BUTTON ──
   const btn = document.createElement('button');
   btn.className = 'cm-btn';
-  btn.setAttribute('aria-label', 'Open chat');
+  btn.setAttribute('aria-label', 'Chat with Maya');
   btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#060a0e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
   document.body.appendChild(btn);
+
+  // show tooltip on hover, and once automatically a few seconds after load
+  btn.addEventListener('mouseenter', () => { if (!panel.classList.contains('cm-open')) tooltip.classList.add('cm-tooltip-show'); });
+  btn.addEventListener('mouseleave', () => tooltip.classList.remove('cm-tooltip-show'));
+  setTimeout(() => {
+    if (!panel.classList.contains('cm-open')) {
+      tooltip.classList.add('cm-tooltip-show');
+      setTimeout(() => tooltip.classList.remove('cm-tooltip-show'), 4000);
+    }
+  }, 2500);
 
   // ── PANEL ──
   const panel = document.createElement('div');
@@ -222,7 +262,7 @@
     <div class="cm-header">
       <div class="cm-header-left">
         <div class="cm-dot"></div>
-        <span class="cm-title">Coremagna AI</span>
+        <span class="cm-title">Maya · Coremagna AI</span>
       </div>
       <button class="cm-close" aria-label="Close">×</button>
     </div>
@@ -278,6 +318,7 @@
   function openPanel() {
     panel.classList.add('cm-open');
     pulse.style.display = 'none';
+    tooltip.classList.remove('cm-tooltip-show');
     if (!chatStarted) nameInput.focus();
     else textarea.focus();
   }
@@ -339,7 +380,7 @@
     inputArea.style.display = 'flex';
 
     const first = visitorName.split(' ')[0];
-    appendBot(`Hi ${first}! 👋 I'm Coremagna's AI assistant. I can help you with web design, AI chatbots, and automation. What brings you here today?`);
+    appendBot(`Hi ${first}! 👋 I'm Maya, Coremagna's AI assistant. I can help you with web design, AI chatbots, and automation. What brings you here today?`);
     textarea.focus();
   }
 
@@ -385,7 +426,30 @@
     if (t) t.remove();
   }
 
-  // ── SEND MESSAGE ──
+  // ── SEND MESSAGE (with one automatic retry on transient failure) ──
+  async function postToWebhook(text) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+    try {
+      const res = await fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          session_id: sessionId,
+          visitor_name: visitorName,
+          visitor_email: visitorEmail
+        }),
+        signal: controller.signal
+      });
+      clearTimeout(timeout);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.text();
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
   async function sendMessage() {
     const text = textarea.value.trim();
     if (!text) return;
@@ -393,46 +457,35 @@
     textarea.value = '';
     textarea.style.height = 'auto';
     appendUser(text);
+    showTyping();
 
-    const typing = showTyping();
-
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 10000);
-
-      const res = await fetch(WEBHOOK, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: text,
-          visitor_name: visitorName,
-          visitor_email: visitorEmail
-        }),
-        signal: controller.signal
-      });
-
-      clearTimeout(timeout);
-      removeTyping();
-
-      const raw = await res.text();
-      let reply = '';
-
+    const MAX_ATTEMPTS = 3; // initial try + 2 retries
+    let lastErr = null;
+    for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
       try {
-        const data = JSON.parse(raw);
-        reply = data.reply || data.message || data.text || data.output || raw;
-      } catch {
-        reply = raw;
+        const raw = await postToWebhook(text);
+        removeTyping();
+        let reply = '';
+        try {
+          const data = JSON.parse(raw);
+          reply = data.reply || data.message || data.text || data.output || raw;
+        } catch { reply = raw; }
+        appendBot(reply || 'Got your message!');
+        return;
+      } catch (err) {
+        lastErr = err;
+        console.error(`[Coremagna chat] attempt ${attempt}/${MAX_ATTEMPTS} failed:`, err.name, err.message);
+        if (attempt < MAX_ATTEMPTS) {
+          await new Promise((r) => setTimeout(r, 2000));
+        }
       }
+    }
 
-      appendBot(reply || 'Got your message!');
-
-    } catch (err) {
-      removeTyping();
-      if (err.name === 'AbortError') {
-        appendBot('Taking longer than usual. Please try again.');
-      } else {
-        appendBot('Connection issue. Please try again.');
-      }
+    removeTyping();
+    if (lastErr && lastErr.name === 'AbortError') {
+      appendBot('That took longer than usual. Please try again, or [book a quick call](https://calendar.app.google/XDGM8XJ9zEdqugKr9) and we\'ll reply within 24 hours.');
+    } else {
+      appendBot('I\'m having trouble connecting right now. Please try again in a moment, or [book a free call](https://calendar.app.google/XDGM8XJ9zEdqugKr9) and we\'ll get back to you within 24 hours.');
     }
   }
 
