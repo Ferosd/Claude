@@ -235,6 +235,55 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   transition:color 0.2s var(--ease),gap 0.2s var(--ease)}
 .service-link:hover{color:#00f0c4;gap:8px}
 
+/* ── 9b. ROI Calculator ── */
+#roi{padding:var(--space-3xl) 0;background:var(--surface);
+  background-image:radial-gradient(ellipse at 50% 0%, rgba(0,212,170,0.06) 0%, transparent 55%)}
+.roi-head{max-width:620px;margin:0 auto var(--space-2xl);text-align:center}
+.roi-head h2{font-size:clamp(28px,3.5vw,46px);font-weight:800;margin-top:var(--space-sm)}
+.roi-sub{font-size:1rem;color:var(--muted);line-height:1.65;margin-top:var(--space-md)}
+.roi-card{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1000px;margin:0 auto;
+  border:1px solid rgba(0,212,170,0.18);border-radius:18px;overflow:hidden;
+  background:rgba(13,19,23,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 1px 2px rgba(0,212,170,0.05),0 12px 40px rgba(0,0,0,0.35)}
+.roi-inputs{padding:var(--space-2xl) var(--space-xl);display:flex;flex-direction:column;gap:var(--space-xl)}
+.roi-field{display:flex;flex-direction:column;gap:10px}
+.roi-field label{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.02em;color:var(--text-muted);display:flex;justify-content:space-between;align-items:baseline}
+.roi-val{font-family:'JetBrains Mono',Consolas,monospace;font-size:15px;font-weight:500;color:var(--accent);letter-spacing:-0.02em}
+.roi-select-wrap{position:relative}
+.roi-select{width:100%;appearance:none;-webkit-appearance:none;background:var(--surface2);border:1px solid rgba(0,212,170,0.15);border-radius:10px;
+  padding:12px 38px 12px 14px;color:var(--text);font-size:14px;font-family:inherit;cursor:pointer;outline:none;transition:border-color 0.2s var(--ease)}
+.roi-select:focus-visible{border-color:var(--accent);outline:2px solid var(--accent);outline-offset:2px}
+.roi-select-arrow{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:12px;height:12px;color:var(--accent);pointer-events:none}
+.roi-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;outline:none;
+  background:linear-gradient(to right,var(--accent) 0%,var(--accent) var(--roi-fill,30%),var(--surface2) var(--roi-fill,30%),var(--surface2) 100%)}
+.roi-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #060a0e;box-shadow:0 0 0 1px var(--accent),0 2px 8px rgba(0,212,170,0.4);transition:transform 0.15s var(--spring)}
+.roi-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.roi-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #060a0e;box-shadow:0 0 0 1px var(--accent)}
+.roi-slider:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.roi-output{padding:var(--space-2xl) var(--space-xl);background:linear-gradient(160deg,rgba(0,212,170,0.08) 0%,transparent 60%);
+  border-left:1px solid rgba(0,212,170,0.12);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.roi-output-label{font-size:13px;color:var(--muted);letter-spacing:0.02em}
+.roi-output-number{font-family:'JetBrains Mono',Consolas,monospace;font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;line-height:1;letter-spacing:-0.04em;margin:8px 0 4px;
+  background:linear-gradient(120deg,#00D4AA 0%,#00f0c4 55%,#7ef0d8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.roi-output-period{font-size:13px;color:var(--muted);margin-bottom:var(--space-lg)}
+.roi-recover{font-size:14px;color:var(--text);background:var(--accent-dim);border:1px solid rgba(0,212,170,0.25);border-radius:10px;padding:10px 14px;margin-bottom:var(--space-lg);line-height:1.5}
+.roi-recover strong{font-family:'JetBrains Mono',Consolas,monospace;color:var(--accent);font-weight:500}
+.roi-breakdown{display:flex;flex-direction:column;gap:6px;margin-bottom:var(--space-xl);font-size:13px;color:var(--muted);line-height:1.5}
+.roi-breakdown span{font-family:'JetBrains Mono',Consolas,monospace;color:var(--text-muted)}
+.roi-cta{width:100%;justify-content:center;text-align:center}
+.roi-disclaimer{font-size:11px;color:var(--text-fine,#5a6b78);margin-top:var(--space-md);line-height:1.5}
+/* No-JS: hide the interactive card (would sit at $0), show a static CTA instead */
+.roi-card{display:none}
+.roi-nojs{max-width:620px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:var(--space-lg)}
+.roi-nojs p{font-size:1rem;color:var(--muted);line-height:1.65}
+.js .roi-card{display:grid}
+.js .roi-nojs{display:none}
+@media(max-width:768px){
+  .roi-card{grid-template-columns:1fr}
+  .roi-output{border-left:none;border-top:1px solid rgba(0,212,170,0.12)}
+  .roi-inputs,.roi-output{padding:var(--space-xl) var(--space-lg)}
+}
+
 /* ── 10. Case Studies ── */
 #case-studies{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
 .case-sub{font-size:1rem;color:var(--muted);margin-top:12px;max-width:560px;line-height:1.6}
@@ -909,6 +958,79 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
+<!-- ── 04b ROI CALCULATOR ── -->
+<section id="roi" aria-labelledby="roi-heading">
+  <div class="container">
+    <div class="roi-head reveal">
+      <span class="section-eyebrow">Revenue Leak</span>
+      <h2 id="roi-heading">How much are you losing?</h2>
+      <p class="roi-sub">Most service businesses lose $50K–$250K a year to slow response times. See your number in 10 seconds.</p>
+    </div>
+
+    <div class="roi-card reveal">
+      <div class="roi-inputs">
+        <div class="roi-field">
+          <label for="roi-industry">Your industry</label>
+          <div class="roi-select-wrap">
+            <select id="roi-industry" class="roi-select">
+              <option value="law" data-value="3500">Law Firm</option>
+              <option value="realestate" data-value="8000">Real Estate Agency</option>
+              <option value="clinic" data-value="1200">Dental / Medical Clinic</option>
+              <option value="beauty" data-value="800">Beauty Salon / Spa</option>
+              <option value="restaurant" data-value="400">Restaurant</option>
+              <option value="other" data-value="2000">Other Service Business</option>
+            </select>
+            <svg class="roi-select-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <div class="roi-field">
+          <label for="roi-leads">Monthly leads / enquiries <span class="roi-val" id="roi-leads-val">50</span></label>
+          <input type="range" id="roi-leads" class="roi-slider" min="10" max="500" value="50" step="5" aria-label="Monthly leads or enquiries">
+        </div>
+
+        <div class="roi-field">
+          <label for="roi-value">Average client value <span class="roi-val" id="roi-value-val">$3,500</span></label>
+          <input type="range" id="roi-value" class="roi-slider" min="200" max="25000" value="3500" step="100" aria-label="Average client value">
+        </div>
+
+        <div class="roi-field">
+          <label for="roi-response">Current average response time</label>
+          <div class="roi-select-wrap">
+            <select id="roi-response" class="roi-select">
+              <option value="0.05">Under 5 minutes</option>
+              <option value="0.15">5–30 minutes</option>
+              <option value="0.30" selected>30 minutes – 2 hours</option>
+              <option value="0.50">2–24 hours</option>
+              <option value="0.65">Next business day</option>
+            </select>
+            <svg class="roi-select-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="roi-output">
+        <span class="roi-output-label">You're losing an estimated</span>
+        <span class="roi-output-number" id="roi-loss">$0</span>
+        <span class="roi-output-period">per year to slow response</span>
+        <div class="roi-recover" id="roi-recover">Automation could recover ~<strong>$0</strong> of that</div>
+        <ul class="roi-breakdown" aria-hidden="true">
+          <li><span id="roi-bd-leads">0</span> leads/month walking out the door</li>
+          <li>× <span id="roi-bd-value">$0</span> average client value</li>
+          <li>= <span id="roi-bd-year">$0</span>/year in lost revenue</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary roi-cta">Book a Free Audit — See Where You're Losing →</a>
+        <p class="roi-disclaimer">Estimates based on industry response-time conversion data (Harvard Business Review, InsideSales.com lead-response studies).</p>
+      </div>
+    </div>
+
+    <div class="roi-nojs">
+      <p>Slow response times cost service businesses $50K–$250K a year. Book a free audit and we'll calculate exactly where you're losing revenue.</p>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Audit →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ── 05 CASE STUDIES ── -->
 <section id="case-studies">
   <div class="container">
@@ -1539,6 +1661,95 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     });
   }, { threshold: 0.3 });
   targets.forEach(el => observer.observe(el));
+})();
+
+
+/* ═══════════════════════════════════════════════
+   MODULE 9b — ROI Calculator
+═══════════════════════════════════════════════ */
+(function roiCalculator() {
+  const industry = document.getElementById('roi-industry');
+  const leads = document.getElementById('roi-leads');
+  const value = document.getElementById('roi-value');
+  const response = document.getElementById('roi-response');
+  if (!industry || !leads || !value || !response) return;
+
+  const leadsVal = document.getElementById('roi-leads-val');
+  const valueVal = document.getElementById('roi-value-val');
+  const lossEl = document.getElementById('roi-loss');
+  const recoverEl = document.getElementById('roi-recover');
+  const bdLeads = document.getElementById('roi-bd-leads');
+  const bdValue = document.getElementById('roi-bd-value');
+  const bdYear = document.getElementById('roi-bd-year');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
+  let userTouchedValue = false;
+  let animId = null;
+  let shownLoss = 0;
+
+  function fillSlider(el) {
+    const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+    el.style.setProperty('--roi-fill', pct + '%');
+  }
+
+  function animateLoss(target) {
+    if (reduced) { lossEl.textContent = money(target); shownLoss = target; return; }
+    if (animId) cancelAnimationFrame(animId);
+    const from = shownLoss;
+    const t0 = performance.now();
+    const dur = 600;
+    function tick(now) {
+      const p = Math.min((now - t0) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      const cur = from + (target - from) * e;
+      lossEl.textContent = money(cur);
+      if (p < 1) animId = requestAnimationFrame(tick);
+      else { lossEl.textContent = money(target); shownLoss = target; }
+    }
+    animId = requestAnimationFrame(tick);
+  }
+
+  function recompute() {
+    const monthlyLeads = parseInt(leads.value, 10);
+    const clientValue = parseInt(value.value, 10);
+    const missRate = parseFloat(response.value);
+    const lostLeadsMonth = monthlyLeads * missRate;
+    const annualLoss = lostLeadsMonth * clientValue * 12;
+    const recoverable = annualLoss * 0.7;
+
+    leadsVal.textContent = monthlyLeads;
+    valueVal.textContent = money(clientValue);
+    fillSlider(leads);
+    fillSlider(value);
+
+    animateLoss(annualLoss);
+    recoverEl.innerHTML = 'Automation could recover ~<strong>' + money(recoverable) + '</strong> of that';
+    bdLeads.textContent = Math.round(lostLeadsMonth);
+    bdValue.textContent = money(clientValue);
+    bdYear.textContent = money(annualLoss);
+  }
+
+  let debounce = null;
+  function onInput() {
+    clearTimeout(debounce);
+    debounce = setTimeout(recompute, 150);
+  }
+
+  industry.addEventListener('change', () => {
+    if (!userTouchedValue) {
+      const preset = industry.options[industry.selectedIndex].dataset.value;
+      if (preset) value.value = preset;
+    }
+    recompute();
+  });
+  value.addEventListener('input', () => { userTouchedValue = true; onInput(); });
+  leads.addEventListener('input', onInput);
+  response.addEventListener('change', recompute);
+
+  // initial paint (immediate, no debounce)
+  shownLoss = 0;
+  recompute();
 })();
 
 
