@@ -798,7 +798,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       try{
         const controller=new AbortController();
         const t=setTimeout(()=>controller.abort(),12000);
-        const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,session_id:sessionId,visitor_name:'Demo Visitor',visitor_email:'ferit1@coremagna.com'}),signal:controller.signal});
+        const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,session_id:sessionId,visitor_name:'Demo Visitor',visitor_email:'demo@example.com'}),signal:controller.signal});
         clearTimeout(t);
         if(!res.ok) throw new Error('HTTP '+res.status);
         const raw=await res.text();
