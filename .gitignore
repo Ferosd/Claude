@@ -8,3 +8,6 @@ debug/
 
 # Audit artifacts (FAZ 1-2 raw data)
 .audit/
+
+# Local backups (SEO audit safety copies)
+backups/

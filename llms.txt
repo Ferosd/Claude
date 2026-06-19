@@ -1,0 +1,41 @@
+# Coremagna
+
+> AI automation agency for law firms and professional services. We help service businesses automate client intake, phone calls, appointment booking, and lead management using AI chatbots, voice agents, and workflow automation.
+
+## What We Do
+
+We help professional services firms automate client intake, phone calls, appointment booking, and lead management using AI chatbots, voice agents, and workflow automation. Founded by Ferit Patefe, based in Antalya, Turkey, serving clients internationally.
+
+## Industries
+
+- Law Firms: After-hours intake, AI receptionist, case enquiry routing, CRM lead automation, document automation, system integration
+- Restaurants: Reservation automation, no-show reminders, review management, phone/call handling, guest retention
+- Dental & Medical Clinics: Appointment scheduling, recall reminders, patient intake, missed-call recovery, online reputation
+- Real Estate: Lead capture, fast lead response, viewing scheduling, vendor communication, lead nurture
+- Beauty Salons: Booking automation, no-show reminders, client follow-up and rebooking, social/reputation visibility
+
+## Products
+
+- AI Chatbot (RAG): 24/7 client intake and FAQ automation, answers only from your own business data
+- AI Voice Agent: Intelligent inbound call handling, qualification, and appointment booking
+- Workflow Automation: n8n-based process automation across your existing tools
+- CRM & Lead Forms: Automated lead capture and follow-up
+- Ad Automation: AI-optimized Google and Meta advertising campaigns
+- Web Design: Conversion-optimized professional websites delivered in 3-7 days
+
+## Pricing
+
+- Starter: $697 setup, $197/month
+- Growth: $997 setup, $297/month (most popular)
+- Scale: $1,497 setup, $497/month
+- API costs billed at cost with no markup
+
+## Target Markets
+
+United Kingdom, Australia, New Zealand, Canada, Ireland, United States
+
+## Contact
+
+- Website: https://coremagna.com
+- Book a call: https://calendar.app.google/XDGM8XJ9zEdqugKr9
+- Email: ferit1@coremagna.com
