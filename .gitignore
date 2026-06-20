@@ -6,6 +6,12 @@ node_modules/
 screenshots/
 debug/
 
+# Brand assets (keep tracked despite *.png rule above)
+!favicon-16x16.png
+!favicon-32x32.png
+!apple-touch-icon.png
+!images/google-business-logo.png
+
 # Audit artifacts (FAZ 1-2 raw data)
 .audit/
 
