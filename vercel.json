@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/estate-agents", "destination": "/estate-agents.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
