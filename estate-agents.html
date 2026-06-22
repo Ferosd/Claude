@@ -326,6 +326,28 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+/* ── Imagery ── */
+.hero-layout{display:grid;grid-template-columns:1.05fr 0.95fr;gap:var(--space-xl);align-items:center}
+.hero-text{min-width:0}
+.hero-text > *{max-width:560px}
+.hero-image img{width:100%;height:auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,0.35)}
+.night-capture{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl);align-items:center;margin-top:var(--space-2xl);padding-top:var(--space-2xl);border-top:1px solid var(--border)}
+.night-capture h3{font-size:clamp(1.4rem,2.6vw,1.7rem);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin-bottom:var(--space-sm)}
+.night-capture p{font-size:16px;color:var(--text-secondary);line-height:1.7;max-width:460px}
+.night-capture-image img{width:100%;max-width:440px;height:auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
+.comparison-visual{margin-bottom:var(--space-xl)}
+.comparison-visual img{width:100%;height:auto;border-radius:12px;border:1px solid var(--border)}
+.guarantee-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:var(--space-xl);align-items:center}
+.guarantee-image img{width:100%;height:auto;border-radius:10px;border:1px solid var(--border)}
+@media(max-width:768px){
+  .hero-layout{grid-template-columns:1fr;gap:var(--space-lg)}
+  .night-capture{grid-template-columns:1fr;gap:var(--space-lg);margin-top:var(--space-xl);padding-top:var(--space-xl)}
+  .night-capture-image{order:-1}
+  .night-capture-image img{max-width:100%}
+  .guarantee-layout{grid-template-columns:1fr}
+  .guarantee-image{display:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -400,17 +422,24 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 <!-- ── HERO ── -->
 <section id="hero">
   <div class="container">
-    <div class="hero-badge reveal">
-      <span class="hero-dot" aria-hidden="true"></span>
-      AI Automation for Estate Agents
-    </div>
-    <h1 class="hero-h1 reveal">Your Leads <span class="accent">Can't Wait</span></h1>
-    <p class="hero-sub reveal">75% of Rightmove and Zoopla leads never get a response. The average reply takes 15 hours — but the vendor already called another agent in 5 minutes. We build AI systems that capture every enquiry the moment it arrives, day or night.</p>
-    <div class="hero-actions reveal">
-      <a href="#audit" class="btn-primary">Book a Free Revenue Leak Audit
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+    <div class="hero-layout">
+      <div class="hero-text">
+        <div class="hero-badge reveal">
+          <span class="hero-dot" aria-hidden="true"></span>
+          AI Automation for Estate Agents
+        </div>
+        <h1 class="hero-h1 reveal">Your Leads <span class="accent">Can't Wait</span></h1>
+        <p class="hero-sub reveal">75% of Rightmove and Zoopla leads never get a response. The average reply takes 15 hours — but the vendor already called another agent in 5 minutes. We build AI systems that capture every enquiry the moment it arrives, day or night.</p>
+        <div class="hero-actions reveal">
+          <a href="#audit" class="btn-primary">Book a Free Revenue Leak Audit
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+        </div>
+      </div>
+      <div class="hero-image reveal">
+        <img src="images/image_1782160360238_m9rlvm.webp" alt="Empty estate agency office at night with AI systems actively capturing leads on multiple screens" loading="eager" width="1200" height="675">
+      </div>
     </div>
   </div>
 </section>
@@ -437,6 +466,16 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <span class="stat-num">35%</span>
         <p class="stat-text">of all property enquiries arrive after hours. By Monday morning, those warm leads have contacted 3 other agents.</p>
         <p class="stat-src">Alto Software</p>
+      </div>
+    </div>
+
+    <div class="night-capture">
+      <div class="night-capture-text reveal">
+        <h3>Leads don't wait until morning</h3>
+        <p>While you sleep, your system captures every lead. Property enquiries at 11:42 PM? Handled. You wake up to a full pipeline.</p>
+      </div>
+      <div class="night-capture-image reveal">
+        <img src="images/d877be848c00426f0de8ed582c72c15e_1782160420_qtgav7hd.webp" alt="Phone on bedside table showing late-night lead capture notifications at 11:42 PM" loading="lazy" width="800" height="800">
       </div>
     </div>
   </div>
@@ -502,6 +541,9 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <div class="sec-head reveal">
       <span class="section-eyebrow">The difference</span>
       <h2 class="sec-h2">Before and after Coremagna</h2>
+    </div>
+    <div class="comparison-visual reveal">
+      <img src="images/4600124250a50d891a9787c75f4de124_1782160662_p27p7qfe.webp" alt="Before: cluttered estate agent desk with missed call notes. After: clean desk with unified AI dashboard showing lead pipeline" loading="lazy" width="1200" height="675">
     </div>
     <div class="ba-grid">
       <div class="ba-col before reveal">
@@ -571,10 +613,17 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 <section class="sec" aria-label="Our guarantee">
   <div class="container">
     <div class="guarantee-box reveal">
-      <span class="section-eyebrow">Our Guarantee</span>
-      <h2>If we don't capture 5 after-hours leads in your first month, you don't pay</h2>
-      <p>We put our fee on the line because we've seen the numbers — 35% of enquiries come after you close. The leads are already there. We just catch them before they disappear.</p>
-      <p>14-day free pilot. No setup fee during the trial. If the results don't speak for themselves, we part ways and you owe nothing.</p>
+      <div class="guarantee-layout">
+        <div class="guarantee-content">
+          <span class="section-eyebrow">Our Guarantee</span>
+          <h2>If we don't capture 5 after-hours leads in your first month, you don't pay</h2>
+          <p>We put our fee on the line because we've seen the numbers — 35% of enquiries come after you close. The leads are already there. We just catch them before they disappear.</p>
+          <p>14-day free pilot. No setup fee during the trial. If the results don't speak for themselves, we part ways and you owe nothing.</p>
+        </div>
+        <div class="guarantee-image">
+          <img src="images/image_1782160515154_lqk6vx.webp" alt="Professional handshake representing risk-free partnership" loading="lazy" width="800" height="800">
+        </div>
+      </div>
     </div>
   </div>
 </section>
