@@ -293,24 +293,19 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 .footer-bottom{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-size:12px;color:var(--text-fine)}
 
-/* ── Hero schedule visual (dental) ── */
+/* ── Imagery ── */
 .hero-layout{display:grid;grid-template-columns:1.05fr 0.95fr;gap:var(--space-xl);align-items:center}
 .hero-text{min-width:0}
 .hero-text > *{max-width:560px}
-.schedule-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-lg);box-shadow:0 24px 60px rgba(0,0,0,0.35)}
-.schedule-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:var(--space-md);margin-bottom:var(--space-sm);border-bottom:1px solid var(--border)}
-.schedule-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px;letter-spacing:-0.02em;color:var(--text)}
-.schedule-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-fine)}
-.schedule-row{display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid var(--border)}
-.schedule-row:last-child{border-bottom:none}
-.schedule-time{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-muted);width:48px;flex-shrink:0}
-.schedule-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.schedule-dot.filled{background:var(--accent)}
-.schedule-dot.empty{background:var(--red-bright)}
-.schedule-name{font-size:13px;color:var(--text-secondary);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.schedule-status{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;flex-shrink:0}
-.schedule-status.ok{color:var(--accent)}
-.schedule-status.bad{color:var(--red-bright)}
+.hero-image img{width:100%;height:auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,0.35)}
+.night-capture{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl);align-items:center;margin-top:var(--space-2xl);padding-top:var(--space-2xl);border-top:1px solid var(--border)}
+.night-capture h3{font-size:clamp(1.4rem,2.6vw,1.7rem);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin-bottom:var(--space-sm)}
+.night-capture p{font-size:16px;color:var(--text-secondary);line-height:1.7;max-width:460px}
+.night-capture-image img{width:100%;max-width:440px;height:auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
+.comparison-visual{margin-bottom:var(--space-xl)}
+.comparison-visual img{width:100%;height:auto;border-radius:12px;border:1px solid var(--border)}
+.guarantee-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:var(--space-xl);align-items:center}
+.guarantee-image img{width:100%;height:auto;border-radius:10px;border:1px solid var(--border)}
 
 /* ── Responsive ── */
 @media(max-width:1024px){
@@ -337,6 +332,11 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .footer-tagline{max-width:100%}
   .footer-social{justify-content:center}
   .hero-layout{grid-template-columns:1fr;gap:var(--space-lg)}
+  .night-capture{grid-template-columns:1fr;gap:var(--space-lg);margin-top:var(--space-xl);padding-top:var(--space-xl)}
+  .night-capture-image{order:-1}
+  .night-capture-image img{max-width:100%}
+  .guarantee-layout{grid-template-columns:1fr}
+  .guarantee-image{display:none}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;justify-content:center}
   .cta-wrap .btn-primary{width:100%;justify-content:center}
@@ -436,36 +436,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         </div>
       </div>
       <div class="hero-image reveal">
-        <div class="schedule-card" role="img" aria-label="A dental practice daily schedule showing booked appointments confirmed and empty chairs from no-shows">
-          <div class="schedule-head">
-            <span class="schedule-title">Today's Chairs</span>
-            <span class="schedule-sub">12 slots · 3 empty</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-time">09:00</span><span class="schedule-dot filled" aria-hidden="true"></span>
-            <span class="schedule-name">Hygiene appointment</span><span class="schedule-status ok">Confirmed</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-time">09:30</span><span class="schedule-dot empty" aria-hidden="true"></span>
-            <span class="schedule-name">Routine check-up</span><span class="schedule-status bad">No-show</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-time">10:00</span><span class="schedule-dot filled" aria-hidden="true"></span>
-            <span class="schedule-name">Filling</span><span class="schedule-status ok">Confirmed</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-time">10:30</span><span class="schedule-dot empty" aria-hidden="true"></span>
-            <span class="schedule-name">Recall — never followed up</span><span class="schedule-status bad">Empty</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-time">11:00</span><span class="schedule-dot filled" aria-hidden="true"></span>
-            <span class="schedule-name">New patient consult</span><span class="schedule-status ok">Confirmed</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-time">11:30</span><span class="schedule-dot empty" aria-hidden="true"></span>
-            <span class="schedule-name">Cancelled — no waitlist fill</span><span class="schedule-status bad">Empty</span>
-          </div>
-        </div>
+        <img src="images/Gemini_Generated_Image_qby4doqby4doqby4.webp" alt="Empty dental treatment chair at night with AI appointment system showing patient confirmed on screen" loading="eager" width="1376" height="768">
       </div>
     </div>
   </div>
@@ -493,6 +464,16 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <span class="stat-num">20%</span>
         <p class="stat-text">of calls to dental practices go unanswered. Of the ones that are answered, fewer than half convert to a first appointment. Every missed call is a missed patient.</p>
         <p class="stat-src">healow</p>
+      </div>
+    </div>
+
+    <div class="night-capture">
+      <div class="night-capture-text reveal">
+        <h3>Your patients confirm while you sleep</h3>
+        <p>Automated reminders go out at 22:17. By morning, tomorrow's appointments are confirmed, cancellations are filled from the waitlist, and your schedule is full — without a single phone call from your team.</p>
+      </div>
+      <div class="night-capture-image reveal">
+        <img src="images/Gemini_Generated_Image_sfk91tsfk91tsfk9.webp" alt="Phone on bedside table at night showing WhatsApp dental appointment reminders and patient confirmations at 22:17" loading="lazy" width="1024" height="1024">
       </div>
     </div>
   </div>
@@ -558,6 +539,9 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <div class="sec-head reveal">
       <span class="section-eyebrow">The difference</span>
       <h2 class="sec-h2">Before and after Coremagna</h2>
+    </div>
+    <div class="comparison-visual reveal">
+      <img src="images/Gemini_Generated_Image_sefhpfsefhpfsefh.webp" alt="Before: chaotic dental reception with no-show sticky notes and paper appointment book. After: clean desk with digital dashboard showing zero no-shows and 97 percent attendance" loading="lazy" width="1376" height="768">
     </div>
     <div class="ba-grid">
       <div class="ba-col before reveal">
@@ -627,10 +611,17 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 <section class="sec" aria-label="Our guarantee">
   <div class="container">
     <div class="guarantee-box reveal">
-      <span class="section-eyebrow">Our Guarantee</span>
-      <h2>If we don't reduce your no-shows by 20% in month one you don't pay</h2>
-      <p>We put our fee on the line because the numbers don't lie — no-show rates have tripled since the NHS removed penalties, and the average practice is losing over £1,000 a week to empty chairs. The patients are already booked. We just make sure they show up.</p>
-      <p>14-day free pilot. No setup fee during the trial. If the results don't speak for themselves, we part ways and you owe nothing.</p>
+      <div class="guarantee-layout">
+        <div class="guarantee-content">
+          <span class="section-eyebrow">Our Guarantee</span>
+          <h2>If we don't reduce your no-shows by 20% in month one you don't pay</h2>
+          <p>We put our fee on the line because the numbers don't lie — no-show rates have tripled since the NHS removed penalties, and the average practice is losing over £1,000 a week to empty chairs. The patients are already booked. We just make sure they show up.</p>
+          <p>14-day free pilot. No setup fee during the trial. If the results don't speak for themselves, we part ways and you owe nothing.</p>
+        </div>
+        <div class="guarantee-image">
+          <img src="images/Gemini_Generated_Image_frwknpfrwknpfrwk.webp" alt="Professional handshake between business consultant and dental practice owner in modern clinic" loading="lazy" width="1024" height="1024">
+        </div>
+      </div>
     </div>
   </div>
 </section>
