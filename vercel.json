@@ -1,6 +1,7 @@
 {
   "rewrites": [
-    { "source": "/estate-agents", "destination": "/estate-agents.html" }
+    { "source": "/estate-agents", "destination": "/estate-agents.html" },
+    { "source": "/dental-clinics", "destination": "/dental-clinics.html" }
   ],
   "headers": [
     {

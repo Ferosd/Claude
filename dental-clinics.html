@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation for Dental Practices | Coremagna</title>
+<meta name="description" content="UK dental practices lose £56,000 a year to no-shows. Coremagna reduces missed appointments with AI reminders, 24/7 booking, and waitlist automation. 14-day free pilot.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Coremagna">
+<link rel="canonical" href="https://coremagna.com/dental-clinics">
+<meta property="og:title" content="AI Automation for Dental Practices | Coremagna">
+<meta property="og:description" content="Your practice loses £56,000/year to no-shows. We fix that with AI automation built for dental clinics.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://coremagna.com/dental-clinics">
+<meta property="og:image" content="https://coremagna.com/images/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Automation for Dental Practices | Coremagna">
+<meta name="twitter:description" content="Your practice loses £56,000/year to no-shows. We fix that with AI automation built for dental clinics.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/motion.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── CSS Variables ── */
+:root {
+  --bg: #060a0e;
+  --surface: #0d1117;
+  --surface-2: #111920;
+  --text: #F0F4F3;
+  --text-secondary: #c0ccd8;
+  --text-muted: #8a9ba8;
+  --text-fine: #5a6b78;
+  --border: #1a2530;
+  --border-hover: rgba(0,212,170,0.4);
+  --accent: #00D4AA;
+  --accent-dim: rgba(0,212,170,0.12);
+  --red: #e85d4a;
+  --red-bright: #FF4D4D;
+  --yellow: #f5c14a;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+  --space-2xl: 80px;
+  --space-3xl: 120px;
+}
+[data-theme="light"] {
+  --bg: #fafbfc;
+  --surface: #ffffff;
+  --surface-2: #f4f6f8;
+  --text: #0a1014;
+  --text-secondary: #2a3340;
+  --text-muted: #5a6b78;
+  --text-fine: #8a9ba8;
+  --border: #e1e5ea;
+  --border-hover: rgba(0,184,148,0.5);
+  --accent: #00B894;
+  --accent-dim: rgba(0,184,148,0.10);
+  --red: #d14a37;
+  --red-bright: #d83a3a;
+  --yellow: #d49a2a;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800;overflow-wrap:break-word;max-width:100%;hyphens:none}
+
+/* Film grain overlay */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.035}
+
+/* Utilities */
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.section-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Buttons */
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;border-radius:6px;position:relative;overflow:hidden;transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+.btn-primary:hover{background:#00f0c4;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,212,170,0.35)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;border:1px solid rgba(255,255,255,0.07);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;border-radius:6px;transition:border-color 0.25s var(--ease),color 0.25s var(--ease),background 0.25s var(--ease),transform 0.25s var(--ease)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.btn-ghost:active{transform:scale(0.97)}
+.btn-ghost:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ── Nav ── */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+[data-theme="light"] #mainNav.scrolled{background:rgba(250,251,252,0.88)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
+.logo-core{transition:letter-spacing 0.3s var(--ease)}
+.logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
+.logo:hover .logo-core{letter-spacing:0.05em}
+.logo:hover .logo-magna{color:var(--text)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite;transition:transform 0.3s var(--spring),opacity 0.3s var(--ease)}
+.logo:hover .logo-dot{transform:scale(2.5);opacity:0}
+@keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:var(--space-xl);align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+.mobile-nav.visible{opacity:1;pointer-events:all}
+.mobile-nav ul{display:flex;flex-direction:column;gap:var(--space-lg);text-align:center}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
+.mobile-nav a:hover{color:var(--accent)}
+.mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:var(--space-md)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);color:var(--text);transition:border-color 0.2s var(--ease),color 0.2s var(--ease),background 0.2s var(--ease)}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.icon-sun{display:block}.icon-moon{display:none}
+[data-theme="light"] .theme-toggle{border-color:rgba(0,0,0,0.12)}
+[data-theme="light"] .icon-sun{display:none}[data-theme="light"] .icon-moon{display:block}
+.pre-entrance{opacity:0;transform:translateY(-10px)}
+#mainNav.entered{opacity:1;transform:translateY(0);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease),background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+
+/* ── Hero ── */
+#hero{padding:150px 0 var(--space-2xl);display:flex;align-items:center;position:relative;overflow:hidden;
+  background-image:radial-gradient(ellipse at 8% 55%, rgba(0,212,170,0.08) 0%, transparent 50%),radial-gradient(ellipse at 90% 20%, rgba(0,180,150,0.04) 0%, transparent 45%)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(0,212,170,0.2);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:var(--space-lg)}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-h1{font-size:clamp(2.4rem,5vw,3.5rem);font-weight:800;color:var(--text);line-height:1.05;letter-spacing:-0.03em;max-width:720px;margin-bottom:var(--space-lg)}
+.hero-h1 .accent{color:var(--accent)}
+.hero-sub{font-size:17px;color:var(--text-muted);line-height:1.72;font-weight:300;max-width:560px;margin-bottom:var(--space-xl)}
+.hero-actions{display:flex;gap:var(--space-md);flex-wrap:wrap}
+
+/* ── Section base ── */
+.sec{padding:var(--space-3xl) 0;border-top:1px solid var(--border)}
+.sec-head{max-width:680px;margin-bottom:var(--space-2xl)}
+.sec-h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;max-width:680px;margin-bottom:var(--space-md)}
+.sec-sub{font-size:16px;color:var(--text-muted);line-height:1.7;max-width:600px}
+
+/* ── Stat cards ── */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-xl) var(--space-lg);transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.stat-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.stat-num{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:var(--red-bright);line-height:1;letter-spacing:-0.03em;margin-bottom:var(--space-md);display:block}
+.stat-text{font-size:15px;color:var(--text-secondary);line-height:1.65;margin-bottom:var(--space-md)}
+.stat-src{font-size:12px;color:var(--text-fine);font-family:'JetBrains Mono',monospace;letter-spacing:0.01em}
+
+/* ── Problem ── */
+.problem-wrap{max-width:760px}
+.problem-text{font-size:19px;color:var(--text-secondary);line-height:1.75;font-weight:300}
+.problem-text strong{color:var(--text);font-weight:500}
+
+/* ── Solution cards ── */
+.sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-lg)}
+.sol-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-xl);transition:border-color 0.3s var(--ease),transform 0.3s var(--ease),box-shadow 0.3s var(--ease)}
+.sol-card:hover{border-color:var(--border-hover);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,212,170,0.08)}
+.sol-icon{width:48px;height:48px;border-radius:12px;background:var(--accent-dim);border:1px solid rgba(0,212,170,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-lg)}
+.sol-icon svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sol-card h3{font-size:20px;font-weight:800;margin-bottom:var(--space-sm);color:var(--text)}
+.sol-card p{font-size:15px;color:var(--text-muted);line-height:1.7}
+
+/* ── Before / After ── */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-lg)}
+.ba-col{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.ba-col.before{border-top:3px solid var(--red)}
+.ba-col.after{border-top:3px solid var(--accent)}
+.ba-col-head{padding:var(--space-lg);font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:16px;letter-spacing:-0.02em;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.ba-col.before .ba-col-head{color:var(--red)}
+.ba-col.after .ba-col-head{color:var(--accent)}
+.ba-col-head svg{width:18px;height:18px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ba-row{padding:var(--space-md) var(--space-lg);border-bottom:1px solid var(--border)}
+.ba-row:last-child{border-bottom:none}
+.ba-metric{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-fine);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;margin-bottom:4px}
+.ba-val{font-size:15px;line-height:1.5}
+.ba-col.before .ba-val{color:var(--text-muted)}
+.ba-col.after .ba-val{color:var(--text);font-weight:500}
+
+/* ── Process ── */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-lg)}
+.proc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-xl) var(--space-lg);position:relative;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.proc-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.proc-tag{display:inline-block;font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,212,170,0.2);background:var(--accent-dim);border-radius:20px;padding:4px 12px;margin-bottom:var(--space-md)}
+.proc-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-fine);margin-bottom:var(--space-sm)}
+.proc-card h3{font-size:18px;font-weight:800;margin-bottom:var(--space-sm);color:var(--text)}
+.proc-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
+
+/* ── Guarantee ── */
+.guarantee-box{background:var(--surface);border:1px solid var(--border-hover);border-top:3px solid var(--accent);border-radius:16px;padding:var(--space-2xl);max-width:860px;margin:0 auto;box-shadow:0 12px 48px rgba(0,212,170,0.08)}
+.guarantee-box h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:var(--space-lg);max-width:640px}
+.guarantee-box p{font-size:16px;color:var(--text-secondary);line-height:1.75;margin-bottom:var(--space-md);max-width:680px}
+.guarantee-box p:last-child{margin-bottom:0}
+
+/* ── FAQ ── */
+.faq-list{max-width:780px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);padding:var(--space-lg) 0;text-align:left;font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.02em;color:var(--text);cursor:pointer}
+.faq-q .faq-icon{flex-shrink:0;width:20px;height:20px;position:relative;transition:transform 0.3s var(--ease)}
+.faq-q .faq-icon::before,.faq-q .faq-icon::after{content:'';position:absolute;background:var(--accent);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-q .faq-icon::before{width:14px;height:2px}
+.faq-q .faq-icon::after{width:2px;height:14px;transition:transform 0.3s var(--ease)}
+.faq-item.open .faq-icon::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s var(--ease)}
+.faq-a-inner{padding:0 0 var(--space-lg);font-size:15px;color:var(--text-muted);line-height:1.75;max-width:680px}
+
+/* ── Chatbot UI ── */
+.chat-section{padding:var(--space-3xl) 0;border-top:1px solid var(--border)}
+.chat-grid{display:grid;grid-template-columns:45fr 55fr;gap:64px;align-items:start}
+.chat-label{display:inline-flex;align-items:center;gap:6px;font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:var(--space-lg)}
+.chat-desc{font-size:15px;color:var(--text-muted);line-height:1.75;max-width:440px;margin-bottom:var(--space-xl)}
+.example-btns{display:flex;flex-direction:column;gap:var(--space-sm);margin-bottom:var(--space-xl)}
+.example-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text-secondary);font-family:'DM Sans',sans-serif;cursor:pointer;transition:border-color 0.25s var(--ease),background 0.25s var(--ease),color 0.25s var(--ease);text-align:left}
+.example-btn:hover{border-color:var(--border-hover);background:var(--accent-dim);color:var(--text)}
+.example-btn svg{width:14px;height:14px;flex-shrink:0;stroke:var(--text-fine);fill:none;stroke-width:1.8;stroke-linecap:round;transition:stroke 0.2s var(--ease)}
+.example-btn:hover svg{stroke:var(--accent)}
+.chatbot-wrapper{position:relative}
+.chatbot-live-dot{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:12px}
+.chatbot-live-dot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);display:block;animation:blink 1.5s ease-in-out infinite}
+.chatbot-note{margin-top:12px;font-size:12px;color:var(--text-fine);font-style:italic}
+.chat-window{background:var(--surface);border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column;height:500px;overflow:hidden}
+.chat-messages{flex:1;overflow-y:auto;padding:var(--space-lg);display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-track{background:transparent}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.chat-msg{max-width:82%;display:flex;flex-direction:column;gap:4px}
+.chat-msg.ai{align-self:flex-start}
+.chat-msg.user{align-self:flex-end}
+.chat-msg-label{font-size:10px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-fine)}
+.chat-msg.user .chat-msg-label{text-align:right}
+.chat-bubble{padding:10px 14px;border-radius:10px;font-size:14px;line-height:1.6}
+.chat-msg.ai .chat-bubble{background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:10px 10px 10px 2px}
+.chat-msg.user .chat-bubble{background:var(--accent);color:#060a0e;font-weight:500;border-radius:10px 10px 2px 10px}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:10px 14px}
+.typing-dot{width:7px;height:7px;border-radius:50%;background:var(--text-muted);animation:typingBounce 1.2s ease-in-out infinite}
+.typing-dot:nth-child(2){animation-delay:0.2s}
+.typing-dot:nth-child(3){animation-delay:0.4s}
+@keyframes typingBounce{0%,80%,100%{transform:scale(0.7);opacity:0.4}40%{transform:scale(1);opacity:1}}
+.chat-error{padding:8px 14px;background:rgba(232,93,74,0.1);border:1px solid rgba(232,93,74,0.25);border-radius:8px;font-size:12px;color:var(--red);margin:0 var(--space-lg) var(--space-sm);display:none}
+.chat-error a{color:var(--accent);text-decoration:underline}
+.chat-input-area{padding:12px var(--space-lg);border-top:1px solid var(--border);display:flex;gap:10px;align-items:flex-end}
+.chat-input{flex:1;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;resize:none;outline:none;transition:border-color 0.25s var(--ease);line-height:1.5;max-height:100px;overflow-y:auto}
+.chat-input:focus{border-color:var(--border-hover)}
+.chat-input::placeholder{color:var(--text-fine)}
+.chat-send{width:40px;height:40px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:none;cursor:pointer;transition:background 0.2s var(--ease),transform 0.2s var(--ease)}
+.chat-send:hover{background:#00f0c4;transform:translateY(-1px)}
+.chat-send svg{width:18px;height:18px;stroke:#060a0e;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── Final CTA ── */
+#audit{padding:var(--space-3xl) 0;border-top:1px solid var(--border);
+  background-image:radial-gradient(ellipse at 50% 0%, rgba(0,212,170,0.07) 0%, transparent 55%)}
+.cta-wrap{max-width:680px;margin:0 auto;text-align:center}
+.cta-wrap h2{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:800;line-height:1.08;letter-spacing:-0.03em;margin-bottom:var(--space-lg)}
+.cta-wrap p{font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:var(--space-xl);max-width:560px;margin-left:auto;margin-right:auto}
+.cta-fine{font-size:13px;color:var(--text-fine);margin-top:var(--space-lg)}
+
+/* ── Footer ── */
+footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--border)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--space-2xl)}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:var(--space-md)}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--text-muted);max-width:220px;line-height:1.65}
+.footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-fine);margin-bottom:var(--space-lg)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--space-sm)}
+.footer-col a{font-size:13px;color:var(--text-muted);transition:color 0.2s var(--ease)}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:var(--space-md);margin-top:var(--space-lg)}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--text-muted);transition:fill 0.25s var(--ease)}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:var(--text-fine)}
+
+/* ── Hero schedule visual (dental) ── */
+.hero-layout{display:grid;grid-template-columns:1.05fr 0.95fr;gap:var(--space-xl);align-items:center}
+.hero-text{min-width:0}
+.hero-text > *{max-width:560px}
+.schedule-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-lg);box-shadow:0 24px 60px rgba(0,0,0,0.35)}
+.schedule-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:var(--space-md);margin-bottom:var(--space-sm);border-bottom:1px solid var(--border)}
+.schedule-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px;letter-spacing:-0.02em;color:var(--text)}
+.schedule-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-fine)}
+.schedule-row{display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid var(--border)}
+.schedule-row:last-child{border-bottom:none}
+.schedule-time{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-muted);width:48px;flex-shrink:0}
+.schedule-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.schedule-dot.filled{background:var(--accent)}
+.schedule-dot.empty{background:var(--red-bright)}
+.schedule-name{font-size:13px;color:var(--text-secondary);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.schedule-status{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;flex-shrink:0}
+.schedule-status.ok{color:var(--accent)}
+.schedule-status.bad{color:var(--red-bright)}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .container,.nav-inner{padding:0 24px}
+  .chat-grid{grid-template-columns:1fr;gap:48px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .proc-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .container,.nav-inner{padding:0 20px}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  #hero{padding:120px 0 var(--space-xl)}
+  .sec,.chat-section,#audit{padding:64px 0}
+  .stat-grid{grid-template-columns:1fr}
+  .sol-grid{grid-template-columns:1fr}
+  .ba-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr}
+  .guarantee-box{padding:var(--space-xl) var(--space-lg)}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
+  .footer-col a{display:flex;align-items:center;min-height:44px}
+  .footer-logo,.footer-tagline{text-align:center}
+  .footer-tagline{max-width:100%}
+  .footer-social{justify-content:center}
+  .hero-layout{grid-template-columns:1fr;gap:var(--space-lg)}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;justify-content:center}
+  .cta-wrap .btn-primary{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI Automation for Dental Practices",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Coremagna",
+    "url": "https://coremagna.com"
+  },
+  "description": "AI-powered appointment booking, no-show reduction, waitlist automation, and patient recall for UK dental practices.",
+  "areaServed": ["GB", "AU", "NZ", "CA", "IE"],
+  "serviceType": "AI Automation"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Does it integrate with our practice management software?","acceptedAnswer":{"@type":"Answer","text":"Yes. We integrate with Dentally, SOE, and Exact. Appointments booked through the chatbot go directly into your system — no double-entry, no manual syncing. If you use a different PMS, we'll check compatibility before we start."}},
+    {"@type":"Question","name":"Will the chatbot give medical advice?","acceptedAnswer":{"@type":"Answer","text":"Never. It books appointments, answers common questions about your services, and handles scheduling. For anything clinical, it tells the patient to contact the practice directly. For emergencies, it directs them to NHS 111 or A&E."}},
+    {"@type":"Question","name":"How does the reminder system work?","acceptedAnswer":{"@type":"Answer","text":"Three touchpoints: 72 hours, 24 hours, and 2 hours before the appointment. Patients receive a WhatsApp message or SMS with a one-tap confirm, reschedule, or cancel option. If they cancel, the waitlist automation kicks in and fills the slot."}},
+    {"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Plans start at £199/month after a one-time setup. But consider this: if you're losing just 3 no-shows a week at £120 per appointment, that's £1,440/month in empty chairs. The system pays for itself from the first week."}},
+    {"@type":"Question","name":"What about patient data and GDPR?","acceptedAnswer":{"@type":"Answer","text":"All data is processed in compliance with UK GDPR. Patient conversations are encrypted, we don't store clinical records, and you retain full ownership of your data. We can provide a data processing agreement before we start."}},
+    {"@type":"Question","name":"What if we don't like it after the pilot?","acceptedAnswer":{"@type":"Answer","text":"We remove everything cleanly. No charges for the pilot period, no awkward cancellation process, no lingering contracts. If it doesn't work for your practice, we shake hands and move on."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="mainNav" class="pre-entrance" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo" aria-label="Coremagna home">
+      <span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries.html" class="active">Industries</a></li>
+      <li><a href="/demo.html">Work</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"/></svg>
+    </button>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/demo.html">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-text">
+        <div class="hero-badge reveal">
+          <span class="hero-dot" aria-hidden="true"></span>
+          AI Automation for Dental Practices
+        </div>
+        <h1 class="hero-h1 reveal">No-Shows Are <span class="accent">Costing You</span></h1>
+        <p class="hero-sub reveal">UK dental practices lose an average of £56,000 a year to missed appointments. That's a full-time dental nurse's salary — gone. Meanwhile, 38% of patients want to book outside your hours, and 20% of your calls go unanswered. We build AI systems that fill your chairs and keep them full.</p>
+        <div class="hero-actions reveal">
+          <a href="#audit" class="btn-primary">Book a Free No-Show Audit
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+        </div>
+      </div>
+      <div class="hero-image reveal">
+        <div class="schedule-card" role="img" aria-label="A dental practice daily schedule showing booked appointments confirmed and empty chairs from no-shows">
+          <div class="schedule-head">
+            <span class="schedule-title">Today's Chairs</span>
+            <span class="schedule-sub">12 slots · 3 empty</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-time">09:00</span><span class="schedule-dot filled" aria-hidden="true"></span>
+            <span class="schedule-name">Hygiene appointment</span><span class="schedule-status ok">Confirmed</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-time">09:30</span><span class="schedule-dot empty" aria-hidden="true"></span>
+            <span class="schedule-name">Routine check-up</span><span class="schedule-status bad">No-show</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-time">10:00</span><span class="schedule-dot filled" aria-hidden="true"></span>
+            <span class="schedule-name">Filling</span><span class="schedule-status ok">Confirmed</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-time">10:30</span><span class="schedule-dot empty" aria-hidden="true"></span>
+            <span class="schedule-name">Recall — never followed up</span><span class="schedule-status bad">Empty</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-time">11:00</span><span class="schedule-dot filled" aria-hidden="true"></span>
+            <span class="schedule-name">New patient consult</span><span class="schedule-status ok">Confirmed</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-time">11:30</span><span class="schedule-dot empty" aria-hidden="true"></span>
+            <span class="schedule-name">Cancelled — no waitlist fill</span><span class="schedule-status bad">Empty</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INDUSTRY DATA — 3 STATS ── -->
+<section class="sec" aria-label="Industry data">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">What the data says about your practice</span>
+      <h2 class="sec-h2">The patients are already booked but they're not showing up</h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card reveal">
+        <span class="stat-num">£56K</span>
+        <p class="stat-text">average annual revenue lost to no-shows. Since the NHS removed DNA penalties, no-show rates have tripled — from 5% to 15%. Every empty chair is money you've already spent to earn.</p>
+        <p class="stat-src">BDA / Dental Tribune</p>
+      </div>
+      <div class="stat-card reveal">
+        <span class="stat-num">38%</span>
+        <p class="stat-text">of patients want to book appointments outside your office hours. They're searching at 9pm, but your phone goes to voicemail. By morning, they've booked with a practice that answered.</p>
+        <p class="stat-src">DentalBase / Dentistry.co.uk</p>
+      </div>
+      <div class="stat-card reveal">
+        <span class="stat-num">20%</span>
+        <p class="stat-text">of calls to dental practices go unanswered. Of the ones that are answered, fewer than half convert to a first appointment. Every missed call is a missed patient.</p>
+        <p class="stat-src">healow</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<section class="sec" aria-label="The problem">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">The real problem</span>
+      <h2 class="sec-h2">Your chairs are empty but patients are still looking</h2>
+    </div>
+    <div class="problem-wrap reveal">
+      <p class="problem-text">A patient searches for 'emergency dentist near me' at 9pm. Your website says to call during office hours. They call the next practice on Google — and book instantly. Meanwhile, tomorrow morning's 10am check-up won't show up. <strong>You won't know until the chair sits empty.</strong> The recall patient who was due 6 months ago? No one followed up, and they've switched to a practice that reminded them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTION ── -->
+<section class="sec" id="how-it-works" aria-label="What we build">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">What we build</span>
+      <h2 class="sec-h2">What we build for your practice</h2>
+      <p class="sec-sub">Not a generic booking widget. A system built around your practice management software, your appointment types, and the way your team already works.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card reveal">
+        <div class="sol-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>24/7 Appointment Booking</h3>
+        <p>An AI assistant on your website that answers patient questions, finds available slots, and books appointments around the clock. Integrates with Dentally, SOE, and Exact — patients book real slots, not placeholder requests.</p>
+      </div>
+      <div class="sol-card reveal">
+        <div class="sol-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <h3>No-Show Reduction System</h3>
+        <p>Automated WhatsApp and SMS reminders at 72 hours, 24 hours, and 2 hours before every appointment. Patients confirm, reschedule, or cancel with one tap. If they cancel, the next patient on the waitlist is offered the slot automatically.</p>
+      </div>
+      <div class="sol-card reveal">
+        <div class="sol-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+        </div>
+        <h3>Waitlist Automation</h3>
+        <p>When a cancellation happens, the system instantly contacts the next patient on your waiting list. No receptionist time wasted on phone calls — the slot gets filled before you even know it was empty.</p>
+      </div>
+      <div class="sol-card reveal">
+        <div class="sol-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Patient Recall &amp; Google Reviews</h3>
+        <p>Automated recall reminders for 6-month check-ups, hygiene appointments, and treatment follow-ups. After every appointment, patients receive a friendly Google Review request. More reviews, better visibility, more new patients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BEFORE / AFTER ── -->
+<section class="sec" aria-label="Before and after">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">The difference</span>
+      <h2 class="sec-h2">Before and after Coremagna</h2>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-col before reveal">
+        <div class="ba-col-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Without Coremagna
+        </div>
+        <div class="ba-row"><span class="ba-metric">No-show rate</span><span class="ba-val">15%+</span></div>
+        <div class="ba-row"><span class="ba-metric">After-hours booking</span><span class="ba-val">0%</span></div>
+        <div class="ba-row"><span class="ba-metric">Missed calls</span><span class="ba-val">20% unanswered</span></div>
+        <div class="ba-row"><span class="ba-metric">Waitlist management</span><span class="ba-val">Manual phone calls</span></div>
+        <div class="ba-row"><span class="ba-metric">Patient recall</span><span class="ba-val">Unfollowed</span></div>
+      </div>
+      <div class="ba-col after reveal">
+        <div class="ba-col-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          With Coremagna
+        </div>
+        <div class="ba-row"><span class="ba-metric">No-show rate</span><span class="ba-val">5–8%</span></div>
+        <div class="ba-row"><span class="ba-metric">After-hours booking</span><span class="ba-val">38% captured</span></div>
+        <div class="ba-row"><span class="ba-metric">Missed calls</span><span class="ba-val">Captured + summarised</span></div>
+        <div class="ba-row"><span class="ba-metric">Waitlist management</span><span class="ba-val">Automatic fill</span></div>
+        <div class="ba-row"><span class="ba-metric">Patient recall</span><span class="ba-val">Automated reminders</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="sec" aria-label="The process">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">How we work</span>
+      <h2 class="sec-h2">Live in two weeks not two months</h2>
+      <p class="sec-sub">We handle the build. You keep treating patients.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-card reveal">
+        <span class="proc-tag">Free</span>
+        <p class="proc-num">01</p>
+        <h3>No-Show Audit</h3>
+        <p>We analyse your no-show rates, missed calls, and after-hours demand. You get a report showing exactly how much revenue you're losing — no charge, no commitment.</p>
+      </div>
+      <div class="proc-card reveal">
+        <span class="proc-tag">Week 1</span>
+        <p class="proc-num">02</p>
+        <h3>Custom Build</h3>
+        <p>We configure the AI assistant with your appointment types, practice hours, and management software integration. The reminder system is set to your preferences — WhatsApp, SMS, or both.</p>
+      </div>
+      <div class="proc-card reveal">
+        <span class="proc-tag">Week 2</span>
+        <p class="proc-num">03</p>
+        <h3>14-Day Pilot</h3>
+        <p>System goes live. We monitor every interaction, tune the chatbot responses, and share a weekly performance report. You don't pay unless you're happy.</p>
+      </div>
+      <div class="proc-card reveal">
+        <span class="proc-tag">Ongoing</span>
+        <p class="proc-num">04</p>
+        <h3>Optimise &amp; Scale</h3>
+        <p>Monthly reporting on no-show rates, new bookings captured, and reviews collected. Continuous improvement as your practice grows. Cancel anytime — no lock-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GUARANTEE ── -->
+<section class="sec" aria-label="Our guarantee">
+  <div class="container">
+    <div class="guarantee-box reveal">
+      <span class="section-eyebrow">Our Guarantee</span>
+      <h2>If we don't reduce your no-shows by 20% in month one you don't pay</h2>
+      <p>We put our fee on the line because the numbers don't lie — no-show rates have tripled since the NHS removed penalties, and the average practice is losing over £1,000 a week to empty chairs. The patients are already booked. We just make sure they show up.</p>
+      <p>14-day free pilot. No setup fee during the trial. If the results don't speak for themselves, we part ways and you owe nothing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="sec" aria-label="Common questions">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">FAQ</span>
+      <h2 class="sec-h2">Common questions</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Does it integrate with our practice management software?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We integrate with Dentally, SOE, and Exact. Appointments booked through the chatbot go directly into your system — no double-entry, no manual syncing. If you use a different PMS, we'll check compatibility before we start.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Will the chatbot give medical advice?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Never. It books appointments, answers common questions about your services, and handles scheduling. For anything clinical, it tells the patient to contact the practice directly. For emergencies, it directs them to NHS 111 or A&E.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How does the reminder system work?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Three touchpoints: 72 hours, 24 hours, and 2 hours before the appointment. Patients receive a WhatsApp message or SMS with a one-tap confirm, reschedule, or cancel option. If they cancel, the waitlist automation kicks in and fills the slot.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How much does it cost?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Plans start at £199/month after a one-time setup. But consider this: if you're losing just 3 no-shows a week at £120 per appointment, that's £1,440/month in empty chairs. The system pays for itself from the first week.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What about patient data and GDPR?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">All data is processed in compliance with UK GDPR. Patient conversations are encrypted, we don't store clinical records, and you retain full ownership of your data. We can provide a data processing agreement before we start.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What if we don't like it after the pilot?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">We remove everything cleanly. No charges for the pilot period, no awkward cancellation process, no lingering contracts. If it doesn't work for your practice, we shake hands and move on.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHATBOT ── -->
+<section class="chat-section" id="chatbot-demo" aria-label="Live AI assistant">
+  <div class="container">
+    <div class="chat-grid">
+      <!-- Left -->
+      <div>
+        <span class="chat-label reveal">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Live AI Assistant
+        </span>
+        <h2 class="sec-h2 reveal">See exactly what your patients would experience</h2>
+        <p class="chat-desc reveal">This is the same AI engine we deploy for dental practices. Ask it anything — or tell it about your practice and it'll show you what we could build for you.</p>
+        <div class="example-btns reveal">
+          <button class="example-btn" data-text="I need to book a check-up">
+            <span>I need to book a check-up</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="example-btn" data-text="Do you offer emergency appointments?">
+            <span>Do you offer emergency appointments?</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="example-btn" data-text="How does the reminder system work?">
+            <span>How does the reminder system work?</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Live Chat Window -->
+      <div class="reveal">
+        <div class="chatbot-wrapper">
+          <div class="chatbot-live-dot">Live AI — real responses</div>
+          <div class="chat-window">
+            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-label="Chat conversation">
+              <div class="chat-msg ai">
+                <span class="chat-msg-label">AI Assistant · Coremagna</span>
+                <div class="chat-bubble">Hi! I'm the AI assistant for this dental practice. I can help you book appointments, answer common questions, or check availability — 24/7.</div>
+              </div>
+            </div>
+            <div class="chat-error" id="chat-error">Connection issue — please try again or <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer">book a call directly</a>.</div>
+            <div class="chat-input-area">
+              <textarea class="chat-input" id="chat-input" placeholder="Type a message..." rows="1" aria-label="Chat message"></textarea>
+              <button class="chat-send" id="chat-send" aria-label="Send message">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </div>
+          <p class="chatbot-note">Live demo — real AI, real responses, real appointment booking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section id="audit" aria-label="Book your free audit">
+  <div class="container">
+    <div class="cta-wrap reveal">
+      <span class="section-eyebrow">Free no-show audit</span>
+      <h2>Find out what no-shows are really costing you in 30 minutes</h2>
+      <p>A free, no-commitment audit of your no-show rates, missed calls, and after-hours demand. You'll see exactly how much revenue is walking out the door — and what keeping it looks like.</p>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book Your Free No-Show Audit
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="cta-fine">No payment details. No hard sell. Just data you can act on.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for service businesses.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries.html#law-firms">Law Firms</a></li>
+          <li><a href="/industries.html#real-estate">Real Estate</a></li>
+          <li><a href="/estate-agents">Estate Agents</a></li>
+          <li><a href="/dental-clinics">Dental Clinics</a></li>
+          <li><a href="/industries.html#beauty">Beauty Salons</a></li>
+          <li><a href="/industries.html#restaurants">Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/demo.html">Work</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#" onclick="this.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')" rel="nofollow">ferit1@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Coremagna. All rights reserved.</p>
+      <p>AI Automation · CRM Systems · Chatbots</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Nav scroll + hamburger */
+(function(){
+  const nav=document.getElementById('mainNav');
+  const hamburger=document.getElementById('hamburger');
+  const mobileNav=document.getElementById('mobileNav');
+  let menuOpen=false;
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+  hamburger.addEventListener('click',()=>{
+    menuOpen=!menuOpen;hamburger.classList.toggle('open',menuOpen);hamburger.setAttribute('aria-expanded',String(menuOpen));
+    mobileNav.setAttribute('aria-hidden',String(!menuOpen));mobileNav.classList.toggle('visible',menuOpen);document.body.style.overflow=menuOpen?'hidden':'';
+  });
+  mobileNav.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{menuOpen=false;hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileNav.setAttribute('aria-hidden','true');mobileNav.classList.remove('visible');document.body.style.overflow='';});});
+})();
+
+/* Nav entrance */
+(function(){
+  const nav=document.getElementById('mainNav');
+  setTimeout(()=>{nav.classList.remove('pre-entrance');nav.classList.add('entered');},0);
+})();
+
+/* Scroll reveals */
+(function(){
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('section').forEach(sec=>{sec.querySelectorAll('.reveal').forEach((el,i)=>{if(!el.style.transitionDelay) el.style.transitionDelay=(i*0.07)+'s';});});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+})();
+
+/* FAQ accordion */
+(function(){
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q=item.querySelector('.faq-q');
+    const a=item.querySelector('.faq-a');
+    q.addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other=>{
+        if(other!==item){other.classList.remove('open');other.querySelector('.faq-a').style.maxHeight=null;other.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+      });
+      if(open){item.classList.remove('open');a.style.maxHeight=null;q.setAttribute('aria-expanded','false');}
+      else{item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';q.setAttribute('aria-expanded','true');}
+    });
+  });
+})();
+
+/* AI Chatbot */
+(function(){
+  const sessionId=(typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():('s-'+Date.now().toString(36));
+  const messagesEl=document.getElementById('chat-messages');
+  const inputEl=document.getElementById('chat-input');
+  const sendBtn=document.getElementById('chat-send');
+  const errorEl=document.getElementById('chat-error');
+  const WEBHOOK='https://lolam.app.n8n.cloud/webhook/chatbotcore';
+  let busy=false;
+
+  function appendMsg(role,text){
+    const wrap=document.createElement('div');
+    wrap.className='chat-msg '+role;
+    const label=document.createElement('span');
+    label.className='chat-msg-label';
+    label.textContent=role==='ai'?'AI Assistant · Coremagna':'You';
+    const bubble=document.createElement('div');
+    bubble.className='chat-bubble';
+    bubble.textContent=text;
+    wrap.append(label,bubble);
+    messagesEl.append(wrap);
+    messagesEl.scrollTop=messagesEl.scrollHeight;
+  }
+
+  function showTyping(){
+    const wrap=document.createElement('div');
+    wrap.className='chat-msg ai';
+    wrap.id='typing-indicator';
+    const dots=document.createElement('div');
+    dots.className='typing-dots';
+    dots.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    wrap.append(dots);
+    messagesEl.append(wrap);
+    messagesEl.scrollTop=messagesEl.scrollHeight;
+  }
+
+  function removeTyping(){
+    const t=document.getElementById('typing-indicator');
+    if(t) t.remove();
+  }
+
+  async function send(text){
+    if(busy||!text.trim()) return;
+    busy=true;
+    sendBtn.disabled=true;
+    errorEl.style.display='none';
+    appendMsg('user',text);
+    inputEl.value='';
+    inputEl.style.height='';
+    showTyping();
+    const MAX_ATTEMPTS=3;
+    let lastErr=null;
+    for(let attempt=1;attempt<=MAX_ATTEMPTS;attempt++){
+      try{
+        const controller=new AbortController();
+        const t=setTimeout(()=>controller.abort(),12000);
+        const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,session_id:sessionId,visitor_name:'Dental Practice Visitor',visitor_email:'demo@example.com',source:'dental-clinics'}),signal:controller.signal});
+        clearTimeout(t);
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const raw=await res.text();
+        let reply='';
+        try{const data=JSON.parse(raw);reply=data.reply||data.message||data.text||data.output||raw;}catch{reply=raw;}
+        removeTyping();
+        appendMsg('ai',reply||'Got your message!');
+        busy=false;sendBtn.disabled=false;inputEl.focus();
+        return;
+      }catch(err){
+        lastErr=err;
+        console.error('[Coremagna dental-clinics chat] attempt '+attempt+'/'+MAX_ATTEMPTS+' failed:',err.name,err.message);
+        if(attempt<MAX_ATTEMPTS) await new Promise(r=>setTimeout(r,2000));
+      }
+    }
+    removeTyping();
+    errorEl.style.display='block';
+    busy=false;
+    sendBtn.disabled=false;
+    inputEl.focus();
+  }
+
+  sendBtn.addEventListener('click',()=>send(inputEl.value));
+  inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send(inputEl.value);}});
+  inputEl.addEventListener('input',()=>{inputEl.style.height='';inputEl.style.height=Math.min(inputEl.scrollHeight,100)+'px';});
+
+  document.querySelectorAll('.example-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>send(btn.dataset.text));
+  });
+})();
+</script>
+<script>
+(function(){
+  const btn=document.getElementById('themeToggle');
+  if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');
+  if(btn)btn.addEventListener('click',function(){
+    const isLight=document.documentElement.getAttribute('data-theme')==='light';
+    if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}
+    else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}
+  });
+})();
+</script>
+</body>
+</html>
