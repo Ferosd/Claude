@@ -52,7 +52,7 @@ BLOCK = '''
     <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.05;letter-spacing:-0.02em;color:var(--text,#F0F4F3);max-width:640px;margin:0 0 24px">{headline}</h2>
     <div style="max-width:920px">
       <video src="/videos/demo-{sector}.mp4" poster="/videos/demo-{sector}-poster.jpg" muted autoplay loop playsinline controls preload="metadata" style="width:100%;display:block;border-radius:14px;border:1px solid rgba(0,212,170,0.25)" aria-label="{aria}"></video>
-      <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted,#9AB0B0);margin-top:10px;line-height:1.6">Real flow, real timer — chat sped up for the demo. <a href="/demo.html" style="color:var(--accent,#00D4AA);text-decoration:none;font-weight:600">Try the same AI live →</a></p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted,#9AB0B0);margin-top:10px;line-height:1.6">Real flow, real timer — turn the sound on for the guided walkthrough. <a href="/demo.html" style="color:var(--accent,#00D4AA);text-decoration:none;font-weight:600">Try the same AI live →</a></p>
     </div>
   </div>
 </section>
@@ -81,7 +81,8 @@ def main():
     dst = os.path.join(vdir, f'demo-{a.sector}.mp4')
     poster = os.path.join(vdir, f'demo-{a.sector}-poster.jpg')
 
-    run(['ffmpeg', '-y', '-v', 'error', '-i', src, '-an', '-c:v', 'copy', dst])
+    # Anlatici sesli surum: ses kanali korunur (autoplay yine muted, kullanici acabilir)
+    run(['ffmpeg', '-y', '-v', 'error', '-i', src, '-c:v', 'copy', '-c:a', 'copy', dst])
     run(['ffmpeg', '-y', '-v', 'error', '-ss', str(a.poster_time), '-i', src,
          '-frames:v', '1', '-q:v', '3', '-vf', 'scale=1280:-1', poster])
     print(f'video: {dst} ({os.path.getsize(dst)//1024} KB), poster: {poster}')
