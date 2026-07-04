@@ -1,6 +1,15 @@
 # Dependencies
 node_modules/
 
+# Secrets
+.env
+
+# Python cache
+scripts/__pycache__/
+
+# Raw image sources (site webp'leri images/ kokunde; kaynaklar deploy'a girmesin)
+images/raw/
+
 # Screenshots / debug images
 *.png
 screenshots/

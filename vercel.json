@@ -1,7 +1,8 @@
 {
   "rewrites": [
-    { "source": "/estate-agents", "destination": "/estate-agents.html" },
-    { "source": "/dental-clinics", "destination": "/dental-clinics.html" }
+    { "source": "/industries/:page((?:[^/.]+))", "destination": "/industries/:page.html" },
+    { "source": "/blog/:page((?:[^/.]+))", "destination": "/blog/:page.html" },
+    { "source": "/:page((?:[^/.]+))", "destination": "/:page.html" }
   ],
   "headers": [
     {

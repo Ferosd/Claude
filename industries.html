@@ -274,6 +274,20 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 }
 .industry-card:hover .card-arrow{transform:translateX(4px)}
 
+/* ── System Package Band ── */
+.system-band{margin-top:var(--space-lg);border:1px solid rgba(0,212,170,0.28);border-radius:14px;padding:28px;
+  display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,rgba(0,212,170,0.07) 0%,rgba(13,19,23,0.5) 60%)}
+.sb-left{flex:1 1 460px;min-width:0}
+.sb-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:6px}
+.sb-name{font-family:'Cabinet Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--text);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px;overflow-wrap:break-word;max-width:100%}
+.sb-flow{display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center}
+.sb-step{font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;color:var(--muted);border:1px solid var(--border2);background:var(--surface);border-radius:999px;padding:6px 12px;line-height:1.4}
+.sb-arrow{font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;color:var(--accent)}
+.sb-note{font-family:'DM Sans',sans-serif;font-size:13px;color:#6b7a8d;margin-top:14px;line-height:1.6;max-width:600px}
+.sb-cta{padding:13px 26px;font-size:14px;flex-shrink:0}
+@media(max-width:768px){.system-band{padding:20px}}
+
 /* ── Bottom CTA ── */
 #bottom-cta{
   padding:80px 0;
@@ -483,6 +497,26 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       </a>
 
     </div>
+
+    <div class="system-band reveal">
+      <div class="sb-left">
+        <span class="sb-eyebrow">The System We Build for Law Firms</span>
+        <h3 class="sb-name">The Client Intake Engine</h3>
+        <div class="sb-flow">
+          <span class="sb-step">Voice agent answers 24/7</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Chatbot qualifies on your site</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Lead lands in Clio</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Follow-up runs until booked</span>
+        </div>
+        <p class="sb-note">Four of our services working as one system — so the enquiry that arrives at 9pm on a Friday is a booked consultation by Monday morning.</p>
+      </div>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-cta sb-cta">Get This System
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -574,6 +608,26 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <a href="/estate-agents" style="display:inline-flex;align-items:center;gap:8px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;color:var(--accent)">
         See our full estate agents solution
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 4 13 10 7 16"/></svg>
+      </a>
+    </div>
+
+    <div class="system-band reveal">
+      <div class="sb-left">
+        <span class="sb-eyebrow">The System We Build for Estate Agents</span>
+        <h3 class="sb-name">The Speed-to-Lead Engine</h3>
+        <div class="sb-flow">
+          <span class="sb-step">Portal lead answered in under a minute</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Viewing booked into your diary</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Reminders cut no-shows</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Vendors updated automatically</span>
+        </div>
+        <p class="sb-note">Built on your CRM — Reapit, Alto, Follow Up Boss or whatever you run. The first agent to respond usually wins the instruction; this makes sure that's you.</p>
+      </div>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-cta sb-cta">Get This System
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
       </a>
     </div>
   </div>
@@ -668,6 +722,26 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 4 13 10 7 16"/></svg>
       </a>
     </div>
+
+    <div class="system-band reveal">
+      <div class="sb-left">
+        <span class="sb-eyebrow">The System We Build for Clinics</span>
+        <h3 class="sb-name">The Full-Diary System</h3>
+        <div class="sb-flow">
+          <span class="sb-step">Calls answered 24/7</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Appointments booked into your PMS</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Recalls and reminders automated</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Reviews collected after visits</span>
+        </div>
+        <p class="sb-note">Connected to Dentally, Dentrix or your practice software. Fewer empty chairs — without hiring a second receptionist.</p>
+      </div>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-cta sb-cta">Get This System
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -753,6 +827,26 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         </svg>
       </a>
 
+    </div>
+
+    <div class="system-band reveal">
+      <div class="sb-left">
+        <span class="sb-eyebrow">The System We Build for Salons</span>
+        <h3 class="sb-name">The No-Show Killer</h3>
+        <div class="sb-flow">
+          <span class="sb-step">Instagram and phone enquiries captured</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Deposits taken at booking</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">SMS reminders before every visit</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Lapsed clients invited back</span>
+        </div>
+        <p class="sb-note">Booking, reminder and rebooking automation working as one system — the no-shows stop and the quiet weeks start filling on their own.</p>
+      </div>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-cta sb-cta">Get This System
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -841,6 +935,26 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         </svg>
       </a>
 
+    </div>
+
+    <div class="system-band reveal">
+      <div class="sb-left">
+        <span class="sb-eyebrow">The System We Build for Restaurants</span>
+        <h3 class="sb-name">The Full-Table System</h3>
+        <div class="sb-flow">
+          <span class="sb-step">Phone answered during service</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Reservations taken without staff</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Guests reminded so tables don't sit empty</span>
+          <span class="sb-arrow" aria-hidden="true">→</span>
+          <span class="sb-step">Reviews requested after each visit</span>
+        </div>
+        <p class="sb-note">Your team cooks and serves — the system answers, books, reminds and follows up. Built around the reservation platform you already use, with your Google profile kept fresh so new guests keep finding you.</p>
+      </div>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-cta sb-cta">Get This System
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
+      </a>
     </div>
   </div>
 </section>

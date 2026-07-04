@@ -47,6 +47,7 @@
   --border:     rgba(0,212,170,0.14);
   --border2:    rgba(255,255,255,0.07);
   --border-hover: rgba(0,212,170,0.4);
+  --red:        #e85d4a;
   --ease:       cubic-bezier(0.4,0,0.2,1);
   --spring:     cubic-bezier(0.34,1.56,0.64,1);
   --space-xs:   4px;
@@ -71,6 +72,7 @@
   --border:     rgba(0,184,148,0.18);
   --border2:    rgba(0,0,0,0.08);
   --border-hover: rgba(0,184,148,0.5);
+  --red:        #d14a37;
 }
 
 /* ── 2. Reset ── */
@@ -237,6 +239,51 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .service-link{font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:0.04em;margin-top:var(--space-md);display:inline-flex;align-items:center;gap:4px;
   transition:color 0.2s var(--ease),gap 0.2s var(--ease)}
 .service-link:hover{color:#00f0c4;gap:8px}
+.services-chain{margin-top:var(--space-xl);border-left:2px solid var(--accent);padding:6px 0 6px var(--space-lg);font-size:15px;color:var(--muted);line-height:1.7;max-width:760px}
+.services-chain strong{color:var(--text);font-weight:600}
+.services-chain a{color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;white-space:nowrap}
+.services-chain a:hover{color:#00f0c4}
+
+/* ── 9a. Tool vs Partner ── */
+#vs{padding:var(--space-3xl) 0;background:linear-gradient(180deg,var(--bg) 0%,var(--surface) 55%,var(--bg) 100%)}
+.vs-head{max-width:680px;margin-bottom:var(--space-2xl)}
+.vs-head h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-top:var(--space-sm);overflow-wrap:break-word;max-width:100%;hyphens:none}
+.vs-sub{font-size:1rem;color:var(--muted);line-height:1.65;margin-top:var(--space-md);max-width:560px}
+.vs-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:var(--space-lg);align-items:stretch}
+.vs-col{border-radius:16px;padding:var(--space-xl) var(--space-lg);display:flex;flex-direction:column;gap:var(--space-lg)}
+.vs-col-diy{background:var(--surface);border:1px solid var(--border2)}
+.vs-col-partner{background:var(--surface);border:1px solid rgba(0,212,170,0.3);position:relative;
+  box-shadow:0 1px 2px rgba(0,212,170,0.05),0 16px 48px rgba(0,0,0,0.25)}
+.vs-col-head h3{font-size:19px;font-weight:800;color:var(--text);line-height:1.2}
+.vs-col-price{font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;margin-top:6px;display:block;letter-spacing:-0.01em}
+.vs-col-diy .vs-col-price{color:var(--muted)}
+.vs-col-partner .vs-col-price{color:var(--accent)}
+.vs-list{display:flex;flex-direction:column;gap:14px;flex:1}
+.vs-list li{display:flex;gap:12px;align-items:flex-start;font-size:0.9375rem;line-height:1.55}
+.vs-list svg{width:18px;height:18px;flex-shrink:0;margin-top:3px}
+.vs-col-diy .vs-list li{color:var(--muted)}
+.vs-col-diy .vs-list svg{color:var(--red);opacity:0.75}
+.vs-col-partner .vs-list li{color:var(--text)}
+.vs-col-partner .vs-list svg{color:var(--accent)}
+.vs-kicker{margin-top:var(--space-lg);border:1px solid var(--border);background:var(--accent-dim);border-radius:14px;
+  padding:var(--space-lg) var(--space-xl);display:flex;flex-wrap:wrap;gap:var(--space-md) var(--space-xl);align-items:center;justify-content:space-between}
+.vs-kicker p{font-size:0.9375rem;color:var(--text);line-height:1.6;max-width:640px;flex:1 1 380px}
+.vs-kicker .btn-ghost{flex-shrink:0}
+/* client tools strip */
+.vs-tools{margin-top:var(--space-2xl);padding-top:var(--space-xl);border-top:1px solid var(--border2)}
+.vs-tools-label{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-sm)}
+.vs-tools-sub{font-size:0.9375rem;color:var(--muted);line-height:1.6;margin-bottom:var(--space-lg);max-width:560px}
+.vs-chips{display:flex;flex-wrap:wrap;gap:10px}
+.vs-chip{font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;letter-spacing:-0.01em;padding:9px 16px;min-height:36px;display:inline-flex;align-items:center;
+  border:1px solid var(--border2);border-radius:999px;color:var(--text-muted);background:var(--surface);
+  transition:border-color 0.25s var(--ease),color 0.25s var(--ease),transform 0.25s var(--ease)}
+.vs-chip:hover{border-color:var(--border-hover);color:var(--text);transform:translateY(-1px)}
+.vs-chips-note{font-size:12px;color:var(--text-fine,#5a6b78);margin-top:var(--space-md);line-height:1.6}
+@media(max-width:768px){
+  .vs-grid{grid-template-columns:1fr}
+  .vs-col{padding:var(--space-lg) 20px}
+  .vs-kicker{padding:var(--space-lg) 20px}
+}
 
 /* ── 9b. ROI Calculator ── */
 #roi{padding:var(--space-3xl) 0;background:var(--surface);
@@ -309,6 +356,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .case-solution{font-size:11px;color:var(--accent);opacity:0.7;margin-top:var(--space-md);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
 .case-source{font-size:11px;color:var(--text-fine);margin-top:10px;letter-spacing:0.02em;font-family:'DM Sans',sans-serif}
 .case-cta{text-align:center;margin-top:48px}
+.case-video{max-width:960px;margin:0 auto var(--space-2xl)}
+.case-video video{width:100%;display:block;border-radius:16px;border:1px solid rgba(0,212,170,0.25);box-shadow:0 12px 48px rgba(0,0,0,0.35)}
+.case-video-caption{font-size:13px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.6}
+.case-video-caption a{color:var(--accent);font-weight:600}
+.case-video-caption a:hover{color:#00f0c4}
 
 /* ── 12. About ── */
 #about{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
@@ -636,7 +688,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Coremagna","description":"AI automation agency specializing in CRM lead automation, AI chatbots, system integration, and document automation for law firms and real estate agencies.","url":"https://coremagna.com","email":"ferit1@coremagna.com","founder":{"@type":"Person","name":"Ferit Patefe"},"areaServed":["United States","United Kingdom","Australia","New Zealand","Canada","Ireland"],"serviceType":["CRM Lead Automation","AI Chatbot","System Integration","Document Automation"],"priceRange":"$697 - $1,497"}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need technical knowledge to work with you?","acceptedAnswer":{"@type":"Answer","text":"Not at all. We handle everything end-to-end — design, development, deployment, and training. You just need to know your business. We translate that into technology."}},{"@type":"Question","name":"How long does a project take?","acceptedAnswer":{"@type":"Answer","text":"Website: 3-7 business days. RAG chatbot: 1-3 days after we receive your data. Automation workflows: 1-2 weeks depending on complexity. We'll give you an exact estimate after the free audit."}},{"@type":"Question","name":"What does a RAG chatbot actually do for my business?","acceptedAnswer":{"@type":"Answer","text":"It reads your documents, website, product catalogue, and internal data — then answers customer questions 24/7 as if it were your best-trained employee. It can qualify leads, book appointments, and escalate complex queries to your team."}},{"@type":"Question","name":"Do you offer ongoing support after launch?","acceptedAnswer":{"@type":"Answer","text":"Yes. All projects include a 30-day support period at no extra cost. After that, monthly retainers are available for ongoing optimization, updates, and new features."}},{"@type":"Question","name":"Is there a long-term contract?","acceptedAnswer":{"@type":"Answer","text":"No. We work project-based or on a monthly retainer. Monthly plans can be cancelled anytime with 30 days notice. No lock-in, no hidden fees."}},{"@type":"Question","name":"Do you work with US-based clients?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with clients across the United States, United Kingdom, Australia, New Zealand, Canada, and Ireland. All communication is in English, and we adjust working hours to overlap with your timezone."}},{"@type":"Question","name":"I already have a website. Can you help?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We start with a free audit of your existing site — speed, SEO, conversion rate, mobile experience. If it's underperforming, we propose a targeted upgrade plan rather than rebuilding from scratch unnecessarily."}},{"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Book a free 30-minute strategy call below. We'll review your current setup, understand your goals, and tell you exactly what we'd build and why. No commitment required."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need technical knowledge to work with you?","acceptedAnswer":{"@type":"Answer","text":"Not at all. We handle everything end-to-end — design, development, deployment, and training. You just need to know your business. We translate that into technology."}},{"@type":"Question","name":"How long does a project take?","acceptedAnswer":{"@type":"Answer","text":"Website: 3-7 business days. RAG chatbot: 1-3 days after we receive your data. Automation workflows: 1-2 weeks depending on complexity. We'll give you an exact estimate after the free audit."}},{"@type":"Question","name":"What does a RAG chatbot actually do for my business?","acceptedAnswer":{"@type":"Answer","text":"It reads your documents, website, product catalogue, and internal data — then answers customer questions 24/7 as if it were your best-trained employee. It can qualify leads, book appointments, and escalate complex queries to your team."}},{"@type":"Question","name":"Do you offer ongoing support after launch?","acceptedAnswer":{"@type":"Answer","text":"Yes. All projects include a 30-day support period at no extra cost. After that, monthly retainers are available for ongoing optimization, updates, and new features."}},{"@type":"Question","name":"Is there a long-term contract?","acceptedAnswer":{"@type":"Answer","text":"No. We work project-based or on a monthly retainer. Monthly plans can be cancelled anytime with 30 days notice. No lock-in, no hidden fees."}},{"@type":"Question","name":"Do you work with US-based clients?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with clients across the United States, United Kingdom, Australia, New Zealand, Canada, and Ireland. All communication is in English, and we adjust working hours to overlap with your timezone."}},{"@type":"Question","name":"I already have a website. Can you help?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We start with a free audit of your existing site — speed, SEO, conversion rate, mobile experience. If it's underperforming, we propose a targeted upgrade plan rather than rebuilding from scratch unnecessarily."}},{"@type":"Question","name":"What if it doesn't work for my business?","acceptedAnswer":{"@type":"Answer","text":"Every build starts as a 30-day pilot. If the system isn't answering enquiries and booking appointments by day 30, we keep working at no extra charge until it is — or we refund the setup fee. You're never paying monthly for something that isn't performing."}},{"@type":"Question","name":"Where does our client data live? Is this GDPR compliant?","acceptedAnswer":{"@type":"Answer","text":"In your accounts, not ours — your CRM, your calendar, your practice software. We build the connections; we don't warehouse your data. We sign an NDA and a data processing agreement before touching anything, and systems are configured to meet UK GDPR requirements. For clinics, patient data stays inside the tools you already trust."}},{"@type":"Question","name":"What happens when the AI doesn't know the answer?","acceptedAnswer":{"@type":"Answer","text":"It says so and hands over — it never invents an answer. Unrecognised or sensitive queries are escalated: the caller can leave a detailed message, the enquiry is logged in your CRM, and you're notified instantly by SMS or email. You define the escalation rules during setup; we build them in."}},{"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Book a free 30-minute strategy call below. We'll review your current setup, understand your goals, and tell you exactly what we'd build and why. No commitment required."}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Coremagna","url":"https://coremagna.com","description":"AI automation agency helping businesses automate lead capture, client follow-up, and communication using AI chatbots, CRM automation, and voice agents.","contactPoint":{"@type":"ContactPoint","contactType":"sales","url":"https://calendar.app.google/XDGM8XJ9zEdqugKr9"}}
@@ -702,7 +754,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     </p>
     <div class="hero-ctas reveal-hero">
       <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" class="btn-hero-primary" target="_blank" rel="noopener noreferrer">Book a Free Call</a>
-      <a href="#services" class="btn-hero-secondary">See How It Works →</a>
+      <a href="/demo.html" class="btn-hero-secondary">Try the Live Demo →</a>
     </div>
   </div>
 
@@ -759,7 +811,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <article class="service-card reveal">
         <div class="service-num">01</div>
         <h3>Web Design &amp; Development</h3>
-        <p class="service-desc">Modern, SEO-optimized websites for solicitors and professional services. From zero to live in 3 days.</p>
+        <p class="service-desc">Modern, SEO-optimized websites with Google Business Profile setup — found on Google, live in 3 days.</p>
         <a href="web-design.html" class="service-link">Learn More →</a>
       </article>
 
@@ -792,6 +844,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       </article>
 
     </div>
+    <p class="services-chain reveal">These aren't five separate products. <strong>They're one machine</strong> — the website captures the lead, the chatbot and voice agent answer it, automation follows up until it books, and ads keep the pipeline fed. We assemble it differently for every industry. <a href="/industries.html">See yours →</a></p>
   </div>
 </section>
 
@@ -964,6 +1017,77 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
+<!-- ── 04a TOOL VS PARTNER ── -->
+<section id="vs" aria-labelledby="vs-heading">
+  <div class="container">
+    <div class="vs-head reveal">
+      <span class="section-eyebrow">Why not just buy a tool?</span>
+      <h2 id="vs-heading">Anyone can buy the software<br>Almost nobody makes it run</h2>
+      <p class="vs-sub">There are $29/month AI receptionists and chatbot builders everywhere. They're cheap because everything that makes them work is left to you.</p>
+    </div>
+
+    <div class="vs-grid">
+      <div class="vs-col vs-col-diy reveal">
+        <div class="vs-col-head">
+          <h3>Buying another tool</h3>
+          <span class="vs-col-price">$29–99/mo — plus your evenings and weekends</span>
+        </div>
+        <ul class="vs-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>You set it up yourself — tutorials, trial and error, weekends lost</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Generic scripts that treat a high-value case enquiry like a spam call</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Three to five separate subscriptions that never talk to each other</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Connecting your CRM and calendar is marked "easy" in the docs — it isn't</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Something breaks on a Friday and you file a ticket, then wait</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Cancel the subscription and everything you configured disappears</span></li>
+        </ul>
+      </div>
+
+      <div class="vs-col vs-col-partner reveal">
+        <div class="vs-col-head">
+          <h3>Hiring Coremagna as your partner</h3>
+          <span class="vs-col-price">From $697 setup + $197/mo — everything below included</span>
+        </div>
+        <ul class="vs-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>We build, test and launch it for you — live in days, not months</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Call flows and answers written for your practice, your prices, your clients</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>One connected system — chatbot, voice, follow-up and CRM working together</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Wired into your CRM, calendar and phone system before launch day</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>We monitor it and fix issues — usually before you notice them</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>You own every workflow, prompt and integration we build — no lock-in</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="vs-kicker reveal">
+      <p>A $29 tool looks cheap until you price your own hours. The setup fee exists so you never touch the plumbing — the monthly fee keeps it running while you run the business.</p>
+      <a href="#roi" class="btn-ghost">See what doing nothing costs →</a>
+    </div>
+
+    <div class="vs-tools reveal">
+      <span class="vs-tools-label">Works With Your Tools</span>
+      <p class="vs-tools-sub">We don't ask you to switch software. We plug into what your practice already runs.</p>
+      <div class="vs-chips" role="list" aria-label="Software we integrate with">
+        <span class="vs-chip" role="listitem">Clio</span>
+        <span class="vs-chip" role="listitem">Practice Panther</span>
+        <span class="vs-chip" role="listitem">Dentally</span>
+        <span class="vs-chip" role="listitem">Dentrix</span>
+        <span class="vs-chip" role="listitem">Follow Up Boss</span>
+        <span class="vs-chip" role="listitem">Reapit</span>
+        <span class="vs-chip" role="listitem">Alto</span>
+        <span class="vs-chip" role="listitem">HubSpot</span>
+        <span class="vs-chip" role="listitem">Pipedrive</span>
+        <span class="vs-chip" role="listitem">Calendly</span>
+        <span class="vs-chip" role="listitem">Google Calendar</span>
+        <span class="vs-chip" role="listitem">WhatsApp Business</span>
+        <span class="vs-chip" role="listitem">Twilio</span>
+        <span class="vs-chip" role="listitem">Stripe</span>
+        <span class="vs-chip" role="listitem">Xero</span>
+      </div>
+      <p class="vs-chips-note">Different software? If it has an API or a webhook, we can connect it — ask us on the call.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ── 04b ROI CALCULATOR ── -->
 <section id="roi" aria-labelledby="roi-heading">
   <div class="container">
@@ -1043,8 +1167,15 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <div class="section-header reveal">
       <span class="section-eyebrow">Results</span>
       <h2>What Automation Delivers</h2>
-      <p class="case-sub">Real case studies. Real numbers. Not our clients — but the same systems we build.</p>
+      <p class="case-sub">Every number below comes from a published, sourced case study of the exact systems we build — check the sources yourself. Your numbers will differ, which is what the calculator above is for.</p>
     </div>
+
+    <div class="case-video reveal">
+      <video src="/videos/demo-law.mp4" poster="/videos/demo-law-poster.jpg" muted autoplay loop playsinline controls preload="metadata"
+        aria-label="Demo video: a law firm enquiry goes from website chat to booked consultation and CRM record in 12 seconds"></video>
+      <p class="case-video-caption">Watch a real enquiry become a booked consultation in 12 seconds — then <a href="/demo.html">try the same AI yourself →</a></p>
+    </div>
+
     <div class="case-grid">
 
       <article class="case-card reveal">
@@ -1378,6 +1509,30 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       </div>
 
       <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-9">
+          What if it doesn't work for my business?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-9" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">Every build starts as a 30-day pilot. If the system isn't answering enquiries and booking appointments by day 30, we keep working at no extra charge until it is — or we refund the setup fee. You're never paying monthly for something that isn't performing.</div></dd>
+      </div>
+
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-10">
+          Where does our client data live? Is this GDPR compliant?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-10" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">In your accounts, not ours — your CRM, your calendar, your practice software. We build the connections; we don't warehouse your data. We sign an NDA and a data processing agreement before touching anything, and systems are configured to meet UK GDPR requirements. For clinics, patient data stays inside the tools you already trust.</div></dd>
+      </div>
+
+      <div class="faq-item reveal">
+        <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-11">
+          What happens when the AI doesn't know the answer?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button></dt>
+        <dd id="faq-11" class="faq-panel" aria-hidden="true"><div class="faq-panel-inner">It says so and hands over — it never invents an answer. Unrecognised or sensitive queries are escalated: the caller can leave a detailed message, the enquiry is logged in your CRM, and you're notified instantly by SMS or email. You define the escalation rules during setup; we build them in.</div></dd>
+      </div>
+
+      <div class="faq-item reveal">
         <dt><button class="faq-trigger" aria-expanded="false" aria-controls="faq-8">
           How do I get started?
           <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
@@ -1411,7 +1566,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <div class="section-header reveal">
       <span class="section-tag">GET IN TOUCH</span>
       <h2>Let's talk about<br>your project</h2>
-      <p class="section-sub">Tell us about your business and we'll get back to you within 24 hours.</p>
+      <p class="section-sub">Tell us about your business and we'll get back to you within 24 hours. Prefer proof over promises? Pick the free response audit — we contact your business the way a customer would, then send you exactly what we found.</p>
     </div>
 
     <div class="contact-form-wrap reveal">
@@ -1453,6 +1608,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
             <option value="system-integration">System Integration</option>
             <option value="document-automation">Document Automation</option>
             <option value="ai-voice-agent">AI Voice Agent</option>
+            <option value="local-visibility">Local visibility &amp; Google Business Profile</option>
+            <option value="free-response-audit">Free response audit — test how fast my business replies</option>
             <option value="not-sure">Not sure yet</option>
           </select>
         </div>
@@ -1511,8 +1668,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <span>Built on n8n, Anthropic and OpenAI — proven stack, no black boxes</span>
     </div>
     <div class="trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      <span>Every enquiry answered within 24 hours</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      <span>Every build starts as a 30-day pilot — if it doesn't perform, the setup fee comes back</span>
     </div>
     <div class="trust-item">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
