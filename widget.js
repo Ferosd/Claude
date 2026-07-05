@@ -1,5 +1,5 @@
 (function () {
-  const WEBHOOK = 'https://lolam.app.n8n.cloud/webhook/chatbotcore';
+  const WEBHOOK = 'https://melis.app.n8n.cloud/webhook/chatbotcore';
   const ACCENT = '#00D4AA';
   const DARK = '#0d1317';
   const SURFACE = '#111920';
