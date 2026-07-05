@@ -221,6 +221,31 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .chat-send svg{width:16px;height:16px;stroke:#060a0e;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .chat-send:disabled{opacity:0.5;pointer-events:none}
 
+/* ── Voice Agent UI ── */
+.voice-examples{display:flex;flex-direction:column;gap:var(--space-sm);margin-bottom:var(--space-xl)}
+.voice-example-item{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text-secondary)}
+.voice-example-item svg{width:14px;height:14px;flex-shrink:0;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.voice-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--space-xl);text-align:center;gap:var(--space-lg)}
+.voice-orb-wrap{position:relative;width:110px;height:110px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.voice-orb-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(0,212,170,0.3);animation:voicePulse 2.4s ease-out infinite}
+@keyframes voicePulse{0%{transform:scale(0.82);opacity:0.6}100%{transform:scale(1.55);opacity:0}}
+.voice-btn{width:84px;height:84px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:background 0.25s var(--ease),transform 0.2s var(--ease)}
+.voice-btn:hover{transform:scale(1.05)}
+.voice-btn:active{transform:scale(0.96)}
+.voice-btn svg{width:30px;height:30px;stroke:#060a0e;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.voice-btn[data-state="active"],.voice-btn[data-state="listening"],.voice-btn[data-state="speaking"]{background:var(--red)}
+.voice-btn[data-state="connecting"]{opacity:0.6;pointer-events:none}
+.voice-btn[data-state="idle"] + .voice-status,
+.voice-btn[data-state="error"] ~ .voice-status{color:var(--text)}
+.voice-status{font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--text)}
+.voice-hint{font-size:12px;color:var(--text-fine);max-width:280px;line-height:1.6}
+.voice-transcript{display:none;width:100%;max-height:120px;overflow-y:auto;text-align:left;font-size:12px;color:var(--text-muted);line-height:1.7;padding-top:var(--space-md);border-top:1px solid var(--border)}
+.voice-transcript.visible{display:block}
+.voice-transcript p{margin-bottom:4px}
+.voice-transcript strong{color:var(--text);font-family:'Cabinet Grotesk',sans-serif}
+.voice-transcript::-webkit-scrollbar{width:4px}
+.voice-transcript::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
 /* ── CRM Form ── */
 .crm-form{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-xl)}
 .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:var(--space-md)}
@@ -412,13 +437,13 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       </div>
 
       <!-- Card 2: AI Voice Agent -->
-      <div class="selector-card active-card reveal" style="opacity: 0.4; pointer-events: none; display: none;">
+      <div class="selector-card active-card reveal" role="button" tabindex="0" aria-label="Try AI Voice Agent demo" data-target="#voice-demo">
         <div class="selector-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
         </div>
         <div class="selector-title">AI Voice Agent</div>
         <div class="selector-sub">Speak to AI — out loud</div>
-        <span class="selector-badge">Coming Soon</span>
+        <span class="selector-badge live">Live Demo</span>
       </div>
 
       <!-- Card 3: CRM Lead Automation -->
@@ -528,7 +553,74 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
+<!-- VOICE AGENT DEMO -->
+<section id="voice-demo" class="demo-section">
+  <div class="container">
+    <div class="demo-grid">
 
+      <!-- Left -->
+      <div>
+        <span class="demo-label reveal">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          AI Voice Agent Demo
+        </span>
+        <h2 class="demo-h2 reveal">Talk to Our AI — Out Loud, Right Now</h2>
+        <p class="demo-desc reveal">This is Max, the same AI voice agent Coremagna installs on a client's phone line. Tap the button, allow your microphone, and have a real spoken conversation — no phone number needed.</p>
+
+        <p class="reveal" style="font-size:12px;color:var(--text-muted);margin-bottom:12px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Try saying</p>
+        <div class="voice-examples reveal">
+          <div class="voice-example-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>"I run a dental clinic and we miss a lot of calls"</span>
+          </div>
+          <div class="voice-example-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>"What does this cost?"</span>
+          </div>
+          <div class="voice-example-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>"Can you book me a call for tomorrow?"</span>
+          </div>
+        </div>
+
+        <div class="metric-chips reveal">
+          <div class="metric-chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Answers <strong>every call</strong>
+          </div>
+          <div class="metric-chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Uptime <strong>24/7</strong>
+          </div>
+          <div class="metric-chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Books <strong>while you sleep</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Voice Call Widget -->
+      <div class="reveal">
+        <div class="chatbot-wrapper">
+          <div class="chatbot-live-dot">Live AI — real voice, real conversation</div>
+          <div class="voice-card">
+            <div class="voice-orb-wrap">
+              <div class="voice-orb-ring" aria-hidden="true"></div>
+              <button class="voice-btn" id="voice-btn" data-state="idle" aria-label="Start call with Max">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </button>
+            </div>
+            <div class="voice-status" id="voice-status">Tap to talk to Max</div>
+            <p class="voice-hint" id="voice-hint">Your browser will ask for microphone access. No card, no signup — just talk.</p>
+            <div class="voice-transcript" id="voice-transcript"></div>
+          </div>
+          <p class="chatbot-note">Live demo — real AI voice agent, same one clients get on their phone line.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- CRM DEMO -->
 <section id="crm-demo" class="demo-section">
@@ -851,6 +943,90 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   /* Example buttons send text to chat */
   document.querySelectorAll('.example-btn').forEach(btn=>{
     btn.addEventListener('click',()=>send(btn.dataset.text));
+  });
+})();
+
+/* AI Voice Agent (Vapi Web SDK, loaded on demand — no build step needed) */
+(function(){
+  const VAPI_PUBLIC_KEY='de5b9d72-234e-4f9a-b41b-45e40f37a725'; // dashboard.vapi.ai → Settings → API Keys → Public Key
+  const ASSISTANT_ID='e990f8d0-aa14-46e9-8f6d-96a83d13113a'; // "Coremagna — Max"
+  const btn=document.getElementById('voice-btn');
+  const statusEl=document.getElementById('voice-status');
+  const hintEl=document.getElementById('voice-hint');
+  const transcriptEl=document.getElementById('voice-transcript');
+  if(!btn) return;
+
+  const LABELS={
+    idle:'Tap to talk to Max',
+    connecting:'Connecting…',
+    active:'On the call — tap to end',
+    listening:'Max is listening…',
+    speaking:'Max is speaking…',
+    error:'Something went wrong — tap to try again'
+  };
+
+  let vapi=null;
+
+  function setState(state){
+    btn.dataset.state=state;
+    statusEl.textContent=LABELS[state]||'';
+    btn.setAttribute('aria-label',(state==='active'||state==='listening'||state==='speaking')?'End call with Max':'Start call with Max');
+  }
+
+  function appendLine(who,text){
+    if(!text) return;
+    const p=document.createElement('p');
+    const label=document.createElement('strong');
+    label.textContent=who+': ';
+    p.append(label,document.createTextNode(text));
+    transcriptEl.append(p);
+    transcriptEl.classList.add('visible');
+    transcriptEl.scrollTop=transcriptEl.scrollHeight;
+  }
+
+  async function loadVapiCtor(){
+    if(window.__vapiCtor) return window.__vapiCtor;
+    const mod=await import('https://esm.sh/@vapi-ai/web');
+    window.__vapiCtor=mod.default;
+    return window.__vapiCtor;
+  }
+
+  function initVapi(Ctor){
+    if(vapi) return;
+    vapi=new Ctor(VAPI_PUBLIC_KEY);
+    vapi.on('call-start',()=>setState('active'));
+    vapi.on('call-end',()=>setState('idle'));
+    vapi.on('speech-start',()=>setState('listening'));
+    vapi.on('speech-end',()=>setState('speaking'));
+    vapi.on('message',(msg)=>{
+      if(msg&&msg.type==='transcript'&&msg.transcriptType==='final'){
+        appendLine(msg.role==='user'?'You':'Max',msg.transcript);
+      }
+    });
+    vapi.on('error',(e)=>{
+      console.error('[Voice demo]',e);
+      setState('error');
+      hintEl.textContent='Could not connect. Please try again, or book a call instead.';
+    });
+  }
+
+  btn.addEventListener('click',async function(){
+    const state=btn.dataset.state;
+    if(state==='active'||state==='listening'||state==='speaking'){
+      if(vapi) vapi.stop();
+      return;
+    }
+    if(state==='connecting') return;
+    setState('connecting');
+    try{
+      const Ctor=await loadVapiCtor();
+      initVapi(Ctor);
+      vapi.start(ASSISTANT_ID);
+    }catch(err){
+      console.error('[Voice demo] failed to load SDK',err);
+      setState('error');
+      hintEl.textContent='Could not start the voice demo. Please try again, or book a call instead.';
+    }
   });
 })();
 
