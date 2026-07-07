@@ -36,85 +36,101 @@ const POLL_TIMEOUT_MS = 12 * 60 * 1000;
 const NEGATIVE =
   'people, person, hands, face, pets, text, captions, watermark, logo, ' +
   'warped walls, bending lines, distorted furniture, morphing objects, ' +
-  'flickering light, camera shake, fast motion, added objects, ' +
-  'changing room layout, cartoon, painting, low quality';
+  'static shot, frozen frame, no movement, still photo, ' +
+  'changing room layout, extra rooms, cartoon, painting, low quality';
 
+/*
+ * v2 (2026-07-07): "sakin gimbal" yaklaşımı terk edildi. Referans analizi
+ * (Rendy promosu + kullanıcının kendi killer_reel.mp4'ü) gösterdi ki bu tarz
+ * videolarda etkileyicilik yavaş/temiz kamera hareketinden DEĞİL, hızlı
+ * FPV-drone tarzı uçuştan ve motion blur'un kusurları gizlemesinden geliyor.
+ * Yavaş+temiz istemek Kling'i "güvenli" oynayıp neredeyse dururken görmeye
+ * itiyor. Bu yüzden prompt'lar artık FPV enerjisini hedefliyor: hızlı ileri
+ * hareket, kapı/koridordan içeri "uçma" hissi, belirgin motion blur.
+ * cfg_scale hepsinde 0.8 — görsele daha az sıkı bağlı kal, harekete izin ver.
+ */
 const SCENES = [
   {
     slug: '01-exterior',
     file: '01-exterior-front.jpg',
+    cfgScale: 0.8,
     prompt:
-      'Cinematic real estate listing video. The camera glides slowly forward toward the ' +
-      'front door of a honey-coloured Cotswold stone cottage, a smooth stabilised gimbal ' +
-      'push-in at slow walking pace. Gentle parallax between the low stone garden wall in ' +
-      'the foreground and the cottage facade. The climbing plant on the wall and the grass ' +
-      'tremble softly in a light breeze, clouds drift almost imperceptibly. Warm morning ' +
-      'sunlight with soft shadows. Photorealistic, natural colour, the architecture stays ' +
-      'perfectly rigid, window frames and the roofline remain dead straight.',
+      'FPV drone real estate video, fast energetic forward flight, strong cinematic motion ' +
+      'blur on the edges of frame, this is a fast dynamic shot not a slow calm one. The ' +
+      'drone accelerates forward straight toward the front door of the honey-coloured ' +
+      'Cotswold stone cottage, rushing past the low stone garden wall and the topiary ' +
+      'shrubs which blur past quickly in the foreground, while the cottage grows larger in ' +
+      'frame. Warm morning sunlight, sun flare. Photorealistic, high energy real estate ' +
+      'reel style, continuous accelerating motion from first frame to last frame.',
   },
   {
     slug: '02-fireplace',
     file: '02-living-fireplace.jpg',
+    cfgScale: 0.75,
     prompt:
-      'Cinematic interior real estate video. Slow steady push-in toward a black cast-iron ' +
-      'wood-burning stove set in a white fireplace alcove under an oak beam mantel. Warm ' +
-      'orange flames flicker naturally behind the glass door of the stove, casting a subtle ' +
-      'warm glow onto the surrounding white plaster and the stacked firewood. Everything ' +
-      'else in the room stays completely still. Soft natural daylight mixing with firelight. ' +
-      'Photorealistic, fixed smooth camera path, no objects move, appear or disappear.',
+      'Fast energetic real estate reel shot, strong cinematic motion blur, continuous ' +
+      'forward camera rush toward a black cast-iron wood-burning stove set in a white ' +
+      'fireplace alcove. Warm orange flames roar and flicker vividly behind the glass door ' +
+      'of the stove, casting a strong warm glow that pulses onto the surrounding white ' +
+      'plaster and stacked firewood. Photorealistic, high energy real estate reel style, ' +
+      'continuous accelerating motion from first frame to last frame.',
   },
   {
     slug: '02b-living',
     file: '02b-living-wide.jpg',
+    cfgScale: 0.8,
     prompt:
-      'Cinematic interior real estate video. Slow smooth dolly forward through a bright ' +
-      'cottage living room toward the lit wood-burning stove, gentle parallax past the ' +
-      'linen sofa, the oak shelves and the coffee table. The fire glows and flickers softly ' +
-      'inside the stove; everything else remains perfectly still. Soft diffused daylight ' +
-      'from the window, calm high-end staging. Photorealistic, furniture and walls stay ' +
-      'rigid and unchanged, straight lines remain straight.',
+      'FPV real estate video, fast energetic forward flight through a bright cottage living ' +
+      'room straight toward the lit wood-burning stove, strong cinematic motion blur on the ' +
+      'linen sofa and coffee table as they rush past in the foreground. The fire glows and ' +
+      'flickers vividly inside the stove. Photorealistic, high energy real estate reel ' +
+      'style, continuous accelerating motion from first frame to last frame.',
   },
   {
     slug: '03-kitchen',
     file: '03-kitchen.jpg',
+    cfgScale: 0.8,
     prompt:
-      'Cinematic interior real estate video. Slow steady dolly forward through a bright ' +
-      'cream cottage kitchen toward the open glazed garden door, gentle parallax past the ' +
-      'worktop, the sink and the open oak shelves. Through the doorway, green garden ' +
-      'foliage sways softly in the breeze and sunlight shifts gently on the stone step. ' +
-      'The interior stays completely still. Soft natural daylight. Photorealistic, cabinet ' +
-      'fronts and ceiling beams remain perfectly rigid, no new objects appear.',
+      'FPV real estate video, fast energetic forward flight through a bright cream cottage ' +
+      'kitchen straight through the open glazed garden door out into the garden, strong ' +
+      'cinematic motion blur as the worktop and open oak shelves rush past in the ' +
+      'foreground. Green garden foliage grows larger ahead as the camera bursts through the ' +
+      'doorway into daylight. Photorealistic, high energy real estate reel style, ' +
+      'continuous accelerating motion from first frame to last frame.',
   },
   {
     slug: '04-bedroom',
     file: '04-bedroom.jpg',
+    cfgScale: 0.8,
     prompt:
-      'Cinematic interior real estate video. Very slow gentle push-in toward a neatly made ' +
-      'bed layered with natural linen pillows and a soft throw, beneath a rustic oak ' +
-      'ceiling beam. The light from the window breathes almost imperceptibly, as if a thin ' +
-      'curtain moved outside the frame. Calm, serene, high-end staging. Soft daylight. ' +
-      'Photorealistic, bedding keeps its exact folds, furniture and walls stay perfectly ' +
-      'still, no morphing.',
+      'FPV real estate video, fast energetic forward flight low across the bed toward the ' +
+      'window, strong cinematic motion blur on the linen pillows and throw as they rush ' +
+      'past in the foreground below the camera, rustic oak ceiling beam blurring past ' +
+      'overhead. Soft daylight flares as the camera approaches the window. Photorealistic, ' +
+      'high energy real estate reel style, continuous accelerating motion from first frame ' +
+      'to last frame.',
   },
   {
     slug: '05-dining',
     file: '05-dining.jpg',
+    cfgScale: 0.8,
     prompt:
-      'Cinematic interior real estate video. Slow push-in toward a rustic oak dining table ' +
-      'with upholstered chairs, gentle parallax gradually revealing the painted staircase ' +
-      'and the window seat beyond. The pendant lamp light stays constant; the leaves of the ' +
-      'small plant on the table tremble very slightly. Soft natural daylight. Photorealistic, ' +
-      'architecture and furniture remain rigid and unchanged, straight lines stay straight.',
+      'FPV real estate video, fast energetic forward flight over the dining table toward the ' +
+      'painted staircase, strong cinematic motion blur on the chairs and pendant lamp as ' +
+      'they rush past in the foreground, the staircase and window seat growing larger ahead. ' +
+      'Photorealistic, high energy real estate reel style, continuous accelerating motion ' +
+      'from first frame to last frame.',
   },
   {
     slug: '06-bathroom',
     file: '06-bathroom.jpg',
+    cfgScale: 0.8,
     prompt:
-      'Cinematic interior real estate video. Slow steady push-in toward the bathtub beneath ' +
-      'a bright window, gentle parallax past the oak vanity and the round brass mirror. The ' +
-      'green stems in the vase sway very slightly; everything else is completely still. ' +
-      'Bright soft daylight, clean spa-like calm. Photorealistic, tile lines and wall ' +
-      'panelling remain dead straight, no objects appear or change.',
+      'FPV real estate video, fast energetic forward flight toward the bathtub and bright ' +
+      'window, strong cinematic motion blur on the oak vanity and round brass mirror as ' +
+      'they rush past in the foreground. Bright daylight flares near the window. ' +
+      'Photorealistic, high energy real estate reel style, continuous accelerating motion ' +
+      'from first frame to last frame.',
   },
 ];
 
@@ -186,7 +202,7 @@ function createTask(apiKey, scene, imageUrl) {
       image_url: imageUrl,
       duration: '5',
       negative_prompt: NEGATIVE,
-      cfg_scale: 0.5,
+      cfg_scale: scene.cfgScale || 0.5,
     },
   }, `createTask ${scene.slug}`);
   const taskId = json.data && (json.data.taskId || json.data.task_id);
