@@ -102,9 +102,9 @@ Never use: leverage, seamless, elevate, unleash, next-gen, cutting-edge, robust,
 
 ## Navigation Order
 
-Industries > Work > About > Blog > FAQ > Contact > [Theme Toggle] > [Book a Call]
+Industries > Video Tours > Work > About > Blog > FAQ > Contact > [Theme Toggle] > [Book a Call]
 
-Services dropdown removed. Legacy service pages kept for SEO only.
+Services dropdown removed. Legacy service pages kept for SEO only. "Video Tours" links to /real-estate-videos.html (AI real estate listing video service — flagship entry offer, real estate vertical only).
 
 ## Site Structure
 

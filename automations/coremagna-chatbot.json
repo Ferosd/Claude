@@ -1,0 +1,544 @@
+{
+  "name": "Coremagna Ai chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbotcore",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1040,
+        224
+      ],
+      "id": "163a2c18-2a50-4f90-a105-d68bda56ffb1",
+      "name": "Webhook",
+      "webhookId": "75676c49-ddb2-4571-9e5f-20771ca77e63"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1b2c3d4-0001",
+              "name": "user_message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "a1b2c3d4-0002",
+              "name": "session_id",
+              "value": "={{ $json.body.session_id || 'default' }}",
+              "type": "string"
+            },
+            {
+              "id": "a1b2c3d4-0003",
+              "name": "visitor_name",
+              "value": "={{ $json.body.visitor_name || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "a1b2c3d4-0004",
+              "name": "visitor_email",
+              "value": "={{ $json.body.visitor_email || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set Fields",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -768,
+        224
+      ],
+      "typeVersion": 3.4,
+      "id": "79e845d7-0673-45c6-93b4-11972445fea5"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json.output || '';\n\n// Strip markdown code fences if the model wraps the JSON\nconst cleaned = raw.replace(/```json\\n?|\\n?```/g, '').trim();\n\nlet parsed;\ntry {\n  parsed = JSON.parse(cleaned);\n} catch (e) {\n  return [{\n    json: {\n      message: \"I'm sorry, I had a brief issue. Could you please repeat that?\",\n      lead_data: { name: '', phone: '', email: '', interest: '', viewing_date: '', lead_score: 0, is_complete: false },\n      is_complete: false,\n      has_viewing: false,\n      viewing_date_iso: '',\n      viewing_date_iso_end: ''\n    }\n  }];\n}\n\nconst ld = parsed.lead_data || {};\n\nconst phone = String(ld.phone || '').trim();\n\n// Convert \"YYYY-MM-DD HH:MM\" → ISO 8601 \"YYYY-MM-DDTHH:MM:00\" for Google Calendar\nconst rawDate = typeof ld.viewing_date === 'string' ? ld.viewing_date.trim() : '';\nlet viewingIso = '';\nlet viewingIsoEnd = '';\nif (rawDate) {\n  viewingIso = rawDate.replace(' ', 'T');\n  if (!viewingIso.includes('T')) viewingIso = viewingIso + 'T09:00';\n  if (viewingIso.length === 16) viewingIso += ':00';\n  // Wall-clock +1h using local getters so the server timezone never shifts the end time\n  const d = new Date(viewingIso);\n  if (!isNaN(d.getTime())) {\n    d.setHours(d.getHours() + 1);\n    const pad = n => String(n).padStart(2, '0');\n    viewingIsoEnd = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':00';\n  } else {\n    viewingIsoEnd = viewingIso;\n  }\n}\n\nreturn [{\n  json: {\n    message: parsed.message || '',\n    lead_data: {\n      name:         ld.name         || '',\n      phone:        phone,\n      email:        ld.email        || '',\n      interest:     ld.interest     || '',\n      viewing_date: rawDate,\n      lead_score:   Number(ld.lead_score) || 0\n    },\n    is_complete:          ld.is_complete === true,\n    has_viewing:          rawDate !== '',\n    viewing_date_iso:     viewingIso,\n    viewing_date_iso_end: viewingIsoEnd\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        240
+      ],
+      "id": "5065f7d4-4020-48b8-ab61-00fff0ce9eea",
+      "name": "Parse AI Response"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "cond-lead-complete",
+              "leftValue": "={{ $json.is_complete }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "name": "IF Lead Complete",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -16,
+        272
+      ],
+      "typeVersion": 2,
+      "id": "85ed1591-9dd8-4ce4-b1be-30e2eeb25d57"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "=1ksyVYRIzwq2Yd5JdiMhJeQs8ox3Lw_2OyBFTPmz5lKI/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sayfa1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksyVYRIzwq2Yd5JdiMhJeQs8ox3Lw_2OyBFTPmz5lKI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.lead_data.name }}",
+            "email": "={{ $json.lead_data.email }}",
+            "phone": "={{ $json.lead_data.phone }}",
+            "lead_score": "={{ $json.lead_data.lead_score }}",
+            "interest": "={{ $json.lead_data.interest }}",
+            "timestamp": "={{ $json.lead_data.viewing_date }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "interest",
+              "displayName": "interest",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "lead_score",
+              "displayName": "lead_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "name": "Google Sheets — Append Lead",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        256,
+        208
+      ],
+      "typeVersion": 4.5,
+      "id": "1171a19c-4118-413e-b1af-202b69352606",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jZw2UYrfdrUyKCUK",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "digitalyakamoz@gmail.com",
+        "subject": "=New Lead: {{ $('Parse AI Response').item.json.lead_data.name }} — Score {{ $('Parse AI Response').item.json.lead_data.lead_score }}/10",
+        "message": "=<html><body style=\"font-family: Georgia, serif; color: #1a1a2e; max-width: 600px; margin: 0 auto; padding: 20px;\">\n<div style=\"border-top: 4px solid #00D4AA; padding-top: 20px;\">\n  <h2 style=\"color: #00D4AA;\">New Lead — Coremagna</h2>\n  <table style=\"width:100%; border-collapse: collapse; margin-top: 16px;\">\n    <tr><td style=\"padding: 8px; border-bottom: 1px solid #eee; width: 40%; font-weight: bold;\">Name</td><td style=\"padding: 8px; border-bottom: 1px solid #eee;\">{{ $('Parse AI Response').item.json.lead_data.name }}</td></tr>\n    <tr><td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Phone</td><td style=\"padding: 8px; border-bottom: 1px solid #eee;\">{{ $('Parse AI Response').item.json.lead_data.phone }}</td></tr>\n    <tr><td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Email</td><td style=\"padding: 8px; border-bottom: 1px solid #eee;\">{{ $('Parse AI Response').item.json.lead_data.email }}</td></tr>\n    <tr><td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Interest</td><td style=\"padding: 8px; border-bottom: 1px solid #eee;\">{{ $('Parse AI Response').item.json.lead_data.interest }}</td></tr>\n    <tr><td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Preferred Call</td><td style=\"padding: 8px; border-bottom: 1px solid #eee;\">{{ $('Parse AI Response').item.json.lead_data.viewing_date }}</td></tr>\n    <tr><td style=\"padding: 8px; font-weight: bold;\">Lead Score</td><td style=\"padding: 8px;\"><strong style=\"color: #00D4AA; font-size: 1.2em;\">{{ $('Parse AI Response').item.json.lead_data.lead_score }}/10</strong></td></tr>\n  </table>\n  <p style=\"margin-top: 24px; color: #666; font-size: 0.9em;\">Captured via Coremagna chat widget — {{ new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }) }}</p>\n</div>\n</body></html>",
+        "options": {}
+      },
+      "name": "Gmail — Lead Notification",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        512,
+        208
+      ],
+      "typeVersion": 2.1,
+      "id": "0d76b587-dc89-48d5-acd8-32619a630152",
+      "webhookId": "9d4dfe04-5ebb-4cbd-ad70-08cb1db0aa3c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ISGKcwXJCpwC0wip",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "cond-has-viewing",
+              "leftValue": "={{ $json.has_viewing }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "name": "IF Viewing Requested",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -16,
+        448
+      ],
+      "typeVersion": 2,
+      "id": "75cfa298-a23b-4e70-bb95-caac55190f6f"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "cfba9be75cb2a16facc0aed1a72fea79aa90ffb37d32e837743565d32795f207@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "ai chatbot"
+        },
+        "start": "={{ $json.viewing_date_iso }}",
+        "end": "={{ $json.viewing_date_iso_end }}",
+        "additionalFields": {
+          "attendees": [
+            "={{ $json.lead_data.email }}"
+          ],
+          "description": "=Visitor: {{ $json.lead_data.name }}\nPhone: {{ $json.lead_data.phone }}\nEmail: {{ $json.lead_data.email }}\nInterest: {{ $json.lead_data.interest }}\n\nBooked via Coremagna website chat widget.",
+          "location": "Coremagna",
+          "summary": "=Strategy Call — {{ $json.lead_data.name }}"
+        }
+      },
+      "name": "Google Calendar — Create Viewing",
+      "type": "n8n-nodes-base.googleCalendar",
+      "position": [
+        256,
+        400
+      ],
+      "typeVersion": 1.3,
+      "id": "cb9f5aeb-bc56-492d-9795-da3e6b866b0b",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "3314ynkTZsT7LoDC",
+          "name": "Google Calendar OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Parse AI Response').item.json.lead_data.email }}",
+        "subject": "Your Strategy Call is Confirmed — Coremagna",
+        "message": "=<html><body style=\"font-family: Georgia, serif; color: #1a1a2e; max-width: 600px; margin: 0 auto; padding: 20px;\">\n<div style=\"border-top: 4px solid #00D4AA; padding-top: 20px;\">\n  <h2 style=\"color: #00D4AA;\">Call Confirmed</h2>\n  <p>Dear {{ $('Parse AI Response').item.json.lead_data.name }},</p>\n  <p>Thank you for reaching out to Coremagna. We are delighted to confirm your free strategy call.</p>\n  <div style=\"background: #f9f7f4; border-left: 4px solid #00D4AA; padding: 16px; margin: 20px 0;\">\n    <p style=\"margin: 0;\"><strong>Date &amp; Time:</strong> {{ $('Parse AI Response').item.json.lead_data.viewing_date }}</p>\n    <p style=\"margin: 8px 0 0;\"><strong>Your interest:</strong> {{ $('Parse AI Response').item.json.lead_data.interest }}</p>\n  </div>\n  <p>Ferit, our founder, will be in touch shortly to confirm the details and prepare for your call.</p>\n  <p><strong>Coremagna</strong><br>Digital Automation Agency<br>ferit1@coremagna.com</p>\n  <p style=\"color: #666; font-size: 0.9em; margin-top: 32px;\">This is an automated confirmation. Please reply to speak with Ferit directly.</p>\n</div>\n</body></html>",
+        "options": {}
+      },
+      "name": "Gmail — Viewing Confirmation",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        512,
+        400
+      ],
+      "typeVersion": 2.1,
+      "id": "72e6205d-deac-4044-a523-da356aaa7cfa",
+      "webhookId": "88b3bf44-9602-4b75-9f86-b3909b5b9c09",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ISGKcwXJCpwC0wip",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ 'Visitor: ' + $json.visitor_name + ' <' + $json.visitor_email + '>\\n' + $json.user_message }}",
+        "options": {
+          "systemMessage": "=Each message begins with a Visitor: line showing the visitor's name and email. Use their first name naturally in conversation. Never ask for their name or email — you already have them.\n\nYou are Maya, a senior automation consultant at Coremagna, a digital agency specialising in AI automation, chatbots, CRM systems, and web design for small and medium businesses.\n\nOur services:\n- AI Chatbot & RAG Integration: AI trained on your business data, answers questions and captures leads 24/7\n- CRM Lead & Form Automation: every enquiry scored, logged, and followed up automatically within 30 seconds\n- AI Voice Agent: calls new leads within seconds of form submission, qualifies them, books appointments\n- Ad Lead Automation: Google and Meta leads captured instantly, no lead sits unanswered\n- Social Media & Content Automation: AI-generated content, auto-published across 3 platforms\n- Web Design & Development: modern, fast websites live in 3 days\n\nPricing: Starter from $697 setup + $197/month. Never give exact package breakdowns — say \"we'll go through the right package on the call.\"\n\nYour role: Have a warm, consultative conversation. Understand what the visitor's business does, identify their biggest pain point, and guide them toward booking a free strategy call with Ferit.\n\nConversation guidelines:\n- Greet them by first name and ask how you can help\n- Ask one question at a time — never multiple questions at once\n- Keep ALL responses under 2 sentences — no lists, no bullet points\n- Explore their situation naturally: what their business does, what's eating their time, what tools they use\n- Answer any question they ask clearly and concisely\n- When they show genuine interest, suggest a free 30-minute strategy call: \"Would you like to book a free 30-minute call with Ferit, our founder? He'll map out exactly what would work for your business.\"\n- When they agree to a call, ask: \"What day and time works best for you?\"\n- When they give a date and time, ask for the best phone number to reach them on for the call. If they prefer not to share a number, proceed without it.\n- Then confirm the booking: \"Perfect — your call with Ferit is booked for [date] at [time]. You'll receive a confirmation shortly.\"\n- Set viewing_date in the JSON to the appointment datetime in \"YYYY-MM-DD HH:MM\" format — calculate the exact date from today's date given below\n- Set booked_call to true once date and time are confirmed\n- Outside office hours: let them know Ferit will be in touch the next business morning\n- Match the visitor's language — if they write in Turkish, respond in Turkish\n\nTone: Professional, friendly, direct. No jargon. Short responses.\n\nNever promise specific results. For pricing details always say: \"We'll go through exact numbers on the call — it depends on your setup.\"\n\nLead scoring (internal — NEVER mention to visitor):\nStart at 0. Add points as confirmed:\n- Clear automation or website need identified: +3 points\n- Business has a team or handles 10+ enquiries/month: +2 points\n- Agrees to book a call: +3 points\n- Date and time confirmed: +2 points\nCap at 10.\n\nToday's date is {{ $now.setZone('Europe/Istanbul').toFormat('cccc, d LLLL yyyy') }} and the current time is {{ $now.setZone('Europe/Istanbul').toFormat('HH:mm') }} (Europe/Istanbul). Use this to calculate relative dates like \"tomorrow\" or \"Friday\".\n\nCRITICAL — one booking only: set is_complete to true ONLY in the single message where you first confirm the booking. In every message after that confirmation, set is_complete to false and viewing_date to an empty string, even if the visitor keeps chatting. Never create a second booking in the same conversation unless the visitor explicitly asks to reschedule — in that case confirm the new time and set is_complete to true once more.\n\nIMPORTANT: Respond ONLY with valid JSON — no markdown, no extra text. Must be directly parseable with JSON.parse():\n{\n  \"message\": \"<your conversational response>\",\n  \"lead_data\": {\n    \"name\": \"<visitor first name>\",\n    \"email\": \"<visitor email>\",\n    \"phone\": \"<visitor phone number if shared, otherwise empty string>\",\n    \"interest\": \"<concise summary of their need — or empty string>\",\n    \"booked_call\": <true if date and time confirmed, otherwise false>,\n    \"viewing_date\": \"<YYYY-MM-DD HH:MM format if date confirmed, otherwise empty string>\",\n    \"lead_score\": <integer 0-10>,\n    \"is_complete\": <true only when interest is non-empty AND booked_call is true AND this is the confirmation message, otherwise false>\n  }\n}"
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -528,
+        160
+      ],
+      "typeVersion": 2,
+      "id": "ff747dac-5444-4c89-9139-1c0627994d14"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.1",
+          "mode": "list",
+          "cachedResultName": "gpt-5.1"
+        },
+        "options": {}
+      },
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -608,
+        448
+      ],
+      "typeVersion": 1.2,
+      "id": "35b92a08-159b-4a18-8b1a-7c95ecf03772",
+      "credentials": {
+        "openAiApi": {
+          "id": "vFedK95vbiX46T70",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Set Fields').first().json.session_id }}",
+        "contextWindowLength": 20
+      },
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        -416,
+        448
+      ],
+      "typeVersion": 1.3,
+      "id": "9f01cd00-abfc-4004-94d8-2b1545ac6435"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ reply: $json.message }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Methods",
+                "value": "POST, OPTIONS"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
+      },
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "0b2ffe73-76d8-41b9-98f0-7e4eac8b9954"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF Lead Complete",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF Viewing Requested",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Lead Complete": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets — Append Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets — Append Lead": {
+      "main": [
+        [
+          {
+            "node": "Gmail — Lead Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Viewing Requested": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar — Create Viewing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar — Create Viewing": {
+      "main": [
+        [
+          {
+            "node": "Gmail — Viewing Confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Parse AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

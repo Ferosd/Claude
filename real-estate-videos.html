@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Real Estate Video Tours from Listing Photos | Coremagna</title>
+<meta name="description" content="Turn listing photos into cinematic 9:16 walkthrough videos in 48 hours — with an optional AI presenter. Built for realtors, brokers and Airbnb hosts.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Coremagna">
+<link rel="canonical" href="https://coremagna.com/real-estate-videos">
+<meta property="og:title" content="AI Real Estate Video Tours from Listing Photos | Coremagna">
+<meta property="og:description" content="No film crew, no scheduling. Just your existing photos, transformed into scroll-stopping vertical video tours — delivered in 48 hours.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://coremagna.com/real-estate-videos">
+<meta property="og:image" content="https://coremagna.com/images/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Real Estate Video Tours from Listing Photos | Coremagna">
+<meta name="twitter:description" content="No film crew, no scheduling. Just your existing photos, transformed into scroll-stopping vertical video tours — delivered in 48 hours.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/motion.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── CSS Variables ── */
+:root {
+  --bg: #060a0e;
+  --surface: #0d1117;
+  --surface-2: #111920;
+  --text: #F0F4F3;
+  --text-secondary: #c0ccd8;
+  --text-muted: #8a9ba8;
+  --text-fine: #5a6b78;
+  --border: #1a2530;
+  --border-hover: rgba(0,212,170,0.4);
+  --accent: #00D4AA;
+  --accent-dim: rgba(0,212,170,0.12);
+  --red: #e85d4a;
+  --yellow: #f5c14a;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+  --space-2xl: 80px;
+  --space-3xl: 120px;
+}
+[data-theme="light"] {
+  --bg: #fafbfc;
+  --surface: #ffffff;
+  --surface-2: #f4f6f8;
+  --text: #0a1014;
+  --text-secondary: #2a3340;
+  --text-muted: #5a6b78;
+  --text-fine: #8a9ba8;
+  --border: #e1e5ea;
+  --border-hover: rgba(0,184,148,0.5);
+  --accent: #00B894;
+  --accent-dim: rgba(0,184,148,0.10);
+  --red: #d14a37;
+  --yellow: #d49a2a;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.02;letter-spacing:-0.03em;font-weight:800;overflow-wrap:break-word;max-width:100%;hyphens:none}
+
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.035}
+
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.section-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;border-radius:6px;position:relative;overflow:hidden;transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+.btn-primary:hover{background:#00f0c4;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,212,170,0.35)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;border:1px solid rgba(255,255,255,0.07);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.03em;border-radius:6px;transition:border-color 0.25s var(--ease),color 0.25s var(--ease),background 0.25s var(--ease),transform 0.25s var(--ease)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.btn-ghost:active{transform:scale(0.97)}
+.btn-ghost:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ── Nav ── */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+[data-theme="light"] #mainNav.scrolled{background:rgba(250,251,252,0.88)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
+.logo-core{transition:letter-spacing 0.3s var(--ease)}
+.logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
+.logo:hover .logo-core{letter-spacing:0.05em}
+.logo:hover .logo-magna{color:var(--text)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite;transition:transform 0.3s var(--spring),opacity 0.3s var(--ease)}
+.logo:hover .logo-dot{transform:scale(2.5);opacity:0}
+@keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:var(--space-xl);align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+.mobile-nav.visible{opacity:1;pointer-events:all}
+.mobile-nav ul{display:flex;flex-direction:column;gap:var(--space-lg);text-align:center}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
+.mobile-nav a:hover{color:var(--accent)}
+.mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:var(--space-md)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);color:var(--text);transition:border-color 0.2s var(--ease),color 0.2s var(--ease),background 0.2s var(--ease)}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.icon-sun{display:block}.icon-moon{display:none}
+[data-theme="light"] .theme-toggle{border-color:rgba(0,0,0,0.12)}
+[data-theme="light"] .icon-sun{display:none}[data-theme="light"] .icon-moon{display:block}
+.pre-entrance{opacity:0;transform:translateY(-10px)}
+#mainNav.entered{opacity:1;transform:translateY(0);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease),background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+
+/* ── Hero ── */
+#hero{padding:140px 0 var(--space-2xl);display:flex;align-items:center;position:relative;overflow:hidden;
+  background-image:radial-gradient(ellipse at 8% 10%, rgba(0,212,170,0.09) 0%, transparent 50%),radial-gradient(ellipse at 95% 90%, rgba(0,180,150,0.05) 0%, transparent 45%)}
+.hero-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:var(--space-2xl);align-items:center}
+.hero-text,.hero-video-wrap{min-width:0}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(0,212,170,0.2);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:var(--space-lg)}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-h1{font-size:clamp(2.4rem,4.6vw,3.4rem);font-weight:800;color:var(--text);line-height:1.06;letter-spacing:-0.03em;max-width:600px;margin-bottom:var(--space-lg)}
+.js .hero-h1.reveal{opacity:1;transform:none;transition:none}
+.hero-h1 .line{display:block;overflow:hidden}
+.hero-h1 .line span{display:block;transform:translateY(110%);transition:transform 0.9s var(--ease)}
+.hero-h1.visible .line span{transform:translateY(0)}
+.hero-h1 .line:nth-child(1) span{transition-delay:0.05s}
+.hero-h1 .line:nth-child(2) span{transition-delay:0.16s}
+.hero-h1 .line:nth-child(3) span{transition-delay:0.27s}
+.hero-h1 .accent{color:var(--accent)}
+.hero-sub{font-size:17px;color:var(--text-muted);line-height:1.72;font-weight:300;max-width:480px;margin-bottom:var(--space-xl)}
+.hero-actions{display:flex;gap:var(--space-md);flex-wrap:wrap}
+
+/* ── Viewfinder (signature motif) ── */
+.viewfinder{position:relative;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--border);box-shadow:0 30px 70px -24px rgba(0,0,0,0.55)}
+.viewfinder video,.viewfinder img{width:100%;height:100%;object-fit:cover;display:block}
+.viewfinder::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 60px rgba(0,0,0,0.35);border-radius:inherit}
+.vf-corner{position:absolute;width:22px;height:22px;border-color:var(--accent);opacity:0.85;pointer-events:none;z-index:2}
+.vf-corner.tl{top:12px;left:12px;border-top:2px solid;border-left:2px solid;border-radius:4px 0 0 0}
+.vf-corner.tr{top:12px;right:12px;border-top:2px solid;border-right:2px solid;border-radius:0 4px 0 0}
+.vf-corner.bl{bottom:12px;left:12px;border-bottom:2px solid;border-left:2px solid;border-radius:0 0 0 4px}
+.vf-corner.br{bottom:12px;right:12px;border-bottom:2px solid;border-right:2px solid;border-radius:0 0 4px 0}
+.vf-hud{position:absolute;top:12px;left:44px;right:44px;display:flex;justify-content:space-between;align-items:center;z-index:2;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em}
+.vf-rec{display:flex;align-items:center;gap:6px;color:#ff5c5c;font-weight:500;text-shadow:0 1px 4px rgba(0,0,0,0.6)}
+.vf-rec-dot{width:7px;height:7px;border-radius:50%;background:#ff5c5c;animation:blink 1.1s ease-in-out infinite}
+.vf-tc{color:rgba(240,244,243,0.85);text-shadow:0 1px 4px rgba(0,0,0,0.6)}
+.vf-tag{position:absolute;bottom:12px;right:44px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:rgba(240,244,243,0.75);background:rgba(6,10,14,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:4px;padding:3px 8px;backdrop-filter:blur(4px)}
+.hero-video-wrap{aspect-ratio:16/9}
+
+/* ── Marquee ── */
+.marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--surface);padding:16px 0}
+.marquee-track{display:flex;width:max-content;animation:marqueeScroll 32s linear infinite}
+.marquee-seg{display:flex;align-items:center;gap:28px;padding-right:28px;flex-shrink:0}
+.marquee-seg span{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
+.marquee-seg .dot{color:var(--accent)}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* ── Section base ── */
+.sec{padding:var(--space-3xl) 0;border-top:1px solid var(--border)}
+.sec-head{max-width:680px;margin-bottom:var(--space-2xl)}
+.sec-head.center{max-width:680px;margin-left:auto;margin-right:auto;text-align:center}
+.sec-h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;max-width:680px;margin-bottom:var(--space-md)}
+.sec-head.center .sec-h2{margin-left:auto;margin-right:auto}
+.sec-sub{font-size:16px;color:var(--text-muted);line-height:1.7;max-width:600px}
+.sec-head.center .sec-sub{margin-left:auto;margin-right:auto}
+
+/* ── Trust bar ── */
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-lg)}
+.trust-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-lg);transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.trust-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.trust-card p{font-size:15px;color:var(--text-secondary);line-height:1.6;font-weight:500}
+
+/* ── Before/After transformation ── */
+.ba-layout{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:var(--space-xl);align-items:stretch}
+.ba-player{position:relative;aspect-ratio:9/16;user-select:none;-webkit-user-select:none;cursor:ew-resize;touch-action:pan-y;min-width:0}
+.ba-player video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-before{position:absolute;inset:0;background-size:cover;background-position:center;clip-path:inset(0 calc(100% - var(--x,50%)) 0 0);z-index:1;filter:saturate(0.45) contrast(0.92) brightness(0.9)}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;margin-left:-1px;background:var(--accent);z-index:3;cursor:ew-resize;touch-action:none}
+.ba-handle:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.ba-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(6,10,14,0.7);border:1.5px solid var(--accent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.ba-grip svg{width:18px;height:18px}
+.ba-pill{position:absolute;bottom:14px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;padding:4px 10px;border-radius:4px;background:rgba(6,10,14,0.55);border:1px solid rgba(255,255,255,0.15);color:rgba(240,244,243,0.85);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none}
+.ba-pill.before{left:14px}
+.ba-pill.after{right:14px;color:var(--accent);border-color:rgba(0,212,170,0.35)}
+.ba-strip{display:flex;flex-direction:column;gap:var(--space-md);min-width:0}
+.strip-frame{display:grid;grid-template-columns:16px minmax(0,1fr);flex:1;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-align:left;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.strip-frame:hover{border-color:var(--border-hover);transform:translateX(4px)}
+.strip-frame:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.strip-frame.active{border-color:var(--accent)}
+.strip-holes{background-color:rgba(0,0,0,0.28);border-right:1px solid var(--border);background-image:radial-gradient(circle,rgba(255,255,255,0.16) 2px,transparent 2.6px);background-size:16px 12px;background-position:center}
+[data-theme="light"] .strip-holes{background-color:rgba(0,0,0,0.05);background-image:radial-gradient(circle,rgba(0,0,0,0.14) 2px,transparent 2.6px)}
+.strip-body{display:flex;align-items:center;gap:var(--space-md);padding:10px 14px 10px 12px;min-width:0;min-height:64px}
+.strip-thumb{width:44px;aspect-ratio:9/16;border-radius:6px;background-size:cover;background-position:center;flex-shrink:0;border:1px solid var(--border)}
+.strip-meta{min-width:0;display:flex;flex-direction:column;gap:2px}
+.strip-scene{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--text-fine);display:flex;align-items:center;gap:7px}
+.strip-frame.active .strip-scene{color:var(--accent)}
+.strip-live{width:6px;height:6px;border-radius:50%;background:#ff5c5c;opacity:0;flex-shrink:0}
+.strip-frame.active .strip-live{opacity:1;animation:blink 1.1s ease-in-out infinite}
+.strip-name{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px;color:var(--text);letter-spacing:-0.01em}
+
+/* ── Demo videos ── */
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl);max-width:640px;margin:0 auto}
+.demo-slot{text-align:center;min-width:0}
+.demo-slot-label{display:block;font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.02em;color:var(--text);margin-bottom:var(--space-md)}
+.demo-video-frame{aspect-ratio:9/16;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.demo-video-frame video{width:100%;height:100%;object-fit:cover}
+.demo-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text-fine);padding:var(--space-lg)}
+.demo-placeholder svg{width:32px;height:32px;stroke:var(--text-fine);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.demo-placeholder span{font-size:12px;line-height:1.5}
+
+/* ── How it works ── */
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
+.proc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-xl) var(--space-lg);position:relative;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.proc-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.proc-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);margin-bottom:var(--space-sm)}
+.proc-card h3{font-size:18px;font-weight:800;margin-bottom:var(--space-sm);color:var(--text)}
+.proc-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
+
+/* ── Pricing ── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);align-items:start}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:var(--space-xl) var(--space-lg);position:relative;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.pc:hover{border-color:var(--border-hover)}
+.pc.feat{background:linear-gradient(180deg,rgba(0,212,170,0.08),var(--surface));border-color:var(--accent);box-shadow:0 20px 60px -20px rgba(0,212,170,0.18);transform:translateY(-10px)}
+.pc.feat:hover{transform:translateY(-12px)}
+.pp-pill{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#060a0e;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.p-tier{display:block;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)}
+.p-title{font-size:22px;font-weight:800;margin-bottom:var(--space-md);color:var(--text)}
+.p-price{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3.5vw,2.5rem);font-weight:800;line-height:1;color:var(--text)}
+.p-price span{font-size:1rem;font-weight:400;color:var(--text-muted)}
+.p-sub{font-size:13px;color:var(--text-muted);margin-top:6px;margin-bottom:var(--space-lg)}
+.p-div{height:1px;background:var(--border);margin:var(--space-md) 0}
+.p-items{display:flex;flex-direction:column;gap:var(--space-sm);margin-bottom:var(--space-lg)}
+.p-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.p-item svg{flex-shrink:0;margin-top:2px;stroke:var(--accent);fill:none;stroke-width:2;width:14px;height:14px;stroke-linecap:round;stroke-linejoin:round}
+.p-banner{text-align:center;margin-top:var(--space-xl);font-size:14px;color:var(--text-muted)}
+.p-banner strong{color:var(--text)}
+
+/* ── FAQ ── */
+.faq-list{max-width:780px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);padding:var(--space-lg) 0;text-align:left;font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.02em;color:var(--text);cursor:pointer}
+.faq-q .faq-icon{flex-shrink:0;width:20px;height:20px;position:relative;transition:transform 0.3s var(--ease)}
+.faq-q .faq-icon::before,.faq-q .faq-icon::after{content:'';position:absolute;background:var(--accent);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-q .faq-icon::before{width:14px;height:2px}
+.faq-q .faq-icon::after{width:2px;height:14px;transition:transform 0.3s var(--ease)}
+.faq-item.open .faq-icon::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s var(--ease)}
+.faq-a-inner{padding:0 0 var(--space-lg);font-size:15px;color:var(--text-muted);line-height:1.75;max-width:680px}
+
+/* ── Final CTA ── */
+#final-cta{padding:var(--space-3xl) 0;border-top:1px solid var(--border);
+  background-image:radial-gradient(ellipse at 50% 0%, rgba(0,212,170,0.07) 0%, transparent 55%)}
+.cta-wrap{max-width:680px;margin:0 auto;text-align:center}
+.cta-wrap h2{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:800;line-height:1.08;letter-spacing:-0.03em;margin-bottom:var(--space-lg)}
+.cta-fine{font-size:13px;color:var(--text-fine);margin-top:var(--space-lg)}
+
+/* ── Footer ── */
+footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--border)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--space-2xl)}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:var(--space-md)}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--text-muted);max-width:220px;line-height:1.65}
+.footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-fine);margin-bottom:var(--space-lg)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--space-sm)}
+.footer-col a{font-size:13px;color:var(--text-muted);transition:color 0.2s var(--ease)}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:var(--space-md);margin-top:var(--space-lg)}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--text-muted);transition:fill 0.25s var(--ease)}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:var(--text-fine)}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .container,.nav-inner{padding:0 24px}
+  .ba-layout{grid-template-columns:minmax(0,1fr)}
+  .ba-player{width:100%;max-width:420px;margin:0 auto}
+  .ba-strip{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+  .strip-frame{flex:0 0 auto;min-width:210px}
+  .strip-frame:hover{transform:none}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .proc-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .pc.feat{transform:none}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-layout{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
+  .hero-h1,.hero-sub{max-width:100%}
+}
+@media(max-width:768px){
+  .container,.nav-inner{padding:0 20px}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  #hero{padding:120px 0 var(--space-xl)}
+  .sec{padding:64px 0}
+  .trust-grid{grid-template-columns:1fr}
+  .demo-grid{grid-template-columns:1fr;max-width:280px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;justify-content:center}
+  .marquee-seg span{font-size:11px}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
+  .footer-col a{display:flex;align-items:center;min-height:44px}
+  .footer-logo,.footer-tagline{text-align:center}
+  .footer-tagline{max-width:100%}
+  .footer-social{justify-content:center}
+  .cta-wrap .btn-primary{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI Real Estate Video Tours",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Coremagna",
+    "url": "https://coremagna.com"
+  },
+  "description": "AI-generated cinematic vertical walkthrough videos created from a realtor's existing listing photos, with an optional AI presenter, delivered in 48 hours.",
+  "areaServed": ["US", "GB", "AU"],
+  "serviceType": "AI Video Production",
+  "offers": [
+    {"@type":"Offer","name":"Classic Walkthrough","price":"149","priceCurrency":"USD"},
+    {"@type":"Offer","name":"AI Presenter Video","price":"229","priceCurrency":"USD"},
+    {"@type":"Offer","name":"Agency Plan","price":"449","priceCurrency":"USD"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is this really AI-generated?","acceptedAnswer":{"@type":"Answer","text":"Yes — and that's why it's this fast and affordable. You approve everything before it goes live."}},
+    {"@type":"Question","name":"What do you need from me?","acceptedAnswer":{"@type":"Answer","text":"Just your listing photos and key selling points."}},
+    {"@type":"Question","name":"Can the presenter match my brand?","acceptedAnswer":{"@type":"Answer","text":"Yes, we build a consistent persona for you."}},
+    {"@type":"Question","name":"What if I don't like it?","acceptedAnswer":{"@type":"Answer","text":"Unlimited revisions until approved."}},
+    {"@type":"Question","name":"Do you work with Airbnb hosts?","acceptedAnswer":{"@type":"Answer","text":"Absolutely — short-term rentals are ideal for video tours."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="mainNav" class="pre-entrance" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo" aria-label="Coremagna home">
+      <span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries.html">Industries</a></li>
+      <li><a href="/real-estate-videos.html" class="active">Video Tours</a></li>
+      <li><a href="/demo.html">Work</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"/></svg>
+    </button>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries.html">Industries</a></li>
+    <li><a href="/real-estate-videos.html">Video Tours</a></li>
+    <li><a href="/demo.html">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-text">
+        <div class="hero-badge reveal">
+          <span class="hero-dot" aria-hidden="true"></span>
+          AI Real Estate Video Tours
+        </div>
+        <h1 class="hero-h1 reveal" id="heroH1">
+          <span class="line"><span>Turn Listing Photos Into</span></span>
+          <span class="line"><span class="accent">Cinematic Video Tours</span></span>
+          <span class="line"><span>In 48 Hours</span></span>
+        </h1>
+        <p class="hero-sub reveal">No film crew. No scheduling. Just your existing photos, transformed into scroll-stopping walkthrough videos with an optional AI presenter.</p>
+        <div class="hero-actions reveal">
+          <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Your First Video
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#transformation" class="btn-ghost">See Examples</a>
+        </div>
+      </div>
+      <div class="hero-video-wrap viewfinder reveal">
+        <video id="heroVideo" src="/videos/hero-listing-video.mp4" poster="/videos/hero-listing-video-poster.jpg" autoplay muted loop playsinline aria-label="Sample listing footage transformed by Coremagna"></video>
+        <div class="vf-corner tl" aria-hidden="true"></div>
+        <div class="vf-corner tr" aria-hidden="true"></div>
+        <div class="vf-corner bl" aria-hidden="true"></div>
+        <div class="vf-corner br" aria-hidden="true"></div>
+        <div class="vf-hud" aria-hidden="true">
+          <span class="vf-rec"><span class="vf-rec-dot"></span>REC</span>
+          <span class="vf-tc" id="heroTimecode">00:00:00</span>
+        </div>
+        <span class="vf-tag" aria-hidden="true">SAMPLE FOOTAGE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-seg">
+      <span>Cinematic Camera Moves</span><span class="dot">•</span>
+      <span>Optional AI Presenter</span><span class="dot">•</span>
+      <span>Vertical 9:16 Delivery</span><span class="dot">•</span>
+      <span>48-Hour Turnaround</span><span class="dot">•</span>
+      <span>Unlimited Revisions</span><span class="dot">•</span>
+    </div>
+    <div class="marquee-seg">
+      <span>Cinematic Camera Moves</span><span class="dot">•</span>
+      <span>Optional AI Presenter</span><span class="dot">•</span>
+      <span>Vertical 9:16 Delivery</span><span class="dot">•</span>
+      <span>48-Hour Turnaround</span><span class="dot">•</span>
+      <span>Unlimited Revisions</span><span class="dot">•</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── TRUST BAR ── -->
+<section class="sec" aria-label="Why video tours">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-card reveal"><p>Listings with video get more inquiries — be the agent who has them</p></div>
+      <div class="trust-card reveal"><p>A fraction of the cost of a film crew, none of the scheduling</p></div>
+      <div class="trust-card reveal"><p>Unlimited revisions until you approve — zero risk</p></div>
+      <div class="trust-card reveal"><p>Your competitors post photos. You post cinema.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BEFORE / AFTER TRANSFORMATION ── -->
+<section class="sec" id="transformation" aria-label="Before and after comparison">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">Before / After</span>
+      <h2 class="sec-h2">Drag the line and watch a photo become a film</h2>
+      <p class="sec-sub">Every scene below started as one ordinary listing photo of a Cotswolds stone cottage. Pick a room, then pull the handle to compare the still with the finished video. Sample project — your listing gets the same treatment.</p>
+    </div>
+    <div class="ba-layout">
+      <div class="ba-player viewfinder reveal" id="baPlayer" style="--x:50%">
+        <video muted loop playsinline preload="metadata" aria-label="AI-generated walkthrough video sample"></video>
+        <div class="ba-before" aria-hidden="true"></div>
+        <div class="ba-handle" role="slider" tabindex="0" aria-label="Photo and video comparison position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <span class="ba-grip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg>
+          </span>
+        </div>
+        <span class="ba-pill before" aria-hidden="true">STILL PHOTO</span>
+        <span class="ba-pill after" aria-hidden="true">AI VIDEO</span>
+        <div class="vf-corner tl" aria-hidden="true"></div>
+        <div class="vf-corner tr" aria-hidden="true"></div>
+        <div class="vf-corner bl" aria-hidden="true"></div>
+        <div class="vf-corner br" aria-hidden="true"></div>
+      </div>
+      <div class="ba-strip reveal" role="group" aria-label="Choose a scene to compare">
+        <button class="strip-frame" type="button" data-video="/videos/ba-exterior.mp4" data-photo="/videos/ba-exterior-before.jpg" aria-pressed="false">
+          <span class="strip-holes" aria-hidden="true"></span>
+          <span class="strip-body">
+            <span class="strip-thumb" style="background-image:url('/videos/ba-exterior-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-meta">
+              <span class="strip-scene">SCENE 01 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Front Exterior</span>
+            </span>
+          </span>
+        </button>
+        <button class="strip-frame" type="button" data-video="/videos/ba-living.mp4" data-photo="/videos/ba-living-before.jpg" aria-pressed="false">
+          <span class="strip-holes" aria-hidden="true"></span>
+          <span class="strip-body">
+            <span class="strip-thumb" style="background-image:url('/videos/ba-living-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-meta">
+              <span class="strip-scene">SCENE 02 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Living Room</span>
+            </span>
+          </span>
+        </button>
+        <button class="strip-frame" type="button" data-video="/videos/ba-fireplace.mp4" data-photo="/videos/ba-fireplace-before.jpg" aria-pressed="false">
+          <span class="strip-holes" aria-hidden="true"></span>
+          <span class="strip-body">
+            <span class="strip-thumb" style="background-image:url('/videos/ba-fireplace-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-meta">
+              <span class="strip-scene">SCENE 03 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Log Burner</span>
+            </span>
+          </span>
+        </button>
+        <button class="strip-frame" type="button" data-video="/videos/ba-kitchen.mp4" data-photo="/videos/ba-kitchen-before.jpg" aria-pressed="false">
+          <span class="strip-holes" aria-hidden="true"></span>
+          <span class="strip-body">
+            <span class="strip-thumb" style="background-image:url('/videos/ba-kitchen-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-meta">
+              <span class="strip-scene">SCENE 04 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Kitchen</span>
+            </span>
+          </span>
+        </button>
+        <button class="strip-frame" type="button" data-video="/videos/ba-bedroom.mp4" data-photo="/videos/ba-bedroom-before.jpg" aria-pressed="false">
+          <span class="strip-holes" aria-hidden="true"></span>
+          <span class="strip-body">
+            <span class="strip-thumb" style="background-image:url('/videos/ba-bedroom-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-meta">
+              <span class="strip-scene">SCENE 05 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Bedroom</span>
+            </span>
+          </span>
+        </button>
+        <button class="strip-frame" type="button" data-video="/videos/ba-dining.mp4" data-photo="/videos/ba-dining-before.jpg" aria-pressed="false">
+          <span class="strip-holes" aria-hidden="true"></span>
+          <span class="strip-body">
+            <span class="strip-thumb" style="background-image:url('/videos/ba-dining-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-meta">
+              <span class="strip-scene">SCENE 06 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Dining Room</span>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEMO ── -->
+<section class="sec" id="demo" aria-label="See it in action">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <span class="section-eyebrow">See It In Action</span>
+      <h2 class="sec-h2">Two ways to bring a listing to life</h2>
+      <p class="sec-sub">Both delivered in vertical 9:16 — built for Instagram, TikTok and portal listings.</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-slot reveal">
+        <span class="demo-slot-label">Classic Walkthrough</span>
+        <div class="demo-video-frame viewfinder">
+          <video muted loop playsinline controls preload="metadata" poster="/videos/walkthrough-cotswolds-poster.jpg" aria-label="Classic walkthrough example video — Cotswolds cottage"><source src="/videos/walkthrough-cotswolds.mp4" type="video/mp4"></video>
+          <div class="vf-corner tl" aria-hidden="true"></div>
+          <div class="vf-corner tr" aria-hidden="true"></div>
+          <div class="vf-corner bl" aria-hidden="true"></div>
+          <div class="vf-corner br" aria-hidden="true"></div>
+          <span class="vf-tag" aria-hidden="true">9:16</span>
+        </div>
+      </div>
+      <div class="demo-slot reveal">
+        <span class="demo-slot-label">With AI Presenter</span>
+        <div class="demo-video-frame viewfinder">
+          <!-- TODO: replace this placeholder with <video muted loop playsinline controls preload="metadata" poster="/videos/your-poster-2.jpg"><source src="/videos/your-example-2.mp4" type="video/mp4"></video> -->
+          <div class="demo-placeholder">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Example video coming soon</span>
+          </div>
+          <div class="vf-corner tl" aria-hidden="true"></div>
+          <div class="vf-corner tr" aria-hidden="true"></div>
+          <div class="vf-corner bl" aria-hidden="true"></div>
+          <div class="vf-corner br" aria-hidden="true"></div>
+          <span class="vf-tag" aria-hidden="true">9:16</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="sec" aria-label="How it works">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">How It Works</span>
+      <h2 class="sec-h2">From photos to a finished video in three steps</h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-card reveal">
+        <p class="proc-num">01</p>
+        <h3>Send us your listing photos</h3>
+        <p>Upload the photos you already have — no reshoot, no staging, no extra work on your end.</p>
+      </div>
+      <div class="proc-card reveal">
+        <p class="proc-num">02</p>
+        <h3>We craft the video</h3>
+        <p>Cinematic camera moves, transitions, voiceover, music — and your AI presenter if you choose.</p>
+      </div>
+      <div class="proc-card reveal">
+        <p class="proc-num">03</p>
+        <h3>Receive your video in 48 hours</h3>
+        <p>Request tweaks until it's perfect. Nothing goes out the door until you approve it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="sec" aria-label="Pricing">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">Pricing</span>
+      <h2 class="sec-h2">Simple pricing per listing</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="pc reveal">
+        <span class="p-tier">Classic</span>
+        <h3 class="p-title">Classic Walkthrough</h3>
+        <div class="p-price">$149 <span>/ listing</span></div>
+        <p class="p-sub">One-time, per video</p>
+        <div class="p-div"></div>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>60-second vertical video</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cinematic camera movement</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional voiceover</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>48-hour delivery</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+      <div class="pc feat reveal">
+        <div class="pp-pill" aria-label="Most Popular"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Most Popular</div>
+        <span class="p-tier" style="color:var(--accent)">AI Presenter</span>
+        <h3 class="p-title">AI Presenter Video</h3>
+        <div class="p-price">$229 <span>/ listing</span></div>
+        <p class="p-sub">One-time, per video</p>
+        <div class="p-div"></div>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Everything in Classic</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Consistent AI presenter on camera</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Presenter introduces the property</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>48-hour delivery</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+      <div class="pc reveal">
+        <span class="p-tier">Agency</span>
+        <h3 class="p-title">Agency Plan</h3>
+        <div class="p-price">$449 <span>/ month</span></div>
+        <p class="p-sub">Cancel anytime</p>
+        <div class="p-div"></div>
+        <ul class="p-items">
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>4 videos per month</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Priority delivery</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dedicated presenter persona for your brand</li>
+          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cancel anytime</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+    </div>
+    <p class="p-banner reveal">First video for new clients <strong>50% off</strong> — see the quality before you commit.</p>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="sec" aria-label="Common questions">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <span class="section-eyebrow">FAQ</span>
+      <h2 class="sec-h2">Common questions</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Is this really AI-generated?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — and that's why it's this fast and affordable. You approve everything before it goes live.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What do you need from me?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Just your listing photos and key selling points.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can the presenter match my brand?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, we build a consistent persona for you.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What if I don't like it?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Unlimited revisions until approved.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you work with Airbnb hosts?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely — short-term rentals are ideal for video tours.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section id="final-cta" aria-label="Get your first video">
+  <div class="container">
+    <div class="cta-wrap reveal">
+      <span class="section-eyebrow">Get Started</span>
+      <h2>Your next listing deserves more than a photo album</h2>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Your First Video
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="cta-fine">Based in Antalya, serving agents worldwide.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for service businesses.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/real-estate-videos.html">Video Tours</a></li>
+          <li><a href="/industries.html#law-firms">Law Firms</a></li>
+          <li><a href="/industries.html#real-estate">Real Estate</a></li>
+          <li><a href="/industries.html#clinics">Clinics</a></li>
+          <li><a href="/industries.html#beauty">Beauty Salons</a></li>
+          <li><a href="/industries.html#restaurants">Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/demo.html">Work</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+          <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#" onclick="this.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')" rel="nofollow">ferit1@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Coremagna. All rights reserved.</p>
+      <p>AI Automation · CRM Systems · Chatbots</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Nav scroll + hamburger */
+(function(){
+  const nav=document.getElementById('mainNav');
+  const hamburger=document.getElementById('hamburger');
+  const mobileNav=document.getElementById('mobileNav');
+  let menuOpen=false;
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+  hamburger.addEventListener('click',()=>{
+    menuOpen=!menuOpen;hamburger.classList.toggle('open',menuOpen);hamburger.setAttribute('aria-expanded',String(menuOpen));
+    mobileNav.setAttribute('aria-hidden',String(!menuOpen));mobileNav.classList.toggle('visible',menuOpen);document.body.style.overflow=menuOpen?'hidden':'';
+  });
+  mobileNav.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{menuOpen=false;hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileNav.setAttribute('aria-hidden','true');mobileNav.classList.remove('visible');document.body.style.overflow='';});});
+})();
+
+/* Nav entrance */
+(function(){
+  const nav=document.getElementById('mainNav');
+  setTimeout(()=>{nav.classList.remove('pre-entrance');nav.classList.add('entered');},0);
+})();
+
+/* Scroll reveals */
+(function(){
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('section').forEach(sec=>{sec.querySelectorAll('.reveal').forEach((el,i)=>{if(!el.style.transitionDelay) el.style.transitionDelay=(i*0.07)+'s';});});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+})();
+
+/* Hero viewfinder timecode */
+(function(){
+  const video=document.getElementById('heroVideo');
+  const tc=document.getElementById('heroTimecode');
+  if(!video||!tc) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    video.removeAttribute('autoplay');
+    video.pause();
+    return;
+  }
+  function fmt(t){
+    const h=Math.floor(t/3600),m=Math.floor((t%3600)/60),s=Math.floor(t%60);
+    return [h,m,s].map(v=>String(v).padStart(2,'0')).join(':');
+  }
+  video.addEventListener('timeupdate',()=>{tc.textContent=fmt(video.currentTime);});
+})();
+
+/* Before/After transformation player */
+(function(){
+  const player=document.getElementById('baPlayer');
+  if(!player) return;
+  const video=player.querySelector('video');
+  const before=player.querySelector('.ba-before');
+  const handle=player.querySelector('.ba-handle');
+  const frames=Array.prototype.slice.call(document.querySelectorAll('.strip-frame'));
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let x=50;
+  function setX(v){
+    x=Math.min(96,Math.max(4,v));
+    player.style.setProperty('--x',x.toFixed(2)+'%');
+    handle.setAttribute('aria-valuenow',String(Math.round(x)));
+  }
+  function pct(e){const r=player.getBoundingClientRect();return ((e.clientX-r.left)/r.width)*100;}
+  let dragging=false;
+  function down(e){
+    dragging=true;
+    if(e.pointerId!==undefined&&e.currentTarget.setPointerCapture){try{e.currentTarget.setPointerCapture(e.pointerId);}catch(err){}}
+    setX(pct(e));
+    e.preventDefault();
+  }
+  /* mouse can grab anywhere on the player; touch must start on the handle so the page still scrolls */
+  player.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse')down(e);});
+  handle.addEventListener('pointerdown',down);
+  window.addEventListener('pointermove',function(e){if(dragging)setX(pct(e));});
+  window.addEventListener('pointerup',function(){dragging=false;});
+  window.addEventListener('pointercancel',function(){dragging=false;});
+  handle.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown'){setX(x-5);e.preventDefault();}
+    if(e.key==='ArrowRight'||e.key==='ArrowUp'){setX(x+5);e.preventDefault();}
+  });
+  function load(btn){
+    frames.forEach(function(b){b.classList.toggle('active',b===btn);b.setAttribute('aria-pressed',String(b===btn));});
+    before.style.backgroundImage='url("'+btn.getAttribute('data-photo')+'")';
+    video.poster=btn.getAttribute('data-photo');
+    video.src=btn.getAttribute('data-video');
+    if(reduced){
+      video.addEventListener('loadeddata',function seek(){
+        video.currentTime=Math.max(0,Math.min(video.duration*0.6,video.duration-0.05));
+        video.removeEventListener('loadeddata',seek);
+      });
+      video.load();
+    }else{
+      const p=video.play();if(p&&p.catch)p.catch(function(){});
+    }
+  }
+  frames.forEach(function(b){b.addEventListener('click',function(){load(b);});});
+  setX(50);
+  load(frames[0]);
+  if('IntersectionObserver' in window&&!reduced){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){const p=video.play();if(p&&p.catch)p.catch(function(){});}
+        else video.pause();
+      });
+    },{threshold:0.15}).observe(player);
+  }
+})();
+
+/* FAQ accordion */
+(function(){
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q=item.querySelector('.faq-q');
+    const a=item.querySelector('.faq-a');
+    q.addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other=>{
+        if(other!==item){other.classList.remove('open');other.querySelector('.faq-a').style.maxHeight=null;other.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+      });
+      if(open){item.classList.remove('open');a.style.maxHeight=null;q.setAttribute('aria-expanded','false');}
+      else{item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';q.setAttribute('aria-expanded','true');}
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  const btn=document.getElementById('themeToggle');
+  if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');
+  if(btn)btn.addEventListener('click',function(){
+    const isLight=document.documentElement.getAttribute('data-theme')==='light';
+    if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}
+    else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}
+  });
+})();
+</script>
+</body>
+</html>

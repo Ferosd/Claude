@@ -1,0 +1,817 @@
+{
+  "name": "Real-time lead qualification, scoring & CRM integration system using Jotform",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze this lead using the BANT framework and provide \ncomprehensive qualification for Coremagna, a digital agency \noffering web design, AI chatbots, and automation services.\n\nLEAD INFORMATION:\nName: {{ $json.contactName }}\nCompany: {{ $json.companyName }}\nEmail: {{ $json.email }}\nPhone: {{ $json.phone }}\nService Interest: {{ $json.Service }}\nBudget Range: {{ $json.budgetRange }}\nTimeline: {{ $json.timeline }}\nMessage / Pain Points: {{ $json.Message }}\n\nBudget scoring guide for Coremagna services:\n- €10,000+ → budget score 25 (Hot)\n- €3,000–€10,000 → budget score 18 (Warm)\n- €1,000–€3,000 → budget score 10 (Cold)\n- Under €1,000 → budget score 5 (Unqualified)\n\nTimeline scoring guide:\n- As soon as possible → timeline score 25\n- Within 1 month → timeline score 20\n- 1–3 months → timeline score 12\n- Just exploring → timeline score 5\n\nProvide analysis in JSON format:\n{\n  \"leadScore\": 0-100,\n  \"qualificationTier\": \"Hot/Warm/Cold/Unqualified\",\n  \"bant\": {\n    \"budget\": {\n      \"score\": 0-25,\n      \"assessment\": \"description\",\n      \"hasBudget\": true/false\n    },\n    \"authority\": {\n      \"score\": 0-25,\n      \"assessment\": \"description\",\n      \"decisionMaker\": true/false\n    },\n    \"need\": {\n      \"score\": 0-25,\n      \"assessment\": \"description\",\n      \"painSeverity\": \"low/medium/high/critical\"\n    },\n    \"timeline\": {\n      \"score\": 0-25,\n      \"assessment\": \"description\",\n      \"urgency\": \"immediate/1-3months/3-6months/6+months\"\n    }\n  },\n  \"keyInsights\": [\"insight1\", \"insight2\"],\n  \"redFlags\": [\"flag1\", \"flag2\"],\n  \"opportunitySize\": \"small/medium/large/enterprise\",\n  \"recommendedAction\": \"immediate call/email nurture/demo/disqualify\",\n  \"conversionProbability\": \"0-100%\",\n  \"estimatedDealValue\": \"€ amount or range\",\n  \"nextSteps\": [\"step1\", \"step2\", \"step3\"],\n  \"talkingPoints\": [\"point1\", \"point2\", \"point3\"]\n}\n\nIMPORTANT: Respond ONLY with the JSON object. No markdown, \nno explanations. Raw JSON only.",
+        "options": {
+          "systemMessage": "You are an expert B2B sales qualification analyst specializing in BANT methodology. Provide objective, data-driven lead assessments that help sales teams prioritize and convert opportunities effectively."
+        }
+      },
+      "id": "8bfc82f4-b5b0-4aaf-93f0-e8f2c6b97c14",
+      "name": "AI Lead Scoring (BANT)",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -1520,
+        144
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json.output || '';\n\n// Strip markdown code fences if the model wraps the JSON\nconst cleaned = String(raw).replace(/```json\\n?|\\n?```/g, '').trim();\n\nconst joinList = v => Array.isArray(v) ? v.join(' | ') : (v == null ? '' : String(v));\n\nlet p = null;\ntry {\n  p = JSON.parse(cleaned);\n} catch (e) {\n  p = null;\n}\n\n// Fallback: never lose the lead just because scoring failed — route it for manual review\nif (!p || typeof p !== 'object') {\n  return [{\n    json: {\n      leadScore: 50,\n      qualificationTier: 'Warm',\n      'Key Findings': 'AI scoring could not be parsed — review this lead manually',\n      'Red Flags': 'AI scoring failed',\n      Status: 'Warm',\n      keyInsights: 'AI scoring could not be parsed — review this lead manually',\n      nextSteps: 'Review lead details and call back manually',\n      budget_score: 0,\n      authority_score: 0,\n      need_score: 0,\n      timeline_score: 0,\n      recommendedAction: 'manual review',\n      conversionProbability: '',\n      estimatedDealValue: ''\n    }\n  }];\n}\n\nconst bant = p.bant || {};\nconst sub = k => (bant[k] && typeof bant[k] === 'object') ? bant[k] : {};\n\nreturn [{\n  json: {\n    leadScore: Number(p.leadScore) || 0,\n    qualificationTier: p.qualificationTier || 'Cold',\n    'Key Findings': joinList(p.keyInsights),\n    'Red Flags': joinList(p.redFlags),\n    Status: p.qualificationTier || 'Cold',\n    keyInsights: joinList(p.keyInsights),\n    nextSteps: joinList(p.nextSteps),\n    budget_score: Number(sub('budget').score) || 0,\n    authority_score: Number(sub('authority').score) || 0,\n    need_score: Number(sub('need').score) || 0,\n    timeline_score: Number(sub('timeline').score) || 0,\n    recommendedAction: joinList(p.recommendedAction),\n    conversionProbability: joinList(p.conversionProbability),\n    estimatedDealValue: joinList(p.estimatedDealValue)\n  }\n}];"
+      },
+      "id": "c6ca6126-7265-4813-a116-b96f476c0b9c",
+      "name": "Parse Lead Score",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -1216,
+        128
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const salesTeam = {\n  senior: [\n    {\n      name: \"Ferit\",\n      email: \"ferit1@coremagna.com\",\n      territory: [\"All\"],\n      industries: [\"All\"],\n      minDealSize: 0,\n      currentLeads: 0\n    }\n  ],\n  midLevel: [\n    {\n      name: \"Emma\",\n      email: \"emma@coremagna.com\",\n      territory: [\"All\"],\n      industries: [\"All\"],\n      minDealSize: 0,\n      currentLeads: 0\n    }\n  ],\n  sdr: [\n    {\n      name: \"Adrien\",\n      email: \"adrien@coremagna.com\",\n      territory: [\"All\"],\n      industries: [\"All\"],\n      minDealSize: 0,\n      currentLeads: 0\n    }\n  ]\n};\n\nconst leadData = $input.first().json;\nconst leadScore = Number(leadData.leadScore) || 0;\nconst qualificationTier = leadData.qualificationTier;\n\nlet repLevel;\nif (leadScore >= 75) {\n  repLevel = 'senior';\n} else if (leadScore >= 50) {\n  repLevel = 'midLevel';\n} else {\n  repLevel = 'sdr';\n}\n\nconst assignedRep = salesTeam[repLevel][0];\n\nconst output = {\n  assignedRepName: assignedRep.name,\n  assignedRepEmail: assignedRep.email,\n  repLevel: repLevel,\n  assignmentReason: `Lead score: ${leadScore}/100 — Tier: ${qualificationTier}`,\n  routingTimestamp: new Date().toISOString(),\n  ...leadData,\n  ...$('Extract Lead Data1').first().json\n};\n\nreturn { json: output };"
+      },
+      "id": "16696d9e-ff22-4745-9d3f-22554aa83ce7",
+      "name": "Intelligent Routing Logic",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -1040,
+        80
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.assignedRepEmail }}",
+        "subject": "=🔥 {{ $json.qualificationTier }} Lead Assigned: {{ $json.companyName }} (Score: {{ $json.leadScore }})",
+        "message": "=<div style='font-family: Cabinet Grotesk, Arial, sans-serif; \n     max-width: 700px; margin: 0 auto; background: #060a0e;'>\n\n  <div style='background: #00D4AA; padding: 30px;'>\n    <h1 style='margin: 0; color: #060a0e; font-size: 22px;'>\n      🎯 New {{ $json.qualificationTier }} Lead — {{ $json.leadScore }}/100\n    </h1>\n    <p style='margin: 8px 0 0; color: #060a0e; opacity: 0.8;'>\n      {{ $json.routingTimestamp }}\n    </p>\n  </div>\n\n  <div style='background: #0d1317; padding: 25px; \n       border-left: 4px solid #00D4AA;'>\n    <h2 style='color: #00D4AA; margin-top: 0;'>Lead Information</h2>\n    <p style='color: #F0F4F3;'>\n      <strong style='color:#00D4AA'>Name:</strong> {{ $json.contactName }}\n    </p>\n    <p style='color: #F0F4F3;'>\n      <strong style='color:#00D4AA'>Company:</strong> {{ $json.companyName }}\n    </p>\n    <p style='color: #F0F4F3;'>\n      <strong style='color:#00D4AA'>Email:</strong> {{ $json.email }}\n    </p>\n    <p style='color: #F0F4F3;'>\n      <strong style='color:#00D4AA'>Phone:</strong> {{ $json.phone }}\n    </p>\n    <p style='color: #F0F4F3;'>\n      <strong style='color:#00D4AA'>Service Interest:</strong> {{ $json.Service }}\n    </p>\n    <p style='color: #F0F4F3;'>\n      <strong style='color:#00D4AA'>Budget:</strong> {{ $json.budgetRange }}\n    </p>\n    <p style='color: #F0F4F3;'>\n      <strong style='color:#00D4AA'>Timeline:</strong> {{ $json.timeline }}\n    </p>\n    <p style='color: #F0F4F3;'>\n      <strong style='color:#00D4AA'>Message:</strong> {{ $json.Message }}\n    </p>\n  </div>\n\n  <div style='background: #111920; padding: 25px;'>\n    <h2 style='color: #00D4AA; margin-top: 0;'>BANT Breakdown</h2>\n    <table style='width:100%; border-collapse: collapse;'>\n      <tr>\n        <td style='color:#F0F4F3; padding: 8px 0; \n            border-bottom: 1px solid #0d1317;'>\n          <strong style='color:#00D4AA'>Budget</strong>\n        </td>\n        <td style='color:#F0F4F3; padding: 8px 0; \n            border-bottom: 1px solid #0d1317; text-align:right;'>\n          {{ $json.budget_score }}/25\n        </td>\n      </tr>\n      <tr>\n        <td style='color:#F0F4F3; padding: 8px 0; \n            border-bottom: 1px solid #0d1317;'>\n          <strong style='color:#00D4AA'>Authority</strong>\n        </td>\n        <td style='color:#F0F4F3; padding: 8px 0; \n            border-bottom: 1px solid #0d1317; text-align:right;'>\n          {{ $json.authority_score }}/25\n        </td>\n      </tr>\n      <tr>\n        <td style='color:#F0F4F3; padding: 8px 0; \n            border-bottom: 1px solid #0d1317;'>\n          <strong style='color:#00D4AA'>Need</strong>\n        </td>\n        <td style='color:#F0F4F3; padding: 8px 0; \n            border-bottom: 1px solid #0d1317; text-align:right;'>\n          {{ $json.need_score }}/25\n        </td>\n      </tr>\n      <tr>\n        <td style='color:#F0F4F3; padding: 8px 0;'>\n          <strong style='color:#00D4AA'>Timeline</strong>\n        </td>\n        <td style='color:#F0F4F3; padding: 8px 0; text-align:right;'>\n          {{ $json.timeline_score }}/25\n        </td>\n      </tr>\n    </table>\n  </div>\n\n  <div style='background: #0d1317; padding: 20px; \n       border-left: 4px solid #00D4AA; margin-top: 2px;'>\n    <h3 style='color: #00D4AA; margin-top: 0;'>AI Analysis</h3>\n    <p style='color:#F0F4F3;'>\n      <strong style='color:#00D4AA'>Tier:</strong> \n      {{ $json.qualificationTier }}\n    </p>\n    <p style='color:#F0F4F3;'>\n      <strong style='color:#00D4AA'>Conversion Probability:</strong> \n      {{ $json.conversionProbability }}\n    </p>\n    <p style='color:#F0F4F3;'>\n      <strong style='color:#00D4AA'>Estimated Deal Value:</strong> \n      {{ $json.estimatedDealValue }}\n    </p>\n    <p style='color:#F0F4F3;'>\n      <strong style='color:#00D4AA'>Recommended Action:</strong> \n      {{ $json.recommendedAction }}\n    </p>\n  </div>\n\n  <div style='background: #111920; padding: 20px; margin-top: 2px;'>\n    <h3 style='color: #00D4AA; margin-top: 0;'>Key Insights</h3>\n    <p style='color: #F0F4F3; line-height: 1.6;'>\n      {{ $json.keyInsights }}\n    </p>\n  </div>\n\n  <div style='background: #0d1317; padding: 20px; margin-top: 2px;'>\n    <h3 style='color: #00D4AA; margin-top: 0;'>Next Steps</h3>\n    <p style='color: #F0F4F3; line-height: 1.6;'>\n      {{ $json.nextSteps }}\n    </p>\n  </div>\n\n  <div style='background: #00D4AA; padding: 16px; text-align: center;'>\n    <p style='margin: 0; color: #060a0e; font-size: 13px;'>\n      <strong>Coremagna</strong> · ferit1@coremagna.com · coremagna.com\n    </p>\n  </div>\n\n</div>",
+        "options": {}
+      },
+      "id": "d25234ac-1de9-41e1-928b-246ec9350a48",
+      "name": "Notify Sales Rep",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        -432,
+        128
+      ],
+      "webhookId": "996cc104-f473-4071-bf4f-671bf6273036",
+      "typeVersion": 2.1,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ISGKcwXJCpwC0wip",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "=Thank You for Your Interest!",
+        "message": "=<div style='font-family: Arial, sans-serif; \n     max-width: 600px; margin: 0 auto; \n     background: #060a0e;'>\n\n  <div style='background: #00D4AA; \n       padding: 40px 30px; text-align: center;'>\n    <h1 style='margin: 0; color: #060a0e; font-size: 26px;'>\n      Message Received!\n    </h1>\n    <p style='margin: 8px 0 0; color: #060a0e; opacity: 0.8;'>\n      We'll get back to you within 24 hours.\n    </p>\n  </div>\n\n  <div style='background: #0d1317; padding: 30px;'>\n    <p style='color: #F0F4F3;'>\n      Hi {{ ($json.contactName || 'there').split(' ')[0] }},\n    </p>\n    <p style='color: #F0F4F3; line-height: 1.7;'>\n      Thank you for reaching out to Coremagna! \n      We've received your inquiry and our team \n      will be in touch within 24 hours.\n    </p>\n\n    <div style='background: #111920; \n         border-left: 4px solid #00D4AA;\n         padding: 20px; margin: 25px 0;\n         border-radius: 0 8px 8px 0;'>\n      <h3 style='color: #00D4AA; margin-top: 0;'>\n        Your Inquiry Summary\n      </h3>\n      <p style='color: #F0F4F3; margin: 6px 0;'>\n        <strong style='color:#00D4AA'>Service:</strong> \n        {{ $json.Service }}\n      </p>\n      <p style='color: #F0F4F3; margin: 6px 0;'>\n        <strong style='color:#00D4AA'>Budget:</strong> \n        {{ $json.budgetRange }}\n      </p>\n      <p style='color: #F0F4F3; margin: 6px 0;'>\n        <strong style='color:#00D4AA'>Timeline:</strong> \n        {{ $json.timeline }}\n      </p>\n    </div>\n\n    <p style='color: #F0F4F3; line-height: 1.7;'>\n      In the meantime, feel free to book a call \n      directly if you'd like to speak sooner:\n    </p>\n\n    <div style='text-align: center; margin: 24px 0;'>\n      <a href='https://calendar.app.google/XDGM8XJ9zEdqugKr9'\n         style='background: #00D4AA; color: #060a0e;\n                padding: 12px 28px; text-decoration: none;\n                border-radius: 8px; font-weight: 700;\n                font-size: 15px;'>\n        📅 Book a Strategy Call\n      </a>\n    </div>\n\n    <p style='color: #F0F4F3; line-height: 1.7;'>\n      We look forward to helping your business grow!\n    </p>\n\n    <p style='color: #F0F4F3; margin-top: 24px;'>\n      Best regards,<br>\n      <strong style='color: #00D4AA;'>Ferit</strong><br>\n      <span style='color: #6B8A8A;'>Coremagna</span>\n    </p>\n  </div>\n\n  <div style='background: #111920; padding: 16px; \n       text-align: center;'>\n    <p style='margin: 0; color: #6B8A8A; font-size: 13px;'>\n      📧 ferit1@coremagna.com &nbsp;·&nbsp; \n      🌐 coremagna.com &nbsp;·&nbsp; \n      Mon–Fri 9am–6pm CET\n    </p>\n  </div>\n\n</div>",
+        "options": {}
+      },
+      "id": "bbb486d1-ac09-42f6-a1d9-2b3d0cf0fa6d",
+      "name": "Send Lead Confirmation",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        -1216,
+        640
+      ],
+      "webhookId": "6744212d-d0e8-4b6d-80c4-9c0ebd30e4f3",
+      "typeVersion": 2.1,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ISGKcwXJCpwC0wip",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appUXMqXRT3hUvIK8",
+          "mode": "list",
+          "cachedResultName": "Lead crm",
+          "cachedResultUrl": "https://airtable.com/appUXMqXRT3hUvIK8"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbljKSOnuI46xdm7P",
+          "mode": "list",
+          "cachedResultName": "Table 1",
+          "cachedResultUrl": "https://airtable.com/appUXMqXRT3hUvIK8/tbljKSOnuI46xdm7P"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.contactName }}",
+            "Email": "={{ $json.email }}",
+            "Company": "={{ $json.companyName }}",
+            "Phone": "={{ $json.phone }}",
+            "AI Score": "={{ $json.leadScore }}",
+            "Service ": "={{ $json.Service }}",
+            "Budget": "={{ $json.budgetRange }}",
+            "Timeline ": "={{ $json.timeline }}",
+            "Message ": "={{ $json.Message }}",
+            "Tier": "={{ $json.qualificationTier }}",
+            "Key Insights ": "={{ $json['Key Findings'] }}",
+            "Red Flags ": "={{ $json['Red Flags'] }}",
+            "Next Steps": "={{ $json.nextSteps }}",
+            "Recommended": "={{ $json.recommendedAction }}",
+            "Conversion %": "={{ $json.conversionProbability }}",
+            "Deal Value ": "={{ $json.estimatedDealValue }}",
+            "Source": "coremagna.com",
+            "Status": "=New",
+            "Date": "={{ $json.routingTimestamp }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Company",
+              "displayName": "Company",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Service ",
+              "displayName": "Service ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Budget",
+              "displayName": "Budget",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Timeline ",
+              "displayName": "Timeline ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Message ",
+              "displayName": "Message ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "AI Score",
+              "displayName": "AI Score",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Tier",
+              "displayName": "Tier",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Key Insights ",
+              "displayName": "Key Insights ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Red Flags ",
+              "displayName": "Red Flags ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Next Steps",
+              "displayName": "Next Steps",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Recommended",
+              "displayName": "Recommended",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Conversion %",
+              "displayName": "Conversion %",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Deal Value ",
+              "displayName": "Deal Value ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "New",
+                  "value": "New"
+                },
+                {
+                  "name": "Contacted",
+                  "value": "Contacted"
+                },
+                {
+                  "name": "Closed",
+                  "value": "Closed"
+                },
+                {
+                  "name": "immediate call",
+                  "value": "immediate call"
+                },
+                {
+                  "name": "email nurture ",
+                  "value": "email nurture "
+                },
+                {
+                  "name": "demo",
+                  "value": "demo"
+                },
+                {
+                  "name": "disqualify",
+                  "value": "disqualify"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Source",
+              "displayName": "Source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        -688,
+        320
+      ],
+      "id": "1c16f76f-1f59-493d-9604-737af1fdc4b0",
+      "name": "Create a record"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contact-form1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -2000,
+        160
+      ],
+      "id": "785f826b-ca1e-40e6-aa38-782bd1851463",
+      "name": "Webhook",
+      "webhookId": "f4b31e00-e810-4866-9843-06ac6138836f"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "company_name",
+              "name": "companyName",
+              "type": "string",
+              "value": "={{ $json.body.company }}"
+            },
+            {
+              "id": "contact_name",
+              "name": "contactName",
+              "type": "string",
+              "value": "={{ $json.body.name }}"
+            },
+            {
+              "id": "email",
+              "name": "email",
+              "type": "string",
+              "value": "={{ $json.body.email }}"
+            },
+            {
+              "id": "phone",
+              "name": "phone",
+              "type": "string",
+              "value": "={{ $json.body.phone }}"
+            },
+            {
+              "id": "budget_range",
+              "name": "budgetRange",
+              "type": "string",
+              "value": "={{ $json.body.budget }}"
+            },
+            {
+              "id": "timeline",
+              "name": "timeline",
+              "type": "string",
+              "value": "={{ $json.body.timeline }}"
+            },
+            {
+              "id": "industry",
+              "name": "Service",
+              "type": "string",
+              "value": "={{ $json.body.service }}"
+            },
+            {
+              "id": "pain_points",
+              "name": "Message",
+              "type": "string",
+              "value": "={{ $json.body.message }}"
+            },
+            {
+              "id": "submitted_at",
+              "name": "submittedAt",
+              "type": "string",
+              "value": "={{ $json.body.submitted_at }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d35871a-5530-4e0b-8b7c-ff69abd3d750",
+      "name": "Extract Lead Data1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1728,
+        160
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Al-46wNZN7ttCh825mSXdCjb02xs4h5detT1KXJfFpw",
+          "mode": "list",
+          "cachedResultName": "CoreMagna Leads k",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Al-46wNZN7ttCh825mSXdCjb02xs4h5detT1KXJfFpw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sayfa1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Al-46wNZN7ttCh825mSXdCjb02xs4h5detT1KXJfFpw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Phone": "={{ $json.phone }}",
+            "Service": "={{ $json.Service }}",
+            "Email": "={{ $json.email }}",
+            "Name": "={{ $json.contactName }}",
+            "Timeline": "={{ $json.timeline }}",
+            "Message": "={{ $json.Message }}",
+            "Lead Score": "={{ $json.leadScore }}",
+            "Tier": "={{ $json.qualificationTier }}",
+            "Status": "={{ $json.Status }}",
+            "Red Flags": "={{ $json['Red Flags'] }}",
+            "Budget": "={{ $json.budgetRange }}",
+            "Company": "={{ $json.companyName }}",
+            "Assigned Rep": "={{ $json.assignedRepName }}",
+            "Estimated Deal Value": "={{ $json.estimatedDealValue }}",
+            "Conversion Probability": "={{ $json.conversionProbability }}",
+            "Recommended Action": "={{ $json.recommendedAction }}",
+            "Key Insights": "={{ $json.keyInsights }}",
+            "Date": "={{ $json.routingTimestamp }}"
+          },
+          "matchingColumns": [
+            "Date"
+          ],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company",
+              "displayName": "Company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Service",
+              "displayName": "Service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Budget",
+              "displayName": "Budget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Timeline",
+              "displayName": "Timeline",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Score",
+              "displayName": "Lead Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tier",
+              "displayName": "Tier",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Key Insights",
+              "displayName": "Key Insights",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Red Flags",
+              "displayName": "Red Flags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Recommended Action",
+              "displayName": "Recommended Action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Conversion Probability",
+              "displayName": "Conversion Probability",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estimated Deal Value",
+              "displayName": "Estimated Deal Value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Assigned Rep",
+              "displayName": "Assigned Rep",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -688,
+        496
+      ],
+      "id": "efbda128-13bf-42c2-bb70-961961f22918",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jZw2UYrfdrUyKCUK",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -1520,
+        384
+      ],
+      "id": "e7a0b1e9-0134-41f2-8619-a57c3af528d8",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "vFedK95vbiX46T70",
+          "name": "OpenAI account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract Lead Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Lead Data1": {
+      "main": [
+        [
+          {
+            "node": "Send Lead Confirmation",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Lead Scoring (BANT)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Lead Scoring (BANT)": {
+      "main": [
+        [
+          {
+            "node": "Parse Lead Score",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Lead Score": {
+      "main": [
+        [
+          {
+            "node": "Intelligent Routing Logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Intelligent Routing Logic": {
+      "main": [
+        [
+          {
+            "node": "Notify Sales Rep",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Lead Scoring (BANT)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

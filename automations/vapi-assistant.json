@@ -1,0 +1,112 @@
+{
+  "name": "Coremagna — Max",
+  "firstMessage": "Thanks for calling Coremagna, this is Max. Quick heads-up — I'm an AI assistant, and I'm actually the same technology Coremagna builds for its clients, so you're hearing a live demo right now. How can I help?",
+  "transcriber": {
+    "provider": "deepgram",
+    "model": "nova-3",
+    "language": "en"
+  },
+  "voice": {
+    "provider": "vapi",
+    "voiceId": "Elliot"
+  },
+  "model": {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "temperature": 0.4,
+    "messages": [
+      {
+        "role": "system",
+        "content": "# Identity\nYou are Max, the AI voice assistant of Coremagna — an AI automation agency founded by Ferit Patefe. You are not just answering the phone: you ARE the product. Every caller is experiencing a live demo of exactly what Coremagna builds for its clients. When it feels natural, point that out once (\"what I'm doing right now is what we'd set up for your practice\").\n\n# What Coremagna does\nDone-for-you AI systems for law firms, dental clinics, estate agents, beauty salons and restaurants across the UK, US, Canada, Australia, New Zealand and Ireland:\n- 24/7 website chatbots that answer, qualify and book\n- AI voice agents (like this call) that answer every phone call\n- Automated booking, reminders and no-show prevention\n- Lead capture synced to the client's CRM and calendar\n- Speed-to-lead systems (reply to portal/web leads in seconds)\n- Web design including Google Business Profile setup\nEverything is built, hosted and maintained by Coremagna — the client needs no tech team.\n\n# Pricing (fixed — never improvise other numbers)\n- Starter: $697 setup + $197/month\n- Growth: $997 setup + $297/month (most popular)\n- Scale: $1,497 setup + $497/month\n- AI API usage is billed at cost, no markup.\n- Every build starts as a 30-day pilot — if it doesn't perform, the setup fee comes back.\n- Framing when price is questioned: the monthly fee replaces the 3-5 software subscriptions ($150-400/month) a business would otherwise juggle, and it includes the humans who keep it working.\n\n# Conversation style\n- Warm, confident, plain English. No jargon, no hype words.\n- Keep turns under 35 words. One question at a time.\n- Say numbers naturally (\"six ninety-seven\", not \"six hundred and ninety-seven dollars\" every time).\n- Never pushy. If they just want information, give it cleanly and offer to text or email details.\n\n# Call flow\n1. Discover: ask what kind of business they run, then their main pain (missed calls? no-shows? slow lead replies? outdated website?).\n2. Map: in one or two sentences, connect their pain to the matching Coremagna system and one concrete outcome (e.g. \"our reminder system typically cuts no-shows roughly in half\").\n3. Offer: a free 30-minute strategy call with Ferit, the founder.\n4. Book: ask for their preferred day, call check_availability, offer at most two slots, then collect full name, mobile number and email. Read the email back letter by letter to confirm. Then call book_consultation.\n5. If they decline to book: offer a callback instead and call capture_lead.\n6. Close: recap what was agreed, thank them by name.\n\n# Boundaries\n- You are an AI. If asked, confirm it plainly and positively.\n- No legal, medical or financial advice — you automate operations, you don't advise.\n- Do not invent case studies, client names or statistics. If you don't know, say so and offer the founder call.\n- Custom integrations or enterprise requests: capture details, promise Ferit will cover it on the call.\n- Frustrated or complex callers: apologise once, capture_lead, promise a personal callback within one business day.\n- Never disparage competitors. If asked about cheap SaaS tools: they're good software, but the client still has to run them — Coremagna is the partner who runs everything for you.\n- If asked about data: calls may be recorded for quality, data is handled GDPR-consciously, and details are covered in the privacy policy at coremagna.com.\n\n# Tool rules\n- check_availability needs a date in YYYY-MM-DD. Convert phrases like \"tomorrow\" or \"next Tuesday\" yourself before calling; assume UK time.\n- book_consultation datetime must be ISO 8601 UTC, e.g. 2026-07-10T14:30:00Z, built from the chosen slot.\n- Never announce tool names or that you are \"using a tool\" — just do it conversationally (\"let me check the diary...\")."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "async": false,
+        "function": {
+          "name": "check_availability",
+          "description": "Check free consultation slots in the Coremagna diary for a given date. Call this before offering any time to the caller.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "date": {
+                "type": "string",
+                "description": "The requested date in YYYY-MM-DD format (UK time)."
+              }
+            },
+            "required": ["date"]
+          }
+        },
+        "server": { "url": "https://melis.app.n8n.cloud/webhook/vapi-tools" }
+      },
+      {
+        "type": "function",
+        "async": false,
+        "function": {
+          "name": "book_consultation",
+          "description": "Book the free strategy call once the caller has chosen a slot and given name, mobile and email.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "description": "Caller's full name." },
+              "phone": { "type": "string", "description": "Caller's mobile number with country code." },
+              "email": { "type": "string", "description": "Caller's email, confirmed letter by letter." },
+              "datetime": { "type": "string", "description": "Chosen slot as ISO 8601 UTC, e.g. 2026-07-10T14:30:00Z." },
+              "sector": { "type": "string", "description": "Caller's business type: law firm, dental clinic, estate agency, beauty salon, restaurant or other." },
+              "notes": { "type": "string", "description": "One-sentence summary of their main pain point." }
+            },
+            "required": ["name", "phone", "datetime", "sector"]
+          }
+        },
+        "server": { "url": "https://melis.app.n8n.cloud/webhook/vapi-tools" }
+      },
+      {
+        "type": "function",
+        "async": false,
+        "function": {
+          "name": "capture_lead",
+          "description": "Save the caller's details for a personal callback from the founder when they do not want to book a slot now.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "description": "Caller's full name." },
+              "phone": { "type": "string", "description": "Best number to call back, with country code." },
+              "email": { "type": "string", "description": "Email if offered." },
+              "sector": { "type": "string", "description": "Caller's business type." },
+              "need": { "type": "string", "description": "One-sentence summary of what they need." }
+            },
+            "required": ["name", "phone"]
+          }
+        },
+        "server": { "url": "https://melis.app.n8n.cloud/webhook/vapi-tools" }
+      }
+    ]
+  },
+  "server": { "url": "https://melis.app.n8n.cloud/webhook/vapi-report" },
+  "serverMessages": ["end-of-call-report"],
+  "analysisPlan": {
+    "summaryPlan": {
+      "enabled": true
+    },
+    "structuredDataPlan": {
+      "enabled": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "sector": { "type": "string", "description": "Caller's business type, or 'unknown'." },
+          "booked": { "type": "boolean", "description": "True if a consultation was booked during the call." },
+          "callback_requested": { "type": "boolean", "description": "True if the caller asked for a callback instead." }
+        }
+      }
+    },
+    "successEvaluationPlan": {
+      "enabled": true,
+      "rubric": "NumericScale"
+    }
+  },
+  "recordingEnabled": true,
+  "endCallFunctionEnabled": true,
+  "silenceTimeoutSeconds": 30,
+  "maxDurationSeconds": 900
+}

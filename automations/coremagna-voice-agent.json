@@ -1,0 +1,336 @@
+{
+  "name": "Coremagna Voice Agent",
+  "nodes": [
+    {
+      "id": "note-1",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-1040, -420],
+      "parameters": {
+        "color": 4,
+        "width": 420,
+        "height": 300,
+        "content": "### Coremagna Voice Agent — Vapi entegrasyonu\n\n**Webhook 1** `/webhook/vapi-tools` — Vapi asistani cagri sirasinda 3 tool cagirir:\n- check_availability(date)\n- book_consultation(name, phone, email, datetime, sector, notes)\n- capture_lead(name, phone, email, sector, need)\n\n**Webhook 2** `/webhook/vapi-report` — cagri bitince ozet/transkript gelir; Sheets'e loglanir + Ferit'e mail gider.\n\n**Kurulum:** docs/voice-agent-setup.md (site repo'sunda)."
+      }
+    },
+    {
+      "id": "wh-tools",
+      "name": "Vapi Tools Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-1040, 0],
+      "webhookId": "vapi-tools-coremagna",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vapi-tools",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "parse-tool",
+      "name": "Parse Tool Call",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-820, 0],
+      "parameters": {
+        "jsCode": "// Vapi 'tool-calls' mesajindan ilk tool cagrisini cikar\nconst body = $json.body || $json;\nconst msg = body.message || {};\nconst tc = (msg.toolCallList && msg.toolCallList[0]) || (msg.toolCalls && msg.toolCalls[0]) || {};\nlet name = tc.name || (tc.function && tc.function.name) || '';\nlet args = tc.arguments || (tc.function && tc.function.arguments) || {};\nif (typeof args === 'string') { try { args = JSON.parse(args); } catch (e) { args = {}; } }\nreturn [{ json: {\n  toolCallId: tc.id || '',\n  tool: name,\n  args,\n  callerNumber: (msg.call && msg.call.customer && msg.call.customer.number) || ''\n} }];"
+      }
+    },
+    {
+      "id": "switch-tool",
+      "name": "Route Tool",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [-600, 0],
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "typeValidation": "loose", "version": 2 },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "check_availability",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "availability"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "typeValidation": "loose", "version": 2 },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "book_consultation",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "book"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "typeValidation": "loose", "version": 2 },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tool }}",
+                    "rightValue": "capture_lead",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "lead"
+            }
+          ]
+        },
+        "options": { "fallbackOutput": "extra" }
+      }
+    },
+    {
+      "id": "cal-getall",
+      "name": "Get Day Events",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [-360, -260],
+      "alwaysOutputData": true,
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "returnAll": true,
+        "options": {
+          "timeMin": "={{ $('Parse Tool Call').first().json.args.date }}T00:00:00Z",
+          "timeMax": "={{ $('Parse Tool Call').first().json.args.date }}T23:59:59Z",
+          "singleEvents": true
+        }
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": { "id": "REPLACE_ME", "name": "Google Calendar hesabini sec" }
+      }
+    },
+    {
+      "id": "slots-code",
+      "name": "Compute Free Slots",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-140, -260],
+      "parameters": {
+        "jsCode": "// Is saatleri icinde bos 30 dakikalik slotlari bul (ilk 4'unu soyle)\nconst TZ_NOTE = 'UK time'; // asistan Ingiliz pazarina konusuyor\nconst OPEN_H = 9, CLOSE_H = 18, SLOT_MIN = 30;\nconst date = $('Parse Tool Call').first().json.args.date; // YYYY-MM-DD\nconst events = $input.all().map(i => i.json).filter(e => e && (e.start || e.end));\nconst busy = events.map(e => ({\n  s: new Date(e.start && (e.start.dateTime || e.start.date) || 0).getTime(),\n  e: new Date(e.end && (e.end.dateTime || e.end.date) || 0).getTime()\n}));\nconst free = [];\nfor (let h = OPEN_H; h < CLOSE_H && free.length < 4; h++) {\n  for (let m = 0; m < 60 && free.length < 4; m += SLOT_MIN) {\n    const s = new Date(`${date}T${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:00Z`).getTime();\n    const e = s + SLOT_MIN * 60000;\n    const clash = busy.some(b => s < b.e && e > b.s);\n    if (!clash && s > Date.now()) free.push(`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`);\n  }\n}\nconst result = free.length\n  ? `Available ${SLOT_MIN}-minute slots on ${date} (${TZ_NOTE}): ${free.join(', ')}. Offer at most two of these.`\n  : `No free slots on ${date}. Ask for another weekday.`;\nreturn [{ json: { result } }];"
+      }
+    },
+    {
+      "id": "prep-booking",
+      "name": "Prepare Booking Row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-360, 0],
+      "parameters": {
+        "jsCode": "const p = $('Parse Tool Call').first().json;\nconst a = p.args || {};\nreturn [{ json: {\n  Timestamp: new Date().toISOString(),\n  Name: a.name || '',\n  Phone: a.phone || p.callerNumber || '',\n  Email: a.email || '',\n  Sector: a.sector || '',\n  Datetime: a.datetime || '',\n  Notes: a.notes || '',\n  Status: 'Booked',\n  Source: 'Voice agent'\n} }];"
+      }
+    },
+    {
+      "id": "sheets-book",
+      "name": "Log Booking (Leads)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [-140, 0],
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "mode": "list", "value": "" },
+        "sheetName": { "__rl": true, "mode": "name", "value": "Leads" },
+        "columns": { "mappingMode": "autoMapInputData", "value": {}, "matchingColumns": [], "schema": [] },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": { "id": "REPLACE_ME", "name": "Google Sheets hesabini sec" }
+      }
+    },
+    {
+      "id": "cal-create",
+      "name": "Create Calendar Event",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [80, 0],
+      "parameters": {
+        "calendar": { "__rl": true, "mode": "list", "value": "" },
+        "start": "={{ $('Parse Tool Call').first().json.args.datetime }}",
+        "end": "={{ new Date(new Date($('Parse Tool Call').first().json.args.datetime).getTime() + 30*60000).toISOString() }}",
+        "additionalFields": {
+          "summary": "=Coremagna consultation — {{ $('Parse Tool Call').first().json.args.name }} ({{ $('Parse Tool Call').first().json.args.sector }})",
+          "description": "=Booked by the Coremagna voice agent.\nPhone: {{ $('Parse Tool Call').first().json.args.phone }}\nEmail: {{ $('Parse Tool Call').first().json.args.email }}\nNotes: {{ $('Parse Tool Call').first().json.args.notes }}"
+        }
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": { "id": "REPLACE_ME", "name": "Google Calendar hesabini sec" }
+      }
+    },
+    {
+      "id": "prep-lead",
+      "name": "Prepare Lead Row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-360, 260],
+      "parameters": {
+        "jsCode": "const p = $('Parse Tool Call').first().json;\nconst a = p.args || {};\nreturn [{ json: {\n  Timestamp: new Date().toISOString(),\n  Name: a.name || '',\n  Phone: a.phone || p.callerNumber || '',\n  Email: a.email || '',\n  Sector: a.sector || '',\n  Datetime: '',\n  Notes: a.need || '',\n  Status: 'Callback requested',\n  Source: 'Voice agent'\n} }];"
+      }
+    },
+    {
+      "id": "sheets-lead",
+      "name": "Log Lead (Leads)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [-140, 260],
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "mode": "list", "value": "" },
+        "sheetName": { "__rl": true, "mode": "name", "value": "Leads" },
+        "columns": { "mappingMode": "autoMapInputData", "value": {}, "matchingColumns": [], "schema": [] },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": { "id": "REPLACE_ME", "name": "Google Sheets hesabini sec" }
+      }
+    },
+    {
+      "id": "fmt-response",
+      "name": "Format Vapi Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [320, 0],
+      "parameters": {
+        "jsCode": "const p = $('Parse Tool Call').first().json;\nlet result = $json.result;\nif (!result) {\n  if (p.tool === 'book_consultation') {\n    result = `Booked. ${p.args.name} is confirmed for ${p.args.datetime} (UK time). It is in the diary and a confirmation is on its way.`;\n  } else if (p.tool === 'capture_lead') {\n    result = `Saved. Tell the caller Ferit will personally call ${p.args.name || 'them'} back within one business day.`;\n  } else {\n    result = 'Unknown tool. Apologise briefly and offer to take a message instead.';\n  }\n}\nreturn [{ json: { results: [{ toolCallId: p.toolCallId, result }] } }];"
+      }
+    },
+    {
+      "id": "respond-tools",
+      "name": "Respond to Vapi",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [540, 0],
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {}
+      }
+    },
+    {
+      "id": "wh-report",
+      "name": "Vapi Report Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-1040, 620],
+      "webhookId": "vapi-report-coremagna",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vapi-report",
+        "responseMode": "onReceived",
+        "options": {}
+      }
+    },
+    {
+      "id": "if-eocr",
+      "name": "Is End-of-Call Report?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [-820, 620],
+      "parameters": {
+        "options": { "caseSensitive": true, "typeValidation": "loose", "version": 2 },
+        "combinator": "and",
+        "conditions": {
+          "options": { "caseSensitive": true, "typeValidation": "loose", "version": 2 },
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.body.message.type }}",
+              "rightValue": "end-of-call-report",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "extract-report",
+      "name": "Extract Call Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-600, 620],
+      "parameters": {
+        "jsCode": "const m = ($json.body && $json.body.message) || {};\nconst art = m.artifact || {};\nconst an = m.analysis || {};\nconst sd = an.structuredData || {};\nreturn [{ json: {\n  Timestamp: new Date().toISOString(),\n  Caller: (m.call && m.call.customer && m.call.customer.number) || (m.customer && m.customer.number) || 'web-call',\n  DurationSec: Math.round(m.durationSeconds || (m.durationMs || 0) / 1000),\n  EndedReason: m.endedReason || '',\n  Sector: sd.sector || '',\n  Booked: (sd.booked === true ? 'yes' : sd.booked === false ? 'no' : ''),\n  Summary: an.summary || m.summary || '',\n  Recording: art.recordingUrl || m.recordingUrl || '',\n  Transcript: String(art.transcript || m.transcript || '').slice(0, 45000)\n} }];"
+      }
+    },
+    {
+      "id": "sheets-call",
+      "name": "Log Call (Calls)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [-380, 620],
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "mode": "list", "value": "" },
+        "sheetName": { "__rl": true, "mode": "name", "value": "Calls" },
+        "columns": { "mappingMode": "autoMapInputData", "value": {}, "matchingColumns": [], "schema": [] },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": { "id": "REPLACE_ME", "name": "Google Sheets hesabini sec" }
+      }
+    },
+    {
+      "id": "gmail-notify",
+      "name": "Email Ferit",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [-160, 620],
+      "parameters": {
+        "sendTo": "ferit1@coremagna.com",
+        "subject": "=Voice agent call — {{ $json.Sector || 'sector unknown' }}{{ $json.Booked === 'yes' ? ' — BOOKED' : '' }}",
+        "emailType": "text",
+        "message": "=Caller: {{ $json.Caller }}\nDuration: {{ $json.DurationSec }}s\nEnded: {{ $json.EndedReason }}\nBooked: {{ $json.Booked || '-' }}\n\nSummary:\n{{ $json.Summary }}\n\nRecording: {{ $json.Recording }}\n(Transcript is in the Calls sheet.)",
+        "options": {}
+      },
+      "credentials": {
+        "gmailOAuth2": { "id": "REPLACE_ME", "name": "Gmail hesabini sec" }
+      }
+    }
+  ],
+  "connections": {
+    "Vapi Tools Webhook": { "main": [[{ "node": "Parse Tool Call", "type": "main", "index": 0 }]] },
+    "Parse Tool Call": { "main": [[{ "node": "Route Tool", "type": "main", "index": 0 }]] },
+    "Route Tool": {
+      "main": [
+        [{ "node": "Get Day Events", "type": "main", "index": 0 }],
+        [{ "node": "Prepare Booking Row", "type": "main", "index": 0 }],
+        [{ "node": "Prepare Lead Row", "type": "main", "index": 0 }],
+        [{ "node": "Format Vapi Response", "type": "main", "index": 0 }]
+      ]
+    },
+    "Get Day Events": { "main": [[{ "node": "Compute Free Slots", "type": "main", "index": 0 }]] },
+    "Compute Free Slots": { "main": [[{ "node": "Format Vapi Response", "type": "main", "index": 0 }]] },
+    "Prepare Booking Row": { "main": [[{ "node": "Log Booking (Leads)", "type": "main", "index": 0 }]] },
+    "Log Booking (Leads)": { "main": [[{ "node": "Create Calendar Event", "type": "main", "index": 0 }]] },
+    "Create Calendar Event": { "main": [[{ "node": "Format Vapi Response", "type": "main", "index": 0 }]] },
+    "Prepare Lead Row": { "main": [[{ "node": "Log Lead (Leads)", "type": "main", "index": 0 }]] },
+    "Log Lead (Leads)": { "main": [[{ "node": "Format Vapi Response", "type": "main", "index": 0 }]] },
+    "Format Vapi Response": { "main": [[{ "node": "Respond to Vapi", "type": "main", "index": 0 }]] },
+    "Vapi Report Webhook": { "main": [[{ "node": "Is End-of-Call Report?", "type": "main", "index": 0 }]] },
+    "Is End-of-Call Report?": { "main": [[{ "node": "Extract Call Report", "type": "main", "index": 0 }], []] },
+    "Extract Call Report": { "main": [[{ "node": "Log Call (Calls)", "type": "main", "index": 0 }]] },
+    "Log Call (Calls)": { "main": [[{ "node": "Email Ferit", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}
