@@ -102,6 +102,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 /* ── 5. Navigation ── */
 #mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
 #mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+[data-theme="light"] #mainNav.scrolled{background:rgba(250,251,252,0.88)}
 .nav-inner{max-width:1240px;margin:0 auto;padding:0 var(--space-xl);height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
 .logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--text)}
 .logo-core{transition:letter-spacing 0.3s var(--ease)}
@@ -139,6 +140,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;
   opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+[data-theme="light"] .mobile-nav{background:rgba(250,251,252,0.97)}
 .mobile-nav.visible{opacity:1;pointer-events:all}
 .mobile-nav ul{display:flex;flex-direction:column;gap:var(--space-lg);text-align:center}
 .mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;
@@ -205,7 +207,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:var(--space-lg)}
 
 /* ── 7. Why It Matters ── */
-#why{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
+#why{padding:var(--space-3xl) 0;background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);margin-top:var(--space-2xl)}
 /* spotlight card base */
 .spotlight-card{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:var(--space-xl);position:relative;overflow:hidden;cursor:default;
@@ -220,7 +222,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .why-card-body{font-size:14px;color:var(--muted);line-height:1.7}
 
 /* ── 8. What's Included ── */
-#included{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
+#included{padding:var(--space-3xl) 0;background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%);
   background-image:radial-gradient(ellipse at 20% 50%, rgba(0,212,170,0.04) 0%, transparent 55%)}
 .included-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3xl);align-items:center}
 .included-left h2{font-size:clamp(28px,3.2vw,48px);font-weight:800;color:var(--text);margin-top:var(--space-sm);margin-bottom:var(--space-lg)}
@@ -231,7 +233,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .check-icon svg{width:11px;height:11px;stroke:var(--accent);stroke-width:2.5;fill:none}
 
 /* ── 9. Process ── */
-#process{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
+#process{padding:var(--space-3xl) 0;background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%);
   background-image:radial-gradient(ellipse at 80% 50%, rgba(0,212,170,0.04) 0%, transparent 55%)}
 #process h2{font-size:clamp(28px,3vw,44px);font-weight:800;margin-bottom:var(--space-2xl)}
 .process-list{display:flex;flex-direction:column;gap:0;position:relative;max-width:700px}
@@ -250,7 +252,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .process-content p{font-size:14px;color:var(--muted);line-height:1.7;max-width:480px}
 
 /* ── 10. Results ── */
-#results{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%)}
+#results{padding:var(--space-3xl) 0;background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%)}
 .result-card{background:var(--surface);border:1px solid var(--border2);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 1.1fr;
   box-shadow:0 2px 4px rgba(0,212,170,0.03),0 8px 32px rgba(0,212,170,0.06),0 32px 64px rgba(0,0,0,0.3)}
 .result-img{position:relative;min-height:400px}
@@ -266,8 +268,88 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .result-solution{font-size:12px;color:rgba(0,212,170,0.65);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px}
 .result-solution::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent)}
 
+/* ── 10B. Live Work ── */
+#work{padding:var(--space-3xl) 0;background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%);position:relative;overflow:hidden}
+#work::before{content:'';position:absolute;top:10%;right:0;width:520px;height:520px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(0,212,170,0.05) 0%,transparent 65%)}
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-xl);margin-bottom:var(--space-2xl)}
+.work-head h2{font-size:clamp(28px,3.2vw,46px);margin-top:8px;max-width:520px}
+.work-nav{display:flex;gap:10px;padding-bottom:6px}
+.work-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--border2);color:var(--text);background:var(--surface);
+  transition:border-color 0.25s var(--ease),color 0.25s var(--ease),background 0.25s var(--ease),transform 0.25s var(--ease),opacity 0.25s var(--ease)}
+.work-arrow svg{width:17px;height:17px}
+.work-arrow:hover:not(:disabled){border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.work-arrow:active:not(:disabled){transform:scale(0.94)}
+.work-arrow:disabled{opacity:0.3;cursor:default}
+.work-arrow:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.work-track-wrap{position:relative;margin:0 calc(var(--space-xl) * -1)}
+.work-track{display:flex;gap:var(--space-lg);overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-left:var(--space-xl);padding:24px var(--space-xl) 12px;
+  perspective:1400px;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 40px,#000 calc(100% - 56px),transparent);
+  mask-image:linear-gradient(to right,transparent,#000 40px,#000 calc(100% - 56px),transparent)}
+.work-track.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.work-track.dragging .demo-browser{pointer-events:none}
+.work-track::-webkit-scrollbar{display:none}
+.work-track::after{content:'';flex:0 0 1px}
+
+.demo-card{flex:0 0 auto;width:420px;scroll-snap-align:start;display:flex;flex-direction:column;
+  opacity:0;transform:perspective(1400px) rotateX(-14deg) translateY(28px);transform-origin:top center;
+  transition:opacity 0.7s var(--ease),transform 0.8s var(--spring)}
+.demo-card.visible{opacity:1;transform:perspective(1400px) rotateX(0) translateY(0)}
+.demo-card.wide{width:500px}
+.demo-card[data-tilt]{will-change:transform}
+
+.demo-browser{display:block;background:var(--surface);border:1px solid var(--border2);border-radius:12px;overflow:hidden;
+  box-shadow:0 2px 4px rgba(0,212,170,0.04),0 8px 24px rgba(0,212,170,0.07),0 28px 56px rgba(0,0,0,0.35);
+  transition:border-color 0.35s var(--ease),box-shadow 0.35s var(--ease);position:relative}
+.demo-card.visible .demo-browser{transition:border-color 0.35s var(--ease),box-shadow 0.35s var(--ease),transform 0.4s var(--ease)}
+.demo-browser:hover{border-color:var(--border)}
+.demo-browser-bar{background:var(--surface2);padding:11px 14px;display:flex;align-items:center;gap:var(--space-md);border-bottom:1px solid var(--border2)}
+.demo-url{flex:1;background:var(--bg);border:1px solid var(--border2);border-radius:4px;padding:4px 10px;font-family:'JetBrains Mono',Consolas,monospace;font-size:10.5px;color:var(--muted);overflow:hidden;white-space:nowrap}
+.demo-url .caret{opacity:0;border-right:1px solid var(--accent);animation:caretBlink 0.9s step-end infinite}
+@keyframes caretBlink{0%,100%{opacity:0}50%{opacity:1}}
+.demo-screenshot{position:relative;height:300px;overflow:hidden;background:var(--surface2)}
+.demo-screenshot img{width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(0.92) brightness(0.95);
+  transition:transform 0.7s var(--ease),filter 0.5s var(--ease)}
+.demo-browser:hover .demo-screenshot img{transform:scale(1.045);filter:saturate(1) brightness(1)}
+.demo-screenshot::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,10,14,0.35) 0%,transparent 35%);pointer-events:none;
+  transition:background 0.3s var(--ease)}
+.demo-visit{position:absolute;left:16px;bottom:14px;z-index:1;display:inline-flex;align-items:center;gap:6px;font-family:'Cabinet Grotesk',sans-serif;font-size:12px;font-weight:700;color:#F0F4F3;
+  opacity:0;transform:translateY(6px);transition:opacity 0.3s var(--ease),transform 0.3s var(--ease)}
+.demo-visit svg{width:13px;height:13px;color:var(--accent)}
+.demo-browser:hover .demo-visit{opacity:1;transform:translateY(0)}
+
+.demo-meta{padding-top:var(--space-lg)}
+.demo-tag{display:inline-flex;font-family:'JetBrains Mono',Consolas,monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);
+  background:var(--accent-dim);border:1px solid var(--border);border-radius:4px;padding:3px 8px;margin-bottom:10px}
+.demo-meta h3{font-size:18px;font-weight:800;color:var(--text);margin-bottom:6px;letter-spacing:-0.01em}
+.demo-meta p{font-size:13.5px;color:var(--muted);line-height:1.65;max-width:400px}
+
+.work-dots{display:flex;gap:6px;justify-content:center;margin-top:var(--space-xl)}
+.work-dots button{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:12px}
+.work-dots button::before{content:'';width:6px;height:6px;border-radius:3px;background:var(--border2);
+  transition:background 0.3s var(--ease),width 0.35s var(--ease)}
+.work-dots button:hover::before{background:var(--muted)}
+.work-dots button.active::before{background:var(--accent);width:20px}
+.work-dots button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.work-cta{text-align:center;margin-top:var(--space-2xl)}
+.work-cta p{font-size:14px;color:var(--muted);margin-bottom:var(--space-md)}
+
+@media(max-width:768px){
+  .work-head{flex-direction:column;align-items:flex-start;gap:var(--space-sm)}
+  .work-nav{display:none}
+  .demo-card,.demo-card.wide{width:82vw}
+  .demo-screenshot{height:220px}
+  .work-track{padding:24px 20px 12px;scroll-padding-left:20px;
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 20px,#000 calc(100% - 32px),transparent);
+    mask-image:linear-gradient(to right,transparent,#000 20px,#000 calc(100% - 32px),transparent)}
+  .work-track-wrap{margin:0 -20px}
+}
+
 /* ── 11. FAQ ── */
-#faq{padding:var(--space-3xl) 0;background:linear-gradient(180deg,#060a0e 0%,#0a1012 50%,#060a0e 100%);
+#faq{padding:var(--space-3xl) 0;background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%);
   background-image:radial-gradient(ellipse at 80% 80%, rgba(0,212,170,0.04) 0%, transparent 55%)}
 #faq h2{font-size:clamp(28px,3vw,44px);font-weight:800;margin-bottom:var(--space-2xl)}
 .faq-list{max-width:760px}
@@ -348,6 +430,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .reveal{opacity:1;transform:none}
   .gradient-text{animation:none}
   .browser-mockup{animation:none}
+  .demo-card{opacity:1;transform:none}
+  .demo-url .caret{animation:none}
 }
 
   </style>
@@ -611,6 +695,111 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
+<!-- ── 05B LIVE WORK ── -->
+<section id="work">
+  <div class="container">
+    <div class="work-head reveal">
+      <div>
+        <span class="section-eyebrow">Live Work</span>
+        <h2>See the same process across four industries</h2>
+      </div>
+      <div class="work-nav">
+        <button class="work-arrow" id="workPrev" aria-label="Previous demo" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="work-arrow" id="workNext" aria-label="Next demo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="work-track-wrap">
+      <div class="work-track" id="workTrack">
+
+        <article class="demo-card" data-tilt>
+          <a class="demo-browser" href="https://tiernan-demo.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Brennan &amp; Whitlow Solicitors live demo">
+            <div class="demo-browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="demo-url" data-full="brennanwhitlow.ie"><span class="caret">|</span></div>
+            </div>
+            <div class="demo-screenshot">
+              <img src="/images/demo-brennan-whitlow.jpg" alt="Brennan &amp; Whitlow Solicitors homepage preview" loading="lazy">
+              <span class="demo-visit">Visit demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+          <div class="demo-meta">
+            <span class="demo-tag">Law — Personal Injury</span>
+            <h3>Brennan &amp; Whitlow Solicitors</h3>
+            <p>No-win-no-fee positioning with the numbers up front — €1.9M recovered, 111+ reviews — built to turn an anxious visitor into a callback request.</p>
+          </div>
+        </article>
+
+        <article class="demo-card wide" data-tilt>
+          <a class="demo-browser" href="https://estate-demo-flame.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Ashworth &amp; Hartley live demo">
+            <div class="demo-browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="demo-url" data-full="ashworthhartley.co.uk"><span class="caret">|</span></div>
+            </div>
+            <div class="demo-screenshot">
+              <img src="/images/demo-ashworth-hartley.jpg" alt="Ashworth &amp; Hartley estate agency homepage preview" loading="lazy">
+              <span class="demo-visit">Visit demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+          <div class="demo-meta">
+            <span class="demo-tag">Real Estate — Residential</span>
+            <h3>Ashworth &amp; Hartley</h3>
+            <p>A quietly luxury feel for a boutique South Manchester agency — off-market listings and a 24/7 AI assistant sit behind editorial, restrained design.</p>
+          </div>
+        </article>
+
+        <article class="demo-card" data-tilt>
+          <a class="demo-browser" href="https://tonelify.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Tonelify live demo">
+            <div class="demo-browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="demo-url" data-full="tonelify.com"><span class="caret">|</span></div>
+            </div>
+            <div class="demo-screenshot">
+              <img src="/images/demo-tonelify.jpg" alt="Tonelify AI guitar tone matching homepage preview" loading="lazy">
+              <span class="demo-visit">Visit demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+          <div class="demo-meta">
+            <span class="demo-tag">AI Product</span>
+            <h3>Tonelify</h3>
+            <p>A working AI product, not a brochure — match a reference track and get exact amp settings back. Same team that builds the marketing site builds the tool behind it.</p>
+          </div>
+        </article>
+
+        <article class="demo-card wide" data-tilt>
+          <a class="demo-browser" href="https://coremagnademo.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Aldercroft &amp; Vane live demo">
+            <div class="demo-browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="demo-url" data-full="aldercroftvane.co.nz"><span class="caret">|</span></div>
+            </div>
+            <div class="demo-screenshot">
+              <img src="/images/demo-aldercroft-vane.jpg" alt="Aldercroft &amp; Vane law firm homepage preview" loading="lazy">
+              <span class="demo-visit">Visit demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+          <div class="demo-meta">
+            <span class="demo-tag">Law — Full Service</span>
+            <h3>Aldercroft &amp; Vane</h3>
+            <p>"The law, in plain English" carried through every headline — fixed-fee transparency and a calm, trust-first layout for a risk-averse client.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="work-dots" id="workDots"></div>
+
+    <div class="work-cta reveal">
+      <p>Your site can look like this — live in days, built for your industry.</p>
+      <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic-btn">Book a Free Call →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ── 06 FAQ ── -->
 <section id="faq">
   <div class="container">
@@ -864,6 +1053,119 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       btn.style.transform='translate(0,0)';
     });
   });
+})();
+
+/* ── Live Work: tilt-in reveal + typewriter URL ── */
+(function(){
+  const cards = document.querySelectorAll('.demo-card');
+  if(!cards.length) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function typeUrl(urlEl){
+    if(urlEl.dataset.typed) return;
+    urlEl.dataset.typed='1';
+    const full = urlEl.dataset.full || '';
+    const caret = urlEl.querySelector('.caret');
+    if(reduced){ urlEl.textContent = full; return; }
+    let i = 0;
+    urlEl.textContent = '';
+    urlEl.appendChild(caret);
+    const timer = setInterval(()=>{
+      i++;
+      urlEl.textContent = full.slice(0,i);
+      urlEl.appendChild(caret);
+      caret.style.opacity='1';
+      if(i>=full.length){
+        clearInterval(timer);
+        setTimeout(()=>{ caret.style.animation='none'; caret.style.transition='opacity 0.6s'; caret.style.opacity='0'; },1400);
+      }
+    },38);
+  }
+
+  const cardObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        const urlEl = entry.target.querySelector('.demo-url');
+        if(urlEl) setTimeout(()=>typeUrl(urlEl), 350);
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.25});
+  cards.forEach((c,i)=>{ c.style.transitionDelay=(i%2)*0.1+'s'; cardObserver.observe(c); });
+
+  if(!reduced){
+    cards.forEach(card=>{
+      const browser = card.querySelector('.demo-browser');
+      card.addEventListener('mousemove', e=>{
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX-rect.left)/rect.width - 0.5;
+        const py = (e.clientY-rect.top)/rect.height - 0.5;
+        browser.style.transform = `rotateX(${(-py*6).toFixed(2)}deg) rotateY(${(px*8).toFixed(2)}deg) translateY(-2px)`;
+      });
+      card.addEventListener('mouseleave', ()=>{ browser.style.transform=''; });
+    });
+  }
+
+  /* Scroll track: arrows, clickable dots, mouse drag */
+  const track = document.getElementById('workTrack');
+  const dotsWrap = document.getElementById('workDots');
+  const prevBtn = document.getElementById('workPrev');
+  const nextBtn = document.getElementById('workNext');
+  if(track && dotsWrap){
+    const maxScroll = ()=> track.scrollWidth - track.clientWidth;
+    const cardStep = ()=>{
+      const c = track.querySelector('.demo-card');
+      return c ? c.getBoundingClientRect().width + 24 : 440;
+    };
+
+    cards.forEach((_,i)=>{
+      const d=document.createElement('button');
+      d.setAttribute('aria-label','Go to demo '+(i+1));
+      if(i===0) d.classList.add('active');
+      d.addEventListener('click',()=>{
+        track.scrollTo({left:(maxScroll()*i)/(cards.length-1),behavior:reduced?'auto':'smooth'});
+      });
+      dotsWrap.appendChild(d);
+    });
+    const dots = dotsWrap.querySelectorAll('button');
+
+    function sync(){
+      const max = maxScroll();
+      const ratio = max>0 ? track.scrollLeft/max : 0;
+      const idx = Math.min(dots.length-1, Math.round(ratio*(dots.length-1)));
+      dots.forEach((d,i)=>d.classList.toggle('active', i===idx));
+      if(prevBtn) prevBtn.disabled = track.scrollLeft < 10;
+      if(nextBtn) nextBtn.disabled = track.scrollLeft > max - 10;
+    }
+    track.addEventListener('scroll', sync, {passive:true});
+    window.addEventListener('resize', sync, {passive:true});
+    sync();
+
+    if(prevBtn) prevBtn.addEventListener('click',()=>track.scrollBy({left:-cardStep(),behavior:reduced?'auto':'smooth'}));
+    if(nextBtn) nextBtn.addEventListener('click',()=>track.scrollBy({left:cardStep(),behavior:reduced?'auto':'smooth'}));
+
+    /* Mouse drag-to-scroll (touch already scrolls natively) */
+    let isDown=false, startX=0, startScroll=0, dragged=false;
+    track.addEventListener('pointerdown', e=>{
+      if(e.pointerType!=='mouse' || e.button!==0) return;
+      isDown=true; dragged=false; startX=e.clientX; startScroll=track.scrollLeft;
+    });
+    window.addEventListener('pointermove', e=>{
+      if(!isDown) return;
+      const dx = e.clientX - startX;
+      if(!dragged && Math.abs(dx)>6){ dragged=true; track.classList.add('dragging'); }
+      if(dragged) track.scrollLeft = startScroll - dx;
+    });
+    window.addEventListener('pointerup', ()=>{
+      if(!isDown) return;
+      isDown=false;
+      setTimeout(()=>{ track.classList.remove('dragging'); dragged=false; },0);
+    });
+    track.addEventListener('click', e=>{
+      if(dragged){ e.preventDefault(); e.stopPropagation(); }
+    }, true);
+  }
 })();
 </script>
 <script>
