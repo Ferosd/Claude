@@ -104,7 +104,7 @@ Never use: leverage, seamless, elevate, unleash, next-gen, cutting-edge, robust,
 
 Industries > Video Tours > Work > About > Blog > FAQ > Contact > [Theme Toggle] > [Book a Call]
 
-Services dropdown removed. Legacy service pages kept for SEO only. "Video Tours" links to /real-estate-videos.html (AI real estate listing video service — flagship entry offer, real estate vertical only).
+Services dropdown removed. Legacy service pages kept for SEO only. "Video Tours" links to /real-estate-videos (AI real estate listing video service — flagship entry offer, real estate vertical only).
 
 ## Site Structure
 
@@ -126,7 +126,7 @@ Plus: How It Works (5 steps), Mockups, Before/After, Pricing, Final CTA
 
 ## Code Rules
 
-- Absolute paths in nav (/industries.html)
+- Absolute extensionless paths in all internal links (/industries, /blog/, / for home) — Vercel cleanUrls is on; never link to .html URLs
 - Semantic HTML tags
 - All CTAs link to booking calendar
 - Cards wrapped in <a> tags

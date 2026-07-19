@@ -29,7 +29,53 @@
   font-display: swap;
 }
 
-/* Stat values, prices and metrics render in JetBrains Mono (loaded via Google Fonts).
+/* DM Sans — self-hosted (latin subset) */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* JetBrains Mono — self-hosted (latin subset) */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Stat values, prices and metrics render in JetBrains Mono (self-hosted above).
    !important is deliberate: this sheet loads before each page's inline <style>. */
 .stat-big, .stat-num, .case-metric, .result-metric-num,
 .call-stat-num, .dash-metric-val, .mock-metric-num,

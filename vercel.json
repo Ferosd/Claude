@@ -1,9 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/industries/:page((?:[^/.]+))", "destination": "/industries/:page.html" },
-    { "source": "/blog/:page((?:[^/.]+))", "destination": "/blog/:page.html" },
-    { "source": "/:page((?:[^/.]+))", "destination": "/:page.html" }
-  ],
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",

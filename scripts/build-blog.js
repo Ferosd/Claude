@@ -18,7 +18,7 @@ const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, 
 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 const cards = posts.map((p, i) => `      <article class="blog-card reveal" data-category="${slugCat(p.category)}">
-        <a href="${p.slug}" style="display:block">
+        <a href="/blog/${p.slug.replace(/\.html$/, '')}" style="display:block">
           <img src="${p.image}" alt="${esc(p.title)}" class="blog-card-image" loading="${i < 2 ? 'eager' : 'lazy'}" width="600" height="315">
           <div class="blog-card-content">
             <span class="blog-cat">${p.category}</span>
