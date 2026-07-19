@@ -26,3 +26,4 @@ debug/
 
 # Local backups (SEO audit safety copies)
 backups/
+onpage.json
