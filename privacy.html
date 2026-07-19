@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Coremagna</title>
+<meta name="description" content="How Coremagna collects, uses, and protects your data — analytics, booking, cookies, and your rights under UK GDPR and EU GDPR explained in plain language.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Coremagna">
+<meta property="og:title" content="Privacy Policy | Coremagna">
+<meta property="og:description" content="How Coremagna collects, uses, and protects your data, explained in plain language.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://coremagna.com/privacy">
+<meta property="og:image" content="https://coremagna.com/images/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy | Coremagna">
+<meta name="twitter:description" content="How Coremagna collects, uses, and protects your data.">
+<link rel="canonical" href="https://coremagna.com/privacy">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/motion.css">
+<style>
+:root {
+  --bg:         #060a0e;
+  --surface:    #0d1317;
+  --surface2:   #111920;
+  --accent:     #00D4AA;
+  --accent-dim: rgba(0,212,170,0.12);
+  --text:       #F0F4F3;
+  --muted:      rgba(240,244,243,0.55);
+  --border:     rgba(0,212,170,0.14);
+  --border2:    rgba(255,255,255,0.07);
+  --ease:       cubic-bezier(0.4,0,0.2,1);
+  --spring:     cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   48px;
+  --space-2xl:  80px;
+  --space-3xl:  120px;
+}
+[data-theme="light"] {
+  --bg: #fafbfc;
+  --surface: #ffffff;
+  --surface2: #f4f6f8;
+  --accent: #00B894;
+  --accent-dim: rgba(0,184,148,0.10);
+  --text: #0a1014;
+  --muted: rgba(10,16,20,0.55);
+  --border: rgba(0,184,148,0.18);
+  --border2: rgba(0,0,0,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif;line-height:1.05;letter-spacing:-0.02em;font-weight:800;overflow-wrap:break-word;max-width:100%;hyphens:none}
+.container{max-width:1240px;margin:0 auto;padding:0 var(--space-xl)}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:14px 32px;background:var(--accent);color:#060a0e;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.04em;border-radius:6px;transition:background 0.25s var(--ease),transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+.btn-primary:hover{background:#00f0c4;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,212,170,0.3)}
+.btn-primary:active{transform:scale(0.97)}
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 var(--space-xl);height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;color:var(--text)}
+.logo-magna{color:var(--accent)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.nav-links{display:flex;gap:var(--space-xl)}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+.mobile-nav.visible{opacity:1;pointer-events:all}
+.mobile-nav ul{display:flex;flex-direction:column;gap:var(--space-lg);text-align:center}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
+.mobile-nav a:hover{color:var(--accent)}
+.mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:var(--space-md)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);color:var(--text);transition:border-color 0.2s var(--ease),color 0.2s var(--ease),background 0.2s var(--ease)}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.icon-sun{display:block}.icon-moon{display:none}
+[data-theme="light"] .theme-toggle{border-color:rgba(0,0,0,0.12)}
+[data-theme="light"] .icon-sun{display:none}[data-theme="light"] .icon-moon{display:block}
+/* Legal content */
+.legal-hero{padding:var(--space-2xl) 0 var(--space-xl)}
+.legal-eyebrow{font-family:'Cabinet Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:var(--space-md)}
+.legal-hero h1{font-size:clamp(2.4rem,5vw,3.5rem);max-width:720px;margin-bottom:var(--space-md)}
+.legal-updated{font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;color:var(--muted);letter-spacing:0.04em}
+.legal-body{padding:var(--space-xl) 0 var(--space-3xl)}
+.legal-prose{max-width:720px}
+.legal-prose h2{font-size:clamp(1.3rem,2.5vw,1.6rem);margin:var(--space-2xl) 0 var(--space-md)}
+.legal-prose h2:first-child{margin-top:0}
+.legal-prose p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:var(--space-md)}
+.legal-prose p strong{color:var(--text);font-weight:600}
+.legal-prose ul{list-style:none;margin:0 0 var(--space-md)}
+.legal-prose ul li{font-size:15px;color:var(--muted);line-height:1.85;padding-left:22px;position:relative;margin-bottom:var(--space-sm)}
+.legal-prose ul li::before{content:'';position:absolute;left:4px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.legal-prose a{color:var(--accent);border-bottom:1px solid transparent;transition:border-color 0.2s var(--ease)}
+.legal-prose a:hover{border-color:var(--accent)}
+.legal-prose table{width:100%;border-collapse:collapse;margin:0 0 var(--space-md);font-size:14px}
+.legal-prose th,.legal-prose td{text-align:left;padding:10px 14px;border:1px solid var(--border2);color:var(--muted);vertical-align:top}
+.legal-prose th{font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text)}
+.legal-table-wrap{overflow-x:auto}
+footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--border2)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--space-2xl)}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:var(--space-md)}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--muted);max-width:220px;line-height:1.65}
+.footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,244,243,0.35);margin-bottom:var(--space-lg)}
+[data-theme="light"] .footer-col h4{color:rgba(10,16,20,0.35)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--space-sm)}
+.footer-col a{font-size:13px;color:var(--muted);transition:color 0.2s var(--ease)}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:var(--space-md);margin-top:var(--space-lg)}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--muted)}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(240,244,243,0.25)}
+[data-theme="light"] .footer-bottom p{color:rgba(10,16,20,0.35)}
+.footer-bottom a{color:inherit;transition:color 0.2s var(--ease)}
+.footer-bottom a:hover{color:var(--text)}
+@media(max-width:1024px){
+  .container,.nav-inner{padding:0 var(--space-lg)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .legal-hero{padding:var(--space-xl) 0 var(--space-lg)}
+  .legal-body{padding:var(--space-lg) 0 var(--space-2xl)}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
+  .footer-col a{display:flex;align-items:center;min-height:44px}
+  .container,.nav-inner{padding:0 20px}
+  body{padding-bottom:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ── NAVIGATION ── -->
+<nav id="mainNav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="Coremagna home">
+      <span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries">Industries</a></li><li><a href="/real-estate-videos">Video Tours</a></li>
+      <li><a href="/demo">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"/></svg>
+    </button>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries">Industries</a></li><li><a href="/real-estate-videos">Video Tours</a></li>
+    <li><a href="/demo">Work</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Call</a></li>
+  </ul>
+</div>
+
+<main id="main">
+
+<section class="legal-hero">
+  <div class="container">
+    <span class="legal-eyebrow">LEGAL</span>
+    <h1>Privacy policy</h1>
+    <p class="legal-updated">Last updated 19 July 2026</p>
+  </div>
+</section>
+
+<section class="legal-body">
+  <div class="container">
+    <div class="legal-prose">
+
+      <h2>Who we are</h2>
+      <p>Coremagna is a founder-run AI automation agency operated by Ferit Patefe, based in Antalya, Türkiye, serving clients in the United Kingdom, Australia, and internationally. This policy explains what data we collect through <strong>coremagna.com</strong>, why we collect it, and the choices you have.</p>
+      <p>For anything in this policy, contact us at <a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a>.</p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>Information you give us.</strong> When you email us or book a call through our Google Calendar booking page, we receive the details you provide — typically your name, email address, and anything you write about your business.</li>
+        <li><strong>Analytics data.</strong> We use Google Analytics 4 to understand how the site is used: pages visited, approximate location derived from your IP address, device and browser type, and how you arrived at the site. This data is aggregated and does not identify you by name.</li>
+        <li><strong>Hosting logs.</strong> Our hosting provider, Vercel, keeps standard server logs (IP address, request time, requested page) for security and reliability.</li>
+        <li><strong>Preferences.</strong> Your light/dark theme choice is stored in your browser's local storage. It never leaves your device and is not used for tracking.</li>
+      </ul>
+      <p>We do not run advertising trackers, we do not sell or rent your data, and we do not collect payment details through this website.</p>
+
+      <h2>How we use your data</h2>
+      <ul>
+        <li>To respond to your enquiries and hold the consultation calls you book</li>
+        <li>To prepare proposals and deliver services you ask us for</li>
+        <li>To understand which pages are useful so we can improve the site</li>
+        <li>To keep the site secure and reliable</li>
+      </ul>
+
+      <h2>Legal bases</h2>
+      <p>Where the UK GDPR or EU GDPR applies, we rely on <strong>legitimate interest</strong> for analytics and security, <strong>consent</strong> where you contact us voluntarily, and <strong>performance of a contract</strong> when we deliver services you have engaged us for.</p>
+
+      <h2>Third-party services</h2>
+      <div class="legal-table-wrap">
+      <table>
+        <tr><th>Service</th><th>Purpose</th><th>Their policy</th></tr>
+        <tr><td>Google Analytics 4</td><td>Site usage analytics</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></td></tr>
+        <tr><td>Google Calendar</td><td>Call booking and scheduling</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></td></tr>
+        <tr><td>Vercel</td><td>Website hosting</td><td><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel Privacy Policy</a></td></tr>
+      </table>
+      </div>
+      <p>These providers may process data on servers in the United States or the European Union under their own safeguards, including standard contractual clauses.</p>
+
+      <h2>Cookies</h2>
+      <p>The only cookies set by this site come from Google Analytics (names beginning with <strong>_ga</strong>). They help us count visits and see which pages people read. You can block or delete them in your browser settings, or opt out entirely with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics opt-out add-on</a>. The site works fully without them.</p>
+
+      <h2>How long we keep data</h2>
+      <ul>
+        <li>Google Analytics data is retained for 14 months, then deleted automatically</li>
+        <li>Emails and booking details are kept for as long as we need them to work with you, then deleted on request or when no longer needed</li>
+      </ul>
+
+      <h2>Your rights</h2>
+      <p>Depending on where you live, you may have the right to access, correct, delete, or receive a copy of your personal data, to restrict or object to how we use it, and to withdraw consent at any time. To exercise any of these rights, email <a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a> — we respond within 30 days.</p>
+      <p>If you are in the UK you can also complain to the <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">Information Commissioner's Office</a>; in the EU, to your local supervisory authority.</p>
+
+      <h2>Children</h2>
+      <p>This site is aimed at businesses and is not directed at anyone under 16. We do not knowingly collect data from children.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>If we change how we handle data, we will update this page and revise the date at the top. Significant changes will be noted clearly here.</p>
+
+      <h2>Contact</h2>
+      <p>Ferit Patefe, Coremagna — Antalya, Türkiye<br><a href="mailto:ferit1@coremagna.com">ferit1@coremagna.com</a></p>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for service businesses.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="/industries#law-firms">Law Firms</a></li>
+          <li><a href="/industries#real-estate">Real Estate</a></li>
+          <li><a href="/industries#clinics">Clinics</a></li>
+          <li><a href="/industries#beauty">Beauty Salons</a></li>
+          <li><a href="/industries#restaurants">Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/demo">Work</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#" onclick="this.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')" rel="nofollow">ferit1@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Coremagna. All rights reserved. · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+      <p>AI Automation · CRM Systems · Chatbots</p>
+    </div>
+  </div>
+</footer>
+
+<script defer>
+(function() {
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, {passive:true});
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', function() {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('visible', isOpen);
+    mobileNav.setAttribute('aria-hidden', String(!isOpen));
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('visible');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  const btn=document.getElementById('themeToggle');
+  if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');
+  if(btn)btn.addEventListener('click',function(){
+    const isLight=document.documentElement.getAttribute('data-theme')==='light';
+    if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}
+    else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}
+  });
+})();
+</script>
+</body>
+</html>
