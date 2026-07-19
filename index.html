@@ -154,7 +154,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 #mainNav.entered{opacity:1;transform:translateY(0)}
 
 /* ── 6. Hero ── */
-#hero{width:100%;height:100vh;min-height:600px;position:relative;overflow:hidden;display:flex;align-items:center;
+#hero{width:100%;height:100vh;height:100dvh;min-height:600px;position:relative;overflow:hidden;display:flex;align-items:center;
   background:#060a0e radial-gradient(ellipse at 68% 55%,rgba(0,212,170,0.10) 0%,transparent 60%)}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0}
 .hero-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -692,6 +692,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ── NAVIGATION ── -->
 <nav id="mainNav" class="pre-entrance" aria-label="Main navigation">
@@ -729,7 +730,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </ul>
 </div>
 
-<main>
+<main id="main">
 
 <!-- ── 01 HERO ── -->
 <section id="hero" role="banner">

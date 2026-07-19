@@ -10,5 +10,8 @@
       "Bash(grep -E \"\\\\.html$\")",
       "Bash(start *)"
     ]
+  },
+  "skillOverrides": {
+    "watch-youtube": "off"
   }
 }
