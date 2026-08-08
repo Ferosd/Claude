@@ -4,19 +4,28 @@
 <meta charset="UTF-8">
 <script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Real Estate Video Tours from Listing Photos | Coremagna</title>
-<meta name="description" content="Turn listing photos into cinematic 9:16 walkthrough videos in 48 hours — with an optional AI presenter. Built for realtors, brokers and Airbnb hosts.">
+<title>AI Property Video Tours from Listing Photos | Coremagna</title>
+<meta name="description" content="Done-for-you property video tours built from the listing photos you already have. $149 a listing, 48-hour turnaround, no site visit and no film crew.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Coremagna">
 <link rel="canonical" href="https://coremagna.com/real-estate-videos">
-<meta property="og:title" content="AI Real Estate Video Tours from Listing Photos | Coremagna">
-<meta property="og:description" content="No film crew, no scheduling. Just your existing photos, transformed into scroll-stopping vertical video tours — delivered in 48 hours.">
+<meta property="og:title" content="AI Property Video Tours from Listing Photos | Coremagna">
+<meta property="og:description" content="No film crew, no scheduling, no site visit. Your existing listing photos become a cinematic property tour, delivered in 48 hours for $149 a listing.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://coremagna.com/real-estate-videos">
 <meta property="og:image" content="https://coremagna.com/images/og.jpg">
+<meta property="og:site_name" content="Coremagna">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A property interior with the still photograph on one side and the generated video on the other">
+<meta property="og:video" content="https://coremagna.com/videos/chain-03-motion.mp4">
+<meta property="og:video:type" content="video/mp4">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Real Estate Video Tours from Listing Photos | Coremagna">
-<meta name="twitter:description" content="No film crew, no scheduling. Just your existing photos, transformed into scroll-stopping vertical video tours — delivered in 48 hours.">
+<meta name="twitter:image" content="https://coremagna.com/images/og.jpg">
+<meta name="twitter:image:alt" content="A property interior with the still photograph on one side and the generated video on the other">
+<meta name="twitter:title" content="AI Property Video Tours from Listing Photos | Coremagna">
+<meta name="twitter:description" content="No film crew, no scheduling, no site visit. Your existing listing photos become a cinematic property tour, delivered in 48 hours for $149 a listing.">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
 <script>
@@ -116,7 +125,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .nav-links a{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
 .nav-links a:hover{color:var(--text)}
 .nav-links a.active{color:var(--text)}
-.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
@@ -124,7 +133,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
 .mobile-nav.visible{opacity:1;pointer-events:all}
 .mobile-nav ul{display:flex;flex-direction:column;gap:var(--space-lg);text-align:center}
-.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;transition:color 0.2s var(--ease)}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;display:flex;align-items:center;justify-content:center;min-height:44px;transition:color 0.2s var(--ease)}
 .mobile-nav a:hover{color:var(--accent)}
 .mobile-nav .btn-primary{font-size:15px;padding:14px 32px;margin-top:var(--space-md)}
 .theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);color:var(--text);transition:border-color 0.2s var(--ease),color 0.2s var(--ease),background 0.2s var(--ease)}
@@ -230,6 +239,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .ba-player video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ba-before{position:absolute;inset:0;background-size:cover;background-position:center;clip-path:inset(0 calc(100% - var(--x,50%)) 0 0);z-index:1}
 .ba-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;margin-left:-1px;background:var(--accent);z-index:3;cursor:ew-resize;touch-action:none}
+.ba-handle::before{content:'';position:absolute;top:0;bottom:0;left:-21px;width:44px}
 .ba-handle:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .ba-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(6,10,14,0.7);border:1.5px solid var(--accent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--accent)}
 .ba-grip svg{width:18px;height:18px}
@@ -331,7 +341,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 .footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:var(--space-md)}
 .footer-logo span{color:var(--accent)}
 .footer-tagline{font-size:13px;color:var(--text-muted);max-width:220px;line-height:1.65}
-.footer-col h4{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-fine);margin-bottom:var(--space-lg)}
+.footer-col h3{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-fine);margin-bottom:var(--space-lg)}
 .footer-col ul{display:flex;flex-direction:column;gap:var(--space-sm)}
 .footer-col a{font-size:13px;color:var(--text-muted);transition:color 0.2s var(--ease)}
 .footer-col a:hover{color:var(--text)}
@@ -365,6 +375,12 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .wt-progress{display:none}
 }
 @media(max-width:768px){
+  /* iOS/Android tap targets: nothing interactive below 44x44 */
+  .theme-toggle{width:44px;height:44px}
+  .logo{min-height:44px}
+  .vf-mute{width:44px;height:44px}
+  .social-icon{width:44px;height:44px}
+  .footer-bottom a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px}
   .cmp-swipe{display:flex}
   .cmp{min-width:600px}
   .cmp th,.cmp td{padding:var(--space-md)}
@@ -399,20 +415,107 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 {
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": "https://coremagna.com/real-estate-videos#service",
   "name": "AI Real Estate Video Tours",
+  "alternateName": [
+    "AI listing video tours",
+    "Photo to video property tours"
+  ],
+  "serviceType": "Real estate video production",
+  "description": "Done-for-you property video tours built from an agent's existing listing photographs. Cinematic camera movement is generated from stills, with an optional AI presenter, delivered in 48 hours in portal, Reels and TikTok aspect ratios. Nobody visits the property.",
+  "url": "https://coremagna.com/real-estate-videos",
+  "image": "https://coremagna.com/videos/chain-03-motion-poster.jpg",
   "provider": {
     "@type": "ProfessionalService",
+    "@id": "https://coremagna.com/#organization",
     "name": "Coremagna",
-    "url": "https://coremagna.com"
+    "url": "https://coremagna.com",
+    "email": "ferit1@coremagna.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Antalya",
+      "addressCountry": "TR"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Ferit Patefe"
+    }
   },
-  "description": "AI-generated cinematic vertical walkthrough videos created from a realtor's existing listing photos, with an optional AI presenter, delivered in 48 hours.",
-  "areaServed": ["US", "GB", "AU"],
-  "serviceType": "AI Video Production",
-  "offers": [
-    {"@type":"Offer","name":"Classic Walkthrough","price":"149","priceCurrency":"USD"},
-    {"@type":"Offer","name":"AI Presenter Video","price":"229","priceCurrency":"USD"},
-    {"@type":"Offer","name":"Agency Plan","price":"449","priceCurrency":"USD"}
-  ]
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "United Kingdom"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    },
+    {
+      "@type": "Country",
+      "name": "United States"
+    },
+    {
+      "@type": "Country",
+      "name": "Netherlands"
+    },
+    {
+      "@type": "Country",
+      "name": "Ireland"
+    },
+    {
+      "@type": "Country",
+      "name": "Canada"
+    },
+    {
+      "@type": "Country",
+      "name": "New Zealand"
+    }
+  ],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Estate agents, realtors, letting agents, commercial property agents and short-term rental hosts"
+  },
+  "termsOfService": "https://coremagna.com/terms",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Video tour packages",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Classic Walkthrough",
+        "price": "149",
+        "priceCurrency": "USD",
+        "description": "One property video built from your listing photos, with cinematic camera movement and voiceover, delivered in 48 hours.",
+        "availability": "https://schema.org/InStock",
+        "url": "https://coremagna.com/real-estate-videos"
+      },
+      {
+        "@type": "Offer",
+        "name": "AI Presenter Video",
+        "price": "229",
+        "priceCurrency": "USD",
+        "description": "Everything in Classic plus a consistent AI presenter who introduces and walks the property on camera.",
+        "availability": "https://schema.org/InStock",
+        "url": "https://coremagna.com/real-estate-videos"
+      },
+      {
+        "@type": "Offer",
+        "name": "Agency Plan",
+        "price": "449",
+        "priceCurrency": "USD",
+        "description": "Four videos a month with priority delivery and a presenter persona built for your brand. Cancel anytime.",
+        "availability": "https://schema.org/InStock",
+        "url": "https://coremagna.com/real-estate-videos"
+      }
+    ]
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "149",
+    "highPrice": "449",
+    "offerCount": "3"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -420,11 +523,172 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Is this really AI-generated?","acceptedAnswer":{"@type":"Answer","text":"Yes — and that's why it's this fast and affordable. You approve everything before it goes live."}},
-    {"@type":"Question","name":"What do you need from me?","acceptedAnswer":{"@type":"Answer","text":"Just your listing photos and key selling points."}},
-    {"@type":"Question","name":"Can the presenter match my brand?","acceptedAnswer":{"@type":"Answer","text":"Yes, we build a consistent persona for you."}},
-    {"@type":"Question","name":"What if I don't like it?","acceptedAnswer":{"@type":"Answer","text":"Unlimited revisions until approved."}},
-    {"@type":"Question","name":"Do you work with Airbnb hosts?","acceptedAnswer":{"@type":"Answer","text":"Absolutely — short-term rentals are ideal for video tours."}}
+    {
+      "@type": "Question",
+      "name": "What is an AI listing video tour?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a short property film built entirely from photographs you already have. Software generates the camera movement — a push through a doorway, a track along a run of shelving, a pull back to the frontage — so the finished clip looks like it was shot on a gimbal, even though no camera was ever in the room. A tour usually runs 60 to 90 seconds and covers 12 to 18 shots."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the portals accept an AI-generated video?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Rightmove, Zoopla, Funda and realestate.com.au all take video on a listing, and we have not found a portal that bans generated footage outright. What every one of them cares about, and what regulators care about, is that the video represents the property honestly. That is our own hard rule: we animate the rooms in your photographs and nothing more. No furniture that is not there, no damp painted out, no room widened, no view changed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to tell buyers it is AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We think you should, and it costs you nothing. UK agents work under the Consumer Protection from Unfair Trading Regulations, which turn on whether a buyer was misled — not on which tool made the file. Because we never alter what the property actually looks like, a short line in the description such as \"video generated from listing photography\" keeps you comfortably on the right side of it. We supply that wording with every delivery."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it look fake?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The honest answer is that it depends on the shot. Slow moves through a room hold up completely. Very fast moves, mirrors, and people in frame are where any AI video model starts to drift, so we simply do not shoot those. Every clip is reviewed before you see it, and anything that wobbles gets rebuilt rather than shipped."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many photos do you need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Between eight and twenty. More is better, and the wider the shot the more room the camera has to move. Phone photos work; photos taken by your regular property photographer work better. If a room is missing from the set we leave it out rather than invent it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do you need from me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The photo set and roughly three sentences about what makes the property worth seeing — the thing you would say on a viewing. If you want the presenter version, tell us the tone you use with your own clients and we match it. Nothing else, and no call is needed to get started."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "48 hours from the photos landing to the first cut. Revisions come back the same day. Send the set the morning you list and the video is live before the first viewing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the presenter match my brand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. On the Agency plan we build one presenter and keep her consistent across every listing, so your channel looks like a channel rather than a series of unrelated clips. She can introduce the property, walk through it and hand off to your contact details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't like it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Revisions are unlimited and free until you sign it off. Nothing is delivered to you as final and nothing goes anywhere near your channels until you approve it. If we cannot get it to a standard you are happy with, you do not pay."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does this compare to hiring a videographer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A one-property shoot in the UK runs roughly £250 to £500 and needs a slot in the diary, access to the keys and a vendor who is happy to be out of the house. We charge $149 per listing, nobody visits the property, and the file arrives in 48 hours. What you give up is a real camera operator making judgement calls on site, which matters most on unusual or very high-value homes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with commercial and short-term lets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The sample on this page is a commercial retail unit in Rotterdam. Short-term rentals suit the format particularly well because the listing lives or dies on the scroll."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "AI presenter walking a commercial retail unit generated from one photograph",
+  "description": "A clip from a delivered tour. The presenter and the camera move were generated from a single still out of the letting agent's photo set — no camera and no presenter were ever at the property.",
+  "thumbnailUrl": [
+    "https://coremagna.com/videos/chain-03-motion-poster.jpg"
+  ],
+  "contentUrl": "https://coremagna.com/videos/chain-03-motion.mp4",
+  "uploadDate": "2026-08-09",
+  "duration": "PT10S",
+  "isFamilyFriendly": true,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Coremagna",
+    "url": "https://coremagna.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How a listing photo becomes a property video tour",
+  "description": "The three files behind a delivered property video, in the order they are made.",
+  "totalTime": "PT48H",
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "The agent's existing listing photographs"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Send the listing photos",
+      "text": "You upload the photo set you already have. No reshoot, no second visit, no drone licence and nobody from our side goes to the property.",
+      "image": "https://coremagna.com/videos/chain-01-plate.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "We build the shots",
+      "text": "Each still becomes a moving shot with generated camera movement, then the shots are cut together with voiceover and music. If you chose the presenter version she is built into the frame to match the room's own light and shadows.",
+      "image": "https://coremagna.com/videos/chain-02-frame.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Approve and publish",
+      "text": "The first cut lands within 48 hours. Revisions are unlimited and free until you sign it off, and you receive portal, Reels and TikTok ratios from the same render.",
+      "image": "https://coremagna.com/videos/chain-03-motion-poster.jpg"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://coremagna.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Video Tours",
+      "item": "https://coremagna.com/real-estate-videos"
+    }
   ]
 }
 </script>
@@ -801,23 +1065,23 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   <div class="container">
     <div class="sec-head reveal">
       <span class="section-eyebrow">How It Works</span>
-      <h2 class="sec-h2">From photos to a finished video in three steps</h2>
+      <h2 class="sec-h2">How a listing photo becomes a property video tour</h2>
     </div>
     <div class="proc-grid">
       <div class="proc-card reveal">
         <p class="proc-num">01</p>
-        <h3>Send us your listing photos</h3>
-        <p>Upload the photos you already have — no reshoot, no staging, no extra work on your end.</p>
+        <h3>Send the listing photos</h3>
+        <p>You upload the photo set you already have. No reshoot, no second visit, no drone licence and nobody from our side goes to the property.</p>
       </div>
       <div class="proc-card reveal">
         <p class="proc-num">02</p>
-        <h3>We craft the video</h3>
-        <p>Cinematic camera moves, transitions, voiceover, music — and your AI presenter if you choose.</p>
+        <h3>We build the shots</h3>
+        <p>Each still becomes a moving shot with generated camera movement, then the shots are cut together with voiceover and music. If you chose the presenter version she is built into the frame to match the room's own light and shadows.</p>
       </div>
       <div class="proc-card reveal">
         <p class="proc-num">03</p>
-        <h3>Receive your video in 48 hours</h3>
-        <p>Request tweaks until it's perfect. Nothing goes out the door until you approve it.</p>
+        <h3>Approve and publish</h3>
+        <p>The first cut lands within 48 hours. Revisions are unlimited and free until you sign it off, and you receive portal, Reels and TikTok ratios from the same render.</p>
       </div>
     </div>
   </div>
@@ -888,24 +1152,48 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Is this really AI-generated?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — and that's why it's this fast and affordable. You approve everything before it goes live.</div></div>
+        <button class="faq-q" aria-expanded="false">What is an AI listing video tour?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">It is a short property film built entirely from photographs you already have. Software generates the camera movement — a push through a doorway, a track along a run of shelving, a pull back to the frontage — so the finished clip looks like it was shot on a gimbal, even though no camera was ever in the room. A tour usually runs 60 to 90 seconds and covers 12 to 18 shots.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Will the portals accept an AI-generated video?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Rightmove, Zoopla, Funda and realestate.com.au all take video on a listing, and we have not found a portal that bans generated footage outright. What every one of them cares about, and what regulators care about, is that the video represents the property honestly. That is our own hard rule: we animate the rooms in your photographs and nothing more. No furniture that is not there, no damp painted out, no room widened, no view changed.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do I have to tell buyers it is AI?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, and we make it straightforward. Three things have landed recently. In the UK the Digital Markets, Competition and Consumers Act 2024 replaced the old Consumer Protection from Unfair Trading Regulations on 6 April 2025, and treats a misleading listing as an unfair commercial practice. In the EU the AI Act's transparency duty for artificially generated visual content applies from 2 August 2026. In California, Assembly Bill 723 has required disclosure of digitally altered listing images, and access to the unaltered originals, since 1 January 2026. None of it blocks what we do, because we never change what the property looks like, but all of it expects a label. Every delivery comes with disclosure wording you can paste straight into the listing, and we keep your source photographs so you can produce the originals if anyone asks.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Does it look fake?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">The honest answer is that it depends on the shot. Slow moves through a room hold up completely. Very fast moves, mirrors, and people in frame are where any AI video model starts to drift, so we simply do not shoot those. Every clip is reviewed before you see it, and anything that wobbles gets rebuilt rather than shipped.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How many photos do you need?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Between eight and twenty. More is better, and the wider the shot the more room the camera has to move. Phone photos work; photos taken by your regular property photographer work better. If a room is missing from the set we leave it out rather than invent it.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">What do you need from me?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Just your listing photos and key selling points.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">The photo set and roughly three sentences about what makes the property worth seeing — the thing you would say on a viewing. If you want the presenter version, tell us the tone you use with your own clients and we match it. Nothing else, and no call is needed to get started.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How long does it take?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">48 hours from the photos landing to the first cut. Revisions come back the same day. Send the set the morning you list and the video is live before the first viewing.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Can the presenter match my brand?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes, we build a consistent persona for you.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. On the Agency plan we build one presenter and keep her consistent across every listing, so your channel looks like a channel rather than a series of unrelated clips. She can introduce the property, walk through it and hand off to your contact details.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">What if I don't like it?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Unlimited revisions until approved.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Revisions are unlimited and free until you sign it off. Nothing is delivered to you as final and nothing goes anywhere near your channels until you approve it. If we cannot get it to a standard you are happy with, you do not pay.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Do you work with Airbnb hosts?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Absolutely — short-term rentals are ideal for video tours.</div></div>
+        <button class="faq-q" aria-expanded="false">How does this compare to hiring a videographer?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">A one-property shoot in the UK runs roughly £250 to £500 and needs a slot in the diary, access to the keys and a vendor who is happy to be out of the house. We charge $149 per listing, nobody visits the property, and the file arrives in 48 hours. What you give up is a real camera operator making judgement calls on site, which matters most on unusual or very high-value homes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you work with commercial and short-term lets?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The sample on this page is a commercial retail unit in Rotterdam. Short-term rentals suit the format particularly well because the listing lives or dies on the scroll.</div></div>
       </div>
     </div>
   </div>
@@ -941,7 +1229,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         </div>
       </div>
       <div class="footer-col">
-        <h4>Industries</h4>
+        <h3>Industries</h3>
         <ul>
           <li><a href="/real-estate-videos">Video Tours</a></li>
           <li><a href="/industries#law-firms">Law Firms</a></li>
@@ -952,7 +1240,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h3>Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/demo">Work</a></li>
@@ -961,7 +1249,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Connect</h4>
+        <h3>Connect</h3>
         <ul>
           <li><a href="#" onclick="this.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')" rel="nofollow">ferit1@coremagna.com</a></li>
           <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>

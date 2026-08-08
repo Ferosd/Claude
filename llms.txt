@@ -16,7 +16,7 @@ We help professional services firms automate client intake, phone calls, appoint
 
 ## Products
 
-- AI Real Estate Video Tours: AI-generated cinematic vertical (9:16) walkthrough videos made from a realtor's existing listing photos, with an optional AI presenter, delivered in 48 hours. Pricing: $149 Classic Walkthrough, $229 AI Presenter Video, $449/month Agency Plan (4 videos/month). See https://coremagna.com/real-estate-videos
+- AI Property Video Tours: done-for-you property video tours built from an estate agent's existing listing photographs. Camera movement is generated from the stills, so no camera, crew or site visit is involved. Optional AI presenter walks the property on screen. Delivered in 48 hours in portal, Instagram Reels and TikTok aspect ratios from one render, with unlimited free revisions until the agent signs off. Pricing: $149 Classic Walkthrough, $229 AI Presenter Video, $449/month Agency Plan (4 videos/month). Positioned between self-serve AI video tools ($4-16 a video, the agent does the work) and a videographer (£250-500 per shoot plus scheduling and property access): studio output with none of the work on the agent's side. Used for residential sales, lettings, commercial units and short-term rentals. Coremagna does not alter what a property actually looks like - no added furniture, no removed defects, no changed views - and supplies disclosure wording with every delivery. See https://coremagna.com/real-estate-videos
 - AI Chatbot (RAG): 24/7 client intake and FAQ automation, answers only from your own business data
 - AI Voice Agent: Intelligent inbound call handling, qualification, and appointment booking
 - Workflow Automation: n8n-based process automation across your existing tools
