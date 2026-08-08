@@ -178,14 +178,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .vf-mute[aria-pressed="true"] .vf-mute-on{display:block}
 .hero-video-wrap{aspect-ratio:16/9}
 
+/* ── Scroll walkthrough ── */
+.wt-track{position:relative;height:400vh}
+.wt-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
+.wt-grid{display:grid;grid-template-columns:46% 1fr;gap:var(--space-2xl);align-items:center;width:100%}
+.wt-media{aspect-ratio:800/1066;background:#05080b url('/videos/kralingen-walkthrough-poster.jpg') center/cover no-repeat}
+.wt-media canvas,.wt-media video{display:block;width:100%;height:100%;object-fit:cover}
+.wt-progress{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,0.08);z-index:3}
+.wt-progress i{display:block;height:100%;width:0;background:var(--accent)}
+.wt-beats{display:flex;flex-direction:column;gap:var(--space-xl)}
+.wt-beat{opacity:0.22;transform:translateY(12px);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease)}
+.wt-beat.on{opacity:1;transform:translateY(0)}
+.wt-beat h3{font-family:'Cabinet Grotesk',sans-serif;font-size:22px;font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin-bottom:var(--space-sm);overflow-wrap:break-word;max-width:100%;hyphens:none}
+.wt-beat p{font-size:15px;color:var(--text-muted);line-height:1.65;max-width:44ch}
+.wt-step{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--text-fine);display:block;margin-bottom:var(--space-sm)}
+
 /* ── Marquee ── */
-.marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--surface);padding:16px 0}
-.marquee-track{display:flex;width:max-content;animation:marqueeScroll 32s linear infinite}
-.marquee-seg{display:flex;align-items:center;gap:28px;padding-right:28px;flex-shrink:0}
-.marquee-seg span{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
-.marquee-seg .dot{color:var(--accent)}
-@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* ── Section base ── */
 .sec{padding:var(--space-3xl) 0;border-top:1px solid var(--border)}
@@ -196,17 +206,29 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .sec-sub{font-size:16px;color:var(--text-muted);line-height:1.7;max-width:600px}
 .sec-head.center .sec-sub{margin-left:auto;margin-right:auto}
 
-/* ── Trust bar ── */
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-lg)}
-.trust-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:var(--space-lg);transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
-.trust-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
-.trust-card p{font-size:15px;color:var(--text-secondary);line-height:1.6;font-weight:500}
+/* ── Cost comparison ── */
+.cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cmp{width:100%;min-width:680px;border-collapse:collapse;text-align:left}
+.cmp th,.cmp td{padding:var(--space-md) var(--space-lg);border-bottom:1px solid var(--border);vertical-align:top}
+.cmp thead th{border-bottom:1px solid var(--border);padding-top:0}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+.cmp-row{width:19%;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-fine);font-weight:400;white-space:nowrap}
+.cmp-who{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.01em;color:var(--text-muted)}
+.cmp-what{display:block;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:0;color:var(--text-fine);margin-top:4px}
+.cmp td{font-size:14px;color:var(--text-muted);line-height:1.6}
+.cmp col.mine{background:var(--accent-dim)}
+.cmp .mine-h{color:var(--accent)}
+.cmp .mine-h .cmp-what{color:var(--text-muted)}
+.cmp td.mine-c{color:var(--text-secondary);font-weight:500}
+.cmp-swipe{display:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-fine);margin-bottom:var(--space-md);align-items:center;gap:8px}
+.cmp-swipe svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cmp-note{margin-top:var(--space-lg);font-size:13px;color:var(--text-fine);line-height:1.6;max-width:62ch}
 
 /* ── Before/After transformation ── */
-.ba-layout{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:var(--space-xl);align-items:stretch}
-.ba-player{position:relative;aspect-ratio:9/16;user-select:none;-webkit-user-select:none;cursor:ew-resize;touch-action:pan-y;min-width:0}
+.ba-layout{display:flex;flex-direction:column;gap:var(--space-xl)}
+.ba-player{position:relative;aspect-ratio:16/9;user-select:none;-webkit-user-select:none;cursor:ew-resize;touch-action:pan-y;min-width:0}
 .ba-player video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ba-before{position:absolute;inset:0;background-size:cover;background-position:center;clip-path:inset(0 calc(100% - var(--x,50%)) 0 0);z-index:1;filter:saturate(0.45) contrast(0.92) brightness(0.9)}
+.ba-before{position:absolute;inset:0;background-size:cover;background-position:center;clip-path:inset(0 calc(100% - var(--x,50%)) 0 0);z-index:1}
 .ba-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;margin-left:-1px;background:var(--accent);z-index:3;cursor:ew-resize;touch-action:none}
 .ba-handle:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .ba-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(6,10,14,0.7);border:1.5px solid var(--accent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--accent)}
@@ -214,31 +236,48 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .ba-pill{position:absolute;bottom:14px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;padding:4px 10px;border-radius:4px;background:rgba(6,10,14,0.55);border:1px solid rgba(255,255,255,0.15);color:rgba(240,244,243,0.85);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none}
 .ba-pill.before{left:14px}
 .ba-pill.after{right:14px;color:var(--accent);border-color:rgba(0,212,170,0.35)}
-.ba-strip{display:flex;flex-direction:column;gap:var(--space-md);min-width:0}
-.strip-frame{display:grid;grid-template-columns:16px minmax(0,1fr);flex:1;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-align:left;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
-.strip-frame:hover{border-color:var(--border-hover);transform:translateX(4px)}
+.ba-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--space-md);min-width:0}
+.strip-frame{display:block;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-align:left;min-width:0;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
+.strip-frame:hover{border-color:var(--border-hover);transform:translateY(-3px)}
 .strip-frame:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .strip-frame.active{border-color:var(--accent)}
-.strip-holes{background-color:rgba(0,0,0,0.28);border-right:1px solid var(--border);background-image:radial-gradient(circle,rgba(255,255,255,0.16) 2px,transparent 2.6px);background-size:16px 12px;background-position:center}
+.strip-holes{display:block;height:12px;background-color:rgba(0,0,0,0.28);border-bottom:1px solid var(--border);background-image:radial-gradient(circle,rgba(255,255,255,0.16) 2px,transparent 2.6px);background-size:12px 12px;background-position:center}
 [data-theme="light"] .strip-holes{background-color:rgba(0,0,0,0.05);background-image:radial-gradient(circle,rgba(0,0,0,0.14) 2px,transparent 2.6px)}
-.strip-body{display:flex;align-items:center;gap:var(--space-md);padding:10px 14px 10px 12px;min-width:0;min-height:64px}
-.strip-thumb{width:44px;aspect-ratio:9/16;border-radius:6px;background-size:cover;background-position:center;flex-shrink:0;border:1px solid var(--border)}
-.strip-meta{min-width:0;display:flex;flex-direction:column;gap:2px}
+.strip-body{display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:10px;min-width:0}
+.strip-thumb{width:100%;aspect-ratio:16/9;border-radius:6px;background-size:cover;background-position:center;border:1px solid var(--border)}
+.strip-meta{min-width:0;display:flex;flex-direction:column;gap:3px;padding:0 2px 2px}
 .strip-scene{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--text-fine);display:flex;align-items:center;gap:7px}
 .strip-frame.active .strip-scene{color:var(--accent)}
 .strip-live{width:6px;height:6px;border-radius:50%;background:#ff5c5c;opacity:0;flex-shrink:0}
 .strip-frame.active .strip-live{opacity:1;animation:blink 1.1s ease-in-out infinite}
-.strip-name{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px;color:var(--text);letter-spacing:-0.01em}
+.strip-name{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:14px;color:var(--text);letter-spacing:-0.01em;line-height:1.2}
 
-/* ── Demo videos ── */
-.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl);max-width:640px;margin:0 auto}
-.demo-slot{text-align:center;min-width:0}
-.demo-slot-label{display:block;font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.02em;color:var(--text);margin-bottom:var(--space-md)}
-.demo-video-frame{aspect-ratio:9/16;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
-.demo-video-frame video{width:100%;height:100%;object-fit:cover}
-.demo-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text-fine);padding:var(--space-lg)}
-.demo-placeholder svg{width:32px;height:32px;stroke:var(--text-fine);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.demo-placeholder span{font-size:12px;line-height:1.5}
+/* ── Portfolio: production chain ── */
+.pf-chain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-lg);align-items:start}
+.pf-step{position:relative;min-width:0}
+.pf-step-media{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--surface-2);border:1px solid var(--border)}
+.pf-step-media img,.pf-step-media video{display:block;width:100%;height:100%;object-fit:cover}
+.pf-step:last-child .pf-step-media{border-color:rgba(0,212,170,0.35)}
+.pf-arrow{position:absolute;top:calc(50% - 20px);left:calc(-1 * var(--space-lg) / 2);transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--accent);z-index:2}
+.pf-arrow svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.pf-step-num{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--text-fine);margin:var(--space-md) 0 6px}
+.pf-step:last-child .pf-step-num{color:var(--accent)}
+.pf-step h3{font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin-bottom:6px;overflow-wrap:break-word;max-width:100%;hyphens:none}
+.pf-step p{font-size:14px;color:var(--text-muted);line-height:1.65}
+.pf-sound{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--accent)}
+.pf-sound svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── Portfolio: delivery sheet ── */
+.pf-sheet{margin-top:var(--space-2xl);border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden}
+.pf-sheet-head{display:flex;align-items:center;gap:10px;padding:var(--space-md) var(--space-lg);border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-fine)}
+.pf-sheet-head i{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.pf-sheet-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.pf-cell{padding:var(--space-lg);border-right:1px solid var(--border);border-bottom:1px solid var(--border);min-width:0}
+.pf-cell:nth-child(3n){border-right:0}
+.pf-cell:nth-last-child(-n+3){border-bottom:0}
+.pf-cell dt{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-fine);margin-bottom:8px}
+.pf-cell dd{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.2rem,2vw,1.5rem);font-weight:800;letter-spacing:-0.02em;color:var(--text);line-height:1.1}
+.pf-cell dd span{display:block;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;letter-spacing:0;color:var(--text-muted);margin-top:6px;line-height:1.5}
 
 /* ── How it works ── */
 .proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
@@ -307,30 +346,41 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 /* ── Responsive ── */
 @media(max-width:1024px){
   .container,.nav-inner{padding:0 24px}
-  .ba-layout{grid-template-columns:minmax(0,1fr)}
-  .ba-player{width:100%;max-width:420px;margin:0 auto}
-  .ba-strip{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
-  .strip-frame{flex:0 0 auto;min-width:210px}
+  .ba-strip{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:4px}
+  .strip-frame{flex:0 0 176px;scroll-snap-align:start}
   .strip-frame:hover{transform:none}
   .footer-inner{grid-template-columns:1fr 1fr}
   .proc-grid{grid-template-columns:1fr}
   .pricing-grid{grid-template-columns:1fr}
   .pc.feat{transform:none}
-  .trust-grid{grid-template-columns:repeat(2,1fr)}
   .hero-layout{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
   .hero-h1,.hero-sub{max-width:100%}
+  /* Frame scrub is desktop-only — below this the take plays as a normal video */
+  .wt-track{height:auto}
+  .wt-stage{position:static;height:auto;display:block}
+  .wt-grid{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
+  .wt-beats{gap:var(--space-lg)}
+  .wt-media{width:100%;max-width:420px;margin:0 auto}
+  .wt-beat{opacity:1;transform:none}
+  .wt-progress{display:none}
 }
 @media(max-width:768px){
+  .cmp-swipe{display:flex}
+  .cmp{min-width:600px}
+  .cmp th,.cmp td{padding:var(--space-md)}
   .container,.nav-inner{padding:0 20px}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
   #hero{padding:120px 0 var(--space-xl)}
   .sec{padding:64px 0}
-  .trust-grid{grid-template-columns:1fr}
-  .demo-grid{grid-template-columns:1fr;max-width:280px}
+  .pf-chain{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
+  .pf-arrow{display:none}
+  .pf-sheet-grid{grid-template-columns:minmax(0,1fr)}
+  .pf-cell{border-right:0}
+  .pf-cell:nth-last-child(-n+3){border-bottom:1px solid var(--border)}
+  .pf-cell:last-child{border-bottom:0}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;justify-content:center}
-  .marquee-seg span{font-size:11px}
   .footer-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
   .footer-col a{display:flex;align-items:center;min-height:44px}
@@ -464,34 +514,119 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
-<!-- ── MARQUEE ── -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <div class="marquee-seg">
-      <span>Cinematic Camera Moves</span><span class="dot">•</span>
-      <span>Optional AI Presenter</span><span class="dot">•</span>
-      <span>Vertical 9:16 Delivery</span><span class="dot">•</span>
-      <span>48-Hour Turnaround</span><span class="dot">•</span>
-      <span>Unlimited Revisions</span><span class="dot">•</span>
+<!-- ── COST COMPARISON ── -->
+<section class="sec" id="compare" aria-label="How we compare">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">Where We Sit</span>
+      <h2 class="sec-h2">Three ways to get a listing video</h2>
+      <p class="sec-sub">A film crew does the work but costs a day and a booking. A self-serve AI tool is cheap but hands you the job. We sit in between — studio output, none of the work on your side.</p>
     </div>
-    <div class="marquee-seg">
-      <span>Cinematic Camera Moves</span><span class="dot">•</span>
-      <span>Optional AI Presenter</span><span class="dot">•</span>
-      <span>Vertical 9:16 Delivery</span><span class="dot">•</span>
-      <span>48-Hour Turnaround</span><span class="dot">•</span>
-      <span>Unlimited Revisions</span><span class="dot">•</span>
+    <p class="cmp-swipe reveal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Swipe to compare</p>
+    <div class="cmp-scroll reveal">
+      <table class="cmp">
+        <colgroup><col><col class="mine"><col><col></colgroup>
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr-only">Comparison</span></th>
+            <th scope="col" class="cmp-who mine-h">Coremagna<span class="cmp-what">Done for you</span></th>
+            <th scope="col" class="cmp-who">Film crew<span class="cmp-what">Videographer on site</span></th>
+            <th scope="col" class="cmp-who">Self-serve AI tool<span class="cmp-what">You run the software</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="cmp-row">Per listing</th>
+            <td class="mine-c">$149, or $229 with an AI presenter</td>
+            <td>£250 to £500 for a half-day shoot and edit</td>
+            <td>$8 to $16 a video on a monthly plan</td>
+          </tr>
+          <tr>
+            <th scope="row" class="cmp-row">Who works</th>
+            <td class="mine-c">You send photos. That is the whole job.</td>
+            <td>You book the slot, arrange access, meet them there</td>
+            <td>You upload, prompt, re-render, crop, caption</td>
+          </tr>
+          <tr>
+            <th scope="row" class="cmp-row">On site</th>
+            <td class="mine-c">Nobody visits</td>
+            <td>Half a day with keys, and a vendor to keep happy</td>
+            <td>Nobody visits</td>
+          </tr>
+          <tr>
+            <th scope="row" class="cmp-row">Timing</th>
+            <td class="mine-c">48 hours from the photos landing</td>
+            <td>Days to find a slot, then days for the edit</td>
+            <td>Minutes, if the render comes out right</td>
+          </tr>
+          <tr>
+            <th scope="row" class="cmp-row">Changes</th>
+            <td class="mine-c">Unlimited, until you sign it off</td>
+            <td>Extra rounds are billed, a reshoot means going back</td>
+            <td>Every retry burns another credit</td>
+          </tr>
+          <tr>
+            <th scope="row" class="cmp-row">You receive</th>
+            <td class="mine-c">Portal, Reels and TikTok cuts from one render</td>
+            <td>One master. Other ratios cost extra.</td>
+            <td>One render. You crop the rest yourself.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp-note reveal">Crew figures are UK published rates for a one-property shoot with editing. Tool figures are the per-video cost on the mid plans of the main photo-to-video platforms.</p>
+  </div>
+</section>
+
+<!-- ── SCROLL WALKTHROUGH ── -->
+<section class="sec" id="walkthrough" aria-label="Scroll walkthrough">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">Scroll To Walk Through</span>
+      <h2 class="sec-h2">Keep scrolling and the camera walks the room</h2>
+      <p class="sec-sub">Every frame below was built from a single still of a Rotterdam townhouse. Nobody went to the property and nothing was filmed there. Scroll down and you are driving the camera yourself — this is the product, running in your browser. Sample project, your listing gets the same treatment.</p>
     </div>
   </div>
-</div>
-
-<!-- ── TRUST BAR ── -->
-<section class="sec" aria-label="Why video tours">
-  <div class="container">
-    <div class="trust-grid">
-      <div class="trust-card reveal"><p>Listings with video get more inquiries — be the agent who has them</p></div>
-      <div class="trust-card reveal"><p>A fraction of the cost of a film crew, none of the scheduling</p></div>
-      <div class="trust-card reveal"><p>Unlimited revisions until you approve — zero risk</p></div>
-      <div class="trust-card reveal"><p>Your competitors post photos. You post cinema.</p></div>
+  <div class="wt-track" id="wtTrack">
+    <div class="wt-stage">
+      <div class="container wt-grid">
+        <div class="wt-media viewfinder">
+          <canvas id="wtCanvas" width="800" height="1066" role="img" aria-label="Walkthrough of a Rotterdam townhouse living room at dusk, generated from one photo"></canvas>
+          <video id="wtVideo" hidden muted loop playsinline preload="none" poster="/videos/kralingen-walkthrough-poster.jpg" aria-label="Walkthrough of a Rotterdam townhouse living room at dusk, generated from one photo">
+            <source src="/videos/kralingen-walkthrough.webm" type="video/webm">
+            <source src="/videos/kralingen-walkthrough.mp4" type="video/mp4">
+          </video>
+          <div class="vf-corner tl" aria-hidden="true"></div>
+          <div class="vf-corner tr" aria-hidden="true"></div>
+          <div class="vf-corner bl" aria-hidden="true"></div>
+          <div class="vf-corner br" aria-hidden="true"></div>
+          <div class="vf-hud" aria-hidden="true"><span class="vf-tc" id="wtTimecode">00:00:00</span></div>
+          <span class="vf-tag" aria-hidden="true">3:4</span>
+          <div class="wt-progress" aria-hidden="true"><i id="wtBar"></i></div>
+        </div>
+        <div class="wt-beats">
+          <div class="wt-beat" data-at="0">
+            <span class="wt-step">Frame 01</span>
+            <h3>This started as one photo</h3>
+            <p>The kind your agents already shoot on a viewing. No second visit, no crew, no drone licence.</p>
+          </div>
+          <div class="wt-beat" data-at="0.34">
+            <span class="wt-step">Frame 25</span>
+            <h3>Back with you in 48 hours</h3>
+            <p>Send the stills the day you list. The walkthrough lands before the first open house.</p>
+          </div>
+          <div class="wt-beat" data-at="0.66">
+            <span class="wt-step">Frame 48</span>
+            <h3>Cut for every portal you post on</h3>
+            <p>Funda, Rightmove and Reels each get their own aspect ratio from the same render.</p>
+          </div>
+          <div class="wt-beat" data-at="0.9">
+            <span class="wt-step">Frame 65</span>
+            <h3>Costs less per listing than a photographer's day</h3>
+            <p>Priced per property, not per hour on site.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -501,83 +636,83 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   <div class="container">
     <div class="sec-head reveal">
       <span class="section-eyebrow">Before / After</span>
-      <h2 class="sec-h2">Drag the line and watch a photo become a film</h2>
-      <p class="sec-sub">Every scene below started as one ordinary listing photo of a Cotswolds stone cottage. Pick a room, then pull the handle to compare the still with the finished video. Sample project — your listing gets the same treatment.</p>
+      <h2 class="sec-h2">Drag the line and watch a photo start moving</h2>
+      <p class="sec-sub">Six shots from a commercial letting in Rotterdam we delivered this month. Each one began as a single still from the agent's existing photo set. Pick a shot, then pull the handle to put the photo next to the finished frame.</p>
     </div>
     <div class="ba-layout">
       <div class="ba-player viewfinder reveal" id="baPlayer" style="--x:50%">
-        <video muted loop playsinline preload="metadata" aria-label="AI-generated walkthrough video sample"></video>
+        <video muted loop playsinline preload="metadata" aria-label="Video generated from a single listing photograph"></video>
         <div class="ba-before" aria-hidden="true"></div>
         <div class="ba-handle" role="slider" tabindex="0" aria-label="Photo and video comparison position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
           <span class="ba-grip" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg>
           </span>
         </div>
-        <span class="ba-pill before" aria-hidden="true">STILL PHOTO</span>
-        <span class="ba-pill after" aria-hidden="true">AI VIDEO</span>
+        <span class="ba-pill before" aria-hidden="true">PHOTO / HELD</span>
+        <span class="ba-pill after" aria-hidden="true">VIDEO / RUNNING</span>
         <div class="vf-corner tl" aria-hidden="true"></div>
         <div class="vf-corner tr" aria-hidden="true"></div>
         <div class="vf-corner bl" aria-hidden="true"></div>
         <div class="vf-corner br" aria-hidden="true"></div>
       </div>
-      <div class="ba-strip reveal" role="group" aria-label="Choose a scene to compare">
-        <button class="strip-frame" type="button" data-video="/videos/ba-exterior.mp4" data-photo="/videos/ba-exterior-before.jpg" aria-pressed="false">
+      <div class="ba-strip reveal" role="group" aria-label="Choose a shot to compare">
+        <button class="strip-frame" type="button" data-video="/videos/ba-approach.mp4" data-photo="/videos/ba-approach-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-exterior-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-approach-before.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
-              <span class="strip-scene">SCENE 01 <span class="strip-live" aria-hidden="true"></span></span>
-              <span class="strip-name">Front Exterior</span>
+              <span class="strip-scene">SHOT 01 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Street Approach</span>
             </span>
           </span>
         </button>
-        <button class="strip-frame" type="button" data-video="/videos/ba-living.mp4" data-photo="/videos/ba-living-before.jpg" aria-pressed="false">
+        <button class="strip-frame" type="button" data-video="/videos/ba-racking.mp4" data-photo="/videos/ba-racking-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-living-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-racking-before.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
-              <span class="strip-scene">SCENE 02 <span class="strip-live" aria-hidden="true"></span></span>
-              <span class="strip-name">Living Room</span>
+              <span class="strip-scene">SHOT 02 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Dark Racking</span>
             </span>
           </span>
         </button>
-        <button class="strip-frame" type="button" data-video="/videos/ba-fireplace.mp4" data-photo="/videos/ba-fireplace-before.jpg" aria-pressed="false">
+        <button class="strip-frame" type="button" data-video="/videos/ba-ground.mp4" data-photo="/videos/ba-ground-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-fireplace-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-ground-before.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
-              <span class="strip-scene">SCENE 03 <span class="strip-live" aria-hidden="true"></span></span>
-              <span class="strip-name">Log Burner</span>
+              <span class="strip-scene">SHOT 03 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Ground Floor</span>
             </span>
           </span>
         </button>
-        <button class="strip-frame" type="button" data-video="/videos/ba-kitchen.mp4" data-photo="/videos/ba-kitchen-before.jpg" aria-pressed="false">
+        <button class="strip-frame" type="button" data-video="/videos/ba-corridor.mp4" data-photo="/videos/ba-corridor-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-kitchen-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-corridor-before.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
-              <span class="strip-scene">SCENE 04 <span class="strip-live" aria-hidden="true"></span></span>
-              <span class="strip-name">Kitchen</span>
+              <span class="strip-scene">SHOT 04 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Shelving Run</span>
             </span>
           </span>
         </button>
-        <button class="strip-frame" type="button" data-video="/videos/ba-bedroom.mp4" data-photo="/videos/ba-bedroom-before.jpg" aria-pressed="false">
+        <button class="strip-frame" type="button" data-video="/videos/ba-pullback.mp4" data-photo="/videos/ba-pullback-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-bedroom-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-pullback-before.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
-              <span class="strip-scene">SCENE 05 <span class="strip-live" aria-hidden="true"></span></span>
-              <span class="strip-name">Bedroom</span>
+              <span class="strip-scene">SHOT 05 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Pull Back</span>
             </span>
           </span>
         </button>
-        <button class="strip-frame" type="button" data-video="/videos/ba-dining.mp4" data-photo="/videos/ba-dining-before.jpg" aria-pressed="false">
+        <button class="strip-frame" type="button" data-video="/videos/ba-landing.mp4" data-photo="/videos/ba-landing-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-dining-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-landing-before.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
-              <span class="strip-scene">SCENE 06 <span class="strip-live" aria-hidden="true"></span></span>
-              <span class="strip-name">Dining Room</span>
+              <span class="strip-scene">SHOT 06 <span class="strip-live" aria-hidden="true"></span></span>
+              <span class="strip-name">Stair Landing</span>
             </span>
           </span>
         </button>
@@ -586,37 +721,77 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
-<!-- ── DEMO ── -->
-<section class="sec" id="demo" aria-label="See it in action">
+<!-- ── PORTFOLIO ── -->
+<section class="sec" id="work" aria-label="Inside the work">
   <div class="container">
-    <div class="sec-head center reveal">
-      <span class="section-eyebrow">See It In Action</span>
-      <h2 class="sec-h2">Two ways to bring a listing to life</h2>
-      <p class="sec-sub">Both delivered in vertical 9:16 — built for Instagram, TikTok and portal listings.</p>
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">Inside The Work</span>
+      <h2 class="sec-h2">How a presenter ends up in a room nobody filmed in</h2>
+      <p class="sec-sub">This is the retail unit from the comparison above, on the day we built its tour. Three files, in the order they were made. No camera was ever in the room and the presenter has never been to Rotterdam.</p>
     </div>
-    <div class="demo-grid">
-      <div class="demo-slot reveal">
-        <span class="demo-slot-label">Classic Walkthrough</span>
-        <div class="demo-video-frame viewfinder">
-          <video muted loop playsinline controls preload="metadata" poster="/videos/walkthrough-cotswolds-poster.jpg" aria-label="Classic walkthrough example video — Cotswolds cottage"><source src="/videos/walkthrough-cotswolds.mp4" type="video/mp4"></video>
+    <div class="pf-chain">
+      <div class="pf-step reveal">
+        <div class="pf-step-media">
+          <img src="/videos/chain-01-plate.jpg" alt="Empty white retail interior with dark shelving, photographed for the listing" width="768" height="432" loading="lazy" decoding="async">
+        </div>
+        <span class="pf-step-num">File 01 — plate</span>
+        <h3>The room as the agent photographed it</h3>
+        <p>One frame out of the listing set. Nothing staged for us, nothing reshot.</p>
+      </div>
+      <div class="pf-step reveal">
+        <span class="pf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        <div class="pf-step-media">
+          <img src="/videos/chain-02-frame.jpg" alt="The same interior with a presenter standing in the middle of the floor" width="768" height="432" loading="lazy" decoding="async">
+        </div>
+        <span class="pf-step-num">File 02 — start frame</span>
+        <h3>The presenter placed into that photo</h3>
+        <p>Same floor, same light, same shadows. She is built to match the room rather than dropped on top of it.</p>
+      </div>
+      <div class="pf-step reveal">
+        <span class="pf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        <div class="pf-step-media viewfinder">
+          <video controls muted loop playsinline preload="none" poster="/videos/chain-03-motion-poster.jpg" aria-label="The presenter walking and speaking inside the retail unit, generated from the still above">
+            <source src="/videos/chain-03-motion.mp4" type="video/mp4">
+          </video>
           <div class="vf-corner tl" aria-hidden="true"></div>
           <div class="vf-corner tr" aria-hidden="true"></div>
           <div class="vf-corner bl" aria-hidden="true"></div>
           <div class="vf-corner br" aria-hidden="true"></div>
-          <span class="vf-tag" aria-hidden="true">9:16</span>
         </div>
+        <span class="pf-step-num">File 03 — delivered clip</span>
+        <h3>That same frame walking and talking</h3>
+        <p>She moves through the space and describes it. This clip went into the client's tour untouched.</p>
+        <span class="pf-sound"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>Unmute for the voice</span>
       </div>
-      <div class="demo-slot reveal">
-        <span class="demo-slot-label">With AI Presenter</span>
-        <div class="demo-video-frame viewfinder">
-          <video loop playsinline controls preload="metadata" poster="/videos/ai-presenter-demo-poster.jpg" aria-label="AI presenter example video"><source src="/videos/ai-presenter-demo.mp4" type="video/mp4"></video>
-          <div class="vf-corner tl" aria-hidden="true"></div>
-          <div class="vf-corner tr" aria-hidden="true"></div>
-          <div class="vf-corner bl" aria-hidden="true"></div>
-          <div class="vf-corner br" aria-hidden="true"></div>
-          <span class="vf-tag" aria-hidden="true">9:16</span>
+    </div>
+    <div class="pf-sheet reveal">
+      <p class="pf-sheet-head"><i aria-hidden="true"></i>Delivery sheet — commercial letting, Rotterdam</p>
+      <dl class="pf-sheet-grid">
+        <div class="pf-cell">
+          <dt>Runtime</dt>
+          <dd>82 sec<span>Full tour, cut for the agent's own channels</span></dd>
         </div>
-      </div>
+        <div class="pf-cell">
+          <dt>Shots</dt>
+          <dd>17<span>14 of the space, 3 with the presenter</span></dd>
+        </div>
+        <div class="pf-cell">
+          <dt>Source material</dt>
+          <dd>Photos only<span>The agent's existing listing set, nothing else</span></dd>
+        </div>
+        <div class="pf-cell">
+          <dt>Site visits</dt>
+          <dd>Zero<span>Nobody from our side went to the property</span></dd>
+        </div>
+        <div class="pf-cell">
+          <dt>Turnaround</dt>
+          <dd>48 hours<span>From the photo set landing to the first cut</span></dd>
+        </div>
+        <div class="pf-cell">
+          <dt>Delivered as</dt>
+          <dd>3 ratios<span>Portal, Reels and TikTok, from one render</span></dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>
@@ -819,6 +994,73 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 (function(){
   const nav=document.getElementById('mainNav');
   setTimeout(()=>{nav.classList.remove('pre-entrance');nav.classList.add('entered');},0);
+})();
+
+/* Scroll walkthrough — scroll position drives a WebP frame sequence on canvas */
+(function(){
+  const track=document.getElementById('wtTrack');
+  if(!track) return;
+  const canvas=document.getElementById('wtCanvas');
+  const video=document.getElementById('wtVideo');
+  const bar=document.getElementById('wtBar');
+  const tc=document.getElementById('wtTimecode');
+  const beats=Array.prototype.slice.call(track.querySelectorAll('.wt-beat'));
+  const TOTAL=72;
+  const DURATION=12.04;
+
+  /* The 2.8MB frame set is desktop-only. Small screens and reduced-motion get
+     the same take as an ordinary video the visitor starts themselves. */
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||window.matchMedia('(max-width: 1024px)').matches){
+    canvas.remove();
+    video.hidden=false;
+    video.setAttribute('controls','');
+    video.setAttribute('preload','metadata');
+    beats.forEach(b=>b.classList.add('on'));
+    return;
+  }
+  video.remove();
+
+  const ctx=canvas.getContext('2d');
+  const frames=new Array(TOTAL);
+  let idxShown=-1,queued=false,started=false;
+
+  function draw(i){
+    const img=frames[i];
+    if(img&&img.complete&&img.naturalWidth) ctx.drawImage(img,0,0,canvas.width,canvas.height);
+  }
+  function loadBatch(start){
+    for(let i=start;i<Math.min(start+12,TOTAL);i++){
+      const img=new Image();
+      img.decoding='async';
+      img.onload=function(){if(i===idxShown) draw(i);};
+      img.src='/videos/kralingen-frames/f_'+String(i+1).padStart(3,'0')+'.webp';
+      frames[i]=img;
+    }
+    if(start+12<TOTAL) setTimeout(function(){loadBatch(start+12);},16);
+  }
+
+  function update(){
+    const vh=window.innerHeight;
+    const r=track.getBoundingClientRect();
+    if(!started&&r.top<vh*1.5&&r.bottom>0){started=true;loadBatch(0);}
+    if(r.bottom<0||r.top>vh) return;
+    let p=-r.top/((track.offsetHeight-vh)||1);
+    p=p<0?0:p>1?1:p;
+    const idx=Math.min(TOTAL-1,Math.round(p*(TOTAL-1)));
+    if(idx!==idxShown){idxShown=idx;draw(idx);}
+    bar.style.width=(p*100).toFixed(1)+'%';
+    const t=p*DURATION;
+    tc.textContent='00:'+String(Math.floor(t)).padStart(2,'0')+':'+String(Math.floor((t%1)*24)).padStart(2,'0');
+    beats.forEach(b=>b.classList.toggle('on',p>=parseFloat(b.dataset.at)));
+  }
+  function onScroll(){
+    if(queued) return;
+    queued=true;
+    requestAnimationFrame(function(){queued=false;update();});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  update();
 })();
 
 /* Scroll reveals */
