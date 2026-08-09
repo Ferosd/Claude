@@ -232,6 +232,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .cmp-swipe{display:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-fine);margin-bottom:var(--space-md);align-items:center;gap:8px}
 .cmp-swipe svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .cmp-note{margin-top:var(--space-lg);font-size:13px;color:var(--text-fine);line-height:1.6;max-width:62ch}
+.cmp-verdict{margin-top:var(--space-xl);padding:var(--space-lg) var(--space-xl);border-left:2px solid var(--accent);background:var(--surface);max-width:70ch}
+.cmp-verdict p{font-size:16px;line-height:1.65;color:var(--text-secondary)}
+.cmp-verdict p + p{margin-top:var(--space-md)}
+.cmp-verdict strong{color:var(--text);font-weight:600}
 
 /* ── Before/After transformation ── */
 .ba-layout{display:flex;flex-direction:column;gap:var(--space-xl)}
@@ -784,7 +788,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <div class="sec-head reveal">
       <span class="section-eyebrow">Where We Sit</span>
       <h2 class="sec-h2">Three ways to get a listing video</h2>
-      <p class="sec-sub">A film crew does the work but costs a day and a booking. A self-serve AI tool is cheap but hands you the job. We sit in between — studio output, none of the work on your side.</p>
+      <p class="sec-sub">Two of them look cheaper than they are. The crew bills three times as much and takes half your day. The self-serve tool bills almost nothing and takes an afternoon of your time on every listing. Read the row that matters most — what it really costs.</p>
     </div>
     <p class="cmp-swipe reveal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Swipe to compare</p>
     <div class="cmp-scroll reveal">
@@ -804,6 +808,12 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
             <td class="mine-c">$149, or $229 with an AI presenter</td>
             <td>£250 to £500 for a half-day shoot and edit</td>
             <td>$8 to $16 a video on a monthly plan</td>
+          </tr>
+          <tr>
+            <th scope="row" class="cmp-row">What it really costs</th>
+            <td class="mine-c">The fee, and ten minutes to send photos and sign off</td>
+            <td>The fee, plus half a day of yours at the property</td>
+            <td>The credit, plus two to three hours of yours on every single listing</td>
           </tr>
           <tr>
             <th scope="row" class="cmp-row">Who works</th>
@@ -835,8 +845,25 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
             <td>One master. Other ratios cost extra.</td>
             <td>One render. You crop the rest yourself.</td>
           </tr>
+          <tr>
+            <th scope="row" class="cmp-row">If it comes out wrong</th>
+            <td class="mine-c">We redo it. It is our problem, not yours.</td>
+            <td>A reshoot means booking the property and the crew again</td>
+            <td>You are the one who spots it, re-prompts it and pays for the retry</td>
+          </tr>
+          <tr>
+            <th scope="row" class="cmp-row">Across a whole stock list</th>
+            <td class="mine-c">Every listing lands in the same house style</td>
+            <td>Depends who was free that week and what they charged</td>
+            <td>Depends who in the office prompted it that day</td>
+          </tr>
         </tbody>
       </table>
+    </div>
+    <div class="cmp-verdict reveal">
+      <p>The tool looks like the cheap column until you price your own afternoon. <strong>At $12 a video and three hours of your time, a listing costs you more than we charge</strong> — and you still have to do it again next week, and the week after.</p>
+      <p>The crew is the opposite trade. You get a proper film, and it costs you a booking, a set of keys, half a day and roughly three times the money. Fine for the £2m instruction. Not something you can run across forty listings.</p>
+      <p><strong>We are the only column where a listing goes out with a video and nothing lands on your desk.</strong> Send the photos you already took. Sign it off two days later.</p>
     </div>
     <p class="cmp-note reveal">Crew figures are UK published rates for a one-property shoot with editing. Tool figures are the per-video cost on the mid plans of the main photo-to-video platforms.</p>
   </div>
