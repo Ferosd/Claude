@@ -5,12 +5,12 @@
 <script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Property Video Tours from Listing Photos | Coremagna</title>
-<meta name="description" content="Done-for-you property video tours built from the listing photos you already have. $149 a listing, 48-hour turnaround, no site visit and no film crew.">
+<meta name="description" content="Done-for-you property video tours built from the listing photos you already have. 48-hour turnaround, no site visit and no film crew.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Coremagna">
 <link rel="canonical" href="https://coremagna.com/real-estate-videos">
 <meta property="og:title" content="AI Property Video Tours from Listing Photos | Coremagna">
-<meta property="og:description" content="No film crew, no scheduling, no site visit. Your existing listing photos become a cinematic property tour, delivered in 48 hours for $149 a listing.">
+<meta property="og:description" content="No film crew, no scheduling, no site visit. Your existing listing photos become a cinematic property tour, delivered in 48 hours.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://coremagna.com/real-estate-videos">
 <meta property="og:image" content="https://coremagna.com/images/og.jpg">
@@ -25,7 +25,7 @@
 <meta name="twitter:image" content="https://coremagna.com/images/og.jpg">
 <meta name="twitter:image:alt" content="A property interior with the still photograph on one side and the generated video on the other">
 <meta name="twitter:title" content="AI Property Video Tours from Listing Photos | Coremagna">
-<meta name="twitter:description" content="No film crew, no scheduling, no site visit. Your existing listing photos become a cinematic property tour, delivered in 48 hours for $149 a listing.">
+<meta name="twitter:description" content="No film crew, no scheduling, no site visit. Your existing listing photos become a cinematic property tour, delivered in 48 hours.">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
 <script>
@@ -144,15 +144,31 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .pre-entrance{opacity:0;transform:translateY(-10px)}
 #mainNav.entered{opacity:1;transform:translateY(0);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease),background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
 
-/* ── Hero ── */
-#hero{padding:140px 0 var(--space-2xl);display:flex;align-items:center;position:relative;overflow:hidden;
-  background-image:radial-gradient(ellipse at 8% 10%, rgba(0,212,170,0.09) 0%, transparent 50%),radial-gradient(ellipse at 95% 90%, rgba(0,180,150,0.05) 0%, transparent 45%)}
-.hero-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:var(--space-2xl);align-items:center}
-.hero-text,.hero-video-wrap{min-width:0}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(0,212,170,0.2);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:var(--space-lg)}
-.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+/* ── Hero (full-bleed banner) ──
+   The banner keeps its cinema palette in both themes: text sits on footage, so
+   the ink stays light and the scrim stays dark regardless of --bg. The last
+   stop of the vertical scrim fades to var(--bg) so the band still meets the
+   page cleanly in light mode. */
+#hero{
+  --hero-ink:#F0F4F3;
+  --hero-ink-dim:#c3d0da;
+  --hero-shade:4,7,10;
+  position:relative;overflow:hidden;isolation:isolate;
+  min-height:clamp(560px,86vh,840px);
+  padding:150px 0 var(--space-2xl);
+  display:flex;align-items:flex-end}
+#hero > .container{width:100%}
+.hero-bg{position:absolute;inset:0;z-index:-2;background:#04070a}
+.hero-bg video{width:100%;height:100%;object-fit:cover;display:block}
+.hero-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(to right, rgba(var(--hero-shade),0.93) 0%, rgba(var(--hero-shade),0.84) 34%, rgba(var(--hero-shade),0.42) 66%, rgba(var(--hero-shade),0.2) 100%),
+    linear-gradient(to bottom, rgba(var(--hero-shade),0.82) 0%, rgba(var(--hero-shade),0.15) 26%, rgba(var(--hero-shade),0.35) 62%, rgba(var(--hero-shade),0.9) 88%, var(--bg) 100%)}
+.hero-text{min-width:0;max-width:660px;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,170,0.14);border:1px solid rgba(0,212,170,0.3);border-radius:20px;padding:6px 14px;font-size:11px;color:#25e9c1;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;letter-spacing:0.06em;margin-bottom:var(--space-lg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:#25e9c1;animation:blink 2s ease-in-out infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.hero-h1{font-size:clamp(2.4rem,4.6vw,3.4rem);font-weight:800;color:var(--text);line-height:1.06;letter-spacing:-0.03em;max-width:600px;margin-bottom:var(--space-lg)}
+.hero-h1{font-size:clamp(2.4rem,4.8vw,3.5rem);font-weight:800;color:var(--hero-ink);line-height:1.05;letter-spacing:-0.03em;max-width:620px;margin-bottom:var(--space-lg);overflow-wrap:break-word;hyphens:none;text-shadow:0 2px 24px rgba(0,0,0,0.45)}
 .js .hero-h1.reveal{opacity:1;transform:none;transition:none}
 .hero-h1 .line{display:block;overflow:hidden}
 .hero-h1 .line span{display:block;transform:translateY(110%);transition:transform 0.9s var(--ease)}
@@ -160,9 +176,16 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .hero-h1 .line:nth-child(1) span{transition-delay:0.05s}
 .hero-h1 .line:nth-child(2) span{transition-delay:0.16s}
 .hero-h1 .line:nth-child(3) span{transition-delay:0.27s}
-.hero-h1 .accent{color:var(--accent)}
-.hero-sub{font-size:17px;color:var(--text-muted);line-height:1.72;font-weight:300;max-width:480px;margin-bottom:var(--space-xl)}
-.hero-actions{display:flex;gap:var(--space-md);flex-wrap:wrap}
+.hero-h1 .accent{color:#25e9c1}
+.hero-sub{font-size:17px;color:var(--hero-ink-dim);line-height:1.72;font-weight:300;max-width:520px;margin-bottom:var(--space-xl);text-shadow:0 1px 12px rgba(0,0,0,0.5)}
+.hero-actions{display:flex;gap:var(--space-md);flex-wrap:wrap;margin-bottom:var(--space-xl)}
+.hero-actions .btn-ghost{border-color:rgba(255,255,255,0.28);color:var(--hero-ink);background:rgba(6,10,14,0.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hero-actions .btn-ghost:hover{border-color:#25e9c1;color:#25e9c1;background:rgba(0,212,170,0.14)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:var(--space-lg) var(--space-xl);padding-top:var(--space-lg);border-top:1px solid rgba(255,255,255,0.14);max-width:560px}
+.hero-meta div{min-width:0}
+.hero-meta dt{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,244,243,0.5);margin-bottom:5px}
+.hero-meta dd{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;color:var(--hero-ink)}
+.hero-credit{position:absolute;right:32px;bottom:24px;z-index:1;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:rgba(240,244,243,0.55);background:rgba(6,10,14,0.45);border:1px solid rgba(255,255,255,0.14);border-radius:4px;padding:4px 9px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 
 /* ── Viewfinder (signature motif) ── */
 .viewfinder{position:relative;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--border);box-shadow:0 30px 70px -24px rgba(0,0,0,0.55)}
@@ -185,7 +208,36 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .vf-mute .vf-mute-on{display:none}
 .vf-mute[aria-pressed="true"] .vf-mute-off{display:none}
 .vf-mute[aria-pressed="true"] .vf-mute-on{display:block}
-.hero-video-wrap{aspect-ratio:16/9}
+
+/* ── Showreel collage ── */
+#showreel{border-top:0}
+.sr-wrap{columns:3;column-gap:22px}
+.sr-card{break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+  display:block;width:100%;margin:0 0 22px;position:relative;
+  border-radius:12px;overflow:hidden;background:var(--surface-2);border:1px solid var(--border);
+  box-shadow:0 22px 48px -22px rgba(0,0,0,0.6);
+  cursor:pointer;text-align:left;
+  transition:transform 0.5s var(--ease),border-color 0.3s var(--ease),box-shadow 0.5s var(--ease)}
+.sr-card:nth-child(5n+1){transform:rotate(-2.2deg)}
+.sr-card:nth-child(5n+2){transform:rotate(1.4deg)}
+.sr-card:nth-child(5n+3){transform:rotate(-1deg)}
+.sr-card:nth-child(5n+4){transform:rotate(2deg)}
+.sr-card:nth-child(5n+5){transform:rotate(-1.6deg)}
+.sr-card:nth-child(3n+2){margin-top:32px}
+.sr-card:hover,.sr-card:focus-visible{transform:rotate(0deg) translateY(-6px);border-color:var(--border-hover);box-shadow:0 32px 64px -20px rgba(0,0,0,0.7)}
+.sr-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sr-card video{display:block;width:100%;height:auto}
+.sr-veil{position:absolute;left:0;right:0;bottom:0;padding:38px 14px 12px;pointer-events:none;
+  background:linear-gradient(to top, rgba(4,7,10,0.9) 0%, rgba(4,7,10,0.55) 45%, transparent 100%)}
+.sr-name{display:block;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:800;letter-spacing:-0.01em;color:#F0F4F3}
+.sr-spec{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:rgba(240,244,243,0.62);margin-top:3px}
+.sr-play{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;
+  background:rgba(6,10,14,0.55);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;color:#F0F4F3;pointer-events:none;
+  transition:opacity 0.3s var(--ease)}
+.sr-play svg{width:13px;height:13px;margin-left:2px}
+.sr-card.playing .sr-play{opacity:0}
+.sr-note{margin-top:var(--space-lg);font-size:13px;color:var(--text-fine);line-height:1.7;max-width:640px}
 
 /* ── Scroll walkthrough ── */
 .wt-track{position:relative;height:400vh}
@@ -301,25 +353,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .proc-card h3{font-size:18px;font-weight:800;margin-bottom:var(--space-sm);color:var(--text)}
 .proc-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
 
-/* ── Pricing ── */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);align-items:start}
-.pc{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:var(--space-xl) var(--space-lg);position:relative;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease)}
-.pc:hover{border-color:var(--border-hover)}
-.pc.feat{background:linear-gradient(180deg,rgba(0,212,170,0.08),var(--surface));border-color:var(--accent);box-shadow:0 20px 60px -20px rgba(0,212,170,0.18);transform:translateY(-10px)}
-.pc.feat:hover{transform:translateY(-12px)}
-.pp-pill{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#060a0e;padding:6px 16px;border-radius:999px;font-size:12px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.p-tier{display:block;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)}
-.p-title{font-size:22px;font-weight:800;margin-bottom:var(--space-md);color:var(--text)}
-.p-price{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,3.5vw,2.5rem);font-weight:800;line-height:1;color:var(--text)}
-.p-price span{font-size:1rem;font-weight:400;color:var(--text-muted)}
-.p-sub{font-size:13px;color:var(--text-muted);margin-top:6px;margin-bottom:var(--space-lg)}
-.p-div{height:1px;background:var(--border);margin:var(--space-md) 0}
-.p-items{display:flex;flex-direction:column;gap:var(--space-sm);margin-bottom:var(--space-lg)}
-.p-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-secondary);line-height:1.5}
-.p-item svg{flex-shrink:0;margin-top:2px;stroke:var(--accent);fill:none;stroke-width:2;width:14px;height:14px;stroke-linecap:round;stroke-linejoin:round}
-.p-banner{text-align:center;margin-top:var(--space-xl);font-size:14px;color:var(--text-muted)}
-.p-banner strong{color:var(--text)}
-
 /* ── FAQ ── */
 .faq-list{max-width:780px;margin:0 auto}
 .faq-item{border-bottom:1px solid var(--border)}
@@ -365,10 +398,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .strip-frame:hover{transform:none}
   .footer-inner{grid-template-columns:1fr 1fr}
   .proc-grid{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr}
-  .pc.feat{transform:none}
-  .hero-layout{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
-  .hero-h1,.hero-sub{max-width:100%}
+  .hero-h1,.hero-sub,.hero-text{max-width:100%}
+  .sr-wrap{columns:2}
   /* Frame scrub is desktop-only — below this the take plays as a normal video */
   .wt-track{height:auto}
   .wt-stage{position:static;height:auto;display:block}
@@ -391,7 +422,17 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .container,.nav-inner{padding:0 20px}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
-  #hero{padding:120px 0 var(--space-xl)}
+  /* No horizontal room for a side scrim — darken top to bottom instead */
+  #hero{padding:120px 0 var(--space-xl);min-height:clamp(520px,78vh,700px)}
+  .hero-scrim{background:linear-gradient(to bottom, rgba(var(--hero-shade),0.8) 0%, rgba(var(--hero-shade),0.42) 24%, rgba(var(--hero-shade),0.72) 58%, rgba(var(--hero-shade),0.94) 86%, var(--bg) 100%)}
+  .hero-meta{gap:var(--space-md) var(--space-lg)}
+  .hero-meta dd{font-size:15px}
+  .hero-credit{display:none}
+  .sr-wrap{columns:1;max-width:420px;margin:0 auto}
+  .sr-card{transform:none;margin-top:0 !important}
+  .sr-card:nth-child(n){transform:none}
+  .sr-play{width:44px;height:44px}
+  .sr-play svg{width:16px;height:16px}
   .sec{padding:64px 0}
   .pf-chain{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
   .pf-arrow{display:none}
@@ -487,8 +528,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       {
         "@type": "Offer",
         "name": "Classic Walkthrough",
-        "price": "149",
-        "priceCurrency": "USD",
         "description": "One property video built from your listing photos, with cinematic camera movement and voiceover, delivered in 48 hours.",
         "availability": "https://schema.org/InStock",
         "url": "https://coremagna.com/real-estate-videos"
@@ -496,29 +535,11 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       {
         "@type": "Offer",
         "name": "AI Presenter Video",
-        "price": "229",
-        "priceCurrency": "USD",
         "description": "Everything in Classic plus a consistent AI presenter who introduces and walks the property on camera.",
-        "availability": "https://schema.org/InStock",
-        "url": "https://coremagna.com/real-estate-videos"
-      },
-      {
-        "@type": "Offer",
-        "name": "Agency Plan",
-        "price": "449",
-        "priceCurrency": "USD",
-        "description": "Four videos a month with priority delivery and a presenter persona built for your brand. Cancel anytime.",
         "availability": "https://schema.org/InStock",
         "url": "https://coremagna.com/real-estate-videos"
       }
     ]
-  },
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "USD",
-    "lowPrice": "149",
-    "highPrice": "449",
-    "offerCount": "3"
   }
 }
 </script>
@@ -604,7 +625,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       "name": "How does this compare to hiring a videographer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A one-property shoot in the UK runs roughly £250 to £500 and needs a slot in the diary, access to the keys and a vendor who is happy to be out of the house. We charge $149 per listing, nobody visits the property, and the file arrives in 48 hours. What you give up is a real camera operator making judgement calls on site, which matters most on unusual or very high-value homes."
+        "text": "A one-property shoot in the UK runs roughly £250 to £500 and needs a slot in the diary, access to the keys and a vendor who is happy to be out of the house. We charge a flat fee per listing, nobody visits the property, and the file arrives in 48 hours. What you give up is a real camera operator making judgement calls on site, which matters most on unusual or very high-value homes."
       }
     },
     {
@@ -740,45 +761,77 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
 <main id="main">
 
-<!-- ── HERO ── -->
+<!-- ── HERO (full-bleed banner) ── -->
 <section id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <video id="heroVideo" src="/videos/hero-entrance.mp4" poster="/videos/hero-entrance-poster.jpg" autoplay muted loop playsinline preload="metadata" tabindex="-1"></video>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
   <div class="container">
-    <div class="hero-layout">
-      <div class="hero-text">
-        <div class="hero-badge reveal">
-          <span class="hero-dot" aria-hidden="true"></span>
-          AI Real Estate Video Tours
-        </div>
-        <h1 class="hero-h1 reveal" id="heroH1">
-          <span class="line"><span>Turn Listing Photos Into</span></span>
-          <span class="line"><span class="accent">Cinematic Video Tours</span></span>
-          <span class="line"><span>In 48 Hours</span></span>
-        </h1>
-        <p class="hero-sub reveal">No film crew. No scheduling. Just your existing photos, transformed into scroll-stopping walkthrough videos with an optional AI presenter.</p>
-        <div class="hero-actions reveal">
-          <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Your First Video
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#transformation" class="btn-ghost">See Examples</a>
-        </div>
+    <div class="hero-text">
+      <div class="hero-badge reveal">
+        <span class="hero-dot" aria-hidden="true"></span>
+        AI Real Estate Video Tours
       </div>
-      <div class="hero-video-wrap viewfinder reveal">
-        <video id="heroVideo" src="/videos/hero-listing-video.mp4" poster="/videos/hero-listing-video-poster.jpg" autoplay muted loop playsinline aria-label="Sample listing footage transformed by Coremagna"></video>
-        <div class="vf-corner tl" aria-hidden="true"></div>
-        <div class="vf-corner tr" aria-hidden="true"></div>
-        <div class="vf-corner bl" aria-hidden="true"></div>
-        <div class="vf-corner br" aria-hidden="true"></div>
-        <div class="vf-hud" aria-hidden="true">
-          <span class="vf-rec"><span class="vf-rec-dot"></span>REC</span>
-          <span class="vf-tc" id="heroTimecode">00:00:00</span>
-        </div>
-        <span class="vf-tag" aria-hidden="true">SAMPLE FOOTAGE</span>
-        <button type="button" class="vf-mute" id="heroMuteBtn" aria-pressed="false" aria-label="Unmute video">
-          <svg class="vf-mute-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-          <svg class="vf-mute-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-        </button>
+      <h1 class="hero-h1 reveal" id="heroH1">
+        <span class="line"><span>Turn Listing Photos Into</span></span>
+        <span class="line"><span class="accent">Cinematic Video Tours</span></span>
+        <span class="line"><span>In 48 Hours</span></span>
+      </h1>
+      <p class="hero-sub reveal">No film crew. No scheduling. Just your existing photos, transformed into scroll-stopping walkthrough videos with an optional AI presenter.</p>
+      <div class="hero-actions reveal">
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Your First Video
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#showreel" class="btn-ghost">See the Work</a>
       </div>
+      <dl class="hero-meta reveal">
+        <div><dt>Tour length</dt><dd>60-90 sec</dd></div>
+        <div><dt>First cut</dt><dd>48 hours</dd></div>
+        <div><dt>Site visits</dt><dd>Zero</dd></div>
+        <div><dt>Revisions</dt><dd>Unlimited</dd></div>
+      </dl>
     </div>
+  </div>
+  <span class="hero-credit" aria-hidden="true">BUILT FROM STILLS</span>
+</section>
+
+<!-- ── SHOWREEL ── -->
+<section class="sec" id="showreel" aria-label="Showreel">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">Showreel</span>
+      <h2 class="sec-h2">Shots we have built from stills</h2>
+      <p class="sec-sub">Sample builds from our own reference properties, made the same way your listings would be — a photograph in, a moving shot out. Tap any frame to play it.</p>
+    </div>
+    <div class="sr-wrap">
+      <button type="button" class="sr-card reveal" aria-label="Play sample: full vertical tour of a modern villa at dusk">
+        <video src="/videos/pf-sunset-villa.mp4" poster="/videos/pf-sunset-villa-poster.jpg" muted loop playsinline preload="none" width="608" height="1080"></video>
+        <span class="sr-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+        <span class="sr-veil"><span class="sr-name">Modern villa at dusk</span><span class="sr-spec">FULL TOUR · 59 SEC · 9:16</span></span>
+      </button>
+      <button type="button" class="sr-card reveal" aria-label="Play sample: presenter introducing a clifftop villa">
+        <video src="/videos/pf-presenter-villa.mp4" poster="/videos/pf-presenter-villa-poster.jpg" muted loop playsinline preload="none" width="1280" height="720"></video>
+        <span class="sr-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+        <span class="sr-veil"><span class="sr-name">Clifftop villa, presenter cut</span><span class="sr-spec">PRESENTER · 10 SEC · 16:9</span></span>
+      </button>
+      <button type="button" class="sr-card reveal" aria-label="Play sample: establishing shot of a desert modern house">
+        <video src="/videos/pf-desert-house.mp4" poster="/videos/pf-desert-house-poster.jpg" muted loop playsinline preload="none" width="1280" height="720"></video>
+        <span class="sr-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+        <span class="sr-veil"><span class="sr-name">Desert modern, poolside</span><span class="sr-spec">ESTABLISHING · 10 SEC · 16:9</span></span>
+      </button>
+      <button type="button" class="sr-card reveal" aria-label="Play sample: courtyard and pool of a coastal villa">
+        <video src="/videos/pf-courtyard-pool.mp4" poster="/videos/pf-courtyard-pool-poster.jpg" muted loop playsinline preload="none" width="900" height="900"></video>
+        <span class="sr-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+        <span class="sr-veil"><span class="sr-name">Coastal villa courtyard</span><span class="sr-spec">EXTERIOR PAN · 8 SEC · 1:1</span></span>
+      </button>
+      <button type="button" class="sr-card reveal" aria-label="Play sample: kitchen interior in a city apartment">
+        <video src="/videos/pf-city-kitchen.mp4" poster="/videos/pf-city-kitchen-poster.jpg" muted loop playsinline preload="none" width="1100" height="826"></video>
+        <span class="sr-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+        <span class="sr-veil"><span class="sr-name">City apartment kitchen</span><span class="sr-spec">INTERIOR PUSH · 5 SEC · 4:3</span></span>
+      </button>
+    </div>
+    <p class="sr-note reveal">These are our own reference builds, not client deliveries. For work delivered to a paying agent, keep scrolling — the walkthrough, the before and after and the production chain below all come from one real instruction.</p>
   </div>
 </section>
 
@@ -805,7 +858,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <tbody>
           <tr>
             <th scope="row" class="cmp-row">Per listing</th>
-            <td class="mine-c">$149, or $229 with an AI presenter</td>
+            <td class="mine-c">A flat fee per video, quoted on the call</td>
             <td>£250 to £500 for a half-day shoot and edit</td>
             <td>$8 to $16 a video on a monthly plan</td>
           </tr>
@@ -950,7 +1003,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <button class="strip-frame" type="button" data-video="/videos/ba-approach.mp4" data-photo="/videos/ba-approach-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-approach-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-approach-thumb.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
               <span class="strip-scene">SHOT 01 <span class="strip-live" aria-hidden="true"></span></span>
               <span class="strip-name">Street Approach</span>
@@ -960,7 +1013,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <button class="strip-frame" type="button" data-video="/videos/ba-racking.mp4" data-photo="/videos/ba-racking-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-racking-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-racking-thumb.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
               <span class="strip-scene">SHOT 02 <span class="strip-live" aria-hidden="true"></span></span>
               <span class="strip-name">Dark Racking</span>
@@ -970,7 +1023,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <button class="strip-frame" type="button" data-video="/videos/ba-ground.mp4" data-photo="/videos/ba-ground-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-ground-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-ground-thumb.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
               <span class="strip-scene">SHOT 03 <span class="strip-live" aria-hidden="true"></span></span>
               <span class="strip-name">Ground Floor</span>
@@ -980,7 +1033,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <button class="strip-frame" type="button" data-video="/videos/ba-corridor.mp4" data-photo="/videos/ba-corridor-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-corridor-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-corridor-thumb.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
               <span class="strip-scene">SHOT 04 <span class="strip-live" aria-hidden="true"></span></span>
               <span class="strip-name">Shelving Run</span>
@@ -990,7 +1043,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <button class="strip-frame" type="button" data-video="/videos/ba-pullback.mp4" data-photo="/videos/ba-pullback-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-pullback-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-pullback-thumb.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
               <span class="strip-scene">SHOT 05 <span class="strip-live" aria-hidden="true"></span></span>
               <span class="strip-name">Pull Back</span>
@@ -1000,7 +1053,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <button class="strip-frame" type="button" data-video="/videos/ba-landing.mp4" data-photo="/videos/ba-landing-before.jpg" aria-pressed="false">
           <span class="strip-holes" aria-hidden="true"></span>
           <span class="strip-body">
-            <span class="strip-thumb" style="background-image:url('/videos/ba-landing-before.jpg')" aria-hidden="true"></span>
+            <span class="strip-thumb" style="background-image:url('/videos/ba-landing-thumb.jpg')" aria-hidden="true"></span>
             <span class="strip-meta">
               <span class="strip-scene">SHOT 06 <span class="strip-live" aria-hidden="true"></span></span>
               <span class="strip-name">Stair Landing</span>
@@ -1114,62 +1167,6 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   </div>
 </section>
 
-<!-- ── PRICING ── -->
-<section class="sec" aria-label="Pricing">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="section-eyebrow">Pricing</span>
-      <h2 class="sec-h2">Simple pricing per listing</h2>
-    </div>
-    <div class="pricing-grid">
-      <div class="pc reveal">
-        <span class="p-tier">Classic</span>
-        <h3 class="p-title">Classic Walkthrough</h3>
-        <div class="p-price">$149 <span>/ listing</span></div>
-        <p class="p-sub">One-time, per video</p>
-        <div class="p-div"></div>
-        <ul class="p-items">
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>60-second vertical video</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cinematic camera movement</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional voiceover</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>48-hour delivery</li>
-        </ul>
-        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="width:100%;justify-content:center">Get Started</a>
-      </div>
-      <div class="pc feat reveal">
-        <div class="pp-pill" aria-label="Most Popular"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Most Popular</div>
-        <span class="p-tier" style="color:var(--accent)">AI Presenter</span>
-        <h3 class="p-title">AI Presenter Video</h3>
-        <div class="p-price">$229 <span>/ listing</span></div>
-        <p class="p-sub">One-time, per video</p>
-        <div class="p-div"></div>
-        <ul class="p-items">
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Everything in Classic</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Consistent AI presenter on camera</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Presenter introduces the property</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>48-hour delivery</li>
-        </ul>
-        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%;justify-content:center">Get Started</a>
-      </div>
-      <div class="pc reveal">
-        <span class="p-tier">Agency</span>
-        <h3 class="p-title">Agency Plan</h3>
-        <div class="p-price">$449 <span>/ month</span></div>
-        <p class="p-sub">Cancel anytime</p>
-        <div class="p-div"></div>
-        <ul class="p-items">
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>4 videos per month</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Priority delivery</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dedicated presenter persona for your brand</li>
-          <li class="p-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cancel anytime</li>
-        </ul>
-        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="width:100%;justify-content:center">Get Started</a>
-      </div>
-    </div>
-    <p class="p-banner reveal">First video for new clients <strong>50% off</strong> — see the quality before you commit.</p>
-  </div>
-</section>
-
 <!-- ── FAQ ── -->
 <section class="sec" aria-label="Common questions">
   <div class="container">
@@ -1216,7 +1213,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">How does this compare to hiring a videographer?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">A one-property shoot in the UK runs roughly £250 to £500 and needs a slot in the diary, access to the keys and a vendor who is happy to be out of the house. We charge $149 per listing, nobody visits the property, and the file arrives in 48 hours. What you give up is a real camera operator making judgement calls on site, which matters most on unusual or very high-value homes.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">A one-property shoot in the UK runs roughly £250 to £500 and needs a slot in the diary, access to the keys and a vendor who is happy to be out of the house. We charge a flat fee per listing, nobody visits the property, and the file arrives in 48 hours. What you give up is a real camera operator making judgement calls on site, which matters most on unusual or very high-value homes.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Do you work with commercial and short-term lets?<span class="faq-icon" aria-hidden="true"></span></button>
@@ -1385,28 +1382,55 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 })();
 
-/* Hero viewfinder timecode */
+/* Hero banner — hold on the poster when motion is reduced */
 (function(){
   const video=document.getElementById('heroVideo');
-  const tc=document.getElementById('heroTimecode');
-  if(!video||!tc) return;
+  if(!video) return;
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     video.removeAttribute('autoplay');
     video.pause();
-    return;
   }
-  function fmt(t){
-    const h=Math.floor(t/3600),m=Math.floor((t%3600)/60),s=Math.floor(t%60);
-    return [h,m,s].map(v=>String(v).padStart(2,'0')).join(':');
+})();
+
+/* Showreel — one clip runs at a time, click or hover to start it */
+(function(){
+  const cards=Array.prototype.slice.call(document.querySelectorAll('.sr-card'));
+  if(!cards.length) return;
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current=null;
+
+  function stop(card){
+    if(!card) return;
+    const v=card.querySelector('video');
+    if(v){v.pause();v.currentTime=0;}
+    card.classList.remove('playing');
+    if(current===card) current=null;
   }
-  video.addEventListener('timeupdate',()=>{tc.textContent=fmt(video.currentTime);});
-  const muteBtn=document.getElementById('heroMuteBtn');
-  if(muteBtn){
-    muteBtn.addEventListener('click',function(){
-      video.muted=!video.muted;
-      muteBtn.setAttribute('aria-pressed',String(!video.muted));
-      muteBtn.setAttribute('aria-label',video.muted?'Unmute video':'Mute video');
-    });
+  function play(card){
+    if(reduced||card===current) return;
+    stop(current);
+    const v=card.querySelector('video');
+    if(!v) return;
+    current=card;
+    card.classList.add('playing');
+    const p=v.play();
+    if(p&&p.catch) p.catch(()=>{card.classList.remove('playing');if(current===card)current=null;});
+  }
+
+  cards.forEach(card=>{
+    card.addEventListener('click',()=>{card.classList.contains('playing')?stop(card):play(card);});
+    card.addEventListener('mouseenter',()=>play(card));
+    card.addEventListener('focus',()=>play(card));
+    card.addEventListener('mouseleave',()=>{if(!card.matches(':focus-visible')) stop(card);});
+    card.addEventListener('blur',()=>stop(card));
+  });
+
+  /* Nothing keeps decoding once the section has scrolled away */
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(!e.isIntersecting) stop(e.target);});
+    },{threshold:0});
+    cards.forEach(c=>io.observe(c));
   }
 })();
 
