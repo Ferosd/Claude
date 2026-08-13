@@ -238,6 +238,26 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .sr-play svg{width:13px;height:13px;margin-left:2px}
 .sr-card.playing .sr-play{opacity:0}
 .sr-note{margin-top:var(--space-lg);font-size:13px;color:var(--text-fine);line-height:1.7;max-width:640px}
+.sr-audio{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:5px;
+  padding:4px 8px;border-radius:6px;background:rgba(6,10,14,0.6);border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none;
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:rgba(240,244,243,0.8);
+  transition:color 0.25s var(--ease),border-color 0.25s var(--ease)}
+.sr-audio svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sr-card.sound-on .sr-audio{color:var(--accent);border-color:var(--border-hover)}
+
+/* ── Full tour ── */
+.ft-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:26px;align-items:start}
+.ft-main .viewfinder{aspect-ratio:16/9}
+/* The 9:16 would tower over the 16:9 at full column width, so it is capped */
+.ft-side{max-width:300px;justify-self:end}
+.ft-side .viewfinder{aspect-ratio:9/16}
+.ft-main video,.ft-side video{background:#000}
+.ft-cap{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline}
+.ft-cap-name{font-family:'Cabinet Grotesk',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.01em;color:var(--text)}
+.ft-cap-spec{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.11em;color:var(--text-fine)}
+.ft-cap p{flex-basis:100%;font-size:14px;color:var(--text-muted);line-height:1.65;max-width:52ch;margin-top:2px}
+.ft-note{margin-top:var(--space-lg);font-size:13px;color:var(--text-fine);line-height:1.7;max-width:640px}
 
 /* ── Scroll walkthrough ── */
 .wt-track{position:relative;height:400vh}
@@ -400,6 +420,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .proc-grid{grid-template-columns:1fr}
   .hero-h1,.hero-sub,.hero-text{max-width:100%}
   .sr-wrap{columns:2}
+  .ft-grid{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
+  .ft-side{max-width:360px;justify-self:start}
   /* Frame scrub is desktop-only — below this the take plays as a normal video */
   .wt-track{height:auto}
   .wt-stage{position:static;height:auto;display:block}
@@ -433,6 +455,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .sr-card:nth-child(n){transform:none}
   .sr-play{width:44px;height:44px}
   .sr-play svg{width:16px;height:16px}
+  .ft-side{max-width:100%}
   .sec{padding:64px 0}
   .pf-chain{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
   .pf-arrow{display:none}
@@ -662,6 +685,26 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Full AI property video tour of a commercial letting in Rotterdam",
+  "description": "A complete 72 second property video tour delivered to a letting agent, built entirely from the listing photographs. Seventeen shots with voiceover and an AI presenter, produced without any site visit or film crew.",
+  "thumbnailUrl": [
+    "https://coremagna.com/videos/tour-rotterdam-commercial-poster.jpg"
+  ],
+  "contentUrl": "https://coremagna.com/videos/tour-rotterdam-commercial.mp4",
+  "uploadDate": "2026-08-13",
+  "duration": "PT1M12S",
+  "isFamilyFriendly": true,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Coremagna",
+    "url": "https://coremagna.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "How a listing photo becomes a property video tour",
   "description": "The three files behind a delivered property video, in the order they are made.",
@@ -806,17 +849,20 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     </div>
     <div class="sr-wrap">
       <button type="button" class="sr-card reveal" aria-label="Play sample: full vertical tour of a modern villa at dusk">
-        <video src="/videos/pf-sunset-villa.mp4" poster="/videos/pf-sunset-villa-poster.jpg" muted loop playsinline preload="none" width="608" height="1080"></video>
+        <video data-sound="on" src="/videos/pf-sunset-villa.mp4" poster="/videos/pf-sunset-villa-poster.jpg" muted loop playsinline preload="none" width="608" height="1080"></video>
+        <span class="sr-audio"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>SOUND</span>
         <span class="sr-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
         <span class="sr-veil"><span class="sr-name">Modern villa at dusk</span><span class="sr-spec">FULL TOUR · 59 SEC · 9:16</span></span>
       </button>
       <button type="button" class="sr-card reveal" aria-label="Play sample: presenter introducing a clifftop villa">
-        <video src="/videos/pf-presenter-villa.mp4" poster="/videos/pf-presenter-villa-poster.jpg" muted loop playsinline preload="none" width="1280" height="720"></video>
+        <video data-sound="on" src="/videos/pf-presenter-villa.mp4" poster="/videos/pf-presenter-villa-poster.jpg" muted loop playsinline preload="none" width="1280" height="720"></video>
+        <span class="sr-audio"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>SOUND</span>
         <span class="sr-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
         <span class="sr-veil"><span class="sr-name">Clifftop villa, presenter cut</span><span class="sr-spec">PRESENTER · 10 SEC · 16:9</span></span>
       </button>
       <button type="button" class="sr-card reveal" aria-label="Play sample: establishing shot of a desert modern house">
-        <video src="/videos/pf-desert-house.mp4" poster="/videos/pf-desert-house-poster.jpg" muted loop playsinline preload="none" width="1280" height="720"></video>
+        <video data-sound="on" src="/videos/pf-desert-house.mp4" poster="/videos/pf-desert-house-poster.jpg" muted loop playsinline preload="none" width="1280" height="720"></video>
+        <span class="sr-audio"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>SOUND</span>
         <span class="sr-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
         <span class="sr-veil"><span class="sr-name">Desert modern, poolside</span><span class="sr-spec">ESTABLISHING · 10 SEC · 16:9</span></span>
       </button>
@@ -831,7 +877,51 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
         <span class="sr-veil"><span class="sr-name">City apartment kitchen</span><span class="sr-spec">INTERIOR PUSH · 5 SEC · 4:3</span></span>
       </button>
     </div>
-    <p class="sr-note reveal">These are our own reference builds, not client deliveries. For work delivered to a paying agent, keep scrolling — the walkthrough, the before and after and the production chain below all come from one real instruction.</p>
+    <p class="sr-note reveal">These are our own reference builds, not client deliveries. For work delivered to a paying agent, keep scrolling — the full tour, the walkthrough and the production chain below all come from one real instruction.</p>
+  </div>
+</section>
+
+<!-- ── FULL TOUR ── -->
+<section class="sec" id="full-tour" aria-label="A finished tour">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="section-eyebrow">Delivered Work</span>
+      <h2 class="sec-h2">The whole thing, start to finish</h2>
+      <p class="sec-sub">Everything above is a fragment. This is a complete tour as the agent received it — 72 seconds, voiceover, a presenter who has never been to the building. Built from the listing photographs and nothing else. Press play with the sound on.</p>
+    </div>
+    <div class="ft-grid">
+      <div class="ft-main reveal">
+        <div class="viewfinder">
+          <video controls playsinline preload="none" poster="/videos/tour-rotterdam-commercial-poster.jpg" width="1920" height="1080" aria-label="Full property video tour of a commercial letting in Rotterdam, built from listing photographs">
+            <source src="/videos/tour-rotterdam-commercial.mp4" type="video/mp4">
+          </video>
+          <div class="vf-corner tl" aria-hidden="true"></div>
+          <div class="vf-corner tr" aria-hidden="true"></div>
+          <div class="vf-corner bl" aria-hidden="true"></div>
+          <div class="vf-corner br" aria-hidden="true"></div>
+        </div>
+        <div class="ft-cap">
+          <span class="ft-cap-name">Commercial letting, Rotterdam</span>
+          <span class="ft-cap-spec">FULL TOUR · 72 SEC · 16:9 · SOUND ON</span>
+          <p>Seventeen shots, three of them with the presenter, cut to the agent's own running order. No camera entered the building and nobody from our side visited it.</p>
+        </div>
+      </div>
+      <div class="ft-side reveal">
+        <div class="viewfinder">
+          <video controls muted playsinline preload="none" poster="/videos/tour-vertical-cut-poster.jpg" width="720" height="1280" aria-label="Vertical social cut of a showroom walkthrough with a presenter">
+            <source src="/videos/tour-vertical-cut.mp4" type="video/mp4">
+          </video>
+          <div class="vf-corner tl" aria-hidden="true"></div>
+          <div class="vf-corner br" aria-hidden="true"></div>
+        </div>
+        <div class="ft-cap">
+          <span class="ft-cap-name">Retail showroom, vertical cut</span>
+          <span class="ft-cap-spec">SOCIAL CUT · 26 SEC · 9:16 · SILENT</span>
+          <p>A different job in the same format — a presenter arrives on the street, walks in and hands the shot to the interiors, framed 9:16 for Reels and TikTok. Its voice track is not in English, so it plays silent here.</p>
+        </div>
+      </div>
+    </div>
+    <p class="ft-note reveal">Every tour is delivered in three ratios from one render, so the portal, the feed and the story cut all come out of the same job.</p>
   </div>
 </section>
 
@@ -1113,7 +1203,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <dl class="pf-sheet-grid">
         <div class="pf-cell">
           <dt>Runtime</dt>
-          <dd>82 sec<span>Full tour, cut for the agent's own channels</span></dd>
+          <dd>72 sec<span>Full tour, cut for the agent's own channels</span></dd>
         </div>
         <div class="pf-cell">
           <dt>Shots</dt>
@@ -1392,7 +1482,18 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   }
 })();
 
-/* Showreel — one clip runs at a time, click or hover to start it */
+/* Only one thing on the page is ever audible at a time */
+(function(){
+  document.addEventListener('play',e=>{
+    const t=e.target;
+    if(!(t instanceof HTMLMediaElement)||t.muted) return;
+    document.querySelectorAll('video,audio').forEach(m=>{
+      if(m!==t&&!m.muted&&!m.paused) m.pause();
+    });
+  },true);
+})();
+
+/* Showreel — one clip runs at a time, hover previews it silently, a click brings the sound */
 (function(){
   const cards=Array.prototype.slice.call(document.querySelectorAll('.sr-card'));
   if(!cards.length) return;
@@ -1402,27 +1503,41 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   function stop(card){
     if(!card) return;
     const v=card.querySelector('video');
-    if(v){v.pause();v.currentTime=0;}
-    card.classList.remove('playing');
+    if(v){v.pause();v.currentTime=0;v.muted=true;}
+    card.classList.remove('playing','sound-on');
     if(current===card) current=null;
   }
-  function play(card){
-    if(reduced||card===current) return;
-    stop(current);
+  /* withSound only ever comes from a click, so the browser lets the audio through */
+  function play(card,withSound){
     const v=card.querySelector('video');
     if(!v) return;
+    const wantsSound=!!withSound&&v.dataset.sound==='on';
+    if(reduced) return;
+    if(card===current&&v.muted===!wantsSound&&!v.paused) return;
+    if(current!==card) stop(current);
     current=card;
+    v.muted=!wantsSound;
     card.classList.add('playing');
+    card.classList.toggle('sound-on',wantsSound);
     const p=v.play();
-    if(p&&p.catch) p.catch(()=>{card.classList.remove('playing');if(current===card)current=null;});
+    if(p&&p.catch) p.catch(()=>{
+      /* audio refused: fall back to a silent preview rather than nothing */
+      if(wantsSound){v.muted=true;card.classList.remove('sound-on');v.play().catch(()=>stop(card));return;}
+      stop(card);
+    });
   }
 
   cards.forEach(card=>{
-    card.addEventListener('click',()=>{card.classList.contains('playing')?stop(card):play(card);});
-    card.addEventListener('mouseenter',()=>play(card));
-    card.addEventListener('focus',()=>play(card));
-    card.addEventListener('mouseleave',()=>{if(!card.matches(':focus-visible')) stop(card);});
-    card.addEventListener('blur',()=>stop(card));
+    card.addEventListener('click',()=>{
+      const v=card.querySelector('video');
+      const audible=card.classList.contains('sound-on');
+      if(audible||(card.classList.contains('playing')&&v.dataset.sound!=='on')) stop(card);
+      else play(card,true);
+    });
+    card.addEventListener('mouseenter',()=>{if(!card.classList.contains('sound-on')) play(card,false);});
+    card.addEventListener('focus',()=>{if(!card.classList.contains('sound-on')) play(card,false);});
+    card.addEventListener('mouseleave',()=>{if(!card.classList.contains('sound-on')&&!card.matches(':focus-visible')) stop(card);});
+    card.addEventListener('blur',()=>{if(!card.classList.contains('sound-on')) stop(card);});
   });
 
   /* Nothing keeps decoding once the section has scrolled away */
