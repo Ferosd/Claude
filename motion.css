@@ -56,3 +56,27 @@ h1, h2, h3 { text-wrap: balance; }
     transform: none !important;
   }
 }
+
+/* Nav: eight links stop fitting on one line below ~1100px. Tighten the
+   gaps on narrow desktops, then hand over to the hamburger menu.
+   "body" outranks each page's own inline .nav-links rules. */
+@media (max-width: 1240px) {
+  body .nav-links { gap: 28px; }
+}
+@media (max-width: 1100px) {
+  body .nav-links, body .nav-cta { display: none; }
+  body .hamburger { display: flex; }
+}
+
+/* Mobile menu: nine entries. Centred while they fit; on short screens the
+   list tightens, starts below the header bar and scrolls instead of being
+   cut off. margin:auto centres without clipping the top the way
+   justify-content:center does once the list overflows. */
+body #mobileNav, body #mobNav { overflow-y: auto; overscroll-behavior: contain; }
+body #mobileNav > ul, body #mobNav > ul { margin: auto; padding: 80px 0 32px; }
+@media (max-height: 760px) {
+  body #mobileNav > ul, body #mobNav > ul { gap: 4px; padding-top: 72px; }
+  body #mobileNav a:not([class*="btn"]), body #mobNav a:not([class*="btn"]) {
+    display: flex; align-items: center; justify-content: center; min-height: 44px; font-size: 24px;
+  }
+}

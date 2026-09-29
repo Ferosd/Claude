@@ -1,0 +1,106 @@
+{
+  "_nasil": "Duvardaki sira bu listedeki siradir. Sadece publish:true olanlar sayfaya girer; --all ile hepsi yerel onizlemede islenir. style: ugc | product | motion | ads | posters | marketplace. slug public URL olur, marka/musteri adi yazma. loop_start/loop_len duvardaki hareketli WebP dongusunun araligi (sn).",
+  "hero": {
+    "_not": "Banner: bitmis video (dikey tercih) + ondan cekim kareleri + ayni isin kaynak urun fotografi. Eslesen urun fotografi yok, foto yuvasi ikon olarak kalir.",
+    "video": "dondurma.mp4",
+    "photo": null,
+    "shots": [0.3, 2.6, 10.0, 13.5],
+    "alt": "Gelato launch video, a cup of roasted fig gelato flying over a tennis court",
+    "publish": true
+  },
+  "items": [
+    {
+      "src": "dondurma.mp4", "slug": "fig-gelato-launch", "title": "Fig gelato launch", "style": "ads",
+      "sector": "Food and drink", "loop_start": 3.5,
+      "desc": "Launch ad for a roasted fig gelato. The tub is wrapped in tennis-ball felt and set on a grass court, with hand-drawn doodles, a splash shot and a balloon-letter end card.",
+      "date": "2026-09-29", "publish": true
+    },
+    {
+      "src": "kulaklık.mp4", "slug": "headphones-spec-ad", "title": "Headphones spot", "style": "ads", "label": "Spec ad",
+      "sector": "Electronics", "loop_start": 2.8,
+      "desc": "Spec ad for over-ear headphones, made to show the style and not commissioned by the brand. Splash and dust shots sit under each feature line, then a leather car seat holds the end card.",
+      "date": "2026-09-29", "publish": true,
+      "check": "Marshall logosu ve 'The Major V' yazisi gorunuyor (gercek marka). Spec ad etiketiyle yayinda."
+    },
+    {
+      "src": "blender tanıtım.mp4", "slug": "blender-pro-mode", "title": "Blender pro mode demo", "style": "ugc",
+      "sector": "Home and kitchen", "loop_start": 4.0,
+      "desc": "A presenter shows a blender's pro setting in 11 seconds. Two buttons, a smooth green smoothie, then the pour. Shot to look like a phone video for TikTok and Reels.",
+      "date": "2026-09-29", "publish": true
+    },
+    {
+      "src": "saat.mp4", "slug": "watch-exploded-view", "title": "Watch exploded view", "style": "motion",
+      "sector": "Watches", "loop_start": 5.0, "loop_len": 9,
+      "desc": "The watch comes apart layer by layer while callouts name the specs: 28,800 beats per hour, fully mechanical, 9H sapphire. It closes on the assembled watch and the wordmark.",
+      "date": "2026-09-29", "publish": true
+    },
+    {
+      "src": "Pırlanta.mp4", "slug": "rock-to-ring", "title": "Rock to ring", "style": "motion",
+      "sector": "Jewellery", "loop_start": 1.8, "loop_len": 8,
+      "desc": "One unbroken transformation. A mossy rock cracks open, crystals grow out of it and the last piece turns into a solitaire ring.",
+      "date": "2026-09-29", "publish": true
+    },
+    {
+      "src": "acı biber.mp4", "slug": "smoked-chilli-oil", "title": "Smoked chilli oil", "style": "product",
+      "sector": "Food and drink", "loop_start": 8.4,
+      "desc": "Ingredient story for a smoked chilli oil. Sun-dried chillies and seeds over hot coals lead up to the bottle floating in open sky.",
+      "date": "2026-09-29", "publish": true
+    },
+    {
+      "src": "ugc.mp4", "slug": "face-roller-how-to", "title": "Face roller how-to", "style": "ugc",
+      "sector": "Beauty", "loop_start": 3.5,
+      "desc": "A presenter shows how to use a sonic face roller in 14 seconds. Upward strokes, the forehead, a light touch under the eyes. Filmed as a bathroom mirror video.",
+      "date": "2026-09-29", "publish": true,
+      "check": "Senaryo kisisel deneyim iddiasi iceriyor ('changed my skin in two weeks'). Kullanici videonun kalmasini istedi; SSS cevabi ornek formatlari aciklayacak sekilde guncellendi."
+    },
+    {
+      "src": "evcil hayvan 2.mp4", "slug": "leash-spiral", "title": "Leash spiral", "style": "product",
+      "sector": "Pet supplies",
+      "desc": "A patterned dog leash coils into a spiral on a split yellow and blue set, then collar and leash sit together for the tagline. Five seconds, built to loop.",
+      "date": "2026-09-29", "publish": true
+    },
+    {
+      "src": "mücevher.mp4", "slug": "diamond-ring-spec-ad", "title": "Diamond knot ring", "style": "ads", "label": "Spec ad",
+      "sector": "Jewellery", "loop_start": 1.3,
+      "desc": "Spec ad for a gold and diamond ring, not commissioned by the brand. Macro shots on velvet and among floating stones, a hand-model close-up and an order-now end card.",
+      "date": "2026-09-29", "publish": true,
+      "check": "Yuzukte 'Tiffany & Co.' yazisi (gercek marka). Spec ad etiketiyle yayinda."
+    },
+    {
+      "src": "pawse-demo.mp4", "slug": "calming-treats-ugc", "title": "Calming dog treats", "style": "ugc",
+      "sector": "Pet supplies", "crop": "720:1180:0:0",
+      "desc": "Phone-style UGC for calming dog treats. The presenter sits on the sofa with an older golden retriever and holds the pack up to camera.",
+      "date": "2026-09-29", "publish": false,
+      "check": "Videoda 'AI-GENERATED PORTFOLIO DEMO - DEEP MIST AI' bandi var ve kullanici Deep Mist AI'in kendisi olmadigini soyledi (2026-09-29). Baskasinin imzasini kirpip kendi isimiz gibi yayinlamiyoruz; kaynagi netlesirse crop ile acilabilir."
+    },
+    {
+      "src": "takı.mp4", "slug": "necklace-unboxing", "title": "Necklace unboxing", "style": "ugc",
+      "sector": "Jewellery", "loop_start": 1.5,
+      "desc": "Top-down unboxing, hands only. The gift box opens on a paper-cut night sky and the key pendant is lifted out and laid on silk.",
+      "date": "2026-09-29", "publish": true
+    },
+    {
+      "src": "evcil hayvan.mp4", "slug": "collar-cartoon-mix", "title": "Collar and leash with a cartoon dog", "style": "motion",
+      "sector": "Pet supplies", "loop_start": 2.5,
+      "desc": "Close-ups of a collar and leash cut together with a hand-drawn dog that runs the walk route. Sniff and repeat pop up as animated type.",
+      "date": "2026-09-29", "publish": true
+    },
+    {
+      "src": "saas tanıtım.mp4", "slug": "saas-explainer", "title": "SaaS product explainer", "style": "ugc", "label": "Explainer",
+      "sector": "Software", "loop_start": 30, "loop_len": 7,
+      "desc": "A 73-second talking-head explainer for a platform that takes AI-built apps to production. The presenter is cut with screen recordings, big type and captions on every line.",
+      "date": "2026-09-29", "publish": true,
+      "check": "Nometria urununu anlatiyor (gercek sirket). Kullanici kendi uretimi dedi."
+    },
+    {
+      "src": "skincare.mp4", "slug": "serum-poolside", "title": "Poolside serum", "style": "product",
+      "date": "2026-09-29", "publish": false,
+      "check": "Kylie Jenner'e benzeyen model + KYLIE SKIN sisesi. Gercek kisinin izinsiz reklami (right of publicity): yayinlanmaz."
+    },
+    {
+      "src": "sportswear.mp4", "slug": "tumbler-court-spot", "title": "Court spot", "style": "ads",
+      "date": "2026-09-29", "publish": false,
+      "check": "LeBron James'e benzeyen oyuncu, Lakers 23 formasi, Stanley termos. Gercek kisinin izinsiz reklami: yayinlanmaz."
+    }
+  ]
+}
