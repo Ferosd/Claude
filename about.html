@@ -224,6 +224,17 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .container,.nav-inner{padding:0 20px}
 }
 
+/* ── Light theme ──
+   These rules were written with the dark palette's own values, so under
+   [data-theme="light"] their var(--text) went dark on dark and the pale text
+   went light on light. Tokens only, and only under the light attribute: the
+   dark theme reads none of this. */
+[data-theme="light"] #mainNav.scrolled{background:color-mix(in srgb,var(--bg) 88%,transparent)}
+[data-theme="light"] .mobile-nav{background:color-mix(in srgb,var(--bg) 97%,transparent)}
+[data-theme="light"] .footer-col h4,[data-theme="light"] .footer-bottom p{color:var(--muted)}
+[data-theme="light"] #full-story{background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%)}
+[data-theme="light"] .about-benefit-card{background:var(--bg);border-left-color:var(--accent)}
+
 /* ── 12. Reduced Motion ── */
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}

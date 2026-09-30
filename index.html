@@ -596,6 +596,37 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .wf-connector-chevron svg{transform:rotate(90deg)}
 }
 
+/* ── Light theme ──
+   These rules were written with the dark palette's own values, so under
+   [data-theme="light"] their var(--text) went dark on dark and the pale text
+   went light on light. Tokens only, and only under the light attribute: the
+   dark theme reads none of this. */
+[data-theme="light"] #mainNav.scrolled{background:color-mix(in srgb,var(--bg) 88%,transparent)}
+[data-theme="light"] .mobile-nav{background:color-mix(in srgb,var(--bg) 97%,transparent)}
+[data-theme="light"] .footer-col h4,[data-theme="light"] .footer-bottom p{color:var(--muted)}
+[data-theme="light"] .industries-row{border-top-color:var(--border2)}
+[data-theme="light"] .industries-label{color:var(--muted)}
+[data-theme="light"] .industries-list{color:var(--text)}
+[data-theme="light"] #services,[data-theme="light"] #case-studies,[data-theme="light"] #about,[data-theme="light"] #blog-preview{background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%)}
+[data-theme="light"] .service-num{color:var(--accent)}
+[data-theme="light"] .wf-card{background:var(--surface)}
+[data-theme="light"] .wf-card p{color:var(--muted)}
+[data-theme="light"] .roi-card{background:var(--surface);box-shadow:0 1px 2px var(--border2),0 12px 40px var(--border2)}
+[data-theme="light"] .case-card{border-color:var(--border2)}
+[data-theme="light"] .case-card-live{border-color:var(--border)}
+[data-theme="light"] .case-card:hover{border-color:var(--border-hover)}
+[data-theme="light"] .case-img-overlay{background:linear-gradient(to bottom,transparent 55%,color-mix(in srgb,var(--surface) 35%,transparent) 100%)}
+[data-theme="light"] .benefit-card{background:var(--surface);border-left-color:var(--accent)}
+[data-theme="light"] .blog-card-preview{background:var(--surface);border-color:var(--border2)}
+[data-theme="light"] .blog-card-preview:hover{border-color:var(--border-hover)}
+[data-theme="light"] .blog-card-category{border-color:var(--accent);color:var(--accent)}
+[data-theme="light"] .blog-card-title{color:var(--text)}
+[data-theme="light"] .blog-card-excerpt{color:var(--muted)}
+[data-theme="light"] .blog-card-meta{border-top-color:var(--border2)}
+[data-theme="light"] .blog-card-cta-link{color:var(--accent)}
+[data-theme="light"] .contact-input,[data-theme="light"] .contact-select,[data-theme="light"] .contact-textarea{background-color:var(--surface2)}
+[data-theme="light"] .contact-select option{background:var(--surface)}
+
 /* ── 19. Reduced Motion ── */
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
