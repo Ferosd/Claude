@@ -221,6 +221,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) scaleY(0)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s var(--ease)}
 .faq-a-inner{padding:0 0 var(--space-lg);font-size:15px;color:var(--text-muted);line-height:1.75;max-width:680px}
+.faq-a-inner a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 
 /* ── Chatbot UI ── */
 .chat-section{padding:var(--space-3xl) 0;border-top:1px solid var(--border)}
@@ -371,6 +372,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     {"@type":"Question","name":"We already use a CRM or portal tool. Does this replace it?","acceptedAnswer":{"@type":"Answer","text":"No — it connects to what you already have. We integrate with your existing CRM, calendar, and portal feeds so leads flow into your current system. No migration, no retraining your team."}},
     {"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Plans start at £199/month after a one-time setup. But the real question is what it costs you now — if you're missing even 5 leads a month at £3,000 average commission, that's £15,000 in lost revenue. The system pays for itself from the first captured lead."}},
     {"@type":"Question","name":"What if we don't like it after the pilot?","acceptedAnswer":{"@type":"Answer","text":"We remove everything cleanly. No charges for the pilot period, no awkward cancellation process, no lingering contracts. If it doesn't work for you, we shake hands and move on."}},
+    {"@type":"Question","name":"Do you make listing videos too?","acceptedAnswer":{"@type":"Answer","text":"Yes. We turn the listing photos you already have into video tours, done for you in 48 hours: https://coremagna.com/real-estate-videos. If you would rather make them yourself, our founder also built Miravely (https://miravely.com), a self-serve tool that stages listing photos and turns them into a video tour."}},
     {"@type":"Question","name":"Is this just for sales, or lettings too?","acceptedAnswer":{"@type":"Answer","text":"Both. Tenant enquiries, landlord queries, maintenance requests — the system handles lettings workflows just as well as sales. We configure separate flows for each side of your business."}}
   ]
 }
@@ -659,6 +661,10 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">What if we don't like it after the pilot?<span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><div class="faq-a-inner">We remove everything cleanly. No charges for the pilot period, no awkward cancellation process, no lingering contracts. If it doesn't work for you, we shake hands and move on.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you make listing videos too?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We turn the listing photos you already have into <a href="/real-estate-videos">video tours</a>, done for you in 48 hours. If you would rather make them yourself, our founder also built <a href="https://miravely.com" target="_blank" rel="noopener">Miravely</a>, a self-serve tool that stages listing photos and turns them into a video tour.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Is this just for sales, or lettings too?<span class="faq-icon" aria-hidden="true"></span></button>

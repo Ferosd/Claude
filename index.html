@@ -340,6 +340,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .case-card:hover{border-color:var(--border-hover);transform:scale(1.02)}
 .case-card-live{border-color:rgba(0,212,170,0.35);display:block}
 .case-sector-live{background:#060a0e;color:var(--accent);border:1px solid rgba(0,212,170,0.5)}
+.case-card.case-card-wide{grid-column:1/-1;display:grid;grid-template-columns:3fr 2fr}
+.case-card-wide .case-img{height:auto;min-height:300px}
+.case-card-wide .case-body{display:flex;flex-direction:column;justify-content:center}
+.case-card.case-card-wide:hover{transform:scale(1.01)}
 .case-img{height:200px;background:var(--surface2);position:relative;overflow:hidden}
 .case-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s var(--ease)}
 .case-card:hover .case-img img{transform:scale(1.05)}
@@ -499,6 +503,8 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .services-grid{grid-template-columns:repeat(2,1fr)}
   .case-grid{grid-template-columns:1fr}
   .case-card,.case-card:nth-child(4),.case-card:nth-child(5){grid-column:span 1}
+  .case-card.case-card-wide{grid-template-columns:1fr}
+  .case-card-wide .case-img{min-height:0;height:200px}
   .service-card{padding:1.25rem 1rem}
   .benefit-cards{grid-template-columns:1fr}
   .about-photo{width:200px;height:200px}
@@ -600,7 +606,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 <meta name="robots" content="index, follow">
 <meta name="author" content="Coremagna">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"Coremagna","description":"AI automation agency specializing in CRM lead automation, AI chatbots, system integration, and document automation for law firms and real estate agencies.","url":"https://coremagna.com","email":"ferit1@coremagna.com","founder":{"@type":"Person","name":"Ferit Patefe"},"areaServed":["United States","United Kingdom","Australia","New Zealand","Canada","Ireland"],"serviceType":["CRM Lead Automation","AI Chatbot","System Integration","Document Automation"],"priceRange":"$697 - $1,497"}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Coremagna","description":"AI automation agency specializing in CRM lead automation, AI chatbots, system integration, and document automation for law firms and real estate agencies.","url":"https://coremagna.com","email":"ferit1@coremagna.com","founder":{"@type":"Person","@id":"https://coremagna.com/about#ferit-patefe","name":"Ferit Patefe","url":"https://coremagna.com/about","sameAs":["https://www.linkedin.com/in/ferit-patefe"]},"areaServed":["United States","United Kingdom","Australia","New Zealand","Canada","Ireland"],"serviceType":["CRM Lead Automation","AI Chatbot","System Integration","Document Automation"],"priceRange":"$697 - $1,497"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need technical knowledge to work with you?","acceptedAnswer":{"@type":"Answer","text":"Not at all. We handle everything end-to-end — design, development, deployment, and training. You just need to know your business. We translate that into technology."}},{"@type":"Question","name":"How long does a project take?","acceptedAnswer":{"@type":"Answer","text":"Website: 3-7 business days. RAG chatbot: 1-3 days after we receive your data. Automation workflows: 1-2 weeks depending on complexity. We'll give you an exact estimate after the free audit."}},{"@type":"Question","name":"What does a RAG chatbot actually do for my business?","acceptedAnswer":{"@type":"Answer","text":"It reads your documents, website, product catalogue, and internal data — then answers customer questions 24/7 as if it were your best-trained employee. It can qualify leads, book appointments, and escalate complex queries to your team."}},{"@type":"Question","name":"Do you offer ongoing support after launch?","acceptedAnswer":{"@type":"Answer","text":"Yes. All projects include a 30-day support period at no extra cost. After that, monthly retainers are available for ongoing optimization, updates, and new features."}},{"@type":"Question","name":"Is there a long-term contract?","acceptedAnswer":{"@type":"Answer","text":"No. We work project-based or on a monthly retainer. Monthly plans can be cancelled anytime with 30 days notice. No lock-in, no hidden fees."}},{"@type":"Question","name":"Do you work with US-based clients?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with clients across the United States, United Kingdom, Australia, New Zealand, Canada, and Ireland. All communication is in English, and we adjust working hours to overlap with your timezone."}},{"@type":"Question","name":"I already have a website. Can you help?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We start with a free audit of your existing site — speed, SEO, conversion rate, mobile experience. If it's underperforming, we propose a targeted upgrade plan rather than rebuilding from scratch unnecessarily."}},{"@type":"Question","name":"What if it doesn't work for my business?","acceptedAnswer":{"@type":"Answer","text":"Every build starts as a 30-day pilot. If the system isn't answering enquiries and booking appointments by day 30, we keep working at no extra charge until it is — or we refund the setup fee. You're never paying monthly for something that isn't performing."}},{"@type":"Question","name":"Where does our client data live? Is this GDPR compliant?","acceptedAnswer":{"@type":"Answer","text":"In your accounts, not ours — your CRM, your calendar, your practice software. We build the connections; we don't warehouse your data. We sign an NDA and a data processing agreement before touching anything, and systems are configured to meet UK GDPR requirements. For clinics, patient data stays inside the tools you already trust."}},{"@type":"Question","name":"What happens when the AI doesn't know the answer?","acceptedAnswer":{"@type":"Answer","text":"It says so and hands over — it never invents an answer. Unrecognised or sensitive queries are escalated: the caller can leave a detailed message, the enquiry is logged in your CRM, and you're notified instantly by SMS or email. You define the escalation rules during setup; we build them in."}},{"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Book a free 30-minute strategy call below. We'll review your current setup, understand your goals, and tell you exactly what we'd build and why. No commitment required."}}]}
@@ -1121,6 +1127,22 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
           <div class="case-metric-label">from zero to live — click to open the real site</div>
           <div class="case-solution">Web Design + Intake</div>
           <div class="case-source">Live at tiernan-demo.vercel.app</div>
+        </div>
+      </a>
+
+      <a class="case-card case-card-live case-card-wide reveal" href="https://miravely.com" target="_blank" rel="noopener">
+        <div class="case-img">
+          <img src="/images/miravely-staging-split.webp" alt="One living room, staged by Miravely on the left and empty as photographed on the right, with the window, walls and fireplace lining up across the split" width="1600" height="1000" loading="lazy">
+          <div class="case-img-overlay" aria-hidden="true"></div>
+          <span class="case-sector case-sector-live">Our founder's product, live</span>
+        </div>
+        <div class="case-body">
+          <h3>Miravely AI Staging and Video Tours</h3>
+          <p class="case-problem">Not a client project. Miravely is the self-serve tool our founder built for estate agents who would rather do it themselves. Upload the listing photos you already have and get staged rooms and a walkthrough video, with the walls, windows and doors kept where the camera put them.</p>
+          <div class="case-metric">3 of 3</div>
+          <div class="case-metric-label">rooms staged with every window and door in place, in a test of six AI staging tools</div>
+          <div class="case-solution">SaaS Product</div>
+          <div class="case-source">Source: Miravely staging test, September 2026. Live at miravely.com</div>
         </div>
       </a>
 

@@ -384,6 +384,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) scaleY(0)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s var(--ease)}
 .faq-a-inner{padding:0 0 var(--space-lg);font-size:15px;color:var(--text-muted);line-height:1.75;max-width:680px}
+.faq-a-inner a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 
 /* ── Final CTA ── */
 #final-cta{padding:var(--space-3xl) 0;border-top:1px solid var(--border);
@@ -506,7 +507,10 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     },
     "founder": {
       "@type": "Person",
-      "name": "Ferit Patefe"
+      "@id": "https://coremagna.com/about#ferit-patefe",
+      "name": "Ferit Patefe",
+      "url": "https://coremagna.com/about",
+      "sameAs": ["https://www.linkedin.com/in/ferit-patefe"]
     }
   },
   "areaServed": [
@@ -649,6 +653,14 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "A one-property shoot in the UK runs roughly £250 to £500 and needs a slot in the diary, access to the keys and a vendor who is happy to be out of the house. We charge a flat fee per listing, nobody visits the property, and the file arrives in 48 hours. What you give up is a real camera operator making judgement calls on site, which matters most on unusual or very high-value homes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I make these videos myself?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Our founder also built Miravely (https://miravely.com), a self-serve tool for agents who would rather do it themselves. You upload the listing photos in walking order and it makes a clip from each photo to the next, with the walls, windows and doors kept where your photos put them. New accounts start with free credits. If you would rather not spend the time on every listing, that is what this service is for."
       }
     },
     {
@@ -931,7 +943,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     <div class="sec-head reveal">
       <span class="section-eyebrow">Where We Sit</span>
       <h2 class="sec-h2">Three ways to get a listing video</h2>
-      <p class="sec-sub">Two of them look cheaper than they are. The crew bills three times as much and takes half your day. The self-serve tool bills almost nothing and takes an afternoon of your time on every listing. Read the row that matters most — what it really costs.</p>
+      <p class="sec-sub">Two of them look cheaper than they are. The crew bills three times as much and takes half your day. The self-serve tool bills almost nothing, and the work moves to your desk on every listing. Read the row that matters most, what it really costs.</p>
     </div>
     <p class="cmp-swipe reveal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Swipe to compare</p>
     <div class="cmp-scroll reveal">
@@ -956,7 +968,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
             <th scope="row" class="cmp-row">What it really costs</th>
             <td class="mine-c">The fee, and ten minutes to send photos and sign off</td>
             <td>The fee, plus half a day of yours at the property</td>
-            <td>The credit, plus two to three hours of yours on every single listing</td>
+            <td>The credit, plus your own time on every listing</td>
           </tr>
           <tr>
             <th scope="row" class="cmp-row">Who works</th>
@@ -1004,7 +1016,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       </table>
     </div>
     <div class="cmp-verdict reveal">
-      <p>The tool looks like the cheap column until you price your own afternoon. <strong>At $12 a video and three hours of your time, a listing costs you more than we charge</strong> — and you still have to do it again next week, and the week after.</p>
+      <p>The tool looks like the cheap column until you price your own time. <strong>At $12 a video it is the cheapest clip on this page, and someone in your office still uploads, checks and fixes every listing</strong>, next week and the week after.</p>
       <p>The crew is the opposite trade. You get a proper film, and it costs you a booking, a set of keys, half a day and roughly three times the money. Fine for the £2m instruction. Not something you can run across forty listings.</p>
       <p><strong>We are the only column where a listing goes out with a video and nothing lands on your desk.</strong> Send the photos you already took. Sign it off two days later.</p>
     </div>
@@ -1304,6 +1316,10 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">How does this compare to hiring a videographer?<span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><div class="faq-a-inner">A one-property shoot in the UK runs roughly £250 to £500 and needs a slot in the diary, access to the keys and a vendor who is happy to be out of the house. We charge a flat fee per listing, nobody visits the property, and the file arrives in 48 hours. What you give up is a real camera operator making judgement calls on site, which matters most on unusual or very high-value homes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I make these videos myself?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Our founder also built <a href="https://miravely.com" target="_blank" rel="noopener">Miravely</a>, a self-serve tool for agents who would rather do it themselves. You upload the listing photos in walking order and it makes a clip from each photo to the next, with the walls, windows and doors kept where your photos put them. New accounts start with free credits. If you would rather not spend the time on every listing, that is what this service is for.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Do you work with commercial and short-term lets?<span class="faq-icon" aria-hidden="true"></span></button>

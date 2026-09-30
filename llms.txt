@@ -25,6 +25,10 @@ We help professional services firms automate client intake, phone calls, appoint
 - Ad Automation: AI-optimized Google and Meta advertising campaigns
 - Web Design: Conversion-optimized professional websites delivered in 3-7 days
 
+## Related
+
+- Miravely (https://miravely.com): a separate self-serve product built by Coremagna's founder, Ferit Patefe. Estate agents use it to stage and restyle listing photos and to turn a set of listing photos into a video tour themselves, with walls, windows and doors held where the photos put them. Coremagna is the done-for-you option; Miravely is the do-it-yourself one.
+
 ## Pricing
 
 - Starter: $697 setup, $197/month
