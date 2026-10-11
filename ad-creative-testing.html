@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<!-- Built by scripts/service-pages/build.py from page_ad_creative_testing.py, parts.py and base.css.
+     Change those and run the build. A hand edit here is lost the next time it runs. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Creative Testing for E-commerce Brands | Coremagna</title>
+<meta name="description" content="A monthly batch of new video ad concepts made from your product photos, set up as a clean test in your Meta account, with a one-page readout of what won.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Ferit Patefe">
+<link rel="canonical" href="https://coremagna.com/ad-creative-testing">
+<meta property="og:title" content="New ad concepts every month and a read on which one wins">
+<meta property="og:description" content="A monthly batch of video ads from your product photos, tested in your Meta account, with a one-page readout of what won.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://coremagna.com/ad-creative-testing">
+<meta property="og:image" content="https://coremagna.com/images/og-ad-creative-testing.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="New ad concepts every month and a read on which one wins. Coremagna Ad Creative Testing.">
+<meta property="og:site_name" content="Coremagna">
+<meta property="og:locale" content="en_GB">
+<meta property="article:modified_time" content="2026-10-11">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://coremagna.com/images/og-ad-creative-testing.jpg">
+<meta name="twitter:title" content="New ad concepts every month and a read on which one wins">
+<meta name="twitter:description" content="A monthly batch of video ads from your product photos, tested in your Meta account, with a one-page readout of what won.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MDPMWZ158"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7MDPMWZ158');
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/motion.css">
+<style>
+/* ── CSS Variables ── */
+:root {
+  --bg: #060a0e;
+  --surface: #0d1117;
+  --surface-2: #111920;
+  --text: #F0F4F3;
+  --text-secondary: #c0ccd8;
+  --text-muted: #8a9ba8;
+  --text-fine: #5a6b78;
+  --border: #1a2530;
+  --border-hover: rgba(0,212,170,0.4);
+  --accent: #00D4AA;
+  --accent-dim: rgba(0,212,170,0.12);
+  --red: #e85d4a;
+  --yellow: #f5c14a;
+
+  --accent-hover: #00f0c4;
+  --on-accent: #060a0e;
+  --red-dim: rgba(232,93,74,0.12);
+  /* Video keeps a cinema palette in both themes: footage is never shown on white */
+  --media-bg: #05080b;
+  --chip: rgba(240,244,243,0.06);
+  --dot: rgba(240,244,243,0.075);
+  --shadow: 0 40px 80px -40px rgba(0,0,0,0.6);
+
+  --ease: cubic-bezier(0.16,1,0.3,1);
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+  --space-2xl: 80px;
+  --space-3xl: 120px;
+}
+[data-theme="light"] {
+  --bg: #fafbfc;
+  --surface: #ffffff;
+  --surface-2: #f4f6f8;
+  --text: #0a1014;
+  --text-secondary: #2a3340;
+  --text-muted: #5a6b78;
+  --text-fine: #8a9ba8;
+  --border: #e1e5ea;
+  --border-hover: rgba(0,184,148,0.5);
+  --accent: #00B894;
+  --accent-dim: rgba(0,184,148,0.10);
+  --red: #d14a37;
+  --yellow: #d49a2a;
+
+  --accent-hover: #00a383;
+  --red-dim: rgba(209,74,55,0.08);
+  --chip: rgba(10,16,20,0.05);
+  --dot: rgba(10,16,20,0.09);
+  --shadow: 0 30px 60px -40px rgba(10,16,20,0.28);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:400;line-height:1.65;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+h1,h2,h3{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;line-height:1.05;letter-spacing:-0.02em;overflow-wrap:break-word;max-width:100%;hyphens:none}
+.ic{width:1em;height:1em;fill:currentColor;flex-shrink:0;display:block}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.mono{font-family:'JetBrains Mono',Consolas,monospace}
+.txt-link{color:var(--text-secondary);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border-hover);transition:color 0.2s var(--ease)}
+.txt-link:hover{color:var(--accent)}
+
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;background:var(--accent);color:var(--on-accent);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.02em;border-radius:6px;transition:background 0.25s var(--ease),transform 0.25s var(--ease)}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary .ic{font-size:15px}
+.btn-primary[disabled]{opacity:0.6;cursor:not-allowed;transform:none}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border:1px solid var(--border);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.02em;border-radius:6px;transition:border-color 0.25s var(--ease),color 0.25s var(--ease),background 0.25s var(--ease),transform 0.25s var(--ease)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.btn-ghost:active{transform:scale(0.97)}
+.btn-ghost:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-ghost .ic{font-size:16px}
+
+/* ── Nav ── */
+#mainNav{position:sticky;top:0;z-index:1000;transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+#mainNav.scrolled{background:rgba(6,10,14,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+[data-theme="light"] #mainNav.scrolled{background:rgba(250,251,252,0.88)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg)}
+.logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:4px;color:var(--text)}
+.logo-core{transition:letter-spacing 0.3s var(--ease)}
+.logo-magna{color:var(--accent);transition:color 0.3s var(--ease)}
+.logo:hover .logo-core{letter-spacing:0.05em}
+.logo:hover .logo-magna{color:var(--text)}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:logoDotPulse 2s ease-in-out infinite;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+.logo:hover .logo-dot{transform:scale(2.5);opacity:0}
+@keyframes logoDotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+.nav-links{display:flex;gap:var(--space-xl);align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;transition:color 0.2s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{min-height:40px;padding:0 20px;font-size:14px}
+.hamburger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transform-origin:center;transition:transform 0.3s var(--ease),opacity 0.3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:998;background:rgba(6,10,14,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease)}
+[data-theme="light"] .mobile-nav{background:rgba(250,251,252,0.97)}
+.mobile-nav.visible{opacity:1;pointer-events:all}
+.mobile-nav ul{display:flex;flex-direction:column;gap:var(--space-lg);text-align:center}
+.mobile-nav a{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.02em;display:flex;align-items:center;justify-content:center;min-height:44px;transition:color 0.2s var(--ease)}
+.mobile-nav a:hover{color:var(--accent)}
+.mobile-nav .btn-primary{font-size:15px;padding:0 32px;margin-top:var(--space-md);color:var(--on-accent)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);color:var(--text);transition:border-color 0.2s var(--ease),color 0.2s var(--ease),background 0.2s var(--ease)}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.icon-sun{display:block}.icon-moon{display:none}
+[data-theme="light"] .theme-toggle{border-color:rgba(0,0,0,0.12)}
+[data-theme="light"] .icon-sun{display:none}[data-theme="light"] .icon-moon{display:block}
+/* Only hidden when the script that reveals it is running */
+.js .pre-entrance{opacity:0;transform:translateY(-10px)}
+#mainNav.entered{opacity:1;transform:translateY(0);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease),background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)}
+
+/* ── Breadcrumb ── */
+.crumbs{padding-top:20px;font-size:13px;color:var(--text-muted)}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.crumbs li + li::before{content:'/';margin-right:8px;color:var(--text-fine)}
+.crumbs a{display:inline-flex;align-items:center;min-height:44px;transition:color 0.2s var(--ease)}
+.crumbs a:hover{color:var(--text)}
+.crumbs [aria-current]{color:var(--text-secondary)}
+
+/* ── Hero ── */
+#hero{padding:16px 0 var(--space-2xl);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);gap:64px;align-items:center}
+.hero-kicker{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)}
+.hero-h1{font-size:clamp(2.4rem,5vw,3.5rem);max-width:720px;margin-bottom:var(--space-lg)}
+.hero-sub{font-size:18px;line-height:1.6;color:var(--text-secondary);max-width:560px;margin-bottom:32px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-fine{margin-top:var(--space-md);font-size:13px;color:var(--text-muted)}
+.byline{margin-top:var(--space-lg);padding-top:var(--space-md);border-top:1px solid var(--border);font-size:13px;color:var(--text-muted);max-width:560px}
+.byline a{color:var(--text-secondary);text-decoration:underline;text-underline-offset:3px}
+.byline a:hover{color:var(--accent)}
+
+/* ── Mock panels (illustrations built in HTML) ── */
+.mock{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+.mock-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border)}
+.mock-title{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--text-secondary)}
+.mock-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.mock-body{padding:20px}
+.tag{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border);border-radius:99px;padding:4px 10px;white-space:nowrap}
+.mock-cap{margin-top:12px;font-size:13px;color:var(--text-muted)}
+.mock-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-muted)}
+.bar{display:block;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;width:calc(var(--v) * 1%);border-radius:99px;background:var(--text-muted)}
+
+/* ── Quoted source ── */
+.quote{border-left:2px solid var(--accent);padding:4px 0 4px 24px}
+.quote p{font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:22px;line-height:1.3;letter-spacing:-0.01em;color:var(--text);max-width:34ch}
+.quote cite{display:block;margin-top:12px;font-style:normal;font-size:13px;color:var(--text-muted)}
+.quote cite a{text-decoration:underline;text-underline-offset:3px}
+.quote cite a:hover{color:var(--accent)}
+
+/* ── Section base ── */
+.sec{padding:var(--space-3xl) 0;border-top:1px solid var(--border)}
+.sec-h2{font-size:clamp(1.8rem,3.5vw,2.5rem);max-width:680px;margin-bottom:var(--space-md)}
+.sec-sub{font-size:16px;color:var(--text-muted);line-height:1.7;max-width:56ch}
+.sec-head{margin-bottom:var(--space-xl)}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
+.split-head{position:sticky;top:108px}
+.split-wide{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:start}
+
+/* The answer block: the page's main definition, written to stand alone */
+.answer{max-width:780px}
+.answer p{font-size:18px;line-height:1.7;color:var(--text-secondary)}
+.answer p + p{margin-top:var(--space-md)}
+.answer strong{color:var(--text);font-weight:600}
+.prose p{font-size:16px;line-height:1.75;color:var(--text-muted);max-width:64ch}
+.prose p + p{margin-top:var(--space-md)}
+.prose strong{color:var(--text);font-weight:600}
+
+/* ── Stats as rows ── */
+.stats{border-top:1px solid var(--border)}
+.stat-row{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:32px;align-items:baseline;padding:28px 0;border-bottom:1px solid var(--border)}
+.stat-num{font-size:clamp(2.5rem,5vw,4rem);line-height:1;color:var(--accent);font-weight:500;white-space:nowrap}
+.stat-row p{font-size:17px;color:var(--text-secondary);line-height:1.6;max-width:60ch}
+.stat-src{display:block;margin-top:8px;font-size:13px;color:var(--text-muted)}
+.stat-src a{text-decoration:underline;text-underline-offset:3px}
+.stat-src a:hover{color:var(--accent)}
+
+/* ── Steps ── */
+.steps{border-top:1px solid var(--border)}
+.step{display:grid;grid-template-columns:48px minmax(0,1fr);gap:6px 20px;padding:26px 0;border-bottom:1px solid var(--border)}
+.step-n{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--accent);padding-top:7px}
+.step h3{font-size:22px;line-height:1.15}
+.step p{grid-column:2;font-size:15px;color:var(--text-muted);line-height:1.65;max-width:60ch}
+.step-meta{grid-column:2;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-secondary);margin-top:4px}
+
+/* ── Tables ── */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--surface);-webkit-overflow-scrolling:touch}
+.tbl{width:100%;border-collapse:collapse;min-width:680px;font-size:15px}
+.tbl caption{caption-side:bottom;text-align:left;padding:14px 20px;font-size:13px;color:var(--text-muted);border-top:1px solid var(--border)}
+.tbl th,.tbl td{text-align:left;padding:16px 20px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.tbl thead th{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
+.tbl tbody th{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:16px;letter-spacing:-0.01em;color:var(--text);width:24%}
+.tbl td{color:var(--text-muted)}
+.tbl tbody tr:last-child th,.tbl tbody tr:last-child td{border-bottom:0}
+.tbl .is-us{color:var(--text);background:var(--accent-dim)}
+.tbl thead .is-us{color:var(--accent)}
+
+/* ── Pricing ── */
+.price-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:stretch}
+.plan{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;gap:var(--space-md)}
+.plan.is-main{border-color:var(--accent);transform:translateY(-6px)}
+.plan-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.plan-name{font-size:22px;line-height:1.15}
+.p-price{font-size:clamp(2rem,3.5vw,2.5rem);line-height:1;letter-spacing:-0.04em;color:var(--text);font-weight:500;white-space:nowrap}
+.p-unit{font-size:15px;color:var(--text-muted);margin-left:6px}
+.plan > p{font-size:15px;color:var(--text-muted);line-height:1.6;max-width:54ch}
+.plan ul{display:flex;flex-direction:column;gap:10px}
+.plan li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:15px;line-height:1.5;color:var(--text-secondary)}
+.plan li .ic{font-size:20px;color:var(--accent);margin-top:1px}
+.plan .btn-primary,.plan .btn-ghost{margin-top:auto;align-self:flex-start}
+.plan-side{display:flex;flex-direction:column;gap:24px}
+.plan-side .plan{flex:1;padding:28px 28px}
+.price-note{margin-top:var(--space-lg);font-size:13px;color:var(--text-muted);max-width:72ch}
+
+/* ── Risk reducers ── */
+.guards{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 56px;border-top:1px solid var(--border)}
+.guard{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 14px;padding:22px 0;border-bottom:1px solid var(--border)}
+.guard .ic{font-size:24px;color:var(--accent);margin-top:1px}
+.guard h3{font-size:22px;line-height:1.15}
+.guard p{grid-column:2;font-size:15px;color:var(--text-muted);line-height:1.6}
+
+/* ── Access lists ── */
+.access{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:start}
+.access-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px}
+.access-card h3{font-size:22px;margin-bottom:var(--space-lg)}
+.access-card ul{display:flex;flex-direction:column;gap:14px}
+.access-card li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:12px;font-size:15px;line-height:1.5;color:var(--text-secondary)}
+.access-card li .ic{font-size:20px;color:var(--accent);margin-top:1px}
+.access-card.is-never li .ic{color:var(--red)}
+.access-card li span{color:var(--text-muted)}
+
+/* ── Explainer video ── */
+.video-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:64px;align-items:center}
+.video-frame{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--media-bg);aspect-ratio:16/9;box-shadow:var(--shadow)}
+.video-frame video{width:100%;height:100%;display:block;object-fit:cover}
+.video-cap{margin-top:12px;font-size:13px;color:var(--text-muted)}
+.video-points{display:flex;flex-direction:column;gap:12px;margin-top:var(--space-lg)}
+.video-points li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;font-size:15px;color:var(--text-secondary);line-height:1.5}
+.video-points .mono{font-size:12px;color:var(--accent);padding-top:3px}
+
+/* ── Break-even calculator ── */
+.calc{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px}
+.calc-row + .calc-row{margin-top:20px}
+.calc label{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:14px;color:var(--text-muted)}
+.calc output{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--text)}
+.calc input[type=range]{width:100%;height:44px;accent-color:var(--accent);cursor:pointer}
+.calc-out{margin-top:20px;padding-top:24px;border-top:1px solid var(--border)}
+.calc-big{font-family:'JetBrains Mono',monospace;font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:500;line-height:1;letter-spacing:-0.03em;color:var(--accent)}
+.calc-out p{margin-top:12px;font-size:15px;color:var(--text-muted);line-height:1.6}
+.calc-fine{margin-top:var(--space-md);font-size:13px;color:var(--text-muted)}
+
+/* ── Related services ── */
+.related{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:24px}
+.rel-card{display:flex;flex-direction:column;gap:10px;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:16px;transition:border-color 0.25s var(--ease),transform 0.25s var(--ease)}
+.rel-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.rel-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rel-kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent)}
+.rel-card h3{font-size:22px;line-height:1.15}
+.rel-card p{font-size:15px;color:var(--text-muted);line-height:1.6;max-width:52ch}
+.rel-go{margin-top:auto;padding-top:8px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--text-secondary);transition:color 0.25s var(--ease)}
+.rel-go .ic{font-size:14px;transition:transform 0.25s var(--ease)}
+.rel-card:hover .rel-go{color:var(--accent)}
+.rel-card:hover .rel-go .ic{transform:translateX(3px)}
+
+/* ── Sources ── */
+.sources{counter-reset:src;display:flex;flex-direction:column;gap:12px;max-width:880px}
+.sources li{counter-increment:src;position:relative;padding-left:36px;font-size:14px;line-height:1.55;color:var(--text-muted)}
+.sources li::before{content:counter(src);position:absolute;left:0;top:1px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
+.sources a{color:var(--text-secondary);text-decoration:underline;text-underline-offset:3px}
+.sources a:hover{color:var(--accent)}
+
+/* ── FAQ ── */
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);min-height:44px;padding:var(--space-lg) 0;text-align:left;font-family:'Cabinet Grotesk',sans-serif;font-size:19px;font-weight:800;letter-spacing:-0.01em;line-height:1.3;color:var(--text)}
+.faq-q:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+.faq-icon{flex-shrink:0;width:20px;height:20px;position:relative}
+.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--accent);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-icon::before{width:14px;height:2px}
+.faq-icon::after{width:2px;height:14px;transition:transform 0.3s var(--ease)}
+.faq-item.open .faq-icon::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s var(--ease)}
+.faq-a-inner{padding:0 0 var(--space-lg);font-size:15px;color:var(--text-muted);line-height:1.75;max-width:64ch}
+.faq-a-inner a{color:var(--text-secondary);text-decoration:underline;text-underline-offset:3px}
+/* Without JS every answer is open, so nothing is hidden from a reader or a crawler */
+html:not(.js) .faq-a{max-height:none}
+
+/* ── Final CTA ── */
+#final-cta{padding:var(--space-3xl) 0;border-top:1px solid var(--border);
+  background-image:radial-gradient(circle,var(--dot) 1px,transparent 1.6px);background-size:20px 20px;background-position:10px 10px}
+.cta-wrap{max-width:720px}
+.cta-wrap h2{font-size:clamp(1.8rem,3.5vw,2.5rem);max-width:680px;margin-bottom:var(--space-md)}
+.cta-wrap p{font-size:17px;color:var(--text-muted);max-width:52ch;margin-bottom:var(--space-xl)}
+.cta-actions{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ── Footer ── */
+footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--border)}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--space-2xl)}
+.footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:17px;font-weight:800;letter-spacing:-0.02em;margin-bottom:var(--space-md)}
+.footer-logo span{color:var(--accent)}
+.footer-tagline{font-size:13px;color:var(--text-muted);max-width:220px;line-height:1.65}
+.footer-col h3{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-fine);margin-bottom:var(--space-lg)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--space-sm)}
+.footer-col a{font-size:13px;color:var(--text-muted);transition:color 0.2s var(--ease)}
+.footer-col a:hover{color:var(--text)}
+.footer-social{display:flex;gap:var(--space-md);margin-top:var(--space-lg)}
+.social-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s var(--ease),background 0.25s var(--ease)}
+.social-icon:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-icon svg{width:16px;height:16px;fill:var(--text-muted);transition:fill 0.25s var(--ease)}
+.social-icon:hover svg{fill:var(--accent)}
+.footer-bottom{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:var(--text-fine)}
+
+/* ── Scroll reveal: only armed once the script that reveals it has run ── */
+.rv-on .rv{opacity:0;transform:translateY(16px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
+.rv-on .rv.is-in{opacity:1;transform:none}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .container,.nav-inner{padding:0 24px}
+  .nav-links{gap:var(--space-lg)}
+  .nav-links a,.nav-cta{white-space:nowrap}
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
+  .split,.split-wide,.video-grid,.access,.price-grid,.related{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}
+  .price-grid,.related,.access{gap:24px}
+  .split-head{position:static}
+  .plan.is-main{transform:none}
+  .guards{grid-template-columns:minmax(0,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+}
+@media(max-width:768px){
+  .container,.nav-inner{padding:0 20px}
+  .theme-toggle{width:44px;height:44px}
+  .logo{min-height:44px}
+  #hero{padding:8px 0 64px}
+  .hero-sub{font-size:17px}
+  .hero-actions,.cta-actions{flex-direction:column;align-items:stretch}
+  .sec{padding:64px 0}
+  .answer p{font-size:17px}
+  .stat-row{grid-template-columns:minmax(0,1fr);gap:8px;padding:24px 0}
+  .step{grid-template-columns:36px minmax(0,1fr);gap:6px 12px;padding:22px 0}
+  .step h3,.plan-name,.access-card h3,.rel-card h3{font-size:18px}
+  .guard h3{font-size:18px}
+  .plan,.plan-side .plan,.access-card,.calc,.rel-card{padding:28px 20px}
+  .plan .btn-primary,.plan .btn-ghost{align-self:stretch}
+  /* Tables stack into one block per row, so the last column is never off screen */
+  .tbl-wrap{overflow:visible}
+  .tbl{min-width:0}
+  .tbl,.tbl tbody,.tbl tr,.tbl tbody th,.tbl td,.tbl caption{display:block;width:auto}
+  .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tbl tr{padding:20px 16px;border-bottom:1px solid var(--border)}
+  .tbl tbody tr:last-child{border-bottom:0}
+  .tbl tbody th,.tbl td{padding:0;border:0}
+  .tbl tbody th{font-size:18px;margin-bottom:4px}
+  .tbl td{margin-top:12px;font-size:15px}
+  .tbl td::before{content:attr(data-label);display:block;margin-bottom:2px;font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-fine)}
+  .tbl td.is-us{padding:12px 14px;border-radius:10px}
+  .tbl td.is-us::before{color:var(--accent)}
+  .tbl caption{padding:14px 16px;border-top:0;border-bottom:1px solid var(--border)}
+  .quote p{font-size:19px}
+  .quote{padding-left:18px}
+  .faq-q{font-size:17px}
+  #final-cta{padding:64px 0 88px}
+  .social-icon{width:44px;height:44px}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:var(--space-md);text-align:center}
+  .footer-bottom a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px}
+  .footer-col a{display:flex;align-items:center;min-height:44px}
+  .footer-logo,.footer-tagline{text-align:center}
+  .footer-tagline{max-width:100%}
+  .footer-social{justify-content:center}
+  .sources a,.stat-src a,.byline a,.txt-link,.quote cite a{display:inline-block;padding:4px 0}
+}
+@media(max-width:480px){
+  .hero-h1{font-size:clamp(2.1rem,9vw,2.4rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv-on .rv{opacity:1;transform:none}
+}
+
+/* ── Ad Creative Testing: hero readout mock ── */
+.ro{padding:6px 20px 18px}
+.ro-head,.ro-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.25fr) 64px;gap:14px;align-items:center}
+.ro-head{padding:12px 0;font-size:12px;color:var(--text-muted);border-bottom:1px solid var(--border)}
+.ro-head span:last-child,.ro-cost{text-align:right}
+.ro-row{padding:14px 0;border-bottom:1px solid var(--border)}
+.ro-row strong{display:block;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;line-height:1.2;letter-spacing:-0.01em}
+.ro-verdict{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)}
+.ro-hook{display:grid;grid-template-columns:minmax(0,1fr) 38px;gap:10px;align-items:center}
+.ro-hook b,.ro-cost{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:14px;color:var(--text)}
+.ro-hook b{text-align:right}
+.ro-row.is-win{margin:0 -12px;padding:14px 12px;border-radius:10px;background:var(--accent-dim);border-bottom-color:transparent}
+.ro-row.is-win .bar i{background:var(--accent)}
+.ro-row.is-win .ro-verdict{color:var(--accent)}
+.ro-row.is-out strong,.ro-row.is-out b{color:var(--text-muted)}
+.ro-row.is-out .ro-verdict{color:var(--red)}
+.ro-note{padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.5;color:var(--text-muted)}
+/* The rows arrive one by one on load. CSS only, so it never depends on a script. */
+@keyframes roIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ro-row,.ro-note{animation:roIn 0.7s var(--ease) both}
+.ro-row:nth-of-type(2){animation-delay:0.35s}
+.ro-row:nth-of-type(3){animation-delay:0.6s}
+.ro-row:nth-of-type(4){animation-delay:0.85s}
+.ro-row:nth-of-type(5){animation-delay:1.1s}
+.ro-note{animation-delay:1.5s}
+
+/* ── One month's batch ── */
+.cg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:16px}
+.cg-col{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:16px 16px 8px}
+.cg-name{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:16px;letter-spacing:-0.01em;color:var(--text)}
+.cg-name span{font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:var(--accent);white-space:nowrap}
+.cg-col li{padding:9px 0;border-top:1px solid var(--border);font-size:14px;line-height:1.4;color:var(--text-secondary)}
+
+/* ── Readout terms ── */
+.defs{border-top:1px solid var(--border)}
+.defs > div{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px 24px;padding:20px 0;border-bottom:1px solid var(--border)}
+.defs dt{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;line-height:1.2;letter-spacing:-0.01em;color:var(--text)}
+.defs dd{font-size:15px;line-height:1.65;color:var(--text-muted);max-width:58ch}
+.defs dd b{display:block;margin-bottom:4px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;color:var(--text-secondary)}
+
+/* ── Portfolio stills ── */
+.wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-bottom:28px}
+.wall-tile{display:block;transition:transform 0.3s var(--ease)}
+.wall-tile:nth-child(even){transform:translateY(28px)}
+.wall-tile:hover{transform:translateY(-4px)}
+.wall-tile:nth-child(even):hover{transform:translateY(24px)}
+.wall-tile:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:14px}
+.wall-img{display:block;aspect-ratio:9/16;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--media-bg)}
+.wall-img img{width:100%;height:100%;object-fit:cover}
+.wall-cap{display:block;margin-top:10px;font-size:13px;line-height:1.4;color:var(--text-muted)}
+.wall-cap b{display:block;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px;letter-spacing:-0.01em;color:var(--text)}
+.wall-more{margin-top:var(--space-lg)}
+
+.quote-wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start;margin-top:var(--space-xl)}
+
+@media(max-width:1024px){
+  .quote-wrap{grid-template-columns:minmax(0,1fr);gap:var(--space-lg)}
+}
+@media(max-width:768px){
+  .wall{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;padding-bottom:20px}
+  .wall-tile:nth-child(even){transform:translateY(20px)}
+  .wall-tile:hover{transform:none}
+  .wall-tile:nth-child(even):hover{transform:translateY(20px)}
+  .defs > div{grid-template-columns:minmax(0,1fr)}
+  .ro{padding:6px 16px 16px}
+  .ro-head,.ro-row{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 48px;gap:10px}
+  .ro-row strong{font-size:16px}
+}
+@media(max-width:480px){
+  .cg{grid-template-columns:minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  .ro-row,.ro-note{animation:none}
+  .wall-tile,.wall-tile:hover{transition:none}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://coremagna.com/ad-creative-testing#webpage",
+      "url": "https://coremagna.com/ad-creative-testing",
+      "name": "Ad Creative Testing for E-commerce Brands | Coremagna",
+      "description": "A monthly batch of new video ad concepts made from your product photos, set up as a clean test in your Meta account, with a one-page readout of what won.",
+      "inLanguage": "en-GB",
+      "datePublished": "2026-10-11",
+      "dateModified": "2026-10-11",
+      "author": {
+        "@id": "https://coremagna.com/about#ferit-patefe"
+      },
+      "publisher": {
+        "@id": "https://coremagna.com/#organization"
+      },
+      "about": {
+        "@id": "https://coremagna.com/ad-creative-testing#service"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://coremagna.com/images/og-ad-creative-testing.jpg",
+        "width": 1200,
+        "height": 630
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://coremagna.com/ad-creative-testing#service",
+      "url": "https://coremagna.com/ad-creative-testing",
+      "provider": {
+        "@id": "https://coremagna.com/#organization"
+      },
+      "areaServed": [
+        "United Kingdom",
+        "Ireland",
+        "Australia",
+        "New Zealand",
+        "Canada",
+        "United States"
+      ],
+      "name": "Ad creative testing",
+      "serviceType": "Paid social ad creative production and testing",
+      "description": "Coremagna researches ad concepts for an e-commerce brand, produces a monthly batch of short video ads from the brand's product photos and footage, sets up a like-for-like test in the brand's Meta ad account, and reports which concept won on hook rate, click rate and cost per purchase.",
+      "audience": {
+        "@type": "BusinessAudience",
+        "name": "E-commerce and direct-to-consumer brands that advertise on Facebook and Instagram"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Pilot",
+          "price": "997",
+          "priceCurrency": "USD",
+          "description": "Ten video ads delivered within 14 days, a test set up in the ad account, and a readout after two weeks."
+        },
+        {
+          "@type": "Offer",
+          "name": "Monthly testing",
+          "price": "1997",
+          "priceCurrency": "USD",
+          "description": "Four new concepts, 12 new video ads, four variations of the previous winner, test setup and a one-page readout.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "1997",
+            "priceCurrency": "USD",
+            "unitText": "month"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://coremagna.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ad Creative Testing",
+          "item": "https://coremagna.com/ad-creative-testing"
+        }
+      ]
+    },
+    {
+      "@type": "VideoObject",
+      "uploadDate": "2026-10-11",
+      "width": 1280,
+      "height": 720,
+      "name": "How monthly ad creative testing works",
+      "description": "An ad that has run too long loses its edge. The video shows four new concepts with three hooks each, the two-week readout that ranks them, and the monthly loop of research, production, launch and reading.",
+      "thumbnailUrl": "https://coremagna.com/videos/services/ad-creative-testing-poster.jpg",
+      "contentUrl": "https://coremagna.com/videos/services/ad-creative-testing.mp4",
+      "duration": "PT34S"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://coremagna.com/#organization",
+      "name": "Coremagna",
+      "url": "https://coremagna.com",
+      "email": "ferit1@coremagna.com",
+      "founder": {
+        "@id": "https://coremagna.com/about#ferit-patefe"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://coremagna.com/about#ferit-patefe",
+      "name": "Ferit Patefe",
+      "jobTitle": "Founder",
+      "url": "https://coremagna.com/about",
+      "sameAs": [
+        "https://www.linkedin.com/in/ferit-patefe"
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Phosphor icon sprite (regular weight) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+<symbol id="i-arrows-clockwise" viewBox="0 0 256 256"><path d="M224,48V96a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h28.69L182.06,73.37a79.56,79.56,0,0,0-56.13-23.43h-.45A79.52,79.52,0,0,0,69.59,72.71,8,8,0,0,1,58.41,61.27a96,96,0,0,1,135,.79L208,76.69V48a8,8,0,0,1,16,0ZM186.41,183.29a80,80,0,0,1-112.47-.66L59.31,168H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V179.31l14.63,14.63A95.43,95.43,0,0,0,130,222.06h.53a95.36,95.36,0,0,0,67.07-27.33,8,8,0,0,0-11.18-11.44Z"/></symbol>
+<symbol id="i-check-circle" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></symbol>
+<symbol id="i-key" viewBox="0 0 256 256"><path d="M216.57,39.43A80,80,0,0,0,83.91,120.78L28.69,176A15.86,15.86,0,0,0,24,187.31V216a16,16,0,0,0,16,16H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A79.73,79.73,0,0,0,160,176h.1A80,80,0,0,0,216.57,39.43ZM224,98.1c-1.09,34.09-29.75,61.86-63.89,61.9H160a63.7,63.7,0,0,1-23.65-4.51,8,8,0,0,0-8.84,1.68L116.69,168H96a8,8,0,0,0-8,8v16H72a8,8,0,0,0-8,8v16H40V187.31l58.83-58.82a8,8,0,0,0,1.68-8.84A63.72,63.72,0,0,1,96,95.92c0-34.14,27.81-62.8,61.9-63.89A64,64,0,0,1,224,98.1ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></symbol>
+<symbol id="i-lock-simple" viewBox="0 0 256 256"><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></symbol>
+<symbol id="i-prohibit" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm88,104a87.56,87.56,0,0,1-20.41,56.28L71.72,60.4A88,88,0,0,1,216,128ZM40,128A87.56,87.56,0,0,1,60.41,71.72L184.28,195.6A88,88,0,0,1,40,128Z"/></symbol>
+<symbol id="i-user-circle" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></symbol>
+<symbol id="i-x-circle" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></symbol>
+</svg>
+
+<!-- ── NAVIGATION ── -->
+<nav id="mainNav" class="pre-entrance" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="Coremagna home">
+      <span class="logo-core">Core</span><span class="logo-magna">magna</span><span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/industries">Industries</a></li>
+      <li><a href="/real-estate-videos">Video Tours</a></li><li><a href="/product-videos">Product Videos</a></li>
+      <li><a href="/demo">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"/></svg>
+    </button>
+    <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta" data-loc="nav">Book a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <ul role="list">
+    <li><a href="/industries">Industries</a></li>
+    <li><a href="/real-estate-videos">Video Tours</a></li><li><a href="/product-videos">Product Videos</a></li>
+    <li><a href="/demo">Work</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary" data-loc="mobile-nav">Book a Call</a></li>
+  </ul>
+</div>
+
+<main id="main">
+<!-- ── HERO ── -->
+<section id="hero" aria-labelledby="heroH1">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li><span aria-current="page">Ad Creative Testing</span></li></ol>
+    </nav>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="hero-kicker">Ad Creative Testing</p>
+        <h1 class="hero-h1" id="heroH1">New ad concepts every month and a read on which one wins</h1>
+        <p class="hero-sub">We research the angles, produce a batch of short video ads from your product photos and footage, set up a clean test in your Meta ad account, and send a one-page readout two weeks later.</p>
+        <div class="hero-actions">
+          <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary" data-loc="hero">Book a call
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+          <a href="#how" class="btn-ghost">See how a month works</a>
+        </div>
+        <p class="hero-fine">It starts with a pilot of ten ads for $997. Ad spend stays on your own account.</p>
+        <p class="byline">By <a href="/about">Ferit Patefe</a>, founder of Coremagna. Updated <time datetime="2026-10-11">11 October 2026</time>.</p>
+      </div>
+
+      <figure class="mock">
+        <div class="mock-head">
+          <span class="mock-title"><i class="mock-dot"></i>Two-week readout</span>
+          <span class="tag">Example data</span>
+        </div>
+        <div class="ro">
+          <div class="ro-head"><span>Concept</span><span>Hook rate</span><span>Cost</span></div>
+          <div class="ro-row is-win"><div><strong>Problem first</strong><span class="ro-verdict">Winner</span></div><div class="ro-hook"><span class="bar"><i style="--v:86"></i></span><b>31%</b></div><span class="ro-cost">$24</span></div>
+          <div class="ro-row"><div><strong>Unboxing</strong><span class="ro-verdict">Try new hooks</span></div><div class="ro-hook"><span class="bar"><i style="--v:75"></i></span><b>27%</b></div><span class="ro-cost">$31</span></div>
+          <div class="ro-row"><div><strong>How it works</strong><span class="ro-verdict">Try new hooks</span></div><div class="ro-hook"><span class="bar"><i style="--v:61"></i></span><b>22%</b></div><span class="ro-cost">$38</span></div>
+          <div class="ro-row is-out"><div><strong>Comparison</strong><span class="ro-verdict">Dropped</span></div><div class="ro-hook"><span class="bar"><i style="--v:50"></i></span><b>18%</b></div><span class="ro-cost">$52</span></div>
+          <p class="ro-note">Cost is cost per purchase. Next month keeps the winner and tests four new concepts against it.</p>
+        </div>
+        <figcaption class="sr-only">An example readout comparing four ad concepts on hook rate and cost per purchase. The numbers are invented to show the layout.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEFINITION ── -->
+<section class="sec" id="what" aria-labelledby="whatTitle">
+  <div class="container">
+    <div class="split">
+      <div class="split-head">
+        <h2 class="sec-h2" id="whatTitle">What is ad creative testing?</h2>
+      </div>
+      <div class="answer rv">
+        <p><strong>Ad creative testing is running several different ads against the same audience and the same budget to see which idea sells, then putting the money behind the winner.</strong> The thing being tested is the concept, which is the reason a stranger should care. One ad opens on the problem. Another shows how the product works. A third compares it with the cheap alternative. Each concept gets a few different opening lines, called hooks, because the opening seconds decide whether anyone watches the rest.</p>
+        <p>After a set period you compare the concepts on the same measures: how many people watched past three seconds, how many clicked, and what a purchase cost. The winner gets more budget. The losers are switched off, and what they taught you goes into the next batch.</p>
+        <p>It is not the same as making more ads. Twenty versions of one idea with a new colour or caption tell you almost nothing. Four ideas that are really different tell you what your customers respond to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPLAINER VIDEO ── -->
+<section class="sec" id="video" aria-labelledby="videoTitle">
+  <div class="container">
+    <div class="video-grid">
+      <div>
+        <h2 class="sec-h2" id="videoTitle">See the loop in 34 seconds</h2>
+        <p class="sec-sub">A tired ad, four new concepts, and the readout two weeks later. No sound needed.</p>
+        <ol class="video-points">
+          <li><span class="mono">0:00</span><span>An ad that has run too long</span></li>
+          <li><span class="mono">0:05</span><span>Why the idea is now the hard part</span></li>
+          <li><span class="mono">0:10</span><span>Four concepts and three hooks for each</span></li>
+          <li><span class="mono">0:17</span><span>The readout after two weeks</span></li>
+        </ol>
+      </div>
+      <div class="rv">
+        <div class="video-frame">
+          <video controls playsinline preload="none" poster="/videos/services/ad-creative-testing-poster.jpg" data-video="ad-creative-testing" aria-label="34-second explainer of monthly ad creative testing">
+            <source src="/videos/services/ad-creative-testing.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="video-cap">The product, the ads and every number in the video are examples, not results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DATA ── -->
+<section class="sec" id="data" aria-labelledby="dataTitle">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-h2" id="dataTitle">Why does the creative matter more than the targeting?</h2>
+      <p class="sec-sub">Because the platform now does most of the targeting for you, and anyone can make a video. Here is what has been measured or said on the record.</p>
+    </div>
+    <div class="stats rv">
+      <div class="stat-row">
+        <span class="stat-num">49%</span>
+        <p>of the extra sales that advertising produced came from the quality of the creative. Targeting accounted for 11%.
+          <span class="stat-src">Source: <a href="https://info.ncsolutions.com/hubfs/2023%20Five%20Keys%20to%20Advertising%20Effectiveness/NCS_Five_Keys_to_Advertising_Effectiveness_E-Book_08-23.pdf" target="_blank" rel="noopener noreferrer">NCSolutions, Five Keys to Advertising Effectiveness</a>, 2023 update, nearly 450 US consumer goods campaigns on TV and digital.</span></p>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">15M</span>
+        <p>ads were made with Meta&rsquo;s generative AI tools in a single month, by more than a million advertisers. That was in late 2024.
+          <span class="stat-src">Source: <a href="https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine/" target="_blank" rel="noopener noreferrer">Meta Engineering</a>, 2 December 2024.</span></p>
+      </div>
+    </div>
+    <div class="quote-wrap rv">
+      <blockquote class="quote">
+        <p>&ldquo;Increased ad diversity can improve people&rsquo;s experience with ads and drive better advertiser outcomes.&rdquo;</p>
+        <cite><a href="https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine/" target="_blank" rel="noopener noreferrer">Meta Engineering</a>, on its Andromeda ad retrieval system, December 2024</cite>
+      </blockquote>
+      <div class="prose">
+        <p>Meta&rsquo;s system now picks which ad to show each person from a far larger pool than it used to. That works in favour of an account with several different ideas in it, and against one that runs a single ad until it wears out.</p>
+        <p>Making the video is no longer the hard part either. On 6 October 2026 Meta said that generating video from still images is now generally available inside Advantage+ creative. A competitor can turn a product photo into a video in the same afternoon you can. What they cannot copy as fast is knowing which idea works for your product.</p>
+        <p><strong>Read these with care.</strong> The 49% comes from campaigns for groceries and household goods, measured by a company that sells ad measurement. It was not measured on Meta alone and it will not transfer exactly to your brand. Meta&rsquo;s statements are Meta&rsquo;s own. Meta has never published an official number for how many different ads an ad set should hold, so we do not quote one.</p>
+        <p class="stat-src">Source for the October announcement: <a href="https://www.socialmediatoday.com/news/meta-introduces-new-ai-powered-tools-at-ad-week-2026/832288/" target="_blank" rel="noopener noreferrer">Social Media Today</a>, 6 October 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT A BATCH LOOKS LIKE ── -->
+<section class="sec" id="batch" aria-labelledby="batchTitle">
+  <div class="container">
+    <div class="split-wide">
+      <div>
+        <h2 class="sec-h2" id="batchTitle">What a batch looks like</h2>
+        <div class="prose rv">
+          <p>Every batch starts from four concepts. Each one is a different reason to buy, written as one sentence you can argue with before any video is made.</p>
+          <p>Each concept then gets three hooks, which are three different ways to open the same idea. That gives twelve video ads. If one concept wins, the hooks tell you which opening carried it.</p>
+          <p>From the second month the batch also holds four new variations of the previous winner, so the ad that is working gets fresh versions before it wears out.</p>
+        </div>
+      </div>
+      <figure class="mock rv">
+        <div class="mock-head">
+          <span class="mock-title"><i class="mock-dot"></i>One month&rsquo;s batch</span>
+          <span class="tag">Example</span>
+        </div>
+        <div class="mock-body">
+          <p class="mock-meta"><span>Insulated bottle</span><span>4 concepts</span><span>12 video ads</span></p>
+          <div class="cg">
+            <div class="cg-col"><p class="cg-name">Problem first<span>3 hooks</span></p><ul><li>Warm water by 10am?</li><li>Your bottle is lying to you</li><li>Three hours and it gave up</li></ul></div>
+            <div class="cg-col"><p class="cg-name">How it works<span>3 hooks</span></p><ul><li>Two walls with no air between</li><li>Why the ice lasts 24 hours</li><li>Cut one in half and look</li></ul></div>
+            <div class="cg-col"><p class="cg-name">Unboxing<span>3 hooks</span></p><ul><li>What is in the box</li><li>First fill, first sip</li><li>It arrived like this</li></ul></div>
+            <div class="cg-col"><p class="cg-name">Comparison<span>3 hooks</span></p><ul><li>Ours against a $9 bottle</li><li>Same ice, six hours later</li><li>Which one would you carry?</li></ul></div>
+          </div>
+        </div>
+        <figcaption class="sr-only">An example batch for an insulated bottle: four concepts, each with three opening lines. The product and the lines are invented.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARISON ── -->
+<section class="sec" id="compare" aria-labelledby="compareTitle">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-h2" id="compareTitle">How is this different from an AI video tool or a creator?</h2>
+      <p class="sec-sub">Both are good at producing videos. Neither decides what to test or reads the result, and that is where most of the value sits.</p>
+    </div>
+<div class="tbl-wrap rv">
+  <table class="tbl">
+    <caption>A general comparison. Tools and creators differ, so check the one you are considering.</caption>
+    <thead><tr><th scope="col"><span class="sr-only">Compared on</span></th><th scope="col">AI video tool</th><th scope="col">Freelance creators</th><th scope="col" class="is-us">Coremagna creative testing</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">What you get</th><td data-label="AI video tool">As many videos as you care to generate, within minutes.</td><td data-label="Freelance creators">A handful of videos from real people, usually within a few weeks.</td><td data-label="Coremagna creative testing" class="is-us">A planned batch every month: four concepts with three hooks each, cut for feed, Stories and Reels.</td></tr>
+      <tr><th scope="row">Who picks the concepts</th><td data-label="AI video tool">You do.</td><td data-label="Freelance creators">You do, or the creator improvises.</td><td data-label="Coremagna creative testing" class="is-us">We do, from your reviews, your past results and the ads your competitors run. You approve them.</td></tr>
+      <tr><th scope="row">Who sets up the test</th><td data-label="AI video tool">You do.</td><td data-label="Freelance creators">You do.</td><td data-label="Coremagna creative testing" class="is-us">We do, in your ad account, or we hand a setup sheet to your media buyer.</td></tr>
+      <tr><th scope="row">Who reads the result</th><td data-label="AI video tool">You do.</td><td data-label="Freelance creators">You do.</td><td data-label="Coremagna creative testing" class="is-us">We send one page that says what to scale, what to switch off and what to test next.</td></tr>
+      <tr><th scope="row">People on camera</th><td data-label="AI video tool">Avatars or generated presenters.</td><td data-label="Freelance creators">Real people.</td><td data-label="Coremagna creative testing" class="is-us">Product shots and demos by default. Real people only from your own footage or a creator you choose.</td></tr>
+      <tr><th scope="row">Your part</th><td data-label="AI video tool">Planning, prompting, editing, launching and analysing.</td><td data-label="Freelance creators">Briefing, chasing, editing, launching and analysing.</td><td data-label="Coremagna creative testing" class="is-us">Approve the concepts, then read one page.</td></tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="sec" id="how" aria-labelledby="howTitle">
+  <div class="container">
+    <div class="split">
+      <div class="split-head">
+        <h2 class="sec-h2" id="howTitle">How a month works</h2>
+        <p class="sec-sub">Five steps. The pilot runs the same way with a smaller batch.</p>
+      </div>
+      <ol class="steps rv">
+        <li class="step">
+          <span class="step-n" aria-hidden="true">01</span>
+          <h3>Research</h3>
+          <p>We read your reviews, your last three months of ad results and the ads your competitors are running in the Meta Ad Library. The output is four concepts, each with one sentence on why it might work.</p>
+          <span class="step-meta">Days 1 to 3</span>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">02</span>
+          <h3>Sign-off</h3>
+          <p>You see the concepts, the hooks and every product claim before anything is produced. Anything you cannot stand behind comes out.</p>
+          <span class="step-meta">Day 4</span>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">03</span>
+          <h3>Produce</h3>
+          <p>Twelve short video ads from your product photos and footage, plus four new variations of last month&rsquo;s winner. Each one is cut for feed, Stories and Reels.</p>
+          <span class="step-meta">Days 5 to 10</span>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">04</span>
+          <h3>Launch</h3>
+          <p>We set the test up in your ad account, or hand the files and a setup sheet to your media buyer. Every concept gets the same audience and the same budget, so the difference you see comes from the creative.</p>
+          <span class="step-meta">Day 11</span>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">05</span>
+          <h3>Read</h3>
+          <p>After 14 days you get one page: hook rate, click rate and cost per purchase for each concept, what to scale, what to switch off, and the brief for next month.</p>
+          <span class="step-meta">Day 25</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ── READOUT TERMS ── -->
+<section class="sec" id="readout" aria-labelledby="readoutTitle">
+  <div class="container">
+    <div class="split">
+      <div class="split-head">
+        <h2 class="sec-h2" id="readoutTitle">What the readout tells you</h2>
+        <p class="sec-sub">Four numbers for each concept and one decision. Every number comes from your own Ads Manager, so you can check it.</p>
+      </div>
+      <dl class="defs rv">
+        <div><dt>Hook rate</dt><dd><b>3-second video plays &divide; impressions</b>Whether the opening stops the scroll. It is the first number to settle, and it needs the least budget.</dd></div>
+        <div><dt>Hold rate</dt><dd><b>ThruPlays &divide; 3-second video plays</b>Whether people who stopped kept watching. Meta counts a ThruPlay when a video plays to the end or for at least 15 seconds.</dd></div>
+        <div><dt>Click rate</dt><dd><b>Link clicks &divide; impressions</b>Whether the ad made people want to see the product page.</dd></div>
+        <div><dt>Cost per purchase</dt><dd><b>Spend &divide; purchases Meta attributes to the ad</b>The number that pays the bills, and the noisiest one. The readout shows how many purchases it rests on, so a result built on six sales is not read like one built on sixty.</dd></div>
+        <div><dt>Verdict</dt><dd><b>Scale, try new hooks or drop</b>One line for each concept, and a brief for the next batch that follows from it.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section class="sec" id="footage" aria-labelledby="footageTitle">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-h2" id="footageTitle">What the videos look like</h2>
+      <p class="sec-sub">Stills from finished product videos in our portfolio, made from product photos with AI video tools and edited by hand. They show the production quality. They are not test results.</p>
+    </div>
+    <div class="wall rv">
+      <a class="wall-tile" href="/product-videos">
+        <span class="wall-img"><img src="/videos/products/fig-gelato-launch-poster.webp" alt="Still from a launch ad for a roasted fig gelato" loading="lazy" decoding="async" width="540" height="960"></span>
+        <span class="wall-cap"><b>Fig gelato launch</b>Launch ad</span>
+      </a>
+      <a class="wall-tile" href="/product-videos">
+        <span class="wall-img"><img src="/videos/products/smoked-chilli-oil-poster.webp" alt="Still from an ingredient story for a smoked chilli oil" loading="lazy" decoding="async" width="540" height="960"></span>
+        <span class="wall-cap"><b>Smoked chilli oil</b>Ingredient story</span>
+      </a>
+      <a class="wall-tile" href="/product-videos">
+        <span class="wall-img"><img src="/videos/products/watch-exploded-view-poster.webp" alt="Still from an exploded view of a watch with spec callouts" loading="lazy" decoding="async" width="540" height="960"></span>
+        <span class="wall-cap"><b>Watch exploded view</b>How it works</span>
+      </a>
+      <a class="wall-tile" href="/product-videos">
+        <span class="wall-img"><img src="/videos/products/leash-spiral-poster.webp" alt="Still from a product video of a patterned dog leash" loading="lazy" decoding="async" width="540" height="960"></span>
+        <span class="wall-cap"><b>Leash spiral</b>Product shot</span>
+      </a>
+    </div>
+    <p class="wall-more"><a class="txt-link" href="/product-videos">Watch these and the rest of the portfolio</a></p>
+  </div>
+</section>
+
+<!-- ── ACCESS ── -->
+<section class="sec" id="access" aria-labelledby="accessTitle">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-h2" id="accessTitle">What we need from you</h2>
+      <p class="sec-sub">Enough to make the ads and read the numbers. Nothing that lets us spend your money or see your customers.</p>
+    </div>
+    <div class="access rv">
+      <div class="access-card">
+        <h3>For a test</h3>
+        <ul>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><div>Partner access to your Meta ad account <span>at advertiser level, or none at all if your media buyer launches the ads</span></div></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><div>Product photos, any footage you have, your logo and brand colours</div></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><div>Ad results for the last three months <span>read access or an export</span></div></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><div>The claims you can prove <span>ingredients, test results, guarantees, review counts</span></div></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><div>One person who approves concepts and claims</div></li>
+        </ul>
+      </div>
+      <div class="access-card is-never">
+        <h3>We never ask for</h3>
+        <ul>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-x-circle"/></svg><div>Admin control of your Meta business account</div></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-x-circle"/></svg><div>Your card or billing details <span>ad spend stays on your account</span></div></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-x-circle"/></svg><div>Customer lists or any personal data</div></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-x-circle"/></svg><div>The admin login for your store</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROMISES ── -->
+<section class="sec" id="promise" aria-labelledby="promiseTitle">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-h2" id="promiseTitle">What we cannot promise and what we can</h2>
+      <p class="sec-sub">Nobody can promise that an ad will sell. We promise different ideas, a fair test and an honest reading of it.</p>
+    </div>
+    <div class="guards rv">
+      <div class="guard"><svg class="ic" aria-hidden="true"><use href="#i-prohibit"/></svg><h3>No return promises</h3><p>We will not quote a return on ad spend before the test has run. The readout shows what happened, including the concepts that lost.</p></div>
+      <div class="guard"><svg class="ic" aria-hidden="true"><use href="#i-user-circle"/></svg><h3>No invented customers</h3><p>No AI presenter poses as a buyer, and no review or before and after is made up. Claims come from you, with proof.</p></div>
+      <div class="guard"><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><h3>You approve every ad</h3><p>Concepts, scripts and claims are signed off before production, and the finished ads before launch.</p></div>
+      <div class="guard"><svg class="ic" aria-hidden="true"><use href="#i-lock-simple"/></svg><h3>Your account stays yours</h3><p>We work as a partner on your ad account. Billing, pixels and customer data stay with you.</p></div>
+      <div class="guard"><svg class="ic" aria-hidden="true"><use href="#i-arrows-clockwise"/></svg><h3>No lock-in</h3><p>The pilot is a one-time fee. The monthly plan runs month to month and stops with 30 days&rsquo; notice.</p></div>
+      <div class="guard"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg><h3>Every file is yours</h3><p>The videos, the briefs and the readouts belong to you and can keep running if we stop working together.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="sec" id="pricing" aria-labelledby="pricingTitle">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-h2" id="pricingTitle">What it costs</h2>
+      <p class="sec-sub">Two prices. Ad spend is separate and goes straight from you to Meta.</p>
+    </div>
+    <div class="price-grid rv">
+      <div class="plan is-main">
+        <div class="plan-top">
+          <h3 class="plan-name">Monthly testing</h3>
+          <span><span class="p-price">$1,997</span><span class="p-unit">a month</span></span>
+        </div>
+        <p>A new batch every month and a readout on the last one.</p>
+        <ul>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg>Four new concepts, researched and briefed</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg>12 new video ads: four concepts with three hooks each</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg>Four new variations of last month&rsquo;s winner</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg>Every ad cut for feed, Stories and Reels</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg>The test set up in your ad account, or handed to your media buyer</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg>A one-page readout and the next brief</li>
+        </ul>
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary" data-loc="pricing">Book a call
+          <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </div>
+      <div class="plan-side">
+        <div class="plan">
+          <div class="plan-top">
+            <h3 class="plan-name">Pilot</h3>
+            <span><span class="p-price">$997</span><span class="p-unit">one time</span></span>
+          </div>
+          <p>Ten ads delivered within 14 days: five concepts with two hooks each. We set up the test and send a readout once it has run for two weeks. The quickest way to see whether this suits your account.</p>
+          <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-ghost" data-loc="pricing-pilot">Start with the pilot</a>
+        </div>
+        <div class="plan">
+          <div class="plan-top">
+            <h3 class="plan-name">Ad spend</h3>
+          </div>
+          <p>Paid by you to Meta, never through us. For a test worth reading we suggest about $100 a day while it runs. With less, we rank concepts on hook rate and click rate and say so in the readout.</p>
+        </div>
+      </div>
+    </div>
+    <p class="price-note">Prices are in US dollars. The cost of generating the videos is included. There is no setup fee and no minimum term on the monthly plan.</p>
+  </div>
+</section>
+
+<!-- ── BREAK-EVEN ── -->
+<section class="sec" id="worth" aria-labelledby="worthTitle">
+  <div class="container">
+    <div class="split-wide">
+      <div>
+        <h2 class="sec-h2" id="worthTitle">How far would cost per purchase have to fall to cover it?</h2>
+        <div class="prose rv">
+          <p>We do not forecast results. What you can check is whether the sum makes sense for your account before you spend anything.</p>
+          <p>If a winning concept lowers your cost per purchase, you get the same number of sales for less. The saving is your monthly ad spend multiplied by the size of the drop. Move the slider to what you spend on Meta each month.</p>
+          <p>If the answer is a large number, this service is too early for you, and the page should say so.</p>
+        </div>
+      </div>
+      <div class="calc rv">
+        <div class="calc-row">
+          <label for="spendRange"><span>Monthly ad spend on Meta</span><output id="spendOut" for="spendRange">$15,000</output></label>
+          <input type="range" id="spendRange" min="2000" max="100000" step="1000" value="15000">
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <span class="calc-big" id="calcBig">13.3%</span>
+          <p id="calcText">At that spend, a 13.3% lower cost per purchase covers the monthly fee.</p>
+        </div>
+        <p class="calc-fine">Monthly fee $1,997. This is arithmetic, not a forecast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RULES ── -->
+<section class="sec" id="rules" aria-labelledby="rulesTitle">
+  <div class="container">
+    <div class="split">
+      <div class="split-head">
+        <h2 class="sec-h2" id="rulesTitle">AI-made ads and the rules</h2>
+      </div>
+      <div class="prose rv">
+        <p>An ad made with AI is still an ad, and the existing rules apply to it. In the United States the <a class="txt-link" href="https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials" target="_blank" rel="noopener noreferrer">FTC&rsquo;s rule on reviews and testimonials</a> has banned fake ones since October 2024, and it names reviews written by AI for people who do not exist.</p>
+        <p>In the United Kingdom fake reviews have been banned outright since April 2025, and the <a class="txt-link" href="https://www.asa.org.uk/codes-and-rulings/advertising-codes/non-broadcast-code.html" target="_blank" rel="noopener noreferrer">advertising code</a> requires that an ad does not mislead. In the European Union the transparency rules of the <a class="txt-link" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer">AI Act</a> began to apply in August 2026. They require realistic AI-generated video to be disclosed as such.</p>
+        <p>In practice that means product shots and demonstrations are the default. If a presenter appears, they speak as the brand and never as a customer. We do not write reviews, invent results or fake a before and after. Where a platform or a law asks for an AI label, the ad carries one.</p>
+        <p>We are not lawyers and this is not legal advice. The final call on any claim is yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="sec" id="faq" aria-labelledby="faqTitle">
+  <div class="container">
+    <div class="split">
+      <div class="split-head">
+        <h2 class="sec-h2" id="faqTitle">Common questions</h2>
+        <p class="sec-sub">Anything not covered here, ask on the call.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Can you promise a lower cost per purchase?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. A test can show that none of the new concepts beats what you already run, and sometimes it does. What we promise is four ideas that are different from each other, a test set up so the result can be read, and a readout that says plainly what won and what did not.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How much ad spend do we need?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">For a pilot we suggest about $100 a day for the 14 days the test runs, paid by you to Meta. That is our working rule and not a Meta requirement. With less, the test still ranks concepts on hook rate and click rate, but cost per purchase will rest on too few purchases to trust, and the readout will say so.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Do you manage our ad account?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. We set up the test, read it and tell you what to scale. Day-to-day buying stays with you or your media buyer. If an agency runs the account, we send them the files and a setup sheet and work from their numbers.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Are the videos made with AI?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. We build them from your product photos and any footage you have, using AI video tools, and a person edits every one. You can see finished examples on the <a href="/product-videos">product videos</a> page. Where a real person is needed on camera, we say so and use footage from you or from a creator you choose.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Which platforms do you cover?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Meta first: Facebook and Instagram, in feed, Stories and Reels. The same files can be cut for TikTok and YouTube Shorts if you ask. The readout covers Meta.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How is a concept different from a variation?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A concept is a reason to buy: it solves this problem, it works this way, it beats that alternative. A variation is the same reason with a different opening line, caption or cut. Testing variations of one concept tells you which wording is best. Testing concepts tells you what your customers care about, which is the bigger question.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What is a hook rate?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The share of people who were shown the ad and watched at least three seconds of it: three-second video plays divided by impressions. It is the earliest sign of whether an opening works, and it needs far less budget to measure than cost per purchase.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What happens if nothing wins?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Then you have learned four things not to spend more on, which is worth knowing. The readout says so in plain words, and the next brief moves to different ground. We do not dress up a flat test as a win.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Who owns the ads?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You do. Every video, brief and readout is yours to keep and to keep running, whether or not you continue with us.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What do you need to start a pilot?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A link to the product, the photos and footage you have, a list of claims you can prove, and either partner access to the ad account or a media buyer who will launch the ads. A 30-minute call covers the rest.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RELATED ── -->
+<section class="sec" id="next" aria-labelledby="nextTitle">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-h2" id="nextTitle">Related services</h2>
+    </div>
+    <div class="related rv">
+      <a class="rel-card" href="/product-videos">
+        <span class="rel-kicker">Product Videos</span>
+        <h3>Want the videos without the testing?</h3>
+        <p>Single product videos made from your photos: launch ads, ingredient stories, exploded views and product shots. The portfolio has twelve finished examples.</p>
+        <span class="rel-go">See the portfolio<svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="rel-card" href="/ai-visibility">
+        <span class="rel-kicker">AI Visibility</span>
+        <h3>Run a local firm instead?</h3>
+        <p>Find out whether ChatGPT, Gemini and Perplexity name your firm, and fix what decides it.</p>
+        <span class="rel-go">See how it works<svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOURCES ── -->
+<section class="sec" id="sources" aria-labelledby="sourcesTitle">
+  <div class="container">
+    <div class="split">
+      <div class="split-head">
+        <h2 class="sec-h2" id="sourcesTitle">Sources</h2>
+        <p class="sec-sub">Every figure and rule on this page, with where it came from. Checked on 11 October 2026.</p>
+      </div>
+      <ol class="sources">
+        <li><a href="https://info.ncsolutions.com/hubfs/2023%20Five%20Keys%20to%20Advertising%20Effectiveness/NCS_Five_Keys_to_Advertising_Effectiveness_E-Book_08-23.pdf" target="_blank" rel="noopener noreferrer">NCSolutions, Five Keys to Advertising Effectiveness, 2023 update</a>. Creative 49%, brand 21%, reach 14%, targeting 11% and recency 5% of incremental sales, from nearly 450 US consumer goods campaigns on TV and digital.</li>
+        <li><a href="https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine/" target="_blank" rel="noopener noreferrer">Meta Engineering, the Andromeda ads retrieval engine</a>. More than a million advertisers made more than 15 million ads with Meta&rsquo;s generative AI tools in a month. Published 2 December 2024.</li>
+        <li><a href="https://www.socialmediatoday.com/news/meta-introduces-new-ai-powered-tools-at-ad-week-2026/832288/" target="_blank" rel="noopener noreferrer">Social Media Today, Meta&rsquo;s announcements at Advertising Week 2026</a>. Video generation from static assets in Advantage+ creative is generally available. Published 6 October 2026. This is press coverage and not Meta&rsquo;s own page.</li>
+        <li><a href="https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials" target="_blank" rel="noopener noreferrer">US Federal Trade Commission, final rule banning fake reviews and testimonials</a>. Announced August 2024, in force from 21 October 2024.</li>
+        <li><a href="https://www.gov.uk/government/publications/fake-reviews-cma208" target="_blank" rel="noopener noreferrer">UK Competition and Markets Authority, guidance on fake reviews</a>. The ban took effect in April 2025.</li>
+        <li><a href="https://www.asa.org.uk/codes-and-rulings/advertising-codes/non-broadcast-code.html" target="_blank" rel="noopener noreferrer">UK Advertising Standards Authority, the CAP Code</a>.</li>
+        <li><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer">European Commission, the AI Act</a>. Transparency rules apply from 2 August 2026.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section id="final-cta" aria-labelledby="ctaTitle">
+  <div class="container">
+    <div class="cta-wrap">
+      <h2 id="ctaTitle">Start with ten ads and one honest readout</h2>
+      <p>Bring a product link and your last three months of ad results to the call. We will tell you whether a pilot makes sense for your account, and say so if it does not.</p>
+      <div class="cta-actions">
+        <a href="https://calendar.app.google/XDGM8XJ9zEdqugKr9" target="_blank" rel="noopener noreferrer" class="btn-primary" data-loc="final">Book a call
+          <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+        <a href="/product-videos" class="btn-ghost">See product videos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Core<span>magna</span></div>
+        <p class="footer-tagline">AI automation for service businesses.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ferit-patefe" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/ai-visibility">AI Visibility</a></li>
+          <li><a href="/ad-creative-testing" aria-current="page">Ad Creative Testing</a></li>
+          <li><a href="/expert-content">Expert Content</a></li>
+          <li><a href="/real-estate-videos">Video Tours</a></li>
+          <li><a href="/product-videos">Product Videos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/industries">Industries</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/demo">Work</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="#" onclick="this.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')" rel="nofollow">ferit1@coremagna.com</a></li>
+          <li><a href="https://linkedin.com/in/ferit-patefe" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Coremagna. All rights reserved. · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+      <p>AI Automation · CRM Systems · Chatbots</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function track(name,params){if(typeof gtag==='function')gtag('event',name,params||{});}
+const PAGE='ad-creative-testing';
+
+/* Nav scroll + hamburger */
+(function(){
+  const nav=document.getElementById('mainNav');
+  const hamburger=document.getElementById('hamburger');
+  const mobileNav=document.getElementById('mobileNav');
+  let menuOpen=false;
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+  hamburger.addEventListener('click',()=>{
+    menuOpen=!menuOpen;hamburger.classList.toggle('open',menuOpen);hamburger.setAttribute('aria-expanded',String(menuOpen));
+    mobileNav.setAttribute('aria-hidden',String(!menuOpen));mobileNav.classList.toggle('visible',menuOpen);document.body.style.overflow=menuOpen?'hidden':'';
+  });
+  mobileNav.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{menuOpen=false;hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileNav.setAttribute('aria-hidden','true');mobileNav.classList.remove('visible');document.body.style.overflow='';});});
+  setTimeout(()=>{nav.classList.remove('pre-entrance');nav.classList.add('entered');},0);
+})();
+
+/* Booking clicks and the obfuscated mail links */
+(function(){
+  document.querySelectorAll('a[href^="https://calendar.app.google"]').forEach(a=>{
+    a.addEventListener('click',()=>track('cta_click',{page:PAGE,location:a.dataset.loc||'page'}));
+  });
+  document.querySelectorAll('.js-mail').forEach(a=>{
+    const set=()=>{a.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')+'?subject='+encodeURIComponent(a.dataset.subject||'Ad creative testing');};
+    a.addEventListener('pointerenter',set,{once:true});
+    a.addEventListener('focus',set,{once:true});
+    a.addEventListener('click',()=>{set();track('cta_click',{page:PAGE,location:'email'});});
+  });
+})();
+
+/* Sections fade up as they enter the viewport. The hidden state is only
+   switched on here, so the page reads normally if this script never runs. */
+(function(){
+  const els=document.querySelectorAll('.rv');
+  if(!els.length||!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('rv-on');
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}
+  }),{rootMargin:'0px 0px -6% 0px',threshold:0.05});
+  els.forEach(el=>io.observe(el));
+})();
+
+/* Explainer video: count the first play */
+(function(){
+  document.querySelectorAll('video[data-video]').forEach(v=>{
+    v.addEventListener('play',()=>track('video_play',{page:PAGE,video:v.dataset.video}),{once:true});
+  });
+})();
+
+/* Break-even: the drop in cost per purchase that pays the monthly fee */
+(function(){
+  const range=document.getElementById('spendRange');
+  if(!range) return;
+  const out=document.getElementById('spendOut'),big=document.getElementById('calcBig'),text=document.getElementById('calcText');
+  const FEE=1997;
+  const money=n=>'$'+n.toLocaleString('en-US');
+  function update(){
+    const v=Number(range.value);
+    const pct=FEE/v*100;
+    const shown=(pct>=10?Math.round(pct*10)/10:Math.round(pct*100)/100)+'%';
+    out.textContent=money(v);
+    big.textContent=shown;
+    text.textContent=pct>=40
+      ?'At that spend the monthly plan is hard to justify. Run the pilot first, or wait until your spend is higher.'
+      :'At that spend, a '+shown+' lower cost per purchase covers the monthly fee.';
+  }
+  range.addEventListener('input',update);
+  update();
+})();
+
+/* FAQ accordion */
+(function(){
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q=item.querySelector('.faq-q');
+    const a=item.querySelector('.faq-a');
+    q.addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other=>{
+        if(other!==item){other.classList.remove('open');other.querySelector('.faq-a').style.maxHeight=null;other.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+      });
+      if(open){item.classList.remove('open');a.style.maxHeight=null;q.setAttribute('aria-expanded','false');}
+      else{item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';q.setAttribute('aria-expanded','true');}
+    });
+  });
+})();
+
+/* Theme toggle (the stored theme is applied in the head, before first paint) */
+(function(){
+  const btn=document.getElementById('themeToggle');
+  if(btn)btn.addEventListener('click',function(){
+    const isLight=document.documentElement.getAttribute('data-theme')==='light';
+    if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}
+    else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}
+  });
+})();
+</script>
+</body>
+</html>
