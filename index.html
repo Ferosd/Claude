@@ -1764,7 +1764,10 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
    MODULE 6 — Contact Form
 ═══════════════════════════════════════════════ */
 (function() {
-  const WEBHOOK = 'https://melis.app.n8n.cloud/webhook/contact-form1';
+  // Web3Forms forwards each submission to the inbox behind FORM_KEY. The key is public by design.
+  // While it is empty nothing is sent and the visitor gets the pre-filled email link instead.
+  const FORM_URL = 'https://api.web3forms.com/submit';
+  const FORM_KEY = '';
   const form    = document.getElementById('contactForm');
   const btn     = document.getElementById('contactSubmit');
   const errEl   = document.getElementById('contactError');
@@ -1792,12 +1795,18 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
     btn.textContent = 'Sending...';
 
     try {
-      const res = await fetch(WEBHOOK, {
+      if (!FORM_KEY) throw new Error('no form backend');
+      const res = await fetch(FORM_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.assign({
+          access_key: FORM_KEY,
+          subject: 'New enquiry from coremagna.com',
+          from_name: 'Coremagna website'
+        }, data))
       });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || out.success === false) throw new Error('HTTP ' + res.status);
       form.style.display = 'none';
       success.classList.add('visible');
     } catch (err) {

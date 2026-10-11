@@ -1,4 +1,9 @@
 (function () {
+  // The chat backend was an n8n workspace that no longer exists, so the widget is switched off
+  // instead of sitting on every page and failing. Point WEBHOOK at a live backend, then set this to true.
+  const ENABLED = false;
+  if (!ENABLED) return;
+
   const WEBHOOK = 'https://melis.app.n8n.cloud/webhook/chatbotcore';
   const ACCENT = '#00D4AA';
   const DARK = '#0d1317';

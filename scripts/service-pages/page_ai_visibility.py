@@ -658,11 +658,14 @@ JS = r'''
   update();
 })();
 
-/* Free check form. Same webhook and field names as the contact form on the home page. */
+/* Free check form. Same backend and field names as the contact form on the home page:
+   Web3Forms forwards each submission to the inbox behind FORM_KEY (public by design).
+   While the key is empty nothing is sent and the visitor gets the pre-filled email link. */
 (function(){
   const form=document.getElementById('checkForm');
   if(!form) return;
-  const WEBHOOK='https://melis.app.n8n.cloud/webhook/contact-form1';
+  const FORM_URL='https://api.web3forms.com/submit';
+  const FORM_KEY='';
   const btn=form.querySelector('button[type="submit"]');
   const ok=document.getElementById('checkOk');
   const err=document.getElementById('checkErr');
@@ -682,8 +685,11 @@ JS = r'''
     const label=btn.textContent;
     btn.disabled=true;btn.textContent='Sending';
     try{
-      const res=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-      if(!res.ok) throw new Error('HTTP '+res.status);
+      if(!FORM_KEY) throw new Error('no form backend');
+      const res=await fetch(FORM_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(Object.assign({access_key:FORM_KEY,subject:'Free AI visibility check request',from_name:'Coremagna website'},data))});
+      const out=await res.json().catch(()=>({}));
+      if(!res.ok||out.success===false) throw new Error('HTTP '+res.status);
       done();
       track('check_request',{page:PAGE});
     }catch(x){
