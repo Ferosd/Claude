@@ -1537,7 +1537,7 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
 
         <button type="submit" class="contact-submit" id="contactSubmit">Send Message →</button>
         <p class="contact-error" id="contactError">
-          Something went wrong. Email us at <a href="#" onclick="this.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')" rel="nofollow" style="color:#ff6b6b">ferit1@coremagna.com</a>
+          Something went wrong. Email us at <a href="#" onclick="this.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')+(this.dataset.q||'')" rel="nofollow" style="color:#ff6b6b">ferit1@coremagna.com</a> instead. The link opens a message with your details already filled in.
         </p>
       </form>
     </div>
@@ -1801,6 +1801,12 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       form.style.display = 'none';
       success.classList.add('visible');
     } catch (err) {
+      // The email link then opens a message with what was typed, so nobody has to enter it twice
+      const lines = [['Name', data.name], ['Email', data.email], ['Company', data.company], ['Phone', data.phone],
+        ['Service', data.service], ['Budget', data.budget], ['Timeline', data.timeline], ['Message', data.message]]
+        .filter(l => l[1]).map(l => l[0] + ': ' + l[1]);
+      errEl.querySelector('a').dataset.q = '?subject=' + encodeURIComponent('Enquiry from coremagna.com') +
+        '&body=' + encodeURIComponent(lines.join('\n'));
       errEl.classList.add('visible');
       btn.disabled = false;
       btn.textContent = 'Send Message →';

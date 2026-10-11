@@ -202,7 +202,7 @@ const PAGE='{{PAGE}}';
     a.addEventListener('click',()=>track('cta_click',{page:PAGE,location:a.dataset.loc||'page'}));
   });
   document.querySelectorAll('.js-mail').forEach(a=>{
-    const set=()=>{a.href='mailto:'+atob('{{MAIL}}')+'?subject='+encodeURIComponent(a.dataset.subject||'{{MAIL_SUBJECT}}');};
+    const set=()=>{a.href='mailto:'+atob('{{MAIL}}')+'?subject='+encodeURIComponent(a.dataset.subject||'{{MAIL_SUBJECT}}')+(a.dataset.body?'&body='+encodeURIComponent(a.dataset.body):'');};
     a.addEventListener('pointerenter',set,{once:true});
     a.addEventListener('focus',set,{once:true});
     a.addEventListener('click',()=>{set();track('cta_click',{page:PAGE,location:'email'});});

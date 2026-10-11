@@ -1228,7 +1228,7 @@ const PAGE='expert-content';
     a.addEventListener('click',()=>track('cta_click',{page:PAGE,location:a.dataset.loc||'page'}));
   });
   document.querySelectorAll('.js-mail').forEach(a=>{
-    const set=()=>{a.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')+'?subject='+encodeURIComponent(a.dataset.subject||'Expert content');};
+    const set=()=>{a.href='mailto:'+atob('ZmVyaXQxQGNvcmVtYWduYS5jb20=')+'?subject='+encodeURIComponent(a.dataset.subject||'Expert content')+(a.dataset.body?'&body='+encodeURIComponent(a.dataset.body):'');};
     a.addEventListener('pointerenter',set,{once:true});
     a.addEventListener('focus',set,{once:true});
     a.addEventListener('click',()=>{set();track('cta_click',{page:PAGE,location:'email'});});

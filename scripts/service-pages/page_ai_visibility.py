@@ -562,7 +562,7 @@ BODY = r'''
           </div>
           <div class="hp" aria-hidden="true"><label for="cfUrl2">Leave this empty</label><input id="cfUrl2" name="url2" type="text" tabindex="-1" autocomplete="off"></div>
           <button type="submit" class="btn-primary">Send me the check</button>
-          <p class="lead-err" id="checkErr" role="alert">That did not go through. Email the same details to <a href="#" class="js-mail" data-subject="Free AI visibility check" rel="nofollow">ferit1@coremagna.com</a> and we will pick it up from there.</p>
+          <p class="lead-err" id="checkErr" role="alert">That did not go through. Email us at <a href="#" class="js-mail" data-subject="Free AI visibility check" rel="nofollow">ferit1@coremagna.com</a> instead. The link opens a message with your details already filled in.</p>
           <p class="lead-fine">We use these details only to run the check and send it to you. <a href="/privacy">Privacy policy</a>.</p>
         </form>
         <div class="lead-ok" id="checkOk" tabindex="-1" hidden>
@@ -687,6 +687,9 @@ JS = r'''
       done();
       track('check_request',{page:PAGE});
     }catch(x){
+      /* The email link then opens a message with what was typed, so nobody has to enter it twice */
+      err.querySelector('.js-mail').dataset.body=['Name: '+data.name,'Email: '+data.email,'Firm: '+data.company,
+        'Website: '+val('website'),'Town or city: '+val('town'),'Main service: '+val('area')].join('\n');
       err.classList.add('is-on');
       btn.disabled=false;btn.textContent=label;
     }
