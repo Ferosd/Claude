@@ -260,10 +260,12 @@ h1,h2,h3{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;line-height:1.
 #work{padding:72px 0 var(--space-2xl);border-top:1px solid var(--border);scroll-margin-top:16px;
   background-image:radial-gradient(circle,var(--dot) 1px,transparent 1.6px);background-size:20px 20px;background-position:10px 10px}
 .band{max-width:1680px;margin:0 auto;padding:0 24px}
-.wall-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"title title" "styles kinds";gap:20px 24px;align-items:center;margin-bottom:16px}
+.wall-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"title title" "sectors sectors" "styles kinds";gap:20px 24px;align-items:center;margin-bottom:16px}
 .wall-title{grid-area:title;font-size:clamp(1.8rem,3.5vw,2.5rem);text-transform:uppercase;letter-spacing:-0.01em;max-width:680px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
 .chips[hidden]{display:none}
+/* Product category sits above style: a shop looks for its own kind of product first */
+.chips-sectors{grid-area:sectors;margin-bottom:-14px}
 .chips-styles{grid-area:styles}
 .chips-kinds{grid-area:kinds;justify-content:flex-end}
 /* 44px hit area, 34px pill */
@@ -455,11 +457,11 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   .sec{padding:64px 0}
   #work{padding:56px 0 64px}
   .band{padding:0 12px}
-  .wall-bar{grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "kinds" "styles";gap:8px;margin-bottom:12px}
+  .wall-bar{grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "kinds" "sectors" "styles";gap:8px;margin-bottom:12px}
   .chips-kinds{justify-content:flex-start}
-  /* Style chips scroll sideways instead of wrapping into a block */
-  .chips-styles{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -12px;padding:0 12px;-webkit-mask-image:linear-gradient(to right,#000 88%,transparent);mask-image:linear-gradient(to right,#000 88%,transparent)}
-  .chips-styles::-webkit-scrollbar{display:none}
+  /* Category and style chips scroll sideways instead of wrapping into a block */
+  .chips-styles,.chips-sectors{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -12px;padding:0 12px;-webkit-mask-image:linear-gradient(to right,#000 88%,transparent);mask-image:linear-gradient(to right,#000 88%,transparent)}
+  .chips-styles::-webkit-scrollbar,.chips-sectors::-webkit-scrollbar{display:none}
   .wall{--row:230px;--gap:3px}
   .style-row{grid-template-columns:44px minmax(0,1fr);padding:22px 0}
   .style-row h3{font-size:18px}
@@ -674,6 +676,160 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
       "duration": "PT1M13S",
       "width": 1280,
       "height": 720
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Steel chronograph reveal",
+      "description": "Spec ad for a steel chronograph, not commissioned by the brand. The watch starts as an outline in the dark, the bracelet and bezel get their own macro shots, then the dial lights up.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/steel-chronograph-reveal-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/steel-chronograph-reveal.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT15S",
+      "width": 572,
+      "height": 428
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Three-stone ring build",
+      "description": "Spec ad for a three-stone diamond ring, not commissioned by the brand. The centre stone drops into its setting, the camera runs along the engraved band and ends on the full ring against deep blue.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/three-stone-ring-build-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/three-stone-ring-build.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT12S",
+      "width": 598,
+      "height": 334
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Woven leather duffle",
+      "description": "Spec ad for a woven leather duffle, not commissioned by the brand. Hard cuts on a white studio set: the weave up close, the zip pull, the open bag from above and the bag carried on the shoulder.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/woven-leather-duffle-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/woven-leather-duffle.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT12S",
+      "width": 574,
+      "height": 572
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Rose gold watch on a model",
+      "description": "Spec ad for a rose gold diamond watch, not commissioned by the brand. A model wears it against a red backdrop, then the watch is held up to the camera and laid flat.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/rose-gold-watch-on-model-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/rose-gold-watch-on-model.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT13S",
+      "width": 472,
+      "height": 842
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Serpent bracelet macro",
+      "description": "Spec ad for a gold and diamond serpent bracelet, not commissioned by the brand. Macro passes over the head, the pavé stones and the coiled band on black, then the whole piece turns.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/serpent-bracelet-macro-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/serpent-bracelet-macro.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT15S",
+      "width": 574,
+      "height": 428
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Quilted bag in the atelier",
+      "description": "Spec ad for a quilted leather bag, not commissioned by the brand. It follows the making in a sunlit workshop: the hide laid out, the cut, the stitching, and gloved hands fixing the charms on the finished bag.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/quilted-bag-atelier-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/quilted-bag-atelier.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT17S",
+      "width": 574,
+      "height": 428
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Gold watch details",
+      "description": "Spec ad for a gold-tone steel watch, not commissioned by the brand. Ten seconds of macro: the hands, the brushed dial, the bracelet links, then the full watch.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/gold-watch-details-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/gold-watch-details.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT10S",
+      "width": 566,
+      "height": 318
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Nail bracelet spot",
+      "description": "Spec ad for a rose gold nail bracelet, not commissioned by the brand. The bracelet turns on black with a title line, a macro pass over the nail head, one shot on a wrist and a closing card.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/nail-bracelet-spot-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/nail-bracelet-spot.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT13S",
+      "width": 574,
+      "height": 320
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Street look with three accessories",
+      "description": "Spec ad for sunglasses, a watch and a necklace in one shot, not commissioned by the brands. A model walks a city street while the camera moves in on each piece in turn.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/street-look-accessories-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/street-look-accessories.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT11S",
+      "width": 572,
+      "height": 716
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Green dial automatic",
+      "description": "Spec ad for a steel automatic with a green dial, not commissioned by the brand. Crown, case back and bracelet in low light, then the dial fills the frame.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/green-dial-automatic-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/green-dial-automatic.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT11S",
+      "width": 658,
+      "height": 476
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Rose gold diamond band",
+      "description": "Ten-second product film for a rose gold ring. Soft-focus macro along the band and the diamond clusters, then the whole ring on a warm beige set.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/rose-gold-diamond-band-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/rose-gold-diamond-band.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT10S",
+      "width": 598,
+      "height": 336
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Moonphase chronograph",
+      "description": "Spec ad for a moonphase chronograph on a leather strap, not commissioned by the brand. Dial macro, the case in profile, the moonphase disc and the watch upright on a grey set.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/moonphase-chronograph-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/moonphase-chronograph.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT11S",
+      "width": 648,
+      "height": 408
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Knot sandals on a model",
+      "description": "Twelve-second product film for tan leather knot sandals. A model in a red dress shows them seated, standing and in close-up on a plain studio set.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/knot-sandals-on-model-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/knot-sandals-on-model.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT12S",
+      "width": 472,
+      "height": 842
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Fragrance in low light",
+      "description": "Spec ad for a men's fragrance, not commissioned by the brand. The bottle comes out of the dark, a model in a black coat holds it up, and the label lights for the last shot.",
+      "thumbnailUrl": "https://coremagna.com/videos/products/fragrance-low-light-poster.webp",
+      "contentUrl": "https://coremagna.com/videos/products/fragrance-low-light.mp4",
+      "uploadDate": "2026-10-12",
+      "duration": "PT14S",
+      "width": 472,
+      "height": 840
     }
   ]
 }
@@ -867,8 +1023,12 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
   <div class="band">
     <div class="wall-bar">
       <h2 class="wall-title" id="workTitle">Explore the work</h2>
+      <!-- The category chips after "All products" are built in the wall script from each tile's data-sector -->
+      <div class="chips chips-sectors" id="sectorChips" role="group" aria-label="Filter by product category">
+        <button type="button" class="chip" data-filter-sector="all" aria-pressed="true">All products</button>
+      </div>
       <div class="chips chips-styles" role="group" aria-label="Filter by style">
-        <button type="button" class="chip" data-filter-style="all" aria-pressed="true"><svg class="ic" aria-hidden="true"><use href="#i-squares-four"/></svg>All</button>
+        <button type="button" class="chip" data-filter-style="all" aria-pressed="true"><svg class="ic" aria-hidden="true"><use href="#i-squares-four"/></svg>All styles</button>
         <button type="button" class="chip" data-filter-style="product" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-cube"/></svg>Product shot</button>
         <button type="button" class="chip" data-filter-style="motion" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-bezier-curve"/></svg>Motion</button>
         <button type="button" class="chip" data-filter-style="ugc" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-device-mobile-camera"/></svg>UGC</button>
@@ -983,6 +1143,104 @@ footer{padding:var(--space-2xl) 0 var(--space-xl);border-top:1px solid var(--bor
          data-dur="1:13" data-anim="/videos/products/saas-explainer-loop.webp">
         <span class="tile-media"><img src="/videos/products/saas-explainer-poster.webp" alt="" loading="lazy" decoding="async" width="960" height="540"></span>
         <span class="tile-label"><span class="tile-title">SaaS product explainer</span><span class="tile-kind">Explainer</span></span>
+      </a>
+      <a class="tile" href="/videos/products/steel-chronograph-reveal.mp4" style="--ar:1.3364" data-style="ads" data-kind="video" data-title="Steel chronograph reveal" data-label="Spec ad" data-ratio="4:3"
+         data-desc="Spec ad for a steel chronograph, not commissioned by the brand. The watch starts as an outline in the dark, the bracelet and bezel get their own macro shots, then the dial lights up."
+         data-sector="Watches"
+         data-dur="0:15" data-anim="/videos/products/steel-chronograph-reveal-loop.webp">
+        <span class="tile-media"><img src="/videos/products/steel-chronograph-reveal-poster.webp" alt="" loading="lazy" decoding="async" width="572" height="428"></span>
+        <span class="tile-label"><span class="tile-title">Steel chronograph reveal</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/three-stone-ring-build.mp4" style="--ar:1.7904" data-style="ads" data-kind="video" data-title="Three-stone ring build" data-label="Spec ad" data-ratio="16:9"
+         data-desc="Spec ad for a three-stone diamond ring, not commissioned by the brand. The centre stone drops into its setting, the camera runs along the engraved band and ends on the full ring against deep blue."
+         data-sector="Jewellery"
+         data-dur="0:12" data-anim="/videos/products/three-stone-ring-build-loop.webp">
+        <span class="tile-media"><img src="/videos/products/three-stone-ring-build-poster.webp" alt="" loading="lazy" decoding="async" width="598" height="334"></span>
+        <span class="tile-label"><span class="tile-title">Three-stone ring build</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/woven-leather-duffle.mp4" style="--ar:1.0035" data-style="ads" data-kind="video" data-title="Woven leather duffle" data-label="Spec ad" data-ratio="1:1"
+         data-desc="Spec ad for a woven leather duffle, not commissioned by the brand. Hard cuts on a white studio set: the weave up close, the zip pull, the open bag from above and the bag carried on the shoulder."
+         data-sector="Fashion"
+         data-dur="0:12" data-anim="/videos/products/woven-leather-duffle-loop.webp">
+        <span class="tile-media"><img src="/videos/products/woven-leather-duffle-poster.webp" alt="" loading="lazy" decoding="async" width="574" height="572"></span>
+        <span class="tile-label"><span class="tile-title">Woven leather duffle</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/rose-gold-watch-on-model.mp4" style="--ar:0.5606" data-style="ads" data-kind="video" data-title="Rose gold watch on a model" data-label="Spec ad" data-ratio="9:16"
+         data-desc="Spec ad for a rose gold diamond watch, not commissioned by the brand. A model wears it against a red backdrop, then the watch is held up to the camera and laid flat."
+         data-sector="Watches"
+         data-dur="0:13" data-anim="/videos/products/rose-gold-watch-on-model-loop.webp">
+        <span class="tile-media"><img src="/videos/products/rose-gold-watch-on-model-poster.webp" alt="" loading="lazy" decoding="async" width="472" height="842"></span>
+        <span class="tile-label"><span class="tile-title">Rose gold watch on a model</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/serpent-bracelet-macro.mp4" style="--ar:1.3411" data-style="ads" data-kind="video" data-title="Serpent bracelet macro" data-label="Spec ad" data-ratio="4:3"
+         data-desc="Spec ad for a gold and diamond serpent bracelet, not commissioned by the brand. Macro passes over the head, the pavé stones and the coiled band on black, then the whole piece turns."
+         data-sector="Jewellery"
+         data-dur="0:15" data-anim="/videos/products/serpent-bracelet-macro-loop.webp">
+        <span class="tile-media"><img src="/videos/products/serpent-bracelet-macro-poster.webp" alt="" loading="lazy" decoding="async" width="574" height="428"></span>
+        <span class="tile-label"><span class="tile-title">Serpent bracelet macro</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/quilted-bag-atelier.mp4" style="--ar:1.3411" data-style="ads" data-kind="video" data-title="Quilted bag in the atelier" data-label="Spec ad" data-ratio="4:3"
+         data-desc="Spec ad for a quilted leather bag, not commissioned by the brand. It follows the making in a sunlit workshop: the hide laid out, the cut, the stitching, and gloved hands fixing the charms on the finished bag."
+         data-sector="Fashion"
+         data-dur="0:17" data-anim="/videos/products/quilted-bag-atelier-loop.webp">
+        <span class="tile-media"><img src="/videos/products/quilted-bag-atelier-poster.webp" alt="" loading="lazy" decoding="async" width="574" height="428"></span>
+        <span class="tile-label"><span class="tile-title">Quilted bag in the atelier</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/gold-watch-details.mp4" style="--ar:1.7799" data-style="ads" data-kind="video" data-title="Gold watch details" data-label="Spec ad" data-ratio="16:9"
+         data-desc="Spec ad for a gold-tone steel watch, not commissioned by the brand. Ten seconds of macro: the hands, the brushed dial, the bracelet links, then the full watch."
+         data-sector="Watches"
+         data-dur="0:10" data-anim="/videos/products/gold-watch-details-loop.webp">
+        <span class="tile-media"><img src="/videos/products/gold-watch-details-poster.webp" alt="" loading="lazy" decoding="async" width="566" height="318"></span>
+        <span class="tile-label"><span class="tile-title">Gold watch details</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/nail-bracelet-spot.mp4" style="--ar:1.7937" data-style="ads" data-kind="video" data-title="Nail bracelet spot" data-label="Spec ad" data-ratio="16:9"
+         data-desc="Spec ad for a rose gold nail bracelet, not commissioned by the brand. The bracelet turns on black with a title line, a macro pass over the nail head, one shot on a wrist and a closing card."
+         data-sector="Jewellery"
+         data-dur="0:13" data-anim="/videos/products/nail-bracelet-spot-loop.webp">
+        <span class="tile-media"><img src="/videos/products/nail-bracelet-spot-poster.webp" alt="" loading="lazy" decoding="async" width="574" height="320"></span>
+        <span class="tile-label"><span class="tile-title">Nail bracelet spot</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/street-look-accessories.mp4" style="--ar:0.7989" data-style="ads" data-kind="video" data-title="Street look with three accessories" data-label="Spec ad" data-ratio="4:5"
+         data-desc="Spec ad for sunglasses, a watch and a necklace in one shot, not commissioned by the brands. A model walks a city street while the camera moves in on each piece in turn."
+         data-sector="Fashion"
+         data-dur="0:11" data-anim="/videos/products/street-look-accessories-loop.webp">
+        <span class="tile-media"><img src="/videos/products/street-look-accessories-poster.webp" alt="" loading="lazy" decoding="async" width="572" height="716"></span>
+        <span class="tile-label"><span class="tile-title">Street look with three accessories</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/green-dial-automatic.mp4" style="--ar:1.3824" data-style="ads" data-kind="video" data-title="Green dial automatic" data-label="Spec ad" data-ratio="4:3"
+         data-desc="Spec ad for a steel automatic with a green dial, not commissioned by the brand. Crown, case back and bracelet in low light, then the dial fills the frame."
+         data-sector="Watches"
+         data-dur="0:11" data-anim="/videos/products/green-dial-automatic-loop.webp">
+        <span class="tile-media"><img src="/videos/products/green-dial-automatic-poster.webp" alt="" loading="lazy" decoding="async" width="658" height="476"></span>
+        <span class="tile-label"><span class="tile-title">Green dial automatic</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/rose-gold-diamond-band.mp4" style="--ar:1.7798" data-style="product" data-kind="video" data-title="Rose gold diamond band" data-label="Product shot" data-ratio="16:9"
+         data-desc="Ten-second product film for a rose gold ring. Soft-focus macro along the band and the diamond clusters, then the whole ring on a warm beige set."
+         data-sector="Jewellery"
+         data-dur="0:10" data-anim="/videos/products/rose-gold-diamond-band-loop.webp">
+        <span class="tile-media"><img src="/videos/products/rose-gold-diamond-band-poster.webp" alt="" loading="lazy" decoding="async" width="598" height="336"></span>
+        <span class="tile-label"><span class="tile-title">Rose gold diamond band</span><span class="tile-kind">Product shot</span></span>
+      </a>
+      <a class="tile" href="/videos/products/moonphase-chronograph.mp4" style="--ar:1.5882" data-style="ads" data-kind="video" data-title="Moonphase chronograph" data-label="Spec ad" data-ratio="3:2"
+         data-desc="Spec ad for a moonphase chronograph on a leather strap, not commissioned by the brand. Dial macro, the case in profile, the moonphase disc and the watch upright on a grey set."
+         data-sector="Watches"
+         data-dur="0:11" data-anim="/videos/products/moonphase-chronograph-loop.webp">
+        <span class="tile-media"><img src="/videos/products/moonphase-chronograph-poster.webp" alt="" loading="lazy" decoding="async" width="648" height="408"></span>
+        <span class="tile-label"><span class="tile-title">Moonphase chronograph</span><span class="tile-kind">Spec ad</span></span>
+      </a>
+      <a class="tile" href="/videos/products/knot-sandals-on-model.mp4" style="--ar:0.5606" data-style="product" data-kind="video" data-title="Knot sandals on a model" data-label="Product shot" data-ratio="9:16"
+         data-desc="Twelve-second product film for tan leather knot sandals. A model in a red dress shows them seated, standing and in close-up on a plain studio set."
+         data-sector="Fashion"
+         data-dur="0:12" data-anim="/videos/products/knot-sandals-on-model-loop.webp">
+        <span class="tile-media"><img src="/videos/products/knot-sandals-on-model-poster.webp" alt="" loading="lazy" decoding="async" width="472" height="842"></span>
+        <span class="tile-label"><span class="tile-title">Knot sandals on a model</span><span class="tile-kind">Product shot</span></span>
+      </a>
+      <a class="tile" href="/videos/products/fragrance-low-light.mp4" style="--ar:0.5619" data-style="ads" data-kind="video" data-title="Fragrance in low light" data-label="Spec ad" data-ratio="9:16"
+         data-desc="Spec ad for a men&#x27;s fragrance, not commissioned by the brand. The bottle comes out of the dark, a model in a black coat holds it up, and the label lights for the last shot."
+         data-sector="Beauty"
+         data-dur="0:14" data-anim="/videos/products/fragrance-low-light-loop.webp">
+        <span class="tile-media"><img src="/videos/products/fragrance-low-light-poster.webp" alt="" loading="lazy" decoding="async" width="472" height="840"></span>
+        <span class="tile-label"><span class="tile-title">Fragrance in low light</span><span class="tile-kind">Spec ad</span></span>
       </a>
 <!-- WALL:END -->
     </div>
@@ -1275,7 +1533,7 @@ function track(name,params){if(typeof gtag==='function')gtag('event',name,params
   const saveData=!!(navigator.connection&&navigator.connection.saveData);
   const autoplay=!reduced&&!saveData;
   const canHover=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const state={style:'all',kind:'all'};
+  const state={style:'all',kind:'all',sector:'all'};
   let lbOpen=false;
 
   const styles=styleBtns.map(b=>b.dataset.filterStyle);
@@ -1283,8 +1541,30 @@ function track(name,params){if(typeof gtag==='function')gtag('event',name,params
   const nameOf={};
   styleBtns.forEach(b=>{nameOf[b.dataset.filterStyle]=b.textContent.trim();});
 
-  /* A chip with nothing behind it is hidden, and the type switch goes if only one type exists */
-  styleBtns.forEach(b=>{const s=b.dataset.filterStyle;if(s!=='all'&&!tiles.some(t=>t.dataset.style===s))b.hidden=true;});
+  /* Category chips come from the tiles, so a new sector in the manifest shows up
+     here without touching this page. The category with the most work goes first. */
+  const sectorBox=document.getElementById('sectorChips');
+  const slugOf=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const sectorName={},sectorCount={};
+  tiles.forEach(t=>{
+    const name=(t.dataset.sector||'').trim();
+    t._sector=name?slugOf(name):'';
+    if(!name) return;
+    sectorName[t._sector]=name;
+    sectorCount[t._sector]=(sectorCount[t._sector]||0)+1;
+  });
+  const sectors=Object.keys(sectorName).sort((a,b)=>sectorCount[b]-sectorCount[a]);
+  sectors.forEach(s=>{
+    const b=document.createElement('button');
+    b.type='button';b.className='chip';b.dataset.filterSector=s;b.setAttribute('aria-pressed','false');
+    b.textContent=sectorName[s];
+    sectorBox.appendChild(b);
+  });
+  if(sectors.length<2) sectorBox.hidden=true;
+  const sectorBtns=Array.prototype.slice.call(sectorBox.querySelectorAll('[data-filter-sector]'));
+  const inSector=(t,s)=>s==='all'||t._sector===s;
+
+  /* The type switch goes if only one type exists */
   const presentKinds=kinds.filter(k=>k!=='all'&&tiles.some(t=>t.dataset.kind===k));
   if(presentKinds.length<2) document.querySelector('.chips-kinds').hidden=true;
 
@@ -1348,20 +1628,32 @@ function track(name,params){if(typeof gtag==='function')gtag('event',name,params
   function apply(){
     let n=0;
     tiles.forEach(t=>{
-      const ok=(state.style==='all'||t.dataset.style===state.style)&&(state.kind==='all'||t.dataset.kind===state.kind);
+      const ok=(state.style==='all'||t.dataset.style===state.style)&&(state.kind==='all'||t.dataset.kind===state.kind)&&inSector(t,state.sector);
       t.hidden=!ok;
       if(ok) n++;
       sync(t);
     });
-    styleBtns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filterStyle===state.style)));
+    /* A style chip with nothing behind it in the chosen category is hidden */
+    styleBtns.forEach(b=>{
+      const s=b.dataset.filterStyle;
+      b.hidden=s!=='all'&&s!==state.style&&!tiles.some(t=>t.dataset.style===s&&inSector(t,state.sector));
+      b.setAttribute('aria-pressed',String(s===state.style));
+    });
     kindBtns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filterKind===state.kind)));
+    sectorBtns.forEach(b=>{
+      const on=b.dataset.filterSector===state.sector;
+      b.setAttribute('aria-pressed',String(on));
+      /* on a phone the row scrolls sideways, so bring the chosen chip into it */
+      if(on&&sectorBox.scrollWidth>sectorBox.clientWidth) sectorBox.scrollLeft+=b.getBoundingClientRect().left-sectorBox.getBoundingClientRect().left-12;
+    });
     empty.hidden=n>0;
     layout();
-    const what=state.style==='all'?'pieces':nameOf[state.style]+' pieces';
+    const what=(state.sector==='all'?'':sectorName[state.sector]+' ')+(state.style==='all'?'pieces':nameOf[state.style]+' pieces');
     status.textContent='Showing '+n+' '+what+(state.kind==='all'?'':' ('+state.kind+'s only)');
   }
   function writeURL(){
     const p=new URLSearchParams(location.search);
+    if(state.sector==='all') p.delete('category'); else p.set('category',state.sector);
     if(state.style==='all') p.delete('style'); else p.set('style',state.style);
     if(state.kind==='all') p.delete('type'); else p.set('type',state.kind);
     const q=p.toString();
@@ -1370,40 +1662,50 @@ function track(name,params){if(typeof gtag==='function')gtag('event',name,params
   function setFilter(next,animate){
     if(next.style!==undefined) state.style=next.style;
     if(next.kind!==undefined) state.kind=next.kind;
+    if(next.sector!==undefined) state.sector=next.sector;
     writeURL();
     if(!animate||reduced){apply();return;}
     wall.classList.add('is-swapping');
     setTimeout(()=>{apply();wall.classList.remove('is-swapping');},120);
   }
 
+  sectorBtns.forEach(b=>b.addEventListener('click',()=>{
+    const s=b.dataset.filterSector;
+    if(s===state.sector) return;
+    /* a style with no work in the new category would empty the wall, so it falls back to all styles */
+    const keep=state.style==='all'||tiles.some(t=>t.dataset.style===state.style&&inSector(t,s));
+    setFilter({sector:s,style:keep?state.style:'all'},true);
+    track('portfolio_filter',{style:state.style,type:state.kind,category:state.sector});
+  }));
   styleBtns.forEach(b=>b.addEventListener('click',()=>{
     if(b.dataset.filterStyle===state.style) return;
     setFilter({style:b.dataset.filterStyle},true);
-    track('portfolio_filter',{style:state.style,type:state.kind});
+    track('portfolio_filter',{style:state.style,type:state.kind,category:state.sector});
   }));
   kindBtns.forEach(b=>b.addEventListener('click',()=>{
     if(b.dataset.filterKind===state.kind) return;
     setFilter({kind:b.dataset.filterKind},true);
-    track('portfolio_filter',{style:state.style,type:state.kind});
+    track('portfolio_filter',{style:state.style,type:state.kind,category:state.sector});
   }));
-  document.getElementById('wallReset').addEventListener('click',()=>setFilter({style:'all',kind:'all'},true));
+  document.getElementById('wallReset').addEventListener('click',()=>setFilter({style:'all',kind:'all',sector:'all'},true));
 
   /* Style rows further down filter the wall in place instead of reloading */
   document.querySelectorAll('[data-style-link]').forEach(a=>a.addEventListener('click',e=>{
     const s=a.dataset.styleLink;
     if(styles.indexOf(s)<0) return;
     e.preventDefault();
-    setFilter({style:s,kind:'all'},false);
+    setFilter({style:s,kind:'all',sector:'all'},false);
     document.getElementById('work').scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
     track('portfolio_filter',{style:s,type:'all',from:'styles'});
   }));
 
-  /* Deep links: ?style=ugc&type=video */
+  /* Deep links: ?category=jewellery&style=ugc&type=video */
   (function(){
     const p=new URLSearchParams(location.search);
-    const s=p.get('style'),k=p.get('type');
+    const s=p.get('style'),k=p.get('type'),c=p.get('category');
     if(s&&styles.indexOf(s)>-1) state.style=s;
     if(k&&kinds.indexOf(k)>-1) state.kind=k;
+    if(c&&sectors.indexOf(c)>-1) state.sector=c;
   })();
 
   /* Previews: each video tile has a silent animated WebP loop over its poster.

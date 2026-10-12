@@ -13,13 +13,15 @@ Yaptigi is:
                            (en fazla 15). Duvarda kare gorunurken oynar.
       <slug>-poster.webp   dongunun ilk karesi, uzun kenar <= 960 (dongu yuklenene kadar ve lightbox'ta)
     Kayit alanlari: loop_start / loop_len (sn), crop ("w:h:x:y", ornegin videoya gomulu yaziyi kesmek icin),
-    label (kare etiketi, bos ise style'dan), desc, sector.
+    end (sn, video burada biter; kaynagin sonunda baska bir sey varsa), label (kare etiketi, bos ise style'dan),
+    desc, sector.
     Gorseller (kind: image): <slug>.webp (<= 1600) + <slug>-thumb.webp (<= 900)
  2. Banner (hero): bitmis video -> hero-final.mp4 (sessiz) + poster, ayni videodan 4 cekim karesi,
     istege bagli urun fotografi -> hero-photo.webp
  3. Sayfada isaretler arasini yeniden yazar: WALL, HERO-PHOTO, HERO-SHOTS, HERO-FINAL, VIDEO-LD.
     Secilen is yoksa WALL'a dokunmaz (bos yer tutucular kalir).
 Cikti dosyasi kaynaktan yeniyse tekrar kodlanmaz; --force ile zorlanir.
+Kaynagi --src klasorunde olmayan ama ciktilari duran is yerinde kalir (yeni is eklerken eski kaynaklar gerekmez).
 Dosya adlarinda musteri/marka adi kullanma: slug public URL olur.
 """
 import argparse, datetime, html, json, os, re, subprocess, sys
@@ -106,6 +108,10 @@ def encode_video(src, out_dir, slug, meta, item, force):
     if item.get('crop'):
         cw, ch = (int(v) for v in item['crop'].split(':')[:2])
         meta = dict(meta, w=cw, h=ch)
+    # end: the piece stops here (sn), for a source that carries something else after the video itself
+    end = min(float(item['end']), meta['dur']) if item.get('end') else None
+    if end:
+        meta = dict(meta, dur=end)
     crop = crop_filter(item)
     fps = ',fps=30' if meta['fps'] > 30.5 else ''
     fw, fh = fit(meta['w'], meta['h'], 1280)
@@ -117,6 +123,10 @@ def encode_video(src, out_dir, slug, meta, item, force):
     length = min(float(item.get('loop_len', 6)), max(1.0, meta['dur'] - start))
     if not fresh(full, src, force):
         audio = ['-c:a', 'aac', '-b:a', '128k'] if meta['audio'] and not item.get('mute') else ['-an']
+        if end:
+            # a short fade so the music does not stop on a click
+            fade = ['-af', 'afade=t=out:st=%.3f:d=0.4' % max(0.0, end - 0.4)] if audio[0] == '-c:a' else []
+            audio = fade + audio + ['-t', '%.3f' % end]
         ffmpeg('-i', src, '-vf', '%sscale=%d:%d%s' % (crop, fw, fh, fps), '-c:v', 'libx264', '-preset', 'medium',
                '-crf', '23', '-profile:v', 'high', '-pix_fmt', 'yuv420p', *audio,
                '-movflags', '+faststart', full)
@@ -144,6 +154,22 @@ def encode_image(src, out_dir, slug, force):
         if not fresh(thumb, src, force):
             im.resize((tw, th), Image.LANCZOS).save(thumb, 'WEBP', quality=80, method=6)
     return {'w': fw, 'h': fh, 'pw': tw, 'ph': th}
+
+
+def built_dims(out_dir, slug):
+    """Dims of a piece that is already encoded, for when its source file is gone.
+    Returns None unless every output of the piece is there."""
+    from PIL import Image
+    full, loop, post = (os.path.join(out_dir, slug + s) for s in ('.mp4', '-loop.webp', '-poster.webp'))
+    if all(os.path.exists(p) for p in (full, loop, post)):
+        meta = probe(full)
+        with Image.open(post) as im:
+            return {'kind': 'video', 'w': meta['w'], 'h': meta['h'], 'pw': im.width, 'ph': im.height, 'dur': meta['dur']}
+    full, thumb = os.path.join(out_dir, slug + '.webp'), os.path.join(out_dir, slug + '-thumb.webp')
+    if os.path.exists(full) and os.path.exists(thumb):
+        with Image.open(full) as im, Image.open(thumb) as th:
+            return {'kind': 'image', 'w': im.width, 'h': im.height, 'pw': th.width, 'ph': th.height}
+    return None
 
 
 def tile_html(item, dims, kind):
@@ -195,6 +221,10 @@ def replace_block(page, name, body):
 def build_hero(hero, src_dir, out_dir, force):
     """Returns {block_name: html} for the hero slots that have media."""
     blocks = {}
+    if hero.get('video') and not os.path.exists(os.path.join(src_dir, hero['video'])):
+        # same rule as the wall: no source, so the banner on the page stays as it is
+        print('--  hero: kaynak yok, sayfadaki banner oldugu gibi kaldi')
+        return blocks
     if hero.get('video'):
         src = os.path.join(src_dir, hero['video'])
         meta = probe(src)
@@ -256,7 +286,16 @@ def main():
             sys.exit('Bilinmeyen style: %s (%s)' % (item['style'], item['slug']))
         src = os.path.join(a.src, item['src'])
         if not os.path.exists(src):
-            sys.exit('Kaynak yok: ' + src)
+            # Sources get cleared out of Downloads after a build. A piece that is already
+            # encoded keeps its files and its place on the wall; only a new piece needs its source.
+            dims = built_dims(a.out, item['slug'])
+            if not dims:
+                sys.exit('Kaynak yok: ' + src)
+            tiles.append(tile_html(item, dims, dims['kind']))
+            if dims['kind'] == 'video':
+                lds.append(video_ld(item, dims))
+            print('--  %-28s %s (kaynak yok, mevcut dosyalar)' % (item['slug'], item['style']))
+            continue
         if src.lower().endswith(IMAGE_EXT):
             dims = encode_image(src, a.out, item['slug'], a.force)
             tiles.append(tile_html(item, dims, 'image'))

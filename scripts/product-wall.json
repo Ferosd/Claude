@@ -93,6 +93,104 @@
       "check": "Nometria urununu anlatiyor (gercek sirket). Kullanici kendi uretimi dedi."
     },
     {
+      "src": "saat (2).mp4", "slug": "steel-chronograph-reveal", "title": "Steel chronograph reveal", "style": "ads", "label": "Spec ad",
+      "sector": "Watches", "crop": "572:428:74:256", "loop_start": 7.5,
+      "desc": "Spec ad for a steel chronograph, not commissioned by the brand. The watch starts as an outline in the dark, the bracelet and bezel get their own macro shots, then the dial lights up.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Kadranda Rolex yazisi ve tac logosu (gercek marka). Spec ad etiketiyle."
+    },
+    {
+      "src": "ads video (5).mp4", "slug": "three-stone-ring-build", "title": "Three-stone ring build", "style": "ads", "label": "Spec ad",
+      "sector": "Jewellery", "crop": "598:334:61:271", "loop_start": 7.6,
+      "desc": "Spec ad for a three-stone diamond ring, not commissioned by the brand. The centre stone drops into its setting, the camera runs along the engraved band and ends on the full ring against deep blue.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Yuzugun icinde GRAFF yazisi (gercek marka). Spec ad etiketiyle."
+    },
+    {
+      "src": "ads video (2).mp4", "slug": "woven-leather-duffle", "title": "Woven leather duffle", "style": "ads", "label": "Spec ad",
+      "sector": "Fashion", "crop": "574:572:73:610", "loop_start": 2.0,
+      "desc": "Spec ad for a woven leather duffle, not commissioned by the brand. Hard cuts on a white studio set: the weave up close, the zip pull, the open bag from above and the bag carried on the shoulder.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Urun Bottega Veneta Intrecciato canta (gercek marka). Spec ad etiketiyle. Bir karede basi gorunmeyen erkek manken var."
+    },
+    {
+      "src": "saat (1).mp4", "slug": "rose-gold-watch-on-model", "title": "Rose gold watch on a model", "style": "ads", "label": "Spec ad",
+      "sector": "Watches", "crop": "472:842:24:244", "loop_start": 2.6,
+      "desc": "Spec ad for a rose gold diamond watch, not commissioned by the brand. A model wears it against a red backdrop, then the watch is held up to the camera and laid flat.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Kadranda PIAGET yazisi (gercek marka). Spec ad etiketiyle. Kadin manken var."
+    },
+    {
+      "src": "ads video (9).mp4", "slug": "serpent-bracelet-macro", "title": "Serpent bracelet macro", "style": "ads", "label": "Spec ad",
+      "sector": "Jewellery", "crop": "574:428:73:233", "loop_start": 3.0,
+      "desc": "Spec ad for a gold and diamond serpent bracelet, not commissioned by the brand. Macro passes over the head, the pavé stones and the coiled band on black, then the whole piece turns.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Urun Bulgari Serpenti (gercek marka tasarimi). Spec ad etiketiyle."
+    },
+    {
+      "src": "ads video (3).mp4", "slug": "quilted-bag-atelier", "title": "Quilted bag in the atelier", "style": "ads", "label": "Spec ad",
+      "sector": "Fashion", "crop": "574:428:73:233", "loop_start": 12.0,
+      "desc": "Spec ad for a quilted leather bag, not commissioned by the brand. It follows the making in a sunlit workshop: the hide laid out, the cut, the stitching, and gloved hands fixing the charms on the finished bag.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Cantada DIOR harf sussleri (Lady Dior, gercek marka). Spec ad etiketiyle."
+    },
+    {
+      "src": "ads video (7).mp4", "slug": "gold-watch-details", "title": "Gold watch details", "style": "ads", "label": "Spec ad",
+      "sector": "Watches", "crop": "566:318:76:234", "loop_start": 4.5,
+      "desc": "Spec ad for a gold-tone steel watch, not commissioned by the brand. Ten seconds of macro: the hands, the brushed dial, the bracelet links, then the full watch.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Kadranda CASIO yazisi (gercek marka). Spec ad etiketiyle."
+    },
+    {
+      "src": "ads video (4).mp4", "slug": "nail-bracelet-spot", "title": "Nail bracelet spot", "style": "ads", "label": "Spec ad",
+      "sector": "Jewellery", "crop": "574:320:73:310", "end": 12.6, "loop_start": 3.0,
+      "desc": "Spec ad for a rose gold nail bracelet, not commissioned by the brand. The bracelet turns on black with a title line, a macro pass over the nail head, one shot on a wrist and a closing card.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Urun Cartier Juste un Clou, bir karede adi yaziyor (gercek marka). Spec ad etiketiyle."
+    },
+    {
+      "src": "ads video (10).mp4", "slug": "street-look-accessories", "title": "Street look with three accessories", "style": "ads", "label": "Spec ad",
+      "sector": "Fashion", "crop": "572:716:73:144", "loop_start": 5.0,
+      "desc": "Spec ad for sunglasses, a watch and a necklace in one shot, not commissioned by the brands. A model walks a city street while the camera moves in on each piece in turn.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Saatte CHANEL yazisi, gozluk Cartier panter tasarimi (gercek markalar). Spec ad etiketiyle. Sarisin kadin manken var."
+    },
+    {
+      "src": "saat (3).mp4", "slug": "green-dial-automatic", "title": "Green dial automatic", "style": "ads", "label": "Spec ad",
+      "sector": "Watches", "crop": "658:476:32:199", "loop_start": 6.6,
+      "desc": "Spec ad for a steel automatic with a green dial, not commissioned by the brand. Crown, case back and bracelet in low light, then the dial fills the frame.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Kadranda FRANKLORD yazisi (gercek marka). Spec ad etiketiyle."
+    },
+    {
+      "src": "ads video (6).mp4", "slug": "rose-gold-diamond-band", "title": "Rose gold diamond band", "style": "product",
+      "sector": "Jewellery", "crop": "598:336:61:220", "loop_start": 5.0,
+      "desc": "Ten-second product film for a rose gold ring. Soft-focus macro along the band and the diamond clusters, then the whole ring on a warm beige set.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Marka gorunmuyor."
+    },
+    {
+      "src": "ads video (8).mp4", "slug": "moonphase-chronograph", "title": "Moonphase chronograph", "style": "ads", "label": "Spec ad",
+      "sector": "Watches", "crop": "648:408:36:230", "loop_start": 1.5,
+      "desc": "Spec ad for a moonphase chronograph on a leather strap, not commissioned by the brand. Dial macro, the case in profile, the moonphase disc and the watch upright on a grey set.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Kadranda PATEK PHILIPPE GENEVE yazisi (gercek marka). Spec ad etiketiyle."
+    },
+    {
+      "src": "ads video (1).mp4", "slug": "knot-sandals-on-model", "title": "Knot sandals on a model", "style": "product",
+      "sector": "Fashion", "crop": "472:842:24:245",
+      "desc": "Twelve-second product film for tan leather knot sandals. A model in a red dress shows them seated, standing and in close-up on a plain studio set.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Marka gorunmuyor. Kizil sacli kadin manken var."
+    },
+    {
+      "src": "ads video (11).mp4", "slug": "fragrance-low-light", "title": "Fragrance in low light", "style": "ads", "label": "Spec ad",
+      "sector": "Beauty", "crop": "472:840:24:245", "loop_start": 0.4,
+      "desc": "Spec ad for a men's fragrance, not commissioned by the brand. The bottle comes out of the dark, a model in a black coat holds it up, and the label lights for the last shot.",
+      "date": "2026-10-12", "publish": true,
+      "check": "Sisede BLEU DE CHANEL yazisi (gercek marka). Spec ad etiketiyle. Erkek manken var."
+    },
+    {
       "src": "skincare.mp4", "slug": "serum-poolside", "title": "Poolside serum", "style": "product",
       "date": "2026-09-29", "publish": false,
       "check": "Kylie Jenner'e benzeyen model + KYLIE SKIN sisesi. Gercek kisinin izinsiz reklami (right of publicity): yayinlanmaz."
