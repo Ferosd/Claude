@@ -10,6 +10,18 @@
   },
   "items": [
     {
+      "src": "dehumidifier-film.mp4", "slug": "dehumidifier-room-to-room", "title": "Dehumidifier, room to room", "style": "product",
+      "sector": "Home and kitchen", "loop_start": 3.2,
+      "desc": "Thirty-second product film for a dehumidifier, made for a Dutch webshop. Nothing was filmed: the shots were made from the shop's product photos, the captions are in Dutch and the end card is their own photo.",
+      "date": "2026-10-14", "publish": true
+    },
+    {
+      "src": "square-watch-film.mp4", "slug": "square-watch-on-black", "title": "Square watch on black", "style": "ads",
+      "sector": "Watches", "loop_start": 8.0,
+      "desc": "Sixteen-second watch film for a Dutch shop. Eight shots on black, from the bracelet links to the green dial, all made from the four product photos on their website.",
+      "date": "2026-10-14", "publish": true
+    },
+    {
       "src": "dondurma.mp4", "slug": "fig-gelato-launch", "title": "Fig gelato launch", "style": "ads",
       "sector": "Food and drink", "loop_start": 3.5,
       "desc": "Launch ad for a roasted fig gelato. The tub is wrapped in tennis-ball felt and set on a grass court, with hand-drawn doodles, a splash shot and a balloon-letter end card.",
