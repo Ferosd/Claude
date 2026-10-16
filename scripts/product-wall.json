@@ -1,5 +1,5 @@
 {
-  "_nasil": "Duvardaki sira bu listedeki siradir. Sadece publish:true olanlar sayfaya girer; --all ile hepsi yerel onizlemede islenir. style: ugc | product | motion | ads | posters | marketplace. slug public URL olur, marka/musteri adi yazma. loop_start/loop_len duvardaki hareketli WebP dongusunun araligi (sn).",
+  "_nasil": "Duvardaki sira bu listedeki siradir. Sadece publish:true olanlar sayfaya girer; --all ile hepsi yerel onizlemede islenir. style: ugc | product | motion | ads | posters | marketplace. slug public URL olur, slug'a marka/musteri adi yazma (baslik ve aciklamada dukkan adi olabilir). loop_start/loop_len duvardaki hareketli WebP dongusunun araligi (sn).",
   "hero": {
     "_not": "Banner: bitmis video (dikey tercih) + ondan cekim kareleri + ayni isin kaynak urun fotografi. Eslesen urun fotografi yok, foto yuvasi ikon olarak kalir.",
     "video": "dondurma.mp4",
@@ -10,16 +10,64 @@
   },
   "items": [
     {
+      "src": "ring.mp4", "slug": "oval-solitaire-ring", "title": "Modern Oval Solitaire", "style": "ads",
+      "sector": "Jewellery", "loop_start": 2.5,
+      "desc": "Twenty-second ring film for The Lanes Jewellery Co. in Brighton. Nothing was filmed: every shot was made from their product photos of the ring, in yellow, rose and white gold.",
+      "date": "2026-10-08", "publish": true
+    },
+    {
       "src": "dehumidifier-film.mp4", "slug": "dehumidifier-room-to-room", "title": "Dehumidifier, room to room", "style": "product",
-      "sector": "Home and kitchen", "loop_start": 3.2,
-      "desc": "Thirty-second product film for a dehumidifier, made for a Dutch webshop. Nothing was filmed: the shots were made from the shop's product photos, the captions are in Dutch and the end card is their own photo.",
+      "sector": "Home and living", "loop_start": 3.2,
+      "desc": "Thirty-second product film for a dehumidifier, made for Top en Toppie, a Dutch webshop. Nothing was filmed: the shots were made from the shop's product photos, the captions are in Dutch and the end card is their own photo.",
       "date": "2026-10-14", "publish": true
     },
     {
       "src": "square-watch-film.mp4", "slug": "square-watch-on-black", "title": "Square watch on black", "style": "ads",
       "sector": "Watches", "loop_start": 8.0,
-      "desc": "Sixteen-second watch film for a Dutch shop. Eight shots on black, from the bracelet links to the green dial, all made from the four product photos on their website.",
+      "desc": "Sixteen-second watch film for Tierelantijn, a shop in Breda. Eight shots on black, from the bracelet links to the green dial, all made from the four product photos on their website.",
       "date": "2026-10-14", "publish": true
+    },
+    {
+      "src": "candle.mp4", "slug": "pumpkin-candle", "title": "Pumpkin scented candle", "style": "product",
+      "sector": "Home and living", "loop_start": 0,
+      "desc": "Eighteen-second sample for Es & Sie, a candle maker in Friesland, made from the photos on their website. The captions are in Dutch.",
+      "date": "2026-10-04", "publish": true
+    },
+    {
+      "src": "harness.mp4", "slug": "velvet-dog-harness", "title": "Velvet dog harness set", "style": "product",
+      "sector": "Pet supplies", "loop_start": 0,
+      "desc": "Twenty-second sample for Soof's Pet Supplies, made from their product and campaign photos. The captions are in Dutch.",
+      "date": "2026-10-04", "publish": true
+    },
+    {
+      "src": "tea-sample.mp4", "slug": "bedtime-tea-in-the-dark", "title": "40 Winks bedtime tea", "style": "ads",
+      "sector": "Food and drink", "loop_start": 11,
+      "desc": "Thirty-second film for Skin Solace's 40 Winks loose leaf tea, made from a single product photo. Shown with the sample watermark.",
+      "date": "2026-10-15", "publish": true
+    },
+    {
+      "src": "umbrella-sample.mp4", "slug": "duck-handle-umbrella-in-rain", "title": "Duck handle umbrella in the rain", "style": "ads",
+      "sector": "Fashion", "loop_start": 1,
+      "desc": "Thirty-second sample for Kindf_olk in Galway: an Original Duckhead umbrella, made from three product photos. Shown with the sample watermark.",
+      "date": "2026-10-16", "publish": true
+    },
+    {
+      "src": "bed-sample.mp4", "slug": "beech-bed-frame", "title": "Beech bed frame", "style": "product",
+      "sector": "Home and living", "loop_start": 0,
+      "desc": "Short film for The Fine Store's Cubico bed frame by RYE, made from five product images. The ceiling, the floor and the evening light were added. Shown with the sample watermark.",
+      "date": "2026-10-12", "publish": true
+    },
+    {
+      "src": "dog-hoodie-sample.mp4", "slug": "dog-portrait-hoodies", "title": "Your dog on a hoodie", "style": "product",
+      "sector": "Fashion", "loop_start": 0,
+      "desc": "Fifteen-second sample for Ted's Nook, made from the photos on their website. The captions are in Dutch. Shown with the sample watermark.",
+      "date": "2026-10-05", "publish": true
+    },
+    {
+      "src": "slogan-hoodie-sample.mp4", "slug": "slogan-hoodies", "title": "Slogan hoodies", "style": "motion",
+      "sector": "Fashion", "loop_start": 0,
+      "desc": "Fifteen-second sample for Home, Gifts & More, made from their hoodie product photos. The captions are in Dutch. Shown with the sample watermark.",
+      "date": "2026-10-05", "publish": true
     },
     {
       "src": "dondurma.mp4", "slug": "fig-gelato-launch", "title": "Fig gelato launch", "style": "ads",
@@ -36,7 +84,7 @@
     },
     {
       "src": "blender tanıtım.mp4", "slug": "blender-pro-mode", "title": "Blender pro mode demo", "style": "ugc",
-      "sector": "Home and kitchen", "loop_start": 4.0,
+      "sector": "Home and living", "loop_start": 4.0,
       "desc": "A presenter shows a blender's pro setting in 11 seconds. Two buttons, a smooth green smoothie, then the pour. Shot to look like a phone video for TikTok and Reels.",
       "date": "2026-09-29", "publish": true
     },
